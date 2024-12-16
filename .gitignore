@@ -4,3 +4,4 @@ mtl_project/target/classes/db.properties
 mtl_project/target/m2e-wtp/web-resources/META-INF/maven/kr.co/mtl/pom.properties
 /mtl_project/target
 */target/**
+*.MF
