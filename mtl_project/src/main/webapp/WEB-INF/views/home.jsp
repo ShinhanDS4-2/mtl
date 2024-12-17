@@ -137,6 +137,7 @@ Main Banner START -->
 <!-- =======================
 Main Banner END -->
 
+<!-- 지역 아이콘 -->
 <section>
 	<div class="container">
 		<!-- Title -->
@@ -223,7 +224,7 @@ Main Banner END -->
 </section>
 
 <!-- =======================
-Packages START -->
+인기 리스트 1 START -->
 <section class="pt-0 pt-md-5">
 	<div class="container">
 		<!-- Title -->
@@ -377,10 +378,10 @@ Packages START -->
 	</div>
 </section>
 <!-- =======================
-Packages END -->
+인기 리스트 1 END -->
 
 <!-- =======================
-Packages START -->
+인기 리스트 2 START -->
 <section class="pt-0 pt-md-5">
 	<div class="container">
 		<!-- Title -->
@@ -534,7 +535,7 @@ Packages START -->
 	</div>
 </section>
 <!-- =======================
-Packages END -->
+인기 리스트 2 END -->
 </main>
 
 <!-- footer -->
