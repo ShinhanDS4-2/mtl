@@ -5,30 +5,21 @@ import java.util.Map;
 public class CommonUtil {
 
 	/**
-	 * Null 체크 (Map)
-	 * @param param
-	 * @return
-	 */
-	public static boolean checkIsNull(Map<String, Object> param) {
-		if (param == null || param.isEmpty()) {
-			return true;
-		}
-		
-		return false;
-	}
-	
-	/**
-	 * Null 체크 (Map객체 내 key)
+	 * 필수 파라미터 Null 체크
 	 * @param param
 	 * @param key
-	 * @return
 	 */
-	public static boolean checkIsNull(Map<String, Object> param, String key) {
-		if (param == null || key == null || (param.get(key) == null) || param.get(key).equals("")) {
-			return true;
+	public static void checkIsNull(Map<String, Object> param, String key) throws Exception {
+		
+		if (!param.containsKey(key)) {
+			throw new Exception(key + " IS NULL");
 		}
 
-		return false;
+		Object value = param.get(key);
+		
+		if (value == null || value.equals("")) {
+			throw new Exception("PARAMETER " +  key + " ======> VALUE IS NULL");
+		}
 	}
 	
 	/**

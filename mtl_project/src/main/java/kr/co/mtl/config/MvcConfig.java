@@ -30,19 +30,20 @@ import kr.co.mtl.interceptor.LoginInterceptor;
 @ComponentScan(basePackages = "kr.co.mtl")
 @MapperScan(basePackages = {"kr.co.mtl"}, annotationClass = Mapper.class)
 @EnableTransactionManagement
+@SuppressWarnings("deprecation")
 public class MvcConfig implements WebMvcConfigurer {
 	
 	// DB 설정값
-	@Value("${db.driver}")
+	@Value("${spring.datasource.driver-class-name}")
 	private String driver;
 	
-	@Value("${db.url}")
+	@Value("${spring.datasource.url}")
 	private String url;
 	
-	@Value("${db.username}")
+	@Value("${spring.datasource.username}")
 	private String username;
 	
-	@Value("${db.password}")
+	@Value("${spring.datasource.password}")
 	private String password;
 	
 	
@@ -92,8 +93,8 @@ public class MvcConfig implements WebMvcConfigurer {
 	// 인터셉터 설정
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(interception())
-			.addPathPatterns("/student/index.do");
+//		registry.addInterceptor(interception())
+//			.addPathPatterns("/student/index.do");
 	}
 	
 	// 정적 페이지 처리

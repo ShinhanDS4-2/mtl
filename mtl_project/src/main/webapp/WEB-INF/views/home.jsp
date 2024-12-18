@@ -526,7 +526,7 @@ Main Banner END -->
 						<!-- Content -->
 						<div class="hstack gap-2">
 							<span class="h5 text-success mb-0">$3585</span>
-							<small>Starting price</small>
+							<small id="t">Starting price</small>
 						</div>
 					</div>
 				</div>
@@ -545,8 +545,6 @@ Main Banner END -->
 <%@ include file="include/footerScript.jsp" %>
 
 <!-- page script -->
-<script>
-	
-</script>
+<script src="js/home.js"></script>
 </body>
 </html>
