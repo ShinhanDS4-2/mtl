@@ -910,21 +910,6 @@ var e = {
         removeElement('adult');
       });
     
-      childAdd.addEventListener('click',function(){
-        addElement('child');
-      });
-    
-      childRemove.addEventListener('click',function(){
-        removeElement('child');
-      });
-    
-      roomAdd.addEventListener('click',function(){
-        addElement('room');
-      });
-    
-      roomRemove.addEventListener('click',function(){
-        removeElement('room');
-      });
       }
     },
      // END: Guest Selector

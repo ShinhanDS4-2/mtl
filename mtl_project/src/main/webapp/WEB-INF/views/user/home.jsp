@@ -4,12 +4,12 @@
 <html lang="ko">
 <head>
 <!-- headerScript -->
-<%@ include file="include/headerScript.jsp" %>
+<%@ include file="/WEB-INF/views/include/headerScript.jsp" %>
 <!-- page css -->
 </head>
 <body>
 <!-- header -->
-<%@ include file="include/header.jsp" %>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 
 <!-- main -->
 <main>
@@ -539,12 +539,12 @@ Main Banner END -->
 </main>
 
 <!-- footer -->
-<%@ include file="include/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <!-- footerScript -->
-<%@ include file="include/footerScript.jsp" %>
+<%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/home.js"></script>
+<script src="js/user/home.js"></script>
 </body>
 </html>

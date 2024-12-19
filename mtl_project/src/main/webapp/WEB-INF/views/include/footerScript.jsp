@@ -6,9 +6,13 @@
 <script src="assets/vendor/glightbox/js/glightbox.js"></script>
 <script src="assets/vendor/choices/js/choices.min.js"></script>
 <script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+<script src="assets/vendor/sticky-js/sticky.min.js"></script>
 
 <!-- ThemeFunctions -->
 <script src="assets/js/functions.js"></script>
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- header js -->
+<script src="js/include/header.js"></script>
