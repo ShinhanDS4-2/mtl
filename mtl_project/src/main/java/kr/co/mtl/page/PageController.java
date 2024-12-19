@@ -31,4 +31,11 @@ public class PageController {
 		
 		return "user/partnerDetail";
 	}
+	
+	// 예약
+	@GetMapping("reservation")
+	public String reservation() {
+		
+		return "user/reservation";
+	}
 }
