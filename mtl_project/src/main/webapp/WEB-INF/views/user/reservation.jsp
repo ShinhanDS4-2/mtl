@@ -216,6 +216,6 @@ Page content START -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/user/partnerList.js"></script>
+<script src="js/user/reservation.js"></script>
 </body>
 </html>

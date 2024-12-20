@@ -38,4 +38,11 @@ public class PageController {
 		
 		return "user/reservation";
 	}
+	
+	// 예약 완료
+	@GetMapping("reservationConfirm")
+	public String reservationConfirm() {
+		
+		return "user/reservationConfirm";
+	}
 }
