@@ -1,7 +1,9 @@
-$(function() {
+const header = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
-	_eventInit();
+	function init() {
+		_eventInit();
+	};
 
 	// 이벤트 초기화 
 	function _eventInit() {
@@ -33,4 +35,8 @@ $(function() {
 			location.href = "/mtl/";
 		},
 	};
-});
+	
+	return {
+		init,
+	};
+})();

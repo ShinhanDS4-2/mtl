@@ -546,5 +546,8 @@ Main Banner END -->
 
 <!-- page script -->
 <script src="js/user/home.js"></script>
+<script type="text/javascript">
+	home.init();
+</script>
 </body>
 </html>

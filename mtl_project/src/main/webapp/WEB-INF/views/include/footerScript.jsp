@@ -19,3 +19,6 @@
 
 <!-- header JS -->
 <script src="js/include/header.js"></script>
+<script type="text/javascript">
+	header.init();
+</script>
