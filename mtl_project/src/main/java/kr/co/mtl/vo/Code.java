@@ -7,9 +7,7 @@ public enum Code {
 	// 데이터 없음
 	NOT_EXIST_DATA(404, "code.not.exist.data"),
 	
-	/**
-	 * 에러
-	 */
+	// 에러
 	ERROR(500, "code.error"),
 	ERROR_SQL(501, "code.error.sql"),
 	
