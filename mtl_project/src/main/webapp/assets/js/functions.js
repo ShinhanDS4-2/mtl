@@ -834,8 +834,6 @@ var e = {
       if (e.isVariableDefined(e.select('.guest-selector'))) {
 
       let adults = 2;
-      let child = 0;
-      let rooms =1;
       let totalAdults = 2;
     
       let selectionResult = document.querySelector('.selection-result');
@@ -844,42 +842,21 @@ var e = {
       let adultAdd = document.querySelector('.adult-add');
       let adultRemove = document.querySelector('.adult-remove');
     
-      let childValue = document.querySelector('.child');
-      let childAdd = document.querySelector('.child-add');
-      let childRemove = document.querySelector('.child-remove');
-    
-      let roomValue = document.querySelector('.rooms');
-      let roomAdd = document.querySelector('.room-add');
-      let roomRemove = document.querySelector('.room-remove');
-    
       function addElement(type){
         if(type == 'adult'){
           adults++;
-          totalAdults = adults + child;
+          totalAdults = adults;
     
-          showElements();
-        }else if(type == 'child'){
-          child = child + 1;
-          console.log(child);
-          totalAdults = adults + child;
-    
-          showElements();
-        }else if(type == 'room'){
-          rooms++;
-          
           showElements();
         }
       }
     
       function showElements(){
         adultValue.innerText = adults;
-        childValue.innerText = child;
-        roomValue.innerText = rooms;
     
-        let roomText = rooms > 1 ? 'Rooms' : 'Room';
-        let guestText = totalAdults > 1 ? 'Guests': 'Guest';
+        let guestText = '명';
     
-        let resultText = totalAdults+' '+guestText+' '+rooms+' '+roomText;
+        let resultText = totalAdults+' '+guestText;
     
         selectionResult.setAttribute('value', resultText);
       }
@@ -887,17 +864,8 @@ var e = {
       function removeElement(type){
         if(type == 'adult'){
           adults = adults > 0 ?  adults - 1 : adults;
-          totalAdults = adults + child;
+          totalAdults = adults;
     
-          showElements();
-        }else if(type == 'child'){
-          child = child > 0 ? child - 1 : child;
-          totalAdults = adults + child;
-    
-          showElements();
-        }else if(type == 'room'){
-          rooms = rooms > 0 ? rooms - 1 : rooms;
-          
           showElements();
         }
       }

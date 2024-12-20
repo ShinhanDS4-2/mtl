@@ -13,22 +13,20 @@
 
 <!-- main -->
 <main>
-
 <!-- =======================
 Page content START -->
 <section>
 	<div class="container">
 		<div class="row g-4 g-lg-5">	
-
 			<!-- Left side content START -->
-			<div class="col-xl-8">
+			<div class="col-xl-8 mt-1">
 				<div class="vstack gap-5">
-					<!-- Hotel information START -->
-					<div class="card shadow">
+					<!-- 숙소 정보 START -->
+					<div class="card border">
 						<!-- Card header -->
 						<div class="card-header p-4 border-bottom">
 							<!-- Title -->
-							<h3 class="mb-0"><i class="fa-solid fa-hotel me-2"></i>Hotel Information</h3>
+							<h3 class="mb-0"><i class="fa-solid fa-hotel me-2"></i>숙소 정보</h3>
 						</div>
 
 						<!-- Card body START -->
@@ -119,17 +117,17 @@ Page content START -->
 						</div>
 						<!-- Card body END -->
 					</div>
-					<!-- Hotel information END -->
+					<!-- 숙소 정보 END -->
 				</div>	
 			</div>
 			<!-- Left side content END -->
 
 			<!-- Right side content START -->
-			<aside class="col-xl-4">
+			<aside class="col-xl-4 mt-1">
 				<div class="row g-4">
-					<!-- Price summary START -->
+					<!-- 예약자 정보 START -->
 					<div class="col-md-6 col-xl-12">
-						<div class="card shadow rounded-2">
+						<div class="card border rounded-2">
 							<!-- Card header -->
 							<div class="card-header border-bottom">
 								<div class="cardt-title">
@@ -167,11 +165,11 @@ Page content START -->
 							</div>
 						</div>
 					</div>
-					<!-- Price summary END -->
+					<!-- 예약자 정보 END -->
 
-					<!-- Offer and discount START -->
+					<!-- 결제 정보 START -->
 					<div class="col-md-6 col-xl-12">
-						<div class="card shadow">
+						<div class="card border">
 							<!-- Card header -->
 							<div class="card-header border-bottom">
 								<div class="cardt-title">
@@ -191,13 +189,13 @@ Page content START -->
 										<h5><span class="small fs-6">총 결제 금액</span> 205,000<span class="small fs-6">원</span></h5>
 									</div>
 									<div class="d-grid gap-2">
-										<button class="btn btn-primary btn-sm mb-0">Pay Now</button>
+										<button class="btn btn-primary btn-sm mb-0">결제하기</button>
 									</div>
 								</div>
 							</div>	
 						</div>
 					</div>
-					<!-- Offer and discount END -->
+					<!-- 결제 정보 END -->
 				</div>
 			</aside>
 			<!-- Right side content END -->
