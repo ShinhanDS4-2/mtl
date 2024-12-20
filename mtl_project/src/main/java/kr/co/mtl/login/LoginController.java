@@ -20,7 +20,7 @@ public class LoginController {
 	 * @param param
 	 * @return 사용자 정보
 	 */
-	@PostMapping("/user/info")
+	@PostMapping("/api/user/info")
 	public Map<String, Object> getUserInfo(@RequestParam Map<String, Object> param) throws Exception {
 		
 		// 필수 파라미터 null 체크

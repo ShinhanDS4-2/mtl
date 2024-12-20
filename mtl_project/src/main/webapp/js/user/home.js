@@ -1,12 +1,11 @@
 $(function() {
-	$.ajax({
-		url: "/mtl/user/info",
-		data: {
-			"userIdx": 1
-		},
-		method: "POST",
-		success: function(resp) {
-			console.log(resp);
-		}
+	let url_v = "/user/info";
+	
+	let data_v = {
+		"userIdx": 1
+	};
+	
+	comm.send(url_v, data_v, "POST", function(resp) {
+		console.log(resp);
 	});
 });
