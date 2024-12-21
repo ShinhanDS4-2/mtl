@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.text-line {
+	text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px 1px black;
+}
+
+.banner {
+	background-position: center center; 
+	background-repeat: no-repeat; 
+	background-size: cover;
+}
+
+.place-center {
+	place-content: center;
+}
+
+.bg-i {
+	background: #F2E8DC;
+}
+
+.area-icon:hover {
+	cursor: pointer;
+}
+
+.area-icon:hover .stretched-link {
+	color: #034C8C;
+}
+
+.area-icon:hover .rounded-circle {
+	box-shadow: 0 0 0 8px #F26B5E;
+}

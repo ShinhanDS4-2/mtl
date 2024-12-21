@@ -20,13 +20,13 @@
 			<div class="navbar-collapse collapse" id="navbarCategoryCollapse">
 				<ul class="navbar-nav navbar-nav-scroll nav-pills-primary-soft text-center ms-auto p-2 p-xl-0">
 					<!-- Nav item Hotel -->
-					<li class="nav-item"> <a class="nav-link" href="index.html"><i class="fa-solid fa-map-location-dot me-2"></i>지역</a>	</li>
+					<li class="nav-item"> <a class="nav-link" href="areaList"><i class="fa-solid fa-map-location-dot me-2"></i>지역</a>	</li>
 
 					<!-- Nav item Flight -->
 					<li class="nav-item"> <a class="nav-link" href="partnerList"><i class="fa-solid fa-hotel me-2"></i>숙소</a>	</li>
 
 					<!-- Nav item Tour -->
-					<li class="nav-item"> <a class="nav-link active" href="index-tour.html"><i class="fa-solid fa-route me-2"></i>여행지</a> </li>
+					<li class="nav-item"> <a class="nav-link active" href="locationList"><i class="fa-solid fa-route me-2"></i>여행지</a> </li>
 				</ul>
 			</div>
 			<!-- Main navbar END -->

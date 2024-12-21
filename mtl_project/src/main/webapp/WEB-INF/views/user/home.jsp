@@ -124,7 +124,7 @@ Main Banner END -->
 			<div class="col-1"></div>
 			<!-- Card item START -->
 			<div class="col-2">
-				<div class="card bg-transparent text-center p-1 h-100">
+				<div class="card bg-transparent text-center p-1 h-100 area-icon">
 					<!-- Image -->
 					<img src="assets/images/icon/서울.jpg" class="rounded-circle" alt="">
 
@@ -138,7 +138,7 @@ Main Banner END -->
 
 			<!-- Card item START -->
 			<div class="col-2">
-				<div class="card bg-transparent text-center p-1 h-100">
+				<div class="card bg-transparent text-center p-1 h-100 area-icon">
 					<!-- Image -->
 					<img src="assets/images/icon/강릉.jpg" class="rounded-circle" alt="">
 
@@ -152,7 +152,7 @@ Main Banner END -->
 
 			<!-- Card item START -->
 			<div class="col-2">
-				<div class="card bg-transparent text-center p-1 h-100">
+				<div class="card bg-transparent text-center p-1 h-100 area-icon">
 					<!-- Image -->
 					<img src="assets/images/icon/여수.jpg" class="rounded-circle" alt="">
 
@@ -166,7 +166,7 @@ Main Banner END -->
 
 			<!-- Card item START -->
 			<div class="col-2">
-				<div class="card bg-transparent text-center p-1 h-100">
+				<div class="card bg-transparent text-center p-1 h-100 area-icon">
 					<!-- Image -->
 					<img src="assets/images/icon/부산.jpg" class="rounded-circle" alt="">
 
@@ -180,7 +180,7 @@ Main Banner END -->
 
 			<!-- Card item START -->
 			<div class="col-2">
-				<div class="card bg-transparent text-center p-1 h-100">
+				<div class="card bg-transparent text-center p-1 h-100 area-icon">
 					<!-- Image -->
 					<img src="assets/images/icon/제주.jpg" class="rounded-circle" alt="">
 

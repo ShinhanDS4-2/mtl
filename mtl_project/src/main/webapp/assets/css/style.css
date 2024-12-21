@@ -16594,6 +16594,10 @@ textarea.form-control-lg {
   height: 300px !important;
 }
 
+.h-350px {
+  height: 350px !important;
+}
+
 .h-400px {
   height: 400px !important;
 }
@@ -21944,16 +21948,6 @@ html[dir=rtl] .choices__input {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-
-.text-line {
-	text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px 1px black;
-}
-
-.banner {
-	background-position: center center; 
-	background-repeat: no-repeat; 
-	background-size: cover;
 }
 
 [data-bs-theme=dark] {
