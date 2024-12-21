@@ -7,6 +7,8 @@
 <script src="assets/vendor/choices/js/choices.min.js"></script>
 <script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
 <script src="assets/vendor/sticky-js/sticky.min.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
+<script>flatpickr.localize(flatpickr.l10ns.ko);</script>
 
 <!-- ThemeFunctions -->
 <script src="assets/js/functions.js"></script>

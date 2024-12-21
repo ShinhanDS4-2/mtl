@@ -62,15 +62,15 @@ Search START -->
 								<div class="w-100">
 									<label class="form-label">인원</label>
 									<div class="dropdown guest-selector me-2">
-										<input type="text" class="form-guest-selector form-control form-control-lg selection-result" value="2 Guests 1 Room" id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+										<input type="text" class="form-guest-selector form-control form-control-lg selection-result" value="2 명" id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
 									
 										<!-- dropdown items -->
 										<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="dropdownguest">
 											<!-- Adult -->
 											<li class="d-flex justify-content-between">
 												<div>
-													<h6 class="mb-0">Adults</h6>
-													<small>Ages 13 or above</small>
+													<h6 class="mb-0">인원</h6>
+													<small>유아 및 아동도 인원에 포함해 주세요.</small>
 												</div>
 
 												<div class="hstack gap-1 align-items-center">

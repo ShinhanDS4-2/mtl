@@ -625,7 +625,7 @@ var e = {
           var enableTime = item.getAttribute('data-enableTime') == 'true' ? true : false;
           var noCalendar = item.getAttribute('data-noCalendar') == 'true' ? true : false;
           var inline = item.getAttribute('data-inline') == 'true' ? true : false;
-          var dateFormat = item.getAttribute('data-date-format') ? item.getAttribute('data-date-format') : item.getAttribute('data-enableTime') == 'true' ? "h:i K" : "d M";
+          var dateFormat = "Y-m-d";
 
           flatpickr(item, {
             mode: mode,
@@ -635,7 +635,9 @@ var e = {
             animate: "false",
             position: "top",
             dateFormat: dateFormat, //Check supported characters here: https://flatpickr.js.org/formatting/
-            disableMobile: "true"
+            disableMobile: "true",
+            minDate: "today",
+            defaultDate: ["today", new Date().fp_incr(2)]
           });
 
         });

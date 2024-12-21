@@ -18,7 +18,7 @@ Main Banner START -->
 <section class="pt-0">
 	<div class="container">
 		<!-- Background image -->
-		<div class="rounded-3 p-3 p-sm-5" style="background-image: url(assets/images/bg/05.jpg); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+		<div class="rounded-3 p-3 p-sm-5 banner" id="banner" style="background-image: url(assets/images/banner/7.jpg);">
 			<!-- Banner title -->
 			<div class="row my-2 my-xl-5"> 
 				<div class="col-md-8 mx-auto"> 
@@ -769,5 +769,8 @@ Hotel list END -->
 
 <!-- page script -->
 <script src="js/user/partnerList.js"></script>
+<script type="text/javascript">
+	partnerList.init();
+</script>
 </body>
 </html>

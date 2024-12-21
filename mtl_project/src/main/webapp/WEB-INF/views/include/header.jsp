@@ -3,11 +3,11 @@
 <!-- Header START -->
 <header class="navbar-light header-sticky">
 	<!-- Logo Nav START -->
-	<nav class="navbar navbar-expand-xl">
+	<nav class="navbar navbar-expand-xl p-1">
 		<div class="container">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="javascript:;" data-src="header" data-act="clickLogo">
-				<img class="light-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
+			<a class="navbar-brand pb-1 pt-1" href="javascript:;" data-src="header" data-act="clickLogo">
+				<img class="light-mode-item navbar-brand-item" src="assets/images/logo-80.png" alt="logo">
 			</a>
 			<!-- Logo END -->
 
@@ -20,23 +20,28 @@
 			<div class="navbar-collapse collapse" id="navbarCategoryCollapse">
 				<ul class="navbar-nav navbar-nav-scroll nav-pills-primary-soft text-center ms-auto p-2 p-xl-0">
 					<!-- Nav item Hotel -->
-					<li class="nav-item"> <a class="nav-link" href="index.html"><i class="fa-solid fa-hotel me-2"></i>지역</a>	</li>
+					<li class="nav-item"> <a class="nav-link" href="index.html"><i class="fa-solid fa-map-location-dot me-2"></i>지역</a>	</li>
 
 					<!-- Nav item Flight -->
-					<li class="nav-item"> <a class="nav-link" href="index-flight.html"><i class="fa-solid fa-plane me-2"></i>숙소</a>	</li>
+					<li class="nav-item"> <a class="nav-link" href="partnerList"><i class="fa-solid fa-hotel me-2"></i>숙소</a>	</li>
 
 					<!-- Nav item Tour -->
-					<li class="nav-item"> <a class="nav-link active" href="index-tour.html"><i class="fa-solid fa-globe-americas me-2"></i>여행지</a> </li>
+					<li class="nav-item"> <a class="nav-link active" href="index-tour.html"><i class="fa-solid fa-route me-2"></i>여행지</a> </li>
 				</ul>
 			</div>
 			<!-- Main navbar END -->
 			
 			<!-- Profile and Notification START -->
 			<ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
-				<!-- Profile dropdown START -->
+				<!-- 비로그인 시 로그인/회원가입 버튼 -->
+				<li class="nav-item">
+					<a class=" btn btn-outline-primary btn-sm mt-2" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+						로그인 / 회원가입
+					</a>
+				</li>
+				<!-- 로그인 시 사용자 버튼 START -->
 				<li class="nav-item ms-3 dropdown">
-					<!-- Avatar -->
-					<a class=" btn btn-outline-primary" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+					<a class=" btn btn-outline-primary btn-sm mt-2" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
 						<span>사용자</span> 님<i class="fas fa-angle-right ms-2"></i>
 					</a>
 
