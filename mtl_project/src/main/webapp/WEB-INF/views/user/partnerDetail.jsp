@@ -87,9 +87,8 @@ Search START -->
 
 						<!-- Button -->
 						<div class="col-md-6 col-lg-2 mt-md-auto">
-							<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i>Search</a>
+							<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i> 검색</a>
 						</div>
-
 					</form>
 				</div>
 			</div>
@@ -419,7 +418,7 @@ About hotel START -->
 											<div class="card-body d-flex flex-column h-100 p-0">
 					
 												<!-- Title -->
-												<h5 class="card-title"><a href="#">Luxury Room with Balcony</a></h5>
+												<h5 class="card-title">Luxury Room with Balcony</h5>
 
 												<!-- Amenities -->
 												<ul class="nav nav-divider mb-2">
@@ -434,8 +433,8 @@ About hotel START -->
 												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
 													<!-- Price -->
 													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1 text-success">205,000</h5>
-														<span class="mb-0 me-2">원</span>
+														<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+														<span class="mb-0 me-2"> / 일</span>
 													</div>
 													<!-- Button -->
 													<div class="mt-3 mt-sm-0">
@@ -482,7 +481,7 @@ About hotel START -->
 											<div class="card-body d-flex flex-column p-0 h-100">
 					
 												<!-- Title -->
-												<h5 class="card-title"><a href="#">Deluxe Pool View with Breakfast</a></h5>
+												<h5 class="card-title">Deluxe Pool View with Breakfast</h5>
 
 												<!-- Amenities -->
 												<ul class="nav nav-divider mb-2">
@@ -497,12 +496,12 @@ About hotel START -->
 												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
 													<!-- Price -->
 													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1 text-success">205,000</h5>
-														<span class="mb-0 me-2">원</span>
+														<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+														<span class="mb-0 me-2"> / 일</span>
 													</div>
 													<!-- Button -->
 													<div class="mt-3 mt-sm-0">
-														<a href="reservation" class="btn btn-sm btn-primary mb-0">객실 예약</a>    
+														<a href="reservation" class="btn btn-sm btn-success mb-0">객실 예약</a>    
 													</div>          
 												</div>
 											</div>

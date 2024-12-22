@@ -462,8 +462,8 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success">205,000</h5>
-											<span class="mb-0 me-2">원</span>
+											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<span class="mb-0 me-2"> / 일</span>
 										</div>                  
 									</div>
 								</div>
@@ -521,9 +521,9 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success">205,000</h5>
-											<span class="mb-0 me-2">원</span>
-										</div>                  
+											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<span class="mb-0 me-2"> / 일</span>
+										</div>                 
 									</div>
 								</div>
 							</div>
@@ -580,9 +580,9 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success">205,000</h5>
-											<span class="mb-0 me-2">원</span>
-										</div>                  
+											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<span class="mb-0 me-2"> / 일</span>
+										</div>                 
 									</div>
 								</div>
 							</div>
@@ -656,9 +656,9 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success">205,000</h5>
-											<span class="mb-0 me-2">원</span>
-										</div>                  
+											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<span class="mb-0 me-2"> / 일</span>
+										</div>             
 									</div>
 								</div>
 							</div>
@@ -715,9 +715,9 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success">205,000</h5>
-											<span class="mb-0 me-2">원</span>
-										</div>                  
+											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<span class="mb-0 me-2"> / 일</span>
+										</div>                 
 									</div>
 								</div>
 							</div>

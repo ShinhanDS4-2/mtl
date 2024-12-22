@@ -231,7 +231,7 @@ Main Banner END -->
 					<div class="card-body px-2">
 						<span class="badge text-bg-light mb-2">호텔</span>
 						<!-- Title -->
-						<h5 class="card-title"><a href="partnerDetail" class="stretched-link text-truncate">그랜드 인터컨티넨탈 서울 파르나스</a></h5>
+						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">그랜드 인터컨티넨탈 서울 파르나스</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
 							<span class="h5 mb-0 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</span>
@@ -262,7 +262,7 @@ Main Banner END -->
 					<div class="card-body px-2">
 						<span class="badge text-bg-light mb-2">호텔</span>
 						<!-- Title -->
-						<h5 class="card-title"><a href="partnerDetail" class="stretched-link text-truncate">여수 엑스포 유탑 마리나</a></h5>
+						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">여수 엑스포 유탑 마리나</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
 							<span class="h5 mb-0 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</span>
@@ -292,7 +292,7 @@ Main Banner END -->
 					<div class="card-body px-2">
 						<span class="badge text-bg-light mb-2">글램핑</span>
 						<!-- Title -->
-						<h5 class="card-title"><a href="partnerDetail" class="stretched-link text-truncate">뉴욕카라반</a></h5>
+						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">뉴욕카라반</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
 							<span class="h5 mb-0 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</span>
@@ -321,7 +321,7 @@ Main Banner END -->
 					<div class="card-body px-2">
 						<span class="badge text-bg-light mb-2">호텔</span>
 						<!-- Title -->
-						<h5 class="card-title"><a href="partnerDetail" class="stretched-link text-truncate">메종 글래드 제주</a></h5>
+						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">메종 글래드 제주</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
 							<span class="h5 text-success mb-0"><i class="fa-solid fa-won-sign"></i> 200,000</span>
@@ -363,7 +363,7 @@ Main Banner END -->
 					<!-- Card body -->
 					<div class="card-body px-2">
 						<!-- Title -->
-						<h5 class="card-title"><a href="partnerDetail" class="stretched-link text-truncate">서울식물원</a></h5>
+						<h5 class="card-title"><a href="location/detail" class="stretched-link text-truncate">서울식물원</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
 							<span class="h5 mb-0 text-success"><i class="fa-solid fa-location-dot"></i> 서울</span>
@@ -385,7 +385,7 @@ Main Banner END -->
 					<!-- Card body -->
 					<div class="card-body px-2">
 						<!-- Title -->
-						<h5 class="card-title"><a href="partnerDetail" class="stretched-link text-truncate">여수 테디베어뮤지엄</a></h5>
+						<h5 class="card-title"><a href="location/detail" class="stretched-link text-truncate">여수 테디베어뮤지엄</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
 							<span class="h5 mb-0 text-success"><i class="fa-solid fa-location-dot"></i> 여수</span>
@@ -406,7 +406,7 @@ Main Banner END -->
 					<!-- Card body -->
 					<div class="card-body px-2">
 						<!-- Title -->
-						<h5 class="card-title"><a href="partnerDetail" class="stretched-link text-truncate">설악스케치</a></h5>
+						<h5 class="card-title"><a href="location/detail" class="stretched-link text-truncate">설악스케치</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
 							<span class="h5 mb-0 text-success"><i class="fa-solid fa-location-dot"></i> 강릉</span>
@@ -426,7 +426,7 @@ Main Banner END -->
 					<!-- Card body -->
 					<div class="card-body px-2">
 						<!-- Title -->
-						<h5 class="card-title"><a href="partnerDetail" class="stretched-link text-truncate">북촌한옥마을</a></h5>
+						<h5 class="card-title"><a href="location/detail" class="stretched-link text-truncate">북촌한옥마을</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
 							<span class="h5 text-success mb-0"><i class="fa-solid fa-location-dot"></i> 서울</span>

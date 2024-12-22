@@ -33,7 +33,7 @@ const partnerList = (function() {
 	let _event = {
 		clickPartner: function(evo) {
 			let partnerIdx = evo.attr("data-partner-idx");
-			location.href = "/mtl/partnerDetail?idx=" + partnerIdx;
+			location.href = "/mtl/partner/detail?idx=" + partnerIdx;
 		},
 	};
 	

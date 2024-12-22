@@ -16,47 +16,10 @@
 <section class="pt-3">
 	<div class="container">
 		<div class="row">
-			<!-- Sidebar START -->
-			<div class="col-lg-4 col-xl-3">
-				<!-- Responsive offcanvas body START -->
-				<div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasSidebar" >
-					<!-- Offcanvas header -->
-					<div class="offcanvas-header justify-content-end pb-2">
-						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasSidebar" aria-label="Close"></button>
-					</div>
+			<!-- 사이드바 -->
+			<%@ include file="/WEB-INF/views/include/mypageSidebar.jsp" %>
 
-					<!-- Offcanvas body -->
-					<div class="offcanvas-body p-3 p-lg-0">
-						<div class="card bg-white w-100 border">
-							<!-- Card body START -->
-							<div class="card-body p-3">
-								<ul class="nav nav-pills-primary-soft flex-column">
-									<li class="nav-item">
-										<a class="nav-link active" href="account-profile.html"><i class="bi bi-person fa-fw me-2"></i>내 정보 관리</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="account-bookings.html"><i class="fa-solid fa-calendar-check fa-fw me-2"></i>예약 내역</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="account-bookings.html"><i class="fa-regular fa-circle-question fa-fw me-2"></i>1:1 문의</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="account-bookings.html"><i class="fa-solid fa-user-pen fa-fw me-2"></i>내가 쓴 후기</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="account-wishlist.html"><i class="fa-solid fa-headset fa-fw me-2"></i>고객센터</a>
-									</li>
-								</ul>
-							</div>
-							<!-- Card body END -->
-						</div>
-					</div>
-				</div>	
-				<!-- Responsive offcanvas body END -->	
-			</div>
-			<!-- Sidebar END -->
-
-			<!-- Main content START -->
+			<!-- content -->
 			<div class="col-lg-8 col-xl-9">
 				<!-- Offcanvas menu button -->
 				<div class="d-grid mb-0 d-lg-none w-100">
@@ -65,54 +28,52 @@
 					</button>
 				</div>
 
+				<!-- 내 정보 관리 -->
 				<div class="vstack gap-4">
-					<!-- Personal info START -->
 					<div class="card border">
 						<!-- Card header -->
 						<div class="card-header border-bottom">
 							<h4 class="card-header-title">내 정보 관리</h4>
 						</div>
 
-						<!-- Card body START -->
 						<div class="card-body">
-							<!-- Form START -->
 							<form class="row g-3">
-								<!-- Name -->
 								<div class="col-md-6">
 									<label class="form-label">이름</label>
 									<input type="text" class="form-control" value="Jacqueline Miller">
 								</div>
-
-								<!-- Email -->
 								<div class="col-md-6">
 									<label class="form-label">이메일</label>
 									<input type="email" class="form-control text-secondary" value="hello@gmail.com" disabled="disabled">
 								</div>
-
-								<!-- Mobile -->
 								<div class="col-md-6">
 									<label class="form-label">연락처</label>
 									<input type="text" class="form-control" value="010-0000-0000">
 								</div>
-
-								<!-- Date of birth -->
 								<div class="col-md-6">
 									<label class="form-label">생년월일</label>
 									<input type="text" class="form-control text-secondary" value="1995-01-01" disabled="disabled">
 								</div>
-
-								<!-- Button -->
+								<div class="col-md-6">
+									<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+										<label class="form-check-label" for="smsAssent">SMS 수신 동의</label>
+										<input class="form-check-input flex-shrink-0" type="checkbox" id="smsAssent">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
+										<label class="form-check-label" for="emailAssent">Email 수신 동의</label>
+										<input class="form-check-input flex-shrink-0" type="checkbox" id="emailAssent" checked>
+									</div>
+								</div>
 								<div class="col-12 text-end">
 									<a href="#" class="btn btn-primary mb-0">내 정보 수정</a>
 								</div>
 							</form>
-							<!-- Form END -->
 						</div>
-						<!-- Card body END -->
 					</div>
-					<!-- Personal info END -->
 
-					<!-- Update Password START -->
+					<!-- 비밀번호 변경 -->
 					<div class="card border">
 						<!-- Card header -->
 						<div class="card-header border-bottom">
@@ -120,14 +81,11 @@
 							<small class="mb-1 text-secondary">개인정보 보호를 위해 정기적으로 변경해 주세요.</small>
 						</div>
 
-						<!-- Card body START -->
 						<form class="card-body">
-							<!-- Current password -->
 							<div class="mb-3">
 								<label class="form-label">현재 비밀번호</label>
 								<input class="form-control" type="password" placeholder="Enter current password">
 							</div>
-							<!-- New password -->
 							<div class="mb-3">
 								<label class="form-label">새 비밀번호</label>
 								<div class="input-group">
@@ -137,19 +95,15 @@
 									</span>
 								</div>
 							</div>
-							<!-- Confirm -->
 							<div class="mb-3">
 								<label class="form-label">새 비밀번호 확인</label>
 								<input class="form-control" type="password" placeholder="Confirm new password">
 							</div>
-
 							<div class="text-end">
 								<a href="#" class="btn btn-primary mb-0">비밀번호 변경</a>
 							</div>
 						</form>
-						<!-- Card body END -->
 					</div>
-					<!-- Update Password END -->
 					
 					<!-- 회원 탈퇴 (modal) -->
 					<div class="text-secondary">
@@ -170,9 +124,9 @@
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/user/locationDetail.js"></script>
+<script src="js/user/mypage/info.js"></script>
 <script type="text/javascript">
-	locationDetail.init();
+	info.init();
 </script>
 </body>
 </html>

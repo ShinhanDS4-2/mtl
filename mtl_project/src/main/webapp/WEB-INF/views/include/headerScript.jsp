@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap">
 
 <!-- Plugins CSS -->
+<base href="/mtl/">
 <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
 <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
 <link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/tiny-slider.css">

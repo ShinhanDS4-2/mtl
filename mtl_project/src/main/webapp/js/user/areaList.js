@@ -35,13 +35,13 @@ const areaList = (function() {
 		// 숙소 상세 페이지로 이동
 		clickPartner: function(evo) {
 			let partnerIdx = evo.attr("data-partner-idx");
-			location.href = "/mtl/partnerDetail?idx=" + partnerIdx;
+			location.href = "/mtl/partner/detail?idx=" + partnerIdx;
 		},
 		
 		// 여행지 상세 페이지로 이동
 		clickLocation: function(evo) {
 			let locationIdx = evo.attr("data-location-idx");
-			location.href = "/mtl/locationDetail?idx=" + locationIdx;
+			location.href = "/mtl/location/detail?idx=" + locationIdx;
 		},
 	};
 	
