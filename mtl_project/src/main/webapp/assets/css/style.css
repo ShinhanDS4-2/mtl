@@ -32,7 +32,7 @@
   --bs-gray-400: #96969a;
   --bs-gray-500: #5c738a;
   --bs-gray-600: #747579;
-  --bs-gray-700: #5e5e5f;
+  --bs-gray-700: #494949;
   --bs-gray-800: #0b0a12;
   --bs-gray-900: #0b0a12;
   --bs-primary: #034C8C;
@@ -90,8 +90,8 @@
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #3e5266;
-  --bs-body-color-rgb: 62, 82, 102;
+  --bs-body-color: #4a4a4a;
+  --bs-body-color-rgb: 74, 74, 74;
   --bs-body-bg: #fff;
   --bs-body-bg-rgb: 255, 255, 255;
   --bs-emphasis-color: #000;
@@ -283,6 +283,10 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 1rem;
+}
+
+.h7 {
+  font-size: 0.8rem;
 }
 
 p {
@@ -2886,14 +2890,14 @@ textarea.form-control-lg {
           filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: rgba(var(--bs-primary-rgb), 0.7);
+  border-color: rgba(var(--bs-success-rgb), 0.7);
   outline: 0;
-  -webkit-box-shadow: 0 0 0 0 rgba(81, 67, 217, 0.25);
-          box-shadow: 0 0 0 0 rgba(81, 67, 217, 0.25);
+  -webkit-box-shadow: 0 0 0 0 rgba(242, 107, 94, 0.25);
+          box-shadow: 0 0 0 0 rgba(242, 107, 94, 0.25);
 }
 .form-check-input:checked {
-  background-color: #034C8C;
-  border-color: #034C8C;
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
 }
 .form-check-input:checked[type=checkbox] {
   --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
@@ -2902,8 +2906,8 @@ textarea.form-control-lg {
   --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
 .form-check-input[type=checkbox]:indeterminate {
-  background-color: #034C8C;
-  border-color: #034C8C;
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
   --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 .form-check-input:disabled {
@@ -17109,6 +17113,13 @@ textarea.form-control-lg {
   margin-bottom: 0;
 }
 
+.btn-xm {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  border-radius: 0.4rem;
+}
+
 .btn-xs {
   padding: 0.4rem 0.6rem;
   font-size: 0.6rem;
@@ -17327,6 +17338,19 @@ textarea.form-control-lg {
   color: var(--bs-primary);
   border: 1px solid var(--bs-primary);
 }
+
+.btn-success-soft-check:hover {
+  background-color: rgba(var(--bs-success-rgb), 0.2);
+  border: 1px solid var(--bs-success);
+  color: var(--bs-success);
+}
+
+.btn-check:active + .btn-success-soft-check, .btn-check:checked + .btn-success-soft-check, .btn-success-soft-check.active, .btn-success-soft-check:active, .show > .btn-success-soft-check.dropdown-toggle {
+  background-color: rgba(var(--bs-success-rgb), 0.2);
+  color: var(--bs-success);
+  border: 1px solid var(--bs-success);
+}
+
 
 .btn-check:focus + .btn, .btn-round-shadow:focus {
   -webkit-box-shadow: none;
@@ -21071,7 +21095,7 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   background-color: var(--bs-gray-300);
   border: 1px solid var(--bs-gray-300);
   border-radius: 0.5rem;
-  color: var(--bs-gray-600);
+  color: var(--bs-gray-700);
   padding: 1px 10px !important;
 }
 .choices .choices__list--dropdown {
@@ -21095,11 +21119,11 @@ a.text-primary-hover:hover, button.text-primary-hover:hover {
   margin-top: -1px;
 }
 .choices .choices__list--dropdown .choices__item {
-  color: var(--bs-gray-600) !important;
+  color: var(--bs-gray-700) !important;
   font-size: 15px;
 }
 .choices .choices__list--dropdown .choices__item.choices__placeholder {
-  color: var(--bs-gray-400) !important;
+  color: var(--bs-gray-600) !important;
   opacity: 1 !important;
   font-size: 14px;
 }
@@ -21607,8 +21631,8 @@ html[dir=rtl] .choices__input {
 }
 
 .splide-thumb > .splide__track > .splide__list > .splide__slide.is-active {
-  -webkit-box-shadow: 0px 0px 0px 5px inset var(--bs-primary);
-          box-shadow: 0px 0px 0px 5px inset var(--bs-primary);
+  -webkit-box-shadow: 0px 0px 0px 5px inset var(--bs-success);
+          box-shadow: 0px 0px 0px 5px inset var(--bs-success);
   border: none;
 }
 
@@ -21618,11 +21642,11 @@ html[dir=rtl] .choices__input {
 }
 
 .noUi-connect {
-  background: var(--bs-primary);
+  background: var(--bs-success);
 }
 
 .noUi-target {
-  background: rgba(var(--bs-primary-rgb), 0.1);
+  background: rgba(var(--bs-success-rgb), 0.1);
   border-radius: 4px;
   border: none;
   -webkit-box-shadow: none;
@@ -21640,9 +21664,9 @@ html[dir=rtl] .choices__input {
   cursor: e-resize;
   border-radius: 100%;
   border: 5px solid #fff;
-  background: var(--bs-primary);
-  -webkit-box-shadow: 0px 0px 0px 1px rgb(var(--bs-primary-rgb));
-          box-shadow: 0px 0px 0px 1px rgb(var(--bs-primary-rgb));
+  background: var(--bs-success);
+  -webkit-box-shadow: 0px 0px 0px 1px rgb(var(--bs-success-rgb));
+          box-shadow: 0px 0px 0px 1px rgb(var(--bs-success-rgb));
 }
 .noUi-horizontal .noUi-handle:before, .noUi-horizontal .noUi-handle:after {
   display: none;
@@ -21651,7 +21675,7 @@ html[dir=rtl] .choices__input {
 .noui-wrapper input[class*=input-with-] {
   background-color: transparent;
   border: none;
-  color: var(--bs-primary);
+  color: var(--bs-success);
   width: 70px;
 }
 

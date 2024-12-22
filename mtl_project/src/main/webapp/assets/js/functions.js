@@ -651,6 +651,8 @@ var e = {
         if (e.isVariableDefined(splide1)) {
           var secondarySlider = new Splide( '.splide-thumb', {
               rewind      : true,
+              type		  : "loop",
+              autoplay    :true,
               fixedWidth  : 200,
               fixedHeight : 120,
               isNavigation: true,
@@ -659,7 +661,7 @@ var e = {
               pagination  : false,
               cover       : true,
               breakpoints : {
-                  '600': {
+                  '500': {
                       fixedWidth  : 150,
                       fixedHeight : 100,
                   }
@@ -668,12 +670,13 @@ var e = {
 
         // Create the main slider.
         var primarySlider = new Splide( '.splide-main', {
-            type       : 'fade',
+        	rewind: true,
+            type       : "loop",
             heightRatio: 0.5,
             pagination : false,
             arrows     : false,
-            autoplay    :true,
-            cover      : true,
+            autoplay   :true,
+            cover      : true
         } );
         
         // Set the thumbnails slider as a sync target and then call mount.
@@ -693,6 +696,7 @@ var e = {
           var nouiMax = parseInt(slider.getAttribute('data-range-max'));
           var nouiSelectedMin = parseInt(slider.getAttribute('data-range-selected-min'));
           var nouiSelectedMax = parseInt(slider.getAttribute('data-range-selected-max'));
+          var nouistep = parseInt(slider.getAttribute('data-step'));
           
           var rangeText = slider.previousElementSibling;
           var imin = rangeText.firstElementChild;
@@ -702,11 +706,16 @@ var e = {
           noUiSlider.create(slider, {
               start: [nouiSelectedMin, nouiSelectedMax],
               connect: true,
-              step: 1,
+              step: nouistep,
               range: {
                   min: [nouiMin],
                   max: [nouiMax]
-              }
+              },
+              format: wNumb({
+			      decimals: 0,
+			      thousand: ',',
+			      suffix: '원'
+			  })
           });
           
           slider.noUiSlider.on("update", function(values, handle) {

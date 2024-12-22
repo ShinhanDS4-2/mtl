@@ -36,12 +36,6 @@ public class PageController {
 		return "user/reservationConfirm";
 	}
 	
-	// 여행지 리스트
-	@GetMapping("locationList")
-	public String locationList() {
-		return "user/locationList";
-	}
-	
 	// 여행지 상세
 	@GetMapping("locationDetail")
 	public String locationDetail() {
@@ -52,5 +46,11 @@ public class PageController {
 	@GetMapping("areaList")
 	public String areaList() {
 		return "user/areaList";
+	}
+	
+	// 마이페이지
+	@GetMapping("mypage")
+	public String mypage() {
+		return "user/mypage";
 	}
 }

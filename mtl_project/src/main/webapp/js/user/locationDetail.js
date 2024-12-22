@@ -30,6 +30,7 @@ const locationDetail = (function() {
 	
 	// 이벤트
 	let _event = {
+	
 	};
 	
 	return {

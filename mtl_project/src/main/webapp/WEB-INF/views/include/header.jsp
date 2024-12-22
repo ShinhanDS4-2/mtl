@@ -19,14 +19,8 @@
 			<!-- Main navbar START -->
 			<div class="navbar-collapse collapse" id="navbarCategoryCollapse">
 				<ul class="navbar-nav navbar-nav-scroll nav-pills-primary-soft text-center ms-auto p-2 p-xl-0">
-					<!-- Nav item Hotel -->
-					<li class="nav-item"> <a class="nav-link" href="areaList"><i class="fa-solid fa-map-location-dot me-2"></i>지역</a>	</li>
-
-					<!-- Nav item Flight -->
 					<li class="nav-item"> <a class="nav-link" href="partnerList"><i class="fa-solid fa-hotel me-2"></i>숙소</a>	</li>
-
-					<!-- Nav item Tour -->
-					<li class="nav-item"> <a class="nav-link active" href="locationList"><i class="fa-solid fa-route me-2"></i>여행지</a> </li>
+					<li class="nav-item"> <a class="nav-link active" href="areaList"><i class="fa-solid fa-route me-2"></i>여행지</a> </li>
 				</ul>
 			</div>
 			<!-- Main navbar END -->
@@ -50,7 +44,7 @@
 						<li class="px-3 mb-3">
 							<div class="d-flex align-items-center">
 								<div>
-									<a class="h6 mt-2 mt-sm-0" href="#">Lori Ferguson</a>
+									<a class="h6 mt-2 mt-sm-0" href="mypage">Lori Ferguson</a>
 									<p class="small m-0">example@gmail.com</p>
 								</div>
 							</div>
@@ -58,9 +52,9 @@
 
 						<!-- Links -->
 						<li> <hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-bookmark-check fa-fw me-2"></i>예약 내역</a></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>내 정보 수정</a></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>고객 센터</a></li>
+						<li><a class="dropdown-item" href="mypage"><i class="bi bi-person fa-fw me-2"></i>내 정보 관리</a></li>
+						<li><a class="dropdown-item" href="mypage"><i class="fa-solid fa-calendar-check fa-fw me-2"></i>예약 내역</a></li>
+						<li><a class="dropdown-item" href="mypage"><i class="fa-solid fa-headset fa-fw me-2"></i>고객 센터</a></li>
 						<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>로그아웃</a></li>
 					</ul>
 				</li>

@@ -41,7 +41,7 @@ Main Banner START -->
 								<!-- Select input -->
 								<div class="flex-grow-1">
 									<label class="form-label">지역</label>
-									<select class="form-select js-choice" data-search-enabled="true">
+									<select class="form-select js-choice">
 										<option value="">지역 선택</option>
 										<option selected>서울</option>
 										<option>강릉</option>

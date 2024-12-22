@@ -8,6 +8,8 @@
 <script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
 <script src="assets/vendor/sticky-js/sticky.min.js"></script>
 <script src="assets/vendor/nouislider/nouislider.min.js"></script>
+<script src="assets/vendor/wnumb/wNumb.min.js"></script>
+<script src="assets/vendor/splide-master/dist/js/splide.min.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
 <script>flatpickr.localize(flatpickr.l10ns.ko);</script>
 

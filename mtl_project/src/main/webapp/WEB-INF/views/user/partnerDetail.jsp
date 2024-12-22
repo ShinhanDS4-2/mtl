@@ -24,7 +24,7 @@ Search START -->
 		<!-- Search with offcanvas START -->
 		<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
 			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">Edit search</h5>
+				<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">일정 검색</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasEditsearch" aria-label="Close"></button>
 			</div>
 			<div class="offcanvas-body p-2">
@@ -50,8 +50,8 @@ Search START -->
 						<div class="col-md-6 col-lg-3">
 							<!-- Date input -->
 							<div class="form-fs-md">
-								<label class="form-label">Check in - out</label>
-								<input type="text" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="Select date" value="19 Sep to 28 Sep">
+								<label class="form-label">체크인 - 체크아웃</label>
+								<input type="text" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="Select date">
 							</div>
 						</div>
 
@@ -111,11 +111,11 @@ Main Title START -->
 				<div class="d-lg-flex justify-content-lg-between mb-1">
 					<!-- Title -->
 					<div class="mb-2 mb-lg-0">
-						<h1 class="fs-2">Courtyard by Marriott New York </h1>
+						<h1 class="fs-2">그랜드 인터컨티넨탈 서울 파르나스 </h1>
 						<!-- Location -->
-						<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>5855 W Century Blvd, Los Angeles - 90045
-							<a href="#" class="ms-2 text-decoration-underline" data-bs-toggle="modal" data-bs-target="#mapmodal">
-								<i class="bi bi-eye-fill me-1"></i>View On Map
+						<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521
+							<a href="#" class="ms-2 more-hover" data-bs-toggle="modal" data-bs-target="#mapmodal">
+								<i class="fa-solid fa-map"></i> 지도 보기
 							</a>
 						</p>
 					</div>
@@ -212,7 +212,7 @@ About hotel START -->
 					<div class="card bg-transparent">
 						<!-- Card header -->
 						<div class="card-header border-bottom bg-transparent px-0 pt-0">
-							<h3 class="mb-0">About This Hotel</h3>
+							<h3 class="mb-0">숙소 이용 정보</h3>
 						</div>
 
 						<!-- Card body START -->
@@ -409,7 +409,9 @@ About hotel START -->
 											<!-- Slider END -->
 
 											<!-- Button -->
-											<a href="#" class="btn btn-link text-decoration-underline p-0 mb-0 mt-1" data-bs-toggle="modal" data-bs-target="#roomDetail"><i class="bi bi-eye-fill me-1"></i>View more details</a>
+											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-success more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
+												<i class="bi bi-eye-fill me-1"></i>객실 상세 정보
+											</a>
 										</div>
 
 										<!-- Card body -->
@@ -430,13 +432,14 @@ About hotel START -->
 												
 												<!-- Price and Button -->
 												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-													<!-- Button -->
-													<div class="d-flex align-items-center">
-													</div>
 													<!-- Price -->
 													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1">205,000</h5>
+														<h5 class="fw-bold mb-0 me-1 text-success">205,000</h5>
 														<span class="mb-0 me-2">원</span>
+													</div>
+													<!-- Button -->
+													<div class="mt-3 mt-sm-0">
+														<a href="reservation" class="btn btn-sm btn-primary mb-0">객실 예약</a>    
 													</div>          
 												</div>
 											</div>
@@ -469,7 +472,9 @@ About hotel START -->
 											<!-- Slider END -->
 
 											<!-- Button -->
-											<a href="#" class="btn btn-link text-decoration-underline p-0 mb-0 mt-1" data-bs-toggle="modal" data-bs-target="#roomDetail"><i class="bi bi-eye-fill me-1"></i>View more details</a>
+											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-success more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
+												<i class="bi bi-eye-fill me-1"></i>객실 상세 정보
+											</a>
 										</div>
 
 										<!-- Card body -->
@@ -490,14 +495,15 @@ About hotel START -->
 					
 												<!-- Price and Button -->
 												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-													<!-- Button -->
-													<div class="d-flex align-items-center">
-													</div>
 													<!-- Price -->
 													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1">$750</h5>
-														<span class="mb-0 me-2">/day</span>
-													</div>                  
+														<h5 class="fw-bold mb-0 me-1 text-success">205,000</h5>
+														<span class="mb-0 me-2">원</span>
+													</div>
+													<!-- Button -->
+													<div class="mt-3 mt-sm-0">
+														<a href="reservation" class="btn btn-sm btn-primary mb-0">객실 예약</a>    
+													</div>          
 												</div>
 											</div>
 										</div>
@@ -514,7 +520,7 @@ About hotel START -->
 					<div class="card bg-transparent">
 						<!-- Card header -->
 						<div class="card-header border-bottom bg-transparent px-0 pt-0">
-							<h3 class="card-title mb-0">Customer Review</h3>
+							<h3 class="card-title mb-0">고객 리뷰</h3>
 						</div>
 
 						<!-- Card body START -->
@@ -527,14 +533,13 @@ About hotel START -->
 										<div class="text-center">
 											<!-- Info -->
 											<h2 class="mb-0">4.5</h2>
-											<p class="mb-2">Based on 120 Reviews</p>
 											<!-- Star -->
 											<ul class="list-inline mb-0">
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-success"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-success"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-success"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-success"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star-half-alt text-success"></i></li>
 											</ul>
 										</div>
 									</div>
@@ -546,8 +551,8 @@ About hotel START -->
 												<!-- Progress bar and Rating -->
 												<div class="col-9 col-sm-10">
 													<!-- Progress item -->
-													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+													<div class="progress progress-sm bg-success bg-opacity-15">
+														<div class="progress-bar bg-success" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
 														</div>
 													</div>
 												</div>
@@ -559,8 +564,8 @@ About hotel START -->
 												<!-- Progress bar and Rating -->
 												<div class="col-9 col-sm-10">
 													<!-- Progress item -->
-													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+													<div class="progress progress-sm bg-success bg-opacity-15">
+														<div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
 														</div>
 													</div>
 												</div>
@@ -572,8 +577,8 @@ About hotel START -->
 												<!-- Progress bar and Rating -->
 												<div class="col-9 col-sm-10">
 													<!-- Progress item -->
-													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+													<div class="progress progress-sm bg-success bg-opacity-15">
+														<div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
 														</div>
 													</div>
 												</div>
@@ -585,8 +590,8 @@ About hotel START -->
 												<!-- Progress bar and Rating -->
 												<div class="col-9 col-sm-10">
 													<!-- Progress item -->
-													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+													<div class="progress progress-sm bg-success bg-opacity-15">
+														<div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
 														</div>
 													</div>
 												</div>
@@ -605,15 +610,11 @@ About hotel START -->
 
 							<!-- Review item START -->
 							<div class="d-md-flex my-4">
-								<!-- Avatar -->
-								<div class="avatar avatar-lg me-3 flex-shrink-0">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
-								</div>
 								<!-- Text -->
 								<div>
 									<div class="d-flex justify-content-between mt-1 mt-md-0">
 										<div>
-											<h6 class="me-3 mb-0">Jacqueline Miller</h6>
+											<h6 class="me-3 mb-0"><i class="fa-solid fa-user-pen"></i> Jacqueline Miller</h6>
 											<!-- Info -->
 											<ul class="nav nav-divider small mb-2">
 												<li class="nav-item">Stayed 13 Nov 2022</li>
@@ -621,7 +622,7 @@ About hotel START -->
 											</ul>
 										</div>
 										<!-- Review star -->
-										<div class="icon-md rounded text-bg-warning fs-6">4.5</div>
+										<div class="icon-md rounded text-bg-success fs-6">4.5</div>
 									</div>
 									
 									<p class="mb-2">Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitors we private removed. Moderate do subjects to distance. </p>
@@ -642,11 +643,10 @@ About hotel START -->
 							</div>
 
 							<!-- Child review START -->
-							<div class="my-4 ps-2 ps-md-3">
+							<div class="my-4">
 								<div class="d-md-flex p-3 bg-light rounded-3">
-									<img class="avatar avatar-sm rounded-circle me-3" src="assets/images/avatar/02.jpg" alt="avatar">
 									<div class="mt-2 mt-md-0">
-										<h6 class="mb-1">Manager</h6>
+										<h6 class="mb-1"><i class="fa-solid fa-hotel"></i> Manager</h6>
 										<p class="mb-0">But discretion frequently sir she instruments unaffected admiration everything. </p>
 									</div>
 								</div>
@@ -659,15 +659,11 @@ About hotel START -->
 
 							<!-- Review item START -->
 							<div class="d-md-flex my-4">
-								<!-- Avatar -->
-								<div class="avatar avatar-lg me-3 flex-shrink-0">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
-								</div>
 								<!-- Text -->
 								<div>
 									<div class="d-flex justify-content-between mt-1 mt-md-0">
 										<div>
-											<h6 class="me-3 mb-0">Dennis Barrett</h6>
+											<h6 class="me-3 mb-0"><i class="fa-solid fa-user-pen"></i> Dennis Barrett</h6>
 											<!-- Info -->
 											<ul class="nav nav-divider small mb-2">
 												<li class="nav-item">Stayed 02 Nov 2022</li>
@@ -675,7 +671,7 @@ About hotel START -->
 											</ul>
 										</div>
 										<!-- Review star -->
-										<div class="icon-md rounded text-bg-warning fs-6">4.0</div>
+										<div class="icon-md rounded text-bg-success fs-6">4.0</div>
 									</div>
 									
 									<p class="mb-0">Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. Water timed folly right aware if oh truth. Large above be to means. Dashwood does provide stronger is.</p>
@@ -824,7 +820,7 @@ About hotel END -->
 		<div class="modal-content">
 			<!-- Title -->
 			<div class="modal-header">
-				<h5 class="modal-title" id="mapmodalLabel">View Our Hotel Location</h5>
+				<h5 class="modal-title" id="mapmodalLabel">위치</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<!-- Map -->
@@ -847,7 +843,7 @@ About hotel END -->
 
 			<!-- Title -->
 			<div class="modal-header p-3">
-				<h5 class="modal-title mb-0" id="roomDetailLabel">Room detail</h5>
+				<h5 class="modal-title mb-0" id="roomDetailLabel">객실 정보</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 

@@ -24,6 +24,7 @@
 <link rel="stylesheet" type="text/css" href="assets/vendor/choices/css/choices.min.css">
 <link rel="stylesheet" type="text/css" href="assets/vendor/flatpickr/css/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="assets/vendor/nouislider/nouislider.css">
+<link rel="stylesheet" type="text/css" href="assets/vendor/splide-master/dist/css/splide.min.css">
 
 <!-- Theme CSS -->
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">

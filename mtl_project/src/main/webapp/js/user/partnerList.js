@@ -23,14 +23,18 @@ const partnerList = (function() {
 		let type = e.type;
 		
 		if(type == "click") {
-			if(action == "") {
-			
+			if(action == "clickPartner") {
+				_event.clickPartner(evo);
 			};
 		};
 	};
 	
 	// 이벤트
 	let _event = {
+		clickPartner: function(evo) {
+			let partnerIdx = evo.attr("data-partner-idx");
+			location.href = "/mtl/partnerDetail?idx=" + partnerIdx;
+		},
 	};
 	
 	// 배너 랜덤으로 변경

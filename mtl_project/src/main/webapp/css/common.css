@@ -29,3 +29,16 @@
 .area-icon:hover .rounded-circle {
 	box-shadow: 0 0 0 8px #F26B5E;
 }
+
+.more-hover:hover {
+	color: #ed4d3e;
+}
+
+.partner-card:hover {
+	cursor: pointer;
+}
+
+.area-image {
+	min-height: 180px;
+	max-height: 180px;	
+}

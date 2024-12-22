@@ -48,11 +48,11 @@ Page content START -->
 
 											<!-- Rating star -->
 											<ul class="list-inline mb-0">
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
+												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-success"></i></li>
+												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-success"></i></li>
+												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-success"></i></li>
+												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-success"></i></li>
+												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-success"></i></li>
 												<li class="list-inline-item ms-2 h6 small fw-bold mb-0">4.5/5.0</li>
 											</ul>
 										</div>
@@ -189,7 +189,7 @@ Page content START -->
 										<h5><span class="small fs-6">총 결제 금액</span> 205,000<span class="small fs-6">원</span></h5>
 									</div>
 									<div class="d-grid gap-2">
-										<button class="btn btn-primary btn-sm mb-0">결제하기</button>
+										<a href="reservationConfirm" class="btn btn-primary btn-sm mb-0">결제하기</a>
 									</div>
 								</div>
 							</div>	
