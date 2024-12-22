@@ -129,7 +129,7 @@ Main Banner END -->
 					<img src="assets/images/icon/서울.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="#" class="stretched-link">서울</a></h5>
+						<h5 class="card-title"><a href="area/list" class="stretched-link">서울</a></h5>
 						<span>Seoul</span>
 					</div>
 				</div>
@@ -143,7 +143,7 @@ Main Banner END -->
 					<img src="assets/images/icon/강릉.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="#" class="stretched-link">강릉</a></h5>
+						<h5 class="card-title"><a href="area/list" class="stretched-link">강릉</a></h5>
 						<span>Gangneung</span>
 					</div>
 				</div>
@@ -157,7 +157,7 @@ Main Banner END -->
 					<img src="assets/images/icon/여수.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="#" class="stretched-link">여수</a></h5>
+						<h5 class="card-title"><a href="area/list" class="stretched-link">여수</a></h5>
 						<span>Yeosu</span>
 					</div>
 				</div>
@@ -171,7 +171,7 @@ Main Banner END -->
 					<img src="assets/images/icon/부산.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="#" class="stretched-link">부산</a></h5>
+						<h5 class="card-title"><a href="area/list" class="stretched-link">부산</a></h5>
 						<span>Busan</span>
 					</div>
 				</div>
@@ -185,7 +185,7 @@ Main Banner END -->
 					<img src="assets/images/icon/제주.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="#" class="stretched-link">제주</a></h5>
+						<h5 class="card-title"><a href="area/list" class="stretched-link">제주</a></h5>
 						<span>Jeju</span>
 					</div>
 				</div>

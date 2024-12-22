@@ -42,3 +42,16 @@
 	min-height: 180px;
 	max-height: 180px;	
 }
+
+.space {
+	white-space: pre-line;
+}
+
+.btn-round-m {
+	padding-right: 16px;
+	padding-left: 16px;
+	border-radius: 20px;
+	height: 30px; 
+	align-items: center; 
+    justify-content: center; 
+}

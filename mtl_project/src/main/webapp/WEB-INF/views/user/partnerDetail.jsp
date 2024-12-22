@@ -111,12 +111,6 @@ Main Title START -->
 					<!-- Title -->
 					<div class="mb-2 mb-lg-0">
 						<h1 class="fs-2">그랜드 인터컨티넨탈 서울 파르나스 </h1>
-						<!-- Location -->
-						<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521
-							<a href="#" class="ms-2 more-hover" data-bs-toggle="modal" data-bs-target="#mapmodal">
-								<i class="fa-solid fa-map"></i> 지도 보기
-							</a>
-						</p>
 					</div>
 				</div>
 			</div>
@@ -689,57 +683,6 @@ About hotel START -->
 						<!-- Card body END -->
 					</div>
 					<!-- Customer Review END -->
-
-					<!-- Hotel Policies START -->
-					<div class="card bg-transparent">
-						<!-- Card header -->
-						<div class="card-header border-bottom bg-transparent px-0 pt-0">
-							<h3 class="mb-0">Hotel Policies</h3>
-						</div>
-
-						<!-- Card body START -->
-						<div class="card-body pt-4 p-0">
-							<!-- List -->
-							<ul class="list-group list-group-borderless mb-2">
-								<li class="list-group-item d-flex">
-									<i class="bi bi-check-circle-fill me-2"></i>This is a family farmhouse, hence we request you to not indulge.
-								</li>
-								<li class="list-group-item d-flex">
-									<i class="bi bi-check-circle-fill me-2"></i>Drinking and smoking within controlled limits are permitted at the farmhouse but please do not create a mess or ruckus at the house.
-								</li>
-								<li class="list-group-item d-flex">
-									<i class="bi bi-check-circle-fill me-2"></i>Drugs and intoxicating illegal products are banned and not to be brought to the house or consumed.
-								</li>
-								<li class="list-group-item d-flex">
-									<i class="bi bi-x-circle-fill me-2"></i>For any update, the customer shall pay applicable cancellation/modification charges.
-								</li>
-							</ul>
-
-							<!-- List -->
-							<ul class="list-group list-group-borderless mb-2">
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>Check-in: 1:00 pm - 9:00 pm
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>Check out: 11:00 am
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>Self-check-in with building staff
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>No pets
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>No parties or events
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>Smoking is allowed
-								</li>
-							</ul>
-						</div>
-						<!-- Card body END -->
-					</div>
-					<!-- Hotel Policies START -->
 				</div>	
 			</div>
 			<!-- Content END -->
@@ -747,93 +690,40 @@ About hotel START -->
 			<!-- Right side content START -->
 			<aside class="col-xl-5 order-xl-2">
 				<div data-sticky data-margin-top="100" data-sticky-for="1199">
-					<!-- Book now START -->
+					<!-- 위치 정보 -->
 					<div class="card card-body border">
-						
 						<!-- Title -->
 						<div class="d-sm-flex justify-content-sm-between align-items-center mb-3">
 							<div>
-								<span>Price Start at</span>
-								<h4 class="card-title mb-0">$3,500</h4>
+								<h5 class="text-success"><b>위치 정보</b></h5>
+								<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521
 							</div>
+						</div>	
+						<div>
+							<iframe class="w-100" height="200" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"  style="border:0;" aria-hidden="false" tabindex="0"></iframe>	
+						</div>	
+					</div>
+					
+					<!-- 문의 -->
+					<div class="card card-body border mt-2">
+						<!-- Title -->
+						<div class="d-sm-flex justify-content-sm-between align-items-center mb-3">
 							<div>
-								<h6 class="fw-normal mb-0">1 room per night</h6>
-								<small>+ $285 taxes & fees</small>
+								<h4 class="text-black"><b>궁금한 정보가 있으신가요?</b></h5>
 							</div>
-						</div>		
-
-						<!-- Rating -->
-						<ul class="list-inline mb-2">
-							<li class="list-inline-item me-1 h6 fw-light mb-0"><i class="bi bi-arrow-right me-2"></i>4.5</li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-						</ul>
-
-						<p class="h6 fw-light mb-4"><i class="bi bi-arrow-right me-2"></i>Free breakfast available</p>
-
-						<!-- Button -->
-						<div class="d-grid">
-							<a href="#room-options" class="btn btn-lg btn-primary-soft mb-0">View 10 Rooms Options</a>
-						</div>
+						</div>	
+						<div class="d-grid gap-2">
+							<button class="btn btn-success" type="button">문의하기</button>
+						</div>	
 					</div>
-					<!-- Book now END -->
-
-					<!-- Best deal START -->
-					<div class="mt-4 d-none d-xl-block">
-						<h4>Today's Best Deal</h4>
-
-						<div class="card shadow rounded-3 overflow-hidden">
-							<div class="row g-0 align-items-center">
-								<!-- Image -->
-								<div class="col-sm-6 col-md-12 col-lg-6">
-									<img src="assets/images/offer/04.jpg" class="card-img rounded-0" alt="">
-								</div>
-
-								<!-- Title and content -->
-								<div class="col-sm-6 col-md-12 col-lg-6">
-									<div class="card-body p-3">
-										<h6 class="card-title"><a href="offer-detail.html" class="stretched-link">Travel Plan</a></h6>
-										<p class="mb-0">Get up to $10,000 for lifetime limits</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Best deal END -->
 				</div>	
 			</aside>
-			<!-- Right side content END -->
 		</div> <!-- Row END -->
 	</div>
 </section>
 <!-- =======================
 About hotel END -->
 </main>
-
-<!-- Map modal START -->
-<div class="modal fade" id="mapmodal" tabindex="-1" aria-labelledby="mapmodalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-lg">
-		<div class="modal-content">
-			<!-- Title -->
-			<div class="modal-header">
-				<h5 class="modal-title" id="mapmodalLabel">위치</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<!-- Map -->
-			<div class="modal-body p-0">
-				<iframe class="w-100" height="400" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"  style="border:0;" aria-hidden="false" tabindex="0"></iframe>	
-			</div>
-			<!-- Button -->
-			<div class="modal-footer">
-				<button type="button" class="btn btn-sm btn-primary mb-0"><i class="bi fa-fw bi-pin-map-fill me-2"></i>View In Google Map</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Map modal END -->
 
 <!-- Room modal START -->
 <div class="modal fade" id="roomDetail" tabindex="-1" aria-labelledby="roomDetailLabel" aria-hidden="true">

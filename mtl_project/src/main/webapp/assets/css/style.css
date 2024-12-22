@@ -3826,19 +3826,19 @@ textarea.form-control-lg {
 }
 
 .btn-outline-success {
-  --bs-btn-color: #034C8C;
-  --bs-btn-border-color: #034C8C;
+  --bs-btn-color: #F26B5E;
+  --bs-btn-border-color: #F26B5E;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #034C8C;
-  --bs-btn-hover-border-color: #034C8C;
-  --bs-btn-focus-shadow-rgb: 3, 76, 140;
+  --bs-btn-hover-bg: #F26B5E;
+  --bs-btn-hover-border-color: #F26B5E;
+  --bs-btn-focus-shadow-rgb: 242, 107, 94;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #034C8C;
-  --bs-btn-active-border-color: #034C8C;
+  --bs-btn-active-bg: #F26B5E;
+  --bs-btn-active-border-color: #F26B5E;
   --bs-btn-active-shadow: none;
-  --bs-btn-disabled-color: #034C8C;
+  --bs-btn-disabled-color: #F26B5E;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #034C8C;
+  --bs-btn-disabled-border-color: #F26B5E;
   --bs-gradient: none;
 }
 
@@ -17059,6 +17059,19 @@ textarea.form-control-lg {
   color: var(--bs-gray-800) !important;
 }
 .accordion.accordion-bg-light .accordion-button:not(.collapsed) {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.accordion.accordion-bg-success .accordion-item {
+  border: none;
+  background-color: transparent;
+}
+.accordion.accordion-bg-success .accordion-button {
+  background-color: #fce8e6 !important;
+  color: var(--bs-success-text-emphasis) !important;
+}
+.accordion.accordion-bg-success .accordion-button:not(.collapsed) {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }

@@ -29,87 +29,175 @@
 				</div>
 
 				<!-- 문의 내역 -->
-				<div class="vstack gap-4">
-					<div class="card border">
-						<!-- Card header -->
-						<div class="card-header border-bottom">
-							<h4 class="card-header-title">1:1 문의</h4>
-						</div>
-						
-						<!-- Card body START -->
-						<div class="card-body vstack gap-4">
-							<!-- 예약 내역 -->
-							<div class="card shadow p-2">
-								<div class="row g-0">
-									<!-- Card img -->
-									<div class="col-md-3">
-										<img src="assets/images/category/hotel/4by3/10.jpg" class="card-img rounded-2" alt="Card image">
-									</div>
-		
-									<!-- Card body -->
-									<div class="col-md-9">
-										<div class="card-body py-md-2 d-flex flex-column h-100">
-											<!-- Title -->
-											<h5 class="card-title mb-1"><a href="partner/detail">나인트리 바이 파르나스 서울 명동 II</a></h5>
-											<small><i class="bi bi-geo-alt me-2"></i>서울 중구 마른내로 28</small>
-											<small class="mt-2">
-												<i class="fa-regular fa-calendar me-2"></i>2024-12-15 ~ 2024-12-16
-												<i class="fa-solid fa-users ms-3 me-2"></i>2명
-											</small>
-
-											<!-- Price and Button -->
-											<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-												<!-- Button -->
-												<div class="d-flex align-items-center">
-													<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</h5>
-													<span class="mb-0 me-2"> / 일</span>
-												</div>
-												<!-- Price -->
-												<div class="mt-3 mt-sm-0">
-													<a href="javascript:;" class="btn btn-sm btn-success w-100 mb-0">상세 정보</a>    
-												</div>                  
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card shadow p-2">
-								<div class="row g-0">
-									<!-- Card img -->
-									<div class="col-md-3">
-										<img src="assets/images/category/hotel/4by3/10.jpg" class="card-img rounded-2" alt="Card image">
-									</div>
-		
-									<!-- Card body -->
-									<div class="col-md-9">
-										<div class="card-body py-md-2 d-flex flex-column h-100">
-											<!-- Title -->
-											<h5 class="card-title mb-1"><a href="partner/detail">나인트리 바이 파르나스 서울 명동 II</a></h5>
-											<small><i class="bi bi-geo-alt me-2"></i>서울 중구 마른내로 28</small>
-											<small class="mt-2">
-												<i class="fa-regular fa-calendar me-2"></i>2024-12-15 ~ 2024-12-16
-												<i class="fa-solid fa-users ms-3 me-2"></i>2명
-											</small>
-											
-											<!-- Price and Button -->
-											<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-												<!-- Button -->
-												<div class="d-flex align-items-center">
-													<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</h5>
-													<span class="mb-0 me-2"> / 일</span>
-												</div>
-												<!-- Price -->
-												<div class="mt-3 mt-sm-0">
-													<a href="javascript:;" class="btn btn-sm btn-success w-100 mb-0">상세 정보</a>    
-												</div>                  
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Card body END -->
+				<div class="card border bg-transparent">
+					<!-- Card header -->
+					<div class="card-header bg-transparent border-bottom">
+						<h4 class="card-header-title">1:1 문의</h4>
 					</div>
+
+					<!-- Card body START -->
+					<div class="card-body p-0">
+						<!-- Tabs -->
+						<ul class="nav nav-tabs nav-bottom-line nav-responsive nav-justified">
+							<li class="nav-item"> 
+								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>사이트 문의</a> 
+							</li>
+							<li class="nav-item">
+								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab-2"><i class="fa-solid fa-hotel fa-fw me-1"></i>숙소 문의</a> 
+							</li>
+						</ul>
+
+						<!-- Tabs content START -->
+						<div class="tab-content p-2 p-sm-4" id="nav-tabContent">
+							<!-- Tab content item START -->
+							<div class="tab-pane fade show active" id="tab-1">
+								<h6>사이트 문의</h6>
+               					<!-- Card item START -->
+								<div class="card border mb-4">
+									<!-- Card header -->
+									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
+										<!-- Icon and Title -->
+										<div class="d-flex align-items-center">
+											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-plane"></i></div>	
+											<!-- Title -->
+											<div class="ms-2">
+												<h6 class="card-title mb-0">France to New York</h6>
+												<ul class="nav nav-divider small">
+													<li class="nav-item">Booking ID: CGDSUAHA12548</li>
+													<li class="nav-item">Business class</li>
+												</ul>
+											</div>
+										</div>
+	
+										<!-- Button -->
+										<div class="mt-2 mt-md-0">
+											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
+										</div>
+									</div>
+	
+									<!-- Card body -->
+									<div class="card-body">
+										<div class="row g-3">
+											<div class="col-sm-6 col-md-4">
+												<span>Departure time</span>
+												<h6 class="mb-0">Tue 05 Aug 12:00 AM</h6>
+											</div>
+	
+											<div class="col-sm-6 col-md-4">
+												<span>Arrival time</span>
+												<h6 class="mb-0">Tue 06 Aug 4:00 PM</h6>
+											</div>
+	
+											<div class="col-md-4">
+												<span>Booked by</span>
+												<h6 class="mb-0">Frances Guerrero</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Card item END -->
+
+								<!-- Card item START -->
+								<div class="card border">
+									<!-- Card header -->
+									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
+										<!-- Icon and Title -->
+										<div class="d-flex align-items-center">
+											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>	
+											<!-- Title -->
+											<div class="ms-2">
+												<h6 class="card-title mb-0">Chicago to San Antonio</h6>
+												<ul class="nav nav-divider small">
+													<li class="nav-item">Booking ID: CGDSUAHA12548</li>
+													<li class="nav-item">Camry, Accord</li>
+												</ul>
+											</div>
+										</div>
+	
+										<!-- Button -->
+										<div class="mt-2 mt-md-0">
+											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
+										</div>
+									</div>
+	
+									<!-- Card body -->
+									<div class="card-body">
+										<div class="row g-3">
+											<div class="col-sm-6 col-md-4">
+												<span>Pickup address</span>
+												<h6 class="mb-0">40764 Winchester Rd</h6>
+											</div>
+	
+											<div class="col-sm-6 col-md-4">
+												<span>Drop address</span>
+												<h6 class="mb-0">11185 Mary Ball Rd</h6>
+											</div>
+	
+											<div class="col-md-4">
+												<span>Booked by</span>
+												<h6 class="mb-0">Frances Guerrero</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Card item END -->
+							</div>
+							<!-- Tabs content item END -->
+
+							<!-- Tab content item START -->
+							<div class="tab-pane fade" id="tab-2">
+								<h6>숙소 문의</h6>
+	
+								<!-- Card item START -->
+								<div class="card border">
+									<!-- Card header -->
+									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
+										<!-- Icon and Title -->
+										<div class="d-flex align-items-center">
+											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
+												<!-- Title -->
+											<div class="ms-2">
+												<h6 class="card-title mb-0">Courtyard by Marriott New York</h6>
+												<ul class="nav nav-divider small">
+													<li class="nav-item">Booking ID: CGDSUAHA12548</li>
+													<li class="nav-item">AC</li>
+												</ul>
+											</div>
+										</div>
+	
+										<!-- Button -->
+										<div class="mt-2 mt-md-0">
+											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
+											<p class="text-danger text-md-end mb-0">Booking cancelled</p>
+										</div>
+									</div>
+	
+									<!-- Card body -->
+									<div class="card-body">
+										<div class="row g-3">
+											<div class="col-sm-6 col-md-4">
+												<span>Check in time</span>
+												<h6 class="mb-0">Tue 05 Aug 12:00 AM</h6>
+											</div>
+	
+											<div class="col-sm-6 col-md-4">
+												<span>Check out time</span>
+												<h6 class="mb-0">Tue 12 Aug 4:00 PM</h6>
+											</div>
+	
+											<div class="col-md-4">
+												<span>Booked by</span>
+												<h6 class="mb-0">Frances Guerrero</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Card item END -->
+							</div>
+							<!-- Tabs content item END -->
+						</div>
+					</div>
+					<!-- Card body END -->
 				</div>
 			</div>
 			<!-- Main content END -->

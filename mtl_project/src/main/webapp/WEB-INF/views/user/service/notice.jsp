@@ -28,87 +28,103 @@
 					</button>
 				</div>
 
-				<!-- 내 정보 관리 -->
+				<!-- 공지사항 -->
 				<div class="vstack gap-4">
-					<div class="card border">
-						<!-- Card header -->
-						<div class="card-header border-bottom">
-							<h4 class="card-header-title">내 정보 관리</h4>
-						</div>
-
-						<div class="card-body">
-							<form class="row g-3">
-								<div class="col-md-6">
-									<label class="form-label">이름</label>
-									<input type="text" class="form-control" value="Jacqueline Miller">
+					<div class="row">
+						<div class="col-12">
+							<div class="card border">
+								<!-- Card header -->
+								<div class="card-header border-bottom">
+									<h4 class="card-header-title">공지사항</h4>
 								</div>
-								<div class="col-md-6">
-									<label class="form-label">이메일</label>
-									<input type="email" class="form-control text-secondary" value="hello@gmail.com" disabled="disabled">
+								<!-- Card body START -->
+								<div class="card-body">
+									<!-- Hotel room list START -->
+									<div class="table-responsive border-0">
+										<table class="table align-middle p-4 mb-0 table-hover table-shrink">
+											<!-- Table body START -->
+											<tbody class="border-top-0">
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">공지</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">안내</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">서비스 이용 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">이벤트</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">11월 이벤트 당첨 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">공지</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">안내</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#">서비스 이용 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">이벤트</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#">11월 이벤트 당첨 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">공지</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#">이용약관 변경 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">안내</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#">서비스 이용 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">이벤트</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#">11월 이벤트 당첨 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+												<tr>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">이벤트</span></h6> </td>
+													<td> <h6 class="mb-0"><a href="#">11월 이벤트 당첨 안내</a></h6> </td>
+													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
+												</tr>
+											</tbody>
+											<!-- Table body END -->
+										</table>
+									</div>
+									<!-- Hotel room list END -->
 								</div>
-								<div class="col-md-6">
-									<label class="form-label">연락처</label>
-									<input type="text" class="form-control" value="010-0000-0000">
-								</div>
-								<div class="col-md-6">
-									<label class="form-label">생년월일</label>
-									<input type="text" class="form-control text-secondary" value="1995-01-01" disabled="disabled">
-								</div>
-								<div class="col-md-6">
-									<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
-										<label class="form-check-label" for="smsAssent">SMS 수신 동의</label>
-										<input class="form-check-input flex-shrink-0" type="checkbox" id="smsAssent">
+								<!-- Card body END -->
+			
+								<!-- Card footer START -->
+								<div class="card-footer pt-0">
+									<!-- Pagination and content -->
+									<div class="d-sm-flex justify-content-sm-center align-items-sm-center">
+										<!-- Pagination -->
+										<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
+											<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+												<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
+												<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
+												<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
+												<li class="page-item mb-0"><a class="page-link" href="#">3</a></li>
+												<li class="page-item mb-0"><a class="page-link" href="#">4</a></li>
+												<li class="page-item mb-0"><a class="page-link" href="#">5</a></li>
+												<li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+											</ul>
+										</nav>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
-										<label class="form-check-label" for="emailAssent">Email 수신 동의</label>
-										<input class="form-check-input flex-shrink-0" type="checkbox" id="emailAssent" checked>
-									</div>
-								</div>
-								<div class="col-12 text-end">
-									<a href="#" class="btn btn-primary mb-0">내 정보 수정</a>
-								</div>
-							</form>
+								<!-- Card footer END -->
+							</div>
 						</div>
-					</div>
-
-					<!-- 비밀번호 변경 -->
-					<div class="card border">
-						<!-- Card header -->
-						<div class="card-header border-bottom">
-							<h4 class="card-header-title">비밀번호 변경</h4>
-							<small class="mb-1 text-secondary">개인정보 보호를 위해 정기적으로 변경해 주세요.</small>
-						</div>
-
-						<form class="card-body">
-							<div class="mb-3">
-								<label class="form-label">현재 비밀번호</label>
-								<input class="form-control" type="password" placeholder="Enter current password">
-							</div>
-							<div class="mb-3">
-								<label class="form-label">새 비밀번호</label>
-								<div class="input-group">
-									<input class="form-control fakepassword" placeholder="Enter new password" type="password" id="psw-input">
-									<span class="input-group-text p-0 bg-transparent">
-										<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
-									</span>
-								</div>
-							</div>
-							<div class="mb-3">
-								<label class="form-label">새 비밀번호 확인</label>
-								<input class="form-control" type="password" placeholder="Confirm new password">
-							</div>
-							<div class="text-end">
-								<a href="#" class="btn btn-primary mb-0">비밀번호 변경</a>
-							</div>
-						</form>
-					</div>
-					
-					<!-- 회원 탈퇴 (modal) -->
-					<div class="text-secondary">
-						<small>더 이상 떠날지도 이용을 원하지 않으신가요?<a href="#" class="text-secondary"><b> 회원탈퇴</b></a></small>
-					</div>
+					 </div> 
+					<!-- Booking table END -->
 				</div>
 			</div>
 			<!-- Main content END -->
@@ -116,6 +132,53 @@
 	</div>
 </section>
 </main>
+
+<!-- 공지 상세 모달 -->
+<div class="modal fade" id="noticeModal" tabindex="-1" aria-labelledby="noticeDetailLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content p-0">
+
+			<!-- Title -->
+			<div class="modal-header p-3">
+				<h5 class="modal-title mb-0" id="noticeDetailLabel">공지사항</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body p-0">
+				<div class="card bg-transparent p-3">
+					<div class="card-header bg-transparent pb-0">
+						<h3 class="card-title mb-0">서비스 이용 안내</h3>
+					</div>
+					<div class="card-body">
+						<p class="space">
+							안녕하세요. 떠날지도입니다.
+		
+							더 나은 서비스 제공을 위한 점검 안내드립니다.
+							점검 시간 동안에는 떠날지도 서비스 이용이 일시 중지됩니다.
+							
+							■ 떠날지도 시스템 점검 안내
+							1. 점검 일정:
+							- 2024년 12월 03일(화) 오전 3시 00분 ~ 5시 30분 (2시간 30분)
+							
+							2. 점검 사유:
+							- 시스템 업그레이드
+							
+							3. 점검 영향:
+							- 점검 시간 동안 떠날지도 서비스 이용 불가
+							 
+							점검 시간은 변경될 수 있으며 변경 시 공지를 통해 안내해 드리겠습니다.
+							
+							더 좋은 서비스로 보답하는 떠날지도가 되겠습니다.
+							
+							감사합니다.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

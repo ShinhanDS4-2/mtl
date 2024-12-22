@@ -66,8 +66,7 @@
 												</div>
 												<!-- Price -->
 												<div class="mt-3 mt-sm-0">
-													<a href="javascript:;" class="btn btn-sm btn-primary mb-0">추천 여행지</a>    
-													<a href="javascript:;" class="btn btn-sm btn-success mb-0">상세 정보</a>    
+													<a href="javascript:;" class="btn btn-sm btn-success w-100 mb-0">상세 정보</a>    
 												</div>                  
 											</div>
 										</div>
@@ -126,9 +125,9 @@
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/user/mypage/reservation.js"></script>
+<script src="js/user/mypage/review.js"></script>
 <script type="text/javascript">
-	reservation.init();
+	review.init();
 </script>
 </body>
 </html>
