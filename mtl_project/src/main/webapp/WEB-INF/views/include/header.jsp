@@ -29,7 +29,7 @@
 			<ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
 				<!-- 비로그인 시 로그인/회원가입 버튼 -->
 				<li class="nav-item">
-					<a class=" btn btn-outline-primary btn-sm mt-2" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+					<a class=" btn btn-outline-primary btn-sm mt-2" href="login" role="button">
 						로그인 / 회원가입
 					</a>
 				</li>

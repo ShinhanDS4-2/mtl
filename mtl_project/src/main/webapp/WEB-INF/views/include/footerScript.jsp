@@ -20,7 +20,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <!-- common JS -->
-<script src="js/common/common.js"></script>
+<script src="js/util/common.js"></script>
 
 <!-- header JS -->
 <script src="js/include/header.js"></script>

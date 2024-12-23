@@ -12,6 +12,18 @@ public class PageController {
 		return "user/home";
 	}
 	
+	// 로그인
+	@GetMapping("login")
+	public String login() {
+		return "common/login";
+	}
+	
+	// 회원가입
+	@GetMapping("join")
+	public String join() {
+		return "common/join";
+	}
+	
 	// 숙소 리스트
 	@GetMapping("partner/list")
 	public String partnerList() {
