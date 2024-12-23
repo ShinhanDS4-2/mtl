@@ -24,7 +24,7 @@ Search START -->
 		<!-- Search with offcanvas START -->
 		<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
 			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">Edit search</h5>
+				<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">일정 검색</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasEditsearch" aria-label="Close"></button>
 			</div>
 			<div class="offcanvas-body p-2">
@@ -50,8 +50,8 @@ Search START -->
 						<div class="col-md-6 col-lg-3">
 							<!-- Date input -->
 							<div class="form-fs-md">
-								<label class="form-label">Check in - out</label>
-								<input type="text" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="Select date" value="19 Sep to 28 Sep">
+								<label class="form-label">체크인 - 체크아웃</label>
+								<input type="text" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="Select date">
 							</div>
 						</div>
 
@@ -62,15 +62,15 @@ Search START -->
 								<div class="w-100">
 									<label class="form-label">인원</label>
 									<div class="dropdown guest-selector me-2">
-										<input type="text" class="form-guest-selector form-control form-control-lg selection-result" value="2 Guests 1 Room" id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+										<input type="text" class="form-guest-selector form-control form-control-lg selection-result" value="2 명" id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
 									
 										<!-- dropdown items -->
 										<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="dropdownguest">
 											<!-- Adult -->
 											<li class="d-flex justify-content-between">
 												<div>
-													<h6 class="mb-0">Adults</h6>
-													<small>Ages 13 or above</small>
+													<h6 class="mb-0">인원</h6>
+													<small>유아 및 아동도 인원에 포함해 주세요.</small>
 												</div>
 
 												<div class="hstack gap-1 align-items-center">
@@ -87,9 +87,8 @@ Search START -->
 
 						<!-- Button -->
 						<div class="col-md-6 col-lg-2 mt-md-auto">
-							<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i>Search</a>
+							<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i> 검색</a>
 						</div>
-
 					</form>
 				</div>
 			</div>
@@ -111,13 +110,7 @@ Main Title START -->
 				<div class="d-lg-flex justify-content-lg-between mb-1">
 					<!-- Title -->
 					<div class="mb-2 mb-lg-0">
-						<h1 class="fs-2">Courtyard by Marriott New York </h1>
-						<!-- Location -->
-						<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>5855 W Century Blvd, Los Angeles - 90045
-							<a href="#" class="ms-2 text-decoration-underline" data-bs-toggle="modal" data-bs-target="#mapmodal">
-								<i class="bi bi-eye-fill me-1"></i>View On Map
-							</a>
-						</p>
+						<h1 class="fs-2">그랜드 인터컨티넨탈 서울 파르나스 </h1>
 					</div>
 				</div>
 			</div>
@@ -212,7 +205,7 @@ About hotel START -->
 					<div class="card bg-transparent">
 						<!-- Card header -->
 						<div class="card-header border-bottom bg-transparent px-0 pt-0">
-							<h3 class="mb-0">About This Hotel</h3>
+							<h3 class="mb-0">숙소 이용 정보</h3>
 						</div>
 
 						<!-- Card body START -->
@@ -409,7 +402,9 @@ About hotel START -->
 											<!-- Slider END -->
 
 											<!-- Button -->
-											<a href="#" class="btn btn-link text-decoration-underline p-0 mb-0 mt-1" data-bs-toggle="modal" data-bs-target="#roomDetail"><i class="bi bi-eye-fill me-1"></i>View more details</a>
+											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-primary more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
+												<i class="bi bi-eye-fill me-1"></i>객실 상세 정보
+											</a>
 										</div>
 
 										<!-- Card body -->
@@ -417,7 +412,7 @@ About hotel START -->
 											<div class="card-body d-flex flex-column h-100 p-0">
 					
 												<!-- Title -->
-												<h5 class="card-title"><a href="#">Luxury Room with Balcony</a></h5>
+												<h5 class="card-title">Luxury Room with Balcony</h5>
 
 												<!-- Amenities -->
 												<ul class="nav nav-divider mb-2">
@@ -430,13 +425,14 @@ About hotel START -->
 												
 												<!-- Price and Button -->
 												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-													<!-- Button -->
-													<div class="d-flex align-items-center">
-													</div>
 													<!-- Price -->
 													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1">205,000</h5>
-														<span class="mb-0 me-2">원</span>
+														<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+														<span class="mb-0 me-2"> / 일</span>
+													</div>
+													<!-- Button -->
+													<div class="mt-3 mt-sm-0">
+														<a href="reservation" class="btn btn-sm btn-primary mb-0">객실 예약</a>    
 													</div>          
 												</div>
 											</div>
@@ -469,7 +465,9 @@ About hotel START -->
 											<!-- Slider END -->
 
 											<!-- Button -->
-											<a href="#" class="btn btn-link text-decoration-underline p-0 mb-0 mt-1" data-bs-toggle="modal" data-bs-target="#roomDetail"><i class="bi bi-eye-fill me-1"></i>View more details</a>
+											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-primary more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
+												<i class="bi bi-eye-fill me-1"></i>객실 상세 정보
+											</a>
 										</div>
 
 										<!-- Card body -->
@@ -477,7 +475,7 @@ About hotel START -->
 											<div class="card-body d-flex flex-column p-0 h-100">
 					
 												<!-- Title -->
-												<h5 class="card-title"><a href="#">Deluxe Pool View with Breakfast</a></h5>
+												<h5 class="card-title">Deluxe Pool View with Breakfast</h5>
 
 												<!-- Amenities -->
 												<ul class="nav nav-divider mb-2">
@@ -490,14 +488,15 @@ About hotel START -->
 					
 												<!-- Price and Button -->
 												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-													<!-- Button -->
-													<div class="d-flex align-items-center">
-													</div>
 													<!-- Price -->
 													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1">$750</h5>
-														<span class="mb-0 me-2">/day</span>
-													</div>                  
+														<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+														<span class="mb-0 me-2"> / 일</span>
+													</div>
+													<!-- Button -->
+													<div class="mt-3 mt-sm-0">
+														<a href="reservation" class="btn btn-sm btn-primary mb-0">객실 예약</a>    
+													</div>          
 												</div>
 											</div>
 										</div>
@@ -514,7 +513,7 @@ About hotel START -->
 					<div class="card bg-transparent">
 						<!-- Card header -->
 						<div class="card-header border-bottom bg-transparent px-0 pt-0">
-							<h3 class="card-title mb-0">Customer Review</h3>
+							<h3 class="card-title mb-0">고객 리뷰</h3>
 						</div>
 
 						<!-- Card body START -->
@@ -527,7 +526,6 @@ About hotel START -->
 										<div class="text-center">
 											<!-- Info -->
 											<h2 class="mb-0">4.5</h2>
-											<p class="mb-2">Based on 120 Reviews</p>
 											<!-- Star -->
 											<ul class="list-inline mb-0">
 												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
@@ -605,15 +603,11 @@ About hotel START -->
 
 							<!-- Review item START -->
 							<div class="d-md-flex my-4">
-								<!-- Avatar -->
-								<div class="avatar avatar-lg me-3 flex-shrink-0">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
-								</div>
 								<!-- Text -->
 								<div>
 									<div class="d-flex justify-content-between mt-1 mt-md-0">
 										<div>
-											<h6 class="me-3 mb-0">Jacqueline Miller</h6>
+											<h6 class="me-3 mb-0"><i class="fa-solid fa-user-pen"></i> Jacqueline Miller</h6>
 											<!-- Info -->
 											<ul class="nav nav-divider small mb-2">
 												<li class="nav-item">Stayed 13 Nov 2022</li>
@@ -642,11 +636,10 @@ About hotel START -->
 							</div>
 
 							<!-- Child review START -->
-							<div class="my-4 ps-2 ps-md-3">
+							<div class="my-4">
 								<div class="d-md-flex p-3 bg-light rounded-3">
-									<img class="avatar avatar-sm rounded-circle me-3" src="assets/images/avatar/02.jpg" alt="avatar">
 									<div class="mt-2 mt-md-0">
-										<h6 class="mb-1">Manager</h6>
+										<h6 class="mb-1"><i class="fa-solid fa-hotel"></i> Manager</h6>
 										<p class="mb-0">But discretion frequently sir she instruments unaffected admiration everything. </p>
 									</div>
 								</div>
@@ -659,15 +652,11 @@ About hotel START -->
 
 							<!-- Review item START -->
 							<div class="d-md-flex my-4">
-								<!-- Avatar -->
-								<div class="avatar avatar-lg me-3 flex-shrink-0">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
-								</div>
 								<!-- Text -->
 								<div>
 									<div class="d-flex justify-content-between mt-1 mt-md-0">
 										<div>
-											<h6 class="me-3 mb-0">Dennis Barrett</h6>
+											<h6 class="me-3 mb-0"><i class="fa-solid fa-user-pen"></i> Dennis Barrett</h6>
 											<!-- Info -->
 											<ul class="nav nav-divider small mb-2">
 												<li class="nav-item">Stayed 02 Nov 2022</li>
@@ -694,57 +683,6 @@ About hotel START -->
 						<!-- Card body END -->
 					</div>
 					<!-- Customer Review END -->
-
-					<!-- Hotel Policies START -->
-					<div class="card bg-transparent">
-						<!-- Card header -->
-						<div class="card-header border-bottom bg-transparent px-0 pt-0">
-							<h3 class="mb-0">Hotel Policies</h3>
-						</div>
-
-						<!-- Card body START -->
-						<div class="card-body pt-4 p-0">
-							<!-- List -->
-							<ul class="list-group list-group-borderless mb-2">
-								<li class="list-group-item d-flex">
-									<i class="bi bi-check-circle-fill me-2"></i>This is a family farmhouse, hence we request you to not indulge.
-								</li>
-								<li class="list-group-item d-flex">
-									<i class="bi bi-check-circle-fill me-2"></i>Drinking and smoking within controlled limits are permitted at the farmhouse but please do not create a mess or ruckus at the house.
-								</li>
-								<li class="list-group-item d-flex">
-									<i class="bi bi-check-circle-fill me-2"></i>Drugs and intoxicating illegal products are banned and not to be brought to the house or consumed.
-								</li>
-								<li class="list-group-item d-flex">
-									<i class="bi bi-x-circle-fill me-2"></i>For any update, the customer shall pay applicable cancellation/modification charges.
-								</li>
-							</ul>
-
-							<!-- List -->
-							<ul class="list-group list-group-borderless mb-2">
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>Check-in: 1:00 pm - 9:00 pm
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>Check out: 11:00 am
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>Self-check-in with building staff
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>No pets
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>No parties or events
-								</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0">
-									<i class="bi bi-arrow-right me-2"></i>Smoking is allowed
-								</li>
-							</ul>
-						</div>
-						<!-- Card body END -->
-					</div>
-					<!-- Hotel Policies START -->
 				</div>	
 			</div>
 			<!-- Content END -->
@@ -752,93 +690,40 @@ About hotel START -->
 			<!-- Right side content START -->
 			<aside class="col-xl-5 order-xl-2">
 				<div data-sticky data-margin-top="100" data-sticky-for="1199">
-					<!-- Book now START -->
+					<!-- 위치 정보 -->
 					<div class="card card-body border">
-						
 						<!-- Title -->
 						<div class="d-sm-flex justify-content-sm-between align-items-center mb-3">
 							<div>
-								<span>Price Start at</span>
-								<h4 class="card-title mb-0">$3,500</h4>
+								<h5 class="text-primary"><b>위치 정보</b></h5>
+								<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521
 							</div>
+						</div>	
+						<div>
+							<iframe class="w-100" height="200" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"  style="border:0;" aria-hidden="false" tabindex="0"></iframe>	
+						</div>	
+					</div>
+					
+					<!-- 문의 -->
+					<div class="card card-body border mt-2">
+						<!-- Title -->
+						<div class="d-sm-flex justify-content-sm-between align-items-center mb-3">
 							<div>
-								<h6 class="fw-normal mb-0">1 room per night</h6>
-								<small>+ $285 taxes & fees</small>
+								<h5 class="text-black"><b>궁금한 정보가 있으신가요?</b></h5>
 							</div>
-						</div>		
-
-						<!-- Rating -->
-						<ul class="list-inline mb-2">
-							<li class="list-inline-item me-1 h6 fw-light mb-0"><i class="bi bi-arrow-right me-2"></i>4.5</li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-							<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-						</ul>
-
-						<p class="h6 fw-light mb-4"><i class="bi bi-arrow-right me-2"></i>Free breakfast available</p>
-
-						<!-- Button -->
-						<div class="d-grid">
-							<a href="#room-options" class="btn btn-lg btn-primary-soft mb-0">View 10 Rooms Options</a>
-						</div>
+						</div>	
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary-soft" type="button" data-bs-toggle="modal" data-bs-target="#qnaModal">문의하기</button>
+						</div>	
 					</div>
-					<!-- Book now END -->
-
-					<!-- Best deal START -->
-					<div class="mt-4 d-none d-xl-block">
-						<h4>Today's Best Deal</h4>
-
-						<div class="card shadow rounded-3 overflow-hidden">
-							<div class="row g-0 align-items-center">
-								<!-- Image -->
-								<div class="col-sm-6 col-md-12 col-lg-6">
-									<img src="assets/images/offer/04.jpg" class="card-img rounded-0" alt="">
-								</div>
-
-								<!-- Title and content -->
-								<div class="col-sm-6 col-md-12 col-lg-6">
-									<div class="card-body p-3">
-										<h6 class="card-title"><a href="offer-detail.html" class="stretched-link">Travel Plan</a></h6>
-										<p class="mb-0">Get up to $10,000 for lifetime limits</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Best deal END -->
 				</div>	
 			</aside>
-			<!-- Right side content END -->
 		</div> <!-- Row END -->
 	</div>
 </section>
 <!-- =======================
 About hotel END -->
 </main>
-
-<!-- Map modal START -->
-<div class="modal fade" id="mapmodal" tabindex="-1" aria-labelledby="mapmodalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-lg">
-		<div class="modal-content">
-			<!-- Title -->
-			<div class="modal-header">
-				<h5 class="modal-title" id="mapmodalLabel">View Our Hotel Location</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<!-- Map -->
-			<div class="modal-body p-0">
-				<iframe class="w-100" height="400" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"  style="border:0;" aria-hidden="false" tabindex="0"></iframe>	
-			</div>
-			<!-- Button -->
-			<div class="modal-footer">
-				<button type="button" class="btn btn-sm btn-primary mb-0"><i class="bi fa-fw bi-pin-map-fill me-2"></i>View In Google Map</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Map modal END -->
 
 <!-- Room modal START -->
 <div class="modal fade" id="roomDetail" tabindex="-1" aria-labelledby="roomDetailLabel" aria-hidden="true">
@@ -847,7 +732,7 @@ About hotel END -->
 
 			<!-- Title -->
 			<div class="modal-header p-3">
-				<h5 class="modal-title mb-0" id="roomDetailLabel">Room detail</h5>
+				<h5 class="modal-title mb-0" id="roomDetailLabel">객실 정보</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 
@@ -934,6 +819,43 @@ About hotel END -->
 	</div>
 </div>
 <!-- Room modal END -->
+
+<!-- 1:1 문의 모달 -->
+<div class="modal fade" id="qnaModal" tabindex="-1" aria-labelledby="qnaDetailLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content p-0">
+
+			<!-- Title -->
+			<div class="modal-header p-3">
+				<h5 class="modal-title mb-0" id="qnaDetailLabel">1:1 문의</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body p-0">
+				<div class="card bg-transparent p-3">
+					<div class="card-header bg-transparent pb-0">
+						<div class="alert alert-secondary" role="alert">
+							직접 문의하고 싶으신 경우<br>
+							<i class="fa-solid fa-phone"></i> 02-0000-0000으로 연락해 주시기 바랍니다.
+						</div>
+					</div>
+					<div class="card-body pt-2">
+						<div class="d-flex mt-1">
+							<input type="text" class="form-control" placeholder="제목을 작성해 주세요.">
+						</div>
+						<div class="d-flex mt-1">
+							<textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false"></textarea>
+						</div>
+						<div class="d-grid gap-2 mt-3">
+							<button class="btn btn-sm btn-primary-soft px-4 mb-0 flex-shrink-0"><i class="fas fa-paper-plane fs-5"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

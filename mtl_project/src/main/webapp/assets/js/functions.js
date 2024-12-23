@@ -625,7 +625,7 @@ var e = {
           var enableTime = item.getAttribute('data-enableTime') == 'true' ? true : false;
           var noCalendar = item.getAttribute('data-noCalendar') == 'true' ? true : false;
           var inline = item.getAttribute('data-inline') == 'true' ? true : false;
-          var dateFormat = item.getAttribute('data-date-format') ? item.getAttribute('data-date-format') : item.getAttribute('data-enableTime') == 'true' ? "h:i K" : "d M";
+          var dateFormat = "Y-m-d";
 
           flatpickr(item, {
             mode: mode,
@@ -635,7 +635,9 @@ var e = {
             animate: "false",
             position: "top",
             dateFormat: dateFormat, //Check supported characters here: https://flatpickr.js.org/formatting/
-            disableMobile: "true"
+            disableMobile: "true",
+            minDate: "today",
+            defaultDate: ["today", new Date().fp_incr(2)]
           });
 
         });
@@ -649,6 +651,8 @@ var e = {
         if (e.isVariableDefined(splide1)) {
           var secondarySlider = new Splide( '.splide-thumb', {
               rewind      : true,
+              type		  : "loop",
+              autoplay    :true,
               fixedWidth  : 200,
               fixedHeight : 120,
               isNavigation: true,
@@ -657,7 +661,7 @@ var e = {
               pagination  : false,
               cover       : true,
               breakpoints : {
-                  '600': {
+                  '500': {
                       fixedWidth  : 150,
                       fixedHeight : 100,
                   }
@@ -666,12 +670,13 @@ var e = {
 
         // Create the main slider.
         var primarySlider = new Splide( '.splide-main', {
-            type       : 'fade',
+        	rewind: true,
+            type       : "loop",
             heightRatio: 0.5,
             pagination : false,
             arrows     : false,
-            autoplay    :true,
-            cover      : true,
+            autoplay   :true,
+            cover      : true
         } );
         
         // Set the thumbnails slider as a sync target and then call mount.
@@ -691,6 +696,7 @@ var e = {
           var nouiMax = parseInt(slider.getAttribute('data-range-max'));
           var nouiSelectedMin = parseInt(slider.getAttribute('data-range-selected-min'));
           var nouiSelectedMax = parseInt(slider.getAttribute('data-range-selected-max'));
+          var nouistep = parseInt(slider.getAttribute('data-step'));
           
           var rangeText = slider.previousElementSibling;
           var imin = rangeText.firstElementChild;
@@ -700,11 +706,16 @@ var e = {
           noUiSlider.create(slider, {
               start: [nouiSelectedMin, nouiSelectedMax],
               connect: true,
-              step: 1,
+              step: nouistep,
               range: {
                   min: [nouiMin],
                   max: [nouiMax]
-              }
+              },
+              format: wNumb({
+			      decimals: 0,
+			      thousand: ',',
+			      suffix: '원'
+			  })
           });
           
           slider.noUiSlider.on("update", function(values, handle) {
@@ -834,8 +845,6 @@ var e = {
       if (e.isVariableDefined(e.select('.guest-selector'))) {
 
       let adults = 2;
-      let child = 0;
-      let rooms =1;
       let totalAdults = 2;
     
       let selectionResult = document.querySelector('.selection-result');
@@ -844,42 +853,21 @@ var e = {
       let adultAdd = document.querySelector('.adult-add');
       let adultRemove = document.querySelector('.adult-remove');
     
-      let childValue = document.querySelector('.child');
-      let childAdd = document.querySelector('.child-add');
-      let childRemove = document.querySelector('.child-remove');
-    
-      let roomValue = document.querySelector('.rooms');
-      let roomAdd = document.querySelector('.room-add');
-      let roomRemove = document.querySelector('.room-remove');
-    
       function addElement(type){
         if(type == 'adult'){
           adults++;
-          totalAdults = adults + child;
+          totalAdults = adults;
     
-          showElements();
-        }else if(type == 'child'){
-          child = child + 1;
-          console.log(child);
-          totalAdults = adults + child;
-    
-          showElements();
-        }else if(type == 'room'){
-          rooms++;
-          
           showElements();
         }
       }
     
       function showElements(){
         adultValue.innerText = adults;
-        childValue.innerText = child;
-        roomValue.innerText = rooms;
     
-        let roomText = rooms > 1 ? 'Rooms' : 'Room';
-        let guestText = totalAdults > 1 ? 'Guests': 'Guest';
+        let guestText = '명';
     
-        let resultText = totalAdults+' '+guestText+' '+rooms+' '+roomText;
+        let resultText = totalAdults+' '+guestText;
     
         selectionResult.setAttribute('value', resultText);
       }
@@ -887,17 +875,8 @@ var e = {
       function removeElement(type){
         if(type == 'adult'){
           adults = adults > 0 ?  adults - 1 : adults;
-          totalAdults = adults + child;
+          totalAdults = adults;
     
-          showElements();
-        }else if(type == 'child'){
-          child = child > 0 ? child - 1 : child;
-          totalAdults = adults + child;
-    
-          showElements();
-        }else if(type == 'room'){
-          rooms = rooms > 0 ? rooms - 1 : rooms;
-          
           showElements();
         }
       }

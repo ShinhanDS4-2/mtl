@@ -3,6 +3,7 @@ const home = (function() {
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
+		_randomBanner();
 		_event.example(); // 추후 삭제
 	};
 
@@ -47,6 +48,12 @@ const home = (function() {
 				}
 			});
 		},
+	};
+	
+	// 배너 랜덤으로 변경
+	function _randomBanner() {
+		let num = Math.floor(Math.random() * 7) + 1;
+		$("#banner").css("background-image","url(assets/images/banner/" + num +".jpg)");
 	};
 
 	return {

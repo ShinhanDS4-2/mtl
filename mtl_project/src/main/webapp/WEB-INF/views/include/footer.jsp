@@ -12,8 +12,7 @@ Footer START -->
 				<div class="col-md-5 col-lg-4">
 					<!-- logo -->
 					<a class="me-0" href="index.html">
-						<img class="light-mode-item h-40px" src="assets/images/logo.svg" alt="logo">
-            <img class="dark-mode-item h-40px" src="assets/images/logo-light.svg" alt="logo">
+						<img class="light-mode-item" src="assets/images/logo-80.png" alt="logo">
 					</a>
 
 					<p class="text-reset mt-4 mb-2">Subscribe to Our Newsletter</p>

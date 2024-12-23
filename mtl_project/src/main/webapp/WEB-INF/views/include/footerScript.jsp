@@ -7,6 +7,11 @@
 <script src="assets/vendor/choices/js/choices.min.js"></script>
 <script src="assets/vendor/flatpickr/js/flatpickr.min.js"></script>
 <script src="assets/vendor/sticky-js/sticky.min.js"></script>
+<script src="assets/vendor/nouislider/nouislider.min.js"></script>
+<script src="assets/vendor/wnumb/wNumb.min.js"></script>
+<script src="assets/vendor/splide-master/dist/js/splide.min.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
+<script>flatpickr.localize(flatpickr.l10ns.ko);</script>
 
 <!-- ThemeFunctions -->
 <script src="assets/js/functions.js"></script>
@@ -15,7 +20,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <!-- common JS -->
-<script src="js/common/common.js"></script>
+<script src="js/util/common.js"></script>
 
 <!-- header JS -->
 <script src="js/include/header.js"></script>

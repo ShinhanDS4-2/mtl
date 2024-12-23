@@ -1,14 +1,13 @@
-const partnerList = (function() {
+const areaList = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
-		_randomBanner();
 	};
 
 	// 이벤트 초기화 
 	function _eventInit() {
-		let evo = $("[data-src='partnerList'][data-act]").off();
+		let evo = $("[data-src='areaList'][data-act]").off();
 		evo.on("click", function(e) {
 			_eventAction(e);
 		});
@@ -22,27 +21,30 @@ const partnerList = (function() {
 		
 		let type = e.type;
 		
-		if(type == "click") {
-			if(action == "clickPartner") {
+		if (type == "click") {
+			if (action == "clickPartner") {
 				_event.clickPartner(evo);
-			};
+			} else if (action == "clickLocation") {
+				_event.clickLocation(evo);
+			} 
 		};
 	};
 	
 	// 이벤트
 	let _event = {
+		// 숙소 상세 페이지로 이동
 		clickPartner: function(evo) {
 			let partnerIdx = evo.attr("data-partner-idx");
 			location.href = "/mtl/partner/detail?idx=" + partnerIdx;
 		},
+		
+		// 여행지 상세 페이지로 이동
+		clickLocation: function(evo) {
+			let locationIdx = evo.attr("data-location-idx");
+			location.href = "/mtl/location/detail?idx=" + locationIdx;
+		},
 	};
 	
-	// 배너 랜덤으로 변경
-	function _randomBanner() {
-		let num = Math.floor(Math.random() * 7) + 1;
-		$("#banner").css("background-image","url(assets/images/banner/" + num +".jpg)");
-	};
-
 	return {
 		init,
 	};
