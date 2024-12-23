@@ -45,52 +45,52 @@
 											<!-- Table body START -->
 											<tbody class="border-top-0">
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">공지</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">공지</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">안내</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">안내</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">서비스 이용 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">이벤트</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">이벤트</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">11월 이벤트 당첨 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">공지</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">공지</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">안내</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">안내</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#">서비스 이용 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">이벤트</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">이벤트</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#">11월 이벤트 당첨 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">공지</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">공지</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#">이용약관 변경 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">안내</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">안내</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#">서비스 이용 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">이벤트</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">이벤트</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#">11월 이벤트 당첨 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge text-bg-success">이벤트</span></h6> </td>
+													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">이벤트</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#">11월 이벤트 당첨 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>

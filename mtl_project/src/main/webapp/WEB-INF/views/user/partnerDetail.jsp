@@ -402,7 +402,7 @@ About hotel START -->
 											<!-- Slider END -->
 
 											<!-- Button -->
-											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-success more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
+											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-primary more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
 												<i class="bi bi-eye-fill me-1"></i>객실 상세 정보
 											</a>
 										</div>
@@ -427,7 +427,7 @@ About hotel START -->
 												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
 													<!-- Price -->
 													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+														<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
 														<span class="mb-0 me-2"> / 일</span>
 													</div>
 													<!-- Button -->
@@ -465,7 +465,7 @@ About hotel START -->
 											<!-- Slider END -->
 
 											<!-- Button -->
-											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-success more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
+											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-primary more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
 												<i class="bi bi-eye-fill me-1"></i>객실 상세 정보
 											</a>
 										</div>
@@ -490,12 +490,12 @@ About hotel START -->
 												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
 													<!-- Price -->
 													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+														<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
 														<span class="mb-0 me-2"> / 일</span>
 													</div>
 													<!-- Button -->
 													<div class="mt-3 mt-sm-0">
-														<a href="reservation" class="btn btn-sm btn-success mb-0">객실 예약</a>    
+														<a href="reservation" class="btn btn-sm btn-primary mb-0">객실 예약</a>    
 													</div>          
 												</div>
 											</div>
@@ -528,11 +528,11 @@ About hotel START -->
 											<h2 class="mb-0">4.5</h2>
 											<!-- Star -->
 											<ul class="list-inline mb-0">
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-success"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-success"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-success"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-success"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star-half-alt text-success"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
+												<li class="list-inline-item me-0"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
 											</ul>
 										</div>
 									</div>
@@ -544,8 +544,8 @@ About hotel START -->
 												<!-- Progress bar and Rating -->
 												<div class="col-9 col-sm-10">
 													<!-- Progress item -->
-													<div class="progress progress-sm bg-success bg-opacity-15">
-														<div class="progress-bar bg-success" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+													<div class="progress progress-sm bg-warning bg-opacity-15">
+														<div class="progress-bar bg-warning" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
 														</div>
 													</div>
 												</div>
@@ -557,8 +557,8 @@ About hotel START -->
 												<!-- Progress bar and Rating -->
 												<div class="col-9 col-sm-10">
 													<!-- Progress item -->
-													<div class="progress progress-sm bg-success bg-opacity-15">
-														<div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+													<div class="progress progress-sm bg-warning bg-opacity-15">
+														<div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
 														</div>
 													</div>
 												</div>
@@ -570,8 +570,8 @@ About hotel START -->
 												<!-- Progress bar and Rating -->
 												<div class="col-9 col-sm-10">
 													<!-- Progress item -->
-													<div class="progress progress-sm bg-success bg-opacity-15">
-														<div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+													<div class="progress progress-sm bg-warning bg-opacity-15">
+														<div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
 														</div>
 													</div>
 												</div>
@@ -583,8 +583,8 @@ About hotel START -->
 												<!-- Progress bar and Rating -->
 												<div class="col-9 col-sm-10">
 													<!-- Progress item -->
-													<div class="progress progress-sm bg-success bg-opacity-15">
-														<div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+													<div class="progress progress-sm bg-warning bg-opacity-15">
+														<div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
 														</div>
 													</div>
 												</div>
@@ -615,7 +615,7 @@ About hotel START -->
 											</ul>
 										</div>
 										<!-- Review star -->
-										<div class="icon-md rounded text-bg-success fs-6">4.5</div>
+										<div class="icon-md rounded text-bg-warning fs-6">4.5</div>
 									</div>
 									
 									<p class="mb-2">Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitors we private removed. Moderate do subjects to distance. </p>
@@ -664,7 +664,7 @@ About hotel START -->
 											</ul>
 										</div>
 										<!-- Review star -->
-										<div class="icon-md rounded text-bg-success fs-6">4.0</div>
+										<div class="icon-md rounded text-bg-warning fs-6">4.0</div>
 									</div>
 									
 									<p class="mb-0">Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. Water timed folly right aware if oh truth. Large above be to means. Dashwood does provide stronger is.</p>
@@ -695,7 +695,7 @@ About hotel START -->
 						<!-- Title -->
 						<div class="d-sm-flex justify-content-sm-between align-items-center mb-3">
 							<div>
-								<h5 class="text-success"><b>위치 정보</b></h5>
+								<h5 class="text-primary"><b>위치 정보</b></h5>
 								<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521
 							</div>
 						</div>	
@@ -709,11 +709,11 @@ About hotel START -->
 						<!-- Title -->
 						<div class="d-sm-flex justify-content-sm-between align-items-center mb-3">
 							<div>
-								<h4 class="text-black"><b>궁금한 정보가 있으신가요?</b></h5>
+								<h5 class="text-black"><b>궁금한 정보가 있으신가요?</b></h5>
 							</div>
 						</div>	
 						<div class="d-grid gap-2">
-							<button class="btn btn-success" type="button">문의하기</button>
+							<button class="btn btn-primary-soft" type="button" data-bs-toggle="modal" data-bs-target="#qnaModal">문의하기</button>
 						</div>	
 					</div>
 				</div>	
@@ -819,6 +819,43 @@ About hotel END -->
 	</div>
 </div>
 <!-- Room modal END -->
+
+<!-- 1:1 문의 모달 -->
+<div class="modal fade" id="qnaModal" tabindex="-1" aria-labelledby="qnaDetailLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content p-0">
+
+			<!-- Title -->
+			<div class="modal-header p-3">
+				<h5 class="modal-title mb-0" id="qnaDetailLabel">1:1 문의</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body p-0">
+				<div class="card bg-transparent p-3">
+					<div class="card-header bg-transparent pb-0">
+						<div class="alert alert-secondary" role="alert">
+							직접 문의하고 싶으신 경우<br>
+							<i class="fa-solid fa-phone"></i> 02-0000-0000으로 연락해 주시기 바랍니다.
+						</div>
+					</div>
+					<div class="card-body pt-2">
+						<div class="d-flex mt-1">
+							<input type="text" class="form-control" placeholder="제목을 작성해 주세요.">
+						</div>
+						<div class="d-flex mt-1">
+							<textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false"></textarea>
+						</div>
+						<div class="d-grid gap-2 mt-3">
+							<button class="btn btn-sm btn-primary-soft px-4 mb-0 flex-shrink-0"><i class="fas fa-paper-plane fs-5"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

@@ -73,7 +73,7 @@ Main content START -->
 						<!-- Button -->
 						<div class="d-sm-flex justify-content-sm-end d-grid mt-5">
 							<div class="col-6 d-grid gap-2 me-1">
-								<button class="btn btn-primary" type="button">예약내역</button>
+								<button class="btn btn-primary-soft" type="button">예약내역</button>
 							</div>
 							<div class="col-6 d-grid gap-2">
 								<button class="btn btn-primary" type="button">여행지 추천</button>

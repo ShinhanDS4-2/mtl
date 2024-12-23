@@ -20,7 +20,7 @@
 			<div class="navbar-collapse collapse" id="navbarCategoryCollapse">
 				<ul class="navbar-nav navbar-nav-scroll nav-pills-primary-soft text-center ms-auto p-2 p-xl-0">
 					<li class="nav-item"> <a class="nav-link" href="partner/list"><i class="fa-solid fa-hotel me-2"></i>숙소</a>	</li>
-					<li class="nav-item"> <a class="nav-link active" href="area/list"><i class="fa-solid fa-route me-2"></i>여행지</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="area/list"><i class="fa-solid fa-route me-2"></i>여행지</a> </li>
 				</ul>
 			</div>
 			<!-- Main navbar END -->

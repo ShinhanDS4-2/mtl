@@ -435,7 +435,7 @@ Hotel list START -->
 											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
 										</ul>
 										
-										<span class="badge bg-success bg-opacity-10 text-success">호텔</span>
+										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
 									</div>
 
 									<!-- Title -->
@@ -462,7 +462,7 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
 											<span class="mb-0 me-2"> / 일</span>
 										</div>                  
 									</div>
@@ -494,7 +494,7 @@ Hotel list START -->
 											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
 										</ul>
 										
-										<span class="badge bg-success bg-opacity-10 text-success">호텔</span>
+										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
 									</div>
 
 									<!-- Title -->
@@ -521,7 +521,7 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
 											<span class="mb-0 me-2"> / 일</span>
 										</div>                 
 									</div>
@@ -553,7 +553,7 @@ Hotel list START -->
 											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
 										</ul>
 										
-										<span class="badge bg-success bg-opacity-10 text-success">호텔</span>
+										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
 									</div>
 
 									<!-- Title -->
@@ -580,7 +580,7 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
 											<span class="mb-0 me-2"> / 일</span>
 										</div>                 
 									</div>
@@ -629,7 +629,7 @@ Hotel list START -->
 											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
 										</ul>
 										
-										<span class="badge bg-success bg-opacity-10 text-success">호텔</span>
+										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
 									</div>
 
 									<!-- Title -->
@@ -656,7 +656,7 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
 											<span class="mb-0 me-2"> / 일</span>
 										</div>             
 									</div>
@@ -688,7 +688,7 @@ Hotel list START -->
 											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
 										</ul>
 										
-										<span class="badge bg-success bg-opacity-10 text-success">호텔</span>
+										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
 									</div>
 
 									<!-- Title -->
@@ -715,7 +715,7 @@ Hotel list START -->
 										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
+											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
 											<span class="mb-0 me-2"> / 일</span>
 										</div>                 
 									</div>

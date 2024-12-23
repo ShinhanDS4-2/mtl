@@ -61,13 +61,13 @@
 											<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
 												<!-- Button -->
 												<div class="d-flex align-items-center">
-													<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</h5>
+													<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 200,000</h5>
 													<span class="mb-0 me-2"> / 일</span>
 												</div>
 												<!-- Price -->
 												<div class="mt-3 mt-sm-0">
-													<a href="javascript:;" class="btn btn-sm btn-primary mb-0">추천 여행지</a>    
-													<a href="javascript:;" class="btn btn-sm btn-success mb-0">상세 정보</a>    
+													<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0">추천 여행지</a>    
+													<a href="javascript:;" class="btn btn-sm btn-primary mb-0">상세 정보</a>    
 												</div>                  
 											</div>
 										</div>
@@ -96,12 +96,12 @@
 											<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
 												<!-- Button -->
 												<div class="d-flex align-items-center">
-													<h5 class="fw-bold mb-0 me-1 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</h5>
+													<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 200,000</h5>
 													<span class="mb-0 me-2"> / 일</span>
 												</div>
 												<!-- Price -->
 												<div class="mt-3 mt-sm-0">
-													<a href="javascript:;" class="btn btn-sm btn-success w-100 mb-0">상세 정보</a>    
+													<a href="javascript:;" class="btn btn-sm btn-primary w-100 mb-0">상세 정보</a>    
 												</div>                  
 											</div>
 										</div>

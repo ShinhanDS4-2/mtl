@@ -206,7 +206,7 @@ Main Banner END -->
 				<h5 class="mb-0">인기 숙소</h5>
 			</div>
 			<div class="col-6 text-end">
-				<a href="#" class="text-primary"><i class="fa-solid fa-arrow-right"></i> 더보기</a>
+				<a href="#" class="text-secondary"><i class="fa-solid fa-arrow-right"></i> 더보기</a>
 			</div>
 		</div>
 
@@ -234,7 +234,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">그랜드 인터컨티넨탈 서울 파르나스</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 mb-0 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</span>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-won-sign"></i> 200,000</span>
 							<small>서울</small>
 						</div>
 					</div>
@@ -265,7 +265,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">여수 엑스포 유탑 마리나</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 mb-0 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</span>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-won-sign"></i> 200,000</span>
 							<small>여수</small>
 						</div>
 					</div>
@@ -295,7 +295,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">뉴욕카라반</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 mb-0 text-success"><i class="fa-solid fa-won-sign"></i> 200,000</span>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-won-sign"></i> 200,000</span>
 							<small>강릉</small>
 						</div>
 					</div>
@@ -324,7 +324,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">메종 글래드 제주</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 text-success mb-0"><i class="fa-solid fa-won-sign"></i> 200,000</span>
+							<span class="h5 text-primary mb-0"><i class="fa-solid fa-won-sign"></i> 200,000</span>
 							<small>제주</small>
 						</div>
 					</div>
@@ -346,7 +346,7 @@ Main Banner END -->
 				<h5 class="mb-0">인기 여행지</h5>
 			</div>
 			<div class="col-6 text-end">
-				<a href="#" class="text-primary"><i class="fa-solid fa-arrow-right"></i> 더보기</a>
+				<a href="#" class="text-secondary"><i class="fa-solid fa-arrow-right"></i> 더보기</a>
 			</div>
 		</div>
 
@@ -366,7 +366,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="location/detail" class="stretched-link text-truncate">서울식물원</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 mb-0 text-success"><i class="fa-solid fa-location-dot"></i> 서울</span>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-location-dot"></i> 서울</span>
 						</div>
 					</div>
 				</div>
@@ -388,7 +388,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="location/detail" class="stretched-link text-truncate">여수 테디베어뮤지엄</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 mb-0 text-success"><i class="fa-solid fa-location-dot"></i> 여수</span>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-location-dot"></i> 여수</span>
 						</div>
 					</div>
 				</div>
@@ -409,7 +409,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="location/detail" class="stretched-link text-truncate">설악스케치</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 mb-0 text-success"><i class="fa-solid fa-location-dot"></i> 강릉</span>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-location-dot"></i> 강릉</span>
 						</div>
 					</div>
 				</div>
@@ -429,7 +429,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="location/detail" class="stretched-link text-truncate">북촌한옥마을</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 text-success mb-0"><i class="fa-solid fa-location-dot"></i> 서울</span>
+							<span class="h5 text-primary mb-0"><i class="fa-solid fa-location-dot"></i> 서울</span>
 						</div>
 					</div>
 				</div>

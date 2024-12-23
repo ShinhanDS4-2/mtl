@@ -110,8 +110,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -130,9 +130,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -151,8 +151,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -171,9 +171,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -192,8 +192,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -212,9 +212,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -233,8 +233,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -253,9 +253,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -280,8 +280,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -300,9 +300,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -321,8 +321,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -341,9 +341,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -362,8 +362,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -382,9 +382,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -403,8 +403,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -423,9 +423,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -450,8 +450,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -470,9 +470,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -491,8 +491,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -511,9 +511,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -532,8 +532,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -552,9 +552,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -573,8 +573,8 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
@@ -593,9 +593,9 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-success bg-opacity-10 text-success"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>

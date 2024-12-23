@@ -40,21 +40,21 @@
 							<!-- 분류 -->
 							<div class="mt-2">
 								<div class="col-12 mx-auto">
-									<button type="button" class="btn btn-sm btn-round-m btn-outline-success active">전체</button>
-									<button type="button" class="btn btn-sm btn-round-m btn-outline-success">이용문의</button>
-									<button type="button" class="btn btn-sm btn-round-m btn-outline-success">예약</button>
+									<button type="button" class="btn btn-sm btn-round-m btn-primary-soft">전체</button>
+									<button type="button" class="btn btn-sm btn-round-m btn-primary-soft">이용문의</button>
+									<button type="button" class="btn btn-sm btn-round-m btn-primary-soft">예약</button>
 								</div>
 							</div>
 						
 							<!-- Accordion START -->
 							<div class="row mt-3 mb-5">
 								<div class="col-12 mx-auto">
-									<div class="accordion accordion-icon accordion-bg-success">
+									<div class="accordion accordion-icon accordion-bg-secondary">
 										<!-- Item -->
 										<div class="accordion-item mb-3">
 											<h6 class="accordion-header" id="heading-1">
 												<button class="accordion-button fw-bold rounded d-inline-block collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
-													<i class="fa-solid fa-q text-black"></i> How can we help?
+													<i class="fa-solid fa-q text-primary"></i> How can we help?
 												</button>
 											</h6>
 											<!-- Body -->
@@ -76,7 +76,7 @@
 										<div class="accordion-item mb-3">
 											<h6 class="accordion-header" id="heading-2">
 												<button class="accordion-button fw-bold rounded d-inline-block collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-													<i class="fa-solid fa-q text-black"></i>  How to edit my Profile?
+													<i class="fa-solid fa-q text-primary"></i>  How to edit my Profile?
 												</button>
 											</h6>
 											<!-- Body -->
@@ -93,7 +93,7 @@
 										<div class="accordion-item mb-3">
 											<h6 class="accordion-header" id="heading-3">
 												<button class="accordion-button fw-bold collapsed rounded d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-													<i class="fa-solid fa-q text-black"></i>  How much should I offer the sellers? 
+													<i class="fa-solid fa-q text-primary"></i>  How much should I offer the sellers? 
 												</button>
 											</h6>
 											<!-- Body -->
@@ -108,7 +108,7 @@
 										<div class="accordion-item mb-3">
 											<h6 class="accordion-header" id="heading-4">
 												<button class="accordion-button fw-bold collapsed rounded d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-													<i class="fa-solid fa-q text-black"></i>  Installation Guide 
+													<i class="fa-solid fa-q text-primary"></i>  Installation Guide 
 												</button>
 											</h6>
 											<!-- Body -->
@@ -124,7 +124,7 @@
 										<div class="accordion-item mb-3">
 											<h6 class="accordion-header" id="heading-5">
 												<button class="accordion-button fw-bold collapsed rounded d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
-													<i class="fa-solid fa-q text-black"></i>  Additional Options and Services
+													<i class="fa-solid fa-q text-primary"></i>  Additional Options and Services
 												</button>
 											</h6>
 											<!-- Body -->
@@ -139,7 +139,7 @@
 										<div class="accordion-item">
 											<h6 class="accordion-header" id="heading-6">
 												<button class="accordion-button fw-bold collapsed rounded d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
-													<i class="fa-solid fa-q text-black"></i>  What is the difference between a college and a university?
+													<i class="fa-solid fa-q text-primary"></i>  What is the difference between a college and a university?
 												</button>
 											</h6>
 											<!-- Body -->

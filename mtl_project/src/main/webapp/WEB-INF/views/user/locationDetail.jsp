@@ -66,8 +66,8 @@
 					</div>
 					<!-- Arrows -->
 					<div class="splide__arrows">
-						<button class="splide__arrow  splide__arrow--prev p-splide__arrow--prev bg-success"><span class="spi-angle-left text-white"><i class="fa-solid fa-fw fa-angle-left"></i></span></button>
-						<button class="splide__arrow splide__arrow--next p-splide__arrow--next bg-success"><span class="spi-angle-right text-white"><i class="fa-solid fa-fw fa-angle-right"></i></span></button>
+						<button class="splide__arrow  splide__arrow--prev p-splide__arrow--prev bg-primary"><span class="spi-angle-left text-white"><i class="fa-solid fa-fw fa-angle-left"></i></span></button>
+						<button class="splide__arrow splide__arrow--next p-splide__arrow--next bg-primary"><span class="spi-angle-right text-white"><i class="fa-solid fa-fw fa-angle-right"></i></span></button>
 					</div>
 				</div>
 			</div>
@@ -93,11 +93,11 @@
 
 							<!-- Card body START -->
 							<div class="card-body p-0 pt-3">
-								<p class="mb-5">
+								<p class="mb-5 space">
 									가로수길은 서울 신사동에 위치한 인기 있는 거리로, 이름처럼 양쪽에 큰 가로수가 늘어서 있어 산책하기 좋은 분위기를 자랑합니다.
-									<br><br>
+									
 									이 길은 패션, 음식, 문화가 어우러진 트렌디한 명소로, 젊은층과 외국인 관광객들 사이에서 매우 인기가 높습니다.
-									<br><br>
+									
 									현대 고등학교 앞 사거리에서 신사역 동쪽 도산대로와 삼거리까지 뻗은 도로를 이르며, 서울 강남구 대표 상권 중 한 곳입니다.
 									신사동 가로수길 주위로는 아기자기한 커피숍과 맛집, 디자이너들의 옷 매장들이 즐비해 있어 이국적인 분위기를 연출합니다. 
 								</p>
@@ -105,19 +105,19 @@
 								<!-- 키워드 -->
 								<ul class="list-inline mb-4">
 									<li class="list-inline-item">
-										<h5><span class="badge text-bg-success"><i class="fa-solid fa-hashtag"></i> 가족여행</span></h5>
+										<h5><span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 가족여행</span></h5>
 									</li>
 									<li class="list-inline-item">
-										<h5><span class="badge text-bg-success"><i class="fa-solid fa-hashtag"></i> 관광지</span></h5>
+										<h5><span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 관광지</span></h5>
 									</li>
 									<li class="list-inline-item">
-										<h5><span class="badge text-bg-success"><i class="fa-solid fa-hashtag"></i> 데이트코스</span></h5>
+										<h5><span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 데이트코스</span></h5>
 									</li>
 									<li class="list-inline-item">
-										<h5><span class="badge text-bg-success"><i class="fa-solid fa-hashtag"></i> 산책</span></h5>
+										<h5><span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 산책</span></h5>
 									</li>
 									<li class="list-inline-item">
-										<h5><span class="badge text-bg-success"><i class="fa-solid fa-hashtag"></i> 쇼핑</span></h5>
+										<h5><span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 쇼핑</span></h5>
 									</li>
 								</ul>
 								

@@ -15,7 +15,7 @@
 }
 
 .bg-i {
-	background: #F2E8DC;
+	background: #eeebf2;
 }
 
 .area-icon:hover {
@@ -23,15 +23,15 @@
 }
 
 .area-icon:hover .stretched-link {
-	color: #034C8C;
+	color: #5143d9;
 }
 
 .area-icon:hover .rounded-circle {
-	box-shadow: 0 0 0 8px #F26B5E;
+	box-shadow: 0 0 0 8px #5143d9;
 }
 
 .more-hover:hover {
-	color: #ed4d3e;
+	color: #5143d9;
 }
 
 .partner-card:hover {
@@ -83,17 +83,16 @@
   color: var(--bs-success);
   border: 1px solid var(--bs-success);
 }
-
-.accordion.accordion-bg-success .accordion-item {
+*/
+.accordion.accordion-bg-secondary .accordion-item {
   border: none;
   background-color: transparent;
 }
-.accordion.accordion-bg-success .accordion-button {
-  background-color: #fce8e6 !important;
-  color: var(--bs-success-text-emphasis) !important;
+.accordion.accordion-bg-secondary .accordion-button {
+  background-color: var(--bs-secondary-bg-subtle) !important;
+  color: var(--bs-secondary-text-emphasis) !important;
 }
-.accordion.accordion-bg-success .accordion-button:not(.collapsed) {
+.accordion.accordion-bg-secondary .accordion-button:not(.collapsed) {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
-*/
