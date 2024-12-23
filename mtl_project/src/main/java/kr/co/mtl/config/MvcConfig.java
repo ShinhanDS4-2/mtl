@@ -24,6 +24,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.zaxxer.hikari.HikariDataSource;
 
 import kr.co.mtl.interceptor.LoginInterceptor;
+import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
+import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.s3.S3Client;
 
 @Configuration
 @EnableWebMvc
@@ -46,6 +50,11 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Value("${spring.datasource.password}")
 	private String password;
 	
+	@Value("${aws.access-key}")
+	private String ACCESS_KEY;
+	
+	@Value("${aws.secret-key}")
+	private String SECRET_KEY;
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -106,7 +115,20 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Bean
 	public static PropertyPlaceholderConfigurer propreties() {
 		PropertyPlaceholderConfigurer config = new PropertyPlaceholderConfigurer();
-		config.setLocations(new ClassPathResource("db.properties"));
+		config.setLocations(
+				new ClassPathResource("db.properties"),
+				new ClassPathResource("aws.properties")
+		);
 		return config;
 	}
+	
+	// S3 설정
+	@Bean
+    public S3Client s3Client() {
+        return S3Client.builder()
+                .region(Region.AP_NORTHEAST_2) // 원하는 AWS 리전을 설정
+                .credentialsProvider(StaticCredentialsProvider.create(
+                        AwsBasicCredentials.create(ACCESS_KEY, SECRET_KEY)))
+                .build();
+    }
 }
