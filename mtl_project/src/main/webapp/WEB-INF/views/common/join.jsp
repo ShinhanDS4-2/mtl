@@ -33,7 +33,7 @@
 										<label class="form-label" for="joinEmail">이메일 <span class="text-danger">*</span></label>
 										<input type="email" class="form-control" id="joinEmail" placeholder="abc@address.com">
 										<div class="d-grid gap-2 mt-2">
-											<button class="btn btn-primary-soft" type="button">이메일 인증</button>
+											<button class="btn btn-primary-soft" type="button" data-src="join" data-act="clickEmailAuth">이메일 인증</button>
 										</div>
 									</div>
 									<!-- 인증번호 확인 -->
@@ -45,7 +45,7 @@
 											</div>
 											<div class="col-4 ps-1">
 												<div class="d-grid">
-													<button class="btn btn-primary-soft" type="button">인증 확인</button>
+													<button class="btn btn-primary-soft" type="button"  data-src="join" data-act="clickAuthCheck">인증 확인</button>
 												</div>
 											</div>
 										</div>

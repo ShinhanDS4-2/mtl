@@ -36,7 +36,8 @@ const home = (function() {
 			let url_v = "/user/info";
 			
 			let data_v = {
-				"userIdx": 1
+				"email": $("#joinEmail").val()
+				
 			};
 			
 			comm.send(url_v, data_v, "POST", function(resp) {

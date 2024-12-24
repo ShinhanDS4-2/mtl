@@ -15,19 +15,41 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
+//	/*
+//	 * 사용자 정보 가져오기
+//	 * @param param
+//	 * @return 사용자 정보
+//	 */
+//	@PostMapping("/api/user/info")
+//	public Map<String, Object> getUserInfo(@RequestParam Map<String, Object> param) throws Exception {
+//		
+//		// 필수 파라미터 null 체크
+//		// ajax를 통해 받아온 param이라는 이름의 Map 데이터 안에 userIdx라는 값이 있는지 체크하는 함수
+//		CommonUtil.checkIsNull(param, "userIdx");
+//		
+//		Map<String, Object> result = loginService.getUserInfo(param);
+//		
+//		return result;
+//	}
+	
 	/**
 	 * 사용자 정보 가져오기
 	 * @param param
 	 * @return 사용자 정보
 	 */
-	@PostMapping("/api/user/info")
-	public Map<String, Object> getUserInfo(@RequestParam Map<String, Object> param) throws Exception {
+	@PostMapping("/join")
+	public Map<String, Object> join(@RequestParam Map<String, Object> param) throws Exception {
 		
 		// 필수 파라미터 null 체크
 		// ajax를 통해 받아온 param이라는 이름의 Map 데이터 안에 userIdx라는 값이 있는지 체크하는 함수
-		CommonUtil.checkIsNull(param, "userIdx");
-		
-		Map<String, Object> result = loginService.getUserInfo(param);
+		CommonUtil.checkIsNull(param, "email");
+		CommonUtil.checkIsNull(param, "password");
+		CommonUtil.checkIsNull(param, "name");
+        CommonUtil.checkIsNull(param, "birth");
+        CommonUtil.checkIsNull(param, "phone");
+        
+		// 회원가입 로직 호출
+		Map<String, Object> result = loginService.registerUserInfo(param);
 		
 		return result;
 	}
