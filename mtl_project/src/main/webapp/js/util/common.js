@@ -51,4 +51,10 @@ const comm = {
 			error: errorCallback
 		});
 	},
+	
+	// 이메일 형식 검증
+    validateEmail: function(email) {
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(email);
+    },
 }
