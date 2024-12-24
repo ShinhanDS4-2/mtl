@@ -210,7 +210,7 @@ Main Banner END -->
 			</div>
 		</div>
 
-		<div class="row g-4">
+		<div class="row g-4" id="accomodationList">
 			<!-- Package item -->
 			<div class="col-sm-6 col-xl-3">
 				<!-- Card START -->
@@ -234,8 +234,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">그랜드 인터컨티넨탈 서울 파르나스</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-won-sign"></i> 200,000</span>
-							<small>서울</small>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-location-dot"></i> 서울</span>
 						</div>
 					</div>
 				</div>
@@ -265,8 +264,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">여수 엑스포 유탑 마리나</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-won-sign"></i> 200,000</span>
-							<small>여수</small>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-location-dot"></i> 여수</span>
 						</div>
 					</div>
 				</div>
@@ -295,8 +293,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">뉴욕카라반</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-won-sign"></i> 200,000</span>
-							<small>강릉</small>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-location-dot"></i> 강릉</span>
 						</div>
 					</div>
 				</div>
@@ -324,8 +321,7 @@ Main Banner END -->
 						<h5 class="card-title"><a href="partner/detail" class="stretched-link text-truncate">메종 글래드 제주</a></h5>
 						<!-- Content -->
 						<div class="hstack gap-2">
-							<span class="h5 text-primary mb-0"><i class="fa-solid fa-won-sign"></i> 200,000</span>
-							<small>제주</small>
+							<span class="h5 mb-0 text-primary"><i class="fa-solid fa-location-dot"></i> 제주</span>
 						</div>
 					</div>
 				</div>
