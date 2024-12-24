@@ -841,8 +841,9 @@ About hotel END -->
 						</div>
 					</div>
 					<div class="card-body pt-2">
-						<div class="d-flex mt-1">
-							<input type="text" class="form-control" placeholder="제목을 작성해 주세요.">
+						<div class="d-flex mt-1 form-floating">
+							<input type="text" class="form-control" id="qnaTitle" placeholder="제목을 작성해 주세요.">
+							<label for ="qnaTitle">제목</label>
 						</div>
 						<div class="d-flex mt-1">
 							<textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false"></textarea>

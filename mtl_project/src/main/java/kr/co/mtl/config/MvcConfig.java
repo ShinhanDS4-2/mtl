@@ -1,5 +1,7 @@
 package kr.co.mtl.config;
 
+import java.util.Properties;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -11,8 +13,11 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -34,6 +39,7 @@ import software.amazon.awssdk.services.s3.S3Client;
 @ComponentScan(basePackages = "kr.co.mtl")
 @MapperScan(basePackages = {"kr.co.mtl"}, annotationClass = Mapper.class)
 @EnableTransactionManagement
+@PropertySource("classpath:application.properties")
 @SuppressWarnings("deprecation")
 public class MvcConfig implements WebMvcConfigurer {
 	
@@ -55,6 +61,13 @@ public class MvcConfig implements WebMvcConfigurer {
 	
 	@Value("${aws.secret-key}")
 	private String SECRET_KEY;
+	
+	@Value("${email.username}")
+	private String emailUsername;
+
+	@Value("${email.password}")
+	private String emailPassword;
+	
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -111,16 +124,13 @@ public class MvcConfig implements WebMvcConfigurer {
 		configurer.enable();
 	}
 	
-	// properties 설정
-	@Bean
-	public static PropertyPlaceholderConfigurer propreties() {
-		PropertyPlaceholderConfigurer config = new PropertyPlaceholderConfigurer();
-		config.setLocations(
-				new ClassPathResource("db.properties"),
-				new ClassPathResource("aws.properties")
-		);
-		return config;
-	}
+//	// properties 설정
+//	@Bean
+//	public static PropertyPlaceholderConfigurer propreties() {
+//		PropertyPlaceholderConfigurer config = new PropertyPlaceholderConfigurer();
+//		config.setLocations(new ClassPathResource("db.properties"));
+//		return config;
+//	}
 	
 	// S3 설정
 	@Bean
@@ -130,5 +140,22 @@ public class MvcConfig implements WebMvcConfigurer {
                 .credentialsProvider(StaticCredentialsProvider.create(
                         AwsBasicCredentials.create(ACCESS_KEY, SECRET_KEY)))
                 .build();
+        
+	}
+	
+    public JavaMailSender mailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+        mailSender.setUsername(emailUsername);
+        mailSender.setPassword(emailPassword);
+
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true");
+
+        return mailSender;
     }
 }
