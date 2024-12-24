@@ -113,7 +113,8 @@
 									</div>
 									
 									<!-- Button -->
-									<div><button type="button" class="btn btn-primary w-100 mb-0">회원가입</button></div>
+									<div><button type="button" class="btn btn-primary w-100 mb-2">회원가입</button></div>
+									<div><a href="login" type="button" class="btn btn-primary-soft w-100 mb-0">로그인</a></div>
 								</form>
 								<!-- Form END -->
 							</div>		
