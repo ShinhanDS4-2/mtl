@@ -60,6 +60,10 @@
   height: 350px !important;
 }
 
+.h-180px {
+  height: 180px !important;
+}
+
 .h7 {
   font-size: 0.8rem;
 }

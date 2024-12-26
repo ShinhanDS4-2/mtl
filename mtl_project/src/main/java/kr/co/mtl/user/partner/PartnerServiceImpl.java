@@ -24,8 +24,16 @@ public class PartnerServiceImpl implements PartnerService {
 		ResponseMap respMap = new ResponseMap();
 		
 		List<Map<String, Object>> list = partnerMapper.getBestPartnerList(param);
+		
+		for (Map<String, Object> data : list) {
+			// 인기 숙소 사진 (썸네일만)
+			Map<String, Object> imageData = partnerMapper.getBestPartnerImage(data);
+			data.put("image", imageData);
+		}
+		
 		respMap.setBody("list", list);
 
 		return respMap.getResponse();
 	};
+	
 }

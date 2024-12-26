@@ -58,7 +58,7 @@ const home = (function() {
 						card.append(cardImg);
 
 						// 이미지 경로 변경 필요
-						let img = $("<img>").addClass("card-img").attr("src", "assets/images/category/tour/04.jpg");
+						let img = $("<img>").addClass("card-img h-180px").attr("src", data.image.url);
 						cardImg.append(img);
 
 						let cardOberlay = $("<div>").addClass("card-img-overlay d-flex flex-column z-index-1 p-4");

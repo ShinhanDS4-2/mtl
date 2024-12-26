@@ -10,4 +10,7 @@ public interface PartnerMapper {
 
 	// 인기 숙소 리스트
 	public List<Map<String, Object>> getBestPartnerList(Map<String, Object> param);
+	
+	// 인기 숙소 사진
+	public Map<String, Object> getBestPartnerImage(Map<String, Object> param);
 }
