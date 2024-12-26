@@ -1,13 +1,13 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-	<title>[관리자] 회원관리 > 사용자 관리</title>
+<title>[관리자] 회원관리 > 사용자 관리</title>
 
-	<!-- headerScript -->
-	<%@ include file="/WEB-INF/views/include/headerScript.jsp" %>
+<!-- headerScript -->
+<%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
 </head>
 
 <body>
@@ -22,9 +22,9 @@
 		<!-- Page content START -->
 		<div class="page-content">
 
-		<!-- Topbar -->
-	<%@ include file="/WEB-INF/views/include/adminTopbar.jsp" %>
-	
+			<!-- Topbar -->
+			<%@ include file="/WEB-INF/views/include/adminTopbar.jsp"%>
+
 
 			<!-- Page main content START -->
 			<div class="page-content-wrapper p-xxl-4">
@@ -37,8 +37,88 @@
 					</div>
 				</div>
 
+				<!-- 상단 navbar START -->
+
+				<!-- 관리자 등록 button 클릭 시 <관리자 등록>모달창 표시 -->
+				<div class="d-flex justify-content-end mb-2">
+					<button type="button" class="btn btn-primary-soft"
+						data-bs-toggle="modal" data-bs-target="#adminRegisterModal">
+						<i class="bi bi-plus-lg fa-fw"></i>관리자 등록
+					</button>
+				</div>
+
+				<!-- 관리자 등록 Modal START -->
+				<div class="modal fade" id="adminRegisterModal" tabindex="-1"
+					aria-labelledby="adminRegisterModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="adminRegisterModalLabel">관리자 등록</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<!-- 1번째 행 -->
+									<div class="row mb-3 align-items-center">
+										<!-- 이메일 Label -->
+										<label for="email" class="form-label fw-bold">이메일 <span
+											class="text-danger">*</span></label>
+
+
+										<!-- 이메일 앞 입력 -->
+										<div class="col-md-4">
+											<input type="text" class="form-control" id="email"
+												placeholder="test001">
+										</div>
+										@
+
+										<!-- 이메일 뒤 선택 -->
+										<div class="col-md-4">
+											<select class="form-select" id="emailDomain">
+												<option value="naver.com">naver.com</option>
+												<option value="gmail.com">gmail.com</option>
+												<option value="daum.net">daum.net</option>
+												<option value="kakao.com">kakao.com</option>
+											</select>
+										</div>
+
+										<!-- 중복확인 버튼 -->
+										<div class="col-auto">
+											<button type="button" class="btn btn-secondary">중복
+												확인</button>
+										</div>
+									</div>
+
+									<!-- 이름 입력 -->
+									<div class="mb-3">
+										<label for="placeName" class="form-label fw-bold">이름 <span
+											class="text-danger">*</span>
+										</label> <input type="text" class="form-control" id="placeName"
+											placeholder="이름을 입력해 주세요.">
+									</div>
+									<!-- 비밀번호 입력 -->
+									<div class="mb-3">
+										<label for="placeName" class="form-label fw-bold">비밀번호
+											<span class="text-danger">*</span>
+										</label> <input type="text" class="form-control" id="pwd"
+											placeholder="비밀번호를 입력해 주세요.">
+									</div>
+								</form>
+							</div>
+							<!-- 확인/취소 button -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-primary">확인</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 관리자 등록 Modal END -->
+
 				<!-- 검색 필터 START -->
-				<div class="card shadow mt-4 mb-5">
+				<div class="card shadow mb-5">
 					<!-- Card header -->
 					<div class="card-header border-bottom">
 						<h5 class="card-header-title">검색필터(예시)</h5>
@@ -49,9 +129,10 @@
 							<!-- 드롭다운 -->
 							<div class="col-2">
 								<label class="h6 fw-normal mb-0"><i
-										class="bi bi-calendar text-primary me-1"></i>기간</label>
+									class="bi bi-calendar text-primary me-1"></i>기간</label>
 								<!-- Input field -->
-								<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
+								<div
+									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 									<select class="form-select js-choice">
 										<option value="">입실일</option>
 										<option>퇴실일</option>
@@ -63,10 +144,11 @@
 
 							<!-- 기간 설정. 어제/오늘/내일 -->
 							<div class="col-2">
-								<ul class="nav nav-pills nav-pills-dark" id="pills-tab" role="tablist">
+								<ul class="nav nav-pills nav-pills-dark" id="pills-tab"
+									role="tablist">
 									<li class="nav-item" role="presentation">
-										<button class="nav-link rounded-start rounded-0 mb-0 active" id="tab1"
-											data-bs-toggle="pill" type="button" role="tab"
+										<button class="nav-link rounded-start rounded-0 mb-0 active"
+											id="tab1" data-bs-toggle="pill" type="button" role="tab"
 											aria-selected="true">어제</button>
 									</li>
 									<li class="nav-item" role="presentation">
@@ -85,22 +167,24 @@
 							<!-- 기간(시작일) 설정 -->
 							<div class="col-3">
 								<label class="h6 fw-normal mb-0"><i
-										class="bi bi-calendar text-primary me-1"></i>시작일</label>
+									class="bi bi-calendar text-primary me-1"></i>시작일</label>
 								<!-- Input field -->
-								<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-									<input type="text" class="form-control flatpickr py-2" data-date-format="d M Y"
-										placeholder="시작일">
+								<div
+									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
+									<input type="text" class="form-control flatpickr py-2"
+										data-date-format="d M Y" placeholder="시작일">
 								</div>
 							</div>
 							<!-- 기간(종료일) 설정 -->
 							<div class="col-3">
 								<!--col-md-6: medium화면에서 가로 12칸 중 6칸 차지, col-lg-2: large화면에서 12칸 중 2칸 차지-->
 								<label class="h6 fw-normal mb-0"><i
-										class="bi bi-calendar text-primary me-1"></i>종료일</label>
+									class="bi bi-calendar text-primary me-1"></i>종료일</label>
 								<!-- Input field -->
-								<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-									<input type="text" class="form-control flatpickr py-2" data-date-format="d M Y"
-										placeholder="종료일">
+								<div
+									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
+									<input type="text" class="form-control flatpickr py-2"
+										data-date-format="d M Y" placeholder="종료일">
 								</div>
 							</div>
 
@@ -110,35 +194,31 @@
 								<div class="d-sm-flex">
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio" name="flexRadioDefault"
-											id="flexRadioDefault1" checked="">
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault1" checked="">
 										<label class="form-check-label" for="flexRadioDefault1">
-											전체
-										</label>
+											전체 </label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio" name="flexRadioDefault"
-											id="flexRadioDefault2">
-										<label class="form-check-label" for="flexRadioDefault2">
-											예약완료
-										</label>
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault2"> <label
+											class="form-check-label" for="flexRadioDefault2">
+											예약완료 </label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio" name="flexRadioDefault"
-											id="flexRadioDefault3">
-										<label class="form-check-label" for="flexRadioDefault3">
-											예약취소(고객)
-										</label>
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault3"> <label
+											class="form-check-label" for="flexRadioDefault3">
+											예약취소(고객) </label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio" name="flexRadioDefault"
-											id="flexRadioDefault4">
-										<label class="form-check-label" for="flexRadioDefault4">
-											예약취소(관리자)
-										</label>
+										<input class="form-check-input" type="radio"
+											name="flexRadioDefault" id="flexRadioDefault4"> <label
+											class="form-check-label" for="flexRadioDefault4">
+											예약취소(관리자) </label>
 									</div>
 								</div>
 							</div>
@@ -147,9 +227,10 @@
 							<div class="col-12">
 								<div class="col-4">
 									<label class="h6 fw-normal mb-0"><i
-											class="fa-solid fa-person-skating text-primary me-1"></i>객실 타입</label>
+										class="fa-solid fa-person-skating text-primary me-1"></i>객실 타입</label>
 									<!-- Input field -->
-									<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
+									<div
+										class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 										<select class="form-select js-choice">
 											<option value="">전체</option>
 											<option>스탠다드</option>
@@ -164,7 +245,8 @@
 							<!-- 검색어 드롭다운 -->
 							<div class="col-2">
 								<label class="h6 fw-normal mb-0">검색어</label>
-								<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
+								<div
+									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 									<select class="form-select js-choice">
 										<option value="">예약자명</option>
 										<option>예약번호</option>
@@ -173,8 +255,8 @@
 							</div>
 							<!-- 검색어 입력 input -->
 							<div class="col-6">
-								<label class="form-label">-</label>
-								<input type="text" class="form-control" placeholder="예약자명을 입력하세요">
+								<label class="form-label">-</label> <input type="text"
+									class="form-control" placeholder="예약자명을 입력하세요">
 							</div>
 
 							<!-- 초기화/검색 button -->
@@ -195,10 +277,10 @@
 						<h6 class="mb-1">전체 사용자 50명</h6>
 					</div>
 					<div class="col-md-6 col-lg-6 d-flex justify-content-end">
-						<div class="mb-sm-0 d-flex justify-content-center"><a href="#"
-								class="btn btn-dark-soft mb-0 border-0"><i class="fa-solid fa-download"></i></a></div>
-						<a href="#" class="btn btn-dark-soft mb-0 ms-1 border-0"><i class="bi bi-plus-lg fa-fw"></i>관리자
-							등록</a>
+						<div class="mb-sm-0 d-flex justify-content-center">
+							<a href="#" class="btn btn-dark-soft mb-0 border-0"><i
+								class="fa-solid fa-download"></i></a>
+						</div>
 					</div>
 				</div>
 
@@ -234,10 +316,12 @@
 						</div>
 
 						<!-- Table data (1번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+						<div
+							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-sm-none">아이디</small><!-- 작은 화면일때만 보이는 텍스트-->
+								<small class="d-block d-sm-none">아이디</small>
+								<!-- 작은 화면일때만 보이는 텍스트-->
 								<h6 class="ms-1 mb-0 fw-normal">admin123</h6>
 							</div>
 							<!-- Data item -->
@@ -268,15 +352,19 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="#" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col">
+									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+								</div>
 							</div>
 						</div>
 
 						<!-- Table data (2번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+						<div
+							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-sm-none">아이디</small><!-- 작은 화면일때만 보이는 텍스트-->
+								<small class="d-block d-sm-none">아이디</small>
+								<!-- 작은 화면일때만 보이는 텍스트-->
 								<h6 class="ms-1 mb-0 fw-normal">admin45683</h6>
 							</div>
 							<!-- Data item -->
@@ -307,14 +395,18 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="#" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col">
+									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+								</div>
 							</div>
 						</div>
 						<!-- Table data (3번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+						<div
+							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-sm-none">아이디</small><!-- 작은 화면일때만 보이는 텍스트-->
+								<small class="d-block d-sm-none">아이디</small>
+								<!-- 작은 화면일때만 보이는 텍스트-->
 								<h6 class="ms-1 mb-0 fw-normal">admin45683</h6>
 							</div>
 							<!-- Data item -->
@@ -345,14 +437,18 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="#" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col">
+									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+								</div>
 							</div>
 						</div>
 						<!-- Table data (4번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+						<div
+							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-sm-none">아이디</small><!-- 작은 화면일때만 보이는 텍스트-->
+								<small class="d-block d-sm-none">아이디</small>
+								<!-- 작은 화면일때만 보이는 텍스트-->
 								<h6 class="ms-1 mb-0 fw-normal">admin45683</h6>
 							</div>
 							<!-- Data item -->
@@ -383,14 +479,18 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="#" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col">
+									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+								</div>
 							</div>
 						</div>
 						<!-- Table data (5번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+						<div
+							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-sm-none">아이디</small><!-- 작은 화면일때만 보이는 텍스트-->
+								<small class="d-block d-sm-none">아이디</small>
+								<!-- 작은 화면일때만 보이는 텍스트-->
 								<h6 class="ms-1 mb-0 fw-normal">admin45683</h6>
 							</div>
 							<!-- Data item -->
@@ -421,7 +521,9 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="#" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col">
+									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+								</div>
 							</div>
 						</div>
 
@@ -436,17 +538,18 @@
 						<!-- Pagination (페이지 전환 하단 바)-->
 						<nav class="d-flex justify-content-center">
 							<ul class="pagination pagination-sm pagination-primary-soft mb-0">
-								<li class="page-item disabled"> <!-- disabled: 버튼 비활성화-->
-									<a class="page-link" href="#" tabindex="-1">&lt;</a>
+								<li class="page-item disabled">
+									<!-- disabled: 버튼 비활성화--> <a class="page-link" href="#"
+									tabindex="-1">&lt;</a>
 								</li>
 								<li class="page-item"><a class="page-link" href="#">1</a></li>
 								<li class="page-item active"><a class="page-link" href="#">2</a></li>
 								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item disabled"><a class="page-link" href="#">..</a></li>
+								<li class="page-item disabled"><a class="page-link"
+									href="#">..</a></li>
 								<li class="page-item"><a class="page-link" href="#">11</a></li>
 								<li class="page-item"><a class="page-link" href="#">12</a></li>
-								<li class="page-item">
-									<a class="page-link" href="#">&gt;</a>
+								<li class="page-item"><a class="page-link" href="#">&gt;</a>
 								</li>
 							</ul>
 						</nav>
@@ -462,7 +565,7 @@
 	</main>
 	<!-- **************** MAIN CONTENT END **************** -->
 	<!-- footerScript -->
-	<%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
+	<%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 
 </body>
 

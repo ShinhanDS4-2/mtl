@@ -22,8 +22,7 @@
 			<ul class="navbar-nav flex-column" id="navbar-sidebar">
 
 				<!-- Menu item -->
-				<li class="nav-item"><a href="a2-admin-dashboard.html"
-					class="nav-link">홈</a></li>
+				<li class="nav-item"><a href="/mtl/admin/dashboard" class="nav-link">홈</a></li>
 
 				<!-- Menu item -->
 				<li class="nav-item"><a class="nav-link"
@@ -32,29 +31,28 @@
 					<ul class="nav collapse flex-column" id="collapsemember"
 						data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"><a class="nav-link "
-							href="a2-admin-member-memberlist.html">사용자 관리</a></li>
+							href="/mtl/admin/userlist">사용자 관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-member-memberdetail.html">사용자 상세</a></li>
+							href="/mtl/admin/userdetail">사용자 상세</a></li>
 						<li class="nav-item"><a class="nav-link "
-							href="a2-admin-member-partnerlist.html">판매자 관리</a></li>
+							href="/mtl/admin/partnerlist">판매자 관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-member-partnerdetail.html">판매자 상세</a></li>
+							href="/mtl/admin/partnerdetail">판매자 상세</a></li>
 					</ul></li>
 
 				<!-- Menu item -->
 				<li class="nav-item"><a class="nav-link"
-					data-bs-toggle="collapse" href="#collapsehotel" role="button"
-					aria-expanded="false" aria-controls="collapsehotel"> 숙소 관리 </a> <!-- Submenu -->
+					data-bs-toggle="collapse" href="#collapsehotel" role="button" aria-expanded="false" aria-controls="collapsehotel"> 숙소 관리 </a> <!-- Submenu -->
 					<ul class="nav collapse flex-column" id="collapsehotel"
 						data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"><a class="nav-link "
-							href="a2-admin-hotel-hotellist.html">숙소 관리</a></li>
+							href="/mtl/admin/hotellist">숙소 관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-hotel-hotedetail.html">숙소 상세</a></li>
+							href="/mtl/admin/hotedetail">숙소 상세</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-hotel-bookinglist.html">예약 관리</a></li>
+							href="/mtl/admin/bookinglist">예약 관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-hotel-inquirylist.html">문의 관리</a></li>
+							href="/mtl/admin/question">문의 관리</a></li>
 					</ul></li>
 
 				<!-- Menu item -->
@@ -64,7 +62,7 @@
 					<ul class="nav collapse flex-column" id="collapsepayment"
 						data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-payout-list.html">정산 내역</a></li>
+							href="/mtl/admin/payoutlist">정산 내역</a></li>
 					</ul></li>
 
 				<!-- Menu item -->
@@ -74,11 +72,9 @@
 					<ul class="nav collapse flex-column" id="collapsetravel"
 						data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-travel-destination-add.html">여행지 등록</a></li>
+							href="/mtl/admin/locationlist">여행지 관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-travel-destination-list.html">여행지 관리</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-travel-destination-detail.html">여행지 상세</a></li>
+							href="/mtl/admin/locationdetail">여행지 상세</a></li>
 					</ul></li>
 
 				<!-- Menu item -->
@@ -88,13 +84,13 @@
 					<ul class="nav collapse flex-column" id="customerInquiry"
 						data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-guest-inquires.html">1:1 문의</a></li>
+							href="/mtl/admin/question2">1:1 문의</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-guest-inquires-details.html">1:1 문의 답변</a></li>
+							href="/mtl/admin/questionreply">1:1 문의 답변</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-guest-qna.html">자주 묻는 질문</a></li>
+							href="/mtl/admin/qna">자주 묻는 질문</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="a2-admin-guest-notice.html">공지사항</a></li>
+							href="/mtl/admin/notice">공지사항</a></li>
 					</ul></li>
 
 			</ul>
