@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.user.location.LocationMapper">
+
+	<!-- 지역 별 여행지 리스트 -->
+	<select id="getLocationList" parameterType="HashMap">
+		SELECT
+			  idx AS location_idx
+			, name
+			, area
+			, address_si
+			, address_dong
+		FROM 
+			LOCATION
+		<where>
+			<if test="area != null and area != ''">
+				AND area = #{area}
+			</if>
+			<if test="type != null and type == ''">
+				AND type = #{type}
+			</if>
+		</where>
+		ORDER BY create_date DESC, name
+		<if test="limit != null and offset != null">
+			LIMIT ${limit} OFFSET ${offset}
+		</if>
+	</select>
+	
+	<!-- 지역 별 여행지 썸네일 사진 -->
+	<select id="getLocationImage" parameterType="HashMap">
+		SELECT 
+			  idx AS image_idx
+			, origin_filename
+			, url
+		FROM
+			IMAGE
+		WHERE
+			type = #{location_type}
+		AND
+			mapping_idx = #{location_idx}
+		AND 
+			thumbnail_yn = 'Y'
+	</select>
+	
+	<!-- 지역 별 여행지 키워드 리스트 -->
+	<select id="getLocationKeywordList" parameterType="HashMap">
+		SELECT
+			  k.idx AS keyword_idx
+			, k.name
+		FROM
+			KEYWORD k
+		JOIN
+			LOCATION_KEYWORD lk
+		ON lk.keyword_idx = k.idx
+		WHERE 
+			lk.location_idx = #{location_idx}
+		ORDER BY k.create_date DESC
+	</select>
+</mapper>

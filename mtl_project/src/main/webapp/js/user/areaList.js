@@ -3,6 +3,7 @@ const areaList = (function() {
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
+		_event.getAttractionList();
 	};
 
 	// 이벤트 초기화 
@@ -43,6 +44,23 @@ const areaList = (function() {
 			let locationIdx = evo.attr("data-location-idx");
 			location.href = "/mtl/location/detail?idx=" + locationIdx;
 		},
+	};
+	
+	// 리스트
+	let _list = {
+		getAttractionList: function() {
+			
+
+			let url = "/user/location/list";
+			
+			let data = {
+				area
+			};
+			
+			comm.send(url, data, "POST", function(resp) {
+			
+			});
+		}
 	};
 	
 	return {
