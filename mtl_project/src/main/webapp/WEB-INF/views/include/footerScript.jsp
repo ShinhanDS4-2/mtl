@@ -21,6 +21,8 @@
 
 <!-- common JS -->
 <script src="js/util/common.js"></script>
+<!-- paging -->
+<script src="js/util/page.js"></script>
 
 <!-- header JS -->
 <script src="js/include/header.js"></script>
