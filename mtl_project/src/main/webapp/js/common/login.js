@@ -12,10 +12,13 @@ const login = (function() {
 			_eventAction(e);
 		});
 		
-		// 폼 제출 이벤트 추가
-		$("#loginForm").on("submit", function (e) {
-            _handleLogin(e);
-        });
+		// 엔터키 감지 이벤트
+		$(document).on("keyup", function(e) {
+        	if (e.key === "Enter") {
+            	_event.handleLogin();
+        	}
+    	});
+	
 	};
 	
 	// 이벤트 분기
@@ -40,30 +43,26 @@ const login = (function() {
 	// 이벤트
 	let _event = {
 		handleLogin: function() {
+			let url = "";
+
 			let formData = {
 	        	email: $("#email").val(),
 	            password: $("#pw").val(),
 	        };
 	
-	        $.ajax({
-	            url: "/mtl/api/user/login",
-	            method: "POST",
-	            data: formData,
-	            success: function (response) {
-	            	let code = response.body.code;
-	                if (code == 200) {
-	                    // 로그인 성공 시 메인 페이지로 이동
-	                    location.href = "/mtl/";
-	                } else {
-	                    // 실패 메시지 표시
-	                    alert("로그인에 실패했습니다. 다시 시도해주세요.");
-	                }
-	            },
-	            error: function (error) {
-	                console.error("Login error:", error);
-	                alert("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
-	            }
-	        });
+			comm.send(url, formData, "POST", function(response) {
+            	let code = response.body.code;
+                if (code == 200) {
+                    // 로그인 성공 시 메인 페이지로 이동
+                    location.href = "/mtl/";
+                } else {
+                    // 실패 메시지 표시
+                    alert("로그인에 실패했습니다. 다시 시도해주세요.");
+                }
+			}, function(error) {
+                console.error("Login error:", error);
+                alert("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
+			});
 		},
 		
 		
