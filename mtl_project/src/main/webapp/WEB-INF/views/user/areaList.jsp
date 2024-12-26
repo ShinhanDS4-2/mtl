@@ -19,7 +19,17 @@
 		<div class="row g-3 place-center">
 			<div class="col-2"></div>
 			<div class="col-8 row">
-				<div class="col-1"></div>
+				<div class="col-2">
+					<div class="card bg-transparent text-center p-1 h-100 area-icon">
+						<!-- Image -->
+						<img src="assets/images/icon/서울.jpg" class="rounded-circle" alt="">
+	
+						<div class="card-body p-0 pt-3">
+							<h5 class="card-title"><a href="#" class="stretched-link">전체</a></h5>
+							<span>All</span>
+						</div>
+					</div>
+				</div>
 				<div class="col-2">
 					<div class="card bg-transparent text-center p-1 h-100 area-icon">
 						<!-- Image -->
@@ -75,7 +85,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-1"></div>
 			</div>
 			<div class="col-2"></div>
 		</div> <!-- Row END -->
@@ -280,8 +289,10 @@
 		
 							<!-- Card footer START-->
 							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div>
