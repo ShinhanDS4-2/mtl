@@ -96,3 +96,7 @@
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
+
+.text-align-last {
+	text-align-last: justify;
+}
