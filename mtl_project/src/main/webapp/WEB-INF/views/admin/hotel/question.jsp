@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<title>[관리자] 숙소 관리 > 문의 관리</title>
+	<title>[관리자] 숙소 관리 > 숙소 문의 관리</title>
 
 	<!-- headerScript -->
 	<%@ include file="/WEB-INF/views/include/headerScript.jsp" %>

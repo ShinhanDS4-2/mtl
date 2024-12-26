@@ -9,20 +9,15 @@
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
 </head>
 <body>
-
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
-
 		<!-- Sidebar -->
 		<%@ include file="/WEB-INF/views/include/partnerSidebar.jsp"%>
-
-
 		<!-- Page content START -->
 		<div class="page-content">
 
 			<!-- Topbar -->
 			<%@ include file="/WEB-INF/views/include/partnerTopbar.jsp"%>
-
 
 			<!-- Page main content START -->
 			<div class="page-content-wrapper p-xxl-4">
@@ -34,9 +29,8 @@
 						<span>날짜별 정산 금액을 확인할 수 있습니다.</span>
 					</div>
 				</div>
-
 				<!-- 정산 정보 card START -->
-				<div class="col-md-12 col-xxl-12">
+				<div class="col-md-12 col-xxl-12 mb-4">
 					<div class="card shadow">
 						<!-- Card header -->
 						<div class="card-header border-bottom">
@@ -81,7 +75,7 @@
 				<!-- 정산 정보 card END -->
 
 				<!-- 검색 필터 설정 START -->
-				<div class="card shadow mt-4">
+				<div class="card shadow mb-4">
 					<!-- Card header -->
 					<div class="card-header border-bottom">
 						<h5 class="card-header-title">검색 필터</h5>
@@ -180,8 +174,93 @@
 					<!-- 검색 필터 설정 END -->
 				</div>
 
+				<!-- 정산 상세 내역 Modal START -->
+				<div class="modal fade" id="payoutDetailModal" tabindex="-1"
+					aria-labelledby="payoutDetailModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg modal-dialog-centered">
+						<div class="modal-content">
+							<!-- 모달 헤더 -->
+							<div class="modal-header">
+								<h5 class="modal-title fw-bold" id="payoutDetailModalLabel">정산
+									상세 내역</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<!-- 모달 본문 -->
+							<div class="modal-body">
+								<!-- 정산일 -->
+								<h6 class="fw-bold">정산일</h6>
+								<div class="mb-3 border p-3">
+									<p class="mb-0">2024.12.09 (월)</p>
+								</div>
+
+								<!-- 정산 내역 -->
+								<h6 class="fw-bold">정산 내역</h6>
+								<div class="table-responsive">
+									<table class="table border">
+										<thead class="table-light">
+											<tr>
+												<th>예약번호</th>
+												<th>객실 타입</th>
+												<th>판매금액</th>
+												<th>정산금액</th>
+												<th>정산여부</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>240123</td>
+												<td>프리미엄 트윈</td>
+												<td>55,000원</td>
+												<td>45,000원</td>
+												<td>정산완료</td>
+											</tr>
+											<tr>
+												<td>242255</td>
+												<td>스탠다드</td>
+												<td>85,000원</td>
+												<td>75,000원</td>
+												<td>정산완료</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<!-- 모달 푸터 -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary">출력</button>
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">닫기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 정산 상세 내역 Modal END -->
+
+
+
+				<!-- 정산 내역 List 상단 Tab -->
+				<div
+					class="row g-4 justify-content-between align-items-center mb-2 mt-2">
+					<div class="col-2">
+						<h6 class="mb-1">총 101개</h6>
+					</div>
+					<div class="col-1">
+						<form>
+							<select class="form-select js-choice"
+								aria-label=".form-select-sm">
+								<option value="">10개</option>
+								<option>20개</option>
+								<option>50개</option>
+								<option>100개</option>
+							</select>
+						</form>
+					</div>
+				</div>
+				<!-- 정산 내역 List START -->
 				<!-- 정산 내역 START -->
-				<div class="card shadow mt-5">
+				<div class="card shadow">
 					<!-- Card header -->
 					<div
 						class="card-header border-bottom d-sm-flex justify-content-sm-between align-items-sm-center">
@@ -191,11 +270,9 @@
 							<h5 class="card-title mb-1">정산 내역</h5>
 							<span>정산일 기준 2024.12.08(일) ~ 2024.12.14(토)</span>
 						</div>
-						<div class="mb-sm-0 d-flex justify-content-center">
-							<a href="#" class="btn btn-light btn-round mb-0"><i
-								class="bi bi-cloud-download"></i></a>
-						</div>
-						<!--중앙 정렬, 화면 크기에 맞게 반응형 디자인 적용-->
+						<a href="#" class="btn btn-dark-soft mb-0 border-0"> <i
+							class="fa-solid fa-download"></i></a>
+
 					</div>
 
 					<!-- Card body START -->
@@ -218,9 +295,6 @@
 								<div class="col">
 									<h6 class="mb-0">정산 완료</h6>
 								</div>
-								<div class="col">
-									<h6 class="mb-0">상세보기</h6>
-								</div>
 							</div>
 						</div>
 
@@ -231,7 +305,9 @@
 							<div class="col">
 								<small class="d-block d-sm-none">정산일</small>
 								<!-- 작은 화면일때만 보이는 텍스트-->
-								<h6 class="fw-light mb-0">2024.12.09(월)</h6>
+								<h6 class="ms-1 mb-0 fw-normal">2024.12.09(월)</h6>
+								<a role="button" class="mb-0 fw-normal ms-1"
+									data-bs-toggle="modal" data-bs-target="#payoutDetailModal">상세보기</a>
 							</div>
 
 							<!-- Data item -->
@@ -294,11 +370,6 @@
 									</ul>
 								</div>
 							</div>
-
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="badge bg-success bg-opacity-10 text-success">상세보기</div>
-							</div>
 						</div>
 
 						<!-- Table data (두번째 정산내역 상세 데이터)-->
@@ -307,7 +378,10 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">정산일</small>
-								<h6 class="fw-light mb-0">2024.12.16(월)</h6>
+								<!-- 작은 화면일때만 보이는 텍스트-->
+								<h6 class="ms-1 mb-0 fw-normal">2024.12.09(월)</h6>
+								<a role="button" class="mb-0 fw-normal ms-1"
+									data-bs-toggle="modal" data-bs-target="#payoutDetailModal">상세보기</a>
 							</div>
 
 							<!-- Data item -->
@@ -369,10 +443,6 @@
 								</div>
 							</div>
 
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="badge bg-orange bg-opacity-10 text-orange">상세보기</div>
-							</div>
 						</div>
 
 						<!-- Table data (세번째 정산내역 상세 데이터)-->
@@ -381,7 +451,10 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">정산일</small>
-								<h6 class="fw-light mb-0">2024.12.16(월)</h6>
+								<!-- 작은 화면일때만 보이는 텍스트-->
+								<h6 class="ms-1 mb-0 fw-normal">2024.12.09(월)</h6>
+								<a role="button" class="mb-0 fw-normal ms-1"
+									data-bs-toggle="modal" data-bs-target="#payoutDetailModal">상세보기</a>
 							</div>
 
 							<!-- Data item -->
@@ -442,83 +515,31 @@
 									</ul>
 								</div>
 							</div>
-
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="badge bg-light bg-opacity-10 text-success">상세보기</div>
-							</div>
 						</div>
-
-						<!-- Table data (4번째 정산내역 상세 데이터)-->
-						<div
-							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">정산일</small>
-								<div class="badge bg-primary bg-opacity-10 text-success">상세보기</div>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">총 판매 금액</small>
-								<div class="badge bg-success">상세보기</div>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">총 정산 금액</small>
-								<div class="badge bg-danger">상세보기</div>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">화면작게</small>
-								<div class="badge bg-danger bg-opacity-10 text-danger">상세보기</div>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">했을때만</small>
-								<div class="badge bg-warning bg-opacity-10 text-warning">상세보기</div>
-							</div>
-
-							<div class="col">
-								<small class="d-block d-sm-none">보이는글자</small>
-								<div class="col">
-									<a href="#" class="btn btn-light btn-round mb-0"><i
-										class="bi bi-cloud-download"></i></a>
-								</div>
-							</div>
-						</div>
-
 					</div>
 					<!-- Card body END -->
 
 					<!-- Card footer START -->
 					<div class="card-footer pt-0">
-						<!-- Pagination and content -->
-						<div
-							class="d-sm-flex justify-content-sm-between align-items-sm-center">
-							<!-- Content -->
-							<p class="mb-sm-0 text-center text-sm-start">20개 항목 중 4개 표시</p>
-							<!-- Pagination (페이지 전환 하단 바)-->
-							<nav class="mb-sm-0 d-flex justify-content-center"
-								aria-label="navigation">
-								<ul
-									class="pagination pagination-sm pagination-primary-soft mb-0">
-									<li class="page-item disabled"><a class="page-link"
-										href="#" tabindex="-1">&lt;</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item active"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item disabled"><a class="page-link"
-										href="#">..</a></li>
-									<li class="page-item"><a class="page-link" href="#">15</a></li>
-									<li class="page-item"><a class="page-link" href="#">&gt;</a>
-									</li>
-								</ul>
-							</nav>
-						</div>
+						<!-- Pagination (페이지 전환 하단 바)-->
+						<nav class="d-flex justify-content-center">
+							<ul class="pagination pagination-sm pagination-primary-soft mb-0">
+								<li class="page-item disabled">
+									<!-- disabled: 버튼 비활성화--> <a class="page-link" href="#"
+									tabindex="-1">&lt;</a>
+								</li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item active"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item disabled"><a class="page-link"
+									href="#">..</a></li>
+								<li class="page-item"><a class="page-link" href="#">11</a></li>
+								<li class="page-item"><a class="page-link" href="#">12</a></li>
+								<li class="page-item"><a class="page-link" href="#">&gt;</a>
+								</li>
+							</ul>
+						</nav>
+
 					</div>
 					<!-- Card footer END -->
 				</div>

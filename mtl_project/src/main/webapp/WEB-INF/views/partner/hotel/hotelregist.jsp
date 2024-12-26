@@ -80,35 +80,37 @@
 											class="form-control" value="15:00"
 											placeholder="Enter your mobile number">
 									</div>
-									<div class="mb-3">
-										<label class="form-label">체크아웃 시간</label> <input type="text"
-											class="form-control" value="11:00"
-											placeholder="Enter your mobile number">
-									</div>
 								</div>
 								<!-- 왼쪽 카드 END -->
 
 								<!-- 오른쪽 카드 START -->
 								<div class="card-body col-6">
-									<div class="mb-3">
-										<label class="form-label">숙소명</label> <input type="text"
-											class="form-control" value="00호텔" placeholder="Name">
+									<!-- 검색어 드롭다운 -->
+									<div class="mb-3 col-3">
+										<label class="h6 fw-normal mb-0">숙소 유형</label>
+										<div
+											class="form-border form-control-transparent form-fs-lg mt-2">
+											<select class="form-select js-choice">
+												<option>호텔</option>
+												<option>모텔</option>
+												<option>리조트</option>
+												<option>펜션</option>
+												<option>게스트하우스</option>
+											</select>
+										</div>
 									</div>
+
 									<div class="mb-3">
-										<label class="form-label">숙소 주소</label> <input type="text"
+										<label class="form-label">숙소 대표번호</label> <input type="text"
 											class="form-control" value="222 555 666"
 											placeholder="Enter your mobile number">
 									</div>
 									<div class="mb-3">
-										<label class="form-label">체크인 시간</label> <input type="text"
+										<label class="form-label">체크아웃 시간</label> <input type="text"
 											class="form-control" value="15:00"
 											placeholder="Enter your mobile number">
 									</div>
-									<div class="mb-3">
-										<label class="form-label">체크아웃 시간</label> <input type="text"
-											class="form-control" value="11:00"
-											placeholder="Enter your mobile number">
-									</div>
+
 									<!-- button -->
 									<div class="d-flex justify-content-end mt-4">
 										<a href="#" class="btn btn-primary-soft border-0 me-2">초기화</a>
@@ -269,14 +271,70 @@
 						<!-- 상단 네비게이션 바를 클릭하면 탭에 따라 콘텐츠가 변경되는 부분-->
 						<div class="card border mb-4">
 							<!-- Title -->
+							<div class="card-header border-bottom">
+								<h5 class="card-header-title">숙소 한줄 소개</h5>
+							</div>
+
+							<div class="card-body">
+								<!-- items -->
+								<div
+									class="d-flex justify-content-between align-items-center mb-3 border p-3 bg-light">
+									<div>
+										<p>전객실 오션뷰!!</p>
+									</div>
+									<div>
+										<button
+											class="btn btn-sm btn-outline-secondary btn-secondary-soft me-1">수정</button>
+										<button class="btn btn-sm btn-outline-danger btn-danger-soft">삭제</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card border mb-4">
+							<!-- Title -->
 							<div
 								class="card-header border-bottom d-sm-flex justify-content-between align-items-center">
 								<h5 class="card-header-title">이용 안내</h5>
-								<div class="d-grid">
-									<a href="#" class="btn btn-primary-soft mb-0"><i
-										class="bi bi-plus-lg fa-fw"></i>추가</a>
+								<button type="button"
+									class="btn btn-sm btn btn-primary-soft mb-0"
+									data-bs-toggle="modal" data-bs-target="#addGuideModal">
+									<i class="bi bi-plus-lg fa-fw"></i>이용안내 추가
+								</button>
+							</div>
+
+							<!-- 이용안내 추가 모달창 START -->
+							<div id="addGuideModal" class="modal" tabindex="-1" role="dialog">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<!-- 제일 큰 모달 -->
+									<div class="modal-content">
+										<!-- 모달 head -->
+										<div class="modal-header">
+											<h5 class="modal-title">이용안내 추가</h5>
+											<button type="button" class="btn-close"
+												data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<!-- 모달 body -->
+										<div class="modal-body m-3">
+											<h6 class="fw-bold">제목</h6>
+											<input type="text" class="form-control" id="questionTitle"
+												placeholder="제목을 입력하세요">
+
+											<h6 class="fw-bold mt-4">내용</h6>
+											<textarea class="form-control" id="questionContent" rows="6"
+												placeholder="내용을 입력하세요"></textarea>
+
+										</div>
+
+										<!-- 확인/취소 button -->
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-bs-dismiss="modal">취소</button>
+											<button type="button" class="btn btn-primary">확인</button>
+										</div>
+									</div>
 								</div>
 							</div>
+							<!-- 이용안내 추가 모달창 END -->
 
 							<div class="card-body">
 								<!-- items -->
@@ -353,953 +411,161 @@
 					<!-- #tab3 / 객실 타입 Tap Start -->
 					<div class="tab-pane fade" id="tab3">
 						<div class="col-md-12 col-xxl-12">
-							<div class="card shadow">
-								<!-- Card header START -->
-								<div class="card-header">
-									<!-- grid/list 버튼 START-->
-									<div class="d-flex justify-content-end mt-2 mt-sm-0">
-										<ul class="nav nav-pills nav-pills-dark" id="room-pills-tab"
-											role="tablist">
-											<!-- Tab item -->
-											<li class="nav-item">
-												<button class="nav-link rounded-start rounded-0 active"
-													id="grid-tab" data-bs-toggle="tab"
-													data-bs-target="#grid-tab-pane" type="button" role="tab"
-													aria-controls="grid-tab-pane" aria-selected="true">
-													<i class="bi fa-fw bi-grid-fill"></i>
-												</button>
-											</li>
-											<!-- Tab item -->
-											<li class="nav-item">
-												<button class="nav-link rounded-end rounded-0" id="list-tab"
-													data-bs-toggle="tab" data-bs-target="#list-tab-pane"
-													type="button" role="tab" aria-controls="list-tab-pane"
-													aria-selected="false">
-													<i class="bi fa-fw bi-list-ul"></i>
-												</button>
-											</li>
-										</ul>
-									</div>
-									<!-- grid/list 버튼 END -->
-								</div>
-								<!-- Card header END-->
+							<div class="card border">
 
 								<!-- Card body -->
 								<div class="card-body">
-									<!-- Tab content START -->
-									<div class="tab-content" id="myTabContent">
-										<!-- 그리드 모드로 객실 목록 조회 START -->
-										<div class="tab-pane fade show active" id="grid-tab-pane">
-											<!-- Rooms START -->
-											<div
-												class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xxl-5 g-4">
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/02.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.5
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction1"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction1">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
 
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Deluxe Pool View
-																	with Breakfast</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>Ground
-																	Floor: G5</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>Double Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
+									<!-- Rooms START -->
+									<div
+										class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xxl-5 g-4">
 
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$1500</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
+										<!-- Room item -->
+										<div class="col">
+											<div class="card shadow h-100">
+												<!-- Overlay item -->
+												<div class="position-relative">
+													<!-- Image -->
+													<img src="assets/images/category/hotel/4by3/03.jpg"
+														class="card-img-top" alt="Card image">
+													<!-- Overlay -->
+													<div class="card-img-overlay d-flex flex-column p-3">
+														<!-- Card overlay top -->
+														<div
+															class="d-flex justify-content-between align-items-center">
 														</div>
 													</div>
 												</div>
 
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/03.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.0
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction2"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction2">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Premium Room
-																	With Balcony</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>First
-																	Floor: F3</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
-
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$750</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
-														</div>
-													</div>
-												</div>
-
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/04.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.2
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction3"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction3">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Deluxe Pool View</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>Ground
-																	Floor: G3</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>Family Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
-
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$895</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
-														</div>
-													</div>
-												</div>
-
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/05.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.0
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction4"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction4">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Superior Room</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>First
-																	Floor: F5</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>King Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
-
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$750</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
-														</div>
-													</div>
-												</div>
-
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/06.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.0
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction5"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction5">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Studio Suite
-																	King</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>Fifth
-																	Floor: Ft3</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>Double Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
-
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$1458</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
-														</div>
-													</div>
-												</div>
-
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/08.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.6
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction6"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction6">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Rock Family
-																	Suite</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>Second
-																	Floor: S4</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
-
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$1020</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
-														</div>
-													</div>
-												</div>
-
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/09.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.6
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction7"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction7">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Luxury Room with
-																	Balcony</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>Third
-																	Floor: T2</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>Family Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
-
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$847</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
-														</div>
-													</div>
-												</div>
-
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/01.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>3.9
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction8"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction8">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Premium Room
-																	With Balcony</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>Third
-																	Floor: T4</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>Family Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
-
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$995</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
-														</div>
-													</div>
-												</div>
-
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/11.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.8
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction9"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction9">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Deluxe Room Twin
-																	Bed With Balcony</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>Fifth
-																	Floor: Ft1</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>Double Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
-
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$1650</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
-														</div>
-													</div>
-												</div>
-
-												<!-- Room item -->
-												<div class="col">
-													<div class="card shadow h-100">
-														<!-- Overlay item -->
-														<div class="position-relative">
-															<!-- Image -->
-															<img src="assets/images/category/hotel/4by3/12.jpg"
-																class="card-img-top" alt="Card image">
-															<!-- Overlay -->
-															<div class="card-img-overlay d-flex flex-column p-3">
-																<!-- Card overlay top -->
-																<div
-																	class="d-flex justify-content-between align-items-center">
-																	<div class="badge text-bg-dark">
-																		<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.6
-																	</div>
-																	<!-- Buttons -->
-																	<div class="list-inline-item dropdown">
-																		<!-- Dropdown button -->
-																		<a href="#" class="btn btn-sm btn-round btn-light"
-																			role="button" id="dropdownAction10"
-																			data-bs-toggle="dropdown" aria-expanded="false">
-																			<i class="bi bi-three-dots-vertical"></i>
-																		</a>
-																		<!-- dropdown items -->
-																		<ul
-																			class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-																			aria-labelledby="dropdownAction10">
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-info-circle me-2"></i>Report</a></li>
-																			<li><a class="dropdown-item" href="#"><i
-																					class="bi bi-slash-circle me-2"></i>Disable</a></li>
-																		</ul>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body px-3">
-															<!-- Title -->
-															<h5 class="card-title mb-1">
-																<a href="admin-booking-detail.html">Rock Family
-																	Suite</a>
-															</h5>
-															<ul
-																class="list-group list-group-borderless small mt-2 mb-0">
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-building fa-fw me-2"></i>Second
-																	Floor: S4</li>
-																<li class="list-group-item pb-0"><i
-																	class="fa-solid fa-bed fa-fw me-2"></i>King Bed</li>
-															</ul>
-														</div>
-														<!-- Card body END -->
-
-														<!-- Card footer START-->
-														<div class="card-footer pt-0">
-															<!-- Price -->
-															<div class="hstack gap-2 mb-2">
-																<h6 class="fw-normal mb-0">$120</h6>
-																<small>/per person</small>
-															</div>
-															<a href="admin-booking-detail.html"
-																class="btn btn-sm btn-primary-soft mb-0 w-100">View
-																detail</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Rooms END -->
-										</div>
-										<!-- 그리드 모드로 객실 타입조회 END  -->
-
-										<!-- 리스트 모드로 객실 타입조회 START -->
-										<div class="tab-pane fade" id="list-tab-pane">
-											<!-- Table head -->
-											<div class="bg-light rounded p-3 d-none d-xxl-block">
-												<div class="row row-cols-6 g-4">
-													<div class="col">
-														<h6 class="mb-0">Room Name</h6>
-													</div>
-													<div class="col">
-														<h6 class="mb-0">Bed Type</h6>
-													</div>
-													<div class="col">
-														<h6 class="mb-0">Room Floor</h6>
-													</div>
-													<div class="col">
-														<h6 class="mb-0">Amount</h6>
-													</div>
-													<div class="col">
-														<h6 class="mb-0">Rating</h6>
-													</div>
-													<div class="col">
-														<h6 class="mb-0">Action</h6>
-													</div>
-												</div>
-											</div>
-
-											<!-- Table data -->
-											<div
-												class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Room name:</small>
-													<div class="d-flex align-items-center">
-														<!-- Image -->
-														<div class="w-80px flex-shrink-0">
-															<img src="assets/images/category/hotel/4by3/01.jpg"
-																class="rounded" alt="">
-														</div>
-														<!-- Title -->
-														<h6 class="mb-0 ms-2">Deluxe Pool View with Breakfast</h6>
-													</div>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Bed Type:</small>
-													<h6 class="mb-0 fw-normal">King Size</h6>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Room Floor:</small>
-													<h6 class="mb-0 fw-normal">Ground Floor: G5</h6>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Amount:</small>
-													<h6 class="text-success mb-0">$1025</h6>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Payment:</small>
-													<ul class="list-inline mb-0">
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
+												<!-- Card body START -->
+												<div class="card-body px-3">
+													<!-- Title -->
+													<h5 class="card-title mb-1">
+														<a href="admin-booking-detail.html">프리미엄 스탠다드</a>
+													</h5>
+													<ul
+														class="list-group list-group-borderless small mt-2 mb-0">
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-building fa-fw me-2"></i>First Floor:
+															F3</li>
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
 													</ul>
 												</div>
+												<!-- Card body END -->
 
-												<!-- Data item -->
-												<div class="col">
-													<a href="#" class="btn btn-sm btn-light mb-0">View</a>
-												</div>
-											</div>
-
-											<!-- Table data -->
-											<div
-												class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Room name:</small>
-													<div class="d-flex align-items-center">
-														<!-- Image -->
-														<div class="w-80px flex-shrink-0">
-															<img src="assets/images/category/hotel/4by3/02.jpg"
-																class="rounded" alt="">
-														</div>
-														<!-- Title -->
-														<h6 class="mb-0 ms-2">Premium Room With Balcony</h6>
+												<!-- Card footer START-->
+												<div class="card-footer pt-0">
+													<!-- Price -->
+													<div class="hstack gap-2 mb-2">
+														<h6 class="fw-normal mb-0">25,000원</h6>
 													</div>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Bed Type:</small>
-													<h6 class="mb-0 fw-normal">Single Bed</h6>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Room Floor:</small>
-													<h6 class="mb-0 fw-normal">First Floor: F3</h6>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Amount:</small>
-													<h6 class="text-success mb-0">$750</h6>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Payment:</small>
-													<ul class="list-inline mb-0">
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-													</ul>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<a href="#" class="btn btn-sm btn-light mb-0">View</a>
-												</div>
-											</div>
-
-											<!-- Table data -->
-											<div
-												class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Room name:</small>
-													<div class="d-flex align-items-center">
-														<!-- Image -->
-														<div class="w-80px flex-shrink-0">
-															<img src="assets/images/category/hotel/4by3/03.jpg"
-																class="rounded" alt="">
-														</div>
-														<!-- Title -->
-														<h6 class="mb-0 ms-2">Deluxe Pool View</h6>
+													<div class="hstack gap-2 mb-2">
+														<a role="button"
+																	class="btn btn-sm btn-primary-soft mb-0 w-100">상세보기</a>
 													</div>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Bed Type:</small>
-													<h6 class="mb-0 fw-normal">Family Bed</h6>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Room Floor:</small>
-													<h6 class="mb-0 fw-normal">Ground Floor: G3</h6>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Amount:</small>
-													<h6 class="text-success mb-0">$895</h6>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<small class="d-block d-xxl-none">Payment:</small>
-													<ul class="list-inline mb-0">
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-														<li class="list-inline-item me-0 small"><i
-															class="fas fa-star text-warning"></i></li>
-													</ul>
-												</div>
-
-												<!-- Data item -->
-												<div class="col">
-													<a href="#" class="btn btn-sm btn-light mb-0">View</a>
 												</div>
 											</div>
 										</div>
-										<!-- 리스트 모드로 객실 타입조회 END -->
 
+										<!-- Room item -->
+										<div class="col">
+											<div class="card shadow h-100">
+												<!-- Overlay item -->
+												<div class="position-relative">
+													<!-- Image -->
+													<img src="assets/images/category/hotel/4by3/03.jpg"
+														class="card-img-top" alt="Card image">
+													<!-- Overlay -->
+													<div class="card-img-overlay d-flex flex-column p-3">
+														<!-- Card overlay top -->
+														<div
+															class="d-flex justify-content-between align-items-center">
+														</div>
+													</div>
+												</div>
+
+												<!-- Card body START -->
+												<div class="card-body px-3">
+													<!-- Title -->
+													<h5 class="card-title mb-1">
+														<a href="admin-booking-detail.html">프리미엄 스탠다드</a>
+													</h5>
+													<ul
+														class="list-group list-group-borderless small mt-2 mb-0">
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-building fa-fw me-2"></i>First Floor:
+															F3</li>
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
+													</ul>
+												</div>
+												<!-- Card body END -->
+
+												<!-- Card footer START-->
+												<div class="card-footer pt-0">
+													<!-- Price -->
+													<div class="hstack gap-2 mb-2">
+														<h6 class="fw-normal mb-0">25,000원</h6>
+													</div>
+													<div class="hstack gap-2 mb-2">
+														<a role="button"
+																	class="btn btn-sm btn-primary-soft mb-0 w-100">상세보기</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Room item -->
+										<div class="col">
+											<div class="card shadow h-100">
+												<!-- Overlay item -->
+												<div class="position-relative">
+													<!-- Image -->
+													<img src="assets/images/category/hotel/4by3/03.jpg"
+														class="card-img-top" alt="Card image">
+													<!-- Overlay -->
+													<div class="card-img-overlay d-flex flex-column p-3">
+														<!-- Card overlay top -->
+														<div
+															class="d-flex justify-content-between align-items-center">
+														</div>
+													</div>
+												</div>
+
+												<!-- Card body START -->
+												<div class="card-body px-3">
+													<!-- Title -->
+													<h5 class="card-title mb-1">
+														<a href="admin-booking-detail.html">프리미엄 스탠다드</a>
+													</h5>
+													<ul
+														class="list-group list-group-borderless small mt-2 mb-0">
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-building fa-fw me-2"></i>First Floor:
+															F3</li>
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
+													</ul>
+												</div>
+												<!-- Card body END -->
+
+												<!-- Card footer START-->
+												<div class="card-footer pt-0">
+													<!-- Price -->
+													<div class="hstack gap-2 mb-2">
+														<h6 class="fw-normal mb-0">25,000원</h6>
+													</div>
+													<div class="hstack gap-2 mb-2">
+														<a role="button"
+																	class="btn btn-sm btn-primary-soft mb-0 w-100">상세보기</a>
+													</div>
+												</div>
+											</div>
+										</div>
 
 									</div>
-									<!-- Tab content END -->
+									<!-- Rooms END -->
+
 								</div>
 								<!-- Card body END-->
 							</div>

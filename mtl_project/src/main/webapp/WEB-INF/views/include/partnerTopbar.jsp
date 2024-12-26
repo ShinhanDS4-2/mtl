@@ -35,9 +35,9 @@
 
 				<!-- 프로필 드롭다운 START -->
 				<li class="nav-item ms-3 dropdown"><a
-					class="text-dark fw-bold p-1" href="#" id="profileDropdown"
+					class="text-dark fw-bold p-1" href="/mtl/partner/hotelregist" id="profileDropdown"
 					role="button" data-bs-auto-close="outside" data-bs-display="static"
-					data-bs-toggle="dropdown" aria-expanded="false"> 관리자 님 </a>
+					data-bs-toggle="dropdown" aria-expanded="false"> 시온 님 </a>
 					<ul
 						class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
 						aria-labelledby="profileDropdown">
@@ -46,7 +46,7 @@
 							<div class="d-flex align-items-center">
 
 								<div>
-									<a class="h6 mt-2 mt-sm-0" href="#">관리자 님</a>
+									<a class="h6 mt-2 mt-sm-0" href="/mtl/partner/hotelregist">00호텔</a>
 									<p class="small m-0">example@gmail.com</p>
 									<!-- 아이디 들어오는 곳 -->
 								</div>
@@ -57,12 +57,9 @@
 						<li>
 							<hr class="dropdown-divider">
 						</li>
-						
-						<li><a class="dropdown-item" href="#"><i
+						<li><a class="dropdown-item" href="/mtl/partner/mypage"><i
 								class="bi bi-heart fa-fw me-2"></i>마이페이지</a></li>
-						<li><a class="dropdown-item" href="#"><i
-								class="bi bi-gear fa-fw me-2"></i>설정</a></li>
-						<li><a class="dropdown-item" href="#"><i
+						<li><a class="dropdown-item" href="/mtl/partner/signin"><i
 								class="bi bi-power fa-fw me-2"></i>로그아웃</a></li>
 					</ul></li>
 				<!-- 프로필 드롭다운 END -->

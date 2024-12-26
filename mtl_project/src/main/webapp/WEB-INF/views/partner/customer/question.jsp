@@ -40,7 +40,7 @@
 				<div class="row g-4 align-items-center border-bottom">
 					<!-- Tabs -->
 					<div class="col-lg-6">
-						<ul class="mb-2 nav nav-pills-shadow nav-responsive">
+						<ul class="mb-2 nav nav-pills-primary-soft nav-responsive">
 							<li class="nav-item"><a class="nav-link mb-0 active"
 								data-bs-toggle="tab" href="#tab-1">전체</a></li>
 							<li class="nav-item"><a class="nav-link mb-0"
@@ -166,12 +166,12 @@
 								<h6 class="ms-1 mb-0 fw-normal">문의</h6>
 							</div>
 
-							<!-- Data item -->
+							<!-- 제목 클릭하면, 문의 상세조회 페이지로 넘어감 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>우하하</b>
-								</h6>
+								<a role="button" href="/mtl/partner/questionreply" class="ms-1 mb-0 fw-bold text-primary">
+									우하하
+								</a>
 							</div>
 
 							<!-- Data item -->
@@ -201,12 +201,12 @@
 								<h6 class="ms-1 mb-0 fw-normal">환불</h6>
 							</div>
 
-							<!-- Data item -->
+							<!-- 제목 클릭하면, 문의 상세조회 페이지로 넘어감 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>환불해주세요</b>
-								</h6>
+								<a role="button" href="/mtl/partner/questionreply" class="ms-1 mb-0 fw-bold text-primary">
+									환불해주세요
+								</a>
 							</div>
 
 							<!-- Data item -->
@@ -236,12 +236,12 @@
 								<h6 class="ms-1 mb-0 fw-normal">예약</h6>
 							</div>
 
-							<!-- Data item -->
+							<!-- 제목 클릭하면, 문의 상세조회 페이지로 넘어감 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>일정변경대나요????????</b>
-								</h6>
+								<a role="button" href="/mtl/partner/questionreply" class="ms-1 mb-0 fw-bold text-primary">
+									일정변경대나요?
+								</a>
 							</div>
 
 							<!-- Data item -->
@@ -271,12 +271,12 @@
 								<h6 class="ms-1 mb-0 fw-normal">환불</h6>
 							</div>
 
-							<!-- Data item -->
+							<!-- 제목 클릭하면, 문의 상세조회 페이지로 넘어감 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>제목adasdad</b>
-								</h6>
+								<a role="button" href="/mtl/partner/questionreply" class="ms-1 mb-0 fw-bold text-primary">
+									젬ㄱ제목제목
+								</a>
 							</div>
 
 							<!-- Data item -->
@@ -293,10 +293,7 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-lg-none">답변상태</small>
-								<div class="ms-1 col">
-									<a href="admin-guest-detail.html"
-										class="btn btn-sm btn-light mb-0">View</a>
-								</div>
+								<div class="ms-1 badge bg-danger bg-opacity-10 text-danger">대기중</div>
 							</div>
 						</div>
 

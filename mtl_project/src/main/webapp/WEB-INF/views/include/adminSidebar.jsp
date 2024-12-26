@@ -5,7 +5,7 @@
 <nav class="navbar sidebar navbar-expand-xl navbar-light">
 	<!-- Navbar brand for xl START (사이드바 로고) -->
 	<div class="d-flex align-items-center">
-		<a class="navbar-brand" href="index.html"> <img
+		<a class="navbar-brand" href="/mtl/admin/dashboard"> <img
 			class="light-mode-item navbar-brand-item"
 			src="assets/images/logo.svg" alt="logo"> <img
 			class="dark-mode-item navbar-brand-item"
@@ -91,11 +91,11 @@
 			<!-- Sidebar footer START -->
 			<div
 				class="d-flex align-items-center justify-content-between text-primary-hover mt-auto p-3">
-				<a class="h6 fw-light mb-0 text-body" href="sign-in.html"
+				<a class="h6 fw-light mb-0 text-body" href="/mtl/admin/signin"
 					data-bs-toggle="tooltip" data-bs-placement="top"
 					aria-label="Sign out"> <i
 					class="fa-solid fa-arrow-right-from-bracket"></i> Log out
-				</a> <a class="h6 mb-0 text-body" href="admin-settings.html"
+				</a> <a class="h6 mb-0 text-body" href="/mtl/admin/mypage"
 					data-bs-toggle="tooltip" data-bs-placement="top"
 					aria-label="Settings"> <i class="bi bi-gear-fill"></i>
 				</a>

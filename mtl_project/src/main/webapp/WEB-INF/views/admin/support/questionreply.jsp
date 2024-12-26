@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>[판매자] 고객관리 > 문의 상세 조회</title>
+<title>[관리자] 고객 문의 > 1:1문의 답변</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>

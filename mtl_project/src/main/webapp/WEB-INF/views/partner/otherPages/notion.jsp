@@ -2,9 +2,8 @@
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-<title>[관리자] 고객 문의 > 1:1문의</title>
+<title>[판매자] 공지사항</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
@@ -14,25 +13,25 @@
 
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
-		<!-- Sidebar -->
-		<%@ include file="/WEB-INF/views/include/adminSidebar.jsp"%>
 
+		<!-- Sidebar -->
+		<%@ include file="/WEB-INF/views/include/partnerSidebar.jsp"%>
 
 		<!-- Page content START -->
 		<div class="page-content">
 
 			<!-- Topbar -->
-			<%@ include file="/WEB-INF/views/include/adminTopbar.jsp"%>
+			<%@ include file="/WEB-INF/views/include/partnerTopbar.jsp"%>
 
 
-			<!-- Page main content START -->
+	<!-- Page main content START -->
 			<div class="page-content-wrapper p-xxl-4">
 
 				<!-- Title -->
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
-						<h1 class="h3 mb-2">1:1 문의</h1>
-						<span>예약 고객의 1:1 문의를 확인해주세요. </span>
+						<h1 class="h3 mb-2">파트너센터 공지사항</h1>
+						<span>파트너센터의 공지사항과 소식을 확인할 수 있습니다. </span>
 					</div>
 				</div>
 
@@ -44,16 +43,111 @@
 							<li class="nav-item"><a class="nav-link mb-0 active"
 								data-bs-toggle="tab" href="#tab-1">전체</a></li>
 							<li class="nav-item"><a class="nav-link mb-0"
-								data-bs-toggle="tab" href="#tab-2">문의</a></li>
+								data-bs-toggle="tab" href="#tab-2">운영</a></li>
 							<li class="nav-item"><a class="nav-link mb-0"
-								data-bs-toggle="tab" href="#tab-3">예약</a></li>
+								data-bs-toggle="tab" href="#tab-3">시스템</a></li>
 							<li class="nav-item"><a class="nav-link mb-0"
-								data-bs-toggle="tab" href="#tab-4">환불</a></li>
+								data-bs-toggle="tab" href="#tab-4">서비스</a></li>
 						</ul>
+					</div>
+					<!-- 새 질문 등록 버튼 클릭 시 모달창 표시 -->
+					<div class="col-lg-6 d-flex justify-content-end">
+						<button type="button" class="btn btn-primary-soft"
+							data-bs-toggle="modal" data-bs-target="#noticeRegistModal">
+							<i class="bi bi-plus-lg fa-fw"></i>공지사항 등록
+						</button>
 					</div>
 				</div>
 				<!-- 상단 navbar END -->
 
+				<!-- 공지사항 등록 모달창 START -->
+				<div id="noticeRegistModal" class="modal" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+						<!-- 제일 큰 모달 -->
+						<div class="modal-content">
+							<!-- 모달 head -->
+							<div class="modal-header">
+								<h5 class="modal-title">새 공지 등록</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<!-- 모달 body -->
+							<div class="modal-body m-3">
+								<h6 class="fw-bold">제목</h6>
+								<input type="text" class="form-control" id="questionTitle"
+									placeholder="제목을 입력하세요">
+
+								<h6 class="fw-bold mt-4">내용</h6>
+								<textarea class="form-control" id="questionContent" rows="15"
+									placeholder="내용을 입력하세요"></textarea>
+
+								<!-- 상태 드롭다운 -->
+								<div class="col-2 mt-4">
+									<form>
+										<select class="form-select js-choice"
+											aria-label=".form-select-sm">
+											<option>게시중</option>
+											<option>게시중단</option>
+										</select>
+									</form>
+								</div>
+							</div>
+
+							<!-- 확인/취소 button -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-primary">확인</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 공지사항 등록 모달창 END -->
+				
+				<!-- 공지사항 수정 모달창 START -->
+				<div id="noticeEditModal" class="modal" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+						<!-- 제일 큰 모달 -->
+						<div class="modal-content">
+							<!-- 모달 head -->
+							<div class="modal-header">
+								<h5 class="modal-title">공지사항 수정</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<!-- 모달 body -->
+							<div class="modal-body m-3">
+								<h6 class="fw-bold">제목</h6>
+								<input type="text" class="form-control" id="questionTitle"
+									placeholder="제목을 입력하세요">
+
+								<h6 class="fw-bold mt-4">내용</h6>
+								<textarea class="form-control" id="questionContent" rows="15"
+									placeholder="내용을 입력하세요"></textarea>
+
+								<!-- 상태 드롭다운 -->
+								<div class="col-2 mt-4">
+									<form>
+										<select class="form-select js-choice"
+											aria-label=".form-select-sm">
+											<option>게시중</option>
+											<option>게시중단</option>
+										</select>
+									</form>
+								</div>
+							</div>
+
+							<!-- 확인/취소 button -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-primary">수정하기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 공지사항 수정 모달창 END -->
+				
 				<!-- 검색 필터 START -->
 				<div class="card shadow border mt-4 mb-5">
 					<!-- Card header -->
@@ -104,22 +198,10 @@
 				<!-- 검색 필터 설정 END -->
 
 
-
 				<!-- 문의 내역 List 상단 Tab -->
 				<div class="row g-4 justify-content-between align-items-center mb-2">
 					<div class="col-2">
 						<h6 class="mb-1">총 101개</h6>
-					</div>
-					<div class="col-1">
-						<form>
-							<select class="form-select js-choice"
-								aria-label=".form-select-sm">
-								<option value="">10개</option>
-								<option>20개</option>
-								<option>50개</option>
-								<option>100개</option>
-							</select>
-						</form>
 					</div>
 				</div>
 				<!-- 문의 내역 List START -->
@@ -130,19 +212,19 @@
 						<div class="bg-light rounded p-3 d-none d-lg-block">
 							<div class="row row-cols-7 g-4">
 								<div class="col">
-									<h6 class="mb-0">분류</h6>
+									<h6 class="mb-0">카테고리</h6>
 								</div>
 								<div class="col">
 									<h6 class="mb-0">제목</h6>
 								</div>
 								<div class="col">
-									<h6 class="mb-0">작성자</h6>
+									<h6 class="mb-0"></h6>
 								</div>
 								<div class="col">
-									<h6 class="mb-0">작성일</h6>
+									<h6 class="mb-0"></h6>
 								</div>
 								<div class="col">
-									<h6 class="mb-0">답변상태</h6>
+									<h6 class="mb-0">등록일</h6>
 								</div>
 							</div>
 						</div>
@@ -152,33 +234,25 @@
 							class="row row-cols-xl-7 align-items-lg-center border-bottom g-4 px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-lg-none">분류</small>
-								<h6 class="ms-1 mb-0 fw-normal">문의</h6>
+								<small class="d-block d-lg-none">카테고리</small>
+								<h6 class="ms-1 mb-0 fw-normal">서비스</h6>
 							</div>
 
-							<!-- Data item -->
-														<div class="col">
+							<!-- 제목 누르면 <질문 수정> 모달창 표시 -->
+							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<a href="admin/questionreply" class="text-primary fw-bold">우하하</a>
-								</h6>
+								<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="modal" data-bs-target="#noticeEditModal">크리스마스 및 연말 요금 점검 안내</a>
 							</div>
 
 							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-lg-none">작성자</small>
-								<h6 class="ms-1 mb-0 fw-normal">test1234</h6>
-							</div>
+							<div class="col"></div>
+							<!-- Data item -->
+							<div class="col"></div>
+
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-lg-none">작성일</small>
+								<small class="d-block d-lg-none">등록일</small>
 								<h6 class="ms-1 mb-0 fw-normal">2024.12.20(금)</h6>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-lg-none">답변상태</small>
-								<div class="ms-1 badge bg-success bg-opacity-10 text-success">답변완료</div>
 							</div>
 						</div>
 
@@ -187,33 +261,25 @@
 							class="row row-cols-xl-7 align-items-lg-center border-bottom g-4 px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-lg-none">분류</small>
-								<h6 class="ms-1 mb-0 fw-normal">환불</h6>
+								<small class="d-block d-lg-none">카테고리</small>
+								<h6 class="ms-1 mb-0 fw-normal">서비스</h6>
 							</div>
 
-							<!-- Data item -->
+							<!-- 제목 누르면 <질문 수정> 모달창 표시 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<a href="admin/questionreply" class="text-primary fw-bold">환불해주세요ㅡㅡ</a>
-								</h6>
+								<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="modal" data-bs-target="#noticeEditModal">설 연휴 점검 안내</a>
 							</div>
 
 							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-lg-none">작성자</small>
-								<h6 class="ms-1 mb-0 fw-normal">test1234</h6>
-							</div>
+							<div class="col"></div>
 							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-lg-none">작성일</small>
-								<h6 class="ms-1 mb-0 fw-normal">2024.12.20(금)</h6>
-							</div>
+							<div class="col"></div>
 
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-lg-none">답변상태</small>
-								<div class="ms-1 badge bg-primary bg-opacity-10 text-primary">답변대기</div>
+								<small class="d-block d-lg-none">등록일</small>
+								<h6 class="ms-1 mb-0 fw-normal">2024.12.19(목)</h6>
 							</div>
 						</div>
 
@@ -222,33 +288,25 @@
 							class="row row-cols-xl-7 align-items-lg-center border-bottom g-4 px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-lg-none">분류</small>
-								<h6 class="ms-1 mb-0 fw-normal">예약</h6>
+								<small class="d-block d-lg-none">카테고리</small>
+								<h6 class="ms-1 mb-0 fw-normal">시스템</h6>
 							</div>
-
-							<!-- Data item -->
+							
+							<!-- 제목 누르면 <질문 수정> 모달창 표시 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<a href="admin/questionreply" class="text-primary fw-bold">일정변경대나요????????</a>
-								</h6>
+								<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="modal" data-bs-target="#noticeEditModal">파트너센터 시스템 점검 안내</a>
 							</div>
 
 							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-lg-none">작성자</small>
-								<h6 class="ms-1 mb-0 fw-normal">test1234</h6>
-							</div>
+							<div class="col"></div>
+							<!-- Data item -->
+							<div class="col"></div>
+
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-lg-none">작성일</small>
+								<small class="d-block d-lg-none">등록일</small>
 								<h6 class="ms-1 mb-0 fw-normal">2024.12.20(금)</h6>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-lg-none">답변상태</small>
-								<div class="ms-1 badge bg-danger bg-opacity-10 text-danger">답변대기</div>
 							</div>
 						</div>
 
@@ -257,36 +315,25 @@
 							class="row row-cols-xl-7 align-items-lg-center border-bottom g-4 px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-lg-none">분류</small>
-								<h6 class="ms-1 mb-0 fw-normal">환불</h6>
+								<small class="d-block d-lg-none">카테고리</small>
+								<h6 class="ms-1 mb-0 fw-normal">운영</h6>
 							</div>
 
-							<!-- Data item -->
+							<!-- 제목 누르면 <질문 수정> 모달창 표시 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<a href="admin/questionreply" class="text-primary fw-bold">제목제목제목제목제목제목</a>
-								</h6>
+								<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="modal" data-bs-target="#noticeEditModal">정산 일정 안내</a>
 							</div>
 
 							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-lg-none">작성자</small>
-								<h6 class="ms-1 mb-0 fw-normal">test1234</h6>
-							</div>
+							<div class="col"></div>
+							<!-- Data item -->
+							<div class="col"></div>
+
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-lg-none">작성일</small>
+								<small class="d-block d-lg-none">등록일</small>
 								<h6 class="ms-1 mb-0 fw-normal">2024.12.20(금)</h6>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-lg-none">답변상태</small>
-								<div class="ms-1 col">
-									<a href="admin-guest-detail.html"
-										class="btn btn-sm btn-light mb-0">View</a>
-								</div>
 							</div>
 						</div>
 
@@ -329,5 +376,4 @@
 	<%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 
 </body>
-
 </html>

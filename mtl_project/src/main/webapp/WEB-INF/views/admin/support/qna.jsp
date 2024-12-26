@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head>
-<title>[판매자] 고객관리 > 문의관리</title>
+<title>[관리자] 고객 문의 > 자주 묻는 질문</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>

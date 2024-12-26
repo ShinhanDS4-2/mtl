@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>[판매자] 고객관리 > 후기관리</title>
+<title>[판매자] 고객관리 > 리뷰관리</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
@@ -31,14 +31,14 @@
 
 				<!-- Title -->
 				<div class="row">
-					<div class="col-12 mb-4 mb-sm-5">
+					<div class="col-12 mb-4">
 						<h1 class="h3 mb-2">후기 관리</h1>
 						<span>예약 고객의 후기를 확인하고, 답변을 달아주세요.</span>
 					</div>
 				</div>
 
 				<!-- 리뷰 통계 card START -->
-				<div class="col-md-12 col-xxl-12">
+				<div class="col-md-12 col-xxl-12 mt-4 mb-3">
 					<div class="card shadow mb-4">
 						<!-- Card body -->
 						<div class="card-body">
@@ -164,16 +164,15 @@
 				</div>
 				<!-- 리뷰 통계 card END -->
 
-
-				<!-- 리뷰 상단 Tab -->
+				<!-- 리뷰 내역 List 상단 Tab -->
 				<div class="row g-4 justify-content-between align-items-center mb-2">
-					<div class="col-5">
-						<h6 class="col-5 card-title mb-1">총 101개</h6>
+					<div class="col-2">
+						<h6 class="mb-1">총 101개</h6>
 					</div>
-
 					<div class="col-1">
 						<form>
-							<select class="form-select js-choice">
+							<select class="form-select js-choice"
+								aria-label=".form-select-sm">
 								<option value="">10개</option>
 								<option>20개</option>
 								<option>50개</option>
@@ -186,8 +185,7 @@
 				<!-- 리뷰 내역 Card START -->
 				<div class="card shadow-lg mb-4">
 					<div class="card-body">
-						총 101개
-						<div class="vstack gap-4 mt-5">
+						<div class="vstack gap-4 mt-2">
 
 							<!-- 리뷰 item -->
 							<div class="row g-3 g-lg-4">
