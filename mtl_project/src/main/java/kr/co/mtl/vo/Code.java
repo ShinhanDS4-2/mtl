@@ -12,6 +12,9 @@ public enum Code {
 	ERROR_SQL(501, "code.error.sql"),
 	
 	
+	// 로그인
+	LOGIN_ERROR(600, "code.login.error"),
+	LOGIN_USER_SATATUS(601, "code.status"),
 	
 	;
 	

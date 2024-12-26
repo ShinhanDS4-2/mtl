@@ -46,7 +46,7 @@
 										<a href="join" class="text-secondary">회원가입</a>
 									</div>
 									<!-- Button -->
-									<div><button type="submit" class="btn btn-primary w-100 mb-0">로그인</button></div>
+									<div><button type="button" class="btn btn-primary w-100 mb-0" id="loginBtn" data-src="login" data-act="clickLoginBtn">로그인</button></div>
 		
 									<!-- Divider -->
 									<div class="position-relative my-4">
