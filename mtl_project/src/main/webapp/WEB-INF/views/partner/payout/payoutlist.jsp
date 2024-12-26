@@ -9,20 +9,15 @@
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
 </head>
 <body>
-
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
-
 		<!-- Sidebar -->
 		<%@ include file="/WEB-INF/views/include/partnerSidebar.jsp"%>
-
-
 		<!-- Page content START -->
 		<div class="page-content">
 
 			<!-- Topbar -->
 			<%@ include file="/WEB-INF/views/include/partnerTopbar.jsp"%>
-
 
 			<!-- Page main content START -->
 			<div class="page-content-wrapper p-xxl-4">
@@ -34,7 +29,6 @@
 						<span>날짜별 정산 금액을 확인할 수 있습니다.</span>
 					</div>
 				</div>
-
 				<!-- 정산 정보 card START -->
 				<div class="col-md-12 col-xxl-12 mb-4">
 					<div class="card shadow">
