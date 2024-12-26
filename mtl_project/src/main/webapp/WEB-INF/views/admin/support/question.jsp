@@ -157,10 +157,10 @@
 							</div>
 
 							<!-- Data item -->
-							<div class="col">
+														<div class="col">
 								<small class="d-block d-lg-none">제목</small>
 								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>우하하</b>
+									<a href="admin/questionreply" class="text-primary fw-bold">우하하</a>
 								</h6>
 							</div>
 
@@ -195,7 +195,7 @@
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
 								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>환불해주세요</b>
+									<a href="admin/questionreply" class="text-primary fw-bold">환불해주세요ㅡㅡ</a>
 								</h6>
 							</div>
 
@@ -230,7 +230,7 @@
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
 								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>일정변경대나요????????</b>
+									<a href="admin/questionreply" class="text-primary fw-bold">일정변경대나요????????</a>
 								</h6>
 							</div>
 
@@ -265,7 +265,7 @@
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
 								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>제목adasdad</b>
+									<a href="admin/questionreply" class="text-primary fw-bold">제목제목제목제목제목제목</a>
 								</h6>
 							</div>
 

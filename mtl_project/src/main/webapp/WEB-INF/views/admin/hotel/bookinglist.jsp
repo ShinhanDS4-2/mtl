@@ -190,6 +190,109 @@
 				<!-- 검색 필터 설정 END -->
 
 
+<!-- 모달창 START -->
+				<div id="largeModal" class="modal" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-lg" role="document">  <!-- 큰 모달-->
+					  	<div class="modal-content">
+						<!-- 모달 head -->
+							<div class="modal-header">
+								<h5 class="modal-title">예약 상세 정보</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<!-- 모달 body -->
+							<div class="modal-body">
+								<!-- 예약번호 -->
+								<h6 class="fw-bold">예약번호</h6>
+								<div class="mb-3 border p-3">
+									<p class="mb-0">240123</p>
+								</div>
+			
+								<!-- 예약자 정보 -->
+								<h6 class="fw-bold">예약자 정보</h6>
+								<div class="mb-3 border p-3">
+									<p class="mb-0">예약자명: 김시온</p>
+									<p class="mb-0">연락처: 010-7737-6314</p>
+								</div>
+								
+								<!-- 예약 정보 -->
+								<h6 class="fw-bold">예약 정보</h6>
+								<div class="mb-3 border p-3">
+								<p class="mb-0">객실타입: 프리미엄 트윈</p>
+								<p class="mb-0">입실일시: 2024.12.09(월) 17:00</p>
+								<p class="mb-0">퇴실일시: 2024.12.11(수) 12:00</p>
+								<p class="mb-0">예약일시: 2024.12.09(월) 20:08:25</p>
+								<p class="mb-0">예약상태: 프리미엄 트윈</p>
+								</div>
+								
+								<!-- 금액 정보 -->
+								<h6 class="fw-bold">금액 정보</h6>
+								<div class="mb-3 border p-3">
+								<p class="mb-0">판매가: 120,000원</p>
+								<p class="mb-0">정상가: 110,000원</p>
+								</div>
+							</div>	
+		
+							<!-- 모달 footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary">출력</button>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+							</div>
+					    </div>
+					</div>
+				</div>
+			<!-- 모달창 END -->
+
+			 	<!-- 예약 상세보기 모달 START -->
+				<div id="bookingdetailModal" class="modal" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-xl modal-dialog-centered" role="document">  <!-- 매우 큰 모달 -->
+					  	<div class="modal-content">
+						<!-- 모달 head -->
+							<div class="modal-header">
+								<h5 class="modal-title">예약 상세 정보</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<!-- 모달 body -->
+							<div class="modal-body">
+								<!-- 예약번호 -->
+								<h6 class="fw-bold">예약번호</h6>
+								<div class="mb-3 border p-3">
+									<p class="mb-0">240123</p>
+								</div>
+			
+								<!-- 예약자 정보 -->
+								<h6 class="fw-bold">예약자 정보</h6>
+								<div class="mb-3 border p-3">
+									<p class="mb-0">예약자명: 김시온</p>
+									<p class="mb-0">연락처: 010-7737-6314</p>
+								</div>
+								
+								<!-- 예약 정보 -->
+								<h6 class="fw-bold">예약 정보</h6>
+								<div class="mb-3 border p-3">
+								<p class="mb-0">객실타입: 프리미엄 트윈</p>
+								<p class="mb-0">입실일시: 2024.12.09(월) 17:00</p>
+								<p class="mb-0">퇴실일시: 2024.12.11(수) 12:00</p>
+								<p class="mb-0">예약일시: 2024.12.09(월) 20:08:25</p>
+								<p class="mb-0">예약상태: 프리미엄 트윈</p>
+								</div>
+								
+								<!-- 금액 정보 -->
+								<h6 class="fw-bold">금액 정보</h6>
+								<div class="mb-3 border p-3">
+								<p class="mb-0">판매가: 120,000원</p>
+								<p class="mb-0">정상가: 110,000원</p>
+								</div>
+							</div>	
+		
+							<!-- 모달 footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary">출력</button>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+							</div>
+					    </div>
+					</div>
+				</div>
+				<!-- 예약 상세보기 모달 END -->
 
 				<!-- 예약 내역 List 상단 Tab -->
 				<div class="row g-4 justify-content-between align-items-center mb-2">
@@ -281,7 +384,7 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a role="button" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#bookingdetailModal">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -328,7 +431,7 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a role="button" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#bookingdetailModal">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -375,7 +478,7 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a role="button" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#bookingdetailModal">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -422,7 +525,7 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a role="button" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#bookingdetailModal">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -469,7 +572,7 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a role="button" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#bookingdetailModal">상세보기</a>
 								</div>
 							</div>
 						</div>

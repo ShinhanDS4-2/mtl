@@ -32,12 +32,8 @@
 						data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"><a class="nav-link "
 							href="/mtl/admin/userlist">사용자 관리</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/mtl/admin/userdetail">사용자 상세</a></li>
 						<li class="nav-item"><a class="nav-link "
 							href="/mtl/admin/partnerlist">판매자 관리</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/mtl/admin/partnerdetail">판매자 상세</a></li>
 					</ul></li>
 
 				<!-- Menu item -->
@@ -48,11 +44,9 @@
 						<li class="nav-item"><a class="nav-link "
 							href="/mtl/admin/hotellist">숙소 관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/mtl/admin/hotedetail">숙소 상세</a></li>
-						<li class="nav-item"><a class="nav-link"
 							href="/mtl/admin/bookinglist">예약 관리</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/mtl/admin/question">문의 관리</a></li>
+							href="/mtl/admin/question">숙소 문의 관리</a></li>
 					</ul></li>
 
 				<!-- Menu item -->
@@ -73,8 +67,7 @@
 						data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"><a class="nav-link"
 							href="/mtl/admin/locationlist">여행지 관리</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/mtl/admin/locationdetail">여행지 상세</a></li>
+
 					</ul></li>
 
 				<!-- Menu item -->
@@ -85,8 +78,7 @@
 						data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"><a class="nav-link"
 							href="/mtl/admin/question2">1:1 문의</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/mtl/admin/questionreply">1:1 문의 답변</a></li>
+						
 						<li class="nav-item"><a class="nav-link"
 							href="/mtl/admin/qna">자주 묻는 질문</a></li>
 						<li class="nav-item"><a class="nav-link"

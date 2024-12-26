@@ -31,9 +31,9 @@
 
 				<!-- Title -->
 				<div class="row">
-					<div class="col-12 mb-4 mb-sm-5">
-						<h1 class="h3 mb-2">사용자 관리</h1>
-						<span>ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ.</span>
+					<div class="col-12 mb-3">
+						<h3>사용자 관리</h3>
+						<span>ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅇㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ.</span>
 					</div>
 				</div>
 
@@ -353,7 +353,7 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -396,7 +396,7 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -438,7 +438,7 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -480,7 +480,7 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
 								</div>
 							</div>
 						</div>
@@ -522,14 +522,10 @@
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a href="#" class="btn btn-sm btn-light mb-0">상세보기</a>
+									<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
 								</div>
 							</div>
 						</div>
-
-
-
-
 					</div>
 					<!-- Card body END -->
 

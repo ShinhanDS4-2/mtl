@@ -55,16 +55,16 @@
 					<!-- 새 질문 등록 버튼 클릭 시 모달창 표시 -->
 					<div class="col-lg-6 d-flex justify-content-end">
 						<button type="button" class="btn btn-primary-soft"
-							data-bs-toggle="modal" data-bs-target="#noticeModal">
+							data-bs-toggle="modal" data-bs-target="#noticeRegistModal">
 							<i class="bi bi-plus-lg fa-fw"></i>공지사항 등록
 						</button>
 					</div>
 				</div>
 				<!-- 상단 navbar END -->
 
-				<!-- 모달창 START -->
-				<div id="noticeModal" class="modal" tabindex="-1" role="dialog">
-					<div class="modal-dialog modal-xl" role="document">
+				<!-- 공지사항 등록 모달창 START -->
+				<div id="noticeRegistModal" class="modal" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
 						<!-- 제일 큰 모달 -->
 						<div class="modal-content">
 							<!-- 모달 head -->
@@ -95,17 +95,61 @@
 								</div>
 							</div>
 
-							<!-- 모달 footer -->
-							<div class="modal-footer mt-2">
-								<button type="button" class="btn btn-primary">출력</button>
+							<!-- 확인/취소 button -->
+							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
-									data-bs-dismiss="modal">닫기</button>
+									data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-primary">확인</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- 모달창 END -->
+				<!-- 공지사항 등록 모달창 END -->
+				
+				<!-- 공지사항 수정 모달창 START -->
+				<div id="noticeEditModal" class="modal" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+						<!-- 제일 큰 모달 -->
+						<div class="modal-content">
+							<!-- 모달 head -->
+							<div class="modal-header">
+								<h5 class="modal-title">공지사항 수정</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<!-- 모달 body -->
+							<div class="modal-body m-3">
+								<h6 class="fw-bold">제목</h6>
+								<input type="text" class="form-control" id="questionTitle"
+									placeholder="제목을 입력하세요">
 
+								<h6 class="fw-bold mt-4">내용</h6>
+								<textarea class="form-control" id="questionContent" rows="15"
+									placeholder="내용을 입력하세요"></textarea>
+
+								<!-- 상태 드롭다운 -->
+								<div class="col-2 mt-4">
+									<form>
+										<select class="form-select js-choice"
+											aria-label=".form-select-sm">
+											<option>게시중</option>
+											<option>게시중단</option>
+										</select>
+									</form>
+								</div>
+							</div>
+
+							<!-- 확인/취소 button -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-primary">수정하기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 공지사항 수정 모달창 END -->
+				
 				<!-- 검색 필터 START -->
 				<div class="card shadow border mt-4 mb-5">
 					<!-- Card header -->
@@ -196,12 +240,10 @@
 								<h6 class="ms-1 mb-0 fw-normal">서비스</h6>
 							</div>
 
-							<!-- Data item -->
+							<!-- 제목 누르면 <질문 수정> 모달창 표시 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>크리스마스 및 연말 요금 점검 안내</b>
-								</h6>
+								<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="modal" data-bs-target="#noticeEditModal">크리스마스 및 연말 요금 점검 안내</a>
 							</div>
 
 							<!-- Data item -->
@@ -225,12 +267,10 @@
 								<h6 class="ms-1 mb-0 fw-normal">서비스</h6>
 							</div>
 
-							<!-- Data item -->
+							<!-- 제목 누르면 <질문 수정> 모달창 표시 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>설 연휴 점검 안내</b>
-								</h6>
+								<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="modal" data-bs-target="#noticeEditModal">설 연휴 점검 안내</a>
 							</div>
 
 							<!-- Data item -->
@@ -253,13 +293,11 @@
 								<small class="d-block d-lg-none">카테고리</small>
 								<h6 class="ms-1 mb-0 fw-normal">시스템</h6>
 							</div>
-
-							<!-- Data item -->
+							
+							<!-- 제목 누르면 <질문 수정> 모달창 표시 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>파트너센터 시스템 점검 안내</b>
-								</h6>
+								<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="modal" data-bs-target="#noticeEditModal">파트너센터 시스템 점검 안내</a>
 							</div>
 
 							<!-- Data item -->
@@ -283,12 +321,10 @@
 								<h6 class="ms-1 mb-0 fw-normal">운영</h6>
 							</div>
 
-							<!-- Data item -->
+							<!-- 제목 누르면 <질문 수정> 모달창 표시 -->
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
-								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<b>정산 일정 안내</b>
-								</h6>
+								<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="modal" data-bs-target="#noticeEditModal">정산 일정 안내</a>
 							</div>
 
 							<!-- Data item -->

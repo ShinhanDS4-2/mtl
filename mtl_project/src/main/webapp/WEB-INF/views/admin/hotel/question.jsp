@@ -218,7 +218,7 @@
 									<h6 class="mb-0">등록일</h6>
 								</div>
 								<div class="col">
-									<h6 class="mb-0">답변여부</h6>
+									<h6 class="mb-0">답변상태</h6>
 								</div>
 								<div class="col">
 									<h6 class="mb-0"></h6>
@@ -250,13 +250,13 @@
 							</div>
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-sm-none">답변여부</small>
+								<small class="d-block d-sm-none">답변상태</small>
 								<div class="badge bg-success bg-opacity-10 text-success">답변 완료</div>
 							</div>
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="#" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col"><a href="admin/questionreply" class="btn btn-sm btn-light mb-0">상세보기</a></div>
 							</div>
 						</div>
 						<!-- Table data-->
@@ -283,13 +283,13 @@
 							</div>
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-sm-none">답변여부</small>
+								<small class="d-block d-sm-none">답변상태</small>
 								<div class="badge bg-primary bg-opacity-10 text-primary">대기</div>
 							</div>
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="#" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col"><a href="admin/questionreply" class="btn btn-sm btn-light mb-0">상세보기</a></div>
 							</div>
 						</div>
 

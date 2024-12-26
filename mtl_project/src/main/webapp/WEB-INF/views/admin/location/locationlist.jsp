@@ -70,7 +70,7 @@
 					<div class="modal-dialog modal-lg modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="touristModalLabel">관광지 등록</h5>
+								<h5 class="modal-title" id="touristModalLabel">여행지 등록</h5>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"
 									aria-label="Close"></button>
 							</div>
@@ -639,7 +639,7 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="#" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col"><a href="admin/locationdetail" class="btn btn-sm btn-light mb-0">상세보기</a></div>
 							</div>
 						</div>
 
@@ -669,7 +669,7 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="#" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col"><a href="admin/locationdetail" class="btn btn-sm btn-light mb-0">상세보기</a></div>
 							</div>
 						</div>
 

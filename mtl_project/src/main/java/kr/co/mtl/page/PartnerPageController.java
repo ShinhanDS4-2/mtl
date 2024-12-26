@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/patner")
+@RequestMapping("/partner")
 
 public class PartnerPageController {
 	// home
 	@GetMapping("/")
 	public String dashboard() {
-		return "patner/home/dashboard";
+		return "partner/home/dashboard";
 	}
 }
 

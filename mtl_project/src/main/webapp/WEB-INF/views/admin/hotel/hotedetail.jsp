@@ -34,15 +34,14 @@
 						<span>설명설명설명설명설명설명설명설명</span>
 					</div>
 				</div>
-				<!-- Button -->
-				<div class="d-sm-flex justify-content-end align-items-center">
-					<a href="#" class="btn btn-primary-soft text-nowrap mb-0"><i
-						class="bi bi-pencil-square fa-fw"></i>수정하기</a>
-				</div>
 
 				<!-- 숙소 상세보기 Crad START -->
-				<div class="card shadow border mt-2 mb-3 p-3">
-					<div class="card-body">
+				<div class="card shadow border mt-2 mb-3">
+					<!-- Card header -->
+					<div class="card-header border-bottom">
+						<h5 class="card-header-title">숙소 정보</h5>
+					</div>
+					<div class="card-body p-4">
 						<!-- 숙소 detail START -->
 						<div class="row g-4 g-xl-5">
 							<!-- Image -->
@@ -197,7 +196,162 @@
 						<!-- 숙소 detail END -->
 					</div>
 				</div>
-				<!-- 숙소 상세보기 Crad END -->
+				<!-- 숙소 상세보기 Card END -->
+				
+				<!-- 객실 정보 Card START -->
+				<div class="card shadow border">
+					<!-- Card header -->
+					<div class="card-header border-bottom">
+						<h5 class="card-header-title">객실 정보</h5>
+					</div>
+					<!-- Card body START -->
+					<div class="card-body">
+						<!-- Table head -->
+						<div class="bg-light rounded p-3 d-none d-sm-block">
+							<div class="row row-cols-7 g-4">
+								<div class="col">
+									<h6 class="mb-0">No</h6>
+								</div>
+								<div class="col">
+									<h6 class="mb-0">객실명</h6>
+								</div>
+								<div class="col">
+									<h6 class="mb-0">기준 인원</h6>
+								</div>
+								<div class="col">
+									<h6 class="mb-0">최대 인원</h6>
+								</div>
+								<div class="col">
+									<h6 class="mb-0">가격</h6>
+								</div>
+								
+							</div>
+						</div>
+
+						<!-- Table data (1번째 예약내역 상세 데이터)-->
+						<div
+							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">No</small>
+								<!-- 작은 화면일때만 보이는 텍스트-->
+								<h6 class="ms-1 mb-0 fw-normal">1</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">객실명</small>
+								<h6 class="ms-1 mb-0 fw-normal">디럭스 트윈</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">기준 인원</small>
+								<h6 class="ms-1 mb-0 fw-normal">2인</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">최대 인원</small>
+								<h6 class="ms-1 mb-1 fw-light">3인</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">가격</small>
+								<h6 class="ms-1 mb-1 fw-light">92,000원</h6>
+							</div>
+						</div>
+						<!-- Table data (2번째 예약내역 상세 데이터)-->
+						<div
+							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">No</small>
+								<!-- 작은 화면일때만 보이는 텍스트-->
+								<h6 class="ms-1 mb-0 fw-normal">1</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">객실명</small>
+								<h6 class="ms-1 mb-0 fw-normal">디럭스 트윈</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">기준 인원</small>
+								<h6 class="ms-1 mb-0 fw-normal">2인</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">최대 인원</small>
+								<h6 class="ms-1 mb-1 fw-light">3인</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">가격</small>
+								<h6 class="ms-1 mb-1 fw-light">92,000원</h6>
+							</div>
+						</div>
+						<!-- Table data (3번째 예약내역 상세 데이터)-->
+						<div
+							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">No</small>
+								<!-- 작은 화면일때만 보이는 텍스트-->
+								<h6 class="ms-1 mb-0 fw-normal">1</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">객실명</small>
+								<h6 class="ms-1 mb-0 fw-normal">디럭스 트윈</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">기준 인원</small>
+								<h6 class="ms-1 mb-0 fw-normal">2인</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">최대 인원</small>
+								<h6 class="ms-1 mb-1 fw-light">3인</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">가격</small>
+								<h6 class="ms-1 mb-1 fw-light">92,000원</h6>
+							</div>
+						</div>
+						<!-- Table data (4번째 예약내역 상세 데이터)-->
+						<div
+							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">No</small>
+								<!-- 작은 화면일때만 보이는 텍스트-->
+								<h6 class="ms-1 mb-0 fw-normal">1</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">객실명</small>
+								<h6 class="ms-1 mb-0 fw-normal">디럭스 트윈</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">기준 인원</small>
+								<h6 class="ms-1 mb-0 fw-normal">2인</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">최대 인원</small>
+								<h6 class="ms-1 mb-1 fw-light">3인</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">가격</small>
+								<h6 class="ms-1 mb-1 fw-light">92,000원</h6>
+							</div>
+						</div>
+					</div>
+					<!-- Card body END -->
+				</div>
+				<!-- 객실 정보 Card END -->
 
 			</div>
 			<!-- Page main content END -->
