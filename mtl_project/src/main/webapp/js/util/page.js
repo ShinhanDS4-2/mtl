@@ -1,7 +1,7 @@
 (function() {
     $.fn.customPaging = function(option, callback) {
 
-        // 페이징 옵션션
+        // 페이징 옵션
         let _option = {
             // 보여질 게시글 수
             limit: 10,
