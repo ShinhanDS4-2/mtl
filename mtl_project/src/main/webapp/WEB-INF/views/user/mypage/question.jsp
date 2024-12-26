@@ -35,9 +35,8 @@
 						<h4 class="card-header-title">1:1 문의</h4>
 					</div>
 
-					<!-- Card body START -->
 					<div class="card-body p-0">
-						<!-- Tabs -->
+						<!-- 탭 메뉴 -->
 						<ul class="nav nav-tabs nav-bottom-line nav-responsive nav-justified">
 							<li class="nav-item"> 
 								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>사이트 문의</a> 
@@ -47,154 +46,91 @@
 							</li>
 						</ul>
 
-						<!-- Tabs content START -->
 						<div class="tab-content p-2 p-sm-4" id="nav-tabContent">
-							<!-- Tab content item START -->
+							<!-- 사이트 1:1 문의 -->
 							<div class="tab-pane fade show active" id="tab-1">
-								<h6>사이트 문의</h6>
-               					<!-- Card item START -->
-								<div class="card border mb-4">
-									<!-- Card header -->
-									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-										<!-- Icon and Title -->
-										<div class="d-flex align-items-center">
-											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-plane"></i></div>	
-											<!-- Title -->
-											<div class="ms-2">
-												<h6 class="card-title mb-0">France to New York</h6>
-												<ul class="nav nav-divider small">
-													<li class="nav-item">Booking ID: CGDSUAHA12548</li>
-													<li class="nav-item">Business class</li>
-												</ul>
-											</div>
-										</div>
-	
-										<!-- Button -->
-										<div class="mt-2 mt-md-0">
-											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
-										</div>
-									</div>
-	
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row g-3">
-											<div class="col-sm-6 col-md-4">
-												<span>Departure time</span>
-												<h6 class="mb-0">Tue 05 Aug 12:00 AM</h6>
-											</div>
-	
-											<div class="col-sm-6 col-md-4">
-												<span>Arrival time</span>
-												<h6 class="mb-0">Tue 06 Aug 4:00 PM</h6>
-											</div>
-	
-											<div class="col-md-4">
-												<span>Booked by</span>
-												<h6 class="mb-0">Frances Guerrero</h6>
-											</div>
-										</div>
-									</div>
+								<div class="text-align-last">
+									<h6 class="d-inline-block">사이트 문의</h6>
+									<button type="button" class="btn btn-sm btn-primary d-inline-block me-1" data-bs-toggle="modal" data-bs-target="#qnaModal">문의하기</button>								
 								</div>
-								<!-- Card item END -->
-
-								<!-- Card item START -->
-								<div class="card border">
-									<!-- Card header -->
-									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-										<!-- Icon and Title -->
-										<div class="d-flex align-items-center">
-											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-car"></i></div>	
-											<!-- Title -->
-											<div class="ms-2">
-												<h6 class="card-title mb-0">Chicago to San Antonio</h6>
-												<ul class="nav nav-divider small">
-													<li class="nav-item">Booking ID: CGDSUAHA12548</li>
-													<li class="nav-item">Camry, Accord</li>
-												</ul>
-											</div>
-										</div>
-	
-										<!-- Button -->
-										<div class="mt-2 mt-md-0">
-											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
-										</div>
-									</div>
-	
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row g-3">
-											<div class="col-sm-6 col-md-4">
-												<span>Pickup address</span>
-												<h6 class="mb-0">40764 Winchester Rd</h6>
-											</div>
-	
-											<div class="col-sm-6 col-md-4">
-												<span>Drop address</span>
-												<h6 class="mb-0">11185 Mary Ball Rd</h6>
-											</div>
-	
-											<div class="col-md-4">
-												<span>Booked by</span>
-												<h6 class="mb-0">Frances Guerrero</h6>
-											</div>
-										</div>
-									</div>
+								
+								<!-- 테이블 -->
+								<div class="table-responsive border-0">
+									<table class="table align-middle p-4 mb-0 table-hover table-shrink">
+										<thead class="table-light">
+											<tr>
+												<th scope="col" class="border-0">유형</th>
+												<th scope="col" class="border-0">제목</th>
+												<th scope="col" class="border-0">문의일</th>
+												<th scope="col" class="border-0">답변상태</th>
+												<th scope="col" class="border-0 rounded-end"></th>
+											</tr>
+										</thead>
+		
+										<tbody class="border-top-0">
+											<!-- Table item -->
+											<tr>
+												<td> 예약 </td>
+												<td> 객실을 추가 예약하고 싶은데 어떻게 하나요? </td>
+												<td> 2024-12-15 </td>
+												<td> <div class="badge bg-success bg-opacity-10 text-success">답변완료</div> </td> 
+												<td> <a href="#" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#qnaDetailModal">보기</a> </td>
+											</tr>
+		
+											<!-- Table item -->
+											<tr>
+												<td> 이용문의 </td>
+												<td> 예약 취소 후 결제 취소는 언제 되나요? </td>
+												<td> 2024-12-15 </td>
+												<td> <div class="badge bg-orange bg-opacity-10 text-orange">답변대기</div> </td>
+												<td> <a href="#" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#qnaDetailModal">보기</a> </td>
+											</tr>
+										</tbody>
+										<!-- Table body END -->
+									</table>
 								</div>
-								<!-- Card item END -->
 							</div>
-							<!-- Tabs content item END -->
 
-							<!-- Tab content item START -->
+							<!-- 숙소 별 1:1 문의 -->
 							<div class="tab-pane fade" id="tab-2">
 								<h6>숙소 문의</h6>
-	
-								<!-- Card item START -->
-								<div class="card border">
-									<!-- Card header -->
-									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
-										<!-- Icon and Title -->
-										<div class="d-flex align-items-center">
-											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-hotel"></i></div>
-												<!-- Title -->
-											<div class="ms-2">
-												<h6 class="card-title mb-0">Courtyard by Marriott New York</h6>
-												<ul class="nav nav-divider small">
-													<li class="nav-item">Booking ID: CGDSUAHA12548</li>
-													<li class="nav-item">AC</li>
-												</ul>
-											</div>
-										</div>
-	
-										<!-- Button -->
-										<div class="mt-2 mt-md-0">
-											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
-											<p class="text-danger text-md-end mb-0">Booking cancelled</p>
-										</div>
-									</div>
-	
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row g-3">
-											<div class="col-sm-6 col-md-4">
-												<span>Check in time</span>
-												<h6 class="mb-0">Tue 05 Aug 12:00 AM</h6>
-											</div>
-	
-											<div class="col-sm-6 col-md-4">
-												<span>Check out time</span>
-												<h6 class="mb-0">Tue 12 Aug 4:00 PM</h6>
-											</div>
-	
-											<div class="col-md-4">
-												<span>Booked by</span>
-												<h6 class="mb-0">Frances Guerrero</h6>
-											</div>
-										</div>
-									</div>
+
+								<!-- 테이블 -->
+								<div class="table-responsive border-0">
+									<table class="table align-middle p-4 mb-0 table-hover table-shrink">
+										<thead class="table-light">
+											<tr>
+												<th scope="col" class="border-0">유형</th>
+												<th scope="col" class="border-0">제목</th>
+												<th scope="col" class="border-0">문의일</th>
+												<th scope="col" class="border-0">답변상태</th>
+												<th scope="col" class="border-0 rounded-end"></th>
+											</tr>
+										</thead>
+		
+										<tbody class="border-top-0">
+											<!-- Table item -->
+											<tr>
+												<td> 예약 </td>
+												<td> 객실을 추가 예약하고 싶은데 어떻게 하나요? </td>
+												<td> 2024-12-15 </td>
+												<td> <div class="badge bg-success bg-opacity-10 text-success">답변완료</div> </td> 
+												<td> <a href="#" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#qnaDetailModal">보기</a> </td>
+											</tr>
+		
+											<!-- Table item -->
+											<tr>
+												<td> 이용문의 </td>
+												<td> 예약 취소 후 결제 취소는 언제 되나요? </td>
+												<td> 2024-12-15 </td>
+												<td> <div class="badge bg-orange bg-opacity-10 text-orange">답변대기</div> </td>
+												<td> <a href="#" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#qnaDetailModal">보기</a> </td>
+											</tr>
+										</tbody>
+										<!-- Table body END -->
+									</table>
 								</div>
-								<!-- Card item END -->
 							</div>
-							<!-- Tabs content item END -->
 						</div>
 					</div>
 					<!-- Card body END -->
@@ -205,6 +141,90 @@
 	</div>
 </section>
 </main>
+
+<!-- 1:1 문의 작성 모달 -->
+<div class="modal fade" id="qnaModal" tabindex="-1" aria-labelledby="qnaLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content p-0">
+
+			<!-- Title -->
+			<div class="modal-header p-3">
+				<h5 class="modal-title mb-0" id="qnaLabel">1:1 문의</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body p-0">
+				<div class="card bg-transparent p-3">
+					<div class="card-body pt-2">
+						<div class="d-flex mt-1">
+							<select class="form-select col-10" id="qnaType">
+								<option value="" disabled="disabled" selected>유형 선택</option>
+								<option>예약</option>
+								<option>결제</option>
+								<option>이용문의</option>
+							</select>
+						</div>
+						<div class="d-flex mt-1 form-floating">
+							<input type="text" class="form-control" id="qnaTitle" placeholder="제목을 작성해 주세요.">
+							<label for ="qnaTitle">제목</label>
+						</div>
+						<div class="d-flex mt-1">
+							<textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false"></textarea>
+						</div>
+						<div class="d-grid gap-2 mt-3">
+							<button class="btn btn-sm btn-primary-soft px-4 mb-0 flex-shrink-0"><i class="fas fa-paper-plane fs-5"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 문의 상세 모달 -->
+<div class="modal fade" id="qnaDetailModal" tabindex="-1" aria-labelledby="qnaDetailLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content p-0">
+
+			<!-- Title -->
+			<div class="modal-header p-3">
+				<h5 class="modal-title mb-0" id="qnaDetailLabel">1:1 문의</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body p-0">
+				<div class="card bg-transparent p-3">
+					<div class="card-body pt-2">
+						<div class="row g-3 g-lg-4">
+							<!-- 질문 -->
+							<div class="d-flex justify-content-between">
+								<h6><span class="text-body fw-light">예약</span> 객실을 추가 예약하고 싶은데 어떻게 하나요?</h6>
+								<span class="small">2024-12-15</span>
+							</div>
+							<p class="space">Far advanced settling say finished raillery. 
+								Offered chiefly farther Satisfied conveying a dependent contented he gentleman agreeable do be. 
+								
+								Warrant private blushes removed and in equally totally if. 
+								Delivered dejection necessary objection do Mr prevailed. 
+								
+								Mr feeling chiefly cordial in doing.
+							</p>
+							<hr class="mt-3 mb-3">
+							<!-- 답변 -->
+							<div class="d-flex justify-content-between">
+								<h6>답변</h6>
+								<span class="small">2024-12-16</span>
+							</div>
+							<p class="space">답변 내용	</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
