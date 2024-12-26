@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head>
-<title>[판매자] 기타 페이지들 > 공지사항</title>
+<title>[관리자] 고객 문의 > 공지사항</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
@@ -32,8 +32,8 @@
 				<!-- Title -->
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
-						<h1 class="h3 mb-2">ㄴ공지사항</h1>
-						<span>파트너센터의 공지사항과 소식을 확인할 수 있습니다. </span>
+						<h1 class="h3 mb-2">공지사항</h1>
+						<span>공지사항을 등록해주세요. </span>
 					</div>
 				</div>
 

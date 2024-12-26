@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head>
-	<title>[관리자] 정산 관리 > 정산 내역</title>
+	<title>[관리자] 여행지 관리 > 여행지목록</title>
 
 	<!-- headerScript -->
 	<%@ include file="/WEB-INF/views/include/headerScript.jsp" %>

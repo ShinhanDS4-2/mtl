@@ -26,1270 +26,663 @@
 
 			<!-- Page main content START -->
 			<div class="page-content-wrapper p-xxl-4">
-
-
 				<!-- Title -->
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
-						<h1 class="h3 mb-2">객실 관리 아직안함</h1>
-						<span>숙소 기본정보를 등록/수정할 수 있습니다.</span>
-					</div>
-				</div>
-				<!-- Title -->
-				<div class="row">
-					<div class="col-12 mb-5">
-						<div class="d-sm-flex justify-content-between align-items-center">
-							<h1 class="h3 mb-2 mb-sm-0">Booking</h1>
-							<div class="d-grid">
-								<a href="#" class="btn btn-primary-soft mb-0"><i
-									class="bi bi-plus-lg fa-fw"></i> Add New Room</a>
-							</div>
-						</div>
+						<h1 class="h3 mb-2">객실 관리</h1>
+						<span>객실 기본정보를 등록/수정할 수 있습니다.</span>
 					</div>
 				</div>
 
-				<!-- Tabs START -->
-				<div class="row g-4">
+				<!-- 상단 navbar START -->
+				<div class="row g-4 mb-4">
 					<div class="col-12">
-						<div class="bg-light pb-0 px-2 px-lg-0 rounded-top">
+						<div class="bg-light pb-0 px-2 px-lg-0">
 							<ul
 								class="nav nav-tabs nav-bottom-line nav-responsive border-0 nav-justified"
 								role="tablist">
-								<li class="nav-item"><a class="nav-link mb-0"
-									data-bs-toggle="tab" href="#tab-1">기본 정보</a></li>
-								<li class="nav-item"><a class="nav-link mb-0"
-									data-bs-toggle="tab" href="#tab-2">이용 안내</a></li>
 								<li class="nav-item"><a class="nav-link mb-0 active"
-									data-bs-toggle="tab" href="#tab-3">객실 타입</a></li>
+									data-bs-toggle="tab" href="#tab1">객실목록</a></li>
+								<li class="nav-item"><a class="nav-link mb-0"
+									data-bs-toggle="tab" href="#tab2">객실추가</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<!-- Tabs END -->
+				<!-- 상단 navbar END -->
 
 
-				<!-- Tabs START -->
-				<div class="d-flex justify-content-end mt-2 mt-sm-0">
-					<ul class="nav nav-pills nav-pills-dark" id="room-pills-tab"
-						role="tablist">
-						<!-- Tab item -->
-						<li class="nav-item">
-							<button class="nav-link rounded-start rounded-0 active"
-								id="grid-tab" data-bs-toggle="tab"
-								data-bs-target="#grid-tab-pane" type="button" role="tab"
-								aria-controls="grid-tab-pane" aria-selected="true">
-								<i class="bi fa-fw bi-grid-fill"></i>
-							</button>
-						</li>
-						<!-- Tab item -->
-						<li class="nav-item">
-							<button class="nav-link rounded-end rounded-0" id="list-tab"
-								data-bs-toggle="tab" data-bs-target="#list-tab-pane"
-								type="button" role="tab" aria-controls="list-tab-pane"
-								aria-selected="false">
-								<i class="bi fa-fw bi-list-ul"></i>
-							</button>
-						</li>
-					</ul>
-				</div>
-				<!-- Tabs END -->
-
-
-
-				<!-- Tabs and search END -->
-
-				<!-- Tab content START -->
-				<div class="tab-content mt-5" id="myTabContent">
-					<!-- Content item START -->
-					<div class="tab-pane fade show active" id="grid-tab-pane">
-						<!-- Rooms START -->
-						<div
-							class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xxl-5 g-4">
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/02.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.5
-												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction1"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction1">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Deluxe Pool View with
-												Breakfast</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>Ground Floor: G5
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>Double Bed</li>
-										</ul>
-									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$1500</h6>
-											<small>/per person</small>
-										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
-									</div>
-								</div>
+				<!-- 객실 수정 모달창 START -->
+				<div id="roomRegistModal" class="modal" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-xl modal-dialog-centered"
+						role="document">
+						<!-- 제일 큰 모달 -->
+						<div class="modal-content">
+							<!-- 모달 head -->
+							<div class="modal-header">
+								<h5 class="modal-title">객실 수정</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
 							</div>
 
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/03.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.0
+
+							<!-- 모달 body -->
+							<div class="modal-body m-3">
+								<!-- 객실 기본정보 등록 Card START -->
+								<div class="card border mb-4">
+									<div class="card-header border-bottom">
+										<h5 class="card-header-title">객실 기본정보</h5>
+									</div>
+									<!-- Flex container START -->
+									<div class="d-flex">
+										<!-- 왼쪽 카드 START -->
+										<div class="card-body col-6">
+											<div class="mb-3">
+												<label class="form-label">객실타입명</label> <input type="text"
+													class="form-control" value="스탠다드" placeholder="Name">
+											</div>
+											<div class="mb-3">
+												<label class="form-label">기본인원</label> <input type="text"
+													class="form-control" value="2인"
+													placeholder="Enter your mobile number">
+											</div>
+											<div class="mb-3">
+												<label class="form-label">평일요금</label> <input type="text"
+													class="form-control" value="50,000원"
+													placeholder="Enter your mobile number">
+											</div>
+										</div>
+										<!-- 왼쪽 카드 END -->
+
+										<!-- 오른쪽 카드 START -->
+										<div class="card-body col-6">
+											<!-- 검색어 드롭다운 -->
+											<div class="mb-3">
+												<label class="form-label">객실수</label> <input type="text"
+													class="form-control" value="5" placeholder="Name">
+											</div>
+
+											<div class="mb-3">
+												<label class="form-label">최대인원</label> <input type="text"
+													class="form-control" value="3인"
+													placeholder="Enter your mobile number">
+											</div>
+											<div class="mb-3">
+												<label class="form-label">주말요금</label> <input type="text"
+													class="form-control" value="80,000원"
+													placeholder="Enter your mobile number">
+											</div>
+										</div>
+										<!-- 오른쪽 카드 END -->
+									</div>
+								</div>
+								<!-- 객실 기본정보 등록 Card END -->
+
+								<!-- 객실 상세 설명 Card Start -->
+								<div class="card border mb-4">
+									<div class="card-header border-bottom">
+										<h5 class="card-header-title">객실 상세 설명</h5>
+									</div>
+									<div class="card-body">
+
+										<!-- 답변달기 START -->
+										<div class="d-flex mt-1">
+											<textarea class="form-control mb-3 bg-light"
+												placeholder="답변을 작성해주세요..." rows="7"></textarea>
+										</div>
+
+									</div>
+								</div>
+								<!-- 객실 상세 설명 Card END -->
+
+								<!-- 객실 옵션 설정 Card Start -->
+								<div class="card border mb-4">
+									<div class="card-header border-bottom">
+										<h5 class="card-header-title">객실 옵션 설정</h5>
+									</div>
+									<div class="card-body">
+										<!-- 옵션 체크박스 -->
+										<div class="row row-cols-4 g-3">
+											<!-- 첫 번째 열 -->
+											<div class="col">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														id="fitness" checked> <label
+														class="form-check-label" for="fitness">피트니스</label>
 												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction2"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction2">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" id="pool">
+													<label class="form-check-label" for="pool">수영장</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														id="outdoor-pool" checked> <label
+														class="form-check-label" for="outdoor-pool">야외수영장</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" id="sauna">
+													<label class="form-check-label" for="sauna">사우나</label>
+												</div>
+											</div>
+											<!-- 두 번째 열 -->
+											<div class="col">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														id="meeting-room" checked> <label
+														class="form-check-label" for="meeting-room">공용샤워실</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" id="spa">
+													<label class="form-check-label" for="spa">스파</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														id="restaurant"> <label class="form-check-label"
+														for="restaurant">레스토랑</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														id="rooftop"> <label class="form-check-label"
+														for="rooftop">루프탑</label>
+												</div>
+											</div>
+											<!-- 세 번째 열 -->
+											<div class="col">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														id="parking" checked> <label
+														class="form-check-label" for="parking">무료주차</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" id="bbq"
+														checked> <label class="form-check-label" for="bbq">바베큐</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														id="elevator"> <label class="form-check-label"
+														for="elevator">엘리베이터</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" id="dryer">
+													<label class="form-check-label" for="dryer">건조기</label>
+												</div>
+											</div>
+											<!-- 네 번째 열 -->
+											<div class="col">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" id="lounge"
+														checked> <label class="form-check-label"
+														for="lounge">라운지</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" id="label1"
+														checked> <label class="form-check-label"
+														for="label1">Label</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" id="label2"
+														checked> <label class="form-check-label"
+														for="label2">Label</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" id="label3"
+														checked> <label class="form-check-label"
+														for="label3">Label</label>
 												</div>
 											</div>
 										</div>
 									</div>
+								</div>
+								<!-- 객실 옵션 설정 Card END -->
 
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Premium Room With
-												Balcony</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>First Floor: F3
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
-										</ul>
+								<!-- 객실 사진 등록 Card Start -->
+								<div class="card border mb-3">
+									<div class="card-header border-bottom">
+										<h5 class="card-header-title">객실 사진 등록</h5>
 									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$750</h6>
-											<small>/per person</small>
+									<div class="card-body">
+										<!-- 사진 리스트 -->
+										<div class="d-flex gap-3">
+											<!-- 이미지 1 -->
+											<div class="position-relative">
+												<img src="https://via.placeholder.com/150" alt="사진 1"
+													class="rounded border"
+													style="width: 150px; height: 100px; object-fit: cover;">
+											</div>
+											<!-- 이미지 2 -->
+											<div class="position-relative">
+												<img src="https://via.placeholder.com/150" alt="사진 2"
+													class="rounded border"
+													style="width: 150px; height: 100px; object-fit: cover;">
+											</div>
+											<!-- 이미지 3 -->
+											<div class="position-relative">
+												<img src="https://via.placeholder.com/150" alt="사진 3"
+													class="rounded border"
+													style="width: 150px; height: 100px; object-fit: cover;">
+											</div>
+											<!-- 업로드 버튼 -->
+											<div
+												class="border rounded d-flex justify-content-center align-items-center"
+												style="width: 150px; height: 100px; background-color: #f8f9fa;">
+												<label class="text-center" style="cursor: pointer;">
+													<i class="bi bi-upload"></i><br>숙소 사진 업로드 <input
+													type="file" class="d-none">
+												</label>
+											</div>
 										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
 									</div>
 								</div>
+
 							</div>
 
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/04.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.2
-												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction3"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction3">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Deluxe Pool View</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>Ground Floor: G3
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>Family Bed</li>
-										</ul>
-									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$895</h6>
-											<small>/per person</small>
-										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/05.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.0
-												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction4"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction4">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Superior Room</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>First Floor: F5
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>King Bed</li>
-										</ul>
-									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$750</h6>
-											<small>/per person</small>
-										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/06.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.0
-												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction5"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction5">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Studio Suite King</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>Fifth Floor: Ft3
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>Double Bed</li>
-										</ul>
-									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$1458</h6>
-											<small>/per person</small>
-										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/08.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.6
-												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction6"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction6">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Rock Family Suite</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>Second Floor: S4
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
-										</ul>
-									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$1020</h6>
-											<small>/per person</small>
-										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/09.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.6
-												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction7"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction7">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Luxury Room with
-												Balcony</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>Third Floor: T2
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>Family Bed</li>
-										</ul>
-									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$847</h6>
-											<small>/per person</small>
-										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/01.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>3.9
-												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction8"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction8">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Premium Room With
-												Balcony</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>Third Floor: T4
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>Family Bed</li>
-										</ul>
-									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$995</h6>
-											<small>/per person</small>
-										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/11.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.8
-												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction9"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction9">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Deluxe Room Twin Bed
-												With Balcony</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>Fifth Floor: Ft1
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>Double Bed</li>
-										</ul>
-									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$1650</h6>
-											<small>/per person</small>
-										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
-									</div>
-								</div>
-							</div>
-
-							<!-- Room item -->
-							<div class="col">
-								<div class="card shadow h-100">
-									<!-- Overlay item -->
-									<div class="position-relative">
-										<!-- Image -->
-										<img src="assets/images/category/hotel/4by3/12.jpg"
-											class="card-img-top" alt="Card image">
-										<!-- Overlay -->
-										<div class="card-img-overlay d-flex flex-column p-3">
-											<!-- Card overlay top -->
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="badge text-bg-dark">
-													<i class="bi fa-fw bi-star-fill me-2 text-warning"></i>4.6
-												</div>
-												<!-- Buttons -->
-												<div class="list-inline-item dropdown">
-													<!-- Dropdown button -->
-													<a href="#" class="btn btn-sm btn-round btn-light"
-														role="button" id="dropdownAction10"
-														data-bs-toggle="dropdown" aria-expanded="false"> <i
-														class="bi bi-three-dots-vertical"></i>
-													</a>
-													<!-- dropdown items -->
-													<ul
-														class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded small"
-														aria-labelledby="dropdownAction10">
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-info-circle me-2"></i>Report</a></li>
-														<li><a class="dropdown-item" href="#"><i
-																class="bi bi-slash-circle me-2"></i>Disable</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- Card body START -->
-									<div class="card-body px-3">
-										<!-- Title -->
-										<h5 class="card-title mb-1">
-											<a href="admin-booking-detail.html">Rock Family Suite</a>
-										</h5>
-										<ul class="list-group list-group-borderless small mt-2 mb-0">
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-building fa-fw me-2"></i>Second Floor: S4
-											</li>
-											<li class="list-group-item pb-0"><i
-												class="fa-solid fa-bed fa-fw me-2"></i>King Bed</li>
-										</ul>
-									</div>
-									<!-- Card body END -->
-
-									<!-- Card footer START-->
-									<div class="card-footer pt-0">
-										<!-- Price -->
-										<div class="hstack gap-2 mb-2">
-											<h6 class="fw-normal mb-0">$1420</h6>
-											<small>/per person</small>
-										</div>
-										<a href="admin-booking-detail.html"
-											class="btn btn-sm btn-primary-soft mb-0 w-100">View
-											detail</a>
-									</div>
-								</div>
+							<!-- 확인/취소 button -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-primary">수정하기</button>
 							</div>
 						</div>
-						<!-- Rooms END -->
-
-						<!-- Pagination START -->
-						<div
-							class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4">
-							<!-- Content -->
-							<p class="mb-sm-0 text-center text-sm-start">Showing 1 to 8
-								of 20 entries</p>
-							<!-- Pagination -->
-							<nav class="mb-sm-0 d-flex justify-content-center"
-								aria-label="navigation">
-								<ul
-									class="pagination pagination-sm pagination-primary-soft mb-0">
-									<li class="page-item disabled"><a class="page-link"
-										href="#" tabindex="-1">Prev</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item active"><a class="page-link" href="#">2</a></li>
-									<li class="page-item disabled"><a class="page-link"
-										href="#">..</a></li>
-									<li class="page-item"><a class="page-link" href="#">15</a></li>
-									<li class="page-item"><a class="page-link" href="#">Next</a>
-									</li>
-								</ul>
-							</nav>
-						</div>
-						<!-- Pagination END -->
 					</div>
-					<!-- Content item END -->
+				</div>
+				<!-- 객실 수정 모달창 END -->
 
-					<!-- Content item START -->
-					<div class="tab-pane fade" id="list-tab-pane">
-						<div class="card shadow">
+				<!-- tab-content START -->
+				<div class="tab-content">
+					<!-- #tab1 / 객실 타입 Tap Start -->
+					<div class="tab-pane fade show active" id="tab1">
+						<div class="col-md-12 col-xxl-12">
+							<div class="card border">
 
-							<!-- Card body START -->
+								<!-- Card body -->
+								<div class="card-body">
+
+									<!-- Rooms START -->
+									<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xxl-5 g-4">
+
+										<!-- Room item -->
+										<div class="col">
+											<div class="card shadow h-100">
+												<!-- Overlay item -->
+												<div class="position-relative">
+													<!-- Image -->
+													<img src="assets/images/category/hotel/4by3/03.jpg"
+														class="card-img-top" alt="Card image">
+													<!-- Overlay -->
+													<div class="card-img-overlay d-flex flex-column p-3">
+														<!-- Card overlay top -->
+														<div
+															class="d-flex justify-content-between align-items-center">
+														</div>
+													</div>
+												</div>
+
+												<!-- Card body START -->
+												<div class="card-body px-3">
+													<!-- Title -->
+													<h5 class="card-title mb-1">
+														<a href="admin-booking-detail.html">프리미엄 스탠다드</a>
+													</h5>
+													<ul
+														class="list-group list-group-borderless small mt-2 mb-0">
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-building fa-fw me-2"></i>First Floor:
+															F3</li>
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
+													</ul>
+												</div>
+												<!-- Card body END -->
+
+												<!-- Card footer START-->
+												<div class="card-footer pt-0">
+													<!-- Price -->
+													<div class="hstack gap-2 mb-2">
+														<h6 class="fw-normal mb-0">25,000원</h6>
+													</div>
+													<div class="hstack gap-2 mb-2">
+														<a role="button"
+															class="btn btn-sm btn-dark-soft mb-0 w-50"
+															data-bs-toggle="modal" data-bs-target="#roomRegistModal">수정</a>
+														<a role="button"
+															class="btn btn-sm btn-danger-soft mb-0 w-50">삭제</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Room item -->
+										<div class="col">
+											<div class="card shadow h-100">
+												<!-- Overlay item -->
+												<div class="position-relative">
+													<!-- Image -->
+													<img src="assets/images/category/hotel/4by3/03.jpg"
+														class="card-img-top" alt="Card image">
+													<!-- Overlay -->
+													<div class="card-img-overlay d-flex flex-column p-3">
+														<!-- Card overlay top -->
+														<div
+															class="d-flex justify-content-between align-items-center">
+														</div>
+													</div>
+												</div>
+
+												<!-- Card body START -->
+												<div class="card-body px-3">
+													<!-- Title -->
+													<h5 class="card-title mb-1">
+														<a href="admin-booking-detail.html">프리미엄 스탠다드</a>
+													</h5>
+													<ul
+														class="list-group list-group-borderless small mt-2 mb-0">
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-building fa-fw me-2"></i>First Floor:
+															F3</li>
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
+													</ul>
+												</div>
+												<!-- Card body END -->
+
+												<!-- Card footer START-->
+												<div class="card-footer pt-0">
+													<!-- Price -->
+													<div class="hstack gap-2 mb-2">
+														<h6 class="fw-normal mb-0">25,000원</h6>
+													</div>
+													<div class="hstack gap-2 mb-2">
+														<a role="button"
+															class="btn btn-sm btn-dark-soft mb-0 w-50"
+															data-bs-toggle="modal" data-bs-target="#roomRegistModal">수정</a>
+														<a role="button"
+															class="btn btn-sm btn-danger-soft mb-0 w-50">삭제</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Room item -->
+										<div class="col">
+											<div class="card shadow h-100">
+												<!-- Overlay item -->
+												<div class="position-relative">
+													<!-- Image -->
+													<img src="assets/images/category/hotel/4by3/03.jpg"
+														class="card-img-top" alt="Card image">
+													<!-- Overlay -->
+													<div class="card-img-overlay d-flex flex-column p-3">
+														<!-- Card overlay top -->
+														<div
+															class="d-flex justify-content-between align-items-center">
+														</div>
+													</div>
+												</div>
+
+												<!-- Card body START -->
+												<div class="card-body px-3">
+													<!-- Title -->
+													<h5 class="card-title mb-1">
+														<a href="admin-booking-detail.html">프리미엄 스탠다드</a>
+													</h5>
+													<ul
+														class="list-group list-group-borderless small mt-2 mb-0">
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-building fa-fw me-2"></i>First Floor:
+															F3</li>
+														<li class="list-group-item pb-0"><i
+															class="fa-solid fa-bed fa-fw me-2"></i>Single Bed</li>
+													</ul>
+												</div>
+												<!-- Card body END -->
+
+												<!-- Card footer START-->
+												<div class="card-footer pt-0">
+													<!-- Price -->
+													<div class="hstack gap-2 mb-2">
+														<h6 class="fw-normal mb-0">25,000원</h6>
+													</div>
+													<div class="hstack gap-2 mb-2">
+														<a role="button"
+															class="btn btn-sm btn-dark-soft mb-0 w-50"
+															data-bs-toggle="modal" data-bs-target="#roomRegistModal">수정</a>
+														<a role="button"
+															class="btn btn-sm btn-danger-soft mb-0 w-50">삭제</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+									<!-- Rooms END -->
+
+								</div>
+								<!-- Card body END-->
+							</div>
+						</div>
+					</div>
+					<!-- #tab1 / 객실 타입 Tap END -->
+
+					<!-- #tab2 / 객실추가 Tap START -->
+					<div class="tab-pane fade" id="tab2">
+						<!-- 상단 네비게이션 바를 클릭하면 탭에 따라 콘텐츠가 변경되는 부분-->
+						<!-- 객실 기본정보 등록 Card START -->
+						<div class="card border mb-4">
+							<div class="card-header border-bottom">
+								<h5 class="card-header-title">객실 기본정보</h5>
+							</div>
+							<!-- Flex container START -->
+							<div class="d-flex">
+								<!-- 왼쪽 카드 START -->
+								<div class="card-body col-6">
+									<div class="mb-3">
+										<label class="form-label">객실타입명</label> <input type="text"
+											class="form-control" value="스탠다드" placeholder="Name">
+									</div>
+									<div class="mb-3">
+										<label class="form-label">기본인원</label> <input type="text"
+											class="form-control" value="2인"
+											placeholder="Enter your mobile number">
+									</div>
+									<div class="mb-3">
+										<label class="form-label">평일요금</label> <input type="text"
+											class="form-control" value="50,000원"
+											placeholder="Enter your mobile number">
+									</div>
+								</div>
+								<!-- 왼쪽 카드 END -->
+
+								<!-- 오른쪽 카드 START -->
+								<div class="card-body col-6">
+									<!-- 검색어 드롭다운 -->
+									<div class="mb-3">
+										<label class="form-label">객실수</label> <input type="text"
+											class="form-control" value="5" placeholder="Name">
+									</div>
+
+									<div class="mb-3">
+										<label class="form-label">최대인원</label> <input type="text"
+											class="form-control" value="3인"
+											placeholder="Enter your mobile number">
+									</div>
+									<div class="mb-3">
+										<label class="form-label">주말요금</label> <input type="text"
+											class="form-control" value="80,000원"
+											placeholder="Enter your mobile number">
+									</div>
+								</div>
+								<!-- 오른쪽 카드 END -->
+							</div>
+						</div>
+						<!-- 객실 기본정보 등록 Card END -->
+
+						<!-- 객실 상세 설명 Card Start -->
+						<div class="card border mb-4">
+							<div class="card-header border-bottom">
+								<h5 class="card-header-title">객실 상세 설명</h5>
+							</div>
 							<div class="card-body">
-								<!-- Table head -->
-								<div class="bg-light rounded p-3 d-none d-xxl-block">
-									<div class="row row-cols-6 g-4">
-										<div class="col">
-											<h6 class="mb-0">Room Name</h6>
-										</div>
-										<div class="col">
-											<h6 class="mb-0">Bed Type</h6>
-										</div>
-										<div class="col">
-											<h6 class="mb-0">Room Floor</h6>
-										</div>
-										<div class="col">
-											<h6 class="mb-0">Amount</h6>
-										</div>
-										<div class="col">
-											<h6 class="mb-0">Rating</h6>
-										</div>
-										<div class="col">
-											<h6 class="mb-0">Action</h6>
-										</div>
-									</div>
+
+								<!-- 답변달기 START -->
+								<div class="d-flex mt-1">
+									<textarea class="form-control mb-3 bg-light"
+										placeholder="답변을 작성해주세요..." rows="7"></textarea>
 								</div>
 
-								<!-- Table data -->
-								<div
-									class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-									<!-- Data item -->
+							</div>
+						</div>
+						<!-- 객실 상세 설명 Card END -->
+
+						<!-- 객실 옵션 설정 Card Start -->
+						<div class="card border mb-4">
+							<div class="card-header border-bottom">
+								<h5 class="card-header-title">객실 옵션 설정</h5>
+							</div>
+							<div class="card-body">
+								<!-- 옵션 체크박스 -->
+								<div class="row row-cols-4 g-3">
+									<!-- 첫 번째 열 -->
 									<div class="col">
-										<small class="d-block d-xxl-none">Room name:</small>
-										<div class="d-flex align-items-center">
-											<!-- Image -->
-											<div class="w-80px flex-shrink-0">
-												<img src="assets/images/category/hotel/4by3/01.jpg"
-													class="rounded" alt="">
-											</div>
-											<!-- Title -->
-											<h6 class="mb-0 ms-2">Deluxe Pool View with Breakfast</h6>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="fitness"
+												checked> <label class="form-check-label"
+												for="fitness">피트니스</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="pool">
+											<label class="form-check-label" for="pool">수영장</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox"
+												id="outdoor-pool" checked> <label
+												class="form-check-label" for="outdoor-pool">야외수영장</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="sauna">
+											<label class="form-check-label" for="sauna">사우나</label>
 										</div>
 									</div>
-
-									<!-- Data item -->
+									<!-- 두 번째 열 -->
 									<div class="col">
-										<small class="d-block d-xxl-none">Bed Type:</small>
-										<h6 class="mb-0 fw-normal">King Size</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room Floor:</small>
-										<h6 class="mb-0 fw-normal">Ground Floor: G5</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Amount:</small>
-										<h6 class="text-success mb-0">$1025</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Payment:</small>
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-										</ul>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<a href="#" class="btn btn-sm btn-light mb-0">View</a>
-									</div>
-								</div>
-
-								<!-- Table data -->
-								<div
-									class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room name:</small>
-										<div class="d-flex align-items-center">
-											<!-- Image -->
-											<div class="w-80px flex-shrink-0">
-												<img src="assets/images/category/hotel/4by3/02.jpg"
-													class="rounded" alt="">
-											</div>
-											<!-- Title -->
-											<h6 class="mb-0 ms-2">Premium Room With Balcony</h6>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox"
+												id="meeting-room" checked> <label
+												class="form-check-label" for="meeting-room">공용샤워실</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="spa">
+											<label class="form-check-label" for="spa">스파</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox"
+												id="restaurant"> <label class="form-check-label"
+												for="restaurant">레스토랑</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="rooftop">
+											<label class="form-check-label" for="rooftop">루프탑</label>
 										</div>
 									</div>
-
-									<!-- Data item -->
+									<!-- 세 번째 열 -->
 									<div class="col">
-										<small class="d-block d-xxl-none">Bed Type:</small>
-										<h6 class="mb-0 fw-normal">Single Bed</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room Floor:</small>
-										<h6 class="mb-0 fw-normal">First Floor: F3</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Amount:</small>
-										<h6 class="text-success mb-0">$750</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Payment:</small>
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-										</ul>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<a href="#" class="btn btn-sm btn-light mb-0">View</a>
-									</div>
-								</div>
-
-								<!-- Table data -->
-								<div
-									class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room name:</small>
-										<div class="d-flex align-items-center">
-											<!-- Image -->
-											<div class="w-80px flex-shrink-0">
-												<img src="assets/images/category/hotel/4by3/03.jpg"
-													class="rounded" alt="">
-											</div>
-											<!-- Title -->
-											<h6 class="mb-0 ms-2">Deluxe Pool View</h6>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="parking"
+												checked> <label class="form-check-label"
+												for="parking">무료주차</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="bbq"
+												checked> <label class="form-check-label" for="bbq">바베큐</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="elevator">
+											<label class="form-check-label" for="elevator">엘리베이터</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="dryer">
+											<label class="form-check-label" for="dryer">건조기</label>
 										</div>
 									</div>
-
-									<!-- Data item -->
+									<!-- 네 번째 열 -->
 									<div class="col">
-										<small class="d-block d-xxl-none">Bed Type:</small>
-										<h6 class="mb-0 fw-normal">Family Bed</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room Floor:</small>
-										<h6 class="mb-0 fw-normal">Ground Floor: G3</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Amount:</small>
-										<h6 class="text-success mb-0">$895</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Payment:</small>
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-										</ul>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<a href="#" class="btn btn-sm btn-light mb-0">View</a>
-									</div>
-								</div>
-
-								<!-- Table data -->
-								<div
-									class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room name:</small>
-										<div class="d-flex align-items-center">
-											<!-- Image -->
-											<div class="w-80px flex-shrink-0">
-												<img src="assets/images/category/hotel/4by3/04.jpg"
-													class="rounded" alt="">
-											</div>
-											<!-- Title -->
-											<h6 class="mb-0 ms-2">Superior Room</h6>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="lounge"
+												checked> <label class="form-check-label"
+												for="lounge">라운지</label>
 										</div>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Bed Type:</small>
-										<h6 class="mb-0 fw-normal">King Bed</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room Floor:</small>
-										<h6 class="mb-0 fw-normal">First Floor: F5</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Amount:</small>
-										<h6 class="text-success mb-0">$750</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Payment:</small>
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-										</ul>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<a href="#" class="btn btn-sm btn-light mb-0">View</a>
-									</div>
-								</div>
-
-								<!-- Table data -->
-								<div
-									class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room name:</small>
-										<div class="d-flex align-items-center">
-											<!-- Image -->
-											<div class="w-80px flex-shrink-0">
-												<img src="assets/images/category/hotel/4by3/05.jpg"
-													class="rounded" alt="">
-											</div>
-											<!-- Title -->
-											<h6 class="mb-0 ms-2">Studio Suite King</h6>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="label1"
+												checked> <label class="form-check-label"
+												for="label1">Label</label>
 										</div>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Bed Type:</small>
-										<h6 class="mb-0 fw-normal">Double Bed</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room Floor:</small>
-										<h6 class="mb-0 fw-normal">Fifth Floor: Ft3</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Amount:</small>
-										<h6 class="text-success mb-0">$1458</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Payment:</small>
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-										</ul>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<a href="#" class="btn btn-sm btn-light mb-0">View</a>
-									</div>
-								</div>
-
-								<!-- Table data -->
-								<div
-									class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room name:</small>
-										<div class="d-flex align-items-center">
-											<!-- Image -->
-											<div class="w-80px flex-shrink-0">
-												<img src="assets/images/category/hotel/4by3/06.jpg"
-													class="rounded" alt="">
-											</div>
-											<!-- Title -->
-											<h6 class="mb-0 ms-2">Luxury Room with Balcony</h6>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="label2"
+												checked> <label class="form-check-label"
+												for="label2">Label</label>
 										</div>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Bed Type:</small>
-										<h6 class="mb-0 fw-normal">Family Bed</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room Floor:</small>
-										<h6 class="mb-0 fw-normal">Third Floor: T2</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Amount:</small>
-										<h6 class="text-success mb-0">$847</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Payment:</small>
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-										</ul>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<a href="#" class="btn btn-sm btn-light mb-0">View</a>
-									</div>
-								</div>
-
-								<!-- Table data -->
-								<div
-									class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-6 g-2 g-sm-4 align-items-md-center border-bottom px-2 py-4">
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room name:</small>
-										<div class="d-flex align-items-center">
-											<!-- Image -->
-											<div class="w-80px flex-shrink-0">
-												<img src="assets/images/category/hotel/4by3/07.jpg"
-													class="rounded" alt="">
-											</div>
-											<!-- Title -->
-											<h6 class="mb-0 ms-2">Deluxe Room Twin Bed With Balcony</h6>
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" id="label3"
+												checked> <label class="form-check-label"
+												for="label3">Label</label>
 										</div>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Bed Type:</small>
-										<h6 class="mb-0 fw-normal">Double Bed</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Room Floor:</small>
-										<h6 class="mb-0 fw-normal">Fifth Floor: Ft1</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Amount:</small>
-										<h6 class="text-success mb-0">$1650</h6>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<small class="d-block d-xxl-none">Payment:</small>
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i
-												class="fas fa-star text-warning"></i></li>
-										</ul>
-									</div>
-
-									<!-- Data item -->
-									<div class="col">
-										<a href="#" class="btn btn-sm btn-light mb-0">View</a>
 									</div>
 								</div>
 							</div>
-							<!-- Card body END -->
+						</div>
+						<!-- 객실 옵션 설정 Card END -->
 
-							<!-- Card footer START -->
-							<div class="card-footer pt-0">
-								<!-- Pagination and content -->
-								<div
-									class="d-sm-flex justify-content-sm-between align-items-sm-center">
-									<!-- Content -->
-									<p class="mb-sm-0 text-center text-sm-start">Showing 1 to 8
-										of 20 entries</p>
-									<!-- Pagination -->
-									<nav class="mb-sm-0 d-flex justify-content-center"
-										aria-label="navigation">
-										<ul
-											class="pagination pagination-sm pagination-primary-soft mb-0">
-											<li class="page-item disabled"><a class="page-link"
-												href="#" tabindex="-1">Prev</a></li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item active"><a class="page-link"
-												href="#">2</a></li>
-											<li class="page-item disabled"><a class="page-link"
-												href="#">..</a></li>
-											<li class="page-item"><a class="page-link" href="#">15</a></li>
-											<li class="page-item"><a class="page-link" href="#">Next</a>
-											</li>
-										</ul>
-									</nav>
+						<!-- 객실 사진 등록 Card Start -->
+						<div class="card border mb-3">
+							<div class="card-header border-bottom">
+								<h5 class="card-header-title">객실 사진 등록</h5>
+							</div>
+							<div class="card-body">
+								<!-- 사진 리스트 -->
+								<div class="d-flex gap-3">
+									<!-- 이미지 1 -->
+									<div class="position-relative">
+										<img src="https://via.placeholder.com/150" alt="사진 1"
+											class="rounded border"
+											style="width: 150px; height: 100px; object-fit: cover;">
+									</div>
+									<!-- 이미지 2 -->
+									<div class="position-relative">
+										<img src="https://via.placeholder.com/150" alt="사진 2"
+											class="rounded border"
+											style="width: 150px; height: 100px; object-fit: cover;">
+									</div>
+									<!-- 이미지 3 -->
+									<div class="position-relative">
+										<img src="https://via.placeholder.com/150" alt="사진 3"
+											class="rounded border"
+											style="width: 150px; height: 100px; object-fit: cover;">
+									</div>
+									<!-- 업로드 버튼 -->
+									<div
+										class="border rounded d-flex justify-content-center align-items-center"
+										style="width: 150px; height: 100px; background-color: #f8f9fa;">
+										<label class="text-center" style="cursor: pointer;"> <i
+											class="bi bi-upload"></i><br>숙소 사진 업로드 <input
+											type="file" class="d-none">
+										</label>
+									</div>
 								</div>
 							</div>
-							<!-- Card footer END -->
+						</div>
+						<!-- 객실 사진 등록 Card END -->
+						<div class="d-flex justify-content-end">
+							<button class="btn btn-danger-soft px-4 mb-4">등록</button>
 						</div>
 					</div>
-					<!-- Content item END -->
+					<!-- #tab2 / 객실추가 Tap END -->
+					<!-- ******************************************** -->
+
+
+
+
+
 				</div>
-				<!-- Tab content END -->
+				<!-- tab-content END -->
+
 			</div>
 			<!-- Page main content END -->
 		</div>

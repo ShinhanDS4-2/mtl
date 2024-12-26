@@ -296,10 +296,67 @@
 				<!-- 검색 필터 설정 END -->
 
 
+				<!-- 예약내역 상세보기 Moadl START -->
+				<div id="bookingDetailModal" class="modal" tabindex="-1"
+					role="dialog">
+					<div class="modal-dialog modal-lg modal-dialog-centered"
+						role="document">
+						<!-- 큰 모달-->
+						<div class="modal-content">
+							<!-- 모달 head -->
+							<div class="modal-header">
+								<h5 class="modal-title">예약 상세 정보</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<!-- 모달 body -->
+							<div class="modal-body">
+								<!-- 예약번호 -->
+								<h6 class="fw-bold">예약번호</h6>
+								<div class="mb-3 border p-3">
+									<p class="mb-0">240123</p>
+								</div>
+
+								<!-- 예약자 정보 -->
+								<h6 class="fw-bold">예약자 정보</h6>
+								<div class="mb-3 border p-3">
+									<p class="mb-0">예약자명: 김시온</p>
+									<p class="mb-0">연락처: 010-7737-6314</p>
+								</div>
+
+								<!-- 예약 정보 -->
+								<h6 class="fw-bold">예약 정보</h6>
+								<div class="mb-3 border p-3">
+									<p class="mb-0">객실타입: 프리미엄 트윈</p>
+									<p class="mb-0">입실일시: 2024.12.09(월) 17:00</p>
+									<p class="mb-0">퇴실일시: 2024.12.11(수) 12:00</p>
+									<p class="mb-0">예약일시: 2024.12.09(월) 20:08:25</p>
+									<p class="mb-0">예약상태: 프리미엄 트윈</p>
+								</div>
+
+								<!-- 금액 정보 -->
+								<h6 class="fw-bold">금액 정보</h6>
+								<div class="mb-3 border p-3">
+									<p class="mb-0">판매가: 120,000원</p>
+									<p class="mb-0">정상가: 110,000원</p>
+								</div>
+							</div>
+
+							<!-- 모달 footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary">출력</button>
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">닫기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 예약내역 상세보기 Moadl END -->
+
 				<!-- 예약 내역 List 상단 Tab -->
 				<div class="row g-4 justify-content-between align-items-center mb-2">
 					<div class="col-lg-9">
-						<h6 class="card-title mb-1">총 10개</h6>
+						<h6 class="mb-1">총 120개</h6>
 					</div>
 					<div class="col-md-4 col-lg-2">
 						<form>
@@ -324,6 +381,7 @@
 						</form>
 					</div>
 				</div>
+
 				<!-- 예약 내역 List START -->
 				<div class="card shadow">
 					<!-- Card header -->
@@ -369,6 +427,8 @@
 								<small class="d-block d-sm-none">예약번호</small>
 								<!-- 작은 화면일때만 보이는 텍스트-->
 								<h6 class="ms-1 mb-0 fw-normal">240123</h6>
+								<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
+									data-bs-target="#bookingDetailModal">상세보기</a>
 							</div>
 
 							<!-- Data item -->
@@ -418,6 +478,8 @@
 								<small class="d-block d-sm-none">예약번호</small>
 								<!-- 작은 화면일때만 보이는 텍스트-->
 								<h6 class="ms-1 mb-0 fw-normal">240123</h6>
+								<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
+									data-bs-target="#bookingDetailModal">상세보기</a>
 							</div>
 
 							<!-- Data item -->
@@ -465,7 +527,10 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">예약번호</small>
-								<h6 class="ms-1 mb-0 fw-normal">245678</h6>
+								<!-- 작은 화면일때만 보이는 텍스트-->
+								<h6 class="ms-1 mb-0 fw-normal">240123</h6>
+								<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
+									data-bs-target="#bookingDetailModal">상세보기</a>
 							</div>
 
 							<!-- Data item -->
@@ -513,7 +578,10 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">예약번호</small>
-								<h6 class="ms-1 mb-0 fw-normal">245678</h6>
+								<!-- 작은 화면일때만 보이는 텍스트-->
+								<h6 class="ms-1 mb-0 fw-normal">240123</h6>
+								<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
+									data-bs-target="#bookingDetailModal">상세보기</a>
 							</div>
 
 							<!-- Data item -->
@@ -546,54 +614,6 @@
 							<div class="col">
 								<small class="d-block d-sm-none">예약상태</small>
 								<div class="badge bg-danger bg-opacity-10 text-danger">취소됨</div>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">판매가</small>
-								<h6 class="ms-1 mb-0 fw-light">100,000원</h6>
-							</div>
-						</div>
-
-						<!-- Table data (5번째 예약내역 상세 데이터)-->
-						<div
-							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">예약번호</small>
-								<h6 class="ms-1 mb-0 fw-normal">245678</h6>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">예약자명</small>
-								<h6 class="ms-1 mb-0 fw-normal">시온김</h6>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">객실타입</small>
-								<h6 class="ms-1 mb-0 fw-normal">스탠다드 온돌</h6>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">입실/퇴실일시</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.08(월) 17:00</h6>
-								<h6 class="ms-1 mb-0 fw-light">2024.12.09(수) 12:00</h6>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">예약일시</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09(수)</h6>
-								<h6 class="ms-1 mb-0 fw-light">20:08:25</h6>
-							</div>
-
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">예약상태</small>
-								<div class="badge bg-primary bg-opacity-10 text-primary">취소요청</div>
 							</div>
 
 							<!-- Data item -->

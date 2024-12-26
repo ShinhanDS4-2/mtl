@@ -35,7 +35,7 @@
 
 				<!-- 프로필 드롭다운 START -->
 				<li class="nav-item ms-3 dropdown"><a
-					class="text-dark fw-bold p-1" href="#" id="profileDropdown"
+					class="text-dark fw-bold p-1" href="/mtl/admin/dashboard" id="profileDropdown"
 					role="button" data-bs-auto-close="outside" data-bs-display="static"
 					data-bs-toggle="dropdown" aria-expanded="false"> 관리자 님 </a>
 					<ul
@@ -58,11 +58,9 @@
 							<hr class="dropdown-divider">
 						</li>
 						
-						<li><a class="dropdown-item" href="#"><i
+						<li><a class="dropdown-item" href="/mtl/admin/mypage"><i
 								class="bi bi-heart fa-fw me-2"></i>마이페이지</a></li>
-						<li><a class="dropdown-item" href="#"><i
-								class="bi bi-gear fa-fw me-2"></i>설정</a></li>
-						<li><a class="dropdown-item" href="#"><i
+						<li><a class="dropdown-item" href="/mtl/admin/signin"><i
 								class="bi bi-power fa-fw me-2"></i>로그아웃</a></li>
 					</ul></li>
 				<!-- 프로필 드롭다운 END -->

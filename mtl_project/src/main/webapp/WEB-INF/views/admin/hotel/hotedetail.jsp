@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>Booking - Multipurpose Online Booking Theme</title>
+<title>[관리자] 숙소 관리 > 숙소 상세</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
