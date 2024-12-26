@@ -1,6 +1,7 @@
 package kr.co.mtl.s3;
 
-import java.nio.file.Paths;
+import java.io.IOException;
+import java.io.InputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
-import software.amazon.awssdk.services.s3.model.S3Response;
 
 @Service
 public class S3Service {
@@ -27,14 +27,17 @@ public class S3Service {
 	 * @return
 	 * @throws Exception
 	 */
-	public String uploadFile(MultipartFile mFile, String filePath) throws Exception {
-		PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-                .bucket(BUCKET)
-                .key(mFile.getOriginalFilename())
-                .build();
-
-        S3Response response = s3Client.putObject(putObjectRequest, Paths.get(filePath));
-        
-        return response.toString();
+	public String uploadFile(MultipartFile mFile,String filePath) throws IOException{
+		
+			InputStream inputStream = mFile.getInputStream();
+			
+			PutObjectRequest putObjectRequest=PutObjectRequest.builder()
+					.bucket(BUCKET)
+					.key(filePath)
+					.build();
+			
+			s3Client.putObject(putObjectRequest,software.amazon.awssdk.core.sync.RequestBody.fromInputStream(inputStream, mFile.getSize()));
+			
+			return "File uploaded successfully to s3 bucket: "+BUCKET+" with filename: " + mFile.getOriginalFilename();
 	}
 }
