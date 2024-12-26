@@ -134,6 +134,23 @@
 						</div>
 					</div>
 					<!-- Card body END -->
+					
+					<!-- 페이지네이션 -->
+					<div class="card-footer pt-0">
+						<div class="d-sm-flex justify-content-sm-center align-items-sm-center">
+							<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
+								<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+									<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
+									<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
+									<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
+									<li class="page-item mb-0"><a class="page-link" href="#">3</a></li>
+									<li class="page-item mb-0"><a class="page-link" href="#">4</a></li>
+									<li class="page-item mb-0"><a class="page-link" href="#">5</a></li>
+									<li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- Main content END -->
