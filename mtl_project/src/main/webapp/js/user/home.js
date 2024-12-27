@@ -44,7 +44,7 @@ const home = (function() {
 			comm.send(url, data, "POST", function(resp) {
 				console.log(resp);
 				
-				let list = resp.body.list;
+				let list = resp.list;
 				
 				let listObject = $("#accomodationList").empty();
 				for (let data of list) {
