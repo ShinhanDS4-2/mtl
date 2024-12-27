@@ -1,12 +1,11 @@
 package kr.co.mtl.user.partner;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import kr.co.mtl.vo.ResponseMap;
 
 @Service
 public class PartnerServiceImpl implements PartnerService {
@@ -21,7 +20,7 @@ public class PartnerServiceImpl implements PartnerService {
 	 */
 	public Map<String, Object> getBestPartnerList(Map<String, Object> param) {
 		
-		ResponseMap respMap = new ResponseMap();
+		Map<String, Object> result = new HashMap<>();
 		
 		List<Map<String, Object>> list = partnerMapper.getBestPartnerList(param);
 		
@@ -31,9 +30,9 @@ public class PartnerServiceImpl implements PartnerService {
 			data.put("image", imageData);
 		}
 		
-		respMap.setBody("list", list);
+		result.put("list", list);
 
-		return respMap.getResponse();
+		return result;
 	};
 	
 }
