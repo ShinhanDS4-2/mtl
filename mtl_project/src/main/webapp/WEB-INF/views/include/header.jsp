@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Header START -->
 <header class="navbar-light header-sticky">
 	<!-- Logo Nav START -->
@@ -27,6 +28,7 @@
 			
 			<!-- Profile and Notification START -->
 			<ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
+			<c:if test="${empty login_user }">
 				<!-- 비로그인 시 로그인/회원가입 버튼 -->
 				<li class="nav-item">
 					<a class=" btn btn-outline-primary btn-sm mt-2" href="login" role="button">
@@ -34,9 +36,11 @@
 					</a>
 				</li>
 				<!-- 로그인 시 사용자 버튼 START -->
+			</c:if>
+			<c:if test="${!empty login_user }">
 				<li class="nav-item ms-3 dropdown">
 					<a class=" btn btn-outline-primary btn-sm mt-2" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-						<span>사용자</span> 님<i class="fas fa-angle-right ms-2"></i>
+						<span>${login_user.name }</span> 님<i class="fas fa-angle-right ms-2"></i>
 					</a>
 
 					<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
@@ -44,8 +48,8 @@
 						<li class="px-3 mb-3">
 							<div class="d-flex align-items-center">
 								<div>
-									<a class="h6 mt-2 mt-sm-0" href="mypage/info">Lori Ferguson</a>
-									<p class="small m-0">example@gmail.com</p>
+									<a class="h6 mt-2 mt-sm-0" href="mypage/info">${login_user.name }</a>
+									<p class="small m-0">${login_user.email }</p>
 								</div>
 							</div>
 						</li>
@@ -55,10 +59,11 @@
 						<li><a class="dropdown-item" href="mypage/info"><i class="bi bi-person fa-fw me-2"></i>내 정보 관리</a></li>
 						<li><a class="dropdown-item" href="mypage/reservation"><i class="fa-solid fa-calendar-check fa-fw me-2"></i>예약 내역</a></li>
 						<li><a class="dropdown-item" href="service/qna"><i class="fa-solid fa-headset fa-fw me-2"></i>고객 센터</a></li>
-						<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>로그아웃</a></li>
+						<li><a class="dropdown-item bg-danger-soft-hover" href="javascript:;" data-src="header" data-act="clickLogoutBtn"><i class="bi bi-power fa-fw me-2"></i>로그아웃</a></li>
 					</ul>
 				</li>
 				<!-- Profile dropdown END -->
+			</c:if>
 			</ul>
 			<!-- Profile and Notification START -->
 
