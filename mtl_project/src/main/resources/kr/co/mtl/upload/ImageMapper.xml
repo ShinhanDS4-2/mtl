@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.upload.ImageMapper">
+
+	<!-- Location 등록 (관광지 ,맛집) -->
+	<insert id="insertLocationInfo" parameterType="HashMap">
+        INSERT INTO LOCATION (
+            name,
+            area,
+            address,
+            latitude,
+            hardness,
+            description,
+            type,
+            create_date,
+            update_date,
+            address_si,
+            address_dong
+        )
+        VALUES (
+            #{name},
+            #{area},
+            #{address},
+            #{latitude},
+            #{hardness},
+            #{description},
+            #{type},
+            NOW(),
+            NOW(),
+            #{addressSi},
+            #{addressDong}
+        )
+    </insert>
+    
+     <insert id="insertImageInfo" parameterType="map">
+        INSERT INTO IMAGE (
+            type, 
+            url, 
+            thumbnail_yn, 
+            origin_filename
+        )
+        VALUES (
+            #{type}, 
+            #{url}, 
+            #{thumbnail_yn}, 
+            #{origin_filename}
+        )
+    </insert>
+	
+</mapper>
