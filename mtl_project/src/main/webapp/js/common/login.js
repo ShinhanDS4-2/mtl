@@ -32,18 +32,19 @@ const login = (function() {
 		if(type == "click") {
 			if(action == "clickLoginBtn") {
 				_event.handleLogin();
-			};
+			}	
 		} else if(type == "keyup") {
 			if (window.event.keyCode == 13) {
 				_event.handleLogin();
 			}
 		}
+		
 	};
 	
 	// 이벤트
 	let _event = {
 		handleLogin: function() {
-			let url = "";
+			let url = "/user/login";
 
 			let formData = {
 	        	email: $("#email").val(),
@@ -51,11 +52,11 @@ const login = (function() {
 	        };
 	
 			comm.send(url, formData, "POST", function(response) {
-            	let code = response.body.code;
+            	let code = response.code;
                 if (code == 200) {
                     // 로그인 성공 시 메인 페이지로 이동
                     location.href = "/mtl/";
-                } else {
+                } else if (code == 600) {
                     // 실패 메시지 표시
                     alert("로그인에 실패했습니다. 다시 시도해주세요.");
                 }

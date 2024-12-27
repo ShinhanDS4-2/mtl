@@ -19,8 +19,12 @@
 
     <!-- 사용자 인증 정보 확인 -->
     <select id="getUserCheck" parameterType="map" resultType="map">
-        SELECT 
+        SELECT
+        	  idx AS user_idx, 
               email,
+              name,
+              phone,
+              birth,
               user_status
         FROM 
             USER

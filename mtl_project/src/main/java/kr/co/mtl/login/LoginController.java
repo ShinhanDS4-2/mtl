@@ -3,8 +3,11 @@ package kr.co.mtl.login;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,15 +68,21 @@ public class LoginController {
      * @return 로그아웃 결과
      * @throws Exception 예외 처리
      */
-    @PostMapping("/api/user/logout")
-    public Map<String, Object> logout(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
+    @PostMapping("/logout")
+    public void logout(@RequestParam Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) throws Exception {
         // 필수 파라미터 null 체크
-        CommonUtil.checkIsNull(param, "userIdx");
+//        CommonUtil.checkIsNull(param, "userIdx");
 
         // 로그아웃 처리
-        Map<String, Object> result = loginService.logout(param, request);
-
-        return result;
+//      Map<String, Object> result = loginService.logout(param, request);
+    	
+    	HttpSession session = request.getSession();
+    	
+        if (session.getAttribute("login_user") != null) {
+            session.invalidate(); // 세션 무효화
+        }
+        
+//        return result;
     }
 }
 

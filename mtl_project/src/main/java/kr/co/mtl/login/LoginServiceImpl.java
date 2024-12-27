@@ -39,7 +39,7 @@ public class LoginServiceImpl implements LoginService {
         Map<String, Object> result = new HashMap<>();
 
         HttpSession session = request.getSession();
-        session.setMaxInactiveInterval(-1);
+//        session.setMaxInactiveInterval(-1);
         
         // 사용자 인증
         Map<String, Object> user = loginMapper.getUserCheck(param);
@@ -54,12 +54,19 @@ public class LoginServiceImpl implements LoginService {
          * 로그인 성공 후 세션 처리
          * 세션에다가 가져온 유저 정보 넣기
          */
+        //
+        if(user == null) {
+        	result.put("code", Code.LOGIN_ERROR.code);
+        	return result;
+        }
+        
         
         // 로그인 성공 세션 처리
-        session.setAttribute("user", user);	//세션에 사용자 정보 저장
+        session.setAttribute("login_user", user);	//세션에 사용자 정보 저장
         
         // 로그인 성공 처리 (예: 세션 생성 또는 토큰 발급)
-        result.put("user", user);
+        result.put("login_user", user);
+        result.put("code", Code.OK.code);
         return result;
     }
 
@@ -71,13 +78,14 @@ public class LoginServiceImpl implements LoginService {
      */
     @Override
     public Map<String, Object> logout(Map<String, Object> param, HttpServletRequest request) throws Exception {
-    	HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate(); // 세션 무효화
+    	HttpSession session = request.getSession();
+    	
+        if (session.getAttribute("login_user") != null) {
+            session.invalidate(); // 세션 삭제
         }
 
     	Map<String, Object> result = new HashMap<>();
-        // 로그아웃 처리 로직 (예: 세션 무효화 또는 토큰 삭제)
+        // 로그아웃 처리 로직
         result.put("status", "success");
         result.put("message", "Logout successful.");
         return result;
