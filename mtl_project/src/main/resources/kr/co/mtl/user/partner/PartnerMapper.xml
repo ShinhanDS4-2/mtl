@@ -34,4 +34,66 @@
 		AND 
 			thumbnail_yn = 'Y'
 	</select>
+	
+	<!-- 숙소 검색 리스트 -->
+	<select id="getPartnerList" parameterType="HashMap">
+		SELECT
+			  idx AS partner_idx
+			, name
+			, area
+			, score
+		FROM 
+			PARTNER
+		WHERE
+			approval_status = 'Y'
+		<if test="area != null and area != ''">
+			AND AREA = #{area}
+		</if>
+		ORDER BY create_date DESC
+		<if test="limit != null and offset != null">
+			LIMIT ${limit} OFFSET ${offset}
+		</if>
+	</select>
+	
+	<!-- 숙소 검색 리스트 -->
+	<select id="getPartnerCnt" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM 
+			PARTNER
+		WHERE
+			approval_status = 'Y'
+		<if test="area != null and area != ''">
+			AND AREA = #{area}
+		</if>
+	</select>
+	
+	<!-- 숙소 사진 리스트 -->
+	<select id="getPartnerImageList" parameterType="HashMap">
+		SELECT 
+			  idx AS image_idx
+			, origin_filename
+			, url
+			, thumbnail_yn
+		FROM
+			IMAGE
+		WHERE
+			type = 'P'
+		AND
+			mapping_idx = #{partner_idx}
+	</select>
+	
+	<!-- 숙소 시설 리스트 -->
+	<select id="getPartnerFacilities" parameterType="HashMap">
+		SELECT
+			f.name
+		FROM 
+			FACILITIES f
+		JOIN 
+			PARTNER_FACILITIES pf
+		ON pf.facilities_idx = f.idx
+		WHERE
+			f.type = 'COMMON'
+		AND pf.partner_idx = #{partner_idx}
+	</select>
 </mapper>
