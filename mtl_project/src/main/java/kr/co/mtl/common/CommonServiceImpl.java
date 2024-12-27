@@ -1,12 +1,11 @@
 package kr.co.mtl.common;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import kr.co.mtl.vo.ResponseMap;
 
 @Service
 public class CommonServiceImpl implements CommonService {
@@ -21,12 +20,12 @@ public class CommonServiceImpl implements CommonService {
 	 */
 	public Map<String, Object> getCodeList(Map<String, Object> param) {
 		
-		ResponseMap respMap = new ResponseMap();
+		Map<String, Object> result = new HashMap<>();
 		
 		List<Map<String, Object>> list = commonMapper.getCodeList(param);
-		respMap.setBody("list", list);
+		result.put("list", list);
 
-		return respMap.getResponse();
+		return result;
 	}
 	
 }

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.mtl.vo.Code;
-import kr.co.mtl.vo.ResponseMap;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -37,7 +36,7 @@ public class LoginServiceImpl implements LoginService {
      */
     @Override
     public Map<String, Object> login(Map<String, Object> param, HttpServletRequest request) throws Exception {
-        ResponseMap result = new ResponseMap();
+        Map<String, Object> result = new HashMap<>();
 
         HttpSession session = request.getSession();
         session.setMaxInactiveInterval(-1);
@@ -46,9 +45,9 @@ public class LoginServiceImpl implements LoginService {
         Map<String, Object> user = loginMapper.getUserCheck(param);
 
         // 사용자 존재 여부 확인
-        if (user == null) {
-        	return result.getErrResponse(Code.LOGIN_ERROR);
-        }
+//        if (user == null) {
+//        	return result;
+//        }
 
         /**
          * TODO
@@ -60,8 +59,8 @@ public class LoginServiceImpl implements LoginService {
         session.setAttribute("user", user);	//세션에 사용자 정보 저장
         
         // 로그인 성공 처리 (예: 세션 생성 또는 토큰 발급)
-        result.setBody("user", user);
-        return result.getResponse();
+        result.put("user", user);
+        return result;
     }
 
     /**

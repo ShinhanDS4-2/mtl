@@ -1,12 +1,11 @@
 package kr.co.mtl.user.location;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import kr.co.mtl.vo.ResponseMap;
 
 @Service
 public class LocationServiceImpl implements LocationService {
@@ -21,7 +20,7 @@ public class LocationServiceImpl implements LocationService {
 	 */
 	public Map<String, Object> getLocationList(Map<String, Object> param) {
 		
-		ResponseMap respMap = new ResponseMap();
+		Map<String, Object> result = new HashMap<>();
 		
 		List<Map<String, Object>> list = locationMapper.getLocationList(param);
 		for (Map<String, Object> data : list) {
@@ -34,7 +33,7 @@ public class LocationServiceImpl implements LocationService {
 			data.put("keywordList", keywordList);
 		}
 
-		return respMap.getResponse();
+		return result;
 	};
 	
 }
