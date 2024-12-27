@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head>
-	<title>Booking - Multipurpose Online Booking Theme</title>
+	<title>[관리자] 여행지 관리 > 여행지상세</title>
 
 	<!-- headerScript -->
 	<%@ include file="/WEB-INF/views/include/headerScript.jsp" %>
