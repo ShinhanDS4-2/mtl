@@ -38,36 +38,28 @@
 	<!-- 숙소 검색 리스트 -->
 	<select id="getPartnerList" parameterType="HashMap">
 		SELECT
-			  idx AS partner_idx
-			, name
-			, area
-			, score
-			, type
-			, address
+			  p.idx AS partner_idx
+			, p.name
+			, p.area
+			, p.score
+			, p.type
+			, p.address
 		FROM 
-			PARTNER
-		WHERE
-			approval_status = 'Y'
-		<if test="area != null and area != ''">
-			AND AREA = #{area}
-		</if>
-		ORDER BY create_date DESC
+			PARTNER p
+		<include refid="searchPartner"></include>
+		ORDER BY p.create_date DESC
 		<if test="limit != null and offset != null">
 			LIMIT ${limit} OFFSET ${offset}
 		</if>
 	</select>
 	
-	<!-- 숙소 검색 리스트 -->
+	<!-- 숙소 검색 리스트 개수 -->
 	<select id="getPartnerCnt" parameterType="HashMap">
 		SELECT
 			COUNT(*)
 		FROM 
-			PARTNER
-		WHERE
-			approval_status = 'Y'
-		<if test="area != null and area != ''">
-			AND AREA = #{area}
-		</if>
+			PARTNER p
+		<include refid="searchPartner"></include>
 	</select>
 	
 	<!-- 숙소 사진 리스트 -->
@@ -98,4 +90,25 @@
 			f.type = 'COMMON'
 		AND pf.partner_idx = #{partner_idx}
 	</select>
+	
+	<sql id="searchPartner">
+		WHERE
+			approval_status = 'Y'
+		<if test="area != null and area != ''">
+			AND AREA = #{area}
+		</if>
+		<if test="facilitiesList != null and facilitiesList.size() > 0">
+			AND p.idx IN (
+				SELECT 
+					partner_idx 
+				FROM
+					PARTNER_FACILITIES
+				WHERE
+					facilities_idx IN 
+				<foreach item="list" collection="facilitiesList" separator="," open="(" close=")">
+					#{list}
+				</foreach>
+			)
+		</if>
+	</sql>
 </mapper>

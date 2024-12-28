@@ -42,5 +42,20 @@ public class CommonServiceImpl implements CommonService {
 		
 		return result;
 	}
+
+	/**
+	 * 시설 리스트
+	 * @param param
+	 * @return 시설 리스트
+	 */
+	public Map<String, Object> getFacilitiesList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		List<Map<String, Object>> list = commonMapper.getFacilitiesList(param);
+		result.put("list", list);
+		
+		return result;
+	}
 	
 }

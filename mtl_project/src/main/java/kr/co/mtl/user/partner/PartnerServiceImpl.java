@@ -43,6 +43,7 @@ public class PartnerServiceImpl implements PartnerService {
 	 */
 	public Map<String, Object> getPartnerSearchList(Map<String, Object> param) {
 		
+		System.out.println(param);
 		Map<String, Object> result = new HashMap<>();
 		
 		List<Map<String, Object>> list = partnerMapper.getPartnerList(param);

@@ -41,7 +41,7 @@ const home = (function() {
 				offset: 0
 			};
 			
-			comm.send(url, data, "POST", function(resp) {
+			comm.sendJson(url, data, "POST", function(resp) {
 				console.log(resp);
 				
 				let list = resp.list;

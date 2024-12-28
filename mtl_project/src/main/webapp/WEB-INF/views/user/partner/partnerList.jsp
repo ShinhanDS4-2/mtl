@@ -35,6 +35,7 @@
 								<label class="form-label">지역</label>
 								<select class="form-select js-choice text-reset" id="searchArea">
 									<option value="" disabled="disabled">지역 선택</option>
+									<option value="" selected>전체</option>
 									<option value="SEOUL">서울</option>
 									<option value="GANGNEUNG">강릉</option>
 									<option value="YEOSU">여수</option>
@@ -86,7 +87,7 @@
 				</div>
 				<!-- 검색 버튼 -->
 				<div class="btn-position-md-middle">
-					<button class="icon-lg btn btn-round btn-primary mb-0" id="searchBtn" data-src="partnerList" data-act="clickSearchBtn"><i class="bi bi-search fa-fw"></i></button>
+					<button type="button" class="icon-lg btn btn-round btn-primary mb-0" data-src="partnerList" data-act="clickSearchBtn"><i class="bi bi-search fa-fw"></i></button>
 				</div>
 			</form>
 		</div>
@@ -107,27 +108,27 @@
 								<h6 class="mb-2">숙소 유형</h6>
 								<div class="col-12" id="partnerTypeOption">
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="hotelType1">
+										<input class="form-check-input" type="checkbox" value="" id="hotelType1" data-src="partnerList" data-act="changeAllCheck">
 										<label class="form-check-label" for="hotelType1">All</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="HOTEL" id="hotelType2">
+										<input class="form-check-input" type="checkbox" value="HOTEL" id="hotelType2" data-src="partnerList" data-act="changeOption">
 										<label class="form-check-label" for="hotelType2">호텔</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="MOTEL" id="hotelType3">
+										<input class="form-check-input" type="checkbox" value="MOTEL" id="hotelType3" data-src="partnerList" data-act="changeOption">
 										<label class="form-check-label" for="hotelType3">모텔</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="PENSION" id="hotelType4">
+										<input class="form-check-input" type="checkbox" value="PENSION" id="hotelType4" data-src="partnerList" data-act="changeOption">
 										<label class="form-check-label" for="hotelType4">펜션</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="GUESTHOUSE" id="hotelType5">
+										<input class="form-check-input" type="checkbox" value="GUESTHOUSE" id="hotelType5" data-src="partnerList" data-act="changeOption">
 										<label class="form-check-label" for="hotelType5">게스트하우스</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="GLAMPING" id="hotelType6">
+										<input class="form-check-input" type="checkbox" value="GLAMPING" id="hotelType6" data-src="partnerList" data-act="changeOption">
 										<label class="form-check-label" for="hotelType6">글램핑</label>
 									</div>
 								</div>
@@ -141,10 +142,10 @@
 								<div class="position-relative">
 									<div class="noui-wrapper">
 										<div class="d-flex justify-content-between">
-											<input type="text" class="text-body input-with-range-min" id="minPrice">
-											<input type="text" class="text-body input-with-range-max" id="maxPrice">
+											<input type="text" class="text-body input-with-range-min" id="minPrice" data-src="partnerList" data-act="changeOption">
+											<input type="text" class="text-body input-with-range-max" id="maxPrice" data-src="partnerList" data-act="changeOption">
 										</div>
-										<div class="noui-slider-range mt-2" data-range-min="10000" data-range-max="2000000" data-range-selected-min="50000" data-range-selected-max="500000" data-step="10000"></div>
+										<div class="noui-slider-range mt-2" data-range-min="0" data-range-max="2000000" data-range-selected-min="50000" data-range-selected-max="500000" data-step="50000"></div>
 									</div>
 								</div>
 							</div>
@@ -155,34 +156,6 @@
 							<div class="card card-body rounded-0 p-4">
 								<h6 class="mb-3">취향</h6>
 								<ul class="list-inline mb-0 g-3" id="keywordList">
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="btn-check-1">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-1"><i class="fa-solid fa-hashtag"></i> 가족여행</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="btn-check-2">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-2"><i class="fa-solid fa-hashtag"></i> 파티룸</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="btn-check-3">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-3"><i class="fa-solid fa-hashtag"></i> 스파</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="btn-check-4">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-4"><i class="fa-solid fa-hashtag"></i> OTT</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="btn-check-5">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-5"><i class="fa-solid fa-hashtag"></i> 연인</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="btn-check-6">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-6"><i class="fa-solid fa-hashtag"></i> 감성숙소</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="btn-check-7">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-7"><i class="fa-solid fa-hashtag"></i> 반려견</label>
-									</li>
 								</ul>
 							</div>
 
@@ -194,49 +167,9 @@
 								<!-- 공용 시설 -->
 								<span class="h7 mb-1 text-reset">공용 시설</span>
 								<ul class="list-inline mb-0 g-3" id="commonList1">
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities1">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities1">피트니스</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities2">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities2">수영장</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities3">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities3">레스토랑</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities4">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities4">무료주차</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities5">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities5">엘리베이터</label>
-									</li>
 								</ul>
 								<div class="multi-collapse collapse" id="commonCollapes">
 									<ul class="list-inline mb-0 g-3" id="commonList2">
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities6">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities6">야외수영장</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities7">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities7">사우나</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities8">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities8">라운지</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities9">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities9">건조기</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities10">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities10">바베큐</label>
-										</li>
 									</ul>
 								</div>
 								<!-- 공용시설 더보기 -->
@@ -247,49 +180,9 @@
 								<!-- 객실 내 시설 -->
 								<span class="h7 mt-4 mb-1 text-reset">객실 내 시설</span>
 								<ul class="list-inline mb-0 g-3" id="roomList1">
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities11">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities11">샤워실</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities12">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities12">욕조</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities13">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities13">미니바</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities14">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities14">드라이기</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities15">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities15">와이파이</label>
-									</li>
 								</ul>
 								<div class="multi-collapse collapse" id="roomCollapes">
 									<ul class="list-inline mb-0 g-3" id="roomList2">
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities16">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities16">TV</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities17">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities17">금고</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities18">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities18">커피머신</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities19">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities19">PC</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities20">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities20">어메니티</label>
-										</li>
 									</ul>
 								</div>
 								<!-- 객실 내 시설 더보기 -->
@@ -300,45 +193,9 @@
 								<!-- 기타 시설 -->
 								<span class="h7 mt-4 mb-1 text-reset">기타 시설</span>
 								<ul class="list-inline mb-0 g-3" id="etcList1">
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities21">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities21">장애인편의</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities22">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities22">금연</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities23">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities23">짐보관가능</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities24">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities24">반려견동반</label>
-									</li>
-									<li class="list-inline-item mb-0 me-0">
-										<input type="checkbox" class="btn-check" id="amenities25">
-										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities25">조식제공</label>
-									</li>
 								</ul>
 								<div class="multi-collapse collapse" id="etcCollapes">
 									<ul class="list-inline mb-0 g-3" id="etcList2">
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities26">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities26">개인사물함</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities27">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities27">픽업서비스</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities28">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities28">객실내취사</label>
-										</li>
-										<li class="list-inline-item mb-0 me-0">
-											<input type="checkbox" class="btn-check" id="amenities29">
-											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities29">캠프파이어</label>
-										</li>
 									</ul>
 								</div>
 								<!-- 기타 시설 더보기 -->
@@ -358,324 +215,13 @@
 			<!-- 숙소 리스트 -->
 			<div class="col-xl-8 col-xxl-9">
 				<div class="vstack gap-4" id="partnerList">
-					<div class="card shadow p-2">
-						<div class="row g-0">
-							<!-- Card img -->
-							<div class="col-md-5 position-relative">
-
-								<!-- Slider START -->
-								<div class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2 card-z-top">
-									<div class="tiny-slider-inner" data-autoplay="false" data-arrow="true" data-dots="false" data-items="1">
-										<!-- Image item -->
-										<div><img src="assets/images/category/hotel/4by3/04.jpg" alt="Card image"></div>
-
-										<!-- Image item -->
-										<div><img src="assets/images/category/hotel/4by3/02.jpg" alt="Card image"></div>
-
-										<!-- Image item -->
-										<div><img src="assets/images/category/hotel/4by3/03.jpg" alt="Card image"></div>
-
-										<!-- Image item -->
-										<div><img src="assets/images/category/hotel/4by3/01.jpg" alt="Card image"></div>
-									</div>
-								</div>
-								<!-- Slider END -->
-							</div>
-							
-							<!-- Card body -->
-							<div class="col-md-7 partner-card" data-src="partnerList" data-act="clickPartner">
-								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
-
-									<!-- Rating and buttons -->
-									<div class="d-flex justify-content-between align-items-center">
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-										</ul>
-										
-										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
-									</div>
-
-									<!-- Title -->
-									<h5 class="card-title mt-2 mb-1"><a href="javascript:;">그랜드 인터컨티넨탈 서울 파르나스 </a></h5>
-									<small><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521</small>
-									<!-- Amenities -->
-									<ul class="nav nav-divider mt-3">
-										<li class="nav-item">수영장</li>
-										<li class="nav-item">Wifi</li>
-										<li class="nav-item">무료주차</li>
-									</ul>
-
-									<!-- Price and Button -->
-									<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-										<!-- Button -->
-										<div class="d-flex align-items-center">
-										</div>
-										<!-- Price -->
-										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
-											<span class="mb-0 me-2"> / 일</span>
-										</div>                  
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-
-					<!-- Card item START -->
-					<div class="card shadow p-2">
-						<div class="row g-0">
-							<!-- Card img -->
-							<div class="col-md-5">
-								<img src="assets/images/category/hotel/4by3/10.jpg" class="card-img rounded-2" alt="Card image">
-							</div>
-
-							<!-- Card body -->
-							<div class="col-md-7 partner-card" data-src="partnerList" data-act="clickPartner">
-								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
-
-									<!-- Rating and buttons -->
-									<div class="d-flex justify-content-between align-items-center">
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-										</ul>
-										
-										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
-									</div>
-
-									<!-- Title -->
-									<h5 class="card-title mt-2 mb-1"><a href="javascript:;">그랜드 인터컨티넨탈 서울 파르나스 </a></h5>
-									<small><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521</small>
-									<!-- Amenities -->
-									<ul class="nav nav-divider mt-3">
-										<li class="nav-item">수영장</li>
-										<li class="nav-item">Wifi</li>
-										<li class="nav-item">무료주차</li>
-									</ul>
-
-									<!-- Price and Button -->
-									<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-										<!-- Price -->
-										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
-											<span class="mb-0 me-2"> / 일</span>
-										</div>                 
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-
-					<!-- Card item START -->
-					<div class="card shadow p-2">
-						<div class="row g-0">
-							<!-- Card img -->
-							<div class="col-md-5">
-								<img src="assets/images/category/hotel/4by3/11.jpg" class="card-img rounded-2" alt="Card image">
-							</div>
-
-							<!-- Card body -->
-							<div class="col-md-7 partner-card" data-src="partnerList" data-act="clickPartner">
-								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
-
-									<!-- Rating and buttons -->
-									<div class="d-flex justify-content-between align-items-center">
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-										</ul>
-										
-										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
-									</div>
-
-									<!-- Title -->
-									<h5 class="card-title mt-2 mb-1"><a href="javascript:;">그랜드 인터컨티넨탈 서울 파르나스 </a></h5>
-									<small><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521</small>
-									<!-- Amenities -->
-									<ul class="nav nav-divider mt-3">
-										<li class="nav-item">수영장</li>
-										<li class="nav-item">Wifi</li>
-										<li class="nav-item">무료주차</li>
-									</ul>
-
-									<!-- List -->
-									<ul class="list-group list-group-borderless small mb-0 mt-2">
-										<li class="list-group-item d-flex text-success p-0">
-											<i class="bi bi-patch-check-fill me-2"></i>조식 제공
-										</li>
-									</ul>
-									
-									<!-- Price and Button -->
-									<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-										<!-- Button -->
-										<div class="d-flex align-items-center">
-										</div>
-										<!-- Price -->
-										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
-											<span class="mb-0 me-2"> / 일</span>
-										</div>                 
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-
-					<!-- Card item START -->
-					<div class="card shadow p-2">
-						<div class="row g-0">
-							<!-- Card img -->
-							<div class="col-md-5 position-relative">
-
-								<!-- Slider START -->
-								<div class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2">
-									<div class="tiny-slider-inner" data-autoplay="false" data-arrow="true" data-dots="false" data-items="1">
-										<!-- Image item -->
-										<div><img src="assets/images/category/hotel/4by3/08.jpg" alt="Card image"></div>
-
-										<!-- Image item -->
-										<div><img src="assets/images/category/hotel/4by3/02.jpg" alt="Card image"></div>
-
-										<!-- Image item -->
-										<div><img src="assets/images/category/hotel/4by3/03.jpg" alt="Card image"></div>
-
-										<!-- Image item -->
-										<div><img src="assets/images/category/hotel/4by3/06.jpg" alt="Card image"></div>
-									</div>
-								</div>
-								<!-- Slider END -->
-							</div>
-
-							<!-- Card body -->
-							<div class="col-md-7 partner-card" data-src="partnerList" data-act="clickPartner">
-								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
-
-									<!-- Rating and buttons -->
-									<div class="d-flex justify-content-between align-items-center">
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-										</ul>
-										
-										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
-									</div>
-
-									<!-- Title -->
-									<h5 class="card-title mt-2 mb-1"><a href="javascript:;">그랜드 인터컨티넨탈 서울 파르나스 </a></h5>
-									<small><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521</small>
-									<!-- Amenities -->
-									<ul class="nav nav-divider mt-3">
-										<li class="nav-item">수영장</li>
-										<li class="nav-item">Wifi</li>
-										<li class="nav-item">무료주차</li>
-									</ul>
-
-									<!-- List -->
-									<ul class="list-group list-group-borderless small mb-0 mt-2">
-										<li class="list-group-item d-flex text-success p-0">
-											<i class="bi bi-patch-check-fill me-2"></i>조식 제공
-										</li>
-									</ul>
-									
-									<!-- Price and Button -->
-									<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-										<!-- Button -->
-										<div class="d-flex align-items-center">
-										</div>
-										<!-- Price -->
-										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
-											<span class="mb-0 me-2"> / 일</span>
-										</div>             
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-
-					<!-- Card item START -->
-					<div class="card shadow p-2 partner-card">
-						<div class="row g-0">
-							<!-- Card img -->
-							<div class="col-md-5">
-								<img src="assets/images/category/hotel/4by3/10.jpg" class="card-img rounded-2" alt="Card image">
-							</div>
-
-							<!-- Card body -->
-							<div class="col-md-7 partner-card" data-src="partnerList" data-act="clickPartner">
-								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
-
-									<!-- Rating and buttons -->
-									<div class="d-flex justify-content-between align-items-center">
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-											<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-										</ul>
-										
-										<span class="badge bg-primary bg-opacity-10 text-primary">호텔</span>
-									</div>
-
-									<!-- Title -->
-									<h5 class="card-title mt-2 mb-1"><a href="javascript:;">그랜드 인터컨티넨탈 서울 파르나스 </a></h5>
-									<small><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521</small>
-									<!-- Amenities -->
-									<ul class="nav nav-divider mt-3">
-										<li class="nav-item">수영장</li>
-										<li class="nav-item">Wifi</li>
-										<li class="nav-item">무료주차</li>
-									</ul>
-
-									<!-- List -->
-									<ul class="list-group list-group-borderless small mb-0 mt-2">
-										<li class="list-group-item d-flex text-success p-0">
-											<i class="bi bi-patch-check-fill me-2"></i>조식 제공
-										</li>
-									</ul>
-									
-									<!-- Price and Button -->
-									<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-										<!-- Button -->
-										<div class="d-flex align-items-center">
-										</div>
-										<!-- Price -->
-										<div class="d-flex align-items-center">
-											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
-											<span class="mb-0 me-2"> / 일</span>
-										</div>                 
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-
-					<!-- Pagination -->
-					<nav class="d-flex justify-content-center" aria-label="navigation">
-						<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
-						</ul>
-					</nav>
 
 				</div>
+				<!-- Pagination -->
+				<nav class="d-flex justify-content-center mt-5" aria-label="navigation">
+					<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
+					</ul>
+				</nav>
 			</div>
 			<!-- Main content END -->
 		</div> <!-- Row END -->

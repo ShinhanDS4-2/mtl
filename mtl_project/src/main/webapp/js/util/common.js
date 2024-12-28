@@ -9,7 +9,22 @@ const comm = {
 		$.ajax({
 			type: method,
 			url: url_v,
+			contentType: "application/json",
 			data: data_v,
+			success: successCallback,
+			error: errorCallback
+		});
+	},
+	
+	sendJson: function(url_v, data_v, method, successCallback, errorCallback) {
+		// url
+		url_v = this.prefix + url_v;
+		
+		$.ajax({
+			type: method,
+			url: url_v,
+			contentType: "application/json",
+			data: JSON.stringify(data_v),
 			success: successCallback,
 			error: errorCallback
 		});
