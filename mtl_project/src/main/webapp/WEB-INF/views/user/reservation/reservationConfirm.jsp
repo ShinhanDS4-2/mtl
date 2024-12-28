@@ -97,6 +97,6 @@ Main content START -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/user/reservationConfirm.js"></script>
+<script src="js/user/reservation/reservationConfirm.js"></script>
 </body>
 </html>

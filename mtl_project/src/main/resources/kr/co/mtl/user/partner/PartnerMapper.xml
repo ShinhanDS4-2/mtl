@@ -42,6 +42,8 @@
 			, name
 			, area
 			, score
+			, type
+			, address
 		FROM 
 			PARTNER
 		WHERE
