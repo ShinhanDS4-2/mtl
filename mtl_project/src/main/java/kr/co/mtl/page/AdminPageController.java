@@ -8,18 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminPageController {
 
-	// home
+	// 대시보드
 	@GetMapping("/dashboard")
 	public String dashboard() {
 		return "admin/home/dashboard";
 	}
 
-	// hotel
+	// 예약
 	@GetMapping("/bookinglist")
 	public String bookinglist() {
 		return "admin/hotel/bookinglist";
 	}
 
+	// 
 	@GetMapping("/hotedetail")
 	public String hotedetail() {
 		return "admin/hotel/hotedetail";
@@ -114,7 +115,5 @@ public class AdminPageController {
 	public String signup() {
 		return "admin/otherPages/signup";
 	}
-	
-
 	
 }

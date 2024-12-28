@@ -73,6 +73,24 @@
 							</div>
 							<!-- Card body END -->
 						</div>
+						
+						<!-- 비밀번호 변경 START -->
+						<div class="bg-light bor rounded-3 p-4 mb-3 mt-4">
+							<div class="d-md-flex justify-content-between align-items-center flex-wrap">
+								<!-- Content -->
+								<div>
+									<h6 class="h5">비밀번호</h6>
+									<p class="mb-1 mb-md-0">비밀번호를 변경하여 계정을 보호하세요.</p>
+								</div>
+								<!-- 비밀번호 변경하기 Button 클릭 시 모달창 표시 -->
+								<div>
+									<a role="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
+										data-bs-target="#changePassword">비밀번호 변경하기</a>
+									<p class="mb-0 small">최근 변경 일자: 2024.12.09</p>
+								</div>
+							</div>
+						</div>
+						<!-- 비밀번호 변경 END -->
 					</div>
 
 					<!-- 업체 정보 관리 -->
@@ -144,29 +162,6 @@
 						</div>
 					</div>
 
-
-					<!-- 비밀번호 변경 START -->
-					<div class="col-lg-6">
-						<!-- Change password -->
-						<div class="bg-light bor rounded-3 p-4 mb-3">
-							<div
-								class="d-md-flex justify-content-between align-items-center flex-wrap">
-								<!-- Content -->
-								<div>
-									<h6 class="h5">비밀번호</h6>
-									<p class="mb-1 mb-md-0">비밀번호를 변경하여 계정을 보호하세요.</p>
-								</div>
-								<!-- 비밀번호 변경하기 Button 클릭 시 모달창 표시 -->
-								<div>
-									<a role="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
-										data-bs-target="#changePassword">비밀번호 변경하기</a>
-									<p class="mb-0 small h6">최근 변경 일자: 2024.12.09</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 비밀번호 변경 END -->
-
 					<!-- 비밀번호 변경 Modal START -->
 					<div class="modal fade" id="changePassword" tabindex="-1"
 						aria-labelledby="pwdModalLabel" aria-hidden="true">
@@ -212,7 +207,6 @@
 						</div>
 					</div>
 					<!-- 비밀번호 변경 Modal END -->
-
 
 				</div>
 				<!-- Row END -->
