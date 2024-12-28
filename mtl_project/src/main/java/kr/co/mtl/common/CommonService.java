@@ -7,4 +7,7 @@ public interface CommonService {
 	// 코드 리스트
 	Map<String, Object> getCodeList(Map<String, Object> param);
 
+	// 키워드 리스트
+	Map<String, Object> getKeywordList(Map<String, Object> param);
+
 }

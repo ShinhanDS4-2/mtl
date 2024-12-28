@@ -5,6 +5,7 @@ const partnerList = (function() {
 		_eventInit();
 		_randomBanner();
 		_list.getPartnerList();
+		_list.getOptionList();
 	};
 
 	// 이벤트 초기화 
@@ -76,7 +77,19 @@ const partnerList = (function() {
 				_eventInit();
 				e.tinySlider();
 			});
-		}
+		},
+		
+		// 옵션
+		getOptionList: function() {
+			let url = "/common/keyword/list";
+			
+			let data = { "type" : "PARTNER" };
+			
+			comm.send(url, data, "POST", function(resp) {
+				_draw.drawKeyword(resp.list);
+				_eventInit();
+			});
+		},
 	};
 
 	// 리스트 요소 그리기
@@ -198,7 +211,32 @@ const partnerList = (function() {
 				price.append(priceNum);
 				price.append("<span class='mb-0 me-2'> / 일</span>");
 			};
-		}
+		},
+		
+		// 키워드 그리기
+		drawKeyword: function(list) {
+			let keywordList = $("#keywordList").empty();
+
+			for (let i = 0; i < list.length; i++) {
+				let data = list[i];
+
+				let li = $("<li>").addClass("list-inline-item mb-0 me-1");
+				keywordList.append(li);
+
+				let input = $("<input>").addClass("btn-check").attr({
+					"type" : "checkbox",
+					"id" : "keyword" + i
+				});
+				li.append(input);
+
+				let label = $("<label>").addClass("btn btn-xm btn-light btn-success-soft-check").attr({
+					"for" : "keyword" + i
+				});
+				label.append("<i class='fa-solid fa-hashtag'></i> ");
+				label.append(data.keyword);
+				li.append(label);
+			};
+		},
 	};
 	
 	// 검색 파라미터 설정

@@ -42,4 +42,17 @@ public class CommonController {
 		
 		return result;
 	}
+	
+	/**
+	 * 키워드 
+	 * @param param
+	 * @return 키워드 리스트
+	 */
+	@PostMapping("/keyword/list")
+	public Map<String, Object> getkeywordList(@RequestParam Map<String, Object> param) throws Exception {
+		
+		Map<String, Object> result = commonService.getKeywordList(param);
+		
+		return result;
+	}
 }

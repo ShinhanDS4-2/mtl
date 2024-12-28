@@ -15,4 +15,14 @@
 			type = #{type}
 	</select>
 	
+	<!-- 키워드 리스트 -->
+	<select id="getKeywordList" parameterType="HashMap">
+		SELECT
+			keyword
+		FROM
+			KEYWORD
+		<if test="type != null and type != ''">
+			WHERE type = #{type}
+		</if>
+	</select>
 </mapper>
