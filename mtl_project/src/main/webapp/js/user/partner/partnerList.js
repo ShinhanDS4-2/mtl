@@ -349,12 +349,18 @@ const partnerList = (function() {
 		// 인원 문자열 분리
 		let guest = $("#searchGuest").val().match(/\d+/)[0];
 		
-		// 호텔 유형
+		// 숙소 유형
+		let partnerTypeList = $("#partnerTypeOption .form-check-input:checked").map(function () {
+	        return $(this).val();
+	    }).get();
 		
 		// 키워드
+		let keywordList = $("#keywordList .btn-check:checked").map(function () {
+	        return $(this).val();
+	    }).get();
 		
 		// 시설
-		let facilitiesList = $("#commonList1 .btn-check:checked").map(function () {
+		let facilitiesList = $("#commonList1 .btn-check:checked", "#commonList2 .btn-check:checked").map(function () {
 	        return $(this).val();
 	    }).get();
 		
@@ -363,6 +369,8 @@ const partnerList = (function() {
 		data.endData = endDate;
 		data.guest = guest;
 		data.area = $("#searchArea option:selected").val();
+		data.partnerTypeList = partnerTypeList;
+		data.keywordList = keywordList;
 		data.facilitiesList = facilitiesList;
 		
 		console.log(data);

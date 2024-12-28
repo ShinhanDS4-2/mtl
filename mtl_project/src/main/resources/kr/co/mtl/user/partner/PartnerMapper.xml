@@ -13,7 +13,7 @@
 			PARTNER
 		WHERE
 			approval_status = 'Y'
-		ORDER BY total_reservatiohn DESC, score DESC, name
+		ORDER BY total_reservation DESC, score DESC, name
 		<if test="limit != null and offset != null">
 			LIMIT ${limit} OFFSET ${offset}
 		</if>
