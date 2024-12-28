@@ -865,6 +865,9 @@ About hotel END -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/user/partnerDetail.js"></script>
+<script src="js/user/partner/partnerDetail.js"></script>
+<script type="text/javascript">
+	partnerDetail.init();
+</script>
 </body>
 </html>

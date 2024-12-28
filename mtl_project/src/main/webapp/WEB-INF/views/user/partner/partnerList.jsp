@@ -13,69 +13,59 @@
 
 <!-- main -->
 <main>
-<!-- =======================
-Main Banner START -->
+<!-- 배너 및 검색 -->
 <section class="pt-0">
 	<div class="container">
-		<!-- Background image -->
+		<!-- 배너 -->
 		<div class="rounded-3 p-3 p-sm-5 banner" id="banner" style="background-image: url(assets/images/banner/7.jpg);">
-			<!-- Banner title -->
 			<div class="row my-2 my-xl-5"> 
 				<div class="col-md-8 mx-auto"> 
 					<h1 class="text-center text-white">뭔가 쓰고 싶은데</h1>
 				</div>
 			</div>
 
-			<!-- Booking from START -->
+			<!-- 숙소 검색 폼 -->
 			<form class="bg-mode shadow rounded-3 position-relative p-4 pe-md-5 pb-5 pb-md-4 mb-4">
 				<div class="row g-4 align-items-center">
-					<!-- Location -->
+					<!-- 지역 -->
 					<div class="col-lg-4">
 						<div class="form-control-border form-control-transparent form-fs-md d-flex">
-							<!-- Icon -->
 							<i class="bi bi-geo-alt fs-3 me-2 mt-2"></i>
-							<!-- Select input -->
 							<div class="flex-grow-1">
 								<label class="form-label">지역</label>
-								<select class="form-select js-choice text-reset">
-									<option value="">지역 선택</option>
-									<option selected>서울</option>
-									<option>강릉</option>
-									<option>여수</option>
-									<option>부산</option>
-									<option>제주</option>
+								<select class="form-select js-choice text-reset" id="searchArea">
+									<option value="" disabled="disabled">지역 선택</option>
+									<option value="SEOUL">서울</option>
+									<option value="GANGNEUNG">강릉</option>
+									<option value="YEOSU">여수</option>
+									<option value="BUSAN">부산</option>
+									<option value="JEJU">제주</option>
 								</select>
 							</div>
 						</div>
 					</div>
 
-					<!-- Check in -->
+					<!-- 일정 -->
 					<div class="col-lg-4">
 						<div class="d-flex">
-							<!-- Icon -->
 							<i class="bi bi-calendar fs-3 me-2 mt-2"></i>
-							<!-- Date input -->
 							<div class="form-control-border form-control-transparent form-fs-md">
 								<label class="form-label">체크인 - 체크아웃</label>
-								<input type="text" class="form-control flatpickr" data-mode="range" placeholder="Select date">
+								<input type="text" class="form-control flatpickr" data-mode="range" placeholder="Select date" id="searchDate">
 							</div>
 						</div>
 					</div>
 
-					<!-- Guest -->
+					<!-- 인원 -->
 					<div class="col-lg-4">
 						<div class="form-control-border form-control-transparent form-fs-md d-flex">
-							<!-- Icon -->
 							<i class="bi bi-person fs-3 me-2 mt-2"></i>
-							<!-- Dropdown input -->
 							<div class="w-100">
 								<label class="form-label">인원</label>
 								<div class="dropdown guest-selector me-2">
-									<input type="text" class="form-guest-selector form-control selection-result" value="2 명" id="dropdownGuest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+									<input type="text" class="form-guest-selector form-control selection-result" value="2 명" id="searchGuest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
 								
-									<!-- dropdown items -->
-									<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="dropdownGuest">
-										<!-- Adult -->
+									<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="searchGuest">
 										<li class="d-flex justify-content-between">
 											<div>
 												<h6 class="mb-0">인원</h6>
@@ -94,125 +84,101 @@ Main Banner START -->
 						</div>
 					</div>
 				</div>
-				<!-- Button -->
+				<!-- 검색 버튼 -->
 				<div class="btn-position-md-middle">
-					<a  class="icon-lg btn btn-round btn-primary mb-0" href="#"><i class="bi bi-search fa-fw"></i></a>
+					<button class="icon-lg btn btn-round btn-primary mb-0" id="searchBtn" data-src="partnerList" data-act="clickSearchBtn"><i class="bi bi-search fa-fw"></i></button>
 				</div>
 			</form>
-			<!-- Booking from END -->
 		</div>
 	</div>
 </section>
-<!-- =======================
-Main Banner END -->
 
-<!-- =======================
-Hotel list START -->
+<!-- 옵션 및 숙소 리스트 -->
 <section class="pt-0">
 	<div class="container">
 		<div class="row">
-			<!-- Left sidebar START -->
+			<!-- 옵션 사이드바 -->
 			<aside class="col-xl-4 col-xxl-3">
-				<!-- Responsive offcanvas body START -->
 				<div class="offcanvas-xl offcanvas-end" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
 					<div class="offcanvas-body flex-column p-3 p-xl-0">
 						<form class="rounded-3 shadow">
 							<!-- 숙소 유형 -->
 							<div class="card card-body rounded-0 rounded-top p-4">
-								<!-- Title -->
 								<h6 class="mb-2">숙소 유형</h6>
-								<!-- Hotel Type group -->
-								<div class="col-12">
-									<!-- Checkbox -->
+								<div class="col-12" id="partnerTypeOption">
 									<div class="form-check">
 										<input class="form-check-input" type="checkbox" value="" id="hotelType1">
 										<label class="form-check-label" for="hotelType1">All</label>
 									</div>
-									<!-- Checkbox -->
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="hotelType2">
+										<input class="form-check-input" type="checkbox" value="HOTEL" id="hotelType2">
 										<label class="form-check-label" for="hotelType2">호텔</label>
 									</div>
-									<!-- Checkbox -->
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="hotelType3">
+										<input class="form-check-input" type="checkbox" value="MOTEL" id="hotelType3">
 										<label class="form-check-label" for="hotelType3">모텔</label>
 									</div>
-									<!-- Checkbox -->
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="hotelType4">
+										<input class="form-check-input" type="checkbox" value="PENSION" id="hotelType4">
 										<label class="form-check-label" for="hotelType4">펜션</label>
 									</div>
-									<!-- Checkbox -->
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="hotelType5">
+										<input class="form-check-input" type="checkbox" value="GUESTHOUSE" id="hotelType5">
 										<label class="form-check-label" for="hotelType5">게스트하우스</label>
 									</div>
-									<!-- Checkbox -->
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="hotelType6">
+										<input class="form-check-input" type="checkbox" value="GLAMPING" id="hotelType6">
 										<label class="form-check-label" for="hotelType6">글램핑</label>
 									</div>
 								</div>
 							</div>
 
-							<hr class="my-0"> <!-- Divider -->
+							<hr class="my-0"> <!-- 구분선 -->
 
 							<!-- 가격 -->
 							<div class="card card-body rounded-0 p-4">
-								<!-- Title -->
 								<h6 class="mb-2">가격</h6>
-								<!-- Price group -->
 								<div class="position-relative">
 									<div class="noui-wrapper">
 										<div class="d-flex justify-content-between">
-											<input type="text" class="text-body input-with-range-min">
-											<input type="text" class="text-body input-with-range-max">
+											<input type="text" class="text-body input-with-range-min" id="minPrice">
+											<input type="text" class="text-body input-with-range-max" id="maxPrice">
 										</div>
 										<div class="noui-slider-range mt-2" data-range-min="10000" data-range-max="2000000" data-range-selected-min="50000" data-range-selected-max="500000" data-step="10000"></div>
 									</div>
 								</div>
 							</div>
 
-							<hr class="my-0"> <!-- Divider -->
+							<hr class="my-0"> <!-- 구분선 -->
 
 							<!-- 키워드 -->
 							<div class="card card-body rounded-0 p-4">
-								<!-- Title -->
 								<h6 class="mb-3">취향</h6>
-								<!-- Rating Star group -->
-								<ul class="list-inline mb-0 g-3">
-									<!-- Item -->
+								<ul class="list-inline mb-0 g-3" id="keywordList">
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="btn-check-1">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-1"><i class="fa-solid fa-hashtag"></i> 가족여행</label>
 									</li>
-									<!-- Item -->
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="btn-check-2">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-2"><i class="fa-solid fa-hashtag"></i> 파티룸</label>
 									</li>
-									<!-- Item -->
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="btn-check-3">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-3"><i class="fa-solid fa-hashtag"></i> 스파</label>
 									</li>
-									<!-- Item -->
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="btn-check-4">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-4"><i class="fa-solid fa-hashtag"></i> OTT</label>
 									</li>
-									<!-- Item -->
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="btn-check-5">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-5"><i class="fa-solid fa-hashtag"></i> 연인</label>
 									</li>
-									<!-- Item -->
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="btn-check-6">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-6"><i class="fa-solid fa-hashtag"></i> 감성숙소</label>
 									</li>
-									<!-- Item -->
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="btn-check-7">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="btn-check-7"><i class="fa-solid fa-hashtag"></i> 반려견</label>
@@ -220,14 +186,14 @@ Hotel list START -->
 								</ul>
 							</div>
 
-							<hr class="my-0"> <!-- Divider -->
+							<hr class="my-0"> <!-- 구분선 -->
 
 							<!-- 시설 -->
 							<div class="card card-body rounded-0 rounded-bottom p-4">
 								<h6 class="mb-3">시설</h6>
 								<!-- 공용 시설 -->
 								<span class="h7 mb-1 text-reset">공용 시설</span>
-								<ul class="list-inline mb-0 g-3">
+								<ul class="list-inline mb-0 g-3" id="commonList1">
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="amenities1">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities1">피트니스</label>
@@ -249,8 +215,8 @@ Hotel list START -->
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities5">엘리베이터</label>
 									</li>
 								</ul>
-								<div class="multi-collapse collapse" id="amenitiesCollapes">
-									<ul class="list-inline mb-0 g-3">
+								<div class="multi-collapse collapse" id="commonCollapes">
+									<ul class="list-inline mb-0 g-3" id="commonList2">
 										<li class="list-inline-item mb-0 me-0">
 											<input type="checkbox" class="btn-check" id="amenities6">
 											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities6">야외수영장</label>
@@ -273,14 +239,14 @@ Hotel list START -->
 										</li>
 									</ul>
 								</div>
-								<!-- Collapse button -->
-								<a class="p-0 mb-0 mt-2 btn-more d-flex align-items-center collapsed more-hover" data-bs-toggle="collapse" href="#amenitiesCollapes" role="button" aria-expanded="false" aria-controls="amenitiesCollapes">
+								<!-- 공용시설 더보기 -->
+								<a class="p-0 mb-0 mt-2 btn-more d-flex align-items-center collapsed more-hover" data-bs-toggle="collapse" href="#commonCollapes" role="button" aria-expanded="false" aria-controls="amenitiesCollapes">
 									<span class="see-more ms-1 h7">더 보기</span><span class="see-less ms-1 h7">접기</span><i class="fa-solid fa-angle-down ms-2"></i>
 								</a>
 								
 								<!-- 객실 내 시설 -->
 								<span class="h7 mt-4 mb-1 text-reset">객실 내 시설</span>
-								<ul class="list-inline mb-0 g-3">
+								<ul class="list-inline mb-0 g-3" id="roomList1">
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="amenities11">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities11">샤워실</label>
@@ -302,8 +268,8 @@ Hotel list START -->
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities15">와이파이</label>
 									</li>
 								</ul>
-								<div class="multi-collapse collapse" id="amenitiesCollapes2">
-									<ul class="list-inline mb-0 g-3">
+								<div class="multi-collapse collapse" id="roomCollapes">
+									<ul class="list-inline mb-0 g-3" id="roomList2">
 										<li class="list-inline-item mb-0 me-0">
 											<input type="checkbox" class="btn-check" id="amenities16">
 											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities16">TV</label>
@@ -326,14 +292,14 @@ Hotel list START -->
 										</li>
 									</ul>
 								</div>
-								<!-- Collapse button -->
-								<a class="p-0 mb-0 mt-2 btn-more d-flex align-items-center collapsed more-hover" data-bs-toggle="collapse" href="#amenitiesCollapes2" role="button" aria-expanded="false" aria-controls="amenitiesCollapes">
+								<!-- 객실 내 시설 더보기 -->
+								<a class="p-0 mb-0 mt-2 btn-more d-flex align-items-center collapsed more-hover" data-bs-toggle="collapse" href="#roomCollapes" role="button" aria-expanded="false" aria-controls="amenitiesCollapes">
 									<span class="see-more ms-1 h7">더 보기</span><span class="see-less ms-1 h7">접기</span><i class="fa-solid fa-angle-down ms-2"></i>
 								</a>
 								
 								<!-- 기타 시설 -->
 								<span class="h7 mt-4 mb-1 text-reset">기타 시설</span>
-								<ul class="list-inline mb-0 g-3">
+								<ul class="list-inline mb-0 g-3" id="etcList1">
 									<li class="list-inline-item mb-0 me-0">
 										<input type="checkbox" class="btn-check" id="amenities21">
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities21">장애인편의</label>
@@ -355,8 +321,8 @@ Hotel list START -->
 										<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities25">조식제공</label>
 									</li>
 								</ul>
-								<div class="multi-collapse collapse" id="amenitiesCollapes3">
-									<ul class="list-inline mb-0 g-3">
+								<div class="multi-collapse collapse" id="etcCollapes">
+									<ul class="list-inline mb-0 g-3" id="etcList2">
 										<li class="list-inline-item mb-0 me-0">
 											<input type="checkbox" class="btn-check" id="amenities26">
 											<label class="btn btn-xm btn-light btn-success-soft-check" for="amenities26">개인사물함</label>
@@ -375,28 +341,23 @@ Hotel list START -->
 										</li>
 									</ul>
 								</div>
-								<!-- Collapse button -->
-								<a class="p-0 mb-0 mt-2 btn-more d-flex align-items-center collapsed more-hover" data-bs-toggle="collapse" href="#amenitiesCollapes3" role="button" aria-expanded="false" aria-controls="amenitiesCollapes">
+								<!-- 기타 시설 더보기 -->
+								<a class="p-0 mb-0 mt-2 btn-more d-flex align-items-center collapsed more-hover" data-bs-toggle="collapse" href="#etcCollapes" role="button" aria-expanded="false" aria-controls="amenitiesCollapes">
 									<span class="see-more ms-1 h7">더 보기</span><span class="see-less ms-1 h7">접기</span><i class="fa-solid fa-angle-down ms-2"></i>
 								</a>
 							</div>
-							<!-- Amenities END -->
-						</form><!-- Form End -->
+						</form>
 					</div>
-					<!-- Buttons -->
+					<!-- 옵션 초기화 버튼 -->
 					<div class="d-flex justify-content-end p-2 p-xl-0 mt-xl-4">
 						<button class="btn btn-link p-0 mb-0">초기화</button>
 					</div>
 				</div>
-				<!-- Responsive offcanvas body END -->
 			</aside>
-			<!-- Left sidebar END -->
 
-			<!-- Main content START -->
+			<!-- 숙소 리스트 -->
 			<div class="col-xl-8 col-xxl-9">
-				<div class="vstack gap-4">
-
-					<!-- Card item START -->
+				<div class="vstack gap-4" id="partnerList">
 					<div class="card shadow p-2">
 						<div class="row g-0">
 							<!-- Card img -->
@@ -420,7 +381,7 @@ Hotel list START -->
 								</div>
 								<!-- Slider END -->
 							</div>
-
+							
 							<!-- Card body -->
 							<div class="col-md-7 partner-card" data-src="partnerList" data-act="clickPartner">
 								<div class="card-body py-md-2 d-flex flex-column h-100 position-relative">
@@ -448,13 +409,6 @@ Hotel list START -->
 										<li class="nav-item">무료주차</li>
 									</ul>
 
-									<!-- List -->
-									<ul class="list-group list-group-borderless small mb-0 mt-2">
-										<li class="list-group-item d-flex text-success p-0">
-											<i class="bi bi-patch-check-fill me-2"></i>조식 제공
-										</li>
-									</ul>
-									
 									<!-- Price and Button -->
 									<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
 										<!-- Button -->
@@ -507,18 +461,8 @@ Hotel list START -->
 										<li class="nav-item">무료주차</li>
 									</ul>
 
-									<!-- List -->
-									<ul class="list-group list-group-borderless small mb-0 mt-2">
-										<li class="list-group-item d-flex text-success p-0">
-											<i class="bi bi-patch-check-fill me-2"></i>조식 제공
-										</li>
-									</ul>
-									
 									<!-- Price and Button -->
 									<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
-										<!-- Button -->
-										<div class="d-flex align-items-center">
-										</div>
 										<!-- Price -->
 										<div class="d-flex align-items-center">
 											<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
@@ -727,14 +671,7 @@ Hotel list START -->
 
 					<!-- Pagination -->
 					<nav class="d-flex justify-content-center" aria-label="navigation">
-						<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-							<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
-							<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
-							<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
-							<li class="page-item mb-0"><a class="page-link" href="#">3</a></li>
-							<li class="page-item mb-0"><a class="page-link" href="#">4</a></li>
-							<li class="page-item mb-0"><a class="page-link" href="#">5</a></li>
-							<li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+						<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
 						</ul>
 					</nav>
 
@@ -744,9 +681,6 @@ Hotel list START -->
 		</div> <!-- Row END -->
 	</div>
 </section>
-<!-- =======================
-Hotel list END -->
-
 </main>
 
 <!-- footer -->
@@ -756,7 +690,7 @@ Hotel list END -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/user/partnerList.js"></script>
+<script src="js/user/partner/partnerList.js"></script>
 <script type="text/javascript">
 	partnerList.init();
 </script>

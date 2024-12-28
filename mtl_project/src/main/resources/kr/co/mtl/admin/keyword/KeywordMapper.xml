@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.admin.keyword.KeywordMapper">
+
+	<insert id="insertKeyword" parameterType="HashMap">
+		INSERT INTO KEYWORD 
+			(keyword,type,create_date)
+		VALUES (
+			#{keyword},#{type},NOW()
+			)
+	</insert>
+	
+	<!-- 중복 키워드 확인 -->
+	<select id="countKeywordByKeyword" resultType="int">
+		SELECT COUNT(*) 
+		FROM KEYWORD 
+		WHERE keyword=#{keyword}
+	</select>
+	
+	<select id="selectAllKeywords" resultType="map">
+		SELECT keyword
+		FROM KEYWORD
+		ORDER BY create_date DESC
+	</select>
+</mapper>
