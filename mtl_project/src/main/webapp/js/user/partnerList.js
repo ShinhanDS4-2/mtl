@@ -4,6 +4,7 @@ const partnerList = (function() {
 	function init() {
 		_eventInit();
 		_randomBanner();
+		_list.getPartnerList();
 	};
 
 	// 이벤트 초기화 
@@ -22,10 +23,12 @@ const partnerList = (function() {
 		
 		let type = e.type;
 		
-		if(type == "click") {
-			if(action == "clickPartner") {
+		if (type == "click") {
+			if (action == "clickPartner") {
 				_event.clickPartner(evo);
-			};
+			} else if (action == " clickSearchBtn") {
+				_list.getPartnerList();
+			}
 		};
 	};
 	
@@ -35,6 +38,58 @@ const partnerList = (function() {
 			let partnerIdx = evo.attr("data-partner-idx");
 			location.href = "/mtl/partner/detail?idx=" + partnerIdx;
 		},
+	};
+	
+	// 리스트
+	let _list = {
+		// 숙소 리스트
+		getPartnerList: function(curPage = 1) {
+			let url = "/user/partner/search/list";
+
+			let data = {};
+
+			// 검색 파라미터
+			_setSearchParam(data);
+			
+			// 페이징
+			let pageOption = {
+				limit: 5
+			};
+			
+			let page = $("#pagination").customPaging(pageOption, function(_curPage){
+				_list.getPartnerList(_curPage);
+			});
+			
+			let pageParam = page.getParam(curPage);
+			
+			if(pageParam) {
+				data.offset = pageParam.offset;
+				data.limit = pageParam.limit;
+			};
+			// 페이징 끝
+			
+			comm.send(url, data, "POST", function(resp) {
+				console.log(resp);
+				
+				page.drawPage(resp.totalCnt);
+				
+			});
+		}
+	};
+	
+	// 검색 파라미터 설정
+	function _setSearchParam(data) {
+		// 날짜 문자열 분리
+		let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
+			
+		// 인원 문자열 분리
+		let guest = $("#searchGuest").val().match(/\d+/)[0];
+		
+		// data 객체 안에 값 설정
+		data.startData = startDate;
+		data.endData = endDate;
+		data.guest = guest;
+		data.area = $("#searchArea option:selected").val();
 	};
 	
 	// 배너 랜덤으로 변경

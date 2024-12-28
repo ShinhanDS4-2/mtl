@@ -27,4 +27,18 @@ public class PartnerController {
 		
 		return result;
 	}
+	
+	/**
+	 * 숙소 검색
+	 * @param param
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/search/list")
+	public Map<String, Object> getPartnerSearchList(@RequestParam Map<String, Object> param) throws Exception {
+
+		Map<String, Object> result = partnerService.getPartnerSearchList(param);
+		
+		return result;
+	}
 }
