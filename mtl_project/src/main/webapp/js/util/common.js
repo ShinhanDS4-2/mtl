@@ -72,4 +72,62 @@ const comm = {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return regex.test(email);
     },
+    
+    // url 파라미터 가져오기
+    getUrlParam: function() {
+		let data = null;
+		let search = location.search.substring(1);
+		
+		if (search) {
+			data = {};
+			
+			let split = search.split("&");
+			
+			for (let str of split) {
+				let split2 = str.split("=");
+				
+				let key = split2[0];
+				let value = split2[1];
+				
+				if(!isNaN(value)) {
+					value = parseInt(value);
+				};
+				
+				data[key] = value;
+			};
+		};
+		
+		return data;
+	},
+	
+	// 위도 경도로 지도 세팅
+	setMapWithGeo: function(option) {
+		// 지도 옵션
+        let _option = {
+        	// 지도를 띄울 영역
+        	mapObj : "map",
+        	// 확대 레벨
+			zoom : 15,
+			// 위도 경도
+			latitude : 37,
+			hardness : 127
+        }
+        
+        _option = $.extend(_option, option);
+	
+		// 지도 옵션 설정
+        let mapOptions = {
+            center: new naver.maps.LatLng(_option.latitude, _option.hardness),
+            zoom: _option.zoom
+        };
+
+        // 지도 생성
+        let map = new naver.maps.Map(_option.mapObj, mapOptions);
+        
+        // 마커 추가
+        let marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(_option.latitude, _option.hardness), // 마커 위치
+            map: map 
+        });
+	}
 }

@@ -34,6 +34,9 @@ const partnerList = (function() {
 			if (action == "changeAllCheck") {
 				_event.changeAllCheck(evo);
 				_list.getPartnerList();
+			} else if (action == "changeType") {
+				_event.changeType(evo);
+				_list.getPartnerList();
 			} else if (action == "changeOption") {
 				_list.getPartnerList();
 			}
@@ -54,6 +57,14 @@ const partnerList = (function() {
 		        $("#partnerTypeOption .form-check-input").prop("checked", true);
 			} else {
 		        $("#partnerTypeOption .form-check-input").prop("checked", false);
+			};
+		},
+		
+		// 숙소 타입 개별 체크 해제 시 ALL 체크 해제
+		changeType: function(evo) {
+			let isCheck = $(evo).is(":checked");
+			if (!isCheck) {
+				$("#hotelType1").prop("checked", false);
 			};
 		},
 	};
@@ -99,7 +110,6 @@ const partnerList = (function() {
 			_list.getKeywordList();
 			_list.getFacilitiesList("COMMON");
 			_list.getFacilitiesList("ROOM");
-			_list.getFacilitiesList("ETC");
 			_eventInit();
 		},
 		
@@ -288,9 +298,6 @@ const partnerList = (function() {
 			} else if (type == "ROOM") {
 				listUl = $("#roomList1");
 				listPlusUl = $("#roomList2");
-			} else if (type == "ETC") {
-				listUl = $("#etcList1");
-				listPlusUl = $("#etcList2");
 			};
 			
 			// 기본 5개
@@ -359,10 +366,16 @@ const partnerList = (function() {
 	        return $(this).val();
 	    }).get();
 		
-		// 시설
-		let facilitiesList = $("#commonList1 .btn-check:checked", "#commonList2 .btn-check:checked").map(function () {
+		// 공용 시설
+		let facilitiesList = $(".commonList .btn-check:checked").map(function () {
 	        return $(this).val();
 	    }).get();
+	    
+		/* TODO */
+	    // 객실 시설
+	    
+	    //  가격
+		
 		
 		// data 객체 안에 값 설정
 		data.startData = startDate;
@@ -372,8 +385,6 @@ const partnerList = (function() {
 		data.partnerTypeList = partnerTypeList;
 		data.keywordList = keywordList;
 		data.facilitiesList = facilitiesList;
-		
-		console.log(data);
 	};
 	
 	// 배너 랜덤으로 변경

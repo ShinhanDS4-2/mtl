@@ -41,4 +41,18 @@ public class PartnerController {
 		
 		return result;
 	}
+
+	/**
+	 * 숙소 상세
+	 * @param param
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/detail")
+	public Map<String, Object> getPartnerDetail(@RequestBody Map<String, Object> param) throws Exception {
+		
+		Map<String, Object> result = partnerService.getPartnerDetail(param);
+		
+		return result;
+	}
 }

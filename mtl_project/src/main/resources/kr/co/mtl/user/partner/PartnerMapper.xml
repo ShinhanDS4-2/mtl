@@ -91,11 +91,35 @@
 		AND pf.partner_idx = #{partner_idx}
 	</select>
 	
+	<!-- 숙소 상세 -->
+	<select id="getPartnerDetail" parameterType="HashMap">
+		SELECT
+			  p.name
+			, p.phone
+			, p.address
+			, p.description
+			, p.type
+			, p.score
+			, p.latitude
+			, p.hardness
+		FROM
+			PARTNER p
+		WHERE
+			idx = #{partner_idx}
+	</select>
+	
+	<!-- 숙소 검색 where -->
 	<sql id="searchPartner">
 		WHERE
 			approval_status = 'Y'
 		<if test="area != null and area != ''">
 			AND AREA = #{area}
+		</if>
+		<if test="partnerTypeList != null and partnerTypeList.size() > 0">
+			AND p.type IN
+			<foreach item="type" collection="partnerTypeList" separator="," open="(" close=")">
+				#{type}
+			</foreach>
 		</if>
 		<if test="facilitiesList != null and facilitiesList.size() > 0">
 			AND p.idx IN (
@@ -105,8 +129,8 @@
 					PARTNER_FACILITIES
 				WHERE
 					facilities_idx IN 
-				<foreach item="list" collection="facilitiesList" separator="," open="(" close=")">
-					#{list}
+				<foreach item="facilities" collection="facilitiesList" separator="," open="(" close=")">
+					#{facilities}
 				</foreach>
 			)
 		</if>

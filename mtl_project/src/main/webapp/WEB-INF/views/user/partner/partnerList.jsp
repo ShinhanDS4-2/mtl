@@ -112,23 +112,23 @@
 										<label class="form-check-label" for="hotelType1">All</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="HOTEL" id="hotelType2" data-src="partnerList" data-act="changeOption">
+										<input class="form-check-input" type="checkbox" value="HOTEL" id="hotelType2" data-src="partnerList" data-act="changeType">
 										<label class="form-check-label" for="hotelType2">호텔</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="MOTEL" id="hotelType3" data-src="partnerList" data-act="changeOption">
+										<input class="form-check-input" type="checkbox" value="MOTEL" id="hotelType3" data-src="partnerList" data-act="changeType">
 										<label class="form-check-label" for="hotelType3">모텔</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="PENSION" id="hotelType4" data-src="partnerList" data-act="changeOption">
+										<input class="form-check-input" type="checkbox" value="PENSION" id="hotelType4" data-src="partnerList" data-act="changeType">
 										<label class="form-check-label" for="hotelType4">펜션</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="GUESTHOUSE" id="hotelType5" data-src="partnerList" data-act="changeOption">
+										<input class="form-check-input" type="checkbox" value="GUESTHOUSE" id="hotelType5" data-src="partnerList" data-act="changeType">
 										<label class="form-check-label" for="hotelType5">게스트하우스</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="GLAMPING" id="hotelType6" data-src="partnerList" data-act="changeOption">
+										<input class="form-check-input" type="checkbox" value="GLAMPING" id="hotelType6" data-src="partnerList" data-act="changeType">
 										<label class="form-check-label" for="hotelType6">글램핑</label>
 									</div>
 								</div>
@@ -166,10 +166,10 @@
 								<h6 class="mb-3">시설</h6>
 								<!-- 공용 시설 -->
 								<span class="h7 mb-1 text-reset">공용 시설</span>
-								<ul class="list-inline mb-0 g-3" id="commonList1">
+								<ul class="list-inline mb-0 g-3 commonList" id="commonList1">
 								</ul>
 								<div class="multi-collapse collapse" id="commonCollapes">
-									<ul class="list-inline mb-0 g-3" id="commonList2">
+									<ul class="list-inline mb-0 g-3 commonList" id="commonList2">
 									</ul>
 								</div>
 								<!-- 공용시설 더보기 -->
@@ -179,27 +179,14 @@
 								
 								<!-- 객실 내 시설 -->
 								<span class="h7 mt-4 mb-1 text-reset">객실 내 시설</span>
-								<ul class="list-inline mb-0 g-3" id="roomList1">
+								<ul class="list-inline mb-0 g-3 roomList" id="roomList1">
 								</ul>
 								<div class="multi-collapse collapse" id="roomCollapes">
-									<ul class="list-inline mb-0 g-3" id="roomList2">
+									<ul class="list-inline mb-0 g-3 roomList" id="roomList2">
 									</ul>
 								</div>
 								<!-- 객실 내 시설 더보기 -->
 								<a class="p-0 mb-0 mt-2 btn-more d-flex align-items-center collapsed more-hover" data-bs-toggle="collapse" href="#roomCollapes" role="button" aria-expanded="false" aria-controls="amenitiesCollapes">
-									<span class="see-more ms-1 h7">더 보기</span><span class="see-less ms-1 h7">접기</span><i class="fa-solid fa-angle-down ms-2"></i>
-								</a>
-								
-								<!-- 기타 시설 -->
-								<span class="h7 mt-4 mb-1 text-reset">기타 시설</span>
-								<ul class="list-inline mb-0 g-3" id="etcList1">
-								</ul>
-								<div class="multi-collapse collapse" id="etcCollapes">
-									<ul class="list-inline mb-0 g-3" id="etcList2">
-									</ul>
-								</div>
-								<!-- 기타 시설 더보기 -->
-								<a class="p-0 mb-0 mt-2 btn-more d-flex align-items-center collapsed more-hover" data-bs-toggle="collapse" href="#etcCollapes" role="button" aria-expanded="false" aria-controls="amenitiesCollapes">
 									<span class="see-more ms-1 h7">더 보기</span><span class="see-less ms-1 h7">접기</span><i class="fa-solid fa-angle-down ms-2"></i>
 								</a>
 							</div>

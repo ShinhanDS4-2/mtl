@@ -35,7 +35,6 @@ public class PartnerServiceImpl implements PartnerService {
 		return result;
 	};
 	
-	
 	/**
 	 * 숙소 검색 리스트
 	 * @param param
@@ -61,6 +60,25 @@ public class PartnerServiceImpl implements PartnerService {
 		result.put("list", list);
 		result.put("totalCnt", partnerMapper.getPartnerCnt(param));
 
+		return result;
+	};
+	
+	/**
+	 * 숙소 상세
+	 * @param param
+	 * @return 숙소 상세 정보
+	 */
+	public Map<String, Object> getPartnerDetail(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		Map<String, Object> data = partnerMapper.getPartnerDetail(param);
+		
+		data.put("imageList", partnerMapper.getPartnerImageList(param));		// 이미지
+		data.put("facilitiesList", partnerMapper.getPartnerFacilities(param));	// 시설
+		
+		result.put("data", data);
+		
 		return result;
 	};
 	

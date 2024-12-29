@@ -110,7 +110,7 @@ Main Title START -->
 				<div class="d-lg-flex justify-content-lg-between mb-1">
 					<!-- Title -->
 					<div class="mb-2 mb-lg-0">
-						<h1 class="fs-2">그랜드 인터컨티넨탈 서울 파르나스 </h1>
+						<h1 class="fs-2" id="partnerName"></h1>
 					</div>
 				</div>
 			</div>
@@ -210,37 +210,10 @@ About hotel START -->
 
 						<!-- Card body START -->
 						<div class="card-body pt-4 p-0">
-							<h5 class="fw-light mb-4">Main Highlights</h5>
-
-							<!-- Highlights Icons -->
-							<div class="hstack gap-3 mb-3">
-								<div class="icon-lg bg-light h5 rounded-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Free wifi">
-									<i class="fa-solid fa-wifi"></i>
-								</div>
-								<div class="icon-lg bg-light h5 rounded-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Swimming Pool">
-									<i class="fa-solid fa-swimming-pool"></i>
-								</div>
-								<div class="icon-lg bg-light h5 rounded-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Central AC">
-									<i class="fa-solid fa-snowflake"></i>
-								</div>
-								<div class="icon-lg bg-light h5 rounded-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Free Service">
-									<i class="fa-solid fa-concierge-bell"></i>
-								</div>
-							</div>
-
-							<p class="mb-3">Demesne far-hearted suppose venture excited see had has. Dependent on so extremely delivered by. Yet no jokes worse her why. <b>Bed one supposing breakfast day fulfilled off depending questions.</b></p>
-							<p class="mb-0">Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. Water timed folly right aware if oh truth. Large above be to means. Dashwood does provide stronger is.</p>
+							<p class="mb-3 space" id="partnerDescription"></p>
 							
-							<div class="collapse" id="collapseContent">
-								<p class="my-3">We focus a great deal on the understanding of behavioral psychology and influence triggers which are crucial for becoming a well rounded Digital Marketer. We understand that theory is important to build a solid foundation, we understand that theory alone isn't going to get the job done so that's why this rickets is packed with practical hands-on examples that you can follow step by step.</p>
-								<p class="mb-0">Behavioral psychology and influence triggers which are crucial for becoming a well rounded Digital Marketer. We understand that theory is important to build a solid foundation, we understand that theory alone isn't going to get the job done so that's why this tickets is packed with practical hands-on examples that you can follow step by step.</p>
-							</div>
-							<a class="p-0 mb-4 mt-2 btn-more d-flex align-items-center collapsed" data-bs-toggle="collapse" href="#collapseContent" role="button" aria-expanded="false" aria-controls="collapseContent">
-								See <span class="see-more ms-1">more</span><span class="see-less ms-1">less</span><i class="fa-solid fa-angle-down ms-2"></i>
-							</a>
-
 							<!-- List -->
-							<h5 class="fw-light mb-2">Advantages</h5>
+							<h5 class="fw-light mt-4 mb-2">이용 안내</h5>
 							<ul class="list-group list-group-borderless mb-0">
 								<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Every hotel staff to have Proper PPT kit for COVID-19</li>
 								<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Every staff member wears face masks and gloves at all service times.</li>
@@ -256,7 +229,7 @@ About hotel START -->
 					<div class="card bg-transparent">
 						<!-- Card header -->
 						<div class="card-header border-bottom bg-transparent px-0 pt-0">
-							<h3 class="card-title mb-0">Amenities</h3>
+							<h3 class="card-title mb-0">시설</h3>
 						</div>
 
 						<!-- Card body START -->
@@ -696,11 +669,10 @@ About hotel START -->
 						<div class="d-sm-flex justify-content-sm-between align-items-center mb-3">
 							<div>
 								<h5 class="text-primary"><b>위치 정보</b></h5>
-								<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521
+								<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i><span id="partnerAddress">서울 강남구 테헤란로 521</span></p>
 							</div>
 						</div>	
-						<div>
-							<iframe class="w-100" height="200" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"  style="border:0;" aria-hidden="false" tabindex="0"></iframe>	
+						<div class="w-100 h-200px" id="map">
 						</div>	
 					</div>
 					
@@ -837,7 +809,7 @@ About hotel END -->
 					<div class="card-header bg-transparent pb-0">
 						<div class="alert alert-secondary" role="alert">
 							직접 문의하고 싶으신 경우<br>
-							<i class="fa-solid fa-phone"></i> 02-0000-0000으로 연락해 주시기 바랍니다.
+							<i class="fa-solid fa-phone"></i> <span id="partnerPhone"></span>으로 연락해 주시기 바랍니다.
 						</div>
 					</div>
 					<div class="card-body pt-2">
@@ -864,7 +836,8 @@ About hotel END -->
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
-<!-- page script -->
+<!-- page script  https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2 --> 
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=33zbp8g8tv"></script>
 <script src="js/user/partner/partnerDetail.js"></script>
 <script type="text/javascript">
 	partnerDetail.init();

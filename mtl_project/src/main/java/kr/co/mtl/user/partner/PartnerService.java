@@ -9,5 +9,8 @@ public interface PartnerService {
 	
 	// 숙소 검색
 	Map<String, Object> getPartnerSearchList(Map<String, Object> param);
+
+	// 숙소 상세
+	Map<String, Object> getPartnerDetail(Map<String, Object> param);
 	
 }
