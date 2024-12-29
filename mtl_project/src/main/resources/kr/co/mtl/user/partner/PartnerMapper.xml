@@ -91,12 +91,31 @@
 		AND pf.partner_idx = #{partner_idx}
 	</select>
 	
+	<!-- 숙소 객실 시설 리스트 -->
+	<select id="getPartnerRoomFacilities" parameterType="HashMap">
+		SELECT 
+			name
+		FROM
+			FACILITIES 
+		WHERE
+			idx IN (
+			SELECT 
+				  rf.facilities_idx 
+			FROM
+				ROOM_FACILITIES rf 
+			JOIN ROOM r 
+			ON r.idx = rf.room_idx 
+			WHERE r.partner_idx = #{partner_idx}
+		)
+	</select>
+	
 	<!-- 숙소 상세 -->
 	<select id="getPartnerDetail" parameterType="HashMap">
 		SELECT
 			  p.name
 			, p.phone
 			, p.address
+			, p.area
 			, p.description
 			, p.type
 			, p.score
@@ -106,6 +125,47 @@
 			PARTNER p
 		WHERE
 			idx = #{partner_idx}
+	</select>
+	
+	<!-- 숙소 별 객실 리스트 -->
+	<select id="getRoomList" parameterType="HashMap">
+		SELECT
+			  idx AS room_idx
+			, name
+			, description
+			, standard
+			, maximum
+			, basic_price
+			, weekend_price
+		FROM
+			ROOM
+		WHERE
+			partner_idx = #{partner_idx}
+	</select>
+	
+	<!-- 객실 이미지 -->
+	<select id="getRoomImage" parameterType="HashMap">
+		SELECT
+			url
+		FROM
+			IMAGE
+		WHERE
+			mapping_idx = #{room_idx}
+		AND type = 'R'
+	</select>
+	
+	<!-- 객실 시설 리스트 -->
+	<select id="getRoomFacilities" parameterType="HashMap">
+		SELECT
+			f.name
+		FROM 
+			FACILITIES f
+		JOIN 
+			ROOM_FACILITIES rf
+		ON rf.facilities_idx = f.idx
+		WHERE
+			f.type = 'ROOM'
+		AND rf.room_idx = #{room_idx}
 	</select>
 	
 	<!-- 숙소 검색 where -->
