@@ -3,6 +3,7 @@ const partnerList = (function() {
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
+		_sliderInit();
 		_randomBanner();
 		_list.getPartnerList();
 		_list.getOptionList();
@@ -11,9 +12,42 @@ const partnerList = (function() {
 	// 이벤트 초기화 
 	function _eventInit() {
 		let evo = $("[data-src='partnerList'][data-act]").off();
-		evo.on("click change", function(e) {
+		evo.on("click change update", function(e) {
 			_eventAction(e);
 		});
+	};
+	
+	// noUiSlider 설정
+	function _sliderInit() {
+		const slider = document.getElementById("noSlider");
+
+		noUiSlider.create(slider, {
+		    start: [50000, 500000],
+		    connect: true,
+		    step: 50000,
+		    range: {
+				min: 0,
+                max: 2000000
+            },
+            format: wNumb({
+			    decimals: 0,
+			    thousand: ",",
+			    suffix: "원"
+			})
+		});
+	
+		let rangeText = slider.previousElementSibling;
+        let imin = rangeText.firstElementChild;
+        let imax = rangeText.lastElementChild;
+        let inputs = [imin, imax];
+	
+		slider.noUiSlider.on("update", function(values, handle) {
+            inputs[handle].value = values[handle];
+        });
+        
+        slider.noUiSlider.on("change", function () {
+	        _list.getPartnerList();
+	    });
 	};
 	
 	// 이벤트 분기
@@ -375,16 +409,19 @@ const partnerList = (function() {
 	    // 객실 시설
 	    
 	    //  가격
-		
+		let minPrice = $("#minPrice").val();
+		let maxPrice = $("#maxPrice").val();
 		
 		// data 객체 안에 값 설정
-		data.startData = startDate;
-		data.endData = endDate;
+		data.start_data = startDate;
+		data.end_data = endDate;
 		data.guest = guest;
 		data.area = $("#searchArea option:selected").val();
-		data.partnerTypeList = partnerTypeList;
-		data.keywordList = keywordList;
-		data.facilitiesList = facilitiesList;
+		data.partner_type_list = partnerTypeList;
+		data.keyword_list = keywordList;
+		data.facilities_list = facilitiesList;
+		data.min_price = minPrice.replace("원", "").replaceAll(",", "");
+		data.max_price = maxPrice.replace("원", "").replaceAll(",", "");
 	};
 	
 	// 배너 랜덤으로 변경

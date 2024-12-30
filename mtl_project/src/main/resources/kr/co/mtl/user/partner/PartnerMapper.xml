@@ -44,6 +44,9 @@
 			, p.score
 			, p.type
 			, p.address
+			<if test="min_price != null and max_price != null">
+			, (SELECT MIN(r.basic_price) FROM ROOM r WHERE r.partner_idx = p.idx AND r.basic_price BETWEEN #{min_price} AND #{max_price}) AS price
+			</if>
 		FROM 
 			PARTNER p
 		<include refid="searchPartner"></include>
@@ -175,13 +178,13 @@
 		<if test="area != null and area != ''">
 			AND AREA = #{area}
 		</if>
-		<if test="partnerTypeList != null and partnerTypeList.size() > 0">
+		<if test="partner_type_list != null and partner_type_list.size() > 0">
 			AND p.type IN
-			<foreach item="type" collection="partnerTypeList" separator="," open="(" close=")">
+			<foreach item="type" collection="partner_type_list" separator="," open="(" close=")">
 				#{type}
 			</foreach>
 		</if>
-		<if test="facilitiesList != null and facilitiesList.size() > 0">
+		<if test="facilities_list != null and facilities_list.size() > 0">
 			AND p.idx IN (
 				SELECT 
 					partner_idx 
@@ -189,9 +192,33 @@
 					PARTNER_FACILITIES
 				WHERE
 					facilities_idx IN 
-				<foreach item="facilities" collection="facilitiesList" separator="," open="(" close=")">
+				<foreach item="facilities" collection="facilities_list" separator="," open="(" close=")">
 					#{facilities}
 				</foreach>
+			)
+		</if>
+		<if test="keyword_list != null and keyword_list.size() > 0">
+			AND p.idx IN (
+				SELECT
+					partner_idx
+				FROM
+					PARTNER_KEYWORD
+				WHERE
+					keyword_idx IN 
+				<foreach item="keyword" collection="keyword_list" separator="," open="(" close=")">
+					#{keyword}
+				</foreach>
+			)
+		</if>
+		<if test="min_price != null and max_price != null">
+			AND p.idx IN (
+				SELECT
+					partner_idx
+				FROM
+					ROOM
+				WHERE
+					(basic_price BETWEEN #{min_price} AND #{max_price})
+				OR (weekend_price BETWEEN #{min_price} AND #{max_price})
 			)
 		</if>
 	</sql>

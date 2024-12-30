@@ -145,7 +145,7 @@
 											<input type="text" class="text-body input-with-range-min" id="minPrice" data-src="partnerList" data-act="changeOption">
 											<input type="text" class="text-body input-with-range-max" id="maxPrice" data-src="partnerList" data-act="changeOption">
 										</div>
-										<div class="noui-slider-range mt-2" data-range-min="0" data-range-max="2000000" data-range-selected-min="50000" data-range-selected-max="500000" data-step="50000"></div>
+										<div id="noSlider" class="mt-2" data-src="partnerList" data-act="changeOption"></div>
 									</div>
 								</div>
 							</div>
