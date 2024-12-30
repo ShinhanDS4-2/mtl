@@ -106,9 +106,9 @@ public class AdminPageController {
 		return "admin/otherPages/mypage";
 	}
 
-	@GetMapping("/signin")
-	public String signin() {
-		return "admin/otherPages/signin";
+	@GetMapping("/login")
+	public String login() {
+		return "admin/otherPages/login";
 	}
 
 	@GetMapping("/signup")

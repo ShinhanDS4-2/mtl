@@ -108,9 +108,6 @@
 	</div>
 </div>
 
-<!-- 비밀번호 찾기 모달 -->
-
-
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
