@@ -1,6 +1,8 @@
 package kr.co.mtl.user.partner;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -132,7 +134,28 @@ public class PartnerController {
 				// 데이터 추가
 				mapper.addRoom(data);
 			}
+		}
+	}
+	
+	@PostMapping("/make/facilities")
+	public void makeFacilities() throws Exception {
+		
+		List<Map<String, Object>> list =  mapper.getRoomInfo();
+		Random random = new Random();
+		
+		for(Map<String, Object> data : list ) {
+		
+			// facilities_idx 설정
+			List<Integer> availableFacilities = Arrays.asList(14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 35);
+			int facilitiesCount = random.nextInt(8) + 5; // 최소 5개, 최대 12개
+			Collections.shuffle(availableFacilities);
+			List<Integer> selectedFacilities = new ArrayList<>(availableFacilities.subList(0, facilitiesCount));
+			Collections.sort(selectedFacilities); // 오름차순 정렬
 			
+			for(Integer num : selectedFacilities) {
+				data.put("facilities_idx", num);
+				mapper.addFacilities(data);
+			}
 		}
 	}
 }

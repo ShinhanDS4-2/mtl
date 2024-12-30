@@ -42,5 +42,7 @@ public interface PartnerMapper {
 	public List<Map<String, Object>> getRoomFacilities(Map<String, Object> param);
 
 	public List<Map<String, Object>> getPartnerInfo();
+	public List<Map<String, Object>> getRoomInfo();
 	public void addRoom(Map<String, Object> param);
+	public void addFacilities(Map<String, Object> param);
 }

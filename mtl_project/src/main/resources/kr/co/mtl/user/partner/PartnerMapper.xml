@@ -283,4 +283,23 @@
 			, #{weekend_price}
 		)
 	</insert>
+	
+	<select id="getRoomInfo">
+		SELECT
+			idx AS room_idx
+		FROM
+			ROOM
+		WHERE
+			idx > 100
+	</select>
+	
+	<insert id="addFacilities" parameterType="HashMap">
+		INSERT INTO ROOM_FACILITIES (
+			  room_idx
+			, facilities_idx
+		) VALUES (
+			  #{room_idx}
+			, #{facilities_idx}
+		)
+	</insert>
 </mapper>
