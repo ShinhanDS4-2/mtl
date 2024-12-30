@@ -130,3 +130,36 @@
   	top: -9px;
   	left: 20px;  
 }
+
+.star-item {
+  display: inline-block;
+  width: 1em; 
+  height: 1em; 
+  text-align: center;
+  line-height: 1em; 
+}
+
+.star-item i {
+  font-size: 1em; 
+  line-height: 1em; 
+}
+
+.star-item:hover {
+	cursor: pointer;
+}
+
+.star-item i.far {
+  display: inline;
+}
+
+.star-item:hover i.far {
+  display: none; 
+}
+
+.star-item:hover::before {
+  content: '\f005'; 
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900; 
+  color: #ffc107; 
+  display: inline-block;
+}
