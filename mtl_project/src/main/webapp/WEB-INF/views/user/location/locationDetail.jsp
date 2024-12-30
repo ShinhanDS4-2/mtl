@@ -148,7 +148,7 @@ Tabs-content END -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/user/locationDetail.js"></script>
+<script src="js/user/location/locationDetail.js"></script>
 <script type="text/javascript">
 	locationDetail.init();
 </script>

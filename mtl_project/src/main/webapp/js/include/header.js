@@ -24,7 +24,9 @@ const header = (function() {
 		if(type == "click") {
 			if(action == "clickLogo") {
 				_event.clickLogo();
-			};
+			} else if(action == "clickLogoutBtn") {
+				_event.handleLogout();
+			}
 		};
 	};
 	
@@ -34,6 +36,15 @@ const header = (function() {
 		clickLogo: function() {
 			location.href = "/mtl/";
 		},
+		
+		handleLogout: function() {
+			let url = "/user/logout";
+			
+			comm.send(url, {}, "POST", function() {
+				alert("로그아웃 되었습니다.");
+				location.href = "/mtl/";
+			});
+		}
 	};
 	
 	return {

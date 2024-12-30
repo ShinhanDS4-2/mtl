@@ -40,19 +40,19 @@
 							<form class="row g-3">
 								<div class="col-md-6">
 									<label class="form-label">이름</label>
-									<input type="text" class="form-control" value="Jacqueline Miller">
+									<input type="text" class="form-control" value="${login_user.name }">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">이메일</label>
-									<input type="email" class="form-control text-secondary" value="hello@gmail.com" disabled="disabled">
+									<input type="email" class="form-control text-secondary" value="${login_user.email }" disabled="disabled">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">연락처</label>
-									<input type="text" class="form-control" value="010-0000-0000">
+									<input type="text" class="form-control" value="${login_user.phone }">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">생년월일</label>
-									<input type="text" class="form-control text-secondary" value="1995-01-01" disabled="disabled">
+									<input type="text" class="form-control text-secondary" value="${login_user.birth }" disabled="disabled">
 								</div>
 								<div class="col-md-6">
 									<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">

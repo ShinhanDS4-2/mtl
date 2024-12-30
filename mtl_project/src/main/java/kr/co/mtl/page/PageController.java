@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
-	// home
-	@GetMapping({"/"})
+	// 메인
+	@GetMapping("/")
 	public String home() {
 		return "user/home";
 	}
@@ -27,37 +27,37 @@ public class PageController {
 	// 숙소 리스트
 	@GetMapping("partner/list")
 	public String partnerList() {
-		return "user/partnerList";
+		return "user/partner/partnerList";
 	}
 	
 	// 숙소 상세
 	@GetMapping("partner/detail")
 	public String partnerDetail() {
-		return "user/partnerDetail";
+		return "user/partner/partnerDetail";
 	}
 	
 	// 예약
 	@GetMapping("reservation")
 	public String reservation() {
-		return "user/reservation";
+		return "user/reservation/reservation";
 	}
 	
 	// 예약 완료
 	@GetMapping("reservation/confirm")
 	public String reservationConfirm() {
-		return "user/reservationConfirm";
+		return "user/reservation/reservationConfirm";
 	}
 	
 	// 여행지 상세
 	@GetMapping("location/detail")
 	public String locationDetail() {
-		return "user/locationDetail";
+		return "user/location/locationDetail";
 	}
 	
 	// 지역 리스트
 	@GetMapping("area/list")
 	public String areaList() {
-		return "user/areaList";
+		return "user/location/areaList";
 	}
 	
 	// 마이페이지 내 정보 관리

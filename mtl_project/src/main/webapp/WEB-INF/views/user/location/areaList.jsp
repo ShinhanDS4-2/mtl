@@ -641,7 +641,7 @@
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/user/areaList.js"></script>
+<script src="js/user/location/areaList.js"></script>
 <script type="text/javascript">
 	areaList.init();
 </script>
