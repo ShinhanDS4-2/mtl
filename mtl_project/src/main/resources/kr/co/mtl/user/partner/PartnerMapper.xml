@@ -134,7 +134,7 @@
 	<select id="getRoomList" parameterType="HashMap">
 		SELECT
 			  idx AS room_idx
-			, name
+			, room_type
 			, description
 			, standard
 			, maximum
@@ -240,7 +240,14 @@
 		
 		</if>
 		<if test="guest != null and guest != ''">
-		
+			AND p.idx IN (
+				SELECT
+					partner_idx
+				FROM
+					ROOM
+				WHERE
+					maximum >= #{guest}
+			)
 		</if>
 	</sql>
 </mapper>
