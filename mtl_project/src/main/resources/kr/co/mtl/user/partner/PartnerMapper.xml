@@ -236,5 +236,11 @@
 				OR (weekend_price BETWEEN #{min_price} AND #{max_price})
 			)
 		</if>
+		<if test="check_in_date != null and check_out_date != null">
+		
+		</if>
+		<if test="guest != null and guest != ''">
+		
+		</if>
 	</sql>
 </mapper>
