@@ -250,4 +250,37 @@
 			)
 		</if>
 	</sql>
+	
+	<select id="getPartnerInfo">
+		SELECT
+			  p.idx AS partner_idx
+			, p.name
+		FROM
+			PARTNER p
+		WHERE
+			type = 'HOTEL'
+		AND p.idx NOT IN (82)
+	</select>
+	
+	<insert id="addRoom" parameterType="HashMap">
+		INSERT INTO ROOM (
+			  partner_idx
+			, room_type
+			, description
+			, count
+			, standard
+			, maximum
+			, basic_price
+			, weekend_price
+		) VALUES (
+			  #{partner_idx}
+			, #{room_type}
+			, #{description}
+			, #{count}
+			, #{standard}
+			, #{maximum}
+			, #{basic_price}
+			, #{weekend_price}
+		)
+	</insert>
 </mapper>
