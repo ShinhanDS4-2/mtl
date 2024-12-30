@@ -13,6 +13,9 @@
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
 <script>flatpickr.localize(flatpickr.l10ns.ko);</script>
 
+<!-- naver map openapi -->
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=33zbp8g8tv"></script>
+
 <!-- ThemeFunctions -->
 <script src="assets/js/functions.js"></script>
 

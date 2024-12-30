@@ -21,11 +21,6 @@
 
         let _callback = callback;
 
-        // 리밋 설정
-        function _setLimit(limit) {
-      	  _option.limit = limit;
-        };
-        
         // 파라미터 구하기
         function _getParam(curPage) {
             if (curPage) {
@@ -41,7 +36,7 @@
             };
         };
 
-        // 페이지 숫자자 그리기 
+        // 페이지 숫자 그리기 
         function _drawPage(totalCount) {
             let limit = _option.limit;
             let showPageNum = _option.showPageNum;
@@ -130,10 +125,6 @@
         }
 
         return {
-        	setLimit: function(limit) {
-        		_setLimit(parseInt(limit));
-        	},
-        	
             getParam: function(curPage) {
                 return _getParam(curPage);
             },

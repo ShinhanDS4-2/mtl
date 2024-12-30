@@ -35,4 +35,61 @@ public class PartnerServiceImpl implements PartnerService {
 		return result;
 	};
 	
+	/**
+	 * 숙소 검색 리스트
+	 * @param param
+	 * @return 숙소 검색 리스트
+	 */
+	public Map<String, Object> getPartnerSearchList(Map<String, Object> param) {
+		
+		System.out.println(param);
+		Map<String, Object> result = new HashMap<>();
+		
+		List<Map<String, Object>> list = partnerMapper.getPartnerList(param);
+		
+		for (Map<String, Object> data : list) {
+			// 숙소 사진 리스트
+			List<Map<String, Object>> imageList = partnerMapper.getPartnerImageList(data);
+			data.put("imageList", imageList);
+			
+			// 숙소 시설 리스트
+			List<Map<String, Object>> facilitiesList = partnerMapper.getPartnerFacilities(data);
+			data.put("facilitiesList", facilitiesList);
+		}
+		
+		result.put("list", list);
+		result.put("totalCnt", partnerMapper.getPartnerCnt(param));
+
+		return result;
+	};
+	
+	/**
+	 * 숙소 상세
+	 * @param param
+	 * @return 숙소 상세 정보
+	 */
+	public Map<String, Object> getPartnerDetail(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		Map<String, Object> data = partnerMapper.getPartnerDetail(param);
+		
+		// 공통 정보
+		data.put("imageList", partnerMapper.getPartnerImageList(param));				// 이미지
+		data.put("commonFacilitiesList", partnerMapper.getPartnerFacilities(param));	// 공통시설
+		data.put("roomFacilitiesList", partnerMapper.getPartnerRoomFacilities(param));	// 객실시설
+		
+		// 객실 정보
+		List<Map<String, Object>> roomList = partnerMapper.getRoomList(param);
+		for (Map<String, Object> room : roomList) {
+			room.put("imageList", partnerMapper.getRoomImage(room));
+			room.put("facilitiesList", partnerMapper.getRoomFacilities(room));
+		};
+		data.put("roomList", roomList);
+		
+		result.put("data", data);
+		
+		return result;
+	};
+	
 }

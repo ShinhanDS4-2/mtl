@@ -15,4 +15,27 @@
 			type = #{type}
 	</select>
 	
+	<!-- 키워드 리스트 -->
+	<select id="getKeywordList" parameterType="HashMap">
+		SELECT
+			  idx AS keyword_idx
+			, keyword
+		FROM
+			KEYWORD
+		<if test="type != null and type != ''">
+			WHERE type = #{type}
+		</if>
+	</select>
+
+	<!-- 시설 리스트 -->
+	<select id="getFacilitiesList" parameterType="HashMap">
+		SELECT
+			  idx AS facilities_idx 
+			, name
+		FROM
+			FACILITIES
+		<if test="type != null and type != ''">
+			WHERE type = #{type}
+		</if>
+	</select>
 </mapper>

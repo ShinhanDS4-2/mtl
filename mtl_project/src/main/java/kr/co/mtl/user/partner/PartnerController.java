@@ -4,8 +4,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -21,9 +21,37 @@ public class PartnerController {
 	 * @return 숙소 리스트
 	 */
 	@PostMapping("/best/list")
-	public Map<String, Object> getBestPartnerList(@RequestParam Map<String, Object> param) throws Exception {
+	public Map<String, Object> getBestPartnerList(@RequestBody Map<String, Object> param) throws Exception {
 		
 		Map<String, Object> result = partnerService.getBestPartnerList(param);
+		
+		return result;
+	}
+	
+	/**
+	 * 숙소 검색
+	 * @param param
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/search/list")
+	public Map<String, Object> getPartnerSearchList(@RequestBody Map<String, Object> param) throws Exception {
+
+		Map<String, Object> result = partnerService.getPartnerSearchList(param);
+		
+		return result;
+	}
+
+	/**
+	 * 숙소 상세
+	 * @param param
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/detail")
+	public Map<String, Object> getPartnerDetail(@RequestBody Map<String, Object> param) throws Exception {
+		
+		Map<String, Object> result = partnerService.getPartnerDetail(param);
 		
 		return result;
 	}

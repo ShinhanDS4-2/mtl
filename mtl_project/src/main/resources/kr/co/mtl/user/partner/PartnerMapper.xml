@@ -13,7 +13,7 @@
 			PARTNER
 		WHERE
 			approval_status = 'Y'
-		ORDER BY total_reservatiohn DESC, score DESC, name
+		ORDER BY total_reservation DESC, score DESC, name
 		<if test="limit != null and offset != null">
 			LIMIT ${limit} OFFSET ${offset}
 		</if>
@@ -34,4 +34,165 @@
 		AND 
 			thumbnail_yn = 'Y'
 	</select>
+	
+	<!-- 숙소 검색 리스트 -->
+	<select id="getPartnerList" parameterType="HashMap">
+		SELECT
+			  p.idx AS partner_idx
+			, p.name
+			, p.area
+			, p.score
+			, p.type
+			, p.address
+		FROM 
+			PARTNER p
+		<include refid="searchPartner"></include>
+		ORDER BY p.create_date DESC
+		<if test="limit != null and offset != null">
+			LIMIT ${limit} OFFSET ${offset}
+		</if>
+	</select>
+	
+	<!-- 숙소 검색 리스트 개수 -->
+	<select id="getPartnerCnt" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM 
+			PARTNER p
+		<include refid="searchPartner"></include>
+	</select>
+	
+	<!-- 숙소 사진 리스트 -->
+	<select id="getPartnerImageList" parameterType="HashMap">
+		SELECT 
+			  idx AS image_idx
+			, origin_filename
+			, url
+			, thumbnail_yn
+		FROM
+			IMAGE
+		WHERE
+			type = 'P'
+		AND
+			mapping_idx = #{partner_idx}
+	</select>
+	
+	<!-- 숙소 시설 리스트 -->
+	<select id="getPartnerFacilities" parameterType="HashMap">
+		SELECT
+			f.name
+		FROM 
+			FACILITIES f
+		JOIN 
+			PARTNER_FACILITIES pf
+		ON pf.facilities_idx = f.idx
+		WHERE
+			f.type = 'COMMON'
+		AND pf.partner_idx = #{partner_idx}
+	</select>
+	
+	<!-- 숙소 객실 시설 리스트 -->
+	<select id="getPartnerRoomFacilities" parameterType="HashMap">
+		SELECT 
+			name
+		FROM
+			FACILITIES 
+		WHERE
+			idx IN (
+			SELECT 
+				  rf.facilities_idx 
+			FROM
+				ROOM_FACILITIES rf 
+			JOIN ROOM r 
+			ON r.idx = rf.room_idx 
+			WHERE r.partner_idx = #{partner_idx}
+		)
+	</select>
+	
+	<!-- 숙소 상세 -->
+	<select id="getPartnerDetail" parameterType="HashMap">
+		SELECT
+			  p.name
+			, p.phone
+			, p.address
+			, p.area
+			, p.description
+			, p.type
+			, p.score
+			, p.latitude
+			, p.hardness
+		FROM
+			PARTNER p
+		WHERE
+			idx = #{partner_idx}
+	</select>
+	
+	<!-- 숙소 별 객실 리스트 -->
+	<select id="getRoomList" parameterType="HashMap">
+		SELECT
+			  idx AS room_idx
+			, name
+			, description
+			, standard
+			, maximum
+			, basic_price
+			, weekend_price
+		FROM
+			ROOM
+		WHERE
+			partner_idx = #{partner_idx}
+	</select>
+	
+	<!-- 객실 이미지 -->
+	<select id="getRoomImage" parameterType="HashMap">
+		SELECT
+			url
+		FROM
+			IMAGE
+		WHERE
+			mapping_idx = #{room_idx}
+		AND type = 'R'
+	</select>
+	
+	<!-- 객실 시설 리스트 -->
+	<select id="getRoomFacilities" parameterType="HashMap">
+		SELECT
+			f.name
+		FROM 
+			FACILITIES f
+		JOIN 
+			ROOM_FACILITIES rf
+		ON rf.facilities_idx = f.idx
+		WHERE
+			f.type = 'ROOM'
+		AND rf.room_idx = #{room_idx}
+	</select>
+	
+	<!-- 숙소 검색 where -->
+	<sql id="searchPartner">
+		WHERE
+			approval_status = 'Y'
+		<if test="area != null and area != ''">
+			AND AREA = #{area}
+		</if>
+		<if test="partnerTypeList != null and partnerTypeList.size() > 0">
+			AND p.type IN
+			<foreach item="type" collection="partnerTypeList" separator="," open="(" close=")">
+				#{type}
+			</foreach>
+		</if>
+		<if test="facilitiesList != null and facilitiesList.size() > 0">
+			AND p.idx IN (
+				SELECT 
+					partner_idx 
+				FROM
+					PARTNER_FACILITIES
+				WHERE
+					facilities_idx IN 
+				<foreach item="facilities" collection="facilitiesList" separator="," open="(" close=")">
+					#{facilities}
+				</foreach>
+			)
+		</if>
+	</sql>
 </mapper>

@@ -13,15 +13,10 @@
 
 <!-- main -->
 <main>
-
-<!-- =======================
-Search START -->
 <section class="py-3 py-sm-0">
 	<div class="container">
-		<!-- Offcanvas button for search -->
 		<button class="btn btn-primary d-sm-none w-100 mb-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEditsearch" aria-controls="offcanvasEditsearch"><i class="bi bi-pencil-square me-2"></i>Edit Search</button>
 
-		<!-- Search with offcanvas START -->
 		<div class="offcanvas-sm offcanvas-top" tabindex="-1" id="offcanvasEditsearch" aria-labelledby="offcanvasEditsearchLabel">
 			<div class="offcanvas-header">
 				<h5 class="offcanvas-title" id="offcanvasEditsearchLabel">일정 검색</h5>
@@ -30,49 +25,42 @@ Search START -->
 			<div class="offcanvas-body p-2">
 				<div class="bg-light p-4 rounded w-100">
 					<form class="row g-4">
-						<!-- Location -->
+						<!-- 지역 -->
 						<div class="col-md-6 col-lg-4">
 							<div class="form-size-lg form-fs-md">
-								<!-- Select input -->
 								<label class="form-label">지역</label>
-								<select class="form-select js-choice" data-search-enabled="true">
-									<option value="">지역 선택</option>
-									<option selected>서울</option>
-									<option>강릉</option>
-									<option>여수</option>
-									<option>부산</option>
-									<option>제주</option>
+								<select class="form-select" id="searchArea">
+									<option value="" disabled="disabled">지역 선택</option>
+									<option value="SEOUL">서울</option>
+									<option value="GANGNEUNG">강릉</option>
+									<option value="YEOSU">여수</option>
+									<option value="BUSAN">부산</option>
+									<option value="JEJU">제주</option>
 								</select>
 							</div>
 						</div>
 
-						<!-- Check in -->
+						<!-- 체크인 체크아웃 -->
 						<div class="col-md-6 col-lg-3">
-							<!-- Date input -->
 							<div class="form-fs-md">
 								<label class="form-label">체크인 - 체크아웃</label>
 								<input type="text" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="Select date">
 							</div>
 						</div>
-
-						<!-- Guest -->
+							
+						<!-- 인원 -->
 						<div class="col-md-6 col-lg-3">
 							<div class="form-fs-md">
-								<!-- Dropdown input -->
 								<div class="w-100">
 									<label class="form-label">인원</label>
 									<div class="dropdown guest-selector me-2">
 										<input type="text" class="form-guest-selector form-control form-control-lg selection-result" value="2 명" id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
-									
-										<!-- dropdown items -->
 										<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="dropdownguest">
-											<!-- Adult -->
 											<li class="d-flex justify-content-between">
 												<div>
 													<h6 class="mb-0">인원</h6>
 													<small>유아 및 아동도 인원에 포함해 주세요.</small>
 												</div>
-
 												<div class="hstack gap-1 align-items-center">
 													<button type="button" class="btn btn-link adult-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
 													<h6 class="guest-selector-count mb-0 adults">2</h6>
@@ -85,7 +73,7 @@ Search START -->
 							</div>
 						</div>
 
-						<!-- Button -->
+						<!-- 검색 버튼 -->
 						<div class="col-md-6 col-lg-2 mt-md-auto">
 							<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i> 검색</a>
 						</div>
@@ -93,43 +81,32 @@ Search START -->
 				</div>
 			</div>
 		</div>
-		<!-- Search with offcanvas END -->
 	</div>
 </section>
-<!-- =======================
-Search END -->
-	
-<!-- =======================
-Main Title START -->
+
+<!-- 숙소명 -->	
 <section class="py-0 pt-sm-5">
 	<div class="container position-relative">
-		<!-- Title and button START -->
 		<div class="row mb-3">
 			<div class="col-12">
-				<!-- Meta -->
 				<div class="d-lg-flex justify-content-lg-between mb-1">
-					<!-- Title -->
 					<div class="mb-2 mb-lg-0">
-						<h1 class="fs-2">그랜드 인터컨티넨탈 서울 파르나스 </h1>
+						<h1 class="fs-2" id="partnerName"></h1>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Title and button END -->
 	</div>
 </section>
-<!-- =======================
-Main Title END -->
 
-<!-- =======================
-Image gallery START -->
+<!-- 숙소 사진 -->
 <section class="card-grid pt-0">
 	<div class="container">
 		<div class="row g-2">
 			<!-- Image -->
 			<div class="col-md-6">
 				<a data-glightbox data-gallery="gallery" href="assets/images/gallery/14.jpg">
-					<div class="card card-grid-lg card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/14.jpg); background-position: center left; background-size: cover;">
+					<div id="thumbnail" class="card card-grid-lg card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/14.jpg); background-position: center left; background-size: cover;">
 						<!-- Card hover element -->
 						<div class="hover-element position-absolute w-100 h-100">
 							<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -139,12 +116,11 @@ Image gallery START -->
 			</div>
 
 			<div class="col-md-6">
-				<!-- Card item START -->
 				<div class="row g-2"> 
 					<!-- Image -->
 					<div class="col-12">
 						<a data-glightbox data-gallery="gallery" href="assets/images/gallery/13.jpg">
-							<div class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/13.jpg); background-position: center left; background-size: cover;">
+							<div id="rightImage1" class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/13.jpg); background-position: center left; background-size: cover;">
 								<!-- Card hover element -->
 								<div class="hover-element position-absolute w-100 h-100">
 									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
@@ -155,9 +131,8 @@ Image gallery START -->
 
 					<!-- Image -->
 					<div class="col-md-6">
-						<a data-glightbox data-gallery="gallery" href="assets/images/gallery/12.jpg">
-							<div class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/12.jpg); background-position: center left; background-size: cover;">
-								<!-- Card hover element -->
+						<a data-glightbox data-gadllery="gallery" href="assets/images/gallery/12.jpg">
+							<div id="rightImage2" class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/12.jpg); background-position: center left; background-size: cover;">
 								<div class="hover-element position-absolute w-100 h-100">
 									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
 								</div>
@@ -167,20 +142,13 @@ Image gallery START -->
 
 					<!-- Images -->
 					<div class="col-md-6">
-						<div class="card card-grid-sm overflow-hidden" style="background-image:url(assets/images/gallery/11.jpg); background-position: center left; background-size: cover;">
-							<!-- Background overlay -->
-							<div class="bg-overlay bg-dark opacity-7"></div>
-
-							<!-- Popup Images -->
-							<a data-glightbox="" data-gallery="gallery" href="assets/images/gallery/11.jpg" class="stretched-link z-index-9"></a>
-							<a data-glightbox="" data-gallery="gallery" href="assets/images/gallery/15.jpg"></a>
-							<a data-glightbox="" data-gallery="gallery" href="assets/images/gallery/16.jpg"></a>
-
-							<!-- Overlay text -->
-							<div class="card-img-overlay d-flex h-100 w-100">
-								<h6 class="card-title m-auto fw-light text-decoration-underline"><a href="#" class="text-white">View all</a></h6>
+						<a data-glightbox data-gadllery="gallery" href="assets/images/gallery/11.jpg">
+							<div id="rightImage3"  class="card card-grid-sm overflow-hidden" style="background-image:url(assets/images/gallery/11.jpg); background-position: center left; background-size: cover;">
+								<div class="hover-element position-absolute w-100 h-100">
+									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 				<!-- Card item END -->
@@ -188,11 +156,8 @@ Image gallery START -->
 		</div>
 	</div>
 </section>
-<!-- =======================
-Image gallery END -->
 
-<!-- =======================
-About hotel START -->
+<!-- 숙소 정보 -->
 <section class="pt-0">
 	<div class="container" data-sticky-container>
 
@@ -210,37 +175,10 @@ About hotel START -->
 
 						<!-- Card body START -->
 						<div class="card-body pt-4 p-0">
-							<h5 class="fw-light mb-4">Main Highlights</h5>
-
-							<!-- Highlights Icons -->
-							<div class="hstack gap-3 mb-3">
-								<div class="icon-lg bg-light h5 rounded-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Free wifi">
-									<i class="fa-solid fa-wifi"></i>
-								</div>
-								<div class="icon-lg bg-light h5 rounded-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Swimming Pool">
-									<i class="fa-solid fa-swimming-pool"></i>
-								</div>
-								<div class="icon-lg bg-light h5 rounded-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Central AC">
-									<i class="fa-solid fa-snowflake"></i>
-								</div>
-								<div class="icon-lg bg-light h5 rounded-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Free Service">
-									<i class="fa-solid fa-concierge-bell"></i>
-								</div>
-							</div>
-
-							<p class="mb-3">Demesne far-hearted suppose venture excited see had has. Dependent on so extremely delivered by. Yet no jokes worse her why. <b>Bed one supposing breakfast day fulfilled off depending questions.</b></p>
-							<p class="mb-0">Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. Water timed folly right aware if oh truth. Large above be to means. Dashwood does provide stronger is.</p>
+							<p class="mb-3 space" id="partnerDescription"></p>
 							
-							<div class="collapse" id="collapseContent">
-								<p class="my-3">We focus a great deal on the understanding of behavioral psychology and influence triggers which are crucial for becoming a well rounded Digital Marketer. We understand that theory is important to build a solid foundation, we understand that theory alone isn't going to get the job done so that's why this rickets is packed with practical hands-on examples that you can follow step by step.</p>
-								<p class="mb-0">Behavioral psychology and influence triggers which are crucial for becoming a well rounded Digital Marketer. We understand that theory is important to build a solid foundation, we understand that theory alone isn't going to get the job done so that's why this tickets is packed with practical hands-on examples that you can follow step by step.</p>
-							</div>
-							<a class="p-0 mb-4 mt-2 btn-more d-flex align-items-center collapsed" data-bs-toggle="collapse" href="#collapseContent" role="button" aria-expanded="false" aria-controls="collapseContent">
-								See <span class="see-more ms-1">more</span><span class="see-less ms-1">less</span><i class="fa-solid fa-angle-down ms-2"></i>
-							</a>
-
 							<!-- List -->
-							<h5 class="fw-light mb-2">Advantages</h5>
+							<h5 class="fw-light mt-4 mb-2">이용 안내</h5>
 							<ul class="list-group list-group-borderless mb-0">
 								<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Every hotel staff to have Proper PPT kit for COVID-19</li>
 								<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Every staff member wears face masks and gloves at all service times.</li>
@@ -256,109 +194,24 @@ About hotel START -->
 					<div class="card bg-transparent">
 						<!-- Card header -->
 						<div class="card-header border-bottom bg-transparent px-0 pt-0">
-							<h3 class="card-title mb-0">Amenities</h3>
+							<h3 class="card-title mb-0">시설</h3>
 						</div>
 
 						<!-- Card body START -->
 						<div class="card-body pt-4 p-0">
 							<div class="row g-4">
-								<!-- Activities -->
-								<div class="col-sm-6">
-									<h6><i class="fa-solid fa-biking me-2"></i>Activities</h6>
-									<!-- List -->
-									<ul class="list-group list-group-borderless mt-2 mb-0">
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Swimming pool
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Spa
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Kids' play area
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Gym
-										</li>
-									</ul>
-								</div>
-	
-								<!-- Payment Method -->
-								<div class="col-sm-6">
-									<h6><i class="fa-solid fa-credit-card me-2"></i>Payment Method</h6>
-									<!-- List -->
-									<ul class="list-group list-group-borderless mt-2 mb-0">
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Credit card (Visa, Master card)
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Cash
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Debit Card
-										</li>
-									</ul>
-								</div>
-	
 								<!-- Services -->
 								<div class="col-sm-6">
-									<h6><i class="fa-solid fa-concierge-bell me-2"></i>Services</h6>
-									<!-- List -->
-									<ul class="list-group list-group-borderless mt-2 mb-0">
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Dry cleaning
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Room Service
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Special service
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Waiting Area
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Secrete smoking area
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Concierge
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Laundry facilities
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Ironing Service
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Lift
-										</li>
+									<h6><i class="fa-solid fa-concierge-bell me-2"></i>공통 시설</h6>
+									<ul class="list-group list-group-borderless mt-2 mb-0" id="commonFacilitiesList">
 									</ul>
 								</div>
 	
-								<!-- Safety & Security -->
 								<div class="col-sm-6">
-									<h6><i class="bi bi-shield-fill-check me-2"></i>Safety & Security</h6>
-									<!-- List -->
-									<ul class="list-group list-group-borderless mt-2 mb-4 mb-sm-5">
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Doctor on Call
-										</li>
-									</ul>
-	
-									<h6><i class="fa-solid fa-volume-up me-2"></i>Staff Language</h6>
-									<!-- List -->
-									<ul class="list-group list-group-borderless mt-2 mb-0">
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>English
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Spanish
-										</li>
-										<li class="list-group-item pb-0">
-											<i class="fa-solid fa-check-circle text-success me-2"></i>Hindi
-										</li>
+									<h6><i class="fa-solid fa-concierge-bell me-2"></i>객실 시설</h6>
+									<ul class="list-group list-group-borderless mt-2 mb-0" id="roomFacilitiesList">
 									</ul>
 								</div>
-	
 							</div>
 						</div>
 						<!-- Card body END -->
@@ -376,9 +229,7 @@ About hotel START -->
 
 						<!-- Card body START -->
 						<div class="card-body pt-4 p-0">
-							<div class="vstack gap-4">
-
-								<!-- Room item START -->
+							<div class="vstack gap-4" id="roomList">
 								<div class="card shadow p-3">
 									<div class="row g-4">
 										<!-- Card img -->
@@ -423,69 +274,6 @@ About hotel START -->
 
 												<p class="text-success mb-0">Free Cancellation till 7 Jan 2022</p>
 												
-												<!-- Price and Button -->
-												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-													<!-- Price -->
-													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
-														<span class="mb-0 me-2"> / 일</span>
-													</div>
-													<!-- Button -->
-													<div class="mt-3 mt-sm-0">
-														<a href="reservation" class="btn btn-sm btn-primary mb-0">객실 예약</a>    
-													</div>          
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Room item END -->
-	
-								<!-- Room item START -->
-								<div class="card shadow p-3">
-									<div class="row g-4">
-										<!-- Card img -->
-										<div class="col-md-5 position-relative">
-											<!-- Slider START -->
-											<div class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2">
-												<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/03.jpg" alt="Card image"></div>
-
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/02.jpg" alt="Card image"></div>
-
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/04.jpg" alt="Card image"></div>
-
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/01.jpg" alt="Card image"></div>
-												</div>
-											</div>
-											<!-- Slider END -->
-
-											<!-- Button -->
-											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-primary more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
-												<i class="bi bi-eye-fill me-1"></i>객실 상세 정보
-											</a>
-										</div>
-
-										<!-- Card body -->
-										<div class="col-md-7">
-											<div class="card-body d-flex flex-column p-0 h-100">
-					
-												<!-- Title -->
-												<h5 class="card-title">Deluxe Pool View with Breakfast</h5>
-
-												<!-- Amenities -->
-												<ul class="nav nav-divider mb-2">
-													<li class="nav-item">Air Conditioning</li>
-													<li class="nav-item">Wifi</li>
-													<li class="nav-item">Kitchen</li>
-												</ul>
-
-												<p class="text-danger mb-3">Non Refundable</p>
-					
 												<!-- Price and Button -->
 												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
 													<!-- Price -->
@@ -696,11 +484,10 @@ About hotel START -->
 						<div class="d-sm-flex justify-content-sm-between align-items-center mb-3">
 							<div>
 								<h5 class="text-primary"><b>위치 정보</b></h5>
-								<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i>서울 강남구 테헤란로 521
+								<p class="fw-bold mb-0"><i class="bi bi-geo-alt me-2"></i><span id="partnerAddress">서울 강남구 테헤란로 521</span></p>
 							</div>
 						</div>	
-						<div>
-							<iframe class="w-100" height="200" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"  style="border:0;" aria-hidden="false" tabindex="0"></iframe>	
+						<div class="w-100 h-200px" id="map">
 						</div>	
 					</div>
 					
@@ -837,7 +624,7 @@ About hotel END -->
 					<div class="card-header bg-transparent pb-0">
 						<div class="alert alert-secondary" role="alert">
 							직접 문의하고 싶으신 경우<br>
-							<i class="fa-solid fa-phone"></i> 02-0000-0000으로 연락해 주시기 바랍니다.
+							<i class="fa-solid fa-phone"></i> <span id="partnerPhone"></span>으로 연락해 주시기 바랍니다.
 						</div>
 					</div>
 					<div class="card-body pt-2">
@@ -864,7 +651,7 @@ About hotel END -->
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
-<!-- page script -->
+<!-- page script  https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2 --> 
 <script src="js/user/partner/partnerDetail.js"></script>
 <script type="text/javascript">
 	partnerDetail.init();
