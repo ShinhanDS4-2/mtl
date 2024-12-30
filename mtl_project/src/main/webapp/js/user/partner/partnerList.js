@@ -405,8 +405,10 @@ const partnerList = (function() {
 	        return $(this).val();
 	    }).get();
 	    
-		/* TODO */
 	    // 객실 시설
+	    let roomFacilitiesList = $(".roomList .btn-check:checked").map(function () {
+	        return $(this).val();
+	    }).get();
 	    
 	    //  가격
 		let minPrice = $("#minPrice").val();
@@ -420,6 +422,7 @@ const partnerList = (function() {
 		data.partner_type_list = partnerTypeList;
 		data.keyword_list = keywordList;
 		data.facilities_list = facilitiesList;
+		data.room_facilities_list = roomFacilitiesList;
 		data.min_price = minPrice.replace("원", "").replaceAll(",", "");
 		data.max_price = maxPrice.replace("원", "").replaceAll(",", "");
 	};

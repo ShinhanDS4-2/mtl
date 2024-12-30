@@ -197,6 +197,21 @@
 				</foreach>
 			)
 		</if>
+		<if test="room_facilities_list != null and room_facilities_list.size() > 0">
+			AND p.idx IN (
+				SELECT 
+					r.partner_idx 
+				FROM
+					ROOM_FACILITIES rf
+				JOIN ROOM r
+				ON r.idx = rf.room_idx 
+				WHERE
+					facilities_idx IN 
+				<foreach item="facilities" collection="room_facilities_list" separator="," open="(" close=")">
+					#{facilities}
+				</foreach>
+			)
+		</if>
 		<if test="keyword_list != null and keyword_list.size() > 0">
 			AND p.idx IN (
 				SELECT
