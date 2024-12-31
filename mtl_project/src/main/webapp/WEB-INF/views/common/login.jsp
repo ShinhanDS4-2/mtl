@@ -108,13 +108,12 @@
 	</div>
 </div>
 
-<!-- 비밀번호 찾기 모달 -->
-
-
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
+<!-- 로그인 MD5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 <script src="js/common/login.js"></script>
 <script type="text/javascript">
 	login.init();

@@ -29,4 +29,18 @@ public interface LoginService {
      * @throws Exception 예외 처리
      */
     Map<String, Object> logout(Map<String, Object> param, HttpServletRequest request) throws Exception;
+    
+    
+    /**
+     * 사용자 회원가입
+     */
+    Map<String, Object> registerUser(Map<String, Object> param) throws Exception;
+    
+    
+    /**
+     * 마이페이지 수정
+     */
+    boolean updateUserInfo(Map<String, Object> param) throws Exception;
+
+
 }

@@ -632,7 +632,7 @@ var e = {
             dateFormat: dateFormat, //Check supported characters here: https://flatpickr.js.org/formatting/
             disableMobile: "true",
             minDate: "today",
-            defaultDate: ["today", new Date().fp_incr(2)]
+            defaultDate: ["today", new Date().fp_incr(1)]
           });
 
         });

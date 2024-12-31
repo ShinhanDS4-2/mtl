@@ -64,17 +64,17 @@ public class PartnerPageController {
 	public String mypage() {
 		return "partner/otherPages/mypage";
 	}
-	@GetMapping("/notion")
-	public String notion() {
-		return "partner/otherPages/notion";
+	@GetMapping("/notice")
+	public String notice() {
+		return "partner/otherPages/notice";
 	}
-	@GetMapping("/signin")
-	public String signin() {
-		return "partner/otherPages/signin";
+	@GetMapping("/login")
+	public String login() {
+		return "partner/otherPages/login";
 	}
-	@GetMapping("/signup")
-	public String signup() {
-		return "partner/otherPages/signup";
+	@GetMapping("/join")
+	public String join() {
+		return "partner/otherPages/join";
 	}
 	
 	// payout

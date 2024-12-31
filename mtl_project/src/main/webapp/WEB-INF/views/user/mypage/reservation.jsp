@@ -24,7 +24,7 @@
 				<!-- Offcanvas menu button -->
 				<div class="d-grid mb-0 d-lg-none w-100">
 					<button class="btn btn-primary mb-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
-						<i class="fas fa-sliders-h"></i> 메뉴
+						<i class="far fa-sliders-h"></i> 메뉴
 					</button>
 				</div>
 
@@ -62,12 +62,12 @@
 												<!-- Button -->
 												<div class="d-flex align-items-center">
 													<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 200,000</h5>
-													<span class="mb-0 me-2"> / 일</span>
 												</div>
 												<!-- Price -->
 												<div class="mt-3 mt-sm-0">
 													<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0">추천 여행지</a>    
-													<a href="javascript:;" class="btn btn-sm btn-primary mb-0">상세 정보</a>    
+													<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0"  data-bs-toggle="modal" data-bs-target="#reviewModal">후기 작성</a>    
+													<a href="javascript:;" class="btn btn-sm btn-primary mb-0" data-bs-toggle="modal" data-bs-target="#reservationDetail">상세 정보</a>    
 												</div>                  
 											</div>
 										</div>
@@ -97,7 +97,6 @@
 												<!-- Button -->
 												<div class="d-flex align-items-center">
 													<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 200,000</h5>
-													<span class="mb-0 me-2"> / 일</span>
 												</div>
 												<!-- Price -->
 												<div class="mt-3 mt-sm-0">
@@ -135,6 +134,146 @@
 	</div>
 </section>
 </main>
+
+<!-- 예약 상세 정보 모달 -->
+<div class="modal fade" id="reservationDetail" tabindex="-1" aria-labelledby="reservationDetailLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content p-0">
+
+			<!-- Title -->
+			<div class="modal-header p-3">
+				<h5 class="modal-title mb-0" id="reservationDetailLabel">예약 정보</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body p-0">
+				<div class="card bg-transparent m-3 border">
+					<div class="card-body">
+						<div class="col-12">
+							<div class="mb-2">
+								<img src="assets/images/서울_시그니엘서울.jpg" class="rounded">
+							</div>
+							<ul class="list-group list-group-borderless">
+								<li class="list-group-item">
+									<span class="h6 mb-0 me-1">객실 :</span>
+									<span class="h6 fw-light mb-0">스탠다드</span>
+								</li>
+								<li class="list-group-item">
+									<span class="h6 mb-0 me-1">체크인 : </span>
+									<span class="h6 fw-light mb-0">2024-12-01</span>
+								</li>
+								<li class="list-group-item">
+									<span class="h6 mb-0 me-1">체크아웃 : </span>
+									<span class="h6 fw-light mb-0">2024-12-02</span>
+								</li>
+								<li class="list-group-item">
+									<span class="h6 mb-0 me-1">인원 : </span>
+									<span class="h6 fw-light mb-0">2인</span>
+								</li>
+								<li class="list-group-item">
+									<span class="h6 mb-0 me-1">총 금액</span>
+									<span class="h6 fw-light mb-0">200,000</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 후기 작성 모달 -->
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content p-0">
+
+			<!-- Title -->
+			<div class="modal-header p-3">
+				<h5 class="modal-title mb-0" id="reviewLabel">후기 작성</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body p-0">
+				<!-- Card START -->
+				<div class="card bg-transparent m-3 border">
+					<!-- Card body START -->
+					<div class="card-body">
+						<div class="col-12">
+							<!-- 후기 별점 -->
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="me-4">
+									<span>친절도</span>
+									<ul class="list-inline mb-2">
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+									</ul>
+								</div>
+								<div class="me-4">
+									<span>청결도</span>
+									<ul class="list-inline mb-2">
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+									</ul>
+								</div>
+								<div class="me-4">
+									<span>서비스</span>
+									<ul class="list-inline mb-2">
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+									</ul>
+								</div>
+								<div class="me-4">
+									<span>위치</span>
+									<ul class="list-inline mb-2">
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
+									</ul>
+								</div>
+							</div>
+							<!-- 후기 답변 -->
+							<div class="d-flex mt-1 mb-3">
+								<textarea rows="5" class="form-control" placeholder="이용 후기를 작성해 주세요."></textarea>
+							</div>
+							<!-- 후기 이미지 -->
+							<div class="d-flex align-items-center">
+								<div
+									class="border rounded d-flex justify-content-center align-items-center"
+									style="width: 150px; height: 100px; background-color: #f8f9fa;">
+									<label class="text-center" style="cursor: pointer;"> 
+										<i class="bi bi-upload"></i><br>숙소 사진 업로드 
+										<input type="file" class="d-none">
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card body END -->
+					<div class="card-footer">
+						<div class="d-flex mt-3 justify-content-center">
+							<button class="btn btn-primary">등록</button>
+						</div>
+					</div>
+				</div>
+				<!-- Card END -->
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
