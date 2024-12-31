@@ -202,7 +202,6 @@
 			<!-- 숙소 리스트 -->
 			<div class="col-xl-8 col-xxl-9">
 				<div class="vstack gap-4" id="partnerList">
-
 				</div>
 				<!-- Pagination -->
 				<nav class="d-flex justify-content-center mt-5" aria-label="navigation">

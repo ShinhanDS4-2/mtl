@@ -4,7 +4,6 @@ const partnerDetail = (function() {
 	function init() {
 		_eventInit();
 		_event.getDetail();
-		
 	};
 
 	// 이벤트 초기화 
@@ -29,6 +28,10 @@ const partnerDetail = (function() {
 	
 	// 이벤트
 	let _event = {
+	};
+	
+	// 리스트
+	let _list = {
 		getDetail: function() {
 			let partnerIdx = comm.getUrlParam().idx;
         
