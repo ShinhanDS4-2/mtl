@@ -67,9 +67,10 @@ const partnerDetail = (function() {
 			    
 			    // 사진
 			    let imageList = data.imageList;
-			    let thumbnail = $("#thumbnail");
-			    thumbnail.css("background-image", "url(" + imageList[0] + ")");
-			    thumbnail.parents().attr("href", imageList[0]);
+			    $("#thumbnail").css("background-image", "url(" + encodeURI(imageList[0].url) + ")");
+			    $("#rightImage1").css("background-image", "url(" + encodeURI(imageList[1].url) + ")");
+			    $("#rightImage2").css("background-image", "url(" + encodeURI(imageList[2].url) + ")");
+			    $("#rightImage3").css("background-image", "url(" + encodeURI(imageList[3].url) + ")");
 			    
 			    _eventInit();
 			    e.tinySlider();

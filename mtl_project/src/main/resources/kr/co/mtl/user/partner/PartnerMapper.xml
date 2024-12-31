@@ -43,9 +43,20 @@
 			, p.area
 			, p.score
 			, p.type
-			, p.address
+			, p.address,
 			<if test="min_price != null and max_price != null">
-			, (SELECT MIN(r.basic_price) FROM ROOM r WHERE r.partner_idx = p.idx AND r.basic_price BETWEEN #{min_price} AND #{max_price}) AS price
+			(SELECT (CASE 
+		        WHEN WEEKDAY(#{start_date}) IN (0, 1, 2, 3, 4) THEN 
+		            (SELECT MIN(r.basic_price) 
+		             FROM ROOM r 
+		             WHERE r.partner_idx = p.idx 
+		               AND r.basic_price BETWEEN #{min_price} AND #{max_price})
+		        WHEN WEEKDAY(#{start_date}) IN (5, 6) THEN 
+		            (SELECT MIN(r.weekend_price) 
+		             FROM ROOM r 
+		             WHERE r.partner_idx = p.idx 
+		               AND r.weekend_price BETWEEN #{min_price} AND #{max_price})
+		     END)) AS price
 			</if>
 		FROM 
 			PARTNER p
@@ -231,12 +242,14 @@
 					partner_idx
 				FROM
 					ROOM
-				WHERE
-					(basic_price BETWEEN #{min_price} AND #{max_price})
-				OR (weekend_price BETWEEN #{min_price} AND #{max_price})
+				WHERE 
+				(CASE
+					WHEN WEEKDAY(#{start_date}) IN (0, 1, 2, 3, 4) THEN basic_price 
+					WHEN WEEKDAY(#{start_date}) IN (5, 6) THEN weekend_price 
+				END) BETWEEN #{min_price} AND #{max_price}
 			)
 		</if>
-		<if test="check_in_date != null and check_out_date != null">
+		<if test="start_date != null and end_date != null">
 		
 		</if>
 		<if test="guest != null and guest != ''">
