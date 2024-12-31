@@ -95,43 +95,12 @@
 	<div class="container">
 		<!-- tab line -->
 		<ul class="nav nav-tabs nav-bottom-line mb-3">
-			<li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-3-1"> 숙소 </a> </li>
-			<li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#tab-3-2"> 관광지 </a> </li>
-			<li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-3-3"> 맛집 </a> </li>
+			<li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#tab1" data-src="areaList" data-act="clickAttration"> 관광지 </a> </li>
+			<li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab2" data-src="areaList" data-act="clickRestaurang"> 맛집 </a> </li>
 		</ul>
-		<div class="tab-content">
-			<!-- 숙소 탭 START -->
-			<div class="tab-pane" id="tab-3-1">
-				<div class="row g-4">
-					<!-- Card item START (js에서 반복 돌릴 부분) -->
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickPartner">
-							<!-- Image -->
-							<img src="assets/images/서울_시그니엘서울.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시그니엘 서울</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-				</div> 
-				<!-- Row END -->
-			</div>
-			<!-- 숙소 탭 END -->
-			 
+		<div class="tab-content">	 
 			<!-- 관광지 탭 START (디폴트) -->
-			<div class="tab-pane show active" id="tab-3-2">
+			<div class="tab-pane show active" id="tab1">
 				<div class="row g-4">
 					<!-- Card item START (js에서 반복 돌릴 부분) -->
 					<div class="col-md-3">
@@ -146,25 +115,21 @@
 								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
 							</div> 
 							<!-- Card body END -->
-		
+		 
 							<!-- Card footer START-->
 		 					<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
+		 						<!-- js에서 반복 돌릴 부분 -->
 								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
 					</div> 
 					<!-- Card item END -->   
-					<!-- item값 js에서 반복해서 출력처리 -->
-				
 				</div> <!-- Row END -->
 			</div>
 			<!-- 관광지 탭 END -->
 			
 			<!-- 맛집 탭 START -->
-			<div class="tab-pane" id="tab-3-3">
+			<div class="tab-pane" id="tab2">
 				<div class="row g-4">
 					<!-- Card item START (js에서 반복 돌릴 부분) -->
 					<div class="col-md-3">
@@ -199,7 +164,7 @@
 		<div class="row">
 			<div class="col-12">
 				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-					<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+					<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">  <!-- id="pagination" -->
 						<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
 						<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
 						<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>

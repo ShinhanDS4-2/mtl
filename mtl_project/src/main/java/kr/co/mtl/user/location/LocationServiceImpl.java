@@ -34,7 +34,12 @@ public class LocationServiceImpl implements LocationService {
 			System.out.println("keyword: " + keyword);
 			data.put("keyword", keyword); 
 		}
+		
 		result.put("LocationList", list);
+		
+		// 페이징 처리를 위한 list의 total 총 개수를 함께 result로 넘겨줘야함
+		result.put("LocationListCount", locationMapper.getLocationListCount(param));  // 지역 별 여행지 리스트 총 개수
+		
 		return result;
 	};
 
