@@ -32,10 +32,11 @@ public class LoginController {
      * @throws Exception 예외 처리
      */
     @PostMapping("/info")
-    public Map<String, Object> getUserInfo(@RequestParam Map<String, Object> param) throws Exception {
-        // 필수 파라미터 null 체크
-        CommonUtil.checkIsNull(param, "userIdx");
+    public Map<String, Object> getUserInfo(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
 
+    	HttpSession session = request.getSession();
+    	param.put("userIdx", session.getAttribute("login_user_idx"));
+    	
         // 사용자 정보 조회
         Map<String, Object> result = loginService.getUserInfo(param);
 
@@ -79,7 +80,7 @@ public class LoginController {
     	
     	HttpSession session = request.getSession();
     	
-        if (session.getAttribute("login_user") != null) {
+        if (session.getAttribute("login_user_idx") != null) {
             session.invalidate(); // 세션 무효화
         }
         
@@ -119,14 +120,48 @@ public class LoginController {
     @PostMapping("/update")
     public Map<String, Object> updateUser(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
     	HttpSession session = request.getSession();
-    	
-    	param.put("userIdx", session.getAttribute("login_user"));
-        Map<String, Object> result = new HashMap<>();
-        boolean isUpdated = loginService.updateUserInfo(param);
 
+    	param.put("userIdx", session.getAttribute("login_user_idx"));
+        
+    	Map<String, Object> result = new HashMap<>();
+        
+        boolean isUpdated = loginService.updateUserInfo(param, session);
+        result.put("result", isUpdated);
+        
         return result;
     }
 
     
-}
+    /**
+     * 비밀번호 변경
+     */
+    @PostMapping("/changePassword")
+    public Map<String, Object> changePassword(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
+        HttpSession session = request.getSession();
+        param.put("userIdx", session.getAttribute("login_user_idx"));
 
+        Map<String, Object> result = new HashMap<>();
+
+        result = loginService.changePassword(param);
+       
+        return result;
+    }
+    
+    /**
+     * 비밀번호 변경시 현재 비밀번호와 일치하는지 확인
+     */
+//    @PostMapping("/checkPassword")
+//    public Map<String, Object> checkPassword(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
+//        HttpSession session = request.getSession();
+//        param.put("userIdx", session.getAttribute("login_user_idx"));
+//
+//        Map<String, Object> result = new HashMap<>();
+//        
+//
+//       return 
+//
+//    }
+
+
+    
+}

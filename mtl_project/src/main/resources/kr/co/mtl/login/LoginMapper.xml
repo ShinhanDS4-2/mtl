@@ -6,7 +6,6 @@
     <select id="getUserInfo" parameterType="map" resultType="map">
         SELECT 
               email,
-              password,
               name,
               phone,
               birth
@@ -46,8 +45,26 @@
 	    SET name = #{name},
 	        phone = #{phone}
 	    WHERE idx = #{userIdx}
-</update>
-
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updatePassword" parameterType="map">
+	    UPDATE USER
+	    SET password = #{newPassword},
+	    	password_update_date = now()
+	    WHERE idx = #{userIdx}
+	</update>
+	
+	<!-- 현재 비밀번호 확인 -->
+	<select id="getPasswordCheck" parameterType="map" resultType="map">
+	    SELECT
+	        idx AS user_idx
+	    FROM USER
+	    WHERE idx = #{userIdx}
+	      AND password = #{password} -- DB의 현재 비밀번호와 입력한 비밀번호를 비교
+	</select>
+	
+	
     
 
 </mapper>

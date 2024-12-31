@@ -18,4 +18,11 @@ public interface LoginMapper {
     
     // 마이페이지 수정
     int updateUser(Map<String, Object> param);
+    
+    // 마이페이지 비밀번호 변경
+    int updatePassword(Map<String, Object> param);
+    
+    // 마이페이지 현재 비밀번호 비교 확인
+    Map<String, Object> getPasswordCheck(Map<String, Object> param);
+
 }
