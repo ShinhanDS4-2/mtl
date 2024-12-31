@@ -33,5 +33,21 @@
         AND password = #{password}
         AND user_status = 'A'
     </select>
+    
+    <!-- 회원가입 -->
+    <insert id="insertUser" parameterType="map">
+	    INSERT INTO USER (email, password, name, birth, phone, create_date)
+	    VALUES (#{email}, #{password}, #{name}, #{birth}, #{phone}, NOW())
+	</insert>
+	
+	<!-- 마이페이지 수정 -->
+	<update id="updateUser" parameterType="map">
+	    UPDATE USER
+	    SET name = #{name},
+	        phone = #{phone}
+	    WHERE idx = #{userIdx}
+</update>
+
+    
 
 </mapper>

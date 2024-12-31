@@ -9,7 +9,6 @@ const comm = {
 		$.ajax({
 			type: method,
 			url: url_v,
-			contentType: "application/json",
 			data: data_v,
 			success: successCallback,
 			error: errorCallback

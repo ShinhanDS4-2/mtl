@@ -48,9 +48,11 @@ const login = (function() {
 
 			let formData = {
 	        	email: $("#email").val(),
-	            password: $("#pw").val(),
+	        	// MD5 암호화 적용
+	            // password: $("#pw").val(),
+	            password: CryptoJS.MD5($("#pw").val()).toString(),
 	        };
-	
+			
 			comm.send(url, formData, "POST", function(response) {
             	let code = response.code;
                 if (code == 200) {

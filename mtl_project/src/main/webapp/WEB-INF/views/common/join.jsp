@@ -33,10 +33,11 @@
 										<label class="form-label" for="joinEmail">이메일 <span class="text-danger">*</span></label>
 										<input type="email" class="form-control" id="joinEmail" placeholder="abc@address.com">
 										<div class="d-grid gap-2 mt-2">
-											<button class="btn btn-primary-soft" type="button">이메일 인증</button>
+											<!-- <button class="btn btn-primary-soft" type="button">이메일 인증</button> -->
 										</div>
 									</div>
 									<!-- 인증번호 확인 -->
+									<!--
 									<div class="mb-3">
 										<label class="form-label" for="authNum">이메일 인증번호 <span class="text-danger">*</span></label>
 										<div class="row">
@@ -50,6 +51,8 @@
 											</div>
 										</div>
 									</div>
+									-->
+									
 									<!-- 비밀번호 -->
 									<div class="mb-2">
 										<label class="form-label" for="joinPw">비밀번호 <span class="text-danger">*</span></label>
@@ -74,34 +77,31 @@
 											<div class="col-4 pe-0">
 												<select class="form-select d-inline w-75" id="joinBirthYear">
 													<option value="" selected disabled="disabled">연도</option>
-													<option>1970</option>
-													<option>1971</option>
-													<option>1972</option>
+													<%
+														for (int year = 1970; year <= 2025; year++) {
+															out.print("<option>" + year + "</option>");
+														}
+													%>
 												</select> 년
 											</div>
 											<div class="col-4 pe-0 ps-0">
 												<select class="form-select d-inline w-75" id="joinBirthMonth">
 													<option value="" selected disabled="disabled">월</option>
-													<option>01</option>
-													<option>02</option>
-													<option>03</option>
-													<option>04</option>
-													<option>05</option>
-													<option>06</option>
-													<option>07</option>
-													<option>08</option>
-													<option>09</option>
-													<option>10</option>
-													<option>11</option>
-													<option>12</option>
+													<%
+														for (int month = 1; month <= 12; month++) {
+															out.print("<option>" + String.format("%02d", month) + "</option>");
+														}
+													%>
 												</select> 월
 											</div>
 											<div class="col-4 pe-0 ps-0">
 												<select class="form-select d-inline w-75" id="joinBirthDay">
 													<option value="" selected disabled="disabled">일</option>
-													<option>01</option>
-													<option>02</option>
-													<option>03</option>
+													<%
+														for (int day = 1; day <= 31; day++) {
+															out.print("<option>" + String.format("%02d", day) + "</option>");
+														}
+													%>
 												</select> 일
 											</div>
 										</div>
@@ -113,7 +113,7 @@
 									</div>
 									
 									<!-- Button -->
-									<div><button type="button" class="btn btn-primary w-100 mb-2">회원가입</button></div>
+									<div><button type="button" class="btn btn-primary w-100 mb-2" data-src="join" data-act="clickJoin">회원가입</button></div>
 									<div><a href="login" type="button" class="btn btn-primary-soft w-100 mb-0">로그인</a></div>
 								</form>
 								<!-- Form END -->
@@ -131,9 +131,9 @@
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="js/common/login.js"></script>
+<script src="/mtl/js/common/join.js"></script>
 <script type="text/javascript">
-	login.init();
+	join.init();
 </script>
 </body>
 </html>

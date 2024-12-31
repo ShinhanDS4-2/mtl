@@ -40,7 +40,7 @@
 							<form class="row g-3">
 								<div class="col-md-6">
 									<label class="form-label">이름</label>
-									<input type="text" class="form-control" value="${login_user.name }">
+									<input type="text" id="name" class="form-control" value="${login_user.name }">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">이메일</label>
@@ -48,7 +48,7 @@
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">연락처</label>
-									<input type="text" class="form-control" value="${login_user.phone }">
+									<input type="text" id="phone" class="form-control" value="${login_user.phone }">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">생년월일</label>
@@ -67,7 +67,7 @@
 									</div>
 								</div>
 								<div class="col-12 text-end">
-									<a href="#" class="btn btn-primary mb-0">내 정보 수정</a>
+									<a href="javascript:;" class="btn btn-primary mb-0" data-src='info' data-act="updateInfo">내 정보 수정</a>
 								</div>
 							</form>
 						</div>
@@ -100,7 +100,7 @@
 								<input class="form-control" type="password" placeholder="Confirm new password">
 							</div>
 							<div class="text-end">
-								<a href="#" class="btn btn-primary mb-0">비밀번호 변경</a>
+								<a href="javascript:;" class="btn btn-primary mb-0">비밀번호 변경</a>
 							</div>
 						</form>
 					</div>
