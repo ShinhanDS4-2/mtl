@@ -105,50 +105,28 @@
 		<div class="row g-2">
 			<!-- Image -->
 			<div class="col-md-6">
-				<a data-glightbox data-gallery="gallery" href="assets/images/gallery/14.jpg">
-					<div id="thumbnail" class="card card-grid-lg card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/14.jpg); background-position: center left; background-size: cover;">
-						<!-- Card hover element -->
-						<div class="hover-element position-absolute w-100 h-100">
-							<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-						</div>
-					</div>
-				</a>
+				<div id="thumbnail" class="card card-grid-lg overflow-hidden detail-back">
+				</div>
 			</div>
 
 			<div class="col-md-6">
 				<div class="row g-2"> 
 					<!-- Image -->
 					<div class="col-12">
-						<a data-glightbox data-gallery="gallery" href="assets/images/gallery/13.jpg">
-							<div id="rightImage1" class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/13.jpg); background-position: center left; background-size: cover;">
-								<!-- Card hover element -->
-								<div class="hover-element position-absolute w-100 h-100">
-									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-								</div>
-							</div>
-						</a>	
+						<div id="rightImage1" class="card card-grid-sm overflow-hidden detail-back">
+						</div>
 					</div>
 
 					<!-- Image -->
 					<div class="col-md-6">
-						<a data-glightbox data-gadllery="gallery" href="assets/images/gallery/12.jpg">
-							<div id="rightImage2" class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/12.jpg); background-position: center left; background-size: cover;">
-								<div class="hover-element position-absolute w-100 h-100">
-									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-								</div>
-							</div>
-						</a>	
+						<div id="rightImage2" class="card card-grid-sm overflow-hidden detail-back">
+						</div>
 					</div>
 
 					<!-- Images -->
 					<div class="col-md-6">
-						<a data-glightbox data-gadllery="gallery" href="assets/images/gallery/11.jpg">
-							<div id="rightImage3"  class="card card-grid-sm overflow-hidden" style="background-image:url(assets/images/gallery/11.jpg); background-position: center left; background-size: cover;">
-								<div class="hover-element position-absolute w-100 h-100">
-									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-								</div>
-							</div>
-						</a>
+						<div id="rightImage3"  class="card card-grid-sm overflow-hidden detail-back">
+						</div>
 					</div>
 				</div>
 				<!-- Card item END -->

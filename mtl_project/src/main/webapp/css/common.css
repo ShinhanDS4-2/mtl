@@ -163,3 +163,8 @@
   color: #ffc107; 
   display: inline-block;
 }
+
+.detail-back {
+	background-position: center left; 
+	background-size: cover;
+}

@@ -415,8 +415,8 @@ const partnerList = (function() {
 		let maxPrice = $("#maxPrice").val();
 		
 		// data 객체 안에 값 설정
-		data.start_data = startDate;
-		data.end_data = endDate;
+		data.start_date = startDate;
+		data.end_date = endDate;
 		data.guest = guest;
 		data.area = $("#searchArea option:selected").val();
 		data.partner_type_list = partnerTypeList;
