@@ -66,7 +66,9 @@ public class LoginServiceImpl implements LoginService {
         
         
         // 로그인 성공 세션 처리
-        session.setAttribute("login_user", user);	//세션에 사용자 정보 저장
+        session.setAttribute("login_user_idx", user.get("user_idx"));	//세션에 사용자 정보 저장
+        session.setAttribute("login_user_name", user.get("name"));	//세션에 사용자 정보 저장
+        session.setAttribute("login_user_email", user.get("email"));	//세션에 사용자 정보 저장
         
         // 로그인 성공 처리 (예: 세션 생성 또는 토큰 발급)
         result.put("login_user", user);
@@ -105,15 +107,6 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Map<String, Object> registerUser(Map<String, Object> param) throws Exception {
         Map<String, Object> result = new HashMap<>();
-
-        // 필수 파라미터 확인
-//        if (param.get("password") == null || param.get("name") == null ||
-//            param.get("birthYear") == null || param.get("birthMonth") == null ||
-//            param.get("birthDay") == null || param.get("phone") == null) {
-//            result.put("code", Code.VALIDATION_ERROR.code);
-//            result.put("message", "필수 항목이 누락되었습니다.");
-//            return result;
-//        }
 
      // 비밀번호 암호화 (MD5 방식)
         String rawPassword = param.get("password").toString();
@@ -158,10 +151,90 @@ public class LoginServiceImpl implements LoginService {
      * 마이페이지 수정
      */
     @Override
-    public boolean updateUserInfo(Map<String, Object> param) throws Exception {
+    public boolean updateUserInfo(Map<String, Object> param, HttpSession session) throws Exception {
         int rowsAffected = loginMapper.updateUser(param);
+        // 1
+        session.setAttribute("login_user_name", param.get("name"));
+
         return rowsAffected > 0;
     }
     
+    @Override
+    public Map<String, Object> changePassword(Map<String, Object> param) throws Exception {
+    	
+    	Map<String, Object> result = new HashMap<>();
+    	
+    	param.put("password", encryptMD5(String.valueOf(param.get("password"))));
+    	Map<String, Object> isPasswordMatch = loginMapper.getPasswordCheck(param);
+    	if(isPasswordMatch == null) {
+    		result.put("result", false);
+    		result.put("message", "현재 비밀번호가 일치하지 않습니다.");
+    		
+    		return result;
+    	} else {
+    		// 업데이트
+		    // 새 비밀번호 암호화
+		    String rawPassword = param.get("newPassword").toString();
+		    String hashedPassword = encryptMD5(rawPassword); // 기존 MD5 암호화 방식 사용
+		    param.put("newPassword", hashedPassword);
+		  
+            // 비밀번호 업데이트
+		    int rowsAffected = loginMapper.updatePassword(param);
+		    if (rowsAffected > 0) {
+		    	result.put("result", true);
+		    	result.put("message", "비밀번호가 변경되었습니다.");
+		    } else {
+		    	result.put("result", false);
+		    	result.put("message", "비밀번호 변경에 실패했습니다.");
+		    }
+    	}
+    	
+    	return result;
+    }
+    
+    
+    
+    
+    
+//    /**
+//     * 비밀번호 변경
+//     */
+//    @Override
+//    public boolean changePassword(Map<String, Object> param) throws Exception {
+//        // 현재 비밀번호 확인
+//        Map<String, Object> user = loginMapper.getUserCheck(param);
+//        if (user == null) {
+//            return false; // 현재 비밀번호가 일치하지 않음
+//        }
+//
+//        // 새 비밀번호 암호화
+//        String rawPassword = param.get("newPassword").toString();
+//        String hashedPassword = encryptMD5(rawPassword); // 기존 MD5 암호화 방식 사용
+//        param.put("newPassword", hashedPassword);
+//
+//        // 비밀번호 업데이트
+//        int rowsAffected = loginMapper.updatePassword(param);
+//        return rowsAffected > 0;
+//    }
+//    
+//    /**
+//     * 비밀번호 변경시 현재 비밀번호와 일치하는지 확인
+//     */
+//    @Override
+//    public boolean checkPassword(Map<String, Object> param) throws Exception {
+//       
+//    	// 현재 비밀번호 확인
+//        boolean isPasswordMatch = loginService.checkPassword(param);
+//        if (!isPasswordMatch) {
+//            result.put("result", false);
+//            result.put("message", "현재 비밀번호가 일치하지 않습니다.");
+//            return result;
+//        }
+//        
+//        if (user == null) {
+//            return false; // 비밀번호가 일치하지 않음
+//        }
+//        return true; // 비밀번호가 일치함
+//    }
 
 }

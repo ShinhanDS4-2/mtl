@@ -3,6 +3,7 @@ package kr.co.mtl.login;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public interface LoginService {
 
@@ -40,7 +41,23 @@ public interface LoginService {
     /**
      * 마이페이지 수정
      */
-    boolean updateUserInfo(Map<String, Object> param) throws Exception;
+    boolean updateUserInfo(Map<String, Object> param, HttpSession session) throws Exception;
 
+    
+    /**
+     * 현재 비밀번호 확인 + 비밀번호  변경
+     */
+    Map<String, Object> changePassword(Map<String,Object> param) throws Exception;
+    
+    /**
+     * 비밀번호 변경
+     */
+//    boolean changePassword(Map<String, Object> param) throws Exception;
+    
+    
+    /**
+     * 비밀번호 변경시 현재 비밀번호와 일치하는지 확인
+     */
+//    boolean checkPassword(Map<String, Object> param) throws Exception;
 
 }
