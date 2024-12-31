@@ -20,7 +20,7 @@ public class LocationController {
 	 * [사용자] 지역 별 여행지 리스트 조회
 	 * 리스트 페이지 접속 => http://localhost:8090/mtl/area/list
 	 * @param LOCATION테이블에서 쓰일 area지역, type타입
-	 * @return 여행지 리스트
+	 * @return 여행지 리스트 LocationList, 리스트 총 갯수 LocationListCount
 	 */
 	@PostMapping("/list")
 	public Map<String, Object> getLocationList(@RequestParam Map<String, Object> param) throws Exception {

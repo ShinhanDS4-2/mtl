@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface LocationMapper {
 	
 /* [사용자] 지역 별 여행지 리스트 조회 */
+	int getLocationListCount(Map<String, Object> param);  // 지역 별 여행지 리스트 총 개수
 	List<Map<String, Object>> getLocationList(Map<String, Object> param);  // 지역 별 여행지 리스트
 	Map<String, Object> getLocationImage(Map<String, Object> param);  // 지역 별 여행지 썸네일 사진
 	List<Map<String, Object>> getLocationKeyword(Map<String, Object> param);  // 지역 별 여행지 키워드 리스트
