@@ -7,3 +7,4 @@ mtl_project/target/m2e-wtp/web-resources/META-INF/maven/kr.co/mtl/pom.properties
 *.MF
 mtl_project/src/main/resources/aws.properties
 mtl_project/src/main/resources/application.properties
+mtl_project/.classpath
