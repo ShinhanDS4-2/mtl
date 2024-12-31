@@ -1,5 +1,7 @@
 const areaList = (function() {
 
+	let locationType = "";
+
 	// js 로딩 시 이벤트 초기화 실행
 	function init() { 
 		fetchLocationList();  // 페이지 로드 시 Location 여행지 리스트를 가져옴
@@ -28,7 +30,13 @@ const areaList = (function() {
 				_event.clickPartner(evo); 
 			} else if (action == "clickLocation") {
 				_event.clickLocation(evo);
-			}   
+			} else if(action == "clickAttration") {
+				locationType = "A";
+				fetchLocationList();
+			} else if(action == "clickRestaurang") {
+				locationType = "R";
+				fetchLocationList();
+			}
 		};        
 	};   
 	 
@@ -53,8 +61,8 @@ const areaList = (function() {
 	function fetchLocationList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
 		
 		let param = { // ajax로 넘겨줄 data값 변수 선언
-			"area" : "SEOUL", 
-			"type" : "R"
+			"area" : "SEOUL",  // 얘ㅗ도 클릭이벤트 설정필요
+			"type" : locationType
 		};
 
 		// 페이징
@@ -96,12 +104,20 @@ const areaList = (function() {
 	  
 	let _draw = {  
 		drawLocationList: function(list) {  // fetchLocationList() 함수에서 API 호출 결과 값으로 받은 response값을 list라는 이름의 매개변수로 넘겨준다. 
-		// 관광지 탭	
-			let tab1 = $("#tab1");  
-			tab1.empty(); // 기존 내용을 비워줌
+			// 관광지 탭	
+			let tab = $("#tab1");  
+			
+			if(locationType == "A") {
+				tab = $("#tab1");  
+			} else if(locationType == "R") {
+				tab = $("#tab2"); 
+			}
+			
+			tab.empty(); // 기존 내용을 비워줌
  			 
 			let row = $("<div>").addClass("row g-4");
-			tab1.append(row);
+			tab.append(row);
+
 			for(data of list) { 
 
 				// Card item START
@@ -151,63 +167,7 @@ const areaList = (function() {
 				} else {
 					console.warn("키워드가 없습니다:", data);
 				}
-			}
-
-		// 맛집 탭		
-			let tab2 = $("#tab2");  
-			tab2.empty(); // 기존 내용을 비워줌
- 			 
-			let row2 = $("<div>").addClass("row g-4");
-			tab2.append(row2);
-			for(data of list) { 
-
-				// Card item START
-				let col = $("<div>").addClass("col-md-3");
-				row.append(col);
-  
-				let card = $("<div>").addClass("card shadow p-2 pb-0 h-350px area-icon");
-				card.attr({
-                    "data-src" : "areaList",
-                    "data-act" : "clickLocation"
-                });
-				col.append(card);
-
-                let img = $("<img>").addClass("rounded-2 area-image");
-				img.attr({  
-                    "src" : data.image.url, // 여기서 data.image가 null 또는 undefined일 경우, 에러 발생시켜서 반복문이 중간에 중단되어버림
-					"alt" : "Card image"
-                });
-                card.append(img);
-
-				// Card body
-				let cardBodyStr =
-					`<div class="card-body px-3 pb-0">
-						<h5 class="card-title mb-0"><a href="javascript:;">${data.name}</a></h5>
-						<small><i class="fa-solid fa-location-dot"></i> ${data.address_si} ${data.address_dong}</small>
-					</div>`;
-				card.append(cardBodyStr);
-
-				// Card footer
-				let cardFooter = $("<div>").addClass("card-footer pt-1");
-				card.append(cardFooter);
-
-				// 키워드
-				if(data.keyword && data.keyword.length > 0){  // 키워드가 있는지 확인하고, 키워드 문자열 길이가 1이상인지 확인된 경우에만 실행되도록 함
-					for(keywordData of data.keyword){  // data.keyword 값이 없는 경우 에러로 코드가 중간에 중단되어버림. 뒤에 반복 실행 불가 => 키워드가 널인지 확인하는 로직을 추가해줘야함 
-						console.log("keywordData값은? "); 
-						console.log(keywordData);   // 키워드 리스트에서 1행만 뽑아줌
-	
-						console.log("keywordData.keyword값은? "); 
-						console.log(keywordData.keyword);   // 가족여행
-	
-						let keywordStr = `<span class="badge bg-primary bg-opacity-10 text-primary mb-1 me-1">
-												<i class="fa-solid fa-hashtag"></i>${keywordData.keyword}</span>`;
-	
-						cardFooter.append(keywordStr);
-					}
-				} else {
-					console.warn("키워드가 없습니다:", data);
-				}
+			
 			}
 		}		
 	};

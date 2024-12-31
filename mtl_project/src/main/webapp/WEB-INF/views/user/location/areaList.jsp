@@ -95,8 +95,8 @@
 	<div class="container">
 		<!-- tab line -->
 		<ul class="nav nav-tabs nav-bottom-line mb-3">
-			<li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#tab1"> 관광지 </a> </li>
-			<li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab2"> 맛집 </a> </li>
+			<li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#tab1" data-src="areaList" data-act="clickAttration"> 관광지 </a> </li>
+			<li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab2" data-src="areaList" data-act="clickRestaurang"> 맛집 </a> </li>
 		</ul>
 		<div class="tab-content">	 
 			<!-- 관광지 탭 START (디폴트) -->
