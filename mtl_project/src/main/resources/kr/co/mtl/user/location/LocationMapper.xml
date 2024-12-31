@@ -57,7 +57,7 @@
 
 <!-- [사용자] 여행지(관광지/맛집) 상세페이지 조회 START-->	
 	<!-- 여행지(관광지/맛집) 상세페이지 사진 -->
-	<select id="getLocationDetailImage" parameterType="map" resultType="map">
+	<select id="getLocationDetailImage" parameterType="map">
 		SELECT i.idx AS image_idx, mapping_idx, url, origin_filename
 		FROM IMAGE i JOIN LOCATION l ON(i.mapping_idx = l.idx)
 		WHERE i.type="L" AND l.idx= #{location_idx} 
@@ -66,7 +66,7 @@
 	
 	<!-- 여행지(관광지/맛집) 상세페이지 정보 :  
 	LOCATION 여행지 테이블에서 name이름, address_si시/군/구, address_dong동, description설명, latitude위도, hardness경도 -->
-	<select id="getLocationDetailDescription" parameterType="map" resultType="map">
+	<select id="getLocationDetailDescription" parameterType="map">
 		SELECT idx AS location_idx, name, address, address_si, address_dong, description, latitude, hardness
 		FROM LOCATION
 		WHERE idx = #{location_idx}
@@ -74,85 +74,94 @@
 	
 	
 	<!-- 여행지(관광지/맛집) 상세페이지 키워드 -->
-	<select id="getLocationDetailKeyword" parameterType="map" resultType="map">
+	<select id="getLocationDetailKeyword" parameterType="map">
 		SELECT keyword
 		FROM LOCATION_KEYWORD lk JOIN KEYWORD k ON(lk.keyword_idx = k.idx)
 		WHERE lk.location_idx = #{location_idx}
 		ORDER BY k.create_date DESC
 	</select>
-	
-	<!-- 여행지(관광지/맛집) 상세페이지 지도 해야함!!!! -->
-	
 <!-- [사용자] 여행지(관광지/맛집) 상세페이지 조회 END-->		
-	
-	
-	
-	
-	
-	
-	
-<!-- 위에까지 완료함!! -->
 
-
-
-
+	
 	
 <!-- [사용자] 마이페이지 예약내역 조회 START-->	
-
-	<!-- 예약내역 리스트 조회 START -->
-	<!-- param : user_idx
-		 result: 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 객실 금액, 예약인원! 
-		  * 여러 행의 결과값을 반환 하므로 List 형태로 반환되어야 함. -->
-	<select id="getMypageReservationHistoryList" parameterType="map" resultType="map">
-		SELECT r.idx AS reservation_idx, p.name, p.address, r.check_in_date, r.check_out_date, r.price <!-- 예약인원 수 컬럼 추가 필요 -->
+	<!-- 예약내역 리스트 총 개수 --> 
+	<select id="getMypageReservationHistoryListCount" parameterType="map">
+		SELECT COUNT(*)
 		FROM PARTNER p JOIN RESERVATION r ON(p.idx = r.partner_idx)   <!-- 숙소랑 예약 테이블 조인 -->
 		WHERE r.user_idx = #{user_idx}  <!-- 로그인 세션을 통해 param값으로 사용자 정보 idx가 넘어와야 함 -->
 	</select>
-	<!-- 예약내역 리스트 조회 END -->
+	
+	<!-- 예약내역 리스트 조회 START -->
+	<!-- param : user_idx
+		 result: 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 예약인원, 객실 금액
+		  * 여러 행의 결과값을 반환 하므로 List 형태로 반환되어야 함. -->
+	<select id="getMypageReservationHistoryList" parameterType="map">
+		SELECT r.idx AS reservation_idx, p.name, p.address, r.check_in_date, r.check_out_date, r.guest_cnt, r.price
+		FROM PARTNER p JOIN RESERVATION r ON(p.idx = r.partner_idx)   <!-- 숙소랑 예약 테이블 조인 -->
+		WHERE r.user_idx = #{user_idx}  <!-- 로그인 세션을 통해 param값으로 사용자 정보 idx가 넘어와야 함 -->
+	</select>
 	
 	<!-- 예약내역 상세정보 START -->
 	<!-- param : reservation_idx (예약테이블의 idx)
-		 result: 예약테이블에서 뽑고싶은거 뽑으면댐 
+		 result: 예약idx, 객실타입, 체크인일자, 체크아웃일자, 객실 금액, 예약인원 
 		  * 단일행 반환 Map 형태로 반환되어야 함.-->
-	<select id="getMypageReservationHistoryDetail" parameterType="map" resultType="map">
-		SELECT *
-		FROM RESERVATION
-		WHERE idx = #{reservation_idx}
+	<select id="getMypageReservationHistoryDetail" parameterType="map">
+		SELECT rs.idx AS reservation_idx, rm.room_type, rs.check_in_date, rs.check_out_date, rs.guest_cnt, rs.price
+		FROM RESERVATION rs JOIN ROOM rm ON(rs.room_idx = rm.idx)
+		WHERE rs.idx = #{reservation_idx}
 	</select>
-	<!-- 예약내역 상세정보 END -->
-	
 <!-- [사용자] 마이페이지 예약내역 조회 END-->
 
 
 
+	
+<!-- ********************************************************************************-->
+<!-- ********************************************************************************-->
+<!-- ********************************************************************************-->
+<!-- ********************************************************************************-->
+<!-- ********************************************************************************-->
+<!-- ********************************************************************************-->
 
 
 <!-- [판매자] 결제 관리 > 정산내역 START-->	
-
-
-	<!-- 정산내역 리스트 조회 START ★★★★★★ -->
-	<!-- param : ?
-		 result: ?  
+	<!-- 정산내역 리스트 총 개수 --> 
+	<select id="getPartnerPayoutListCount" parameterType="map">
+		SELECT COUNT(*)
+		FROM RESERVATION
+		WHERE payment_status = "P"
+			AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
+			AND calculate_stauts = #{calculate_stauts}
+		GROUP BY calculate_date 
+	</select>
+	
+	<!-- 정산 상세내역 리스트 조회-->
+	<!-- param : 정산기간필터 시작일 calculate_date_start, 정산기간필터 종료일 calculate_date_end, 정산상태calculate_stauts (필터 적용)
+		 result: 정산일, 총 판매 금액, 총 정산 금액, 총 수수료, 정산 대기중인 금액(=정산 상태가 N일 때 정산금액 총합), 정산 완료된 금액(=정산 상태가 Y일 때 정산금액 총합)  
 		  * 다중행 반환 List 형태로 반환되어야 함.  -->
-	<select id="getPartnerPayoutList" parameterType="map" resultType="map">
+	<select id="getPartnerPayoutList" parameterType="map">
+		SELECT DATE_FORMAT(calculate_date, '%Y-%m-%d') AS calculate_date, SUM(price) AS total_price, 
+			SUM(calculate_price) AS total_calculate_price, 
+			SUM(CASE WHEN calculate_stauts="N" THEN calculate_price ELSE 0 END) AS pending_amount, 
+			SUM(CASE WHEN calculate_stauts="Y" THEN calculate_price ELSE 0 END) AS completed_amount
+		FROM RESERVATION
+		WHERE payment_status = "P"
+			AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
+			AND calculate_stauts = #{calculate_stauts}
+		GROUP BY calculate_date 
 	</select>
 		 
 		 
-	<!-- 정산내역 리스트 조회 END -->
-	
-		
-	<!-- 정산 상세 내역 조회 START -->
+	<!-- 정산 상세 내역 조회 -->
 	<!-- param : calculate_date(정산일)
-		 result: calculate_date(정산일), idx(예약번호), name(객실명), price(객실요금), calculate_price(정산금액), calculate_stauts(정산 상태)
+		 result: calculate_date(정산일), idx(예약번호), room_type(객실명), price(객실요금), calculate_price(정산금액), calculate_stauts(정산 상태)
 		  * 다중행 반환 List 형태로 반환되어야 함.  -->
 	<select id="getPartnerPayoutDetailList" parameterType="map" resultType="map">
-		SELECT rs.calculate_date(정산일), rs.idx(예약번호), rm.name(객실 타입명), rs.price(객실요금), rs.calculate_price(정산금액), rs.calculate_stauts(정산 상태)
-		FROM RESERVATION rs JOIN ROOM rm ON(rs.room_idx = rm.idx)
-		WHERE payment_status = "P" 				 <!-- 결제 상태가(P:결제 완료 R:환불) P인 것만 조회해야함 -->
-			AND calculate_date=#{calculate_date}
-	
+		SELECT DATE_FORMAT(rs.calculate_date, '%Y-%m-%d') AS calculate_date, rs.idx, rm.room_type, rs.price, rs.calculate_price, rs.calculate_stauts
+			FROM RESERVATION rs JOIN ROOM rm ON(rs.room_idx = rm.idx)
+			WHERE payment_status = "P"  
+		AND DATE(calculate_date)=#{calculate_date}
 	</select>
-	<!-- 정산 상세 내역 조회 END --> 
 	
 <!-- [판매자] 결제 관리 > 정산내역 END-->
 

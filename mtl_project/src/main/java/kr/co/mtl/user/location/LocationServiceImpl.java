@@ -23,6 +23,8 @@ public class LocationServiceImpl implements LocationService {
 		Map<String, Object> result = new HashMap<>();
 		System.out.println("param 값은 멀까요" + param);
 		List<Map<String, Object>> list = locationMapper.getLocationList(param);
+		int count = locationMapper.getLocationListCount(param);
+		
 		for(Map<String, Object> data : list) {  // 반복문 돌면서 data에는 여행지 정보, 사진, 키워드 데이터가 합쳐짐
 			param.put("location_idx", data.get("location_idx"));
 			
@@ -35,10 +37,11 @@ public class LocationServiceImpl implements LocationService {
 			data.put("keyword", keyword); 
 		}
 		
-		result.put("LocationList", list);
+		
+		result.put("LocationList", list);  // 지역 별 여행지 리스트
 		
 		// 페이징 처리를 위한 list의 total 총 개수를 함께 result로 넘겨줘야함
-		result.put("LocationListCount", locationMapper.getLocationListCount(param));  // 지역 별 여행지 리스트 총 개수
+		result.put("LocationListCount", count);  // 지역 별 여행지 리스트 총 개수
 		
 		return result;
 	};
@@ -70,27 +73,72 @@ public class LocationServiceImpl implements LocationService {
 	/** 시온
 	 * [사용자] 마이페이지 예약내역 리스트 조회
 	 * @param user_idx
-	 * @return 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 객실 금액, 예약인원
+	 * @return ReservationListCount, ReservationList (=> 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 예약인원, 객실 금액)
 	 */
 	public Map<String, Object> getMypageReservationHistoryList(Map<String, Object> param) {
-		System.out.println("param 값은? " + param);
+		System.out.println("param 값은? " + param);  // user_idx값이 들어있어야 함
 		
 		Map<String, Object> result = new HashMap<>();
 		
-		List<Map<String, Object>> list = locationMapper.getMypageReservationHistoryList(param);
-		result.put("ReservationHistoryList", list);
-		System.out.println("result 값은? " + result);
+		List<Map<String, Object>> list = locationMapper.getMypageReservationHistoryList(param);  // 마이페이지 예약내역 리스트
+		int count = locationMapper.getMypageReservationHistoryListCount(param);  // 마이페이지 예약내역 리스트 총 개수
+		
+		result.put("ReservationList", list);
+		result.put("ReservationListCount", count);
+		
+		System.out.println("result 값은? " + result);  // ReservationList, ReservationListCount 정보가 들어있어야 함
 		return result;
 	}
 	
 	/** 시온
 	 * [사용자] 마이페이지 예약내역 상세정보 조회
 	 * @param reservation_idx (예약 idx)
-	 * @return 예약테이블에서 뽑고싶은거 뽑으면댐 
+	 * @return 예약idx, 객실타입, 체크인일자, 체크아웃일자, 객실 금액, 예약인원 
 	 */
 	public Map<String, Object> getMypageReservationHistoryDetail(Map<String, Object> param) {
-		Map<String, Object> result = locationMapper.getMypageReservationHistoryDetail(param);
+		Map<String, Object> result = locationMapper.getMypageReservationHistoryDetail(param);  // 예약내역 상세정보 단일행 반환
 		return result;
 	}
+	
+	
+	
+	/** 시온
+	 * [판매자] 정산내역 리스트 조회
+	 * @param calculate_date_start(정산기간필터 시작일), calculate_date_end(정산기간필터 종료일), calculate_stauts(정산상태)
+	 * @return PayoutListCount, PayoutList(=> 정산일, 총 판매 금액, 총 정산 금액, 정산 대기중인 금액(=정산 상태가 N일 때 정산금액 총합), 정산 완료된 금액(=정산 상태가 Y일 때 정산금액 총합))
+	 */
+	public Map<String, Object> getPartnerPayoutList(Map<String, Object> param) {
+		System.out.println("param 값은? " + param);  //calculate_date_start, calculate_date_end, calculate_stauts값이 들어있어야 함
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		List<Map<String, Object>> list = locationMapper.getPartnerPayoutList(param);  // 정산내역 리스트
+		int count = locationMapper.getPartnerPayoutListCount(param);  // 정산내역 리스트 총 개수
+		
+		result.put("PayoutList", list);
+		result.put("PayoutListCount", count);
+		
+		System.out.println("result 값은? " + result);  // PayoutListCount, PayoutList 정보가 들어있어야 함
+		return result;
+	}
+	
+	/** 시온
+	 * [판매자] 정산 상세내역 리스트 조회
+	 * @param calculate_date(정산일)
+	 * @return PayoutDetailList ( => calculate_date(정산일), idx(예약번호), name(객실명), price(객실요금), calculate_price(정산금액), calculate_stauts(정산 상태) )
+	 */
+	public Map<String, Object> getPartnerPayoutDetailList(Map<String, Object> param) {
+		System.out.println("param 값은? " + param);  //calculate_date값이 들어있어야 함
+		
+		Map<String, Object> result = new HashMap<>();	
+		List<Map<String, Object>> list = locationMapper.getPartnerPayoutDetailList(param);  // 정산 상세내역 리스트
+		
+		result.put("PayoutDetailList", list);
+		
+		System.out.println("result 값은? " + result);  // PayoutDetailList 정보가 들어있어야 함
+		return result;
+	}
+	
+	
 
 }

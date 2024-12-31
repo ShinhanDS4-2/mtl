@@ -16,7 +16,7 @@ public class LocationController {
 	@Autowired
 	private LocationService locationService;
 
-	/** 시온 - 완료
+	/** 시온 - API 완료
 	 * [사용자] 지역 별 여행지 리스트 조회
 	 * 리스트 페이지 접속 => http://localhost:8090/mtl/area/list
 	 * @param LOCATION테이블에서 쓰일 area지역, type타입
@@ -30,11 +30,11 @@ public class LocationController {
 		return result;
 	}
 	
-	/** 시온 - 완료
+	/** 시온 - API 완료
 	 * [사용자] 여행지(관광지/맛집) 상세페이지 조회
 	 * 상세페이지 접속 => http://localhost:8090/mtl/location/detail
 	 * @param location_idx
-	 * @return 여행지 1개 상세페이지에 들어갈 내용
+	 * @return Image, Description, Keyword (=> 여행지 1개 상세페이지에 들어갈 내용)
 	 */
 	@PostMapping("/detail")
 	public Map<String, Object> getLocationDetailImage(@RequestParam Map<String, Object> param) throws Exception {
@@ -43,11 +43,11 @@ public class LocationController {
 		return result;
 	}
 	
-	/** 시온
+	/** 시온 - API 완료
 	 * [사용자] 마이페이지 예약내역 리스트 조회
 	 * 상세페이지 접속 => http://localhost:8090/mtl/mypage/reservation
 	 * @param user_idx
-	 * @return 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 객실 금액, 예약인원
+	 * @return ReservationListCount, ReservationList (=> 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 예약인원, 객실 금액)
 	 */
 	@PostMapping("/mypageReservationHistoryList")
 	public Map<String, Object> getMypageReservationHistory(@RequestParam Map<String, Object> param) throws Exception {
@@ -55,10 +55,10 @@ public class LocationController {
 		return result;
 	}
 	
-	/** 시온
+	/** 시온 - API 완료
 	 * [사용자] 마이페이지 예약내역 상세정보 조회
-	 * @param reservation_idx (예약 idx)
-	 * @return 예약테이블에서 뽑고싶은거 뽑으면댐 
+	 * @param reservation_idx(예약 idx)
+	 * @return 예약내역 상세정보 단일행 반환 (=> 예약idx, 객실타입, 체크인일자, 체크아웃일자, 객실 금액, 예약인원)
 	 */
 	@PostMapping("/mypageReservationHistoryDetail")
 	public Map<String, Object> getMypageReservationHistoryDetail(@RequestParam Map<String, Object> param) throws Exception {
@@ -66,18 +66,39 @@ public class LocationController {
 		return result;
 	}
 
-	
-	/** 시온
-	 * [판매자] 결제 관리
-	 * @param ?
-	 * @return 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 객실 금액, 예약인원
+	/** 시온 - API 완료
+	 * [판매자] 정산내역 리스트 조회
+	 * @param calculate_date_start(정산기간필터 시작일), calculate_date_end(정산기간필터 종료일), calculate_stauts(정산상태)
+	 * @return PayoutListCount, PayoutList(=> 정산일, 총 판매 금액, 총 정산 금액, 정산 대기중인 금액(=정산 상태가 N일 때 정산금액 총합), 정산 완료된 금액(=정산 상태가 Y일 때 정산금액 총합))
 	 */
+	@PostMapping("/PartnerPayoutList")
+	public Map<String, Object> getPartnerPayoutList(@RequestParam Map<String, Object> param) throws Exception {
+		Map<String, Object> result = locationService.getPartnerPayoutList(param);
+		return result;
+	}
+	
+	/** 시온 - API 완료
+	 * [판매자] 정산 상세내역 리스트 조회
+	 * @param calculate_date(정산일)
+	 * @return PayoutDetailList ( => calculate_date(정산일), idx(예약번호), name(객실명), price(객실요금), calculate_price(정산금액), calculate_stauts(정산 상태) )
+	 */
+	@PostMapping("/PartnerPayoutDetailList")
+	public Map<String, Object> getPartnerPayoutDetailList(@RequestParam Map<String, Object> param) throws Exception {
+		Map<String, Object> result = locationService.getPartnerPayoutDetailList(param);
+		return result;
+	}
+
 	
 	/** 시온
 	 * [관리자] 정산 관리
 	 * @param ?
 	 * @return 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 객실 금액, 예약인원
 	 */
+	@PostMapping("/AdminPayoutList")
+	public Map<String, Object> getAdminPayoutList(@RequestParam Map<String, Object> param) throws Exception {
+		Map<String, Object> result = locationService.getPartnerPayoutList(param);
+		return result;
+	}
 
 	
 }

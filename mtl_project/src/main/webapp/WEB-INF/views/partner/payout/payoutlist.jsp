@@ -86,7 +86,7 @@
 						<form class="row g-4 align-items-center">
 
 							<!-- 기간 설정 -->
-							<div class="col-lg-4">
+							<div class="col-lg-3">
 								<div class="d-flex">
 									<!-- 달력 아이콘 -->
 									<i class="bi bi-calendar fs-3 me-2 mt-2"></i>
@@ -101,7 +101,7 @@
 							</div>
 
 							<!-- 기간 설정. 어제/오늘/내일 -->
-							<div class="col-lg-6">
+							<div class="col-lg-7">
 								<ul class="nav nav-pills nav-pills-dark" id="pills-tab"
 									role="tablist">
 									<li class="nav-item" role="presentation">
@@ -120,25 +120,6 @@
 											aria-selected="false">내일</button>
 									</li>
 								</ul>
-							</div>
-
-
-							<!-- Input item -->
-							<div class="col-xl-6">
-								<label class="form-label">검색어</label> <input type="text"
-									class="form-control" placeholder="검색어를 입력하세요">
-							</div>
-
-							<!-- Input item -->
-							<div class="col-xl-6">
-								<label class="form-label">ㅇㅇㅇ</label> <input type="text"
-									class="form-control" placeholder="ㅇㅇㅇㅇㅇ">
-							</div>
-
-							<!-- Input item -->
-							<div class="col-12">
-								<label class="form-label">ㅁㅁㅁ</label> <input type="email"
-									class="form-control" placeholder="ㅁㅁㅁㅁ">
 							</div>
 
 							<!-- Radio items -->
