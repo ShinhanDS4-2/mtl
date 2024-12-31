@@ -1,5 +1,6 @@
 package kr.co.mtl.login;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -84,5 +85,48 @@ public class LoginController {
         
 //        return result;
     }
+ 
+    
+    
+    /**
+     * 회원가입 처리
+     * @param param 회원가입 요청 파라미터
+     * @return 회원가입 결과
+     * @throws Exception 예외 처리
+     */
+    @PostMapping("/join")
+    public Map<String, Object> join(@RequestParam Map<String, Object> param) throws Exception {
+        // 필수 파라미터 체크
+//        CommonUtil.checkIsNull(param, "password");
+//        CommonUtil.checkIsNull(param, "name");
+//        CommonUtil.checkIsNull(param, "birthYear");
+//        CommonUtil.checkIsNull(param, "birthMonth");
+//        CommonUtil.checkIsNull(param, "birthDay");;
+//        
+//        CommonUtil.checkIsNull(param, "phone");
+
+        // 회원가입 처리
+        Map<String, Object> result = loginService.registerUser(param);
+
+        return result;
+    }
+    
+    
+    
+    /**
+     * 내 정보 수정 처리
+     */
+    @PostMapping("/update")
+    public Map<String, Object> updateUser(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
+    	HttpSession session = request.getSession();
+    	
+    	param.put("userIdx", session.getAttribute("login_user"));
+        Map<String, Object> result = new HashMap<>();
+        boolean isUpdated = loginService.updateUserInfo(param);
+
+        return result;
+    }
+
+    
 }
 

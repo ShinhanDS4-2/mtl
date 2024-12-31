@@ -12,4 +12,10 @@ public interface LoginMapper {
 	
 	// 사용자 인증 정보 확인  //이거 추가
 	public Map<String, Object> getUserCheck(Map<String, Object> param);
+	
+	// 사용자 정보 저장 (회원가입)
+    public void insertUser(Map<String, Object> param);
+    
+    // 마이페이지 수정
+    int updateUser(Map<String, Object> param);
 }

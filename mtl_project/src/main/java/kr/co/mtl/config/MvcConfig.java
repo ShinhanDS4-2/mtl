@@ -118,6 +118,9 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 //		registry.addInterceptor(interception())
 //			.addPathPatterns("/student/index.do");
+		registry.addInterceptor(interception())
+			.addPathPatterns("/mtl/mypage/*") // 인터셉터를 적용할 경로
+			.excludePathPatterns("/login", "/logout", "/resources/**"); // 예외 경로
 	}
 	
 	// 정적 페이지 처리

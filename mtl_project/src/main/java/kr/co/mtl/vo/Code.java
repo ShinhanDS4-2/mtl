@@ -16,6 +16,10 @@ public enum Code {
 	LOGIN_ERROR(600, "code.login.error"),
 	LOGIN_USER_SATATUS(601, "code.status"),
 	
+	// 회원가입
+	VALIDATION_ERROR(400, "code.validation.error");
+	
+	
 	;
 	
 	public final int code;
