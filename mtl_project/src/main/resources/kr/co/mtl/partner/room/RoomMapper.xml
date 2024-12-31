@@ -4,11 +4,53 @@
 
 	<insert id="roomRegister" parameterType="HashMap">
 		INSERT INTO ROOM 
-			(name,description,count,standard,maximum,basic_price,weekend_price)
+			(room_type,description,count,standard,maximum,basic_price,weekend_price)
 		VALUES (
-			#{name},#{description},#{count},#{standard},#{maximum},#{basic_price},#{weekend_price}
+			#{room_type},#{description},#{count},#{standard},#{maximum},#{basic_price},#{weekend_price}
 			)
 	</insert>
 	
-
+	<select id="getIdx" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<insert id="roomFacilitiesRegister">
+		INSERT INTO ROOM_FACILITIES 
+			(room_idx,facilities_idx)
+		VALUES
+			(#{room_idx},#{option})
+	</insert>
+	
+	<update id="roomUpdate" parameterType="HashMap">
+		UPDATE ROOM
+		SET
+			room_type=#{room_type},
+			description=#{descriptioin},
+			count=#{count},
+			standard = #{standard},
+            maximum = #{maximum},
+            basic_price = #{basic_price},
+            weekend_price = #{weekend_price}
+        WHERE
+        	idx=#{idx}
+    </update>
+    
+    <delete id="roomDelete" parameterType="int">
+    	DELETE FROM ROOM
+    	WHERE idx=#{idx}
+    </delete>
+    
+    <select id="getRoomList" resultType="HashMap">
+        SELECT 
+            room_type,
+            description,
+            count,
+            standard,
+            maximum,
+            basic_price,
+            weekend_price
+        FROM ROOM
+        WHERE 
+        	partner_idx=#{partner_idx}
+    </select>
 </mapper>
