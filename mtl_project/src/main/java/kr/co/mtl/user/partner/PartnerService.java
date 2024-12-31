@@ -14,3 +14,4 @@ public interface PartnerService {
 	Map<String, Object> getPartnerDetail(Map<String, Object> param);
 	
 }
+

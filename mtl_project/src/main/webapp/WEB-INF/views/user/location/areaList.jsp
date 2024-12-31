@@ -24,7 +24,7 @@
 						<!-- Image -->
 						<img src="assets/images/icon/서울.jpg" class="rounded-circle" alt="">
 	
-						<div class="card-body p-0 pt-3">
+			 			<div class="card-body p-0 pt-3">
 							<h5 class="card-title"><a href="#" class="stretched-link">전체</a></h5>
 							<span>All</span>
 						</div>
@@ -100,10 +100,10 @@
 			<li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-3-3"> 맛집 </a> </li>
 		</ul>
 		<div class="tab-content">
-			<!-- 숙소 탭 -->
+			<!-- 숙소 탭 START -->
 			<div class="tab-pane" id="tab-3-1">
 				<div class="row g-4">
-					<!-- Card item START -->
+					<!-- Card item START (js에서 반복 돌릴 부분) -->
 					<div class="col-md-3">
 						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickPartner">
 							<!-- Image -->
@@ -124,328 +124,49 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickPartner">
-							<!-- Image -->
-							<img src="assets/images/서울_시그니엘서울.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시그니엘 서울</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickPartner">
-							<!-- Image -->
-							<img src="assets/images/서울_시그니엘서울.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시그니엘 서울</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickPartner">
-							<!-- Image -->
-							<img src="assets/images/서울_시그니엘서울.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시그니엘 서울</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickPartner">
-							<!-- Image -->
-							<img src="assets/images/서울_시그니엘서울.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시그니엘 서울</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickPartner">
-							<!-- Image -->
-							<img src="assets/images/서울_시그니엘서울.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시그니엘 서울</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickPartner">
-							<!-- Image -->
-							<img src="assets/images/서울_시그니엘서울.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시그니엘 서울</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickPartner">
-							<!-- Image -->
-							<img src="assets/images/서울_시그니엘서울.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시그니엘 서울</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-				</div> <!-- Row END -->
+					<!-- Card item END -->
+				</div> 
+				<!-- Row END -->
 			</div>
-			<!-- 관광지 탭 (디폴트) -->
+			<!-- 숙소 탭 END -->
+			 
+			<!-- 관광지 탭 START (디폴트) -->
 			<div class="tab-pane show active" id="tab-3-2">
 				<div class="row g-4">
-					<!-- Card item START -->
+					<!-- Card item START (js에서 반복 돌릴 부분) -->
 					<div class="col-md-3">
 						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
 							<!-- Image -->
 							<img src="assets/images/롯데월드타워.png" class="rounded-2 area-image" alt="Card image">
-		
+		 
 							<!-- Card body START -->
 							<div class="card-body px-3 pb-0">
 								<!-- Title -->
 								<h5 class="card-title mb-0"><a href="javascript:;">잠실 롯데월드타워</a></h5>
 								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
+							</div> 
 							<!-- Card body END -->
 		
 							<!-- Card footer START-->
-							<div class="card-footer pt-1">
+		 					<div class="card-footer pt-1">
 								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/롯데월드타워.png" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">잠실 롯데월드타워</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/롯데월드타워.png" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">잠실 롯데월드타워</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/롯데월드타워.png" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">잠실 롯데월드타워</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/롯데월드타워.png" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">잠실 롯데월드타워</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/롯데월드타워.png" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">잠실 롯데월드타워</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/롯데월드타워.png" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">잠실 롯데월드타워</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/롯데월드타워.png" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">잠실 롯데월드타워</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
+					</div> 
+					<!-- Card item END -->   
+					<!-- item값 js에서 반복해서 출력처리 -->
+				
 				</div> <!-- Row END -->
 			</div>
-			<!-- 맛집 탭 -->
+			<!-- 관광지 탭 END -->
+			
+			<!-- 맛집 탭 START -->
 			<div class="tab-pane" id="tab-3-3">
 				<div class="row g-4">
-					<!-- Card item START -->
+					<!-- Card item START (js에서 반복 돌릴 부분) -->
 					<div class="col-md-3">
 						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
 							<!-- Image -->
@@ -466,155 +187,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/강릉_시드누아.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시드누아 속초점</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 강원 강릉시 노학동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/강릉_시드누아.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시드누아 속초점</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 강원 강릉시 노학동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/강릉_시드누아.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시드누아 속초점</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 강원 강릉시 노학동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/강릉_시드누아.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시드누아 속초점</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 강원 강릉시 노학동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/강릉_시드누아.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시드누아 속초점</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 강원 강릉시 노학동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/강릉_시드누아.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시드누아 속초점</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 강원 강릉시 노학동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/강릉_시드누아.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시드누아 속초점</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 강원 강릉시 노학동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
+					<!-- Card item END -->
+					
 				</div> <!-- Row END -->
 			</div>
+			<!-- 맛집 탭 END -->
 		</div>
 
-		<!-- Pagination -->
+
+		<!-- 페이징 처리 START -->
 		<div class="row">
 			<div class="col-12">
 				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
@@ -630,6 +211,8 @@
 				</nav>
 			</div>
 		</div>
+		<!-- 페이징 처리 END -->
+		
 	</div>
 </section>
 </main>

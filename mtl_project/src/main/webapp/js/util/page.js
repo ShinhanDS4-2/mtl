@@ -1,3 +1,4 @@
+
 (function() {
     $.fn.customPaging = function(option, callback) {
 

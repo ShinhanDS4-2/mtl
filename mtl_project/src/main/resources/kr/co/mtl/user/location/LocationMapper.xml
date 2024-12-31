@@ -1,59 +1,169 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mtl.user.location.LocationMapper">
-
-	<!-- 지역 별 여행지 리스트 -->
-	<select id="getLocationList" parameterType="HashMap">
-		SELECT
-			  idx AS location_idx
-			, name
-			, area
-			, address_si
-			, address_dong
-		FROM 
-			LOCATION
+<!-- [사용자] 지역 별 여행지 리스트 조회 START -->
+	<!-- 지역 별 여행지 리스트 --> 
+	<select id="getLocationList" parameterType="map">
+		SELECT idx AS location_idx, name, area, address_si, address_dong
+		FROM LOCATION
 		<where>
 			<if test="area != null and area != ''">
-				AND area = #{area}
+				AND area = #{area} 		 <!-- 서울, 강릉, 여수, 부산, 제주 중 택1 -->
 			</if>
-			<if test="type != null and type == ''">
-				AND type = #{type}
+			<if test="type != null and type != ''">
+				AND type = #{type} 			 <!-- R: 맛집 / A: 관광지 중 택1 -->
 			</if>
 		</where>
-		ORDER BY create_date DESC, name
+		ORDER BY create_date DESC, name 	 <!-- 최신순, 이름순 정렬 -->
+		<!-- 페이징 처리
 		<if test="limit != null and offset != null">
 			LIMIT ${limit} OFFSET ${offset}
 		</if>
+		 -->
 	</select>
 	
-	<!-- 지역 별 여행지 썸네일 사진 -->
-	<select id="getLocationImage" parameterType="HashMap">
-		SELECT 
-			  idx AS image_idx
-			, origin_filename
-			, url
-		FROM
-			IMAGE
-		WHERE
-			type = #{location_type}
-		AND
-			mapping_idx = #{location_idx}
-		AND 
-			thumbnail_yn = 'Y'
+	<!-- 지역 별 여행지 썸네일 사진 -->  <!-- 주의!! mapping_idx가 같아도, type(P: 숙소 / R: 객실 / V: 리뷰 / L: 여행지)에 따라 여러 사진이 나옴 -->
+	<select id="getLocationImage" parameterType="map">
+		SELECT idx AS image_idx, origin_filename, url
+		FROM IMAGE
+		WHERE thumbnail_yn='Y'
+			  AND type = "L"  <!-- 필수 -->
+			  AND mapping_idx = #{location_idx}
 	</select>
 	
 	<!-- 지역 별 여행지 키워드 리스트 -->
-	<select id="getLocationKeywordList" parameterType="HashMap">
-		SELECT
-			  k.idx AS keyword_idx
-			, k.name
-		FROM
-			KEYWORD k
-		JOIN
-			LOCATION_KEYWORD lk
-		ON lk.keyword_idx = k.idx
-		WHERE 
-			lk.location_idx = #{location_idx}
+	<select id="getLocationKeyword" parameterType="map">
+		SELECT k.idx AS keword_idx, k.keyword
+		FROM KEYWORD k JOIN LOCATION_KEYWORD lk ON (k.idx = lk.keyword_idx)
+		WHERE lk.location_idx = #{location_idx}
 		ORDER BY k.create_date DESC
 	</select>
+<!-- [사용자] 지역 별 여행지 리스트 조회 END-->	
+	
+
+<!-- [사용자] 여행지(관광지/맛집) 상세페이지 조회 START-->	
+	<!-- 여행지(관광지/맛집) 상세페이지 사진 -->
+	<select id="getLocationDetailImage" parameterType="map" resultType="map">
+		SELECT i.idx AS image_idx, mapping_idx, url, origin_filename
+		FROM IMAGE i JOIN LOCATION l ON(i.mapping_idx = l.idx)
+		WHERE i.type="L" AND l.idx= #{location_idx} 
+	</select>
+
+	
+	<!-- 여행지(관광지/맛집) 상세페이지 정보 :  
+	LOCATION 여행지 테이블에서 name이름, address_si시/군/구, address_dong동, description설명, latitude위도, hardness경도 -->
+	<select id="getLocationDetailDescription" parameterType="map" resultType="map">
+		SELECT idx AS location_idx, name, address, address_si, address_dong, description, latitude, hardness
+		FROM LOCATION
+		WHERE idx = #{location_idx}
+	</select>
+	
+	
+	<!-- 여행지(관광지/맛집) 상세페이지 키워드 -->
+	<select id="getLocationDetailKeyword" parameterType="map" resultType="map">
+		SELECT keyword
+		FROM LOCATION_KEYWORD lk JOIN KEYWORD k ON(lk.keyword_idx = k.idx)
+		WHERE lk.location_idx = #{location_idx}
+		ORDER BY k.create_date DESC
+	</select>
+	
+	<!-- 여행지(관광지/맛집) 상세페이지 지도 해야함!!!! -->
+	
+<!-- [사용자] 여행지(관광지/맛집) 상세페이지 조회 END-->		
+	
+	
+	
+	
+	
+	
+	
+<!-- 위에까지 완료함!! -->
+
+
+
+
+	
+<!-- [사용자] 마이페이지 예약내역 조회 START-->	
+
+	<!-- 예약내역 리스트 조회 START -->
+	<!-- param : user_idx
+		 result: 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 객실 금액, 예약인원! 
+		  * 여러 행의 결과값을 반환 하므로 List 형태로 반환되어야 함. -->
+	<select id="getMypageReservationHistoryList" parameterType="map" resultType="map">
+		SELECT r.idx AS reservation_idx, p.name, p.address, r.check_in_date, r.check_out_date, r.price <!-- 예약인원 수 컬럼 추가 필요 -->
+		FROM PARTNER p JOIN RESERVATION r ON(p.idx = r.partner_idx)   <!-- 숙소랑 예약 테이블 조인 -->
+		WHERE r.user_idx = #{user_idx}  <!-- 로그인 세션을 통해 param값으로 사용자 정보 idx가 넘어와야 함 -->
+	</select>
+	<!-- 예약내역 리스트 조회 END -->
+	
+	<!-- 예약내역 상세정보 START -->
+	<!-- param : reservation_idx (예약테이블의 idx)
+		 result: 예약테이블에서 뽑고싶은거 뽑으면댐 
+		  * 단일행 반환 Map 형태로 반환되어야 함.-->
+	<select id="getMypageReservationHistoryDetail" parameterType="map" resultType="map">
+		SELECT *
+		FROM RESERVATION
+		WHERE idx = #{reservation_idx}
+	</select>
+	<!-- 예약내역 상세정보 END -->
+	
+<!-- [사용자] 마이페이지 예약내역 조회 END-->
+
+
+
+
+
+<!-- [판매자] 결제 관리 > 정산내역 START-->	
+
+
+	<!-- 정산내역 리스트 조회 START ★★★★★★ -->
+	<!-- param : ?
+		 result: ?  
+		  * 다중행 반환 List 형태로 반환되어야 함.  -->
+	<select id="getPartnerPayoutList" parameterType="map" resultType="map">
+	</select>
+		 
+		 
+	<!-- 정산내역 리스트 조회 END -->
+	
+		
+	<!-- 정산 상세 내역 조회 START -->
+	<!-- param : calculate_date(정산일)
+		 result: calculate_date(정산일), idx(예약번호), name(객실명), price(객실요금), calculate_price(정산금액), calculate_stauts(정산 상태)
+		  * 다중행 반환 List 형태로 반환되어야 함.  -->
+	<select id="getPartnerPayoutDetailList" parameterType="map" resultType="map">
+		SELECT rs.calculate_date(정산일), rs.idx(예약번호), rm.name(객실 타입명), rs.price(객실요금), rs.calculate_price(정산금액), rs.calculate_stauts(정산 상태)
+		FROM RESERVATION rs JOIN ROOM rm ON(rs.room_idx = rm.idx)
+		WHERE payment_status = "P" 				 <!-- 결제 상태가(P:결제 완료 R:환불) P인 것만 조회해야함 -->
+			AND calculate_date=#{calculate_date}
+	
+	</select>
+	<!-- 정산 상세 내역 조회 END --> 
+	
+<!-- [판매자] 결제 관리 > 정산내역 END-->
+
+
+
+<!-- [관리자] 정산 관리 > 정산내역 START-->	
+	<!-- 정산내역 리스트 조회 START -->
+	<select id="getAdminPayoutList" parameterType="map" resultType="map">
+	
+	
+	</select>
+	<!-- 정산내역 리스트 조회 END -->
+	
+	<!-- 정산 상세 내역 조회 START -->
+	<select id="getAdminPayoutDetailList" parameterType="map" resultType="map">
+	
+	
+	</select>
+	<!-- 정산 상세 내역 조회 END -->
+	
+	
+<!-- [관리자] 정산 관리 > 정산내역 END-->
+
+
+
+
+
 </mapper>
