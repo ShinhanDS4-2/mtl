@@ -115,6 +115,8 @@ public class PartnerServiceImpl implements PartnerService {
 		Map<String, Object> result = new HashMap<>();
 		
 		Map<String, Object> data = partnerMapper.getRoomDetail(param);
+		data.put("facilitiesList", partnerMapper.getRoomFacilities(param));
+		data.put("imageList", partnerMapper.getRoomImage(param));
 		
 		result.put("data", data);
 		

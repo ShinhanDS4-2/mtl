@@ -173,8 +173,6 @@
 			, r.description
 			, r.standard
 			, r.maximum
-			, r.basic_price
-			, r.weekend_price
 			, (
 		        SELECT SUM(
 		            CASE 
@@ -253,6 +251,7 @@
 			  p.name
 			, p.address
 			, r.room_type
+			, r.description
 			, (SELECT url FROM IMAGE WHERE type = 'P' AND mapping_idx = p.idx AND thumbnail_yn = 'Y') AS image
 		FROM
 			ROOM r

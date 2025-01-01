@@ -446,70 +446,35 @@ About hotel END -->
 				<div class="card bg-transparent p-3">
 					<!-- Slider START -->
 					<div class="tiny-slider arrow-round arrow-dark overflow-hidden rounded-2">
-						<div class="tiny-slider-inner rounded-2 overflow-hidden" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
-							<!-- Image item -->
-							<div> <img src="assets/images/gallery/16.jpg" class="rounded-2" alt="Card image"></div>
-
-							<!-- Image item -->
-							<div> <img src="assets/images/gallery/15.jpg" class="rounded-2" alt="Card image"> </div>
-
-							<!-- Image item -->
-							<div> <img src="assets/images/gallery/13.jpg" class="rounded-2" alt="Card image"> </div>
-
-							<!-- Image item -->
-							<div> <img src="assets/images/gallery/12.jpg" class="rounded-2" alt="Card image"> </div>
+						<div class="tiny-slider-inner2 rounded-2 overflow-hidden" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1" id="roomImageList">
 						</div>
 					</div>
 					<!-- Slider END -->
 
 					<!-- Card header -->
 					<div class="card-header bg-transparent pb-0">
-						<h3 class="card-title mb-0">Deluxe Pool View</h3>
+						<h3 class="card-title mb-0" id="roomType"></h3>
 					</div>
 
 					<!-- Card body START -->
 					<div class="card-body">
 						<!-- Content -->
-						<p>Club rooms are well furnished with air conditioner, 32 inch LCD television and a mini bar. They have attached bathroom with showerhead and hair dryer and 24 hours supply of hot and cold running water. Complimentary wireless internet access is available. Additional amenities include bottled water, a safe and a desk.</p>
+						<p class="space" id="roomDescription"></p>
 						
 						<div class="row">
-							<h5 class="mb-0">Amenities</h5>
+							<h5 class="mb-0">객실 시설</h5>
 
 							<!-- List -->
 							<div class="col-md-6">
 								<!-- List -->
-								<ul class="list-group list-group-borderless mt-2 mb-0">
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Swimming pool</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Spa</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Kids play area.</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Gym</span>
-									</li>
+								<ul class="list-group list-group-borderless mt-2 mb-0" id="facilitiesList1">
 								</ul>
 							</div>
 
 							<!-- List -->
 							<div class="col-md-6">
 								<!-- List -->
-								<ul class="list-group list-group-borderless mt-2 mb-0">
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">TV</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Mirror</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">AC</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Slippers</span>
-									</li>
+								<ul class="list-group list-group-borderless mt-2 mb-0" id="facilitiesList2">
 								</ul>
 							</div>
 						</div> <!-- Row END -->

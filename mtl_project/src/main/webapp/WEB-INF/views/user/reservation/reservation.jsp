@@ -56,8 +56,8 @@
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">체크인</h6>
-										<h5 class="mb-1" id="checkInDate">4 March 2022</h5>
-										<small><i class="bi bi-alarm me-1"></i>12:30 pm</small>
+										<h5 class="mb-1" id="checkInDate"></h5>
+										<!-- <small><i class="bi bi-alarm me-1"></i>12:30 pm</small>  -->
 									</div>
 								</div>
 
@@ -65,8 +65,8 @@
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">체크아웃</h6>
-										<h5 class="mb-1" id="checkOutDate">8 March 2022</h5>
-										<small><i class="bi bi-alarm me-1"></i>4:30 pm</small>
+										<h5 class="mb-1" id="checkOutDate"></h5>
+										<!-- <small><i class="bi bi-alarm me-1"></i>4:30 pm</small> -->
 									</div>
 								</div>
 
@@ -74,8 +74,8 @@
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">객실 & 인원</h6>
-										<h5 class="mb-1"><span id="roomType">2</span> - <span id="guest">1</span>인</h5>
-										<small><i class="bi bi-brightness-high me-1"></i>3 Nights - 4 Days</small>
+										<h5 class="mb-1"><span id="roomType"></span> - <span id="guest"></span>인</h5>
+										<!-- <small><i class="bi bi-brightness-high me-1"></i>3 Nights - 4 Days</small> -->
 									</div>
 								</div>
 							</div>
@@ -108,7 +108,7 @@
 											<label class="form-label">예약자명</label>
 										</div>
 										<div class="col-md-9">
-											<input type="text" class="form-control form-control-lg" placeholder="Enter your name">
+											<input type="text" class="form-control form-control-lg" placeholder="예약자명을 입력해 주세요.">
 										</div>
 									</li>
 									<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -116,7 +116,7 @@
 											<label class="form-label">이메일</label>
 										</div>
 										<div class="col-md-9">
-											<input type="text" class="form-control form-control-lg" placeholder="Enter your email">
+											<input type="text" class="form-control form-control-lg" placeholder="이메일을 입력해 주세요.">
 										</div>
 									</li>
 									<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -124,7 +124,7 @@
 											<label class="form-label">연락처</label>
 										</div>
 										<div class="col-md-9">
-											<input type="text" class="form-control form-control-lg" placeholder="Enter your phone number">
+											<input type="text" class="form-control form-control-lg" placeholder="연락처를 입력해 주세요.">
 										</div>
 									</li>
 								</ul>
@@ -144,18 +144,35 @@
 							</div>
 							<!-- Card body -->
 							<div class="card-body">
-								<!-- Card number -->
 								<div class="row">
-									<label class="form-label"><span class="h6 fw-normal">결제 수단</span></label>
+									<div class="col-6">
+										<label class="form-label"><span class="h6 fw-normal">결제 수단</span></label>
+										<div class="card">
+											<div class="bg-primary p-3 rounded-3">
+												<div class="d-flex justify-content-start align-items-start mb-2">
+													<img class="w-40px me-2" src="assets/images/element/visa.svg">
+													<img class="w-40px" src="assets/images/element/mastercard.svg">
+												</div>
+												<div>
+													<span class="text-white mt-4">신용/체크 카드</span>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 
 								<!-- Buttons -->
 								<div class="row mt-3">
 									<div class="d-sm-flex justify-content-sm-between align-items-center">
-										<h5><span class="small fs-6">총 결제 금액</span> 205,000<span class="small fs-6">원</span></h5>
+										<h5><span class="small fs-6">1일 금액 </span></h5>
+										<h5><span id="onePrice"></span><span class="small fs-6"> 원</span></h5>
+									</div>
+									<div class="d-sm-flex justify-content-sm-between align-items-center">
+										<h5><span class="small fs-6">총 결제 금액 </span></h5>
+										<h5><span id="totalPrice"></span><span class="small fs-6"> 원</span></h5>
 									</div>
 									<div class="d-grid gap-2">
-										<a href="reservation/confirm" class="btn btn-primary btn-sm mb-0">결제하기</a>
+										<a href="javascript:;" class="btn btn-primary btn-sm mb-0" data-src="reservation" data-act="clickPayment">결제하기</a>
 									</div>
 								</div>
 							</div>	

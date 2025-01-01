@@ -4,7 +4,7 @@ const partnerDetail = (function() {
 	function init() {
 		_eventInit();
 		_setSearch();
-		_list.getDetail();
+		_event.clickSearch();
 	};
 
 	// 이벤트 초기화 
@@ -64,6 +64,8 @@ const partnerDetail = (function() {
 				_event.clickSearch();
 			} else if (action == "clickReservation") {
 				_event.clickReservation(evo);
+			} else if (action == "clickRoomDetail") {
+				_event.clickRoomDetail(evo);
 			}
 		};
 	};
@@ -72,20 +74,6 @@ const partnerDetail = (function() {
 	let _event = {
 		// 검색 클릭
 		clickSearch: function() {
-			_list.getRoomList();
-		},
-		
-		// 예약 클릭
-		clickReservation: function(evo) {
-			let roomIdx = evo.attr("data-room-idx");
-			
-			location.href = "/mtl/reservation?idx=" + roomIdx;
-		},
-	};
-	
-	// 리스트
-	let _list = {
-		getDetail: function() {
 			let partnerIdx = comm.getUrlParam().idx;
         
 	        let url = "/user/partner/detail";
@@ -101,41 +89,81 @@ const partnerDetail = (function() {
 	        };
 	        
 			comm.sendJson(url, data, "POST", function(resp) {
-				let data = resp.data;
-				
-				// 지도
-				_mapInit(data);
-				
-				$("#partnerName").html(data.name);
-				$("#partnerDescription").html(data.description);
-				$("#partnerAddress").html(data.address);
-				$("#partnerPhone").html(data.phone);
-				
-				// select
-				let element = document.getElementById("searchArea");
-			    if (element) {
-			        let choices = new Choices(element, {
-			            searchEnabled: false, 
-			        });
-			
-			        // 선택 값 변경
-			        choices.setChoiceByValue(data.area);
-			    };
-			    
-			    // 시설
-			    _draw.drawCommonFacilities(data.commonFacilitiesList);
-			    _draw.drawRoomFacilities(data.roomFacilitiesList);
-			    
-			    // 사진
-			    let imageList = data.imageList;
-			    $("#thumbnail").css("background-image", "url(" + encodeURI(imageList[0].url) + ")");
-			    $("#rightImage1").css("background-image", "url(" + encodeURI(imageList[1].url) + ")");
-			    $("#rightImage2").css("background-image", "url(" + encodeURI(imageList[2].url) + ")");
-			    $("#rightImage3").css("background-image", "url(" + encodeURI(imageList[3].url) + ")");
-			    
-			    _eventInit();
-			    _list.getRoomList();
+				_list.setRoom(resp.data);
 			});
+		},
+		
+		// 예약 클릭
+		clickReservation: function(evo) {
+			let roomIdx = evo.attr("data-room-idx");
+			let total = evo.attr("data-total-price");
+			let one = evo.attr("data-price");
+			
+			// 날짜 문자열 분리
+			let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
+				
+			// 인원 문자열 분리
+			let guest = $("#searchGuest").val().match(/\d+/)[0];
+
+			// 예약 정보를 넘기기 위해 클라이언트 세션에 저장			
+			sessionStorage.setItem("search_start_date", startDate);
+			sessionStorage.setItem("search_end_date", endDate);
+			sessionStorage.setItem("search_guest", guest);
+			sessionStorage.setItem("reservation_total_price", total);
+			sessionStorage.setItem("reservation_one_price", one);
+			
+			location.href = "/mtl/reservation?idx=" + roomIdx;
+		},
+		
+		// 객실 상세 정보 클릭
+		clickRoomDetail: function(evo) {
+			let roomIdx = evo.attr("data-room-idx");
+			
+			let url = "/user/partner/room/detail";
+			
+			let data = { "room_idx" : roomIdx };
+			
+			comm.sendJson(url, data, "POST", function(resp) {
+				_draw.drawRoomDetail(resp.data);
+			});
+		},
+	};
+	
+	// 리스트
+	let _list = {
+		setRoom: function(data) {
+			// 지도
+			_mapInit(data);
+			
+			$("#partnerName").html(data.name);
+			$("#partnerDescription").html(data.description);
+			$("#partnerAddress").html(data.address);
+			$("#partnerPhone").html(data.phone);
+			
+			// select
+			let element = document.getElementById("searchArea");
+		    if (element) {
+		        let choices = new Choices(element, {
+		            searchEnabled: false, 
+		        });
+		
+		        // 선택 값 변경
+		        choices.setChoiceByValue(data.area);
+		    };
+		    
+		    // 시설
+		    _draw.drawCommonFacilities(data.commonFacilitiesList);
+		    _draw.drawRoomFacilities(data.roomFacilitiesList);
+		    
+		    // 사진
+		    let imageList = data.imageList;
+		    $("#thumbnail").css("background-image", "url(" + encodeURI(imageList[0].url) + ")");
+		    $("#rightImage1").css("background-image", "url(" + encodeURI(imageList[1].url) + ")");
+		    $("#rightImage2").css("background-image", "url(" + encodeURI(imageList[2].url) + ")");
+		    $("#rightImage3").css("background-image", "url(" + encodeURI(imageList[3].url) + ")");
+		    
+		    _eventInit();
+		    _list.getRoomList();
 		},
 		
 		// 객실 리스트
@@ -309,18 +337,75 @@ const partnerDetail = (function() {
 					"href" : "javascript:;",
 					"data-src" : "partnerDetail",
 					"data-act" : "clickReservation",
-					"data-room-idx" : data.room_idx
+					"data-room-idx" : data.room_idx,
+					"data-total-price" : data.total_price,
+					"data-price" : Math.round(data.total_price / diffDays)
 				}).text("객실 예약");
 				btnDiv.append(reservationLink);
 				
 				_eventInit();
-				e.tinySlider();
+			};
+			e.tinySlider();
+		},
+		
+		// 객실 상세
+		drawRoomDetail: function(data) {
+			$("#roomType").html(data.room_type);
+			$("#roomDescription").html(data.descrpition);
+			
+			let imageList = data.imageList;
+			
+			let roomImageList = $("#roomImageList").empty();
+			if (imageList.length == 1) {
+				let div = $("<div>");
+				roomImageList.append(div);
+				
+				let img = $("<img>").addClass("rounded-2").attr("src", imageList[0].url);
+				div.append(img);
+			} else {
+				for (let image of imageList) {
+					let div = $("<div>");
+					roomImageList.append(div);
+					
+					let img = $("<img>").addClass("rounded-2").attr("src", image.url);
+					div.append(img);
+				};
+			};
+			
+			e.tinySlider2();
+			
+			let facilitiesList = data.facilitiesList;
+			let half = Math.ceil(facilitiesList.length / 2);
+			let firstList = facilitiesList.splice(0, half);
+			let secondList = facilitiesList.splice(-half);
+
+			let first = $("#facilitiesList1");
+			for (let facilities of firstList) {
+				let li = $("<li>").addClass("list-group-item d-flex mb-0");
+				first.append(li);
+
+				li.append("<i class='fa-solid fa-check-circle text-success me-2'></i>");
+				
+				let span = $("<span>").addClass("h6 fw-light mb-0").html(facilities.name);
+				li.append(span);
+			};
+			
+			let second = $("#facilitiesList2");
+			for (let facilities of secondList) {
+				let li = $("<li>").addClass("list-group-item d-flex mb-0");
+				second.append(li);
+
+				li.append("<i class='fa-solid fa-check-circle text-success me-2'></i>");
+				
+				let span = $("<span>").addClass("h6 fw-light mb-0").html(facilities.name);
+				li.append(span);
 			};
 		},
 	};
 	
 	// 네이버 지도
 	function _mapInit(data) {
+	
 		let option = {
 			zoom: 16,
 			latitude: data.latitude,
