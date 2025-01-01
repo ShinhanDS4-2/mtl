@@ -128,5 +128,12 @@ const comm = {
             position: new naver.maps.LatLng(_option.latitude, _option.hardness), // 마커 위치
             map: map 
         });
-	}
+	},
+	
+	// 3자리마다 , 찍어서 반환
+	numberWithComma: function(num) {
+    	if (num == null || num == undefined) return "";
+
+    	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
 }

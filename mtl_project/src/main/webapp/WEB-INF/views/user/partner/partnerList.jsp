@@ -33,8 +33,7 @@
 							<i class="bi bi-geo-alt fs-3 me-2 mt-2"></i>
 							<div class="flex-grow-1">
 								<label class="form-label">지역</label>
-								<select class="form-select js-choice text-reset" id="searchArea">
-									<option value="" disabled="disabled">지역 선택</option>
+								<select class="form-select text-reset" id="searchArea">
 									<option value="" selected>전체</option>
 									<option value="SEOUL">서울</option>
 									<option value="GANGNEUNG">강릉</option>

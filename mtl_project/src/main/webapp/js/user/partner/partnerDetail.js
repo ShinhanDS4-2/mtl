@@ -3,7 +3,7 @@ const partnerDetail = (function() {
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
-		_event.getDetail();
+		_list.getDetail();
 	};
 
 	// 이벤트 초기화 

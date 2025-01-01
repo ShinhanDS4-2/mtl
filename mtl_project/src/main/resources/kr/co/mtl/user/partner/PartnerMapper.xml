@@ -38,28 +38,51 @@
 	<!-- 숙소 검색 리스트 -->
 	<select id="getPartnerList" parameterType="HashMap">
 		SELECT
-			  p.idx AS partner_idx
-			, p.name
-			, p.area
-			, p.score
-			, p.type
-			, p.address,
-			<if test="min_price != null and max_price != null">
-			(SELECT (CASE 
-		        WHEN WEEKDAY(#{start_date}) IN (0, 1, 2, 3, 4) THEN 
-		            (SELECT MIN(r.basic_price) 
-		             FROM ROOM r 
-		             WHERE r.partner_idx = p.idx 
-		               AND r.basic_price BETWEEN #{min_price} AND #{max_price})
-		        WHEN WEEKDAY(#{start_date}) IN (5, 6) THEN 
-		            (SELECT MIN(r.weekend_price) 
-		             FROM ROOM r 
-		             WHERE r.partner_idx = p.idx 
-		               AND r.weekend_price BETWEEN #{min_price} AND #{max_price})
-		     END)) AS price
-			</if>
+		      p.idx AS partner_idx
+		    , p.name
+		    , p.area
+		    , p.score
+		    , p.type
+		    , p.address
+		    , (
+		        SELECT SUM(
+		            CASE 
+		                WHEN WEEKDAY(date_range) IN (0, 1, 2, 3, 4) THEN r.basic_price
+		                WHEN WEEKDAY(date_range) IN (5, 6) THEN r.weekend_price
+		            END
+		        ) AS total_price
+		        FROM (
+		            SELECT 
+		            	DATE_ADD(#{start_date}, INTERVAL seq DAY) AS date_range
+		            FROM (
+		                SELECT 
+		                	@row := @row + 1 AS seq
+		                FROM (SELECT 0 UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) a,
+		                     (SELECT 0 UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) b,
+		                     (SELECT @row := -1) init
+		            ) seq_gen
+		            WHERE 
+		            	DATE_ADD(#{start_date}, INTERVAL seq DAY) <![CDATA[ < ]]> #{end_date}
+		        ) date_ranges
+		        JOIN (SELECT 
+					  	  MIN(r.basic_price) AS basic_price
+					  	, MIN(r.weekend_price) AS weekend_price
+						, r.idx
+						, r.partner_idx
+					  FROM 
+					  	ROOM r
+					  JOIN PARTNER p 
+					  ON p.idx = r.partner_idx 
+					  GROUP BY p.idx) AS r 
+		        ON r.partner_idx = p.idx
+		        WHERE r.idx NOT IN (
+		            SELECT room_idx
+		            FROM RESERVATION
+		            WHERE check_in_date <![CDATA[ < ]]> #{end_date} AND check_out_date > #{start_date}
+		        )
+		    ) AS total_price
 		FROM 
-			PARTNER p
+		    PARTNER p
 		<include refid="searchPartner"></include>
 		ORDER BY p.create_date DESC
 		<if test="limit != null and offset != null">
@@ -250,7 +273,21 @@
 			)
 		</if>
 		<if test="start_date != null and end_date != null">
-		
+			AND p.idx IN (
+		        SELECT 
+		        	r.partner_idx
+		        FROM 
+		        	ROOM r
+		        WHERE 
+		        	r.idx NOT IN (
+		            SELECT 
+		            	room_idx
+		            FROM 
+		            	RESERVATION
+		            WHERE 
+		            	(check_in_date <![CDATA[ < ]]> #{end_date} AND check_out_date > #{start_date})
+		        )
+		    )
 		</if>
 		<if test="guest != null and guest != ''">
 			AND p.idx IN (

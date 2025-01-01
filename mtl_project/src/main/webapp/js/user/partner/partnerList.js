@@ -5,6 +5,7 @@ const partnerList = (function() {
 		_eventInit();
 		_sliderInit();
 		_randomBanner();
+		_setSearch();
 		_list.getPartnerList();
 		_list.getOptionList();
 	};
@@ -15,6 +16,20 @@ const partnerList = (function() {
 		evo.on("click change update", function(e) {
 			_eventAction(e);
 		});
+	};
+	
+	// home에서 검색으로 넘어올 때 세션에서 검색 조건 확인 후 세팅
+	function _setSearch() {
+		// select
+		let element = document.getElementById("searchArea");
+	    if (element) {
+	        let choices = new Choices(element, {
+	            searchEnabled: false, 
+	        });
+	
+	        // 선택 값 변경
+	        choices.setChoiceByValue(sessionStorage.getItem("search_area"));
+	    };
 	};
 	
 	// noUiSlider 설정
@@ -280,7 +295,7 @@ const partnerList = (function() {
 					};
 				};
 				
-				// 가격
+				// 1박 가격
 				let priceDiv = $("<div>").addClass("d-sm-flex justify-content-sm-end align-items-center mt-3 mt-md-auto");
 				cardBody.append(priceDiv);
 
@@ -288,10 +303,28 @@ const partnerList = (function() {
 				priceDiv.append(price);
 
 				let priceNum = $("<h5>").addClass("fw-bold mb-0 me-1");
-				priceNum.append("<i class='fa-solid fa-won-sign'></i> ");
-				priceNum.append(data.price);
+				let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
+				startDate = new Date(startDate);
+				endDate = new Date(endDate);
+				let diffTime = endDate.getTime() - startDate.getTime();
+				let diffDays = diffTime / (1000 * 60 * 60 * 24);
+				priceNum.append(comm.numberWithComma(Math.round(data.total_price / diffDays)));
+				priceNum.append(" <i class='fa-solid fa-won-sign'></i>");
+				price.append("<span class='mb-0 me-2'>1박 / </span>");
 				price.append(priceNum);
-				price.append("<span class='mb-0 me-2'> / 일</span>");
+				
+				// 전체 가격
+				let priceDiv2 = $("<div>").addClass("d-sm-flex justify-content-sm-end align-items-center mt-1");
+				cardBody.append(priceDiv2);
+				
+				let price2 = $("<div>").addClass("d-flex align-items-center");
+				priceDiv2.append(price2);
+
+				let priceNum2 = $("<h5>").addClass("fw-bold mb-0 me-1");
+				priceNum2.append(comm.numberWithComma(data.total_price));
+				priceNum2.append(" <i class='fa-solid fa-won-sign'></i>");
+				price2.append("<span class='mb-0 me-2'>전체 / </span>");
+				price2.append(priceNum2);
 			};
 		},
 		

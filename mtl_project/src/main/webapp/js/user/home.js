@@ -24,8 +24,8 @@ const home = (function() {
 		let type = e.type;
 		
 		if(type == "click") {
-			if(action == "") {
-			
+			if(action == "clickSearch") {
+				_event.clickSearch();
 			};
 		};
 	};
@@ -111,6 +111,26 @@ const home = (function() {
 					_eventInit();
 				}
 			});
+		},
+		
+		// 검색
+		clickSearch: function() {
+			// 지역
+			let area = $("#searchArea option:selected").val();
+
+			// 날짜 문자열 분리
+			let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
+				
+			// 인원 문자열 분리
+			let guest = $("#searchGuest").val().match(/\d+/)[0];
+
+			// 검색 조건을 넘기기 위해 클라이언트 세션에 저장			
+			sessionStorage.setItem("search_area", area);
+			sessionStorage.setItem("search_start_date", startDate);
+			sessionStorage.setItem("search_end_date", endDate);
+			sessionStorage.setItem("search_guest", guest);
+			
+			location.href = "/mtl/partner/list";
 		},
 	};
 	

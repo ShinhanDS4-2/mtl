@@ -41,13 +41,13 @@ Main Banner START -->
 								<!-- Select input -->
 								<div class="flex-grow-1">
 									<label class="form-label">지역</label>
-									<select class="form-select js-choice">
-										<option value="">지역 선택</option>
-										<option selected>서울</option>
-										<option>강릉</option>
-										<option>여수</option>
-										<option>부산</option>
-										<option>제주</option>
+									<select class="form-select js-choice" id="searchArea">
+										<option value="" selected>지역 선택</option>
+										<option value="SEOUL">서울</option>
+										<option value="GANGNEUNG">강릉</option>
+										<option value="YEOSU">여수</option>
+										<option value="BUSAN">부산</option>
+										<option value="JEJU">제주</option>
 									</select>
 								</div>
 							</div>
@@ -61,7 +61,7 @@ Main Banner START -->
 								<!-- Date input -->
 								<div class="form-control-border form-control-transparent form-fs-md">
 									<label class="form-label">체크인 - 체크아웃</label>
-									<input type="text" class="form-control flatpickr" data-mode="range" placeholder="Select date">
+									<input type="text" class="form-control flatpickr" data-mode="range" placeholder="Select date" id="searchDate">
 								</div>
 							</div>
 						</div>
@@ -75,10 +75,10 @@ Main Banner START -->
 								<div class="w-100">
 									<label class="form-label">인원</label>
 									<div class="dropdown guest-selector me-2">
-										<input type="text" class="form-guest-selector form-control selection-result" value="2 명" id="dropdownGuest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+										<input type="text" class="form-guest-selector form-control selection-result" value="2 명" id="searchGuest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
 									
 										<!-- dropdown items -->
-										<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="dropdownGuest">
+										<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="searchGuest">
 											<!-- Adult -->
 											<li class="d-flex justify-content-between">
 												<div>
@@ -100,7 +100,7 @@ Main Banner START -->
 					</div>
 					<!-- Button -->
 					<div class="btn-position-md-middle">
-						<a  class="icon-lg btn btn-round btn-primary mb-0" href="#"><i class="bi bi-search fa-fw"></i></a>
+						<a  class="icon-lg btn btn-round btn-primary mb-0" href="javascript:;" data-src="home" data-act="clickSearch"><i class="bi bi-search fa-fw"></i></a>
 					</div>
 				</form>
 			</div>
