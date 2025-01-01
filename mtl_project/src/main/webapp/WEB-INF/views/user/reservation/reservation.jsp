@@ -13,8 +13,6 @@
 
 <!-- main -->
 <main>
-<!-- =======================
-Page content START -->
 <section>
 	<div class="container">
 		<div class="row g-4 g-lg-5">	
@@ -36,25 +34,15 @@ Page content START -->
 								<div class="row align-items-center">
 									<!-- Image -->
 									<div class="col-sm-6 col-md-3">
-										<img src="assets/images/category/hotel/4by3/02.jpg" class="card-img" alt="">
+										<img class="card-img" alt="" id="partnerImg">
 									</div>
 
 									<!-- Card Body -->
 									<div class="col-sm-6 col-md-9">
 										<div class="card-body pt-3 pt-sm-0 p-0">
 											<!-- Title -->
-											<h5 class="card-title"><a href="#">Pride moon Village Resort & Spa</a></h5>
-											<p class="small mb-2"><i class="bi bi-geo-alt me-2"></i>5855 W Century Blvd, Los Angeles - 90045</p>
-
-											<!-- Rating star -->
-											<ul class="list-inline mb-0">
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-												<li class="list-inline-item ms-2 h6 small fw-bold mb-0">4.5/5.0</li>
-											</ul>
+											<h5 class="card-title" id="partnerName"></h5>
+											<p class="small mb-2"><i class="bi bi-geo-alt me-2"></i><span id="partnerAddress"></span></p>
 										</div>
 									</div>
 
@@ -67,8 +55,8 @@ Page content START -->
 								<!-- Item -->
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
-										<h6 class="fw-light small mb-1">Check-in</h6>
-										<h5 class="mb-1">4 March 2022</h5>
+										<h6 class="fw-light small mb-1">체크인</h6>
+										<h5 class="mb-1" id="checkInDate">4 March 2022</h5>
 										<small><i class="bi bi-alarm me-1"></i>12:30 pm</small>
 									</div>
 								</div>
@@ -76,8 +64,8 @@ Page content START -->
 								<!-- Item -->
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
-										<h6 class="fw-light small mb-1">Check out</h6>
-										<h5 class="mb-1">8 March 2022</h5>
+										<h6 class="fw-light small mb-1">체크아웃</h6>
+										<h5 class="mb-1" id="checkOutDate">8 March 2022</h5>
 										<small><i class="bi bi-alarm me-1"></i>4:30 pm</small>
 									</div>
 								</div>
@@ -85,35 +73,13 @@ Page content START -->
 								<!-- Item -->
 								<div class="col-lg-4">
 									<div class="bg-light py-3 px-4 rounded-3">
-										<h6 class="fw-light small mb-1">Rooms & Guests</h6>
-										<h5 class="mb-1">2 G - 1 R</h5>
+										<h6 class="fw-light small mb-1">객실 & 인원</h6>
+										<h5 class="mb-1"><span id="roomType">2</span> - <span id="guest">1</span>인</h5>
 										<small><i class="bi bi-brightness-high me-1"></i>3 Nights - 4 Days</small>
 									</div>
 								</div>
 							</div>
 							<!-- Information END -->
-
-							<!-- Card START -->
-							<div class="card border mt-4">
-								<!-- Card header -->
-								<div class="card-header border-bottom d-md-flex justify-content-md-between">
-									<h5 class="card-title mb-0">Deluxe Pool View with Breakfast</h5>
-									<a href="#" class="btn btn-link p-0 mb-0">View Cancellation Policy</a>
-								</div>
-
-								<!-- Card body -->
-								<div class="card-body">
-									<h6>Price Included</h6>
-									<!-- List -->
-									<ul class="list-group list-group-borderless mb-0">
-										<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Free Breakfast and Lunch/Dinner.</li>
-										<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Great Small Breaks.</li>
-										<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Free Stay for Kids Below the age of 12 years.</li>
-										<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>On Cancellation, You will not get any refund</li>
-									</ul>
-								</div>
-							</div>
-							<!-- Card END -->
 						</div>
 						<!-- Card body END -->
 					</div>
@@ -198,13 +164,9 @@ Page content START -->
 					<!-- 결제 정보 END -->
 				</div>
 			</aside>
-			<!-- Right side content END -->
 		</div> <!-- Row END -->
 	</div>
 </section>
-<!-- =======================
-Page content START -->
-
 </main>
 
 <!-- footer -->
@@ -215,5 +177,8 @@ Page content START -->
 
 <!-- page script -->
 <script src="js/user/reservation/reservation.js"></script>
+<script type="text/javascript">
+	reservation.init();
+</script>
 </body>
 </html>

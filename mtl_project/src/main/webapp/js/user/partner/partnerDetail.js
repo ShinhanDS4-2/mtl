@@ -3,6 +3,7 @@ const partnerDetail = (function() {
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
+		_setSearch();
 		_list.getDetail();
 	};
 
@@ -14,6 +15,42 @@ const partnerDetail = (function() {
 		});
 	};
 	
+	// 검색란 설정
+	function _setSearch() {
+		// 이전 페이지에서 검색 조건 그대로 가져옴
+		let startDate = sessionStorage.getItem("search_start_date");
+		let endDate = sessionStorage.getItem("search_end_date");
+	    
+	    if (startDate == null) {
+	    	startDate = "today";
+	    	endDate = new Date().fp_incr(1);
+		};
+		
+		if (startDate != null && endDate == "undefined") {
+			endDate = new Date(startDate).fp_incr(1);
+	    };
+   
+	    flatpickr($("#searchDate"), {
+	        mode: "range",
+	        enableTime: false,
+	        noCalendar: false,
+	        inline: false,
+	        animate: "false",
+	        position: "top",
+	        dateFormat: "Y-m-d",
+	        disableMobile: "true",
+	        minDate: "today",
+	        defaultDate: [startDate, endDate]
+	    });
+	    
+	    let guest = sessionStorage.getItem("search_guest");
+	    if (guest != null) {
+		    $("#searchGuest").val(guest + " 명");
+		    $("#guestText").html(guest);
+		    e.guestSelector(guest);
+	    }
+	};
+	
 	// 이벤트 분기
 	function _eventAction(e) {
 		let evo = $(e.currentTarget);
@@ -23,11 +60,27 @@ const partnerDetail = (function() {
 		let type = e.type;
 		
 		if (type == "click") {
+			if (action == "clickSearch") {
+				_event.clickSearch();
+			} else if (action == "clickReservation") {
+				_event.clickReservation(evo);
+			}
 		};
 	};
 	
 	// 이벤트
 	let _event = {
+		// 검색 클릭
+		clickSearch: function() {
+			_list.getRoomList();
+		},
+		
+		// 예약 클릭
+		clickReservation: function(evo) {
+			let roomIdx = evo.attr("data-room-idx");
+			
+			location.href = "/mtl/reservation?idx=" + roomIdx;
+		},
 	};
 	
 	// 리스트
@@ -36,8 +89,16 @@ const partnerDetail = (function() {
 			let partnerIdx = comm.getUrlParam().idx;
         
 	        let url = "/user/partner/detail";
+	    
+	    	// 날짜 문자열 분리
+			let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
 	        
-	        let data = { "partner_idx" : partnerIdx };
+	        let data = { 
+	        	"partner_idx" : partnerIdx,
+	        	"start_date" : startDate,
+	        	"end_date" : endDate,
+	        	"guest" : $("#searchGuest").val().match(/\d+/)[0]
+	        };
 	        
 			comm.sendJson(url, data, "POST", function(resp) {
 				let data = resp.data;
@@ -65,9 +126,6 @@ const partnerDetail = (function() {
 			    _draw.drawCommonFacilities(data.commonFacilitiesList);
 			    _draw.drawRoomFacilities(data.roomFacilitiesList);
 			    
-			    // 객실
-			    _draw.drawRoomList(data.roomList);
-			    
 			    // 사진
 			    let imageList = data.imageList;
 			    $("#thumbnail").css("background-image", "url(" + encodeURI(imageList[0].url) + ")");
@@ -76,9 +134,31 @@ const partnerDetail = (function() {
 			    $("#rightImage3").css("background-image", "url(" + encodeURI(imageList[3].url) + ")");
 			    
 			    _eventInit();
-			    e.tinySlider();
+			    _list.getRoomList();
 			});
-		}
+		},
+		
+		// 객실 리스트
+		getRoomList: function() {
+			let partnerIdx = comm.getUrlParam().idx;
+        
+	        let url = "/user/partner/room/list";
+	    
+	    	// 날짜 문자열 분리
+			let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
+	        
+	        let data = { 
+	        	"partner_idx" : partnerIdx,
+	        	"start_date" : startDate,
+	        	"end_date" : endDate,
+	        	"guest" : $("#searchGuest").val().match(/\d+/)[0]
+	        };
+	        
+	        comm.sendJson(url, data, "POST", function(resp) {
+				// 객실
+			    _draw.drawRoomList(resp.list);
+	        });
+		},
 	};
 	
 	let _draw = {
@@ -120,7 +200,7 @@ const partnerDetail = (function() {
 				
 				// 이미지 단일 / 다중
 				let imageList = data.imageList;
-				if (imageList.length <= 1) {
+				if (imageList.length == 1) {
 					let img = $("<img>").addClass("card-img rounded-2 h-180px").attr({
 						"src" : imageList[0].url 
 					});
@@ -130,10 +210,10 @@ const partnerDetail = (function() {
 					imgCard.append(slider);
 
 					let tiny = $("<div>").addClass("tiny-slider-inner").attr({
-						 "data-autoplay" : "true",
-						 "data-arrow" : "true",
-						 "data-dots" : "false",
-						 "data-items" : "1"
+						 "data-autoplay" : true,
+						 "data-arrow" : true,
+						 "data-dots" : false,
+						 "data-items" : 1
 					});
 					slider.append(tiny);
 
@@ -141,7 +221,7 @@ const partnerDetail = (function() {
 						let imgDiv = $("<div>");
 						tiny.append(imgDiv);
 
-						let img = $("<img>").addClass("card-img rounded-2 h-180px").attr("src", image.url);
+						let img = $("<img>").addClass("h-180px").attr("src", image.url);
 						imgDiv.append(img);
 					};
 				};
@@ -154,7 +234,7 @@ const partnerDetail = (function() {
 					"data-bs-target" : "#roomDetail",
 					"data-src" : "partnerDetail",
 					"data-act" : "clickRoomDetail",
-					"data-idx-room" : data.room_idx
+					"data-room-idx" : data.room_idx
 				}).html("<i class='bi bi-eye-fill me-1'></i>객실 상세 정보");
 				imgCard.append(detailLink);
 				
@@ -165,7 +245,7 @@ const partnerDetail = (function() {
 				contentCard.append(cardBody);
 				
 				// 객실명
-				let roomTitle = $("<h5>").addClass("card-title").html(data.name);
+				let roomTitle = $("<h5>").addClass("card-title").html(data.room_type);
 				cardBody.append(roomTitle);
 				
 				// 객실 시설
@@ -184,32 +264,57 @@ const partnerDetail = (function() {
 				let p2 = $("<p>").addClass("text-secondary mb-0").html("<i class='fa-solid fa-person-circle-plus'></i> 최대 인원 " + data.maximum + "인");
 				cardBody.append(p2);
 				
-				// 가격
-				let div = $("<div>").addClass("d-sm-flex justify-content-sm-between align-items-center mt-auto");
+				// 1박 가격
+				let div = $("<div>").addClass("d-sm-flex justify-content-sm-between align-items-center mt-3 mt-auto");
 				cardBody.append(div);
 				
 				let priceDiv = $("<div>").addClass("d-flex align-items-center");
 				div.append(priceDiv);
 				
+				let span = $("<span>").addClass("mb-0 me-2").html("1박 / ");
+				priceDiv.append(span);
+
 				let price = $("<h5>").addClass("fw-bold mb-0 me-1");
-				price.append("<i class='fa-solid fa-won-sign'></i> ");
-				price.append(data.basic_price);
+				let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
+				startDate = new Date(startDate);
+				endDate = new Date(endDate);
+				let diffTime = endDate.getTime() - startDate.getTime();
+				let diffDays = diffTime / (1000 * 60 * 60 * 24);
+				price.append(comm.numberWithComma(Math.round(data.total_price / diffDays)));
+				price.append(" <i class='fa-solid fa-won-sign'></i>");
 				priceDiv.append(price);
 				
-				let span = $("<span>").addClass("mb-0 me-2").html(" / 일");
-				priceDiv.append(span);
+				
+				// 전체 가격
+				let div2 = $("<div>").addClass("d-sm-flex justify-content-sm-between align-items-center");
+				cardBody.append(div2);
+				
+				let priceDiv2 = $("<div>").addClass("d-flex align-items-center");
+				div2.append(priceDiv2);
+				
+				let span2 = $("<span>").addClass("mb-0 me-2").html("전체 / ");
+				priceDiv2.append(span2);
+
+				let price2 = $("<h5>").addClass("fw-bold mb-0 me-1");
+				price2.append(comm.numberWithComma(data.total_price));
+				price2.append(" <i class='fa-solid fa-won-sign'></i>");
+				priceDiv2.append(price2);
+				
 				
 				// 예약 버튼
-				let btnDiv = $("<div>").addClass("mt-3 mt-sm-0");
-				div.append(btnDiv);
+				let btnDiv = $("<div>").addClass("mt-1");
+				div2.append(btnDiv);
 				
 				let reservationLink = $("<a>").addClass("btn btn-sm btn-primary mb-0").attr({
 					"href" : "javascript:;",
 					"data-src" : "partnerDetail",
 					"data-act" : "clickReservation",
-					"data-idx-room" : data.room_idx
+					"data-room-idx" : data.room_idx
 				}).text("객실 예약");
 				btnDiv.append(reservationLink);
+				
+				_eventInit();
+				e.tinySlider();
 			};
 		},
 	};

@@ -18,20 +18,58 @@ const partnerList = (function() {
 		});
 	};
 	
-	// home에서 검색으로 넘어올 때 세션에서 검색 조건 확인 후 세팅
+	// home에서 검색으로 넘어올 때 세션에서 검색 조건 확인 후 세팅 -> 세션 삭제
 	function _setSearch() {
 		// select
 		let element = document.getElementById("searchArea");
+		let choices = "";
 	    if (element) {
-	        let choices = new Choices(element, {
+	        choices = new Choices(element, {
 	            searchEnabled: false, 
 	        });
-	
+	    };
+		
+		let area = sessionStorage.getItem("search_area");
+		if (area != null) {
 	        // 선택 값 변경
 	        choices.setChoiceByValue(sessionStorage.getItem("search_area"));
+		};
+		
+		let startDate = sessionStorage.getItem("search_start_date");
+		let endDate = sessionStorage.getItem("search_end_date");
+	    
+	    if (startDate == null) {
+	    	startDate = "today";
+	    	endDate = new Date().fp_incr(1);
+		};
+		
+		if (startDate != null && endDate == "undefined") {
+			endDate = new Date(startDate).fp_incr(1);
 	    };
+   
+	    flatpickr($("#searchDate"), {
+	        mode: "range",
+	        enableTime: false,
+	        noCalendar: false,
+	        inline: false,
+	        animate: "false",
+	        position: "top",
+	        dateFormat: "Y-m-d",
+	        disableMobile: "true",
+	        minDate: "today",
+	        defaultDate: [startDate, endDate]
+	    });
+	    
+	    let guest = sessionStorage.getItem("search_guest");
+	    if (guest != null) {
+		    $("#searchGuest").val(guest + " 명");
+		    $("#guestText").html(guest);
+	    	e.guestSelector(guest);
+	    }
+	    
+	    //sessionStorage.clear();
 	};
-	
+
 	// noUiSlider 설정
 	function _sliderInit() {
 		const slider = document.getElementById("noSlider");
@@ -95,6 +133,17 @@ const partnerList = (function() {
 	// 이벤트
 	let _event = {
 		clickPartner: function(evo) {
+			// 날짜 문자열 분리
+			let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
+				
+			// 인원 문자열 분리
+			let guest = $("#searchGuest").val().match(/\d+/)[0];
+
+			// 검색 조건을 넘기기 위해 클라이언트 세션에 저장			
+			sessionStorage.setItem("search_start_date", startDate);
+			sessionStorage.setItem("search_end_date", endDate);
+			sessionStorage.setItem("search_guest", guest);
+		
 			let partnerIdx = evo.attr("data-partner-idx");
 			location.href = "/mtl/partner/detail?idx=" + partnerIdx;
 		},

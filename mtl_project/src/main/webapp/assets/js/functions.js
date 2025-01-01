@@ -111,7 +111,7 @@ var e = {
         e.dropZone(),
         e.fakePwd(),
         e.autoTabinput(),
-        e.guestSelector(),
+       	e.guestSelector(),
         e.parallaxBG(),
         e.pCounter()
         
@@ -836,11 +836,11 @@ var e = {
     // END: Auto tab input
 
     // START: 22 Guest Selector
-    guestSelector: function () {
+    guestSelector: function (guest=2) {
       if (e.isVariableDefined(e.select('.guest-selector'))) {
 
-      let adults = 2;
-      let totalAdults = 2;
+      let adults = guest;
+      let totalAdults = guest;
     
       let selectionResult = document.querySelector('.selection-result');
     
@@ -863,8 +863,10 @@ var e = {
         let guestText = '명';
     
         let resultText = totalAdults+' '+guestText;
-    
+
+    	selectionResult.innerText = resultText;
         selectionResult.setAttribute('value', resultText);
+    	$(selectionResult).val(resultText);
       }
     
       function removeElement(type){

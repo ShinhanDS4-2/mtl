@@ -79,13 +79,42 @@ public class PartnerServiceImpl implements PartnerService {
 		data.put("commonFacilitiesList", partnerMapper.getPartnerFacilities(param));	// 공통시설
 		data.put("roomFacilitiesList", partnerMapper.getPartnerRoomFacilities(param));	// 객실시설
 		
+		result.put("data", data);
+		
+		return result;
+	};
+	
+	/**
+	 * 객실 리스트
+	 * @param param
+	 * @return 객실 리스트
+	 */
+	public Map<String, Object> getRoomList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
 		// 객실 정보
-		List<Map<String, Object>> roomList = partnerMapper.getRoomList(param);
-		for (Map<String, Object> room : roomList) {
+		List<Map<String, Object>> list = partnerMapper.getRoomList(param);
+		for (Map<String, Object> room : list) {
 			room.put("imageList", partnerMapper.getRoomImage(room));
 			room.put("facilitiesList", partnerMapper.getRoomFacilities(room));
 		};
-		data.put("roomList", roomList);
+		
+		result.put("list", list);
+		
+		return result;
+	};
+	
+	/**
+	 * 객실 상세
+	 * @param param
+	 * @return 객실 상세 정보
+	 */
+	public Map<String, Object> getRoomDetail(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		Map<String, Object> data = partnerMapper.getRoomDetail(param);
 		
 		result.put("data", data);
 		

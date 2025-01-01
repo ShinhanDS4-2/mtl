@@ -29,8 +29,7 @@
 						<div class="col-md-6 col-lg-4">
 							<div class="form-size-lg form-fs-md">
 								<label class="form-label">지역</label>
-								<select class="form-select" id="searchArea">
-									<option value="" disabled="disabled">지역 선택</option>
+								<select class="form-select" id="searchArea" disabled>
 									<option value="SEOUL">서울</option>
 									<option value="GANGNEUNG">강릉</option>
 									<option value="YEOSU">여수</option>
@@ -44,7 +43,7 @@
 						<div class="col-md-6 col-lg-3">
 							<div class="form-fs-md">
 								<label class="form-label">체크인 - 체크아웃</label>
-								<input type="text" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="Select date">
+								<input type="text" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="Select date" id="searchDate">
 							</div>
 						</div>
 							
@@ -54,8 +53,8 @@
 								<div class="w-100">
 									<label class="form-label">인원</label>
 									<div class="dropdown guest-selector me-2">
-										<input type="text" class="form-guest-selector form-control form-control-lg selection-result" value="2 명" id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
-										<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="dropdownguest">
+										<input type="text" class="form-guest-selector form-control form-control-lg selection-result" value="2 명" id="searchGuest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+										<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="searchGuest">
 											<li class="d-flex justify-content-between">
 												<div>
 													<h6 class="mb-0">인원</h6>
@@ -63,7 +62,7 @@
 												</div>
 												<div class="hstack gap-1 align-items-center">
 													<button type="button" class="btn btn-link adult-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
-													<h6 class="guest-selector-count mb-0 adults">2</h6>
+													<h6 class="guest-selector-count mb-0 adults" id="guestText">2</h6>
 													<button type="button" class="btn btn-link adult-add p-0 mb-0"><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
 												</div>
 											</li>
@@ -75,9 +74,9 @@
 
 						<!-- 검색 버튼 -->
 						<div class="col-md-6 col-lg-2 mt-md-auto">
-							<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i> 검색</a>
+							<a class="btn btn-lg btn-primary w-100 mb-0" href="javascript:;" data-src="partnerDetail" data-act="clickSearch"><i class="bi bi-search fa-fw"></i> 검색</a>
 						</div>
-					</form>
+ 					</form>
 				</div>
 			</div>
 		</div>
@@ -105,7 +104,7 @@
 		<div class="row g-2">
 			<!-- Image -->
 			<div class="col-md-6">
-				<div id="thumbnail" class="card card-grid-lg overflow-hidden detail-back">
+				<div id="thumbnail" class="card card-grid-lg overflow-hidden" style="background-position: center left; background-size: cover">
 				</div>
 			</div>
 
@@ -113,19 +112,19 @@
 				<div class="row g-2"> 
 					<!-- Image -->
 					<div class="col-12">
-						<div id="rightImage1" class="card card-grid-sm overflow-hidden detail-back">
+						<div id="rightImage1" class="card card-grid-sm overflow-hidden"style="background-position: center left; background-size: cover">
 						</div>
 					</div>
 
 					<!-- Image -->
 					<div class="col-md-6">
-						<div id="rightImage2" class="card card-grid-sm overflow-hidden detail-back">
+						<div id="rightImage2" class="card card-grid-sm overflow-hidden" style="background-position: center left; background-size: cover">
 						</div>
 					</div>
 
 					<!-- Images -->
 					<div class="col-md-6">
-						<div id="rightImage3"  class="card card-grid-sm overflow-hidden detail-back">
+						<div id="rightImage3"  class="card card-grid-sm overflow-hidden" style="background-position: center left; background-size: cover">
 						</div>
 					</div>
 				</div>
@@ -208,67 +207,6 @@
 						<!-- Card body START -->
 						<div class="card-body pt-4 p-0">
 							<div class="vstack gap-4" id="roomList">
-								<div class="card shadow p-3">
-									<div class="row g-4">
-										<!-- Card img -->
-										<div class="col-md-5 position-relative">
-											<!-- Slider START -->
-											<div class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2">
-												<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/04.jpg" alt="Card image"></div>
-
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/02.jpg" alt="Card image"></div>
-
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/03.jpg" alt="Card image"></div>
-
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/01.jpg" alt="Card image"></div>
-												</div>
-											</div>
-											<!-- Slider END -->
-
-											<!-- Button -->
-											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-primary more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
-												<i class="bi bi-eye-fill me-1"></i>객실 상세 정보
-											</a>
-										</div>
-
-										<!-- Card body -->
-										<div class="col-md-7">
-											<div class="card-body d-flex flex-column h-100 p-0">
-					
-												<!-- Title -->
-												<h5 class="card-title">Luxury Room with Balcony</h5>
-
-												<!-- Amenities -->
-												<ul class="nav nav-divider mb-2">
-													<li class="nav-item">Air Conditioning</li>
-													<li class="nav-item">Wifi</li>
-													<li class="nav-item">Kitchen</li>
-												</ul>
-
-												<p class="text-success mb-0">Free Cancellation till 7 Jan 2022</p>
-												
-												<!-- Price and Button -->
-												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-													<!-- Price -->
-													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
-														<span class="mb-0 me-2"> / 일</span>
-													</div>
-													<!-- Button -->
-													<div class="mt-3 mt-sm-0">
-														<a href="reservation" class="btn btn-sm btn-primary mb-0">객실 예약</a>    
-													</div>          
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Room item END -->
 							</div>
 						</div>
 						<!-- Card body END -->

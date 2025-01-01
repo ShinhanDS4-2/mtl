@@ -12,6 +12,11 @@ public interface PartnerService {
 
 	// 숙소 상세
 	Map<String, Object> getPartnerDetail(Map<String, Object> param);
-	
+
+	// 객실 리스트
+	Map<String, Object> getRoomList(Map<String, Object> param);
+
+	// 객실 상세
+	Map<String, Object> getRoomDetail(Map<String, Object> param);
 }
 

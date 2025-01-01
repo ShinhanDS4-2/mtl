@@ -5,6 +5,7 @@ const home = (function() {
 		_eventInit();
 		_randomBanner();
 		_event.getAccomodationList();
+		_sessionReset();
 	};
 
 	// 이벤트 초기화 
@@ -24,8 +25,10 @@ const home = (function() {
 		let type = e.type;
 		
 		if(type == "click") {
-			if(action == "clickSearch") {
+			if (action == "clickSearch") {
 				_event.clickSearch();
+			} else if (action == "clickPartnerDetail") {
+				_event.clickPartnerDetail(evo);
 			};
 		};
 	};
@@ -42,8 +45,6 @@ const home = (function() {
 			};
 			
 			comm.sendJson(url, data, "POST", function(resp) {
-				console.log(resp);
-				
 				let list = resp.list;
 				
 				let listObject = $("#accomodationList").empty();
@@ -51,13 +52,21 @@ const home = (function() {
 					let div = $("<div>").addClass("col-sm-6 col-xl-3");
 					listObject.append(div);
 
+					let cardLink = $("<a>").attr({
+						"href" : "javascript:;",					
+						"data-src" : "home",
+						"data-act" : "clickPartnerDetail",
+						"data-partner-idx" : data.partner_idx,
+					});
+					div.append(cardLink);
+
 					let card = $("<div>").addClass("card card-img-scale overflow-hidden bg-transparent");
-					div.append(card);
+					cardLink.append(card);
+					
 					{
 						let cardImg = $("<div>").addClass("card-img-scale-wrapper rounded-3");
 						card.append(cardImg);
 
-						// 이미지 경로 변경 필요
 						let img = $("<img>").addClass("card-img h-180px").attr("src", data.image.url);
 						cardImg.append(img);
 
@@ -132,12 +141,22 @@ const home = (function() {
 			
 			location.href = "/mtl/partner/list";
 		},
+		
+		// 인기 숙소 클릭
+		clickPartnerDetail: function(evo) {
+			location.href = "/mtl/partner/detail?idx=" + evo.attr("data-partner-idx");
+		},
 	};
 	
 	// 배너 랜덤으로 변경
 	function _randomBanner() {
 		let num = Math.floor(Math.random() * 7) + 1;
 		$("#banner").css("background-image","url(assets/images/banner/" + num +".jpg)");
+	};
+	
+	// 세션 초기화
+	function _sessionReset() {
+		sessionStorage.clear();
 	};
 
 	return {

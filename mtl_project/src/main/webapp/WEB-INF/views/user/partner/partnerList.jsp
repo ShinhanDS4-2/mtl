@@ -74,7 +74,7 @@
 
 											<div class="hstack gap-1 align-items-center">
 												<button type="button" class="btn btn-link adult-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
-												<h6 class="guest-selector-count mb-0 adults">2</h6>
+												<h6 class="guest-selector-count mb-0 adults" id="guestText">2</h6>
 												<button type="button" class="btn btn-link adult-add p-0 mb-0"><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
 											</div>
 										</li>
