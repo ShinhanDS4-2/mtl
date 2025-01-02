@@ -28,6 +28,7 @@ public class PayoutServiceImpl implements PayoutService {
 		
 		result.put("PayoutList", list);
 		result.put("PayoutListCount", count);
+		result.put("Param", param);  // 요청데이터를 응답에 포함
 		
 		System.out.println("result 값은? " + result);  // PayoutListCount, PayoutList 정보가 들어있어야 함
 		return result;
@@ -45,6 +46,7 @@ public class PayoutServiceImpl implements PayoutService {
 		List<Map<String, Object>> list = payoutMapper.getPartnerPayoutDetailList(param);  // 정산 상세내역 리스트
 		
 		result.put("PayoutDetailList", list);
+		result.put("calculate_date", param.get("calculate_date"));  // 요청데이터를 응답에 포함
 		
 		System.out.println("result 값은? " + result);  // PayoutDetailList 정보가 들어있어야 함
 		return result;

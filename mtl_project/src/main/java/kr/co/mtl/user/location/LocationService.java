@@ -11,12 +11,5 @@ public interface LocationService {
 	Map<String, Object> getLocationDetail(Map<String, Object> param); 
 
 
-	// [판매자] 정산내역 리스트 조회	
-	Map<String, Object> getPartnerPayoutList(Map<String, Object> param);
-	
-	// [판매자] 정산 상세내역 리스트 조회
-	Map<String, Object> getPartnerPayoutDetailList(Map<String, Object> param);
-	
-	
-	// [판매자] 정산 상세 내역 조회
+
 }
