@@ -142,7 +142,7 @@ let reservation = (function() {
 				
 				comm.sendJson(url, data, "POST", function(resp2) {
 					alert("결제가 완료되었습니다.");
-					// location.href = "/mtl/reservationConfirm?code=" + resp2.reservation_idx;
+					location.href = "/mtl/reservation/confirm?idx=" + resp2.reservation_idx;
 				});
 			} else {
 				// 에러

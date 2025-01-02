@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.user.reservation.ReservationMapper">
+
+	<!-- 예약 상세 정보 -->
+	<select id="getDetail" parameterType="HashMap">
+		SELECT
+		 	  r.idx AS reservation_idx
+			, r.user_idx
+			, r.partner_idx
+			, r.room_idx
+			, r.guest_cnt
+			, r.check_in_date
+			, r.check_out_date
+			, r.price
+			, (SELECT check_in FROM PARTNER WHERE idx = r.partner_idx) AS check_in_time
+			, (SELECT check_out FROM PARTNER WHERE idx = r.partner_idx) AS check_out_time
+			, (SELECT url FROM IMAGE WHERE mapping_idx = r.partner_idx AND type = 'P' AND thumbnail_yn = 'Y') AS image
+			, (SELECT name FROM USER WHERE idx = r.user_idx) AS name
+		FROM
+			RESERVATION r
+		WHERE 
+			r.idx = #{reservation_idx}
+		AND r.user_idx = #{user_idx}
+	</select>
+</mapper>
