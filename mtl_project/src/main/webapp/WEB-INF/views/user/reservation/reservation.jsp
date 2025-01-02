@@ -75,7 +75,7 @@
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">객실 & 인원</h6>
 										<h5 class="mb-1"><span id="roomType"></span> - <span id="guest"></span>인</h5>
-										<small><i class="bi bi-brightness-high me-1"></i>3 Nights - 4 Days</small>
+										<small><i class="bi bi-brightness-high me-1"></i><span id="dateString"></span></small>
 									</div>
 								</div>
 							</div>

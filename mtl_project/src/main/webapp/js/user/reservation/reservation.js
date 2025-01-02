@@ -1,4 +1,4 @@
-const reservation = (function() {
+let reservation = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
@@ -89,19 +89,29 @@ const reservation = (function() {
 	// 그리기
 	let _draw = {
 		drawDetail: function(data) {
+			let checkInDate = sessionStorage.getItem("search_start_date");
+			let checkOutDate = sessionStorage.getItem("search_end_date");
+		
 			$("#partnerImg").attr("src", data.image);
 			$("#partnerName").html(data.name).attr("data-partner-idx", data.partner_idx);
 			$("#partnerAddress").html(data.address);
 			$("#roomType").html(data.room_type);
 			$("#guest").html(sessionStorage.getItem("search_guest"));
-			$("#checkInDate").attr("data-date", sessionStorage.getItem("search_start_date"));
-			$("#checkInDate").html(comm.formatDate(sessionStorage.getItem("search_start_date")));
-			$("#checkOutDate").attr("data-date", sessionStorage.getItem("search_end_date"));
-			$("#checkOutDate").html(comm.formatDate(sessionStorage.getItem("search_end_date")));
+			$("#checkInDate").attr("data-date", checkInDate);
+			$("#checkInDate").html(comm.formatDate(checkInDate));
+			$("#checkOutDate").attr("data-date", checkOutDate);
+			$("#checkOutDate").html(comm.formatDate(checkOutDate));
 			$("#onePrice").html(comm.numberWithComma(sessionStorage.getItem("reservation_one_price")));
 			$("#totalPrice").html(comm.numberWithComma(sessionStorage.getItem("reservation_total_price")));
 			$("#checkIn").html(data.check_in);
 			$("#checkOut").html(data.check_out);
+			
+			// n박 m일
+			let startDate = new Date(checkInDate);
+			let endDate = new Date(checkOutDate);
+			let diffTime = endDate - startDate; 
+			let diffDays = diffTime / (1000 * 60 * 60 * 24); 
+			$("#dateString").html(`${diffDays}박 ${diffDays + 1}일`);
 			
 			_sessionReset();
 		},

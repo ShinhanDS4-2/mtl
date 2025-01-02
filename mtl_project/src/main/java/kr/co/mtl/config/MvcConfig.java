@@ -9,12 +9,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -41,7 +39,6 @@ import software.amazon.awssdk.services.s3.S3Client;
 @MapperScan(basePackages = {"kr.co.mtl"}, annotationClass = Mapper.class)
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
-@SuppressWarnings("deprecation")
 public class MvcConfig implements WebMvcConfigurer {
 	
 	// DB 설정값
@@ -117,7 +114,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(interception())
-			.addPathPatterns("/mypage/**")
+			.addPathPatterns("/mypage/**", "/reservation", "reservationConfirm")
 			.excludePathPatterns("/login", "/join", "/resources/**", "/assets/**", "/error"); // 예외 경로
 	}
 	
@@ -125,14 +122,6 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) { 
 		configurer.enable();
 	}
-	
-//	// properties 설정
-//	@Bean
-//	public static PropertyPlaceholderConfigurer propreties() {
-//		PropertyPlaceholderConfigurer config = new PropertyPlaceholderConfigurer();
-//		config.setLocations(new ClassPathResource("db.properties"));
-//		return config;
-//	}
 	
 	// S3 설정
 	@Bean
