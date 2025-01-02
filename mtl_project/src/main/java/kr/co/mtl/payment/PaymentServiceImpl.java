@@ -37,16 +37,13 @@ public class PaymentServiceImpl implements PaymentService {
 		
 		Map<String, Object> result = new HashMap<>();
 		
-//		System.out.println(param);
-//		{code=PRCD-134-202501021101413519, name=떠날지도 숙소 예약 - JW 메리어트 호텔 서울 / 패밀리, amount=600000, imp=imp_202301663487}
-		
 		HttpSession session = request.getSession();
 		param.put("user_idx", session.getAttribute("login_user_idx"));
 		
-		System.out.println(param);
 		if (paymentMapper.reservationComplete(param) > 0) {
 			paymentMapper.totalReservationUpdate(param);
 			result.put("result", true);
+			result.put("reservation_idx", param.get("reservation_idx"));
 		} else {
 			result.put("result", false);
 		};

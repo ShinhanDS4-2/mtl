@@ -5,6 +5,10 @@ let reservation = (function() {
 		_eventInit();
 		_event.getRoomDetail();
 		_event.getUserInfo();
+		
+		if (sessionStorage.getItem("reservation_total_price") == null) {
+			location.href = "/mtl/";
+		}
 	};
 
 	// 이벤트 초기화 
@@ -141,8 +145,10 @@ let reservation = (function() {
 				data.imp = resp.imp_uid;
 				
 				comm.sendJson(url, data, "POST", function(resp2) {
-					alert("결제가 완료되었습니다.");
-					location.href = "/mtl/reservation/confirm?idx=" + resp2.reservation_idx;
+					if(resp2.result == true) {
+						alert("결제가 완료되었습니다.");
+						location.href = "/mtl/reservation/confirm?idx=" + resp2.reservation_idx;
+					};
 				});
 			} else {
 				// 에러
