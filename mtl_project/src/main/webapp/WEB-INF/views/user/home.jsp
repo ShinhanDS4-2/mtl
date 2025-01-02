@@ -205,9 +205,6 @@ Main Banner END -->
 			<div class="col-6 text-start">
 				<h5 class="mb-0">인기 숙소</h5>
 			</div>
-			<div class="col-6 text-end">
-				<a href="#" class="text-secondary"><i class="fa-solid fa-arrow-right"></i> 더보기</a>
-			</div>
 		</div>
 
 		<div class="row g-4" id="accomodationList">

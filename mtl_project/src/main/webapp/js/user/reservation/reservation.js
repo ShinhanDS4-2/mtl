@@ -103,7 +103,7 @@ const reservation = (function() {
 			$("#checkIn").html(data.check_in);
 			$("#checkOut").html(data.check_out);
 			
-			// _sessionReset();
+			_sessionReset();
 		},
 	};
 	
