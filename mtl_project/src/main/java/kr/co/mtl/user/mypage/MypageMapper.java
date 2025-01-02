@@ -14,6 +14,8 @@ public interface MypageMapper {
 	Map<String, Object> getReservImg(Map<String, Object> param);  // 예약내역 리스트에 띄울 숙소 사진 1장 조회
 	Object getReservRoomtype(Map<String, Object> param);  // 예약내역 상세정보에 객실타입정보만 추출하기 위함
 	
+	Map<String, Object> getReservationHistoryDetail(Map<String, Object> param);  // 예약내역 상세정보
+
 
 	
 }

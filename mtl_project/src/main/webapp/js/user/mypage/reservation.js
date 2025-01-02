@@ -1,44 +1,53 @@
 const reservation = (function() {
 
-	// js 로딩 시 이벤트 초기화 실행
+	// js 로딩 시 이벤트 초기화 실행 
 	function init() {
 		fetchReservationList();  // 페이지 로드 시 예약내역 리스트를 가져옴
 
-		_menuActive();   // 원래 있던건데 이건 뭐지?? 
+		//_menuActive();   // 원래 있던건데 이건 뭐지??   
 		_eventInit(); 
 	};
 
-	// 이벤트 초기화 
+	// 이벤트 초기화  
 	function _eventInit() {
 		let evo = $("[data-src='reservation'][data-act]").off();
 		evo.on("click", function(e) {
 			_eventAction(e);
 		});
 	};
-	
-	// 이벤트 분기 
+	 
+	// 이벤트 분기  
 	function _eventAction(e) {
 		let evo = $(e.currentTarget);
 		
 		let action = evo.attr("data-act");
 		
 		let type = e.type;
-		
-		if(type == "click") {
-			if(action == "clickReservDetail") {
-				_event.clickReservDetail(evo); 
+		 
+		if(type == "click") { 
+			/* 
+			if(action == "clickDeatilModal") {
+				_event.clickDeatilModal(evo); 
 			}
+				*/
 		};
 	};
 	
 	// 이벤트
+	/*
 	let _event = {
-		// 예약내역 상세 정보 모달 이동
-		clickReservDetail : function(evo) {
+		// 예약내역 상세 정보 모달 클릭 시
+		clickDeatilModal : function(evo) {
+			let reservation_idx evo.attr("data-reservation-idx");
+			let src = evo.attr("data-src"); // 데이터 소스 ("reservation")
+
+			console.log("예약 ID:", reservationIdx); // 예: 123
+			console.log("데이터 소스:", src); // 예: "reservation"
 
 		}
 	
 	};
+	*/
 
 
 	// fetchReservationList();  페이지 로드 시 예약내역 리스트를 가져오는 함수
@@ -86,6 +95,7 @@ const reservation = (function() {
 
 
 	let _draw = {  
+		// 예약 내역 리스트
 		drawReservationList: function(list) {  // fetchReservationList() 함수에서 API 호출 결과 값으로 받은 response.ReservationList값을 list라는 이름의 매개변수로 넘겨준다. 
 			
 		/* 예약내역 리스트 card START */
@@ -127,7 +137,8 @@ const reservation = (function() {
 									<div class="mt-3 mt-sm-0">
 										<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0">추천 여행지</a>    
 										<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0"  data-bs-toggle="modal" data-bs-target="#reviewModal">후기 작성</a>    
-										<a href="javascript:;" class="btn btn-sm btn-primary mb-0" data-bs-toggle="modal" data-bs-target="#reservationDetail">상세 정보</a>    
+										<a href="javascript:;" class="btn btn-sm btn-primary mb-0 reservDetail" data-bs-toggle="modal" data-bs-target="#reservationDetail" 
+												data-src="reservation" data-reservation-idx="${data.reservation_idx}">상세 정보</a>    
 									</div>                  
 								</div>
 							</div>
@@ -135,58 +146,80 @@ const reservation = (function() {
 				row.append(cardBody);
 			}
 		/* 예약내역 리스트 card END */
+		
+		
+			// 예약 상세정보 버튼 클릭 시 이벤트
+			$(".reservDetail").click(function() {
+				let reservation_idx = $(this).data("reservation-idx");  // jQuery의 .data() 메서드를 사용해 data-* 속성에 저장된 값을 가져옴.
+
+				$.ajax({  // ajax로 예약 상세정보API호출하고 param으로 예약idx 보냄
+					type: "POST",
+					url: "/mtl/api/user/mypage/reservationHistoryDetail",   // 예약내역 상세정보 조회 API 호출
+					data: { reservation_idx: reservation_idx },  // 호출 시 param값으로 넘겨줄 것 reservation-idx(예약 idx)
+					
+					success: function(response){ //  API 호출 결과 값이 response에 들어있음
+						console.log("ajax에서 response값은 ??? >>>>");
+						console.log(response);
+						_draw.drawReservationDetailModal(response);  // 받은 응답을 모달에 렌더링
+						_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.
+					},
+					error: function(xhr, status, error) {
+						console.error("Error :", error);  // 오류 처리
+					}
+				});
+			});
+		},
+		
+		// 예약 상세정보 Modal
+		drawReservationDetailModal: function(reservData) {  // 예약 상세정보 조회 API 호출 결과 값으로 받은 response값을 reservData라는 이름의 매개변수로 넘겨준다. 
 
 		/* 예약 상세 정보 modal START */
 			let reservDetailModal = $("#reservDetailModal");
 
-			<div class="card bg-transparent m-3 border">
-					<div class="card-body">
-						<div class="col-12">
-							<div class="mb-2">
-								<img src="assets/images/서울_시그니엘서울.jpg" class="rounded">
+		// 모달 내용을 추가하기 전에 기존 내용을 비워준다. => 필수!! 이거 없으면 모달창에 예약상세정보 카드가 중복으로 여러번 추가된다. 
+
+			reservDetailModal.empty();
+
+			let modalBody = 
+					`<div class="card bg-transparent m-3 border">
+							<div class="card-body">
+								<div class="col-12">
+									<div class="mb-2">
+										<img src="${reservData.url}" class="rounded">
+									</div>
+									<ul class="list-group list-group-borderless">
+										<li class="list-group-item">
+											<span class="h6 mb-0 me-1">객실 : </span>
+											<span class="h6 fw-light mb-0">${reservData.room_type}</span>
+										</li>
+										<li class="list-group-item">
+											<span class="h6 mb-0 me-1">체크인 : </span>
+											<span class="h6 fw-light mb-0">${reservData.check_in_date}</span>
+										</li>
+										<li class="list-group-item">
+											<span class="h6 mb-0 me-1">체크아웃 : </span>
+											<span class="h6 fw-light mb-0">${reservData.check_out_date}</span>
+										</li>
+										<li class="list-group-item">
+											<span class="h6 mb-0 me-1">인원 : </span>
+											<span class="h6 fw-light mb-0">${reservData.guest_cnt}인</span>
+										</li>
+										<li class="list-group-item">
+											<span class="h6 mb-0 me-1">총 금액 : </span>
+											<span class="h6 fw-light mb-0">${reservData.price}</span>
+										</li>
+									</ul>
+								</div>
 							</div>
-							<ul class="list-group list-group-borderless">
-								<li class="list-group-item">
-									<span class="h6 mb-0 me-1">객실 :</span>
-									<span class="h6 fw-light mb-0">스탠다드</span>
-								</li>
-								<li class="list-group-item">
-									<span class="h6 mb-0 me-1">체크인 : </span>
-									<span class="h6 fw-light mb-0">2024-12-01</span>
-								</li>
-								<li class="list-group-item">
-									<span class="h6 mb-0 me-1">체크아웃 : </span>
-									<span class="h6 fw-light mb-0">2024-12-02</span>
-								</li>
-								<li class="list-group-item">
-									<span class="h6 mb-0 me-1">인원 : </span>
-									<span class="h6 fw-light mb-0">2인</span>
-								</li>
-								<li class="list-group-item">
-									<span class="h6 mb-0 me-1">총 금액</span>
-									<span class="h6 fw-light mb-0">200,000</span>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+						</div>`
 
-
-
-
-
+			reservDetailModal.append(modalBody);
 		/* 예약 상세 정보 modal END */
-
-
-
 		
-		}		
-	};
+				
+	},
+};
 
-
-
-
-	
 	return {
 		init,
 	};

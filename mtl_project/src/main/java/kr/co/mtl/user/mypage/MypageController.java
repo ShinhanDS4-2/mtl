@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class MypageController {
 
 	@Autowired
-	private MypageService locationService;
+	private MypageService mypageService;
 
-	
+	 
 	/** 시온 - API 완료
 	 * [사용자] 마이페이지 예약내역 리스트(상세정보) 조회
 	 * 상세페이지 접속 => http://localhost:8090/mtl/mypage/reservation
@@ -24,11 +24,21 @@ public class MypageController {
 	 */
 	@PostMapping("/reservationHistoryList")
 	public Map<String, Object> getMypageReservationHistory(@RequestParam Map<String, Object> param) throws Exception {
-		Map<String, Object> result = locationService.getMypageReservationHistoryList(param);
+		Map<String, Object> result = mypageService.getMypageReservationHistoryList(param);
 		return result;
 	}
 	
-
+	
+	/** 시온 - API 완료
+	 * [사용자] 마이페이지 예약내역 상세정보 조회 (모달)
+	 * @param reservation_idx(예약 idx)
+	 * @return 예약내역 상세정보 단일행 반환 (=> 예약idx, 객실타입, 체크인일자, 체크아웃일자, 객실 금액, 예약인원)
+	 */
+	@PostMapping("/reservationHistoryDetail")
+	public Map<String, Object> getMypageReservationHistoryDetail(@RequestParam Map<String, Object> param) throws Exception {
+		Map<String, Object> result = mypageService.getReservationHistoryDetail(param);
+		return result;
+	}
 
 	
 }

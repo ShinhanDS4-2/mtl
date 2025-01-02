@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 public class MypageServiceImpl implements MypageService {
 
 	@Autowired
-	private MypageMapper locationMapper;
+	private MypageMapper mypageMapper;
 	
 	/** 시온
-	 * [사용자] 마이페이지 예약내역 리스트(상세정보) 조회
+	 * [사용자] 마이페이지 예약내역 리스트 조회
 	 * @param user_idx
 	 * @return ReservationListCount, ReservationList (=> 예약idx, 판매자(=숙소)idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 예약인원, 객실 금액, img, 객실타입roomtype)
 	 */
@@ -22,8 +22,8 @@ public class MypageServiceImpl implements MypageService {
 		
 		Map<String, Object> result = new HashMap<>();  // 결과 넣을 Map
 		
-		int count = locationMapper.getReservationHistoryListCount(param);  // 마이페이지 예약내역 리스트 총 개수
-		List<Map<String, Object>> list = locationMapper.getReservationHistoryList(param);  // 마이페이지 예약내역 리스트
+		int count = mypageMapper.getReservationHistoryListCount(param);  // 마이페이지 예약내역 리스트 총 개수
+		List<Map<String, Object>> list = mypageMapper.getReservationHistoryList(param);  // 마이페이지 예약내역 리스트
 		
 		// 예약내역 list에 숙소 사진정보 넣어주는 반복문
 		for(Map<String, Object> data : list) {  // 예약내역 리스트 list에서 1개의 예약내역 data를 뽑음	
@@ -34,7 +34,7 @@ public class MypageServiceImpl implements MypageService {
 			System.out.println("Map<String, Object> partner_idx 값은? " + partner_idx);
 
 			// 예약내역 리스트에 띄울 숙소 사진 1장 조회 (partner_idx를 넘겨줌)
-			Map<String, Object> img = locationMapper.getReservImg(partner_idx);
+			Map<String, Object> img = mypageMapper.getReservImg(partner_idx);
 			System.out.println("img 값은? " + img);
 			
 			// 뽑은 숙소 이미지를 data에 넣어줌. (Map으로 된 1개의 예약내역 data에 img를 넣어주는 것)
@@ -44,7 +44,7 @@ public class MypageServiceImpl implements MypageService {
 			Map<String, Object> reservation_idx = Map.of("reservation_idx", data.get("reservation_idx"));
 			
 			// 예약내역 상세정보에 객실타입정보 넣어주기
-			Object roomtype = locationMapper.getReservRoomtype(reservation_idx);
+			Object roomtype = mypageMapper.getReservRoomtype(reservation_idx);
 			System.out.println("roomtype 값은? " + roomtype);
 			
 			// 위에서 뽑은 객실타입정보를 data에 넣어줌. 
@@ -58,6 +58,17 @@ public class MypageServiceImpl implements MypageService {
 		System.out.println("result 값은? " + result);  // ReservationList, ReservationListCount 정보가 들어있어야 함
 		return result;
 	}
+	
+	/** 시온
+	 * [사용자] 마이페이지 예약내역 상세정보 조회
+	 * @param reservation_idx (예약테이블의 idx)
+	 * @return (=> 예약idx, 객실타입, 체크인일자, 체크아웃일자, 객실 금액, 예약인원, 객실 이미지정보)
+	 */
+	public Map<String, Object> getReservationHistoryDetail(Map<String, Object> param) {
+		Map<String, Object> result = mypageMapper.getReservationHistoryDetail(param);
+		return result;
+	}
+		
 	
 
 
