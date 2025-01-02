@@ -107,7 +107,7 @@
 					
 					<!-- 회원 탈퇴 (modal) -->
 					<div class="text-secondary">
-						<small>더 이상 떠날지도 이용을 원하지 않으신가요?<a href="#" class="text-secondary"><b> 회원탈퇴</b></a></small>
+						<small>더 이상 떠날지도 이용을 원하지 않으신가요?<a href="javascript:;" class="text-secondary" data-src='info' data-act="withdraw"><b> 회원탈퇴</b></a></small>
 					</div>
 				</div>
 			</div>

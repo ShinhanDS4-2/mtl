@@ -34,7 +34,7 @@
 											<label class="form-label">대표 이메일 <span class="text-danger">*</span></label>
 											<div class="row">
 												<div class="col-8 pe-1">
-													<input type="email" class="form-control" id="authNum" placeholder="인증번호를 입력해 주세요.">
+													<input type="email" class="form-control" id="authNum" placeholder="이메일을 입력해 주세요.">
 												</div>
 												<div class="col-4 ps-1">
 													<div class="d-grid">
