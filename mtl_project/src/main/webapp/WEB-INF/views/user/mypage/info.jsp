@@ -40,19 +40,19 @@
 							<form class="row g-3">
 								<div class="col-md-6">
 									<label class="form-label">이름</label>
-									<input type="text" id="name" class="form-control" value="${login_user.name }">
+									<input type="text" id="name" class="form-control">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">이메일</label>
-									<input type="email" class="form-control text-secondary" value="${login_user.email }" disabled="disabled">
+									<input type="email" id="email" class="form-control text-secondary" disabled="disabled">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">연락처</label>
-									<input type="text" id="phone" class="form-control" value="${login_user.phone }">
+									<input type="text" id="phone" class="form-control">
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">생년월일</label>
-									<input type="text" class="form-control text-secondary" value="${login_user.birth }" disabled="disabled">
+									<input type="text" id="birth" class="form-control text-secondary" disabled="disabled">
 								</div>
 								<div class="col-md-6">
 									<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
@@ -84,12 +84,12 @@
 						<form class="card-body">
 							<div class="mb-3">
 								<label class="form-label">현재 비밀번호</label>
-								<input class="form-control" type="password" placeholder="Enter current password">
+								<input id="password" class="form-control" type="password" placeholder="Enter current password">
 							</div>
 							<div class="mb-3">
 								<label class="form-label">새 비밀번호</label>
 								<div class="input-group">
-									<input class="form-control fakepassword" placeholder="Enter new password" type="password" id="psw-input">
+									<input id="newPassword" class="form-control fakepassword" placeholder="Enter new password" type="password">
 									<span class="input-group-text p-0 bg-transparent">
 										<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 									</span>
@@ -97,10 +97,10 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">새 비밀번호 확인</label>
-								<input class="form-control" type="password" placeholder="Confirm new password">
+								<input id="confirmPassword" class="form-control" type="password" placeholder="Confirm new password">
 							</div>
 							<div class="text-end">
-								<a href="javascript:;" class="btn btn-primary mb-0">비밀번호 변경</a>
+								<a href="javascript:;" class="btn btn-primary mb-0" data-src='info' data-act="changePassword">비밀번호 변경</a>
 							</div>
 						</form>
 					</div>

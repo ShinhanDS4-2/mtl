@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.partner.partnernotice.PartnerNoticeMapper">
+
+	<insert id="registerPartnerNotice" parameterType="HashMap">
+		INSERT INTO PARTNER_NOTICE
+			(partner_idx,content,create_date,update_date)
+		VALUES (
+			#{partner_idx},#{content},NOW(),NOW()
+			)
+	</insert>
+	
+	<select id="getPartnerNoticeContent" resultType="String">
+		SELECT content
+		FROM PARTNER_NOTICE
+	</select>
+	
+	<update id="updatePartnerNotice" parameterType="String">
+		UPDATE PARTNER_NOTICE
+		SET
+			content=#{content}
+		WHERE 
+			idx=#{idx}
+	</update>	
+	
+	<delete id="deletePartnerNotice" parameterType="int">
+		DELETE FROM PARTNER_NOTICE
+		WHERE idx=#{idx}
+	</delete>
+
+</mapper>

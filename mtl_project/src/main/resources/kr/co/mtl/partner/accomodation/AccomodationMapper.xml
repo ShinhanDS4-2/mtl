@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.partner.accomodation.AccomodationMapper">
+
+	<insert id="registerAccomodation" parameterType="HashMap">
+		INSERT INTO PARTNER 
+			(email,password,name,phone,business_name,business_number,area,address,description,address_si,address_dong,approval_status,
+			create_date,update_date,password_update_date,type,score,total_reservation,approval_date,account_number,account_bank,account_name,
+			latitude,hardness)
+		VALUES (
+			#{email},#{password},#{name},#{phone},#{business_name},#{business_number},#{area},#{address},#{description},#{address_si},
+			#{address_dong},#{approval_status},NOW(),NOW(),NOW(),#{type},#{score},#{total_reservation},NOW(),#{account_number},
+			#{account_bank},#{account_name},#{latitude},#{hardness}
+			)
+	</insert>
+	
+
+</mapper>

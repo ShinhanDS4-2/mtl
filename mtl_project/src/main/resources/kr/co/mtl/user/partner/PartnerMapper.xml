@@ -38,17 +38,52 @@
 	<!-- 숙소 검색 리스트 -->
 	<select id="getPartnerList" parameterType="HashMap">
 		SELECT
-			  p.idx AS partner_idx
-			, p.name
-			, p.area
-			, p.score
-			, p.type
-			, p.address
-			<if test="min_price != null and max_price != null">
-			, (SELECT MIN(r.basic_price) FROM ROOM r WHERE r.partner_idx = p.idx AND r.basic_price BETWEEN #{min_price} AND #{max_price}) AS price
-			</if>
+		      p.idx AS partner_idx
+		    , p.name
+		    , p.area
+		    , p.score
+		    , p.type
+		    , p.address
+		    , (
+		        SELECT SUM(
+		            CASE 
+		                WHEN WEEKDAY(date_range) IN (0, 1, 2, 3, 4) THEN r.basic_price
+		                WHEN WEEKDAY(date_range) IN (5, 6) THEN r.weekend_price
+		            END
+		        ) AS total_price
+		        FROM (
+		            SELECT 
+		            	DATE_ADD(#{start_date}, INTERVAL seq DAY) AS date_range
+		            FROM (
+		                SELECT 
+		                	@row := @row + 1 AS seq
+		                FROM (SELECT 0 UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) a,
+		                     (SELECT 0 UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) b,
+		                     (SELECT @row := -1) init
+		            ) seq_gen
+		            WHERE 
+		            	DATE_ADD(#{start_date}, INTERVAL seq DAY) <![CDATA[ < ]]> #{end_date}
+		        ) date_ranges
+		        JOIN (SELECT 
+					  	  MIN(r.basic_price) AS basic_price
+					  	, MIN(r.weekend_price) AS weekend_price
+						, r.idx
+						, r.partner_idx
+					  FROM 
+					  	ROOM r
+					  JOIN PARTNER p 
+					  ON p.idx = r.partner_idx 
+					  WHERE r.maximum >= #{guest}
+					  GROUP BY p.idx) AS r 
+		        ON r.partner_idx = p.idx
+		        WHERE r.idx NOT IN (
+		            SELECT room_idx
+		            FROM RESERVATION
+		            WHERE check_in_date <![CDATA[ < ]]> #{end_date} AND check_out_date > #{start_date}
+		        )
+		    ) AS total_price
 		FROM 
-			PARTNER p
+		    PARTNER p
 		<include refid="searchPartner"></include>
 		ORDER BY p.create_date DESC
 		<if test="limit != null and offset != null">
@@ -133,17 +168,56 @@
 	<!-- 숙소 별 객실 리스트 -->
 	<select id="getRoomList" parameterType="HashMap">
 		SELECT
-			  idx AS room_idx
-			, room_type
-			, description
-			, standard
-			, maximum
-			, basic_price
-			, weekend_price
+			  r.idx AS room_idx
+			, r.room_type
+			, r.description
+			, r.standard
+			, r.maximum
+			, (
+		        SELECT SUM(
+		            CASE 
+		                WHEN WEEKDAY(date_range) IN (0, 1, 2, 3, 4) THEN r.basic_price
+		                WHEN WEEKDAY(date_range) IN (5, 6) THEN r.weekend_price
+		            END
+		        ) AS total_price
+		        FROM (
+		            SELECT 
+		            	DATE_ADD(#{start_date}, INTERVAL seq DAY) AS date_range
+		            FROM (
+		                SELECT 
+		                	@row := @row + 1 AS seq
+		                FROM (SELECT 0 UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) a,
+		                     (SELECT 0 UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) b,
+		                     (SELECT @row := -1) init
+		            ) seq_gen
+		            WHERE 
+		            	DATE_ADD(#{start_date}, INTERVAL seq DAY) <![CDATA[ < ]]> #{end_date}
+		        ) date_ranges
+		    ) AS total_price
 		FROM
-			ROOM
+			ROOM r
 		WHERE
-			partner_idx = #{partner_idx}
+			r.partner_idx = #{partner_idx}
+		<if test="start_date != null and end_date != null">
+			AND r.idx IN (
+		        SELECT 
+		        	idx
+		        FROM 
+		        	ROOM r
+		        WHERE 
+		        	r.idx NOT IN (
+		            SELECT 
+		            	room_idx
+		            FROM 
+		            	RESERVATION
+		            WHERE 
+		            	(check_in_date <![CDATA[ < ]]> #{end_date} AND check_out_date > #{start_date})
+		        )
+		    )
+		</if>
+		<if test="guest != null and guest != ''">
+			AND r.maximum >= #{guest}
+		</if>
 	</select>
 	
 	<!-- 객실 이미지 -->
@@ -169,6 +243,22 @@
 		WHERE
 			f.type = 'ROOM'
 		AND rf.room_idx = #{room_idx}
+	</select>
+	
+	<!-- 객실 상세 -->
+	<select id="getRoomDetail" parameterType="HashMap">
+		SELECT
+			  p.name
+			, p.address
+			, r.room_type
+			, r.description
+			, (SELECT url FROM IMAGE WHERE type = 'P' AND mapping_idx = p.idx AND thumbnail_yn = 'Y') AS image
+		FROM
+			ROOM r
+		JOIN
+			PARTNER p
+		ON r.partner_idx = p.idx
+		WHERE r.idx = #{room_idx}
 	</select>
 	
 	<!-- 숙소 검색 where -->
@@ -231,13 +321,29 @@
 					partner_idx
 				FROM
 					ROOM
-				WHERE
-					(basic_price BETWEEN #{min_price} AND #{max_price})
-				OR (weekend_price BETWEEN #{min_price} AND #{max_price})
+				WHERE 
+				(CASE
+					WHEN WEEKDAY(#{start_date}) IN (0, 1, 2, 3, 4) THEN basic_price 
+					WHEN WEEKDAY(#{start_date}) IN (5, 6) THEN weekend_price 
+				END) BETWEEN #{min_price} AND #{max_price}
 			)
 		</if>
-		<if test="check_in_date != null and check_out_date != null">
-		
+		<if test="start_date != null and end_date != null">
+			AND p.idx IN (
+		        SELECT 
+		        	r.partner_idx
+		        FROM 
+		        	ROOM r
+		        WHERE 
+		        	r.idx NOT IN (
+		            SELECT 
+		            	room_idx
+		            FROM 
+		            	RESERVATION
+		            WHERE 
+		            	(check_in_date <![CDATA[ < ]]> #{end_date} AND check_out_date > #{start_date})
+		        )
+		    )
 		</if>
 		<if test="guest != null and guest != ''">
 			AND p.idx IN (

@@ -28,7 +28,7 @@
 			
 			<!-- Profile and Notification START -->
 			<ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
-			<c:if test="${empty login_user }">
+			<c:if test="${empty login_user_idx }">
 				<!-- 비로그인 시 로그인/회원가입 버튼 -->
 				<li class="nav-item">
 					<a class=" btn btn-outline-primary btn-sm mt-2" href="login" role="button">
@@ -37,10 +37,10 @@
 				</li>
 				<!-- 로그인 시 사용자 버튼 START -->
 			</c:if>
-			<c:if test="${!empty login_user }">
+			<c:if test="${!empty login_user_idx }">
 				<li class="nav-item ms-3 dropdown">
 					<a class=" btn btn-outline-primary btn-sm mt-2" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-						<span>${login_user.name }</span> 님<i class="fas fa-angle-right ms-2"></i>
+						<span>${login_user_name }</span> 님<i class="fas fa-angle-right ms-2"></i>
 					</a>
 
 					<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
@@ -48,8 +48,8 @@
 						<li class="px-3 mb-3">
 							<div class="d-flex align-items-center">
 								<div>
-									<a class="h6 mt-2 mt-sm-0" href="mypage/info">${login_user.name }</a>
-									<p class="small m-0">${login_user.email }</p>
+									<a class="h6 mt-2 mt-sm-0" href="mypage/info">${login_user_name }</a>
+									<p class="small m-0">${login_user_email }</p>
 								</div>
 							</div>
 						</li>

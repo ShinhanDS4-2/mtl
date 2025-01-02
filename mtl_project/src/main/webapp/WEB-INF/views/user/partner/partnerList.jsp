@@ -33,8 +33,7 @@
 							<i class="bi bi-geo-alt fs-3 me-2 mt-2"></i>
 							<div class="flex-grow-1">
 								<label class="form-label">지역</label>
-								<select class="form-select js-choice text-reset" id="searchArea">
-									<option value="" disabled="disabled">지역 선택</option>
+								<select class="form-select text-reset" id="searchArea">
 									<option value="" selected>전체</option>
 									<option value="SEOUL">서울</option>
 									<option value="GANGNEUNG">강릉</option>
@@ -75,7 +74,7 @@
 
 											<div class="hstack gap-1 align-items-center">
 												<button type="button" class="btn btn-link adult-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
-												<h6 class="guest-selector-count mb-0 adults">2</h6>
+												<h6 class="guest-selector-count mb-0 adults" id="guestText">2</h6>
 												<button type="button" class="btn btn-link adult-add p-0 mb-0"><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
 											</div>
 										</li>
@@ -202,7 +201,6 @@
 			<!-- 숙소 리스트 -->
 			<div class="col-xl-8 col-xxl-9">
 				<div class="vstack gap-4" id="partnerList">
-
 				</div>
 				<!-- Pagination -->
 				<nav class="d-flex justify-content-center mt-5" aria-label="navigation">

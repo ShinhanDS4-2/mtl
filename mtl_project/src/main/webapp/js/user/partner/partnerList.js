@@ -5,6 +5,7 @@ const partnerList = (function() {
 		_eventInit();
 		_sliderInit();
 		_randomBanner();
+		_setSearch();
 		_list.getPartnerList();
 		_list.getOptionList();
 	};
@@ -17,6 +18,58 @@ const partnerList = (function() {
 		});
 	};
 	
+	// home에서 검색으로 넘어올 때 세션에서 검색 조건 확인 후 세팅 -> 세션 삭제
+	function _setSearch() {
+		// select
+		let element = document.getElementById("searchArea");
+		let choices = "";
+	    if (element) {
+	        choices = new Choices(element, {
+	            searchEnabled: false, 
+	        });
+	    };
+		
+		let area = sessionStorage.getItem("search_area");
+		if (area != null) {
+	        // 선택 값 변경
+	        choices.setChoiceByValue(sessionStorage.getItem("search_area"));
+		};
+		
+		let startDate = sessionStorage.getItem("search_start_date");
+		let endDate = sessionStorage.getItem("search_end_date");
+	    
+	    if (startDate == null) {
+	    	startDate = "today";
+	    	endDate = new Date().fp_incr(1);
+		};
+		
+		if (startDate != null && endDate == "undefined") {
+			endDate = new Date(startDate).fp_incr(1);
+	    };
+   
+	    flatpickr($("#searchDate"), {
+	        mode: "range",
+	        enableTime: false,
+	        noCalendar: false,
+	        inline: false,
+	        animate: "false",
+	        position: "top",
+	        dateFormat: "Y-m-d",
+	        disableMobile: "true",
+	        minDate: "today",
+	        defaultDate: [startDate, endDate]
+	    });
+	    
+	    let guest = sessionStorage.getItem("search_guest");
+	    if (guest != null) {
+		    $("#searchGuest").val(guest + " 명");
+		    $("#guestText").html(guest);
+	    	e.guestSelector(guest);
+	    }
+	    
+	    //sessionStorage.clear();
+	};
+
 	// noUiSlider 설정
 	function _sliderInit() {
 		const slider = document.getElementById("noSlider");
@@ -80,6 +133,17 @@ const partnerList = (function() {
 	// 이벤트
 	let _event = {
 		clickPartner: function(evo) {
+			// 날짜 문자열 분리
+			let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
+				
+			// 인원 문자열 분리
+			let guest = $("#searchGuest").val().match(/\d+/)[0];
+
+			// 검색 조건을 넘기기 위해 클라이언트 세션에 저장			
+			sessionStorage.setItem("search_start_date", startDate);
+			sessionStorage.setItem("search_end_date", endDate);
+			sessionStorage.setItem("search_guest", guest);
+		
 			let partnerIdx = evo.attr("data-partner-idx");
 			location.href = "/mtl/partner/detail?idx=" + partnerIdx;
 		},
@@ -280,7 +344,7 @@ const partnerList = (function() {
 					};
 				};
 				
-				// 가격
+				// 1박 가격
 				let priceDiv = $("<div>").addClass("d-sm-flex justify-content-sm-end align-items-center mt-3 mt-md-auto");
 				cardBody.append(priceDiv);
 
@@ -288,10 +352,28 @@ const partnerList = (function() {
 				priceDiv.append(price);
 
 				let priceNum = $("<h5>").addClass("fw-bold mb-0 me-1");
-				priceNum.append("<i class='fa-solid fa-won-sign'></i> ");
-				priceNum.append(data.price);
+				let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
+				startDate = new Date(startDate);
+				endDate = new Date(endDate);
+				let diffTime = endDate.getTime() - startDate.getTime();
+				let diffDays = diffTime / (1000 * 60 * 60 * 24);
+				priceNum.append(comm.numberWithComma(Math.round(data.total_price / diffDays)));
+				priceNum.append(" <i class='fa-solid fa-won-sign'></i>");
+				price.append("<span class='mb-0 me-2'>1박 / </span>");
 				price.append(priceNum);
-				price.append("<span class='mb-0 me-2'> / 일</span>");
+				
+				// 전체 가격
+				let priceDiv2 = $("<div>").addClass("d-sm-flex justify-content-sm-end align-items-center mt-1");
+				cardBody.append(priceDiv2);
+				
+				let price2 = $("<div>").addClass("d-flex align-items-center");
+				priceDiv2.append(price2);
+
+				let priceNum2 = $("<h5>").addClass("fw-bold mb-0 me-1");
+				priceNum2.append(comm.numberWithComma(data.total_price));
+				priceNum2.append(" <i class='fa-solid fa-won-sign'></i>");
+				price2.append("<span class='mb-0 me-2'>전체 / </span>");
+				price2.append(priceNum2);
 			};
 		},
 		
@@ -415,8 +497,8 @@ const partnerList = (function() {
 		let maxPrice = $("#maxPrice").val();
 		
 		// data 객체 안에 값 설정
-		data.start_data = startDate;
-		data.end_data = endDate;
+		data.start_date = startDate;
+		data.end_date = endDate;
 		data.guest = guest;
 		data.area = $("#searchArea option:selected").val();
 		data.partner_type_list = partnerTypeList;

@@ -22,6 +22,9 @@
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+<!-- 아임포트 -->
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+
 <!-- common JS -->
 <script src="js/util/common.js"></script>
 <!-- paging -->

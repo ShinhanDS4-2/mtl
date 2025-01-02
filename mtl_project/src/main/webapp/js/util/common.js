@@ -128,5 +128,37 @@ const comm = {
             position: new naver.maps.LatLng(_option.latitude, _option.hardness), // 마커 위치
             map: map 
         });
+	},
+	
+	// 3자리마다 , 찍어서 반환
+	numberWithComma: function(num) {
+    	if (num == null || num == undefined) return "";
+
+    	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    
+	// 년월일로 반환
+    formatDate: function(date) {
+	    let [year, month, day] = date.split("-");
+	
+	    return `${year}년 ${month}월 ${day}일`;
+	},
+	
+	// 예약 코드 반환
+	makeReservationCode: function(idx) {
+	    let now = new Date();
+	
+	    // 날짜
+	    let year = now.getFullYear(); 
+	    let month = String(now.getMonth() + 1).padStart(2, '0'); 
+	    let date = String(now.getDate()).padStart(2, '0');
+	    let hours = String(now.getHours()).padStart(2, '0'); 
+	    let minutes = String(now.getMinutes()).padStart(2, '0');
+	    let seconds = String(now.getSeconds()).padStart(2, '0'); 
+	
+	    // 랜덤 숫자 4자리
+	    let random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+	
+	    return `PRCD-${idx}-${year}${month}${date}${hours}${minutes}${seconds}${random}`;
 	}
 }

@@ -50,6 +50,7 @@ public class PartnerPageController {
 	public String hotelregist() {
 		return "partner/hotel/hotelregist";
 	}
+	
 	@GetMapping("/roomregist")
 	public String roomregist() {
 		return "partner/hotel/roomregist";

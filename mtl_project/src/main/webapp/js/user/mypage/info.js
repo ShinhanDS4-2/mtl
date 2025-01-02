@@ -3,6 +3,7 @@ const info = (function() {
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_menuActive();
+		_setInfo();
 		_eventInit();
 	};
 
@@ -26,6 +27,8 @@ const info = (function() {
 		
 			if(action == "updateInfo") {
 				_event.updateInfo();
+			} else if(action == "changePassword") {
+				_event.changePassword();
 			};
 		};
 	};
@@ -56,10 +59,10 @@ const info = (function() {
 		
 		// 서버로 데이터 전송
             comm.send("/user/update", formData, "POST", function(response) {
-                if (response.code == 200) {
+                if (response.result == true) {
                     alert("내 정보 수정이 완료되었습니다.");
                     // 마이페이지 수정 성공 시 페이지 이동x
-                    location.href = "/mtl/mypage/info/";
+                    location.reload();
                 } else {
                     alert("내 정보 수정에 실패했습니다. 다시 시도해주세요.");
                 }
@@ -68,10 +71,59 @@ const info = (function() {
                 alert("내 정보 수정 중 오류가 발생했습니다. 다시 시도해주세요.");
             });
         },
+        
+        
+        // 비밀번호 변경
+        changePassword: function() {
+        	const formData = {
+        		password: $("#password").val(),
+                newPassword: $("#newPassword").val(),
+                confirmPassword: $("#confirmPassword").val(),
+        	};
+        
+        // 유효성 검사
+        if (!formData.password) {
+            alert("현재 비밀번호를 입력해주세요.");
+            return;
+        }
+        if (!formData.newPassword) {
+            alert("새 비밀번호를 입력해주세요.");
+            return;
+        }
+        if (formData.newPassword !== formData.confirmPassword) {
+            alert("새 비밀번호와 일치하지 않습니다.");
+            return;
+        }
+        	
+        // 서버로 데이터 전송
+            comm.send("/user/changePassword", formData, "POST", function(response) {
+                if (response.result) {
+                    alert(response.message);
+                    location.reload();
+                } else {
+                    alert(response.message);
+                }
+            }, function(error) {
+                console.error("비밀번호 변경 중 오류:", error);
+                alert("비밀번호 변경 중 오류가 발생했습니다. 다시 시도해주세요.");
+            });
+        
+        },
+        
 	};
 	
-	
-            
+	function _setInfo() {
+		comm.send("/user/info", null, "POST", function(response) {
+			$("#name").val(response.name);
+			$("#email").val(response.email);
+			$("#phone").val(response.phone);
+			$("#birth").val(response.birth);
+		
+        }, function(error) {
+        
+        });
+	};
+     
 	
 	// 메뉴 active
 	function _menuActive() {

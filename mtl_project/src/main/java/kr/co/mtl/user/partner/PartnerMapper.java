@@ -40,4 +40,7 @@ public interface PartnerMapper {
 	
 	// 객실 별 시설 리스트
 	public List<Map<String, Object>> getRoomFacilities(Map<String, Object> param);
+
+	// 객실 상세
+	public Map<String, Object> getRoomDetail(Map<String, Object> param);
 }

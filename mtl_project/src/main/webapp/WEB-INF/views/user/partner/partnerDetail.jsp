@@ -29,8 +29,7 @@
 						<div class="col-md-6 col-lg-4">
 							<div class="form-size-lg form-fs-md">
 								<label class="form-label">지역</label>
-								<select class="form-select" id="searchArea">
-									<option value="" disabled="disabled">지역 선택</option>
+								<select class="form-select" id="searchArea" disabled>
 									<option value="SEOUL">서울</option>
 									<option value="GANGNEUNG">강릉</option>
 									<option value="YEOSU">여수</option>
@@ -44,7 +43,7 @@
 						<div class="col-md-6 col-lg-3">
 							<div class="form-fs-md">
 								<label class="form-label">체크인 - 체크아웃</label>
-								<input type="text" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="Select date">
+								<input type="text" class="form-control form-control-lg flatpickr" data-mode="range" placeholder="Select date" id="searchDate">
 							</div>
 						</div>
 							
@@ -54,8 +53,8 @@
 								<div class="w-100">
 									<label class="form-label">인원</label>
 									<div class="dropdown guest-selector me-2">
-										<input type="text" class="form-guest-selector form-control form-control-lg selection-result" value="2 명" id="dropdownguest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
-										<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="dropdownguest">
+										<input type="text" class="form-guest-selector form-control form-control-lg selection-result" value="2 명" id="searchGuest" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+										<ul class="dropdown-menu guest-selector-dropdown" aria-labelledby="searchGuest">
 											<li class="d-flex justify-content-between">
 												<div>
 													<h6 class="mb-0">인원</h6>
@@ -63,7 +62,7 @@
 												</div>
 												<div class="hstack gap-1 align-items-center">
 													<button type="button" class="btn btn-link adult-remove p-0 mb-0"><i class="bi bi-dash-circle fs-5 fa-fw"></i></button>
-													<h6 class="guest-selector-count mb-0 adults">2</h6>
+													<h6 class="guest-selector-count mb-0 adults" id="guestText">2</h6>
 													<button type="button" class="btn btn-link adult-add p-0 mb-0"><i class="bi bi-plus-circle fs-5 fa-fw"></i></button>
 												</div>
 											</li>
@@ -75,9 +74,9 @@
 
 						<!-- 검색 버튼 -->
 						<div class="col-md-6 col-lg-2 mt-md-auto">
-							<a class="btn btn-lg btn-primary w-100 mb-0" href="#"><i class="bi bi-search fa-fw"></i> 검색</a>
+							<a class="btn btn-lg btn-primary w-100 mb-0" href="javascript:;" data-src="partnerDetail" data-act="clickSearch"><i class="bi bi-search fa-fw"></i> 검색</a>
 						</div>
-					</form>
+ 					</form>
 				</div>
 			</div>
 		</div>
@@ -105,50 +104,28 @@
 		<div class="row g-2">
 			<!-- Image -->
 			<div class="col-md-6">
-				<a data-glightbox data-gallery="gallery" href="assets/images/gallery/14.jpg">
-					<div id="thumbnail" class="card card-grid-lg card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/14.jpg); background-position: center left; background-size: cover;">
-						<!-- Card hover element -->
-						<div class="hover-element position-absolute w-100 h-100">
-							<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-						</div>
-					</div>
-				</a>
+				<div id="thumbnail" class="card card-grid-lg overflow-hidden" style="background-position: center left; background-size: cover">
+				</div>
 			</div>
 
 			<div class="col-md-6">
 				<div class="row g-2"> 
 					<!-- Image -->
 					<div class="col-12">
-						<a data-glightbox data-gallery="gallery" href="assets/images/gallery/13.jpg">
-							<div id="rightImage1" class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/13.jpg); background-position: center left; background-size: cover;">
-								<!-- Card hover element -->
-								<div class="hover-element position-absolute w-100 h-100">
-									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-								</div>
-							</div>
-						</a>	
+						<div id="rightImage1" class="card card-grid-sm overflow-hidden"style="background-position: center left; background-size: cover">
+						</div>
 					</div>
 
 					<!-- Image -->
 					<div class="col-md-6">
-						<a data-glightbox data-gadllery="gallery" href="assets/images/gallery/12.jpg">
-							<div id="rightImage2" class="card card-grid-sm card-element-hover card-overlay-hover overflow-hidden" style="background-image:url(assets/images/gallery/12.jpg); background-position: center left; background-size: cover;">
-								<div class="hover-element position-absolute w-100 h-100">
-									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-								</div>
-							</div>
-						</a>	
+						<div id="rightImage2" class="card card-grid-sm overflow-hidden" style="background-position: center left; background-size: cover">
+						</div>
 					</div>
 
 					<!-- Images -->
 					<div class="col-md-6">
-						<a data-glightbox data-gadllery="gallery" href="assets/images/gallery/11.jpg">
-							<div id="rightImage3"  class="card card-grid-sm overflow-hidden" style="background-image:url(assets/images/gallery/11.jpg); background-position: center left; background-size: cover;">
-								<div class="hover-element position-absolute w-100 h-100">
-									<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-								</div>
-							</div>
-						</a>
+						<div id="rightImage3"  class="card card-grid-sm overflow-hidden" style="background-position: center left; background-size: cover">
+						</div>
 					</div>
 				</div>
 				<!-- Card item END -->
@@ -230,67 +207,6 @@
 						<!-- Card body START -->
 						<div class="card-body pt-4 p-0">
 							<div class="vstack gap-4" id="roomList">
-								<div class="card shadow p-3">
-									<div class="row g-4">
-										<!-- Card img -->
-										<div class="col-md-5 position-relative">
-											<!-- Slider START -->
-											<div class="tiny-slider arrow-round arrow-xs arrow-dark overflow-hidden rounded-2">
-												<div class="tiny-slider-inner" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/04.jpg" alt="Card image"></div>
-
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/02.jpg" alt="Card image"></div>
-
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/03.jpg" alt="Card image"></div>
-
-													<!-- Image item -->
-													<div><img src="assets/images/category/hotel/4by3/01.jpg" alt="Card image"></div>
-												</div>
-											</div>
-											<!-- Slider END -->
-
-											<!-- Button -->
-											<a href="#" class="btn btn-link p-0 mb-0 mt-1 text-primary more-hover" data-bs-toggle="modal" data-bs-target="#roomDetail">
-												<i class="bi bi-eye-fill me-1"></i>객실 상세 정보
-											</a>
-										</div>
-
-										<!-- Card body -->
-										<div class="col-md-7">
-											<div class="card-body d-flex flex-column h-100 p-0">
-					
-												<!-- Title -->
-												<h5 class="card-title">Luxury Room with Balcony</h5>
-
-												<!-- Amenities -->
-												<ul class="nav nav-divider mb-2">
-													<li class="nav-item">Air Conditioning</li>
-													<li class="nav-item">Wifi</li>
-													<li class="nav-item">Kitchen</li>
-												</ul>
-
-												<p class="text-success mb-0">Free Cancellation till 7 Jan 2022</p>
-												
-												<!-- Price and Button -->
-												<div class="d-sm-flex justify-content-sm-between align-items-center mt-auto">
-													<!-- Price -->
-													<div class="d-flex align-items-center">
-														<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> 205,000</h5>
-														<span class="mb-0 me-2"> / 일</span>
-													</div>
-													<!-- Button -->
-													<div class="mt-3 mt-sm-0">
-														<a href="reservation" class="btn btn-sm btn-primary mb-0">객실 예약</a>    
-													</div>          
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Room item END -->
 							</div>
 						</div>
 						<!-- Card body END -->
@@ -530,70 +446,35 @@ About hotel END -->
 				<div class="card bg-transparent p-3">
 					<!-- Slider START -->
 					<div class="tiny-slider arrow-round arrow-dark overflow-hidden rounded-2">
-						<div class="tiny-slider-inner rounded-2 overflow-hidden" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1">
-							<!-- Image item -->
-							<div> <img src="assets/images/gallery/16.jpg" class="rounded-2" alt="Card image"></div>
-
-							<!-- Image item -->
-							<div> <img src="assets/images/gallery/15.jpg" class="rounded-2" alt="Card image"> </div>
-
-							<!-- Image item -->
-							<div> <img src="assets/images/gallery/13.jpg" class="rounded-2" alt="Card image"> </div>
-
-							<!-- Image item -->
-							<div> <img src="assets/images/gallery/12.jpg" class="rounded-2" alt="Card image"> </div>
+						<div class="tiny-slider-inner2 rounded-2 overflow-hidden" data-autoplay="true" data-arrow="true" data-dots="false" data-items="1" id="roomImageList">
 						</div>
 					</div>
 					<!-- Slider END -->
 
 					<!-- Card header -->
 					<div class="card-header bg-transparent pb-0">
-						<h3 class="card-title mb-0">Deluxe Pool View</h3>
+						<h3 class="card-title mb-0" id="roomType"></h3>
 					</div>
 
 					<!-- Card body START -->
 					<div class="card-body">
 						<!-- Content -->
-						<p>Club rooms are well furnished with air conditioner, 32 inch LCD television and a mini bar. They have attached bathroom with showerhead and hair dryer and 24 hours supply of hot and cold running water. Complimentary wireless internet access is available. Additional amenities include bottled water, a safe and a desk.</p>
+						<p class="space" id="roomDescription"></p>
 						
 						<div class="row">
-							<h5 class="mb-0">Amenities</h5>
+							<h5 class="mb-0">객실 시설</h5>
 
 							<!-- List -->
 							<div class="col-md-6">
 								<!-- List -->
-								<ul class="list-group list-group-borderless mt-2 mb-0">
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Swimming pool</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Spa</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Kids play area.</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Gym</span>
-									</li>
+								<ul class="list-group list-group-borderless mt-2 mb-0" id="facilitiesList1">
 								</ul>
 							</div>
 
 							<!-- List -->
 							<div class="col-md-6">
 								<!-- List -->
-								<ul class="list-group list-group-borderless mt-2 mb-0">
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">TV</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Mirror</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">AC</span>
-									</li>
-									<li class="list-group-item d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i><span class="h6 fw-light mb-0">Slippers</span>
-									</li>
+								<ul class="list-group list-group-borderless mt-2 mb-0" id="facilitiesList2">
 								</ul>
 							</div>
 						</div> <!-- Row END -->
