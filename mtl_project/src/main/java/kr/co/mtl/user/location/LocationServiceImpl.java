@@ -68,39 +68,7 @@ public class LocationServiceImpl implements LocationService {
 		return result;
 	};
 	
-	
-	
-	/** 시온
-	 * [사용자] 마이페이지 예약내역 리스트 조회
-	 * @param user_idx
-	 * @return ReservationListCount, ReservationList (=> 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 예약인원, 객실 금액)
-	 */
-	public Map<String, Object> getMypageReservationHistoryList(Map<String, Object> param) {
-		System.out.println("param 값은? " + param);  // user_idx값이 들어있어야 함
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		List<Map<String, Object>> list = locationMapper.getMypageReservationHistoryList(param);  // 마이페이지 예약내역 리스트
-		int count = locationMapper.getMypageReservationHistoryListCount(param);  // 마이페이지 예약내역 리스트 총 개수
-		
-		result.put("ReservationList", list);
-		result.put("ReservationListCount", count);
-		
-		System.out.println("result 값은? " + result);  // ReservationList, ReservationListCount 정보가 들어있어야 함
-		return result;
-	}
-	
-	/** 시온
-	 * [사용자] 마이페이지 예약내역 상세정보 조회
-	 * @param reservation_idx (예약 idx)
-	 * @return 예약idx, 객실타입, 체크인일자, 체크아웃일자, 객실 금액, 예약인원 
-	 */
-	public Map<String, Object> getMypageReservationHistoryDetail(Map<String, Object> param) {
-		Map<String, Object> result = locationMapper.getMypageReservationHistoryDetail(param);  // 예약내역 상세정보 단일행 반환
-		return result;
-	}
-	
-	
+
 	
 	/** 시온
 	 * [판매자] 정산내역 리스트 조회

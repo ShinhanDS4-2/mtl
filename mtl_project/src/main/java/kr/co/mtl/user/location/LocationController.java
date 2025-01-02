@@ -43,28 +43,7 @@ public class LocationController {
 		return result;
 	}
 	
-	/** 시온 - API 완료
-	 * [사용자] 마이페이지 예약내역 리스트 조회
-	 * 상세페이지 접속 => http://localhost:8090/mtl/mypage/reservation
-	 * @param user_idx
-	 * @return ReservationListCount, ReservationList (=> 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 예약인원, 객실 금액)
-	 */
-	@PostMapping("/mypageReservationHistoryList")
-	public Map<String, Object> getMypageReservationHistory(@RequestParam Map<String, Object> param) throws Exception {
-		Map<String, Object> result = locationService.getMypageReservationHistoryList(param);
-		return result;
-	}
 	
-	/** 시온 - API 완료
-	 * [사용자] 마이페이지 예약내역 상세정보 조회
-	 * @param reservation_idx(예약 idx)
-	 * @return 예약내역 상세정보 단일행 반환 (=> 예약idx, 객실타입, 체크인일자, 체크아웃일자, 객실 금액, 예약인원)
-	 */
-	@PostMapping("/mypageReservationHistoryDetail")
-	public Map<String, Object> getMypageReservationHistoryDetail(@RequestParam Map<String, Object> param) throws Exception {
-		Map<String, Object> result = locationService.getMypageReservationHistoryDetail(param);
-		return result;
-	}
 
 	/** 시온 - API 완료
 	 * [판매자] 정산내역 리스트 조회

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.user.mypage.MypageMapper">
+
+
+<!-- [사용자] 마이페이지 예약내역 조회 START-->	
+	<!-- 예약내역 리스트 총 개수 --> 
+	<select id="getReservationHistoryListCount" parameterType="map">
+		SELECT COUNT(*)
+		FROM PARTNER p JOIN RESERVATION r ON(p.idx = r.partner_idx)   <!-- 숙소랑 예약 테이블 조인 -->
+		WHERE r.user_idx = #{user_idx}  <!-- 로그인 세션을 통해 param값으로 사용자 정보 idx가 넘어와야 함 -->
+	</select>
+	
+	<!-- 예약내역 리스트 조회 START -->
+	<!-- param : user_idx
+		 result: 예약idx, 판매자(=숙소)idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 예약인원, 객실 금액
+		  * 여러 행의 결과값을 반환 하므로 List 형태로 반환되어야 함. -->
+	<select id="getReservationHistoryList" parameterType="map">
+		SELECT r.idx AS reservation_idx, p.idx AS partner_idx, p.name, p.address, r.check_in_date, r.check_out_date, r.guest_cnt, r.price
+		FROM PARTNER p JOIN RESERVATION r ON(p.idx = r.partner_idx)   <!-- 숙소랑 예약 테이블 조인 -->
+		WHERE r.user_idx = #{user_idx}  <!-- 로그인 세션을 통해 param값으로 사용자 정보 idx가 넘어와야 함 -->
+	</select>
+	
+	<!-- 예약내역 리스트에 숙소 사진 1장 조회 START --> <!-- 주의!! mapping_idx가 같아도, type(P: 숙소 / R: 객실 / V: 리뷰 / L: 여행지)에 따라 여러 사진이 나옴 -->
+	<!-- param : partner_idx (=숙소정보 idx)
+		 result: 이미지idx, 이미지파일이름origin_filename, 경로url
+		  * 단일 행의 결과값을 반환 하므로 Map 형태로 반환되어야 함. -->
+	<select id="getReservImg" parameterType="map">
+		SELECT idx AS image_idx, origin_filename, url
+			FROM IMAGE
+			WHERE thumbnail_yn='Y'
+				  AND type = "P"  <!-- 필수 -->
+				  AND mapping_idx = #{partner_idx} <!-- param값으로 숙소 정보 idx가 넘어와야 함 -->
+	</select>
+	
+	
+	<!-- 예약내역 상세정보에 객실타입정보만 추출하기 위함 START -->
+	<!-- param : reservation_idx (예약테이블의 idx)
+		 result: 객실타입 room_type
+		  * 단일행 반환 Map 형태로 반환되어야 함.-->
+	<select id="getReservRoomtype" parameterType="map" resultType="Object">
+		SELECT rm.room_type
+		FROM RESERVATION rs JOIN ROOM rm ON(rs.room_idx = rm.idx)
+		WHERE rs.idx = #{reservation_idx}
+	</select>
+	
+<!-- [사용자] 마이페이지 예약내역 조회 END-->
+
+
+
+
+
+</mapper>
