@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.payment.PaymentMapper">
+
+	<!-- 숙소 예약 결제 -->
+	<insert id="reservationComplete" parameterType="HashMap" useGeneratedKeys="true" keyProperty="reservation_idx">
+		INSERT INTO RESERVATION (
+			  user_idx
+			, partner_idx
+			, room_idx
+			, check_in_date
+			, check_out_date
+			, guest_cnt
+			, price
+			, payment_status
+			, year
+			, month
+			, day
+			, calculate_price
+			, reservation_code
+		)
+		VALUES (
+			  #{user_idx}
+			, #{partner_idx}
+			, #{room_idx}
+			, #{check_in_date}
+			, #{check_out_date}
+			, #{guest_cnt}
+			, #{price}
+			, 'Y'
+			, YEAR(CURRENT_DATE)
+			, MONTH(CURRENT_DATE)
+			, DAY(CURRENT_DATE)
+			, #{calculate_price}
+			, #{reservation_code}
+		)
+	</insert>
+	
+	<!-- 숙소 총 예약 수 업데이트 -->
+	<update id="totalReservationUpdate" parameterType="HashMap">
+		UPDATE PARTNER
+		SET total_reservation = total_reservation + 1
+		WHERE
+			idx = #{partner_idx}
+	</update>
+</mapper>

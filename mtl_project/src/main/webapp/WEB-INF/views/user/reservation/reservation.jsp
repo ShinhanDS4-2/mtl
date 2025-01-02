@@ -57,7 +57,7 @@
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">체크인</h6>
 										<h5 class="mb-1" id="checkInDate"></h5>
-										<!-- <small><i class="bi bi-alarm me-1"></i>12:30 pm</small>  -->
+										<small><i class="bi bi-alarm me-1"></i><span id="checkIn"></span></small>
 									</div>
 								</div>
 
@@ -66,7 +66,7 @@
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">체크아웃</h6>
 										<h5 class="mb-1" id="checkOutDate"></h5>
-										<!-- <small><i class="bi bi-alarm me-1"></i>4:30 pm</small> -->
+										<small><i class="bi bi-alarm me-1"></i><span id="checkOut"></span></small>
 									</div>
 								</div>
 
@@ -75,7 +75,7 @@
 									<div class="bg-light py-3 px-4 rounded-3">
 										<h6 class="fw-light small mb-1">객실 & 인원</h6>
 										<h5 class="mb-1"><span id="roomType"></span> - <span id="guest"></span>인</h5>
-										<!-- <small><i class="bi bi-brightness-high me-1"></i>3 Nights - 4 Days</small> -->
+										<small><i class="bi bi-brightness-high me-1"></i>3 Nights - 4 Days</small>
 									</div>
 								</div>
 							</div>
@@ -108,7 +108,7 @@
 											<label class="form-label">예약자명</label>
 										</div>
 										<div class="col-md-9">
-											<input type="text" class="form-control form-control-lg" placeholder="예약자명을 입력해 주세요.">
+											<input type="text" class="form-control form-control-lg" placeholder="예약자명을 입력해 주세요." id="buyerName" disabled="disabled">
 										</div>
 									</li>
 									<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -116,7 +116,7 @@
 											<label class="form-label">이메일</label>
 										</div>
 										<div class="col-md-9">
-											<input type="text" class="form-control form-control-lg" placeholder="이메일을 입력해 주세요.">
+											<input type="text" class="form-control form-control-lg" placeholder="이메일을 입력해 주세요." id="buyerEmail" disabled="disabled">
 										</div>
 									</li>
 									<li class="list-group-item d-flex justify-content-between align-items-center">
@@ -124,7 +124,7 @@
 											<label class="form-label">연락처</label>
 										</div>
 										<div class="col-md-9">
-											<input type="text" class="form-control form-control-lg" placeholder="연락처를 입력해 주세요.">
+											<input type="text" class="form-control form-control-lg" placeholder="연락처를 입력해 주세요." id="buyerPhone" disabled="disabled">
 										</div>
 									</li>
 								</ul>

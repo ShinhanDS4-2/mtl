@@ -249,7 +249,10 @@
 	<select id="getRoomDetail" parameterType="HashMap">
 		SELECT
 			  p.name
+			, p.idx AS partner_idx
 			, p.address
+			, p.check_in
+			, p.check_out
 			, r.room_type
 			, r.description
 			, (SELECT url FROM IMAGE WHERE type = 'P' AND mapping_idx = p.idx AND thumbnail_yn = 'Y') AS image

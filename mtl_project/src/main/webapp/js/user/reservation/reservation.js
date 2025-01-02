@@ -4,6 +4,7 @@ const reservation = (function() {
 	function init() {
 		_eventInit();
 		_event.getRoomDetail();
+		_event.getUserInfo();
 	};
 
 	// 이벤트 초기화 
@@ -43,6 +44,17 @@ const reservation = (function() {
 			});
 		},
 		
+		// 사용자 정보
+		getUserInfo: function() {
+			let url = "/user/info";
+			
+			comm.sendJson(url, null, "POST", function(resp) {
+				$("#buyerName").val(resp.name);
+				$("#buyerEmail").val(resp.email);
+				$("#buyerPhone").val(resp.phone);
+			});
+		}, 
+				
 		// 결제
 		clickPayment: function() {
 			let IMP = window.IMP; 
@@ -52,25 +64,25 @@ const reservation = (function() {
         	let roomIdx = comm.getUrlParam().idx;
         	let code = comm.makeReservationCode(roomIdx);
         	let name = "떠날지도 숙소 예약 - " + $("#partnerName").text() + " / " + $("#roomType").text() ;
+        	let amount = $("#totalPrice").text().replaceAll(",", "");
         	
-        	/*
-        	function requestPay() {
-	            IMP.request_pay({
-	                pg : "html5_inicis",
-	                pay_method : "card",
-	                merchant_uid: code, 
-	                name : name,
-	                amount : 1004,
-	                buyer_email : "Iamport@chai.finance",
-	                buyer_name : "포트원 기술지원팀",
-	                buyer_tel : "010-1234-5678",
-	                buyer_addr : "서울특별시 강남구 삼성동",
-	                buyer_postcode : "123-456"
-	            }, function (resp) { 
-	                //resp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
-	            });
-	        };
-	        */
+        	// 일자 분리
+        	let checkInDate = $("#checkInDate").attr("data-date");
+        	let checkOutDate = $("#checkOutDate").attr("data-date");
+        	
+        	data = {
+				"partner_idx" : $("#partnerName").attr("data-partner-idx"),
+        		"room_idx" : roomIdx,
+        		"check_in_date" : checkInDate,
+        		"check_out_date" : checkOutDate,
+        		"guest_cnt" : $("#guest").text(),
+        		"price" : amount,
+        		"calculate_price" : amount - Math.ceil(amount / 10),
+        		"reservation_code" : code,
+        		"name" : name,
+        	};
+        	
+        	requestPay(data);
 		},
 	};
 	
@@ -78,14 +90,18 @@ const reservation = (function() {
 	let _draw = {
 		drawDetail: function(data) {
 			$("#partnerImg").attr("src", data.image);
-			$("#partnerName").html(data.name);
+			$("#partnerName").html(data.name).attr("data-partner-idx", data.partner_idx);
 			$("#partnerAddress").html(data.address);
 			$("#roomType").html(data.room_type);
 			$("#guest").html(sessionStorage.getItem("search_guest"));
+			$("#checkInDate").attr("data-date", sessionStorage.getItem("search_start_date"));
 			$("#checkInDate").html(comm.formatDate(sessionStorage.getItem("search_start_date")));
+			$("#checkOutDate").attr("data-date", sessionStorage.getItem("search_end_date"));
 			$("#checkOutDate").html(comm.formatDate(sessionStorage.getItem("search_end_date")));
 			$("#onePrice").html(comm.numberWithComma(sessionStorage.getItem("reservation_one_price")));
 			$("#totalPrice").html(comm.numberWithComma(sessionStorage.getItem("reservation_total_price")));
+			$("#checkIn").html(data.check_in);
+			$("#checkOut").html(data.check_out);
 			
 			// _sessionReset();
 		},
@@ -96,6 +112,34 @@ const reservation = (function() {
 		sessionStorage.removeItem("reservation_total_price");
 		sessionStorage.removeItem("reservation_one_price");
 	};
+	
+	// 결제창
+	function requestPay(data) {
+        IMP.request_pay({
+            pg : "html5_inicis",
+            pay_method : "card",
+            merchant_uid: data.reservation_code, 
+            name : data.name,
+            amount : 1,
+            buyer_email : $("#buyerEmail").val(),
+            buyer_name : $("#buyerName").val(),
+            buyer_tel : $("#buyerPhone").val(),
+        }, function (resp) { 
+			if (resp.success) {
+				let url = "/payment/reservation";
+				
+				data.imp = resp.imp_uid;
+				
+				comm.sendJson(url, data, "POST", function(resp2) {
+					alert("결제가 완료되었습니다.");
+					// location.href = "/mtl/reservationConfirm?code=" + resp2.reservation_idx;
+				});
+			} else {
+				// 에러
+				alert("결제에 실패하였습니다.");
+			}
+        });
+    };
 
 	return {
 		init,
