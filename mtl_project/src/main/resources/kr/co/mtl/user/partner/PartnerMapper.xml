@@ -37,8 +37,26 @@
 	
 	<!-- 숙소 검색 리스트 -->
 	<select id="getPartnerList" parameterType="HashMap">
+		<include refid="searchListSql"></include>
+		ORDER BY p.score DESC, p.name
+		<if test="limit != null and offset != null">
+			LIMIT ${limit} OFFSET ${offset}
+		</if>
+	</select>
+	
+	<!-- 숙소 검색 리스트 개수 -->
+	<select id="getPartnerCnt" parameterType="HashMap">
 		SELECT
-		      p.idx AS partner_idx
+			COUNT(t.name)
+		FROM (
+			<include refid="searchListSql"></include>
+		) t
+	</select>
+	
+	<!-- 숙소 검색 공통 sql -->
+	<sql id="searchListSql">
+		SELECT 
+			  p.idx AS partner_idx
 		    , p.name
 		    , p.area
 		    , p.score
@@ -76,29 +94,88 @@
 					  WHERE r.maximum >= #{guest}
 					  GROUP BY p.idx) AS r 
 		        ON r.partner_idx = p.idx
-		        WHERE r.idx NOT IN (
-		            SELECT room_idx
-		            FROM RESERVATION
-		            WHERE check_in_date <![CDATA[ < ]]> #{end_date} AND check_out_date > #{start_date}
-		        )
 		    ) AS total_price
-		FROM 
-		    PARTNER p
-		<include refid="searchPartner"></include>
-		ORDER BY p.create_date DESC
-		<if test="limit != null and offset != null">
-			LIMIT ${limit} OFFSET ${offset}
-		</if>
-	</select>
-	
-	<!-- 숙소 검색 리스트 개수 -->
-	<select id="getPartnerCnt" parameterType="HashMap">
-		SELECT
-			COUNT(*)
-		FROM 
+		FROM
 			PARTNER p
-		<include refid="searchPartner"></include>
-	</select>
+		JOIN 
+		    ROOM r
+		ON p.idx = r.partner_idx
+		LEFT JOIN 
+		    RESERVATION rs 
+		ON r.idx = rs.room_idx
+		WHERE
+			p.approval_status = 'Y'
+		AND r.maximum >= #{guest}
+		AND r.count > (
+			SELECT
+				COUNT(*) AS cnt
+			FROM
+				RESERVATION rs2
+			WHERE 
+				rs2.partner_idx = r.partner_idx 
+			AND (
+			    #{start_date} <![CDATA[ < ]]> rs2.check_out_date AND #{end_date} > rs2.check_in_date
+			)
+		)
+		<if test="area != null and area != ''">
+		AND area = #{area}
+		</if>
+		<if test="partner_type_list != null and partner_type_list.size() > 0">
+		AND p.type IN
+		<foreach item="type" collection="partner_type_list" separator="," open="(" close=")">
+			#{type}
+		</foreach>
+		</if>
+		<if test="facilities_list != null and facilities_list.size() > 0">
+		AND p.idx IN (
+			SELECT 
+				partner_idx 
+			FROM
+				PARTNER_FACILITIES
+			WHERE
+				facilities_idx IN 
+			<foreach item="facilities" collection="facilities_list" separator="," open="(" close=")">
+				#{facilities}
+			</foreach>
+		)
+		</if>
+		<if test="room_facilities_list != null and room_facilities_list.size() > 0">
+		AND p.idx IN (
+			SELECT 
+				r.partner_idx 
+			FROM
+				ROOM_FACILITIES rf
+			JOIN ROOM r
+			ON r.idx = rf.room_idx 
+			WHERE
+				facilities_idx IN 
+			<foreach item="facilities" collection="room_facilities_list" separator="," open="(" close=")">
+				#{facilities}
+			</foreach>
+		)
+		</if>
+		<if test="keyword_list != null and keyword_list.size() > 0">
+		AND p.idx IN (
+			SELECT
+				partner_idx
+			FROM
+				PARTNER_KEYWORD
+			WHERE
+				keyword_idx IN 
+			<foreach item="keyword" collection="keyword_list" separator="," open="(" close=")">
+				#{keyword}
+			</foreach>
+		)
+		</if>
+		<if test="min_price != null and max_price != null">
+		AND (
+			CASE
+				WHEN WEEKDAY(#{start_date}) IN (0, 1, 2, 3, 4) THEN r.basic_price 
+				WHEN WEEKDAY(#{start_date}) IN (5, 6) THEN r.weekend_price 
+			END) BETWEEN ${min_price} AND ${max_price}
+		</if>
+		GROUP BY p.idx 
+	</sql>
 	
 	<!-- 숙소 사진 리스트 -->
 	<select id="getPartnerImageList" parameterType="HashMap">
@@ -198,25 +275,21 @@
 			ROOM r
 		WHERE
 			r.partner_idx = #{partner_idx}
-		<if test="start_date != null and end_date != null">
-			AND r.idx IN (
-		        SELECT 
-		        	idx
-		        FROM 
-		        	ROOM r
-		        WHERE 
-		        	r.idx NOT IN (
-		            SELECT 
-		            	room_idx
-		            FROM 
-		            	RESERVATION
-		            WHERE 
-		            	(check_in_date <![CDATA[ < ]]> #{end_date} AND check_out_date > #{start_date})
-		        )
-		    )
-		</if>
 		<if test="guest != null and guest != ''">
-			AND r.maximum >= #{guest}
+		AND r.maximum >= #{guest}
+		</if>
+		<if test="start_date != null and end_date != null">
+		AND r.count > (
+			SELECT
+				COUNT(*) AS cnt
+			FROM
+				RESERVATION rs2
+			WHERE 
+				rs2.partner_idx = r.partner_idx 
+			AND (
+			    #{start_date} <![CDATA[ < ]]> rs2.check_out_date AND #{end_date} > rs2.check_in_date
+			)
+		)
 		</if>
 	</select>
 	
@@ -263,100 +336,4 @@
 		ON r.partner_idx = p.idx
 		WHERE r.idx = #{room_idx}
 	</select>
-	
-	<!-- 숙소 검색 where -->
-	<sql id="searchPartner">
-		WHERE
-			approval_status = 'Y'
-		<if test="area != null and area != ''">
-			AND AREA = #{area}
-		</if>
-		<if test="partner_type_list != null and partner_type_list.size() > 0">
-			AND p.type IN
-			<foreach item="type" collection="partner_type_list" separator="," open="(" close=")">
-				#{type}
-			</foreach>
-		</if>
-		<if test="facilities_list != null and facilities_list.size() > 0">
-			AND p.idx IN (
-				SELECT 
-					partner_idx 
-				FROM
-					PARTNER_FACILITIES
-				WHERE
-					facilities_idx IN 
-				<foreach item="facilities" collection="facilities_list" separator="," open="(" close=")">
-					#{facilities}
-				</foreach>
-			)
-		</if>
-		<if test="room_facilities_list != null and room_facilities_list.size() > 0">
-			AND p.idx IN (
-				SELECT 
-					r.partner_idx 
-				FROM
-					ROOM_FACILITIES rf
-				JOIN ROOM r
-				ON r.idx = rf.room_idx 
-				WHERE
-					facilities_idx IN 
-				<foreach item="facilities" collection="room_facilities_list" separator="," open="(" close=")">
-					#{facilities}
-				</foreach>
-			)
-		</if>
-		<if test="keyword_list != null and keyword_list.size() > 0">
-			AND p.idx IN (
-				SELECT
-					partner_idx
-				FROM
-					PARTNER_KEYWORD
-				WHERE
-					keyword_idx IN 
-				<foreach item="keyword" collection="keyword_list" separator="," open="(" close=")">
-					#{keyword}
-				</foreach>
-			)
-		</if>
-		<if test="min_price != null and max_price != null">
-			AND p.idx IN (
-				SELECT
-					partner_idx
-				FROM
-					ROOM
-				WHERE 
-				(CASE
-					WHEN WEEKDAY(#{start_date}) IN (0, 1, 2, 3, 4) THEN basic_price 
-					WHEN WEEKDAY(#{start_date}) IN (5, 6) THEN weekend_price 
-				END) BETWEEN #{min_price} AND #{max_price}
-			)
-		</if>
-		<if test="start_date != null and end_date != null">
-			AND p.idx IN (
-		        SELECT 
-		        	r.partner_idx
-		        FROM 
-		        	ROOM r
-		        WHERE 
-		        	r.idx NOT IN (
-		            SELECT 
-		            	room_idx
-		            FROM 
-		            	RESERVATION
-		            WHERE 
-		            	(check_in_date <![CDATA[ < ]]> #{end_date} AND check_out_date > #{start_date})
-		        )
-		    )
-		</if>
-		<if test="guest != null and guest != ''">
-			AND p.idx IN (
-				SELECT
-					partner_idx
-				FROM
-					ROOM
-				WHERE
-					maximum >= #{guest}
-			)
-		</if>
-	</sql>
 </mapper>
