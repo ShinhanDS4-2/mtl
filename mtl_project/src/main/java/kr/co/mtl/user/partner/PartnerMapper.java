@@ -43,4 +43,8 @@ public interface PartnerMapper {
 
 	// 객실 상세
 	public Map<String, Object> getRoomDetail(Map<String, Object> param);
+	
+	
+	public List<Map<String, Object>> getInfo();
+	public void updateImage(Map<String, Object> param);
 }

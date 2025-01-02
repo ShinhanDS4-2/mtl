@@ -356,4 +356,33 @@
 			)
 		</if>
 	</sql>
+	
+	<select id="getInfo">
+		SELECT
+			  p.idx AS partner_idx
+			, r.idx AS room_idx
+		FROM 
+			PARTNER p
+		JOIN ROOM r
+		ON r.partner_idx = p.idx
+		WHERE
+			type = 'HOTEL'
+		AND p.idx NOT IN (82)
+	</select>
+	
+	<insert id="updateImage" parameterType="HashMap">
+		INSERT INTO IMAGE (
+			  mapping_idx
+			, type
+			, url
+			, thumbnail_yn
+			, origin_filename
+		) VALUES (
+			  #{room_idx}
+			, 'R'
+			, #{url}
+			, #{thumbnail_yn}
+			, #{origin_filename}
+		)
+	</insert>
 </mapper>
