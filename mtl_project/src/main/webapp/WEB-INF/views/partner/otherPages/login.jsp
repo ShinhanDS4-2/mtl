@@ -51,7 +51,7 @@
 										</div>
 										<!-- Button -->
 										<div class="mb-3">
-											<button type="button" class="btn btn-primary w-100 mb-0">로그인</button>
+											<button type="button" class="btn btn-primary w-100 mb-0" id="loginBtn" data-src="login" data-act="clickLoginBtn">로그인</button>
 										</div>
 									</form>
 									<!-- Form END -->
@@ -104,5 +104,16 @@
 
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
+
+<!-- page script -->
+<!-- 로그인 MD5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="js/partner/login.js"></script>
+<script type="text/javascript">
+	login.init();
+</script>
+
+
+
 </body>
 </html>

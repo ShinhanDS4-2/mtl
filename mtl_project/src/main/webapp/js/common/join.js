@@ -28,6 +28,8 @@ console.log(1);
 				
 			} else if (action == "clickJoin") {		//회원가입
 				_event.handleJoin();
+			} else if (action == "clickEmailCheck") {	// 이메일 중복 확인
+				_event.checkEmailDuplication();
 			}
 		};
 	};
@@ -42,6 +44,40 @@ console.log(1);
 			    return;
 		    }
 	    },
+	    
+	    
+	    // 이메일 중복 확인
+	    checkEmailDuplication: function() {
+	    	let formData = {
+            	email: $("#joinEmail").val(),
+            };
+	    	if (!formData.email) {
+		        alert("이메일을 입력해주세요.");
+		        return;
+		    }
+		    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+		        alert("올바른 이메일 주소를 입력해주세요! 예: example@gmail.com");
+		        return;
+		    }
+		    
+		    
+		    // 서버로 이메일 중복 확인 요청
+        	comm.send("/user/clickEmailCheck", formData, "POST", function(response) {
+	            if (response.code == 200 && response.data.duplicated == false) {
+	                alert("사용 가능한 이메일입니다.");
+	            } else {
+	                alert("이미 사용 중인 이메일입니다. 다른 이메일을 입력하세요.");
+	            }
+        	}, function(error) {
+	            console.error("중복 확인 오류:", error);
+	            alert("중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+        	});
+		    
+		    
+		    
+		},
+	    
+	    
 	    
 	    // 회원가입
         handleJoin: function() {
@@ -96,7 +132,6 @@ console.log(1);
             
             // 생년월일 조합해서 한번에 보내기
 			formData.birth = `${formData.birthYear}-${formData.birthMonth}-${formData.birthDay}`;
-			// console.log(formData.birth);
 			delete formData.birthYear;
 			delete formData.birthMonth;
 			delete formData.birthDay;

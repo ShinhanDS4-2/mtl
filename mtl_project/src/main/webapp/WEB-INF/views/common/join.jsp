@@ -31,7 +31,16 @@
 									<!-- 이메일 -->
 									<div class="mb-2">
 										<label class="form-label" for="joinEmail">이메일 <span class="text-danger">*</span></label>
-										<input type="email" class="form-control" id="joinEmail" placeholder="abc@address.com">
+										<div class="row">
+											<div class="col-8 pe-1">
+												<input type="email" class="form-control" id="joinEmail" placeholder="abc@address.com">
+											</div>
+											<div class="col-4 ps-1">
+												<div class="d-grid">
+													<button class="btn btn-primary" type="button" data-src="join" data-act="clickEmailCheck">중복 확인</button>
+												</div>
+											</div>
+										</div>
 										<div class="d-grid gap-2 mt-2">
 											<!-- <button class="btn btn-primary-soft" type="button">이메일 인증</button> -->
 										</div>
@@ -57,7 +66,7 @@
 									<div class="mb-2">
 										<label class="form-label" for="joinPw">비밀번호 <span class="text-danger">*</span></label>
 										<input type="password" class="form-control" id="joinPw" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상">
-										<span class="text-danger smaller">올바른 비밀번호를 입력해 주세요.</span>
+										<!-- <span class="text-danger smaller">올바른 비밀번호를 입력해 주세요.</span> -->
 									</div>
 									<!-- 비밀번호 확인 -->
 									<div class="mb-2">

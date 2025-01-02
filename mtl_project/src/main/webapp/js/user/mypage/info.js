@@ -29,6 +29,8 @@ const info = (function() {
 				_event.updateInfo();
 			} else if(action == "changePassword") {
 				_event.changePassword();
+			} else if(action == "withdraw") {
+				_event.withdraw();
 			};
 		};
 	};
@@ -107,6 +109,22 @@ const info = (function() {
                 console.error("비밀번호 변경 중 오류:", error);
                 alert("비밀번호 변경 중 오류가 발생했습니다. 다시 시도해주세요.");
             });
+        
+        },
+        
+        
+        // 회원탈퇴
+        withdraw: function() {
+        	comm.send("/user/withdraw", null, "POST", function(response) {
+ 				if (response.status == true) {
+        			alert("회원 탈퇴 되셨습니다. 감사합니다!");
+        				location.href = "/mtl/";
+				} else {
+        			alert("회원 탈퇴에 실패하셨습니다.");
+    			}
+    		}, function(error) {
+					alert("회원 탈퇴 중 오류가 발생했습니다. 다시 시도해주세요.");
+        	});
         
         },
         
