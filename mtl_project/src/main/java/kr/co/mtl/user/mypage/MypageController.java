@@ -2,6 +2,9 @@ package kr.co.mtl.user.mypage;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping; 
@@ -23,7 +26,11 @@ public class MypageController {
 	 * @return ReservationListCount, ReservationList (=> 예약idx, 판매자(=숙소)idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 예약인원, 객실 금액, img, 객실타입roomtype)
 	 */
 	@PostMapping("/reservationHistoryList")
-	public Map<String, Object> getMypageReservationHistory(@RequestParam Map<String, Object> param) throws Exception {
+	public Map<String, Object> getMypageReservationHistory(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		param.put("user_idx", session.getAttribute("login_user_idx"));
+		
 		Map<String, Object> result = mypageService.getMypageReservationHistoryList(param);
 		return result;
 	}
