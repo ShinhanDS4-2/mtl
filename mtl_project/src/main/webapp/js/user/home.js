@@ -32,7 +32,9 @@ const home = (function() {
 				_event.clickPartnerDetail(evo);
 			} else if (action == "clickArea") {
 				_event.clickArea(evo);
-			}
+			} else if (action == "clickLocationDetail") {
+				_event.clickLocationDetail(evo);
+			};
 		};
 	};
 	
@@ -117,7 +119,19 @@ const home = (function() {
 
 						let areaSpan = $("<span>").addClass("h5 mb-0 text-primary");
 						areaSpan.append("<i class='fa-solid fa-location-dot'></i> ");
-						areaSpan.append(data.area);
+						let areaText = "";
+						if (data.area == "SEOUL") {
+							areaText = "서울";
+						} else if (data.area == "GANGNEUNG") {
+							areaText = "강릉";
+						} else if (data.area == "YEOSU") {
+							areaText = "여수";
+						} else if (data.area == "BUSAN") {
+							areaText = "부산";
+						} else if (data.area == "JEJU") {
+							areaText = "제주";
+						}
+						areaSpan.append(areaText);
 						cardBody.append(areaSpan);
 					}
 
@@ -172,7 +186,19 @@ const home = (function() {
 
 						let areaSpan = $("<span>").addClass("h5 mb-0 text-primary");
 						areaSpan.append("<i class='fa-solid fa-location-dot'></i> ");
-						areaSpan.append(data.area);
+						let areaText = "";
+						if (data.area == "SEOUL") {
+							areaText = "서울";
+						} else if (data.area == "GANGNEUNG") {
+							areaText = "강릉";
+						} else if (data.area == "YEOSU") {
+							areaText = "여수";
+						} else if (data.area == "BUSAN") {
+							areaText = "부산";
+						} else if (data.area == "JEJU") {
+							areaText = "제주";
+						}
+						areaSpan.append(areaText);
 						cardBody.append(areaSpan);
 					}
 
@@ -204,6 +230,11 @@ const home = (function() {
 		// 인기 숙소 클릭
 		clickPartnerDetail: function(evo) {
 			location.href = "/mtl/partner/detail?idx=" + evo.attr("data-partner-idx");
+		},
+		
+		// 여행지 클릭
+		clickLocationDetail: function(evo) {
+			location.href = "/mtl/location/detail?location_idx=" + evo.attr("data-location-idx");
 		},
 		
 		// 지역 클릭
