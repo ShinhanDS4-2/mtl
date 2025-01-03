@@ -34,7 +34,7 @@ public class PartnerLoginController {
     public Map<String, Object> getUserInfo(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
 
     	HttpSession session = request.getSession();
-    	param.put("userIdx", session.getAttribute("login_user_idx"));
+    	param.put("partnerIdx", session.getAttribute("login_partner_idx"));
     	
         // 사용자 정보 조회
         Map<String, Object> result = loginService.getUserInfo(param);
@@ -71,15 +71,10 @@ public class PartnerLoginController {
      */
     @PostMapping("/logout")
     public void logout(@RequestParam Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        // 필수 파라미터 null 체크
-//        CommonUtil.checkIsNull(param, "userIdx");
-
-        // 로그아웃 처리
-//      Map<String, Object> result = loginService.logout(param, request);
     	
     	HttpSession session = request.getSession();
     	
-        if (session.getAttribute("login_user_idx") != null) {
+        if (session.getAttribute("login_partner_idx") != null) {
             session.invalidate(); // 세션 무효화
         }
         
@@ -96,14 +91,6 @@ public class PartnerLoginController {
      */
     @PostMapping("/join")
     public Map<String, Object> join(@RequestParam Map<String, Object> param) throws Exception {
-        // 필수 파라미터 체크
-//        CommonUtil.checkIsNull(param, "password");
-//        CommonUtil.checkIsNull(param, "name");
-//        CommonUtil.checkIsNull(param, "birthYear");
-//        CommonUtil.checkIsNull(param, "birthMonth");
-//        CommonUtil.checkIsNull(param, "birthDay");;
-//        
-//        CommonUtil.checkIsNull(param, "phone");
 
         // 회원가입 처리
         Map<String, Object> result = loginService.registerUser(param);
@@ -120,6 +107,7 @@ public class PartnerLoginController {
     	Map<String, Object> result = new HashMap<>();
     	
     	boolean isDuplicated = loginService.isEmailDuplicated(param);
+    	result.put("duplicated", isDuplicated);
 
         return result;
     }
@@ -132,7 +120,7 @@ public class PartnerLoginController {
     public Map<String, Object> updateUser(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
     	HttpSession session = request.getSession();
 
-    	param.put("userIdx", session.getAttribute("login_user_idx"));
+    	param.put("partnerIdx", session.getAttribute("login_partner_idx"));
         
     	Map<String, Object> result = new HashMap<>();
         
@@ -149,48 +137,16 @@ public class PartnerLoginController {
     @PostMapping("/changePassword")
     public Map<String, Object> changePassword(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
-        param.put("userIdx", session.getAttribute("login_user_idx"));
+        param.put("partnerIdx", session.getAttribute("login_partner_idx"));
 
         Map<String, Object> result = new HashMap<>();
 
         result = loginService.changePassword(param);
-       
+               
         return result;
     }
     
-    /**
-     * 비밀번호 변경시 현재 비밀번호와 일치하는지 확인
-     */
-//    @PostMapping("/checkPassword")
-//    public Map<String, Object> checkPassword(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
-//        HttpSession session = request.getSession();
-//        param.put("userIdx", session.getAttribute("login_user_idx"));
-//
-//        Map<String, Object> result = new HashMap<>();
-//        
-//
-//       return 
-//
-//    }
 
-    /**
-     * 회원탈퇴
-     */
-    @PostMapping("/withdraw")
-    public Map<String, Object> withdraw(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
-        HttpSession session = request.getSession();
-        param.put("userIdx", session.getAttribute("login_user_idx"));
-
-        Map<String, Object> result = new HashMap<>();
-        boolean isDeactivated = loginService.deactivateUser(param);
-        result.put("status", isDeactivated);
-        
-        if(isDeactivated) {
-        	session.invalidate(); // 세션 무효화
-        }
-        
-        return result;
-    }
 
     
     
