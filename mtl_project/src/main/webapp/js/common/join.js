@@ -63,7 +63,7 @@ console.log(1);
 		    
 		    // 서버로 이메일 중복 확인 요청
         	comm.send("/user/clickEmailCheck", formData, "POST", function(response) {
-	            if (response.code == 200 && response.data.duplicated == false) {
+	            if (response.duplicated == false) {
 	                alert("사용 가능한 이메일입니다.");
 	            } else {
 	                alert("이미 사용 중인 이메일입니다. 다른 이메일을 입력하세요.");

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -43,7 +44,18 @@ public class LocationController {
 		return result;
 	}
 	
-	
+	/**
+	 * 랜덤 여행지 리스트
+	 * @param param
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/random/list")
+	public Map<String, Object> getRandomLocationList(@RequestParam Map<String, Object> param) throws Exception {
+		Map<String, Object> result = new HashMap<>();
+		result = locationService.getRandomLocationList(param);
+		return result;
+	}
 
 
 	

@@ -5,9 +5,9 @@ const areaList = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() { 
+		setArea();
 		fetchLocationList();  // 페이지 로드 시 Location 여행지 리스트를 가져옴
 		_eventInit(); 
-		// _event.fetchLocationList();
 	};
  
 	// 이벤트 초기화 
@@ -51,7 +51,12 @@ const areaList = (function() {
 		},
 	};
 	
-
+	// 홈에서 넘어오는 지역 선택
+	function setArea() {
+		locationArea = sessionStorage.getItem("search_area");
+		sessionStorage.clear();
+	};
+	
 	// fetchLocationList();  페이지 로드 시 Location 여행지 리스트를 가져오는 함수 작성
 	// 리스트
 	function fetchLocationList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작

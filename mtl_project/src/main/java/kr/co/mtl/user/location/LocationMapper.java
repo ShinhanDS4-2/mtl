@@ -20,6 +20,8 @@ public interface LocationMapper {
 	Map<String, Object> getLocationDetailDescription(Map<String, Object> param);  // 여행지(관광지/맛집) 상세페이지 정보
 	List<Map<String, Object>> getLocationDetailKeyword(Map<String, Object> param);  // 여행지(관광지/맛집) 상세페이지 키워드
 
+/* 랜덤 여행지 리스트 */
+	List<Map<String, Object>> getRandomLocationList(Map<String, Object> param);
 	
 	
 /* [관리자] 정산 관리 > 정산내역 */	

@@ -5,6 +5,7 @@ const home = (function() {
 		_eventInit();
 		_randomBanner();
 		_event.getAccomodationList();
+		_event.getLocationList();
 		_sessionReset();
 	};
 
@@ -29,7 +30,9 @@ const home = (function() {
 				_event.clickSearch();
 			} else if (action == "clickPartnerDetail") {
 				_event.clickPartnerDetail(evo);
-			};
+			} else if (action == "clickArea") {
+				_event.clickArea(evo);
+			}
 		};
 	};
 	
@@ -85,7 +88,7 @@ const home = (function() {
 						let cardBody = $("<div>").addClass("card-body px-2");
 						card.append(cardBody);
 
-						let span = $("<span>").addClass("badge text-bg-light mb-2");
+						let span = $("<span>").addClass("badge text-bg-light mb-2 mt-0");
 						let accomodationType = data.type;
 						let typeText = "";
 						if (accomodationType == "HOTEL") {
@@ -100,6 +103,62 @@ const home = (function() {
 							typeText = "글램핑";
 						};
 						span.html(typeText);
+						cardBody.append(span);
+
+						let title = $("<h5>").addClass("card-title");
+						cardBody.append(title);
+
+						let titleLink = $("<a>").addClass("stretched-link text-truncate");
+						titleLink.attr("src", "javascript:;").html(data.name);
+						title.append(titleLink);
+
+						let area = $("<div>").addClass("hstack gap-2");
+						cardBody.append(area);
+
+						let areaSpan = $("<span>").addClass("h5 mb-0 text-primary");
+						areaSpan.append("<i class='fa-solid fa-location-dot'></i> ");
+						areaSpan.append(data.area);
+						cardBody.append(areaSpan);
+					}
+
+					_eventInit();
+				}
+			});
+		},
+		
+		// 여행지 랜덤 추천
+		getLocationList: function() {
+			let url = "/user/location/random/list";
+			
+			comm.send(url, null, "POST", function(resp) {
+				let list = resp.list;
+				
+				let listObject = $("#locationList").empty();
+				for (let data of list) {
+					let div = $("<div>").addClass("col-sm-6 col-xl-3");
+					listObject.append(div);
+
+					let cardLink = $("<a>").attr({
+						"href" : "javascript:;",					
+						"data-src" : "home",
+						"data-act" : "clickLocationDetail",
+						"data-location-idx" : data.location_idx,
+					});
+					div.append(cardLink);
+
+					let card = $("<div>").addClass("card card-img-scale overflow-hidden bg-transparent");
+					cardLink.append(card);
+					
+					{
+						let cardImg = $("<div>").addClass("card-img-scale-wrapper rounded-3");
+						card.append(cardImg);
+
+						let img = $("<img>").addClass("card-img h-180px").attr("src", data.image);
+						cardImg.append(img);
+					}
+					{
+						let cardBody = $("<div>").addClass("card-body px-2");
+						card.append(cardBody);
 
 						let title = $("<h5>").addClass("card-title");
 						cardBody.append(title);
@@ -145,6 +204,13 @@ const home = (function() {
 		// 인기 숙소 클릭
 		clickPartnerDetail: function(evo) {
 			location.href = "/mtl/partner/detail?idx=" + evo.attr("data-partner-idx");
+		},
+		
+		// 지역 클릭
+		clickArea: function(evo) {
+			let area = evo.attr("data-value");
+			sessionStorage.setItem("search_area", area); 
+			location.href = "/mtl/area/list";
 		},
 	};
 	

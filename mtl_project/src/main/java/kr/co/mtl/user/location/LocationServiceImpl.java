@@ -68,6 +68,21 @@ public class LocationServiceImpl implements LocationService {
 		return result;
 	};
 	
+	/**
+	 * 랜덤 여행지 리스트
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> getRandomLocationList(Map<String, Object> param) {
+		// 여기는 처음부터 param 값에 location_idx가 들어옴. 리스트에서 클릭해서 location_idx값에 대한 상세정보를 조회하는 것이기 때문.
+
+		Map<String, Object> result = new HashMap<>();
+
+		result.put("list", locationMapper.getRandomLocationList(param));
+
+		return result;
+	};
+	
 
 
 	
