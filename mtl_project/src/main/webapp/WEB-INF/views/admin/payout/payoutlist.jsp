@@ -18,7 +18,7 @@
 		<!-- Sidebar -->
 		<%@ include file="/WEB-INF/views/include/adminSidebar.jsp"%>
 
-
+ 
 		<!-- Page content START -->
 		<div class="page-content">
 
@@ -243,114 +243,80 @@
 							</div>
 						</div>
 
-						<!-- Table data (1번째 예약내역 상세 데이터)-->
-						<div
-							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">판매자명</small>
-								<!-- 작은 화면일때만 보이는 텍스트-->
-								<h6 class="ms-1 mb-0 fw-normal">스카이베이</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">객실타입</small>
-								<h6 class="ms-1 mb-0 fw-normal">스위투룸</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">예약일</small>
-								<h6 class="ms-1 mb-0 fw-normal">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">금액</small>
-								<h6 class="ms-1 mb-1 fw-light">250,000</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">수수료</small>
-								<h6 class="ms-1 mb-1 fw-light">25,000</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">정산액</small>
-								<h6 class="ms-1 mb-1 fw-light">225,000</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상태</small>
-								<div class="badge bg-success bg-opacity-10 text-success">정산완료</div>
-							</div>
+						<!-- Table data START (정산내역 리스트에서 1줄) / js에서 반복 돌릴 부분 -->
+						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">정산일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">
-									<a href="a/a" class="btn btn-sm btn-light mb-0">상세보기</a>
-								</div>
-							</div>
-						</div>
-						<!-- Table data-->
-						<div
-							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">판매자명</small>
 								<!-- 작은 화면일때만 보이는 텍스트-->
-								<h6 class="ms-1 mb-0 fw-normal">스카이베이</h6>
+								<h6 class="ms-1 mb-0 fw-normal">2024.12.09(월)</h6>
+								<a role="button" class="payoutDetail mb-0 fw-normal ms-1"
+									data-bs-toggle="modal" data-bs-target="#payoutDetailModal"
+									data-src="payout" data-calculate-date="2024-12-30">상세보기</a>
+							<!-- 
+							data-src="payout" : 현재 요소가 "payout(정산)"과 관련된 동작임을 나타냄. 
+							data-payout-idx="${data.calculate_date}" : 서버에서 전달받은 '정산일'정보를 동적으로 채우고, 
+											 ㄴ 정산 상세보기 클릭 시 서버로 요청할 때 calculate_date를 전달하기 위함
+							-->
+							</div>
+
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">총 판매 금액</small>
+								<h6 class="ms-1 mb-0 fw-normal">65,000원</h6>
+							</div>
+
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">총 정산 금액</small>
+								<h6 class="ms-1 mb-0 fw-normal">55,000원</h6>
 							</div>
 							<!-- Data item -->
 							<div class="col">
-								<small class="d-block d-sm-none">객실타입</small>
-								<h6 class="ms-1 mb-0 fw-normal">스위투룸</h6>
+								<small class="d-block d-sm-none">정산 대기</small>
+								<h6 class="ms-1 mb-0 fw-normal">0원</h6>
 							</div>
 							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">예약일</small>
-								<h6 class="ms-1 mb-0 fw-normal">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">금액</small>
-								<h6 class="ms-1 mb-1 fw-light">250,000</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">수수료</small>
-								<h6 class="ms-1 mb-1 fw-light">25,000</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">정산액</small>
-								<h6 class="ms-1 mb-1 fw-light">225,000</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상태</small>
-								<div class="badge bg-primary bg-opacity-10 text-primary">정산대기</div>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">정산일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">
-									<a href="a/a" class="btn btn-sm btn-light mb-0">상세보기</a>
+							<div class="col position-relative">
+								<small class="d-block d-sm-none">정산 완료</small>
+								<div class="d-flex">
+									<h6 class="mb-0 me-2 fw-normal">55,000원</h6>
+									<!-- Dropdown icon -->
+									<a href="#" class="h6 mb-0" role="button" id="dropdownShare1"
+										data-bs-toggle="dropdown" aria-expanded="false"> <i
+										class="bi bi-info-circle-fill"></i>
+									</a>
+									<!-- Dropdown items -->
+									<ul
+										class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
+										aria-labelledby="dropdownShare1">
+										<li>
+											<div class="d-flex justify-content-between">
+												<span class="small">판매가</span> <span
+													class="h6 mb-0 small ms-2">65,000원</span>
+											</div>
+											<hr class="my-1"> <!-- Divider -->
+										</li>
+
+										<li>
+											<div class="d-flex justify-content-between">
+												<span class="me-4 small">수수료</span> <span
+													class="text-danger small ms-2">-10,000원</span>
+											</div>
+											<hr class="my-1"> <!-- Divider -->
+										</li>
+										<li>
+											<div class="d-flex justify-content-between">
+												<span class="small">정산금액</span> <span
+													class="h6 mb-0 small ms-2">55,000원</span>
+											</div>
+										</li>
+									</ul>
 								</div>
 							</div>
 						</div>
+					<!-- Table data END (정산내역 리스트에서 1줄) / js에서 반복 돌릴 부분 -->						
 
-
-					</div>
-					<!-- Card body END -->
 
 					<!-- Card footer START -->
 					<div class="card-footer pt-0">
