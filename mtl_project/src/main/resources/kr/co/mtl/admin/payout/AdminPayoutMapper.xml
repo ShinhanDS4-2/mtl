@@ -9,30 +9,38 @@
 		SELECT COUNT(*)
 		FROM RESERVATION
 		WHERE payment_status = "P" 
-			AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
-			AND calculate_stauts = #{calculate_stauts}	
-	</select>
+		<if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_start != ''">
+			AND r.calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
+		</if>
+		<if test="calculate_stauts != null and calculate_stauts != ''">
+			AND r.calculate_stauts = #{calculate_stauts}	
+		</if>
+	</select> 
 	
 	<!-- 정산내역 리스트 조회-->
 	<!-- param : calculate_date_start, calculate_date_end, calculate_stauts (필터 적용)
 		  * 다중행 반환 List 형태로 반환되어야 함.  -->
 	<select id="getAdminPayoutList" parameterType="map">
-		SELECT r.idx, DATE_FORMAT(r.calculate_date, '%Y-%m-%d') AS calculate_date, r.price, r.calculate_price,
-			(CASE WHEN r.calculate_stauts="Y" THEN '정산완료' ELSE '정산대기' END) AS calculate_stauts, p.name
+		SELECT r.idx AS reservation_idx, DATE_FORMAT(r.calculate_date, '%Y-%m-%d') AS calculate_date, r.price, r.calculate_price,
+			r.calculate_stauts, p.name
 		FROM RESERVATION r JOIN PARTNER p ON (r.partner_idx = p.idx)
 		WHERE r.payment_status = "P"  
+		<if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_start != ''">
 			AND r.calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
+		</if>
+		<if test="calculate_stauts != null and calculate_stauts != ''">
 			AND r.calculate_stauts = #{calculate_stauts}	
+		</if>
 		
-	</select>
+	</select> 
 		  
 	<!-- 정산내역 상세정보 -->
 	<!-- param : reservation_idx  /  result: 넘많음
 		  * 단일행 반환 MAP 형태로 반환되어야 함.  -->
 	<select id="getAdminPayoutDetail" parameterType="map">
 		SELECT r.partner_idx, p.name, p.phone, p.email, p.business_name, p.business_number, p.account_bank, p.account_name, p.account_number, 
-			   r.user_idx, r.check_in_date, r.check_out_date, r.reservation_date, (CASE WHEN r.payment_status='P' THEN '결제완료' ELSE '환불완료' END) AS payment_status,
-			   r.price, r.charge, (CASE WHEN r.calculate_stauts="Y" THEN '정산완료' ELSE '정산대기' END) AS calculate_stauts, r.calculate_price, r.calculate_date, p.account_bank, p.account_name, p.account_number
+			   r.user_idx, r.check_in_date, r.check_out_date, DATE_FORMAT(r.reservation_date, '%Y-%m-%d') AS reservation_date, (CASE WHEN r.payment_status='P' THEN '결제완료' ELSE '환불완료' END) AS payment_status,
+			   r.price, r.charge, (CASE WHEN r.calculate_stauts="Y" THEN '정산완료' ELSE '정산대기' END) AS calculate_stauts, r.calculate_price, DATE_FORMAT(r.calculate_date, '%Y-%m-%d') AS calculate_date, p.account_bank, p.account_name, p.account_number
 		FROM RESERVATION r JOIN PARTNER p ON (r.partner_idx = p.idx)
 		WHERE r.idx = #{reservation_idx};
 	</select>

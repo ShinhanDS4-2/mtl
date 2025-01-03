@@ -5,7 +5,7 @@ $("#keywordRegisterModal .btn-dark-soft").on("click", function() {
         alert("키워드를 입력해주세요.");
         return;
     }
-
+ 
     $.ajax({
         url: "dupleKeyword",  // 중복 확인을 위한 URL (Controller에서 매핑 필요)
         method: "POST",  // POST 방식

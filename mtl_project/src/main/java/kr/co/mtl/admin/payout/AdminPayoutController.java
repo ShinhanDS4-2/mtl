@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminPayoutController {
 
 	@Autowired
-	private AdminPayoutService payoutService;
+	private AdminPayoutService payoutService; 
 
 	/** 시온 - API 완료
 	 * [관리자] 정산내역 리스트 조회
@@ -24,7 +24,7 @@ public class AdminPayoutController {
 	 * @return PayoutListCount, PayoutList, Param
 	 */
 	@PostMapping("/list")
-	public Map<String, Object> getPartnerPayoutList(@RequestParam Map<String, Object> param) throws Exception {
+	public Map<String, Object> getAdminPayoutList(@RequestParam Map<String, Object> param) throws Exception {
 		Map<String, Object> result = payoutService.getAdminPayoutList(param);
 		return result;
 	}
