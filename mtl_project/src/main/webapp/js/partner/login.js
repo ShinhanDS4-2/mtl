@@ -44,12 +44,13 @@ const login = (function() {
 	// 이벤트
 	let _event = {
 		handleLogin: function() {
-			let url = "/user/login";
+		console.log(1);
+			let url = "/partner/login";
 
 			let formData = {
 	        	email: $("#email").val(),
 	        	// MD5 암호화 적용
-	            // password: $("#pw").val(),
+	            //password: $("#pw").val(),
 	            password: CryptoJS.MD5($("#pw").val()).toString(),
 	        };
 			
@@ -57,7 +58,7 @@ const login = (function() {
             	let code = response.code;
                 if (code == 200) {
                     // 로그인 성공 시 메인 페이지로 이동
-                    location.href = "/mtl/";
+                    location.href = "/mtl/partner/dashboard";
                 } else if (code == 600) {
                     // 실패 메시지 표시
                     alert("로그인에 실패했습니다. 다시 시도해주세요.");

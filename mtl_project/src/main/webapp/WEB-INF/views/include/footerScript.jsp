@@ -38,3 +38,9 @@
 <script type="text/javascript">
 	header.init();
 </script>
+
+<!-- 판매자 topbar JS -->
+<script src="js/partner/partnerTopbar.js"></script>
+<script type="text/javascript">
+	partnerTopbar.init();
+</script>
