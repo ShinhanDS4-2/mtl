@@ -7,77 +7,63 @@
         SELECT 
               email,
               name,
-              phone,
-              birth
+              phone
         FROM 
             PARTNER
         WHERE 
-            idx = #{userIdx}
-        AND user_status = 'A'
+            idx = #{partnerIdx}
     </select>
 
     <!-- 사용자 인증 정보 확인 -->
     <select id="getUserCheck" parameterType="map" resultType="map">
         SELECT
-        	  idx AS user_idx, 
+        	  idx AS partner_idx, 
               email,
               name,
-              phone,
-              birth,
-              user_status
+              phone
         FROM 
-            USER
+           PARTNER
         WHERE 
             email = #{email}
         AND password = #{password}
-        AND user_status = 'A'
     </select>
     
     <!-- 회원가입 -->
     <insert id="insertUser" parameterType="map">
-	    INSERT INTO USER (email, password, name, birth, phone, create_date)
-	    VALUES (#{email}, #{password}, #{name}, #{birth}, #{phone}, NOW())
+	    INSERT INTO PARTNER (email, password, name, business_name, business_number, phone, business_phone, create_date)
+	    VALUES (#{email}, #{password}, #{name}, #{business_name}, #{business_number}, #{phone}, #{business_phone}, NOW())
 	</insert>
 	
 	<!-- 회원가입 이메일 중복 체크 -->
 	<select id="checkEmailDuplication" parameterType="String" resultType="int">
 		SELECT COUNT(*)
-	    FROM USER
+	    FROM PARTNER
 	    WHERE email = #{email}
 	</select>
 	
 	<!-- 마이페이지 수정 -->
 	<update id="updateUser" parameterType="map">
-	    UPDATE USER
-	    SET name = #{name},
-	        phone = #{phone}
-	    WHERE idx = #{userIdx}
+	    UPDATE PARTNER
+	    SET phone = #{phone}
+	    WHERE idx = #{partnerIdx}
 	</update>
 	
 	<!-- 비밀번호 변경 -->
 	<update id="updatePassword" parameterType="map">
-	    UPDATE USER
+	    UPDATE PARTNER
 	    SET password = #{newPassword},
 	    	password_update_date = now()
-	    WHERE idx = #{userIdx}
+	    WHERE idx = #{partnerIdx}
 	</update>
 	
 	<!-- 현재 비밀번호 확인 -->
 	<select id="getPasswordCheck" parameterType="map" resultType="map">
 	    SELECT
-	        idx AS user_idx
-	    FROM USER
-	    WHERE idx = #{userIdx}
+	        idx AS partner_idx
+	    FROM PARTNER
+	    WHERE idx = #{partnerIdx}
 	      AND password = #{password} -- DB의 현재 비밀번호와 입력한 비밀번호를 비교
 	</select>
-	
-	<!-- 회원탈퇴 -->
-	<update id="deactivateUser" parameterType="map">
-	    UPDATE USER
-	    SET user_status = 'L',
-	        leave_date = NOW()
-	    WHERE idx = #{userIdx}
-	</update>
 	
 	
     

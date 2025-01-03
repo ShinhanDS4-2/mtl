@@ -28,8 +28,6 @@ public interface PartnerLoginMapper {
     // 마이페이지 현재 비밀번호 비교 확인
     Map<String, Object> getPasswordCheck(Map<String, Object> param);
     
-    // 회원탈퇴
-    int deactivateUser(Map<String, Object> param);
 
 
 }

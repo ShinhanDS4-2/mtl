@@ -160,5 +160,50 @@ const comm = {
 	    let random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
 	
 	    return `PRCD-${idx}-${year}${month}${date}${hours}${minutes}${seconds}${random}`;
-	}
+	},
+	
+	// 다음 주소 입력
+	findAddress: function() {
+		new daum.Postcode({
+		    oncomplete: function (data) {
+		        let address = ""; // 주소
+		        let addressObj = document.getElementById("address"); // 주소
+		        let addressSi = document.getElementById("addressSi"); // 시군구
+		        let addressDong = document.getElementById("addressDong"); // 동
+		
+		        if (data.userSelectedType === "R") { // 도로명 주소
+		            address = data.roadAddress;
+		        } else { // 지번 주소
+		            address = data.jibunAddress;
+		        };
+		        
+				// 각 필드에 주소값을 넣는다.
+		        addressObj.value = address;
+		        addressSi.value = data.sigungu;
+		        addressDong.value = data.bname;
+		    }
+		}).open();
+	},
+	
+	// 이미지 미리보기
+	setPreview: function(evo) {
+		let files = evo.get(0).files;
+		let preview = $("#preview");
+		
+		if (files && files.length > 0) {
+            preview.empty();
+
+            Array.from(files).forEach(file => {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                	let div = $("<div>").addClass("position-relative me-3");
+                	preview.append(div);
+                	
+                    let img = $("<img>").addClass("preview rounded border").attr("src", e.target.result);
+                    div.append(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        };
+	},
 }

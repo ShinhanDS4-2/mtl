@@ -54,6 +54,7 @@
 									<label class="form-label">생년월일</label>
 									<input type="text" id="birth" class="form-control text-secondary" disabled="disabled">
 								</div>
+								<!--
 								<div class="col-md-6">
 									<div class="form-check form-switch form-check-md d-flex justify-content-between mb-4">
 										<label class="form-check-label" for="smsAssent">SMS 수신 동의</label>
@@ -66,6 +67,7 @@
 										<input class="form-check-input flex-shrink-0" type="checkbox" id="emailAssent" checked>
 									</div>
 								</div>
+								 -->
 								<div class="col-12 text-end">
 									<a href="javascript:;" class="btn btn-primary mb-0" data-src='info' data-act="updateInfo">내 정보 수정</a>
 								</div>
@@ -84,12 +86,12 @@
 						<form class="card-body">
 							<div class="mb-3">
 								<label class="form-label">현재 비밀번호</label>
-								<input id="password" class="form-control" type="password" placeholder="Enter current password">
+								<input id="password" class="form-control" type="password" placeholder="현재 비밀번호를 입력해 주세요.">
 							</div>
 							<div class="mb-3">
 								<label class="form-label">새 비밀번호</label>
 								<div class="input-group">
-									<input id="newPassword" class="form-control fakepassword" placeholder="Enter new password" type="password">
+									<input id="newPassword" class="form-control fakepassword" placeholder="새 비밀번호를 입력해 주세요." type="password">
 									<span class="input-group-text p-0 bg-transparent">
 										<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
 									</span>
@@ -97,7 +99,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">새 비밀번호 확인</label>
-								<input id="confirmPassword" class="form-control" type="password" placeholder="Confirm new password">
+								<input id="confirmPassword" class="form-control" type="password" placeholder="새 비밀번호를 다시 입력해 주세요.">
 							</div>
 							<div class="text-end">
 								<a href="javascript:;" class="btn btn-primary mb-0" data-src='info' data-act="changePassword">비밀번호 변경</a>

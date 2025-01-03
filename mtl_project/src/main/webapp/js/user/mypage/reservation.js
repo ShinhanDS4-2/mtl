@@ -4,7 +4,7 @@ const reservation = (function() {
 	function init() {
 		fetchReservationList();  // 페이지 로드 시 예약내역 리스트를 가져옴
 
-		//_menuActive();   // 원래 있던건데 이건 뭐지??   
+		_menuActive(); 
 		_eventInit(); 
 	};
 
@@ -40,21 +40,20 @@ const reservation = (function() {
 		clickDeatilModal : function(evo) {
 			let reservation_idx evo.attr("data-reservation-idx");
 			let src = evo.attr("data-src"); // 데이터 소스 ("reservation")
-
-			console.log("예약 ID:", reservationIdx); // 예: 123
-			console.log("데이터 소스:", src); // 예: "reservation"
-
 		}
-	
 	};
 	*/
+	
+	// 메뉴 active
+	function _menuActive() {
+		$("#menuReservation").addClass("active");
+	};
 
 
 	// fetchReservationList();  페이지 로드 시 예약내역 리스트를 가져오는 함수
 	function fetchReservationList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
 		
 		let param = { // ajax로 넘겨줄 data값 변수 선언
-			"user_idx" : 3
 		};
 
 		// 페이징
@@ -128,11 +127,11 @@ const reservation = (function() {
 								<small><i class="bi bi-geo-alt me-2"></i>${data.address}</small>
 								<small class="mt-2">
 									<i class="fa-regular fa-calendar me-2"></i>${data.check_in_date} ~ ${data.check_out_date}
-									<i class="fa-solid fa-users ms-3 me-2"></i>${data.guest_cnt}명 
+									<i class="fa-solid fa-users ms-3 me-2"></i>${data.guest_cnt}인
 								</small>
 								<div class="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
 									<div class="d-flex align-items-center">
-										<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> ${data.price}</h5>
+										<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> ${comm.numberWithComma(data.price)}</h5>
 									</div>
 									<div class="mt-3 mt-sm-0">
 										<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0">추천 여행지</a>    
@@ -206,7 +205,7 @@ const reservation = (function() {
 										</li>
 										<li class="list-group-item">
 											<span class="h6 mb-0 me-1">총 금액 : </span>
-											<span class="h6 fw-light mb-0">${reservData.price}</span>
+											<span class="h6 fw-light mb-0">${comm.numberWithComma(reservData.price)}</span>
 										</li>
 									</ul>
 								</div>
@@ -215,8 +214,6 @@ const reservation = (function() {
 
 			reservDetailModal.append(modalBody);
 		/* 예약 상세 정보 modal END */
-		
-				
 	},
 };
 

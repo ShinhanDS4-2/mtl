@@ -56,9 +56,5 @@ public interface PartnerLoginService {
     Map<String, Object> changePassword(Map<String,Object> param) throws Exception;
     
     
-    /**
-     * 회원탈퇴
-     */
-    boolean deactivateUser(Map<String, Object> param) throws Exception;
 
 }

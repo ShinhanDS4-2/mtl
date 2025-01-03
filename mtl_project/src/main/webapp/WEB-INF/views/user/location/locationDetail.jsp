@@ -37,7 +37,7 @@
 	<div class="col-12"> 
 		<!-- 메인 이미지 (크게 표시) / 반복X 1개의 사진만 표시 -->
 		<div class="main-image mb-4 img-container">
-			<img src="https://mtl-s3-bucket.s3.ap-northeast-2.amazonaws.com/location/1/서울_롯데월드 아쿠아리움_1.jpg" alt="대체텍스트" class="img-fluid rounded w-100">
+			<img src="" alt="대체텍스트" class="img-fluid rounded w-100">
 		</div>
 	</div>
 	
@@ -46,7 +46,7 @@
 		<div class="row">
 		 	<!-- 아래 div 반복 돌리며 사진 리스트 보여줘야 함 -->
 			<div class="col-6 col-md-3 mb-3 img-container-small">
-				<img src="assets/images/location/서울_가로수길_1.png" alt="대체텍스트" class="img-fluid rounded">
+				<img src="" alt="대체텍스트" class="img-fluid rounded">
 			</div>
 		</div>
 	</div>

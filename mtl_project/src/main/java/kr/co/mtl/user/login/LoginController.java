@@ -121,6 +121,7 @@ public class LoginController {
     	Map<String, Object> result = new HashMap<>();
     	
     	boolean isDuplicated = loginService.isEmailDuplicated(param);
+    	result.put("duplicated", isDuplicated);
 
         return result;
     }

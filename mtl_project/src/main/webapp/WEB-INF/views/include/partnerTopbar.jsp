@@ -7,9 +7,8 @@
 
 			<!-- Logo START -->
 			<div class="d-flex align-items-center d-xl-none">
-				<a class="navbar-brand" href="index.html"> <img
-					class="navbar-brand-item h-40px" src="assets/images/logo-icon.svg"
-					alt="">
+				<a class="navbar-brand" href="javascript:;" data-src="partnerTopbar" data-act="clickLogo"> 
+				<img class="navbar-brand-item h-40px" src="assets/images/logo-icon.svg" alt="">
 				</a>
 			</div>
 			<!-- Logo END -->
@@ -37,7 +36,7 @@
 				<li class="nav-item ms-3 dropdown"><a
 					class="text-dark fw-bold p-1" href="/mtl/partner/hotelregist" id="profileDropdown"
 					role="button" data-bs-auto-close="outside" data-bs-display="static"
-					data-bs-toggle="dropdown" aria-expanded="false"> 시온 님 </a>
+					data-bs-toggle="dropdown" aria-expanded="false"> ${login_partner_name } 님 </a>
 					<ul
 						class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
 						aria-labelledby="profileDropdown">
@@ -46,8 +45,8 @@
 							<div class="d-flex align-items-center">
 
 								<div>
-									<a class="h6 mt-2 mt-sm-0" href="/mtl/partner/hotelregist">00호텔</a>
-									<p class="small m-0">example@gmail.com</p>
+									<a class="h6 mt-2 mt-sm-0" href="/mtl/partner/hotelregist">${login_partner_name }</a>
+									<p class="small m-0">${login_partner_email }</p>
 									<!-- 아이디 들어오는 곳 -->
 								</div>
 							</div>
@@ -59,7 +58,7 @@
 						</li>
 						<li><a class="dropdown-item" href="/mtl/partner/mypage"><i
 								class="bi bi-heart fa-fw me-2"></i>마이페이지</a></li>
-						<li><a class="dropdown-item" href="/mtl/partner/signin"><i
+						<li><a class="dropdown-item" href="javascript:;" data-src="partnerTopbar" data-act="clickLogoutBtn"><i
 								class="bi bi-power fa-fw me-2"></i>로그아웃</a></li>
 					</ul></li>
 				<!-- 프로필 드롭다운 END -->

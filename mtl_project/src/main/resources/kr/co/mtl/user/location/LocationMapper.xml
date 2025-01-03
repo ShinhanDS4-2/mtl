@@ -7,7 +7,7 @@
 		SELECT COUNT(*)
 		FROM LOCATION
 		<where>
-			<if test="area != null and area != ''">
+			<if test="area != null and area != '' and area != 'ALL'">
 				AND area = #{area} 		 <!-- 서울, 강릉, 여수, 부산, 제주 중 택1 -->
 			</if>
 			<if test="type != null and type != ''">
@@ -21,7 +21,7 @@
 		SELECT idx AS location_idx, name, area, address_si, address_dong
 		FROM LOCATION
 		<where>
-			<if test="area != null and area != ''">
+			<if test="area != null and area != '' and area != 'ALL'">
 				AND area = #{area} 		 <!-- 서울, 강릉, 여수, 부산, 제주 중 택1 -->
 			</if>
 			<if test="type != null and type != ''">
@@ -82,6 +82,18 @@
 	</select>
 <!-- [사용자] 여행지(관광지/맛집) 상세페이지 조회 END-->		
 
+<!-- 랜덤 여행지 -->
+	<select id="getRandomLocationList" parameterType="map">
+		SELECT 
+			  l.idx AS location_idx
+			, l.name
+			, l.area
+			, (SELECT url FROM IMAGE WHERE mapping_idx = l.idx AND type = 'L' AND thumbnail_yn = 'Y') AS image
+		FROM 
+			LOCATION l
+		ORDER BY RAND()
+		LIMIT 4
+	</select>
 	
 
 </mapper>

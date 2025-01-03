@@ -25,6 +25,9 @@
 <!-- 아임포트 -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
+<!-- 다음 주소 찾기 API -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <!-- common JS -->
 <script src="js/util/common.js"></script>
 <!-- paging -->
@@ -34,4 +37,10 @@
 <script src="js/include/header.js"></script>
 <script type="text/javascript">
 	header.init();
+</script>
+
+<!-- 판매자 topbar JS -->
+<script src="js/partner/partnerTopbar.js"></script>
+<script type="text/javascript">
+	partnerTopbar.init();
 </script>

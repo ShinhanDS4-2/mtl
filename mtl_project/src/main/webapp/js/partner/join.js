@@ -1,5 +1,5 @@
 const join = (function() {
-console.log(1);
+
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
@@ -62,7 +62,7 @@ console.log(1);
 		    
 		    
 		    // 서버로 이메일 중복 확인 요청
-        	comm.send("/user/clickEmailCheck", formData, "POST", function(response) {
+        	comm.send("/partner/clickEmailCheck", formData, "POST", function(response) {
 	            if (response.duplicated == false) {
 	                alert("사용 가능한 이메일입니다.");
 	            } else {
@@ -87,10 +87,10 @@ console.log(1);
                 password: $("#joinPw").val(),
                 passwordCheck: $("#joinPwCheck").val(),
                 name: $("#joinName").val(),
-                birthYear: $("#joinBirthYear").val(),
-                birthMonth: $("#joinBirthMonth").val(),
-                birthDay: $("#joinBirthDay").val(),
+                business_name: $("#joinBusiness_Name").val(),
+                business_number: $("#joinBusiness_Number").val(),
                 phone: $("#joinPhone").val(),
+                business_phone: $("#joinBusiness_Phone").val(),
             };
             
             // 유효성 검사
@@ -118,38 +118,51 @@ console.log(1);
                 return;
             }
             if (!formData.name) {
-                alert("이름을 입력해주세요.");
+                alert("업체명을 입력해주세요.");
                 return;
             }
-            if (!formData.birthYear || !formData.birthMonth || !formData.birthDay) {
-                alert("생년월일을 선택해주세요.");
+            if (!formData.business_name) {
+                alert("사업자명을 입력해주세요.");
                 return;
             }
-            if (!formData.phone) {
-                alert("연락처를 입력해주세요.");
+            if (!formData.business_number) {
+                alert("사업자 등록번호를 입력해주세요.");
                 return;
             }
-            
-            // 생년월일 조합해서 한번에 보내기
-			formData.birth = `${formData.birthYear}-${formData.birthMonth}-${formData.birthDay}`;
-			delete formData.birthYear;
-			delete formData.birthMonth;
-			delete formData.birthDay;
-            
-            // 연락처 형식 확인
-			if (!/^010-\d{3,4}-\d{4}$/.test(formData.phone)) {
-			    alert("올바른 연락처를 입력하세요. 형식은 010-0000-0000입니다.");
+            // 사업자 등록번호 형식 확인
+			if (!/^\d{3}-\d{2}-\d{5}$/.test(formData.business_number)) {
+			    alert("올바른 사업자 등록번호를 입력하세요. 형식은 000-00-00000입니다.");
 			    return;
 			}
+            if (!formData.phone) {
+                alert("업체 연락처를 입력해주세요.");
+                return;
+            }
+            // 업체 연락처 형식 확인
+			if (!/^010-\d{3,4}-\d{4}$/.test(formData.phone)) {
+			    alert("올바른 업체 연락처를 입력하세요. 형식은 010-0000-0000입니다.");
+			    return;
+			}
+            if (!formData.business_phone) {
+                alert("사업자 연락처를 입력해주세요.");
+                return;
+            }
+            // 사업자 연락처 형식 확인
+			if (!/^010-\d{3,4}-\d{4}$/.test(formData.business_phone)) {
+			    alert("올바른 사업자 연락처를 입력하세요. 형식은 010-0000-0000입니다.");
+			    return;
+			}
+            
+            
 
             
 
             // 서버로 데이터 전송
-            comm.send("/user/join", formData, "POST", function(response) {
+            comm.send("/partner/join", formData, "POST", function(response) {
                 if (response.code == 200) {
                     alert("회원가입이 완료되었습니다.");
                     // 회원가입 성공 시 메인 페이지로 이동
-                    location.href = "/mtl/";
+                    location.href = "/mtl/partner/dashboard";
                 } else {
                     alert("회원가입에 실패했습니다. 다시 시도해주세요.");
                 }

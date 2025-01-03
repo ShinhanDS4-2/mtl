@@ -114,12 +114,6 @@ Main Banner END -->
 <!-- 지역 아이콘 -->
 <section class="pt-0">
 	<div class="container">
-		<!-- Title -->
-		<div class="row mb-4">
-			<div class="col-12 text-center">
-				<h2 class="mb-0">뭐라고 쓰지</h2>
-			</div>
-		</div>
 		<div class="row g-5">
 			<div class="col-1"></div>
 			<!-- Card item START -->
@@ -129,7 +123,7 @@ Main Banner END -->
 					<img src="assets/images/icon/서울.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="area/list" class="stretched-link">서울</a></h5>
+						<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="home" data-act="clickArea" data-value="SEOUL">서울</a></h5>
 						<span>Seoul</span>
 					</div>
 				</div>
@@ -143,7 +137,7 @@ Main Banner END -->
 					<img src="assets/images/icon/강릉.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="area/list" class="stretched-link">강릉</a></h5>
+						<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="home" data-act="clickArea" data-value="GANGNEUNG">강릉</a></h5>
 						<span>Gangneung</span>
 					</div>
 				</div>
@@ -157,7 +151,7 @@ Main Banner END -->
 					<img src="assets/images/icon/여수.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="area/list" class="stretched-link">여수</a></h5>
+						<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="home" data-act="clickArea" data-value="YEOSU">여수</a></h5>
 						<span>Yeosu</span>
 					</div>
 				</div>
@@ -171,7 +165,7 @@ Main Banner END -->
 					<img src="assets/images/icon/부산.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="area/list" class="stretched-link">부산</a></h5>
+						<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="home" data-act="clickArea" data-value="BUSAN">부산</a></h5>
 						<span>Busan</span>
 					</div>
 				</div>
@@ -185,7 +179,7 @@ Main Banner END -->
 					<img src="assets/images/icon/제주.jpg" class="rounded-circle" alt="">
 
 					<div class="card-body p-0 pt-3">
-						<h5 class="card-title"><a href="area/list" class="stretched-link">제주</a></h5>
+						<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="home" data-act="clickArea" data-value="JEJU">제주</a></h5>
 						<span>Jeju</span>
 					</div>
 				</div>
@@ -221,14 +215,11 @@ Main Banner END -->
 		<!-- Title -->
 		<div class="row mb-4 justify-content-between">
 			<div class="col-6 text-start">
-				<h5 class="mb-0">인기 여행지</h5>
-			</div>
-			<div class="col-6 text-end">
-				<a href="#" class="text-secondary"><i class="fa-solid fa-arrow-right"></i> 더보기</a>
+				<h5 class="mb-0">여행지 추천</h5>
 			</div>
 		</div>
 
-		<div class="row g-4">
+		<div class="row g-4" id="locationList">
 			<!-- Package item -->
 			<div class="col-sm-6 col-xl-3">
 				<!-- Card START -->
