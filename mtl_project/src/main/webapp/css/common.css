@@ -195,3 +195,9 @@
 	background-position: center left; 
 	background-size: cover;
 }
+
+.preview {
+	width: 150px; 
+	height: 100px; 
+	object-fit: cover;
+}

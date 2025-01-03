@@ -2,17 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mtl.partner.accomodation.AccomodationMapper">
 
-	<insert id="registerAccomodation" parameterType="HashMap">
-		INSERT INTO PARTNER 
-			(email,password,name,phone,business_name,business_number,area,address,description,address_si,address_dong,approval_status,
-			create_date,update_date,password_update_date,type,score,total_reservation,approval_date,account_number,account_bank,account_name,
-			latitude,hardness)
-		VALUES (
-			#{email},#{password},#{name},#{phone},#{business_name},#{business_number},#{area},#{address},#{description},#{address_si},
-			#{address_dong},#{approval_status},NOW(),NOW(),NOW(),#{type},#{score},#{total_reservation},NOW(),#{account_number},
-			#{account_bank},#{account_name},#{latitude},#{hardness}
-			)
-	</insert>
+	<!-- 숙소 정보 업데이트 -->
+	<update id="updateAccomodationInfo" parameterType="HashMap">
+		UPDATE PARTNER
+		SET
+			  address = #{address}
+			, address_si = #{address_si}
+			, address_dong = #{address_dong}
+			, description = #{description}
+			, check_in = #{check_in}
+			, check_out = #{check_out} 
+			, latitude = #{latitude} 
+			, hardness = #{hardness} 
+			, type = #{type} 
+			, info_yn = 'Y'
+			, update_date = now()
+		WHERE 
+			idx = #{partner_idx}
+	</update>
 	
+	<!-- 숙소 상세 -->
+	<select id="getDetail" parameterType="HashMap">
+		SELECT
+			  name
+			, type
+			, phone
+			, business_phone
+			, check_in
+			, check_out
+			, address
+			, description
+		FROM
+			PARTNER
+		WHERE
+			idx = #{partner_idx}
+	</select>
+	
+	<!-- 숙소 시설 -->
+	<select id="getFacilitiesList" parameterType="HashMap">
+		SELECT
+			  facilities_idx
+		FROM
+			PARTNER_FACILITIES
+		WHERE
+			partner_idx = #{partner_idx}
+	</select>
 
+	<!-- 숙소 이미지 -->
+	<select id="getImageList" parameterType="HashMap">
+		SELECT
+			    idx AS image_idx
+			  , url
+		FROM
+			IMAGE
+		WHERE
+			mapping_idx = #{partner_idx}
+		AND type = 'P'
+	</select>
+	
 </mapper>
