@@ -25,7 +25,7 @@
 						<img src="assets/images/icon/서울.jpg" class="rounded-circle" alt="">
 	
 			 			<div class="card-body p-0 pt-3">
-							<h5 class="card-title"><a href="#" class="stretched-link">전체</a></h5>
+							<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="areaList" data-act="clickArea" data-value="ALL">전체</a></h5>
 							<span>All</span>
 						</div>
 					</div>
@@ -36,7 +36,7 @@
 						<img src="assets/images/icon/서울.jpg" class="rounded-circle" alt="">
 	
 						<div class="card-body p-0 pt-3">
-							<h5 class="card-title"><a href="#" class="stretched-link">서울</a></h5>
+							<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="areaList" data-act="clickArea" data-value="SEOUL">서울</a></h5>
 							<span>Seoul</span>
 						</div>
 					</div>
@@ -47,7 +47,7 @@
 						<img src="assets/images/icon/강릉.jpg" class="rounded-circle" alt="">
 	
 						<div class="card-body p-0 pt-3">
-							<h5 class="card-title"><a href="#" class="stretched-link">강릉</a></h5>
+							<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="areaList" data-act="clickArea" data-value="GANGNEUNG">강릉</a></h5>
 							<span>Gangneung</span>
 						</div>
 					</div>
@@ -58,7 +58,7 @@
 						<img src="assets/images/icon/여수.jpg" class="rounded-circle" alt="">
 	
 						<div class="card-body p-0 pt-3">
-							<h5 class="card-title"><a href="#" class="stretched-link">여수</a></h5>
+							<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="areaList" data-act="clickArea" data-value="YEOSU">여수</a></h5>
 							<span>Yeosu</span>
 						</div>
 					</div>
@@ -69,7 +69,7 @@
 						<img src="assets/images/icon/부산.jpg" class="rounded-circle" alt="">
 	
 						<div class="card-body p-0 pt-3">
-							<h5 class="card-title"><a href="#" class="stretched-link">부산</a></h5>
+							<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="areaList" data-act="clickArea" data-value="BUSAN">부산</a></h5>
 							<span>Busan</span>
 						</div>
 					</div>
@@ -80,7 +80,7 @@
 						<img src="assets/images/icon/제주.jpg" class="rounded-circle" alt="">
 	
 						<div class="card-body p-0 pt-3">
-							<h5 class="card-title"><a href="#" class="stretched-link">제주</a></h5>
+							<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="areaList" data-act="clickArea" data-value="JEJU">제주</a></h5>
 							<span>Jeju</span>
 						</div>
 					</div>
@@ -101,77 +101,20 @@
 		<div class="tab-content">	 
 			<!-- 관광지 탭 START (디폴트) -->
 			<div class="tab-pane show active" id="tab1">
-				<div class="row g-4">
-					<!-- Card item START (js에서 반복 돌릴 부분) -->
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/롯데월드타워.png" class="rounded-2 area-image" alt="Card image">
-		 
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">잠실 롯데월드타워</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 서울특별시 신천동</small>
-							</div> 
-							<!-- Card body END -->
-		 
-							<!-- Card footer START-->
-		 					<div class="card-footer pt-1">
-		 						<!-- js에서 반복 돌릴 부분 -->
-								<span class="badge bg-primary bg-opacity-10 text-primary mb-1"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div> 
-					<!-- Card item END -->   
-				</div> <!-- Row END -->
 			</div>
 			<!-- 관광지 탭 END -->
 			
 			<!-- 맛집 탭 START -->
 			<div class="tab-pane" id="tab2">
-				<div class="row g-4">
-					<!-- Card item START (js에서 반복 돌릴 부분) -->
-					<div class="col-md-3">
-						<div class="card shadow p-2 pb-0 h-350px area-icon" data-src="areaList" data-act="clickLocation">
-							<!-- Image -->
-							<img src="assets/images/강릉_시드누아.jpg" class="rounded-2 area-image" alt="Card image">
-		
-							<!-- Card body START -->
-							<div class="card-body px-3 pb-0">
-								<!-- Title -->
-								<h5 class="card-title mb-0"><a href="javascript:;">시드누아 속초점</a></h5>
-								<small><i class="fa-solid fa-location-dot"></i> 강원 강릉시 노학동</small>
-							</div>
-							<!-- Card body END -->
-		
-							<!-- Card footer START-->
-							<div class="card-footer pt-1">
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-								<span class="badge bg-primary bg-opacity-10 text-primary"><i class="fa-solid fa-hashtag"></i> 키워드</span>
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-					
-				</div> <!-- Row END -->
 			</div>
 			<!-- 맛집 탭 END -->
 		</div>
-
 
 		<!-- 페이징 처리 START -->
 		<div class="row">
 			<div class="col-12">
 				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
 					<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">  <!-- id="pagination" -->
-						<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
-						<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
-						<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
-						<li class="page-item mb-0"><a class="page-link" href="#">3</a></li>
-						<li class="page-item mb-0"><a class="page-link" href="#">4</a></li>
-						<li class="page-item mb-0"><a class="page-link" href="#">5</a></li>
-						<li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
 					</ul>
 				</nav>
 			</div>

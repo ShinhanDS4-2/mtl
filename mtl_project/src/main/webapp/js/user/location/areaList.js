@@ -1,6 +1,7 @@
 const areaList = (function() {
 
-	let locationType = "";
+	let locationType = "A";
+	let locationArea = "ALL";
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() { 
@@ -26,9 +27,7 @@ const areaList = (function() {
 		let type = e.type; 
 		 
 		if (type == "click") {
-			if (action == "clickPartner") { 
-				_event.clickPartner(evo); 
-			} else if (action == "clickLocation") {
+			if (action == "clickLocation") {
 				_event.clickLocation(evo);
 			} else if(action == "clickAttration") {
 				locationType = "A";
@@ -36,32 +35,29 @@ const areaList = (function() {
 			} else if(action == "clickRestaurang") {
 				locationType = "R";
 				fetchLocationList();
+			} else if(action == "clickArea") {
+				locationArea = evo.attr("data-value");
+				fetchLocationList();
 			}
 		};        
 	};   
 	 
 	// 이벤트 
 	let _event = { 
-		// 숙소 상세 페이지로 이동
-		clickPartner: function(evo) {
-			let partnerIdx = evo.attr("data-partner-idx");
-			location.href = "/mtl/partner/detail?idx=" + partnerIdx;
-		},
-		
 		// 여행지 상세 페이지로 이동
 		clickLocation: function(evo) {
 			let locationIdx = evo.attr("data-location-idx");
 			location.href = "/mtl/location/detail?location_idx=" + locationIdx;
 		},
 	};
-
+	
 
 	// fetchLocationList();  페이지 로드 시 Location 여행지 리스트를 가져오는 함수 작성
 	// 리스트
 	function fetchLocationList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
 		
 		let param = { // ajax로 넘겨줄 data값 변수 선언
-			"area" : "SEOUL",  // 얘ㅗ도 클릭이벤트 설정필요
+			"area" : locationArea,  
 			"type" : locationType
 		};
 
@@ -113,6 +109,8 @@ const areaList = (function() {
 				tab = $("#tab2"); 
 			}
 			
+			tab.empty();
+			
 			tab.empty(); // 기존 내용을 비워줌
  			 
 			let row = $("<div>").addClass("row g-4");
@@ -127,7 +125,8 @@ const areaList = (function() {
 				let card = $("<div>").addClass("card shadow p-2 pb-0 h-350px area-icon");
 				card.attr({
                     "data-src" : "areaList",
-                    "data-act" : "clickLocation"
+                    "data-act" : "clickLocation",
+                    "data-location-idx" : data.location_idx
                 });
 				col.append(card);
 
@@ -153,12 +152,6 @@ const areaList = (function() {
 				// 키워드
 				if(data.keyword && data.keyword.length > 0){  // 키워드가 있는지 확인하고, 키워드 문자열 길이가 1이상인지 확인된 경우에만 실행되도록 함
 					for(keywordData of data.keyword){  // data.keyword 값이 없는 경우 에러로 코드가 중간에 중단되어버림. 뒤에 반복 실행 불가 => 키워드가 널인지 확인하는 로직을 추가해줘야함 
-						console.log("keywordData값은? "); 
-						console.log(keywordData);   // 키워드 리스트에서 1행만 뽑아줌
-	
-						console.log("keywordData.keyword값은? "); 
-						console.log(keywordData.keyword);   // 가족여행
-	
 						let keywordStr = `<span class="badge bg-primary bg-opacity-10 text-primary mb-1 me-1">
 												<i class="fa-solid fa-hashtag"></i>${keywordData.keyword}</span>`;
 	

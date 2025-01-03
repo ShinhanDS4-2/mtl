@@ -82,17 +82,14 @@ const locationDetail = (function() {
 				</div>`;
 			ImageList.append(mainImgStr);
 
-
-			let col2 = $("<div>").addClass("col-12");
-			ImageList.append(col2);
-			let row =  $("<div>").addClass("row");
-			col2.append(row);
+			let row =  $("<div>").addClass("row justify-content-between");
+			ImageList.append(row);
 
 			// 작은 이미지들 반복 출력
 			for(data of list.Image) {  // url 값에는 큰따옴표 포함되어 있지 않기 때문에 큰따옴표 붙여야 함 => https://mtl-s3-bom/location/12/서울_명동교자 본점_3.jpg
 				// 작은 이미지
 				let smallImgStr = 
-					`<div class="col-6 col-md-3 mb-3 img-container-small">
+					`<div class="col-3 img-container-small">
 						<img src="${data.url}" alt="대체텍스트" class="img-fluid rounded"> 
 					</div>`;
 					row.append(smallImgStr);  

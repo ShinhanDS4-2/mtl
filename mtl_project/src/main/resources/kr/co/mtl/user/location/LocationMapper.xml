@@ -7,7 +7,7 @@
 		SELECT COUNT(*)
 		FROM LOCATION
 		<where>
-			<if test="area != null and area != ''">
+			<if test="area != null and area != '' and area != 'ALL'">
 				AND area = #{area} 		 <!-- 서울, 강릉, 여수, 부산, 제주 중 택1 -->
 			</if>
 			<if test="type != null and type != ''">
@@ -21,7 +21,7 @@
 		SELECT idx AS location_idx, name, area, address_si, address_dong
 		FROM LOCATION
 		<where>
-			<if test="area != null and area != ''">
+			<if test="area != null and area != '' and area != 'ALL'">
 				AND area = #{area} 		 <!-- 서울, 강릉, 여수, 부산, 제주 중 택1 -->
 			</if>
 			<if test="type != null and type != ''">
