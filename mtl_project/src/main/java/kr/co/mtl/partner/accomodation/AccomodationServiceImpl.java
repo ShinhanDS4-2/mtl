@@ -1,11 +1,14 @@
 package kr.co.mtl.partner.accomodation;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class AccomodationServiceImpl implements AccomodationService{
@@ -21,15 +24,21 @@ public class AccomodationServiceImpl implements AccomodationService{
 	 * @throws Exception
 	 */
 	@Override
-	public Map<String, Object> updateAccomodationInfo(Map<String, Object> param) throws Exception {
+	public Map<String, Object> updateAccomodationInfo(Map<String, Object> param, List<MultipartFile> mfile) throws Exception {
 		
 		Map<String, Object> result = new HashMap<>();
 		
-		if (accomodationMapper.updateAccomodationInfo(param) > 0) {
-			result.put("result", true);
-		} else {
-			result.put("result", false);
-		};
+		String facilitiesString = String.valueOf(param.get("facilitiesList"));
+		
+		List<Integer> facilitiesList = Arrays.stream(facilitiesString.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+		
+//		if (accomodationMapper.updateAccomodationInfo(param) > 0) {
+//			result.put("result", true);
+//		} else {
+//			result.put("result", false);
+//		};
 		
 		return result;
 	}

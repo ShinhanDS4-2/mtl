@@ -7,19 +7,88 @@
 		UPDATE PARTNER
 		SET
 			  address = #{address}
-			, address_si = #{address_si}
-			, address_dong = #{address_dong}
 			, description = #{description}
 			, check_in = #{check_in}
 			, check_out = #{check_out} 
-			, latitude = #{latitude} 
-			, hardness = #{hardness} 
 			, type = #{type} 
 			, info_yn = 'Y'
 			, update_date = now()
+			<if test="address_si != null and address_si != ''">
+			, address_si = #{address_si}
+			</if>
+			<if test="address_dong != null and address_dong != ''">
+			, address_dong = #{address_dong}
+			</if>
+			<if test="latitude != null and latitude != ''">
+			, latitude = #{latitude} 
+			</if>
+			<if test="hardness != null and hardness != ''">
+			, hardness = #{hardness} 
+			</if>
 		WHERE 
 			idx = #{partner_idx}
 	</update>
+	
+	<!-- 숙소 시설 등록 -->
+	<insert id="insertPartnerFacilities" parameterType="HashMap">
+		INSERT INTO PARTNER_FACILITIES (
+			  partner_idx
+			, facilities_idx
+		) VALUES (
+			  #{partner_idx}
+			, #{facilities_idx}
+		)
+	</insert>
+	
+	<!-- 숙소 시설 삭제 -->
+	<delete id="deletePartnerFacilities" parameterType="HashMap">
+		DELETE FROM PARTNER_FACILITIES
+		WHERE 
+			partner_idx = #{partner_idx}
+	</delete>
+	
+	<!-- 숙소 이미지 등록 -->
+	<insert id="insertPartnerImage" parameterType="HashMap">
+		INSERT INTO IMAGE (
+			  mapping_idx
+			, url
+			, origin_filename
+			, thumbnail_yn
+			, type
+		) VALUES (
+			  #{partner_idx}
+			, #{url}
+			, #{origin_filename}
+			, #{thumbnail_yn}
+			, 'P'
+		)
+	</insert>
+	
+	<!-- 숙소 이미지 삭제 -->
+	<delete id="deletePartnerImage" parameterType="HashMap">
+		DELETE FROM IMAGE
+		WHERE 
+			mapping_idx = #{partner_idx}
+		AND type = 'P'
+	</delete>
+	
+	<!-- 숙소 키워드 등록 -->
+	<insert id="insertPartnerKeyword" parameterType="HashMap">
+		INSERT INTO PARTNER_Keyword (
+			  partner_idx
+			, keyword_idx
+		) VALUES (
+			  #{partner_idx}
+			, #{keyword_idx}
+		)
+	</insert>
+
+	<!-- 숙소 키워드 삭제 -->
+	<delete id="deletePartnerKeyword" parameterType="HashMap">
+		DELETE FROM PARTNER_KEYWORD
+		WHERE 
+			partner_idx = #{partner_idx}
+	</delete>
 	
 	<!-- 숙소 상세 -->
 	<select id="getDetail" parameterType="HashMap">
@@ -32,6 +101,7 @@
 			, check_out
 			, address
 			, description
+			, info_yn
 		FROM
 			PARTNER
 		WHERE

@@ -109,7 +109,7 @@
 								</div>
 								<div class="col-2">
 									<div class="d-grid gap-2">
-										<input class="btn btn-primary-soft" type="button" id="findAddress" data-src="regist"data-act="findAddress" value="주소 찾기">
+										<input class="btn btn-primary-soft" type="button" id="findAddress" data-src="regist" data-act="findAddress" value="주소 찾기">
 									</div>
 								</div>
 							</div>
@@ -156,7 +156,7 @@
 								<div class="border rounded d-flex justify-content-center align-items-center" style="width: 150px; height: 100px; background-color: #f8f9fa;">
 									<label class="text-center" style="cursor: pointer;"> 
 										<i class="bi bi-upload"></i><br>숙소 사진 업로드 
-										<input type="file" class="d-none" multiple="multiple" data-src="regist" data-act="changeFile">
+										<input type="file" class="d-none" multiple="multiple" data-src="regist" data-act="changeFile" id="partnerImage">
 									</label>
 								</div>
 								<div id="preview" class="d-flex">

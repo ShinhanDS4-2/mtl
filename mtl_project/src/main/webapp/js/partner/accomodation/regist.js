@@ -26,7 +26,11 @@ const regist = (function() {
 		if(type == "click") {
 			if (action == "findAddress") {
 				comm.findAddress();			// 주소 입력
-			};
+			} else if (action == "clickAddress") {
+				$("#findAddress").trigger("click"); // 주소창 클릭 시 주소 찾기 버튼 트리거			
+			} else if (action == "clickInfoSave") {
+				_event.clickInfoSave();
+			}
 		} else if (type == "change") {
 			if (action == "changeFile") {
 				comm.setPreview(evo); 		// 이미지 미리보기 생성
@@ -36,6 +40,32 @@ const regist = (function() {
 	
 	// 이벤트
 	let _event = {
+		// 정보 저장
+		clickInfoSave: function() {
+			let url = "/partner/accomodation/update";
+			
+			let facilitiesList = $("#facilitiesList .form-check-input:checked").map(function () {
+		        return $(this).val();
+		    }).get();
+			
+			let data = {
+				"type" : $("#partnerType option:selected").val(),
+				"check_in" : $("#partnerCheckInTime").val(),
+				"check_out" : $("#partnerCheckOutTime").val(),
+				"address" : $("#address").val(),
+				"address_si" : $("#addressSi").val(),
+				"address_dong" : $("#addressDong").val(),
+				"mfile" : $("#partnerImage").get(0).files,
+				"facilitiesList" : facilitiesList
+			};
+			
+			// 파일 전송을 위한 폼데이터 변경			
+			let formData = comm.changeFormData(data);
+			
+			comm.sendFile(url, formData, "POST", function() {
+				alert("정상적으로 저장되었습니다.");
+			});
+		},
 	};
 	
 	// 시설 세팅
@@ -87,8 +117,6 @@ const regist = (function() {
 			$("#partnerCheckInTime").val(info.check_in);
 			$("#partnerCheckOutTime").val(info.check_out);
 			$("#partnerPhone").val(info.phone);
-			$("#partnerDescription").val(info.description);
-			$("#address").val(info.address);
 			
 			// select
 			let element = document.getElementById("partnerType");
@@ -98,17 +126,33 @@ const regist = (function() {
 		            searchEnabled: false, 
 		        });
 		    };
-	        // 선택 값 변경
-	        choices.setChoiceByValue(info.type);
-	        
-	        // 시설
-	        let facilitiesList = resp.data.facilitiesList;
-	        if (facilitiesList) {
-	        	for (let item of facilitiesList) {
+
+			// 가입 후 정보 등록을 했을 경우 기존 정보들 세팅
+			if(info.info_yn == 'Y') {
+				$("#partnerDescription").val(info.description);
+				$("#address").val(info.address).attr("disabled", true);
+				$("#findAddress").attr("disabled", true)
+
+		        // 선택 값 변경
+		        choices.setChoiceByValue(info.type);
+	
+		        // 시설
+	        	for (let item of resp.data.facilitiesList) {
 	        		let id = "#facilities" + item.facilities_idx;
 	        		$(id).prop("checked", true);
 	        	};
-	        };
+	        	
+	        	// 이미지
+        		let preview = $("#preview");
+	        	for (let item of resp.data.imageList) {
+					let div = $("<div>").addClass("position-relative me-3");
+                	preview.append(div);
+                	
+                    let img = $("<img>").addClass("preview rounded border").attr("src", item.url);
+                    div.append(img);	        		
+	        	};
+			}
+	        
 		});
 	}
 	
