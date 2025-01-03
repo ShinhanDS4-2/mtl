@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PayoutServiceImpl implements PayoutService {
+public class PartnerPayoutServiceImpl implements PartnerPayoutService {
 
 	@Autowired
-	private PayoutMapper payoutMapper;
+	private PartnerPayoutMapper payoutMapper;
 
 	/** 시온
 	 * [판매자] 정산내역 리스트 조회

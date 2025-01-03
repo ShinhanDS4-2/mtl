@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface PayoutMapper {
+public interface PartnerPayoutMapper {
 	
 
 /* [판매자] 결제 관리 > 정산내역 */	

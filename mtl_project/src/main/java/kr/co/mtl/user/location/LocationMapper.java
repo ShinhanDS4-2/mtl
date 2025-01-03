@@ -22,8 +22,4 @@ public interface LocationMapper {
 
 	
 	
-/* [관리자] 정산 관리 > 정산내역 */	
-
-	
-	
 }

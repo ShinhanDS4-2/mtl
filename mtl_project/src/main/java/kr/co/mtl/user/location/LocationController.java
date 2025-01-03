@@ -43,20 +43,6 @@ public class LocationController {
 		return result;
 	}
 	
-	
-
-
-	
-	/** 시온
-	 * [관리자] 정산 관리
-	 * @param ?
-	 * @return 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 객실 금액, 예약인원
-	 */
-	@PostMapping("/AdminPayoutList")
-	public Map<String, Object> getAdminPayoutList(@RequestParam Map<String, Object> param) throws Exception {
-		Map<String, Object> result = locationService.getPartnerPayoutList(param);
-		return result;
-	}
 
 	
 }
