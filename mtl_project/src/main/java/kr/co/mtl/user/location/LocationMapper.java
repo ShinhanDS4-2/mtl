@@ -21,16 +21,6 @@ public interface LocationMapper {
 	List<Map<String, Object>> getLocationDetailKeyword(Map<String, Object> param);  // 여행지(관광지/맛집) 상세페이지 키워드
 
 	
-/* [사용자] 마이페이지 예약내역 조회 */
-	List<Map<String, Object>> getMypageReservationHistoryList(Map<String, Object> param);  // 마이페이지 예약내역 리스트 조회
-	Map<String, Object> getMypageReservationHistoryDetail(Map<String, Object> param);  // 마이페이지 예약내역 상세정보 조회
-	
-	
-/* [판매자] 결제 관리 > 정산내역 */	
-	List<Map<String, Object>> getPartnerPayoutList(Map<String, Object> param);  // 정산내역 리스트 조회
-	List<Map<String, Object>> getPartnerPayoutDetailList(Map<String, Object> param);  // 정산 상세 내역 조회
-	
-	
 	
 /* [관리자] 정산 관리 > 정산내역 */	
 

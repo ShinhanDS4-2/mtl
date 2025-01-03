@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.partner.payout.PayoutMapper">
+
+	
+<!-- [판매자] 결제 관리 > 정산내역 START-->	
+	<!-- 정산내역 리스트 총 개수 --> 
+	<select id="getPartnerPayoutListCount" parameterType="map">
+		SELECT COUNT(*)
+		FROM RESERVATION
+		WHERE payment_status = "P"
+			AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
+			AND calculate_stauts = #{calculate_stauts}
+		GROUP BY calculate_date 
+	</select>
+	
+	<!-- 정산내역 리스트 조회-->
+	<!-- param : 정산기간필터 시작일 calculate_date_start, 정산기간필터 종료일 calculate_date_end, 정산상태calculate_stauts (필터 적용)
+		 result: 정산일, 총 판매 금액, 총 정산 금액, 총 수수료, 정산 대기중인 금액(=정산 상태가 N일 때 정산금액 총합), 정산 완료된 금액(=정산 상태가 Y일 때 정산금액 총합)  
+		  * 다중행 반환 List 형태로 반환되어야 함.  -->
+	<select id="getPartnerPayoutList" parameterType="map">
+		SELECT DATE_FORMAT(calculate_date, '%Y-%m-%d') AS calculate_date, SUM(price) AS total_price, 
+			SUM(calculate_price) AS total_calculate_price, 
+			SUM(CASE WHEN calculate_stauts="N" THEN calculate_price ELSE 0 END) AS pending_amount, 
+			SUM(CASE WHEN calculate_stauts="Y" THEN calculate_price ELSE 0 END) AS completed_amount
+		FROM RESERVATION
+		WHERE payment_status = "P"
+			AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
+			AND calculate_stauts = #{calculate_stauts}
+		GROUP BY calculate_date 
+	</select>
+		 
+		 
+	<!-- 정산 상세 내역 리스트 조회 -->
+	<!-- param : calculate_date(정산일)
+		 result: calculate_date(정산일), idx(예약번호), room_type(객실명), price(객실요금), calculate_price(정산금액), calculate_stauts(정산 상태)
+		  * 다중행 반환 List 형태로 반환되어야 함.  -->
+	<select id="getPartnerPayoutDetailList" parameterType="map">
+		SELECT DATE_FORMAT(rs.calculate_date, '%Y-%m-%d') AS calculate_date, rs.idx, rm.room_type, rs.price, rs.calculate_price, 
+			(CASE WHEN rs.calculate_stauts="Y" THEN "정산완료" ELSE "정산대기" END) AS calculate_stauts
+			FROM RESERVATION rs JOIN ROOM rm ON(rs.room_idx = rm.idx)
+			WHERE payment_status = "P"  
+		AND DATE(calculate_date)=#{calculate_date}
+	</select>
+	
+<!-- [판매자] 결제 관리 > 정산내역 END-->
+
+
+
+
+
+</mapper>

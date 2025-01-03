@@ -23,6 +23,8 @@ public class LocationServiceImpl implements LocationService {
 		Map<String, Object> result = new HashMap<>();
 		System.out.println("param 값은 멀까요" + param);
 		List<Map<String, Object>> list = locationMapper.getLocationList(param);
+		int count = locationMapper.getLocationListCount(param);
+		
 		for(Map<String, Object> data : list) {  // 반복문 돌면서 data에는 여행지 정보, 사진, 키워드 데이터가 합쳐짐
 			param.put("location_idx", data.get("location_idx"));
 			
@@ -35,10 +37,11 @@ public class LocationServiceImpl implements LocationService {
 			data.put("keyword", keyword); 
 		}
 		
-		result.put("LocationList", list);
+		
+		result.put("LocationList", list);  // 지역 별 여행지 리스트
 		
 		// 페이징 처리를 위한 list의 total 총 개수를 함께 result로 넘겨줘야함
-		result.put("LocationListCount", locationMapper.getLocationListCount(param));  // 지역 별 여행지 리스트 총 개수
+		result.put("LocationListCount", count);  // 지역 별 여행지 리스트 총 개수
 		
 		return result;
 	};
@@ -65,32 +68,9 @@ public class LocationServiceImpl implements LocationService {
 		return result;
 	};
 	
+
+
 	
 	
-	/** 시온
-	 * [사용자] 마이페이지 예약내역 리스트 조회
-	 * @param user_idx
-	 * @return 예약idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 객실 금액, 예약인원
-	 */
-	public Map<String, Object> getMypageReservationHistoryList(Map<String, Object> param) {
-		System.out.println("param 값은? " + param);
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		List<Map<String, Object>> list = locationMapper.getMypageReservationHistoryList(param);
-		result.put("ReservationHistoryList", list);
-		System.out.println("result 값은? " + result);
-		return result;
-	}
-	
-	/** 시온
-	 * [사용자] 마이페이지 예약내역 상세정보 조회
-	 * @param reservation_idx (예약 idx)
-	 * @return 예약테이블에서 뽑고싶은거 뽑으면댐 
-	 */
-	public Map<String, Object> getMypageReservationHistoryDetail(Map<String, Object> param) {
-		Map<String, Object> result = locationMapper.getMypageReservationHistoryDetail(param);
-		return result;
-	}
 
 }
