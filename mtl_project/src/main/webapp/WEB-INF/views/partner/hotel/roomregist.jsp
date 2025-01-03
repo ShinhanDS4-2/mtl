@@ -51,227 +51,198 @@
 				<!-- 상단 navbar END -->
 
 				<!-- 객실 수정 모달창 START -->
-				<div id="roomRegistModal" class="modal" tabindex="-1" role="dialog">
-					<div class="modal-dialog modal-xl modal-dialog-centered"
-						role="document">
-						<!-- 제일 큰 모달 -->
-						<div class="modal-content">
-							<!-- 모달 head -->
-							<div class="modal-header">
-								<h5 class="modal-title">객실 수정</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
-							</div>
-
-
-							<!-- 모달 body -->
-							<div class="modal-body m-3">
-								<!-- 객실 기본정보 등록 Card START -->
-								<div class="card border mb-4">
-									<div class="card-header border-bottom">
-										<h5 class="card-header-title">객실 기본정보</h5>
-									</div>
-									<!-- Flex container START -->
-									<div class="d-flex">
-										<!-- 왼쪽 카드 START -->
-										<div class="card-body col-6">
-											<div class="mb-3">
-												<label class="form-label">객실타입명</label> <input type="text"
-													class="form-control" value="스탠다드" placeholder="Name">
-											</div>
-											<div class="mb-3">
-												<label class="form-label">기본인원</label> <input type="text"
-													class="form-control" value="2인"
-													placeholder="Enter your mobile number">
-											</div>
-											<div class="mb-3">
-												<label class="form-label">평일요금</label> <input type="text"
-													class="form-control" value="50,000원"
-													placeholder="Enter your mobile number">
-											</div>
-										</div>
-										<!-- 왼쪽 카드 END -->
-
-										<!-- 오른쪽 카드 START -->
-										<div class="card-body col-6">
-											<!-- 검색어 드롭다운 -->
-											<div class="mb-3">
-												<label class="form-label">객실수</label> <input type="text"
-													class="form-control" value="5" placeholder="Name">
-											</div>
-
-											<div class="mb-3">
-												<label class="form-label">최대인원</label> <input type="text"
-													class="form-control" value="3인"
-													placeholder="Enter your mobile number">
-											</div>
-											<div class="mb-3">
-												<label class="form-label">주말요금</label> <input type="text"
-													class="form-control" value="80,000원"
-													placeholder="Enter your mobile number">
-											</div>
-										</div>
-										<!-- 오른쪽 카드 END -->
-									</div>
+				<form id="frm_update">
+					<div id="roomRegistModal" class="modal" tabindex="-1" role="dialog">
+						<div class="modal-dialog modal-xl modal-dialog-centered"
+							role="document">
+							<!-- 제일 큰 모달 -->
+							<div class="modal-content">
+								<!-- 모달 head -->
+								<div class="modal-header">
+									<h5 class="modal-title">객실 수정</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
 								</div>
-								<!-- 객실 기본정보 등록 Card END -->
-
-								<!-- 객실 상세 설명 Card Start -->
-								<div class="card border mb-4">
-									<div class="card-header border-bottom">
-										<h5 class="card-header-title">객실 상세 설명</h5>
-									</div>
-									<div class="card-body">
-
-										<!-- 답변달기 START -->
-										<div class="d-flex mt-1">
-											<textarea class="form-control mb-3 bg-light"
-												placeholder="답변을 작성해주세요..." rows="7"></textarea>
+	
+	
+								<!-- 모달 body -->
+								<div class="modal-body m-3">
+									<!-- 객실 기본정보 등록 Card START -->
+									<div class="card border mb-4">
+										<div class="card-header border-bottom">
+											<h5 class="card-header-title">객실 기본정보</h5>
 										</div>
-
-									</div>
-								</div>
-								<!-- 객실 상세 설명 Card END -->
-
-								<!-- 객실 옵션 설정 Card Start -->
-								<div class="card border mb-4">
-									<div class="card-header border-bottom">
-										<h5 class="card-header-title">객실 옵션 설정</h5>
-									</div>
-									<div class="card-body">
-										<!-- 옵션 체크박스 -->
-										<div class="row row-cols-4 g-3">
-											<!-- 첫 번째 열 -->
-											<div class="col">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="fitness" checked> 
-													<label class="form-check-label" for="fitness">피트니스</label>
+										<!-- Flex container START -->
+										<div class="d-flex">
+											<!-- 왼쪽 카드 START -->
+											<div class="card-body col-6">
+												<div class="mb-3">
+													<label class="form-label">객실타입명</label> 
+													<input type="text" id="roomType" class="form-control" name="RoomType">
 												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="pool">
-													<label class="form-check-label" for="pool">수영장</label>
+												<div class="mb-3">
+													<label class="form-label">기본인원</label> 
+													<input type="text" id="standard_person" name="standard_person" class="form-control">
 												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="outdoor-pool" checked> 
-													<label class="form-check-label" for="outdoor-pool">야외수영장</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="sauna">
-													<label class="form-check-label" for="sauna">사우나</label>
+												<div class="mb-3">
+													<label class="form-label">평일요금</label> 
+													<input type="text" id="basic_price" name="basic_price" class="form-control">
 												</div>
 											</div>
-											<!-- 두 번째 열 -->
-											<div class="col">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="meeting-room" checked> 
-													<label class="form-check-label" for="meeting-room">공용샤워실</label>
+											<!-- 왼쪽 카드 END -->
+	
+											<!-- 오른쪽 카드 START -->
+											<div class="card-body col-6">
+												<!-- 검색어 드롭다운 -->
+												<div class="mb-3">
+													<label class="form-label">객실수</label> 
+													<input type="text" id="room_count" name="room_count" class="form-control">
 												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="spa2">
-													<label class="form-check-label" for="spa2">스파</label>
+	
+												<div class="mb-3">
+													<label class="form-label">최대인원</label> 
+													<input type="text" id="maximum_person" name="maximum_person" class="form-control">
 												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="restaurant"> 
-													<label class="form-check-label" for="restaurant">레스토랑</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="rooftop"> 
-													<label class="form-check-label" for="rooftop">루프탑</label>
-												</div>
-											</div>
-											<!-- 세 번째 열 -->
-											<div class="col">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="parking" checked> 
-													<label class="form-check-label" for="parking">무료주차</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="bbq" checked> 
-													<label class="form-check-label" for="bbq">바베큐</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="elevator"> 
-													<label class="form-check-label" for="elevator">엘리베이터</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="dryer2">
-													<label class="form-check-label" for="dryer2">건조기</label>
+												<div class="mb-3">
+													<label class="form-label">주말요금</label> 
+													<input type="text" id="weekend_price" name="weekend_price" class="form-control">
 												</div>
 											</div>
-											<!-- 네 번째 열 -->
-											<div class="col">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="lounge" checked> 
-													<label class="form-check-label" for="lounge">라운지</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="label1" checked> 
-													<label class="form-check-label" for="label1">Label</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="label2" checked> 
-													<label class="form-check-label" for="label2">Label</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" id="label3" checked> 
-													<label class="form-check-label" for="label3">Label</label>
-												</div>
-											</div>
+											<!-- 오른쪽 카드 END -->
 										</div>
 									</div>
-								</div>
-								<!-- 객실 옵션 설정 Card END -->
-
-								<!-- 객실 사진 등록 Card Start -->
-								<div class="card border mb-3">
-									<div class="card-header border-bottom">
-										<h5 class="card-header-title">객실 사진 등록</h5>
+									<!-- 객실 기본정보 등록 Card END -->
+	
+									<!-- 객실 상세 설명 Card Start -->
+									<div class="card border mb-4">
+										<div class="card-header border-bottom">
+											<h5 class="card-header-title">객실 상세 설명</h5>
+										</div>
+										<div class="card-body">
+	
+											<!-- 답변달기 START -->
+											<div class="d-flex mt-1">
+												<textarea id="update_description" name="update_description" class="form-control mb-3 bg-light" rows="7"></textarea>
+											</div>
+	
+										</div>
 									</div>
-									<div class="card-body">
-										<!-- 사진 리스트 -->
-										<div class="d-flex gap-3">
-											<!-- 이미지 1 -->
-											<div class="position-relative">
-												<img src="https://via.placeholder.com/150" alt="사진 1"
-													class="rounded border"
-													style="width: 150px; height: 100px; object-fit: cover;">
-											</div>
-											<!-- 이미지 2 -->
-											<div class="position-relative">
-												<img src="https://via.placeholder.com/150" alt="사진 2"
-													class="rounded border"
-													style="width: 150px; height: 100px; object-fit: cover;">
-											</div>
-											<!-- 이미지 3 -->
-											<div class="position-relative">
-												<img src="https://via.placeholder.com/150" alt="사진 3"
-													class="rounded border"
-													style="width: 150px; height: 100px; object-fit: cover;">
-											</div>
-											<!-- 업로드 버튼 -->
-											<div
-												class="border rounded d-flex justify-content-center align-items-center"
-												style="width: 150px; height: 100px; background-color: #f8f9fa;">
-												<label class="text-center" style="cursor: pointer;">
-													<i class="bi bi-upload"></i><br>숙소 사진 업로드 <input
-													type="file" class="d-none">
-												</label>
+									<!-- 객실 상세 설명 Card END -->
+	
+									<!-- 객실 옵션 설정 Card Start -->
+									<div class="card border mb-4">
+										<div class="card-header border-bottom">
+											<h5 class="card-header-title">객실 옵션 설정</h5>
+										</div>
+										<div class="card-body">
+											<!-- 옵션 체크박스 -->
+											<div class="row row-cols-4 g-3">
+												<!-- 첫 번째 열 -->
+												<div class="col">
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="shower2" name="option" value="14"> 
+														<label class="form-check-label" for="shower2">샤워실</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="bath2" name="option" value="15">
+														<label class="form-check-label" for="bath2">욕조</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="bath-supplies2" name="option" value="16"> 
+														<label class="form-check-label" for="bath-supplies2">욕실용품</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="mini-bar2" name="option" value="17">
+														<label class="form-check-label" for="mini-bar2">미니바</label>
+													</div>
+												</div>
+												<!-- 두 번째 열 -->
+												<div class="col">
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="dryer2" name="option" value="18"> 
+														<label class="form-check-label" for="dryer2">드라이기</label>
+													</div>
+													<div class="form-check"> 
+														<input class="form-check-input" type="checkbox" id="wifi2" name="option" value="19">
+														<label class="form-check-label" for="wifi2">와이파이</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="tv2" name="option" value="20"> 
+														<label class="form-check-label" for="tv2">TV</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="safe2" name="option" value="21"> 
+														<label class="form-check-label" for="safe2">금고</label>
+													</div>
+												</div>
+												<!-- 세 번째 열 -->
+												<div class="col">
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="electric-port2" name="option" value="22"> 
+														<label class="form-check-label" for="electric-port2">전기포트</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="rice-cooker2" name="option" value="23"> 
+														<label class="form-check-label" for="rice-cooker2">전기밥솥</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="coffee-machine2" name="option" value="24"> 
+														<label class="form-check-label" for="coffee-machine2">커피머신</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="spa2" name="option" value="25">
+														<label class="form-check-label" for="spa2">스파</label>
+													</div>
+												</div>
+												<!-- 네 번째 열 -->
+												<div class="col">
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="lounge" name="option" value="26"> 
+														<label class="form-check-label" for="lounge">어메니티</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" id="label1" name="option" value="27"> 
+														<label class="form-check-label" for="label1">PC</label>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
+									<!-- 객실 옵션 설정 Card END -->
+	
+									<!-- 객실 사진 등록 Card Start -->
+									<div class="card border mb-3">
+										<div class="card-header border-bottom">
+											<h5 class="card-header-title">객실 사진 등록</h5>
+										</div>
+										<div class="card-body">
+											<!-- 사진 리스트 -->
+											<div class="d-flex gap-3">
+												<!-- 업로드 버튼 -->
+												<div class="border rounded d-flex justify-content-center align-items-center" style="width: 150px; height: 100px; background-color: #f8f9fa;">
+													<label class="text-center" style="cursor: pointer;"> 
+														<i class="bi bi-upload"></i><br>숙소 사진 업로드 
+														<input type="file" class="d-none" multiple="multiple" id="changeFile">
+													</label>
+												</div>
+												<div id="preview" class="d-flex">
+												</div>
+											</div>
+										</div>
+									</div>
+	
 								</div>
-
-							</div>
-
-							<!-- 확인/취소 button -->
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-bs-dismiss="modal">취소</button>
-								<button type="button" class="btn btn-primary">수정하기</button>
+	
+								<!-- 확인/취소 button -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">취소</button>
+									<button type="button" id="updateRoom" class="btn btn-primary">수정하기</button>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div> 
+					</div> 
+				</form>
 				<!-- 객실 수정 모달창 END -->
 
 				<!-- tab-content START -->
@@ -470,12 +441,10 @@
 											style="width: 150px; height: 100px; object-fit: cover;">
 									</div>
 									<!-- 업로드 버튼 -->
-									<div
-										class="border rounded d-flex justify-content-center align-items-center"
-										style="width: 150px; height: 100px; background-color: #f8f9fa;">
-										<label class="text-center" style="cursor: pointer;"> <i
-											class="bi bi-upload"></i><br>숙소 사진 업로드 <input
-											type="file" class="d-none">
+									<div class="border rounded d-flex justify-content-center align-items-center" style="width: 150px; height: 100px; background-color: #f8f9fa;">
+										<label class="text-center" style="cursor: pointer;"> 
+											<i class="bi bi-upload"></i><br>숙소 사진 업로드 
+											<input type="file" id="roomImageUpload" class="d-none" multiple>
 										</label>
 									</div>
 								</div>
