@@ -106,6 +106,7 @@
 		ON r.idx = rs.room_idx
 		WHERE
 			p.approval_status = 'Y'
+		AND r.status = 'Y'
 		AND r.maximum >= #{guest}
 		AND r.count > (
 			SELECT
