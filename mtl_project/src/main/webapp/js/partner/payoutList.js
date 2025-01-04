@@ -86,7 +86,7 @@ const payout = (function() {
 
 			success: function(response) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: PayoutListCount, PayoutList)
 				
-				_draw.drawReservationList(response);
+				_draw.drawPayoutList(response);
 				// page.drawPage(response.ReservationListCount);  페이징 ??? 
 				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.
 			},
@@ -99,7 +99,7 @@ const payout = (function() {
 
 	let _draw = {  
 		// 정산내역 리스트
-		drawReservationList: function(list) {  // 위에 API 호출 결과 값으로 받은 response(=PayoutListCount, PayoutList)값을 list라는 이름의 매개변수로 넘겨준다. 
+		drawPayoutList: function(list) {  // 위에 API 호출 결과 값으로 받은 response(=PayoutListCount, PayoutList)값을 list라는 이름의 매개변수로 넘겨준다. 
 			
 			let listCount = list.PayoutListCount;
 			let payoutList = list.PayoutList;

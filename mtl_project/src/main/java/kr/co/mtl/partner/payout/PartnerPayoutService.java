@@ -2,7 +2,7 @@ package kr.co.mtl.partner.payout;
 
 import java.util.Map;
 
-public interface PayoutService {
+public interface PartnerPayoutService {
  
 
 	// [판매자] 정산내역 리스트 조회	

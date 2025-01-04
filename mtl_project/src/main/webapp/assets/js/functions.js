@@ -739,6 +739,7 @@ var e = {
         });
       }
     },
+
     // END: Flatpicker
 
     // START: 17 Splide slider
