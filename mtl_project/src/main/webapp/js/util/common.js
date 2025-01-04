@@ -188,11 +188,9 @@ const comm = {
 	// 이미지 미리보기
 	setPreview: function(evo) {
 		let files = evo.get(0).files;
-		let preview = $("#preview");
+		let preview = $("#preview").empty();
 		
 		if (files && files.length > 0) {
-            preview.empty();
-
             Array.from(files).forEach(file => {
                 let reader = new FileReader();
                 reader.onload = function(e) {

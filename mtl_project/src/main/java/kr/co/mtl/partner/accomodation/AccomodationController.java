@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,16 +30,16 @@ public class AccomodationController {
 	 * @throws Exception
 	 */
 	@PostMapping("/update")
-	public Map<String,Object> updateAccomodationInfo(@RequestParam Map<String,Object> param, @RequestParam(required = false, name = "mfile") List<MultipartFile> mfile, HttpServletRequest request) throws Exception {
+	public Map<String,Object> updateAccomodationInfo(@RequestParam Map<String,Object> param, 
+													 @RequestParam(required = false, name = "mfile") List<MultipartFile> mfile, 
+													 HttpServletRequest request) {
 		
 		Map<String, Object> result = new HashMap<>();
 		
-//		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));
+		HttpSession session = request.getSession();
+		param.put("partner_idx", session.getAttribute("login_partner_idx"));
 		
-		param.put("partner_idx", 207);
-		
-		accomodationService.updateAccomodationInfo(param, mfile);
+		result = accomodationService.updateAccomodationInfo(param, mfile);
 
 		return result;
 	};
@@ -50,10 +49,8 @@ public class AccomodationController {
 		
 		Map<String, Object> result = new HashMap<>();
 		
-//		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));
-		
-		param.put("partner_idx", 82);
+		HttpSession session = request.getSession();
+		param.put("partner_idx", session.getAttribute("login_partner_idx"));
 		
 		result.put("data", accomodationService.getDetail(param));
 

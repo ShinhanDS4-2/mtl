@@ -21,7 +21,7 @@ public interface AccomodationMapper {
 	int insertPartnerImage(Map<String,Object> param);
 	
 	// 숙소 이미지 삭제
-	int deleltePartnerImage(Map<String,Object> param);
+	int deletePartnerImage(Map<String,Object> param);
 	
 	// 숙소 키워드 등록
 	int insertPartnerKeyword(Map<String,Object> param);
@@ -37,5 +37,8 @@ public interface AccomodationMapper {
 
 	// 숙소 이미지 리스트
 	List<Map<String, Object>> getImageList(Map<String, Object> param);
+
+	// 숙소 키워드 리스트
+	List<Map<String, Object>> getKeywordList(Map<String, Object> param);
 
 }

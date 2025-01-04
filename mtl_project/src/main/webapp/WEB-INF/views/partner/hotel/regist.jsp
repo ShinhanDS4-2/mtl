@@ -75,17 +75,32 @@
 								</div>
 							</div>
 							<div class="card-body col-6 pb-0">
-								<div class="mb-3 col-3">
-									<label class="h6 fw-normal mb-0 form-label">숙소 유형</label>
-									<div class="mt-2">
-										<select class="form-select" id="partnerType">
-											<option value="" selected disabled="disabled">선택</option>
-											<option value="HOTEL">호텔</option>
-											<option value="MOTEL">모텔</option>
-											<option value="GUESTHOUSE">게스트하우스</option>
-											<option value="PENSION">펜션</option>
-											<option value="GLAMPING">글램핑</option>
-										</select>
+								<div class="d-flex justify-content-between">
+									<div class="mb-3 col-6 pe-1">
+										<label class="h6 fw-normal mb-0 form-label">숙소 유형</label>
+										<div class="mt-2">
+											<select class="form-select" id="partnerType">
+												<option value="" selected disabled="disabled">선택</option>
+												<option value="HOTEL">호텔</option>
+												<option value="MOTEL">모텔</option>
+												<option value="GUESTHOUSE">게스트하우스</option>
+												<option value="PENSION">펜션</option>
+												<option value="GLAMPING">글램핑</option>
+											</select>
+										</div>
+									</div>
+									<div class="mb-3 col-6 ps-1">
+										<label class="h6 fw-normal mb-0 form-label">지역</label>
+										<div class="mt-2">
+											<select class="form-select" id="partnerArea">
+												<option value="" selected disabled="disabled">선택</option>
+												<option value="SEOUL">서울</option>
+												<option value="GANGNEUNG">강릉</option>
+												<option value="YEOSU">여수</option>
+												<option value="BUSAN">부산</option>
+												<option value="JEJU">제주</option>
+											</select>
+										</div>
 									</div>
 								</div>
 
@@ -130,6 +145,19 @@
 							</div>
 						</div>
 					</div>
+
+					<!-- 숙소 키워드 설정 Card Start -->
+					<div class="card border mb-4">
+						<div class="card-header border-bottom">
+							<h5 class="card-header-title">숙소 취향 설정</h5>
+						</div>
+						<div class="card-body">
+							<!-- 옵션 체크박스 -->
+							<div class="row row-cols-4 g-3" id="keywordList">
+							</div>
+						</div>
+					</div>
+					<!-- 숙소 키워드 설정 Card END -->
 
 					<!-- 숙소 옵션 설정 Card Start -->
 					<div class="card border mb-4">

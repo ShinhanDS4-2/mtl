@@ -2,8 +2,10 @@ const regist = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
+		window.scrollTo(0,0);
 		_eventInit();
 		_setFacilities();
+		_setKeyword();
 		_setPartnerInfo();
 	};
 
@@ -47,23 +49,49 @@ const regist = (function() {
 			let facilitiesList = $("#facilitiesList .form-check-input:checked").map(function () {
 		        return $(this).val();
 		    }).get();
+
+			let keywordList = $("#keywordList .form-check-input:checked").map(function () {
+		        return $(this).val();
+		    }).get();
 			
 			let data = {
 				"type" : $("#partnerType option:selected").val(),
+				"area" : $("#partnerArea option:selected").val(),
 				"check_in" : $("#partnerCheckInTime").val(),
 				"check_out" : $("#partnerCheckOutTime").val(),
 				"address" : $("#address").val(),
 				"address_si" : $("#addressSi").val(),
 				"address_dong" : $("#addressDong").val(),
-				"mfile" : $("#partnerImage").get(0).files,
-				"facilitiesList" : facilitiesList
+				"facilitiesList" : facilitiesList,
+				"keywordList" : keywordList,
+				"description" : $("#partnerDescription").val()
 			};
 			
+			// 데이터 null 체크
+			for (let key in data) {
+				if (data[key] == null || data[key] == "") {
+					alert("입력되지 않은 값이 있습니다.");
+					return;
+				};
+			};
+			
+			// 이미지 null 체크
+			data.mfile = $("#partnerImage").get(0).files;
+			if ($("#preview").children().length <= 0) {
+				alert("이미지를 등록해 주세요.");
+				return;				
+			};
+
 			// 파일 전송을 위한 폼데이터 변경			
 			let formData = comm.changeFormData(data);
-			
-			comm.sendFile(url, formData, "POST", function() {
-				alert("정상적으로 저장되었습니다.");
+
+			comm.sendFile(url, formData, "POST", function(resp) {
+				if (resp.result == true) {
+					alert("정상적으로 저장되었습니다.");
+					location.reload();
+				} else {
+					alert("저장에 실패하였습니다.<br>다시 시도해 주세요.");
+				}
 			});
 		},
 	};
@@ -103,6 +131,41 @@ const regist = (function() {
 		});
 	};
 	
+	// 키워드 세팅
+	function _setKeyword() {
+		let url = "/common/keyword/list";
+		
+		let data = { "type" : "PARTNER" };
+		
+		comm.sendJson(url, data, "POST", function(resp) {
+			let list = resp.list;
+			
+			let keywordList = $("#keywordList").empty();
+			
+			let col = "";
+			for (let i = 0; i < list.length; i++) {
+				let data = list[i];
+				
+				if (i == 0 || i % 4 == 0) {
+					col = $("<div>").addClass("col");
+					keywordList.append(col);
+				}
+				
+				let div = $("<div>").addClass("form-check");
+				col.append(div);
+				
+				let input = $("<input>").addClass("form-check-input").attr({
+					"type" : "checkbox",
+					"id" : "keyword" + data.keyword_idx,
+				}).val(data.keyword_idx);
+				div.append(input);
+				
+				let label = $("<label>").addClass("form-check-label").attr("for", "keyword" + data.keyword_idx).html(data.keyword);
+				div.append(label);
+			};
+		});
+	};
+	
 	// 숙소 정보 세팅
 	function _setPartnerInfo() {
 		let url = "/partner/accomodation/detail";
@@ -118,24 +181,42 @@ const regist = (function() {
 			$("#partnerCheckOutTime").val(info.check_out);
 			$("#partnerPhone").val(info.phone);
 			
-			// select
-			let element = document.getElementById("partnerType");
-			let choices = "";
-		    if (element) {
-		        choices = new Choices(element, {
+			// 숙소 유형 select
+			let typeElement = document.getElementById("partnerType");
+			let typeChoices = "";
+		    if (typeElement) {
+		        typeChoices = new Choices(typeElement, {
+		            searchEnabled: false, 
+		        });
+		    };
+
+			// 숙소 지역 select
+			let areaElement = document.getElementById("partnerArea");
+			let areaChoices = "";
+		    if (areaElement) {
+		        areaChoices = new Choices(areaElement, {
 		            searchEnabled: false, 
 		        });
 		    };
 
 			// 가입 후 정보 등록을 했을 경우 기존 정보들 세팅
-			if(info.info_yn == 'Y') {
+			if(info.info_yn == "Y") {
 				$("#partnerDescription").val(info.description);
 				$("#address").val(info.address).attr("disabled", true);
 				$("#findAddress").attr("disabled", true)
+				$("#addressSi").val(info.address_si);
+				$("#addressDong").val(info.address_dong);
 
 		        // 선택 값 변경
-		        choices.setChoiceByValue(info.type);
+		        typeChoices.setChoiceByValue(info.type);
+		        areaChoices.setChoiceByValue(info.area);
 	
+	        	// 키워드
+	        	for (let item of resp.data.keywordList) {
+	        		let id = "#keyword" + item.keyword_idx;
+	        		$(id).prop("checked", true);
+	        	};
+
 		        // 시설
 	        	for (let item of resp.data.facilitiesList) {
 	        		let id = "#facilities" + item.facilities_idx;
@@ -153,6 +234,7 @@ const regist = (function() {
 	        	};
 			}
 	        
+	        _eventInit();
 		});
 	}
 	

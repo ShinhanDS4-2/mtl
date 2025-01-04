@@ -11,6 +11,7 @@
 			, check_in = #{check_in}
 			, check_out = #{check_out} 
 			, type = #{type} 
+			, area = #{area} 
 			, info_yn = 'Y'
 			, update_date = now()
 			<if test="address_si != null and address_si != ''">
@@ -34,10 +35,13 @@
 		INSERT INTO PARTNER_FACILITIES (
 			  partner_idx
 			, facilities_idx
-		) VALUES (
+		) VALUES 
+		<foreach collection="facilitiesIdxList" item="facilities_idx" separator=",">
+		(
 			  #{partner_idx}
 			, #{facilities_idx}
 		)
+		</foreach>
 	</insert>
 	
 	<!-- 숙소 시설 삭제 -->
@@ -74,13 +78,16 @@
 	
 	<!-- 숙소 키워드 등록 -->
 	<insert id="insertPartnerKeyword" parameterType="HashMap">
-		INSERT INTO PARTNER_Keyword (
+		INSERT INTO PARTNER_KEYWORD (
 			  partner_idx
 			, keyword_idx
-		) VALUES (
+		) VALUES 
+		<foreach collection="keywordIdxList" item="keyword_idx" separator=",">
+		(
 			  #{partner_idx}
 			, #{keyword_idx}
 		)
+		</foreach>
 	</insert>
 
 	<!-- 숙소 키워드 삭제 -->
@@ -95,11 +102,14 @@
 		SELECT
 			  name
 			, type
+			, area
 			, phone
 			, business_phone
 			, check_in
 			, check_out
 			, address
+			, address_si
+			, address_dong
 			, description
 			, info_yn
 		FROM
@@ -111,7 +121,7 @@
 	<!-- 숙소 시설 -->
 	<select id="getFacilitiesList" parameterType="HashMap">
 		SELECT
-			  facilities_idx
+			facilities_idx
 		FROM
 			PARTNER_FACILITIES
 		WHERE
@@ -121,13 +131,23 @@
 	<!-- 숙소 이미지 -->
 	<select id="getImageList" parameterType="HashMap">
 		SELECT
-			    idx AS image_idx
-			  , url
+			  idx AS image_idx
+			, url
 		FROM
 			IMAGE
 		WHERE
 			mapping_idx = #{partner_idx}
 		AND type = 'P'
+	</select>
+
+	<!-- 키워드 이미지 -->
+	<select id="getKeywordList" parameterType="HashMap">
+		SELECT
+			keyword_idx
+		FROM
+			PARTNER_KEYWORD
+		WHERE
+			partner_idx = #{partner_idx}
 	</select>
 	
 </mapper>
