@@ -30,6 +30,8 @@
 
 <!-- common JS -->
 <script src="js/util/common.js"></script>
+<!-- 커스텀 모달 js -->
+<script src="js/util/customModal.js"></script>
 <!-- paging -->
 <script src="js/util/page.js"></script>
 

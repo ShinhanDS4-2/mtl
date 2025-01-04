@@ -40,5 +40,16 @@ public interface AccomodationMapper {
 
 	// 숙소 키워드 리스트
 	List<Map<String, Object>> getKeywordList(Map<String, Object> param);
+	
+	// 이용안내 등록
+	int insertPartnerNotice(Map<String, Object> param);
+	
+	// 이용안내 수정
+	int updatePartnerNotice(Map<String, Object> param);
+	
+	// 이용안내 삭제
+	int deletePartnerNotice(Map<String, Object> param);
 
+	// 이용안내 리스트
+	List<Map<String, Object>> getPartnerNoticeList(Map<String, Object> param);
 }

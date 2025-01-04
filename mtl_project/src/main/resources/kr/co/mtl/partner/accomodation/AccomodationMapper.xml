@@ -150,4 +150,44 @@
 			partner_idx = #{partner_idx}
 	</select>
 	
+	<!-- 이용안내 등록 -->
+	<insert id="insertPartnerNotice" parameterType="HashMap">
+		INSERT INTO PARTNER_NOTICE (
+			  partner_idx
+			, content
+		)
+		VALUES (
+			  #{partner_idx}
+			, #{content}
+		)
+	</insert>
+	
+	<!-- 이용안내 수정 -->	
+	<update id="updatePartnerNotice" parameterType="HashMap">
+		UPDATE PARTNER_NOTICE
+		SET
+			  content = #{content}
+			, update_date = NOW()
+		WHERE 
+			idx = #{notice_idx}
+	</update>	
+	
+	<!-- 이용안내 삭제 -->
+	<delete id="deletePartnerNotice" parameterType="HashMap">
+		DELETE FROM PARTNER_NOTICE
+		WHERE 
+			idx = #{notice_idx}
+	</delete>
+
+	<!-- 이용안내 리스트 -->
+	<select id="getPartnerNoticeList" resultType="HashMap">
+		SELECT 
+			  idx AS notice_idx
+			, content
+		FROM 
+			PARTNER_NOTICE
+		WHERE
+			partner_idx = #{partner_idx}
+		ORDER BY create_date DESC
+	</select>
 </mapper>

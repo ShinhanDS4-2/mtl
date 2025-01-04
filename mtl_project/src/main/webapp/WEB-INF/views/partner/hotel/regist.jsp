@@ -38,11 +38,13 @@
 								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab1">기본 정보</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab2">이용 안내</a>
+								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab2" data-src="regist" data-act="clickPartnerNoticeTab">이용 안내</a>
 							</li>
+							<!-- 
 							<li class="nav-item">
 								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab3">객실 타입</a>
 							</li>
+							 -->
 						</ul>
 					</div>
 				</div>
@@ -208,114 +210,13 @@
 						<div
 							class="card-header border-bottom d-sm-flex justify-content-between align-items-center">
 							<h5 class="card-header-title">이용 안내</h5>
-							<button type="button"
-								class="btn btn-sm btn btn-primary-soft mb-0"
-								data-bs-toggle="modal" data-bs-target="#addGuideModal">
+							<button type="button" class="btn btn-sm btn btn-primary-soft mb-0" data-bs-toggle="modal" data-bs-target="#addGuideModal" data-src="regist" data-act="clickRegistModal">
 								<i class="bi bi-plus-lg fa-fw"></i>이용안내 추가
 							</button>
 						</div>
 
-						<!-- 이용안내 추가 모달창 START -->
-						<div id="addGuideModal" class="modal" tabindex="-1" role="dialog">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<!-- 제일 큰 모달 -->
-								<div class="modal-content">
-									<!-- 모달 head -->
-									<div class="modal-header">
-										<h5 class="modal-title">이용안내 추가</h5>
-										<button type="button" class="btn-close"
-											data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<!-- 모달 body -->
-									<div class="modal-body m-3">
-										<h6 class="fw-bold">제목</h6>
-										<input type="text" class="form-control" id="questionTitle"
-											placeholder="제목을 입력하세요">
-
-										<h6 class="fw-bold mt-4">내용</h6>
-										<textarea class="form-control" id="questionContent" rows="6"
-											placeholder="내용을 입력하세요"></textarea>
-
-									</div>
-
-									<!-- 확인/취소 button -->
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">취소</button>
-										<button type="button" class="btn btn-primary">확인</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 이용안내 추가 모달창 END -->
-
-						<div class="card-body">
-							<!-- items -->
-							<div
-								class="d-flex justify-content-between align-items-center mb-3 border p-3 bg-light">
-								<div>
-									<strong>일회용품 줄이기 캠페인</strong><br> 자원절약을 위해 일회용 어메니티가 무료로
-									제공되지 않습니다.
-								</div>
-								<div>
-									<button
-										class="btn btn-sm btn-outline-secondary btn-secondary-soft me-1">수정</button>
-									<button class="btn btn-sm btn-outline-danger btn-danger-soft">삭제</button>
-								</div>
-							</div>
-
-							<!-- items -->
-							<div
-								class="d-flex justify-content-between align-items-center mb-3 border p-3">
-								<div>
-									<strong>일회용품 줄이기 캠페인</strong><br> 자원절약을 위해 일회용 어메니티가 무료로
-									제공되지 않습니다.
-								</div>
-								<div>
-									<button class="btn btn-sm btn-outline-secondary me-1">수정</button>
-									<button class="btn btn-sm btn-outline-danger">삭제</button>
-								</div>
-							</div>
-
-							<!-- items -->
-							<div
-								class="d-flex justify-content-between align-items-center mb-3 border p-3 bg-light">
-								<div>
-									<strong>일회용품 줄이기 캠페인</strong><br> 자원절약을 위해 일회용 어메니티가 무료로
-									제공되지 않습니다.
-								</div>
-								<div>
-									<button
-										class="btn btn-sm btn-outline-secondary btn-secondary-soft me-1">수정</button>
-									<button class="btn btn-sm btn-outline-danger btn-danger-soft">삭제</button>
-								</div>
-							</div>
-							<!-- items -->
-							<div
-								class="d-flex justify-content-between align-items-center mb-3 border p-3">
-								<div>
-									<strong>일회용품 줄이기 캠페인</strong><br> 자원절약을 위해 일회용 어메니티가 무료로
-									제공되지 않습니다.
-								</div>
-								<div>
-									<button class="btn btn-sm btn-outline-secondary me-1">수정</button>
-									<button class="btn btn-sm btn-outline-danger">삭제</button>
-								</div>
-							</div>
-
-							<!-- items -->
-							<div
-								class="d-flex justify-content-between align-items-center mb-3 border p-3 bg-light">
-								<div>
-									<strong>일회용품 줄이기 캠페인</strong><br> 자원절약을 위해 일회용 어메니티가 무료로
-									제공되지 않습니다.
-								</div>
-								<div>
-									<button
-										class="btn btn-sm btn-outline-secondary btn-secondary-soft me-1">수정</button>
-									<button class="btn btn-sm btn-outline-danger btn-danger-soft">삭제</button>
-								</div>
-							</div>
+						<!-- 이용안내 -->
+						<div class="card-body" id="noticeList">
 						</div>
 					</div>
 				</div>
@@ -387,6 +288,58 @@
 		</div>
 	</div>
 </main>
+
+<!-- 이용안내 추가 모달창 START -->
+<div id="addGuideModal" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<!-- 제일 큰 모달 -->
+		<div class="modal-content">
+			<!-- 모달 head -->
+			<div class="modal-header">
+				<h5 class="modal-title">이용안내 추가</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<!-- 모달 body -->
+			<div class="modal-body m-3">
+				<h6 class="fw-bold">내용</h6>
+				<textarea class="form-control" id="noticeContent" rows="6" placeholder="내용을 입력해 주세요."></textarea>
+			</div>
+
+			<!-- 확인/취소 button -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-primary" data-src="regist" data-act="clickNoticeRegist">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 이용안내 추가 모달창 END -->
+
+<!-- 이용안내 수정 모달창 START -->
+<div id="noticeUpdateModal" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<!-- 제일 큰 모달 -->
+		<div class="modal-content">
+			<!-- 모달 head -->
+			<div class="modal-header">
+				<h5 class="modal-title">이용안내 수정</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<!-- 모달 body -->
+			<div class="modal-body m-3">
+				<h6 class="fw-bold">내용</h6>
+				<textarea class="form-control" id="noticeUpdateContent" rows="6" placeholder="내용을 입력해 주세요."></textarea>
+			</div>
+
+			<!-- 확인/취소 button -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-primary" data-src="regist" data-act="clickNoticeUpdate" id="noticeUpdateBtn">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 이용안내 추가 모달창 END -->
 
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>

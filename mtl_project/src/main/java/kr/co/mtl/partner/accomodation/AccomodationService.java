@@ -11,6 +11,18 @@ public interface AccomodationService {
 	Map<String, Object> updateAccomodationInfo(Map<String,Object> param, List<MultipartFile> mfile);
 
 	// 숙소 상세
-	Map<String, Object> getDetail(Map<String,Object> param) throws Exception;
+	Map<String, Object> getDetail(Map<String,Object> param);
+
+	// 이용안내 등록
+	Map<String, Object> insertPartnerNotice(Map<String,Object> param);
+
+	// 이용안내 수정
+	Map<String, Object> updatePartnerNotice(Map<String,Object> param);
+	
+	// 이용안내 삭제
+	Map<String, Object> deletePartnerNotice(Map<String,Object> param);
+
+	// 이용안내 리스트
+	Map<String, Object> getPartnerNoticeList(Map<String,Object> param);
 
 }

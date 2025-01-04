@@ -32,7 +32,6 @@ public class AccomodationServiceImpl implements AccomodationService{
 	 * @param param
 	 * @param request
 	 * @return
-	 * @throws Exception
 	 */
 	@Override
 	public Map<String, Object> updateAccomodationInfo(Map<String, Object> param, List<MultipartFile> mfile) {
@@ -118,10 +117,9 @@ public class AccomodationServiceImpl implements AccomodationService{
 	 * @param param
 	 * @param request
 	 * @return
-	 * @throws Exception
 	 */
 	@Override
-	public Map<String, Object> getDetail(Map<String, Object> param) throws Exception {
+	public Map<String, Object> getDetail(Map<String, Object> param) {
 		
 		Map<String, Object> result = new HashMap<>();
 		
@@ -147,6 +145,82 @@ public class AccomodationServiceImpl implements AccomodationService{
 		return result;
 	}
 	
+	/**
+	 * 이용안내 등록
+	 * @param param
+	 * @param request
+	 * @return
+	 */
+	@Override
+	public Map<String, Object> insertPartnerNotice(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		if (accomodationMapper.insertPartnerNotice(param) > 0) {
+			result.put("result", true);
+		} else {
+			result.put("result", false);
+		}
+
+		return result;
+	}
+	
+	/**
+	 * 이용안내 수정
+	 * @param param
+	 * @param request
+	 * @return
+	 */
+	@Override
+	public Map<String, Object> updatePartnerNotice(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+
+		if (accomodationMapper.updatePartnerNotice(param) > 0) {
+			result.put("result", true);
+		} else {
+			result.put("result", false);
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * 이용안내 삭제
+	 * @param param
+	 * @param request
+	 * @return
+	 */
+	@Override
+	public Map<String, Object> deletePartnerNotice(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		if (accomodationMapper.deletePartnerNotice(param) > 0) {
+			result.put("result", true);
+		} else {
+			result.put("result", false);
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * 이용안내 리스트
+	 * @param param
+	 * @param request
+	 * @return
+	 */
+	@Override
+	public Map<String, Object> getPartnerNoticeList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		List<Map<String, Object>> list = accomodationMapper.getPartnerNoticeList(param);
+		result.put("list", list);
+		
+		return result;
+	}
 	
 
 }

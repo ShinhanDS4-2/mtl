@@ -28,10 +28,23 @@ const regist = (function() {
 		if(type == "click") {
 			if (action == "findAddress") {
 				comm.findAddress();			// 주소 입력
-			} else if (action == "clickAddress") {
-				$("#findAddress").trigger("click"); // 주소창 클릭 시 주소 찾기 버튼 트리거			
+			} else if (action == "clickAddress") {	// 주소창 클릭 시 주소 찾기 버튼 트리거	
+				$("#findAddress").trigger("click"); 		
 			} else if (action == "clickInfoSave") {
 				_event.clickInfoSave();
+			} else if (action == "clickPartnerNoticeTab") {
+				_event.clickPartnerNoticeTab();
+			} else if (action == "clickNoticeUpdate") {
+				_event.clickNoticeUpdate(evo);
+			} else if (action == "clickNoticeDelete") {
+				_event.clickNoticeDelete(evo);
+			} else if (action == "clickNoticeRegist") {
+				_event.clickNoticeRegist(evo);
+			} else if (action == "clickRegistModal") {
+				$("#noticeContent").val("");
+			} else if (action == "clickUpdateModal") { // 수정 버튼 클릭 시 수정 모달에 값 세팅
+				$("#noticeUpdateContent").val(evo.attr("data-notice-content"));
+				$("#noticeUpdateBtn").attr("data-notice-idx", evo.attr("data-notice-idx"));
 			}
 		} else if (type == "change") {
 			if (action == "changeFile") {
@@ -70,7 +83,9 @@ const regist = (function() {
 			// 데이터 null 체크
 			for (let key in data) {
 				if (data[key] == null || data[key] == "") {
-					alert("입력되지 않은 값이 있습니다.");
+					modal.alert({
+						"content" : "입력되지 않은 값이 있습니다."
+					});
 					return;
 				};
 			};
@@ -78,21 +93,169 @@ const regist = (function() {
 			// 이미지 null 체크
 			data.mfile = $("#partnerImage").get(0).files;
 			if ($("#preview").children().length <= 0) {
-				alert("이미지를 등록해 주세요.");
+				modal.alert({
+					"content" : "사진을 업로드해 주세요."
+				});
 				return;				
 			};
 
 			// 파일 전송을 위한 폼데이터 변경			
 			let formData = comm.changeFormData(data);
 
-			comm.sendFile(url, formData, "POST", function(resp) {
-				if (resp.result == true) {
-					alert("정상적으로 저장되었습니다.");
-					location.reload();
-				} else {
-					alert("저장에 실패하였습니다.<br>다시 시도해 주세요.");
+			modal.confirm({
+				"content" : "저장하시겠습니까?",
+				"confirmCallback" : function() {
+					comm.sendFile(url, formData, "POST", function(resp) {
+						if (resp.result == true) {
+							modal.alert({
+								"content" : "정상적으로 저장되었습니다.",
+								"confirmCallback" : function() {
+									location.reload();
+								}
+							});
+						} else {
+							modal.alert({
+								"content" : "저장에 실패하였습니다.<br>다시 시도해 주세요."
+							});
+						}
+					});
 				}
 			});
+		},
+		
+		// 이용안내 탭 클릭 -> 이용안내 리스트 그리기
+		clickPartnerNoticeTab: function() {
+			let url = "/partner/accomodation/notice/list";
+			
+			let data = {};
+			
+			comm.sendJson(url, data, "POST", function(resp) {
+				let list = resp.list;
+				
+				_draw.drawNoticeList(list);
+			});
+		},
+		
+		// 이용안내 수정
+		clickNoticeUpdate: function(evo) {
+			modal.confirm({
+				"content" : "수정하시겠습니까?",
+				"confirmCallback" : function() {
+					let noticeIdx = evo.attr("data-notice-idx");
+					
+					let url = "/partner/accomodation/notice/update";
+					
+					let data = { 
+						"notice_idx" : noticeIdx,
+						"content" : $("#noticeUpdateContent").val()
+					};
+					
+					comm.sendJson(url, data, "POST", function(resp) {
+						if (resp.result == true) {
+							modal.alert({
+								"content" : "수정되었습니다.",
+								"confirmCallback" : function() {
+									_event.clickPartnerNoticeTab();
+									$("#noticeUpdateModal").modal("hide");
+								}
+							});
+						};
+					});
+				}
+			});
+		},
+		
+		// 이용안내 삭제
+		clickNoticeDelete: function(evo) {
+			modal.confirm({
+				"content" : "삭제하시겠습니까?",
+				"confirmCallback" : function() {
+					let noticeIdx = evo.attr("data-notice-idx");
+					
+					let url = "/partner/accomodation/notice/delete";
+					
+					let data = { "notice_idx" : noticeIdx };
+					
+					comm.sendJson(url, data, "POST", function(resp) {
+						if (resp.result == true) {
+							modal.alert({
+								"content" : "삭제되었습니다.",
+								"confirmCallback" : function() {
+									_event.clickPartnerNoticeTab();
+								}
+							});
+						};
+					});
+				}
+			});
+		},
+		
+		// 이용안내 등록
+		clickNoticeRegist: function() {
+			let url = "/partner/accomodation/notice/regist";
+			
+			let data = { 
+				"content" : $("#noticeContent").val()
+			};
+			
+			comm.sendJson(url, data, "POST", function(resp) {
+				if (resp.result == true) {
+					modal.alert({
+						"content" : "등록되었습니다.",
+						"confirmCallback" : function() {
+							_event.clickPartnerNoticeTab();
+							$("#addGuideModal").modal("hide");
+						}
+					});
+				};
+			});
+		}
+	};
+	
+	// 그리기
+	let _draw = {
+		// 이용안내 리스트 그리기
+		drawNoticeList: function(list) {
+			let noticeList = $("#noticeList").empty();
+			
+			for (let i = 0; i < list.length; i++) {
+				let data = list[i];
+				
+				let divColor = "bg-light";
+
+				let div = $("<div>").addClass("d-flex justify-content-between align-items-center mb-3 border p-3");
+				if (i % 2 == 0) {
+					div.addClass(divColor);
+				};
+				noticeList.append(div);
+				
+				let content = $("<div>").addClass("col-10").html(data.content);
+				div.append(content);
+
+				let btnDiv = $("<div>").addClass("col-2 text-end");
+				div.append(btnDiv);
+				
+				let updateBtn = $("<button>").addClass("btn btn-sm btn-outline-secondary btn-secondary-soft me-1").html("수정");
+				updateBtn.attr({
+					"data-bs-toggle" : "modal",
+					"data-bs-target" : "#noticeUpdateModal",
+					"data-src" : "regist",
+					"data-act" : "clickUpdateModal",
+					"data-notice-idx" : data.notice_idx,
+					"data-notice-content" : data.content
+				});
+				btnDiv.append(updateBtn);
+
+				let deleteBtn = $("<button>").addClass("btn btn-sm btn-outline-danger btn-danger-soft").html("삭제");
+				deleteBtn.attr({
+					"data-src" : "regist",
+					"data-act" : "clickNoticeDelete",
+					"data-notice-idx" : data.notice_idx
+				});
+				btnDiv.append(deleteBtn);
+				
+				_eventInit();
+			};
 		},
 	};
 	
@@ -173,7 +336,7 @@ const regist = (function() {
 		let data = {};
 		
 		comm.sendJson(url, data, "POST", function(resp) {
-			let info = resp.data.info;
+			let info = resp.info;
 			
 			$("#partnerName").val(info.name);
 			$("#businessPhone").val(info.business_phone);
@@ -212,20 +375,20 @@ const regist = (function() {
 		        areaChoices.setChoiceByValue(info.area);
 	
 	        	// 키워드
-	        	for (let item of resp.data.keywordList) {
+	        	for (let item of resp.keywordList) {
 	        		let id = "#keyword" + item.keyword_idx;
 	        		$(id).prop("checked", true);
 	        	};
 
 		        // 시설
-	        	for (let item of resp.data.facilitiesList) {
+	        	for (let item of resp.facilitiesList) {
 	        		let id = "#facilities" + item.facilities_idx;
 	        		$(id).prop("checked", true);
 	        	};
 	        	
 	        	// 이미지
         		let preview = $("#preview");
-	        	for (let item of resp.data.imageList) {
+	        	for (let item of resp.imageList) {
 					let div = $("<div>").addClass("position-relative me-3");
                 	preview.append(div);
                 	
