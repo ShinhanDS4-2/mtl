@@ -1,66 +1,53 @@
 const payout = (function() { 
- 
+	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리
+
 	// js 로딩 시 이벤트 초기화 실행 
 	function init() {
 		fetchPayoutList();  // 페이지 로드 시 정산내역 리스트를 가져옴
-
 		_eventInit();    
-	};      
-      
-	// 이벤트 초기화       
-	function _eventInit() {
-		let evo = $("[data-src='reservation'][data-act]").off();
-		evo.on("click", function(e) {
-			_eventAction(e);
-		});
-	}; 
-	    
-	// 이벤트 분기    
-	function _eventAction(e) { 
-		let evo = $(e.currentTarget);
-		
-		let action = evo.attr("data-act");
-		
-		let type = e.type;
-		 
-		if(type == "click") { 
-			/* 
-			if(action == "clickDeatilModal") {
-				_event.clickDeatilModal(evo);  
-			}
-				*/
-		};
-	};
-	
-	// 이벤트
-	/*
-	let _event = {
-		// 예약내역 상세 정보 모달 클릭 시
-		clickDeatilModal : function(evo) {
-			let reservation_idx evo.attr("data-reservation-idx");
-			let src = evo.attr("data-src"); // 데이터 소스 ("reservation")
+	};             
+	 
+ 	// 초기화 버튼 클릭 시
+	 $("#resetButton").click(function() {
+		$("#searchForm")[0].reset();  // 폼 모든 입력 초기화
+		isSearchClicked = false;
+		fetchPayoutList();  // 전체 리스트 조회
+	});
 
-			console.log("예약 ID:", reservationIdx); // 예: 123
-			console.log("데이터 소스:", src); // 예: "reservation"
-
-		}
-	
-	};
-	*/
-
-
+	// 검색버튼 클릭 시
+	$("#searchButton").click(function() {
+		isSearchClicked = true;
+		fetchPayoutList();  // 조건에 맞는 리스트 조회
+	});
+  
 	// fetchPayoutList();  페이지 로드 시 정산내역 리스트를 가져오는 함수
 	function fetchPayoutList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
 		
 		let param = { // ajax로 넘겨줄 data값 변수 선언
-			"calculate_date_start" : '2024-12-20', 
-			"calculate_date_end" : '2024-12-31',
-			"calculate_stauts" : 'Y'
-		};
+			"calculate_date_start" : '', 
+			"calculate_date_end" : '',
+			"calculate_stauts" : ''
+		};  // Ajax 요청 파라미터
 
-		// 페이징
+		// 검색 버튼이 클릭된 경우 조건 추가
+		if (isSearchClicked) {
+			// 검색필터에 입력된 데이터 가져오기
+			let [startDate, endDate] = $("#dateRange").val().split(" ~ ").map(date => date.trim());
+			let payoutStatus = $("input[name='payoutStatus']:checked").val();  // Y/N
+			
+			let param = { // ajax로 넘겨줄 data값 변수 선언
+				"calculate_date_start" : startDate, 
+				"calculate_date_end" : endDate,
+				"calculate_stauts" : payoutStatus
+			};
+			console.log("검색 조건:", param);
+		} else {
+			console.log("전체 리스트 조회");
+		}
+
+		// 페이징 START   
 		let pageOption = {
-			limit: 5  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+			limit: 2  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
 		
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
@@ -68,7 +55,7 @@ const payout = (function() {
 												// ㄴ pageOption객체를 넘겨 한 페이지에 표시할 데이터 수(limit)를 전달.
 												// _curPage: 현재 사용자가 보고 있는 페이지 번호.
 
-			fetchReservationList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
+			fetchPayoutList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
 		});
 		
 		let pageParam = page.getParam(curPage);  // 현재 페이지 번호(curPage)를 기준으로 페이징에 필요한 정보(예: offset, limit)를 반환.
@@ -77,103 +64,53 @@ const payout = (function() {
 			param.offset = pageParam.offset;
 			param.limit = pageParam.limit;
 		};
-		// 페이징 끝
+		// 페이징 END
 		
 		$.ajax({
 			type: "POST", 
 			url: "/mtl/api/partner/payout/list",   // API 호출
-			data: param,   // 호출 시 param값으로 넘겨줄 것 => 필터(정산기간시작일, 정산기간종료일, 정산상태)
+			data: param,   // 호출 시 param값으로 넘겨줄 것 => 정산기간시작일, 정산기간종료일, 정산상태, 페이징offset, 페이징limit
 
 			success: function(response) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: PayoutListCount, PayoutList)
-				
+				console.log(response);
 				_draw.drawPayoutList(response);
-				// page.drawPage(response.ReservationListCount);  페이징 ??? 
+				page.drawPage(response.PayoutListCount);  // 페이지번호 계산 및 렌더링 (=> 서버에서 반환한 전체 리스트 개수를 전달, 이를 기반으로 전체 페이지 수를 계산해서 사용자가 이동할 수 있는 페이지 번호를 화면에 표시해준다. )
 				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.
 			},
 			error: function(xhr, status, error) {
 				console.error("Error :", error); 
-			}
+			} 
 		});  
 	}
 
-
+ 
 	let _draw = {  
-		// 정산내역 리스트
+		// 정산내역 페이지
 		drawPayoutList: function(list) {  // 위에 API 호출 결과 값으로 받은 response(=PayoutListCount, PayoutList)값을 list라는 이름의 매개변수로 넘겨준다. 
-			
+			let partnerInfo = list.partnerInfo;
 			let listCount = list.PayoutListCount;
 			let payoutList = list.PayoutList;
 			let param = list.Param;
 
+		/* 정산정보 Card */
+			$("#business_name").html(partnerInfo.business_name);
+			$("#business_number").html(partnerInfo.business_number);
+			$("#account_number").html(`${partnerInfo.account_bank} ${partnerInfo.account_number}  (예금주:${partnerInfo.account_name})`);
+
+
+		/* 정산내역 리스트 상단 Tap */
+			$("#payoutListCount").html(`총 ${listCount}개`);
+
+		/* 정산내역 리스트 card */
+
+			// 정산내역 리스트 Card header 
+			$("#settlementDateLabel").html(`정산일 기준 ${param.calculate_date_start} ~  ${param.calculate_date_end}`);
 			
-			/* 정산내역 리스트 상단 Tap START */
-			let payoutListCountTap = $("#payoutListCountTap");
-			payoutListCountTap.empty();
-			let countTap = 
-					`<div class="col-2">
-						<h6 class="mb-1">총 ${listCount}개</h6>
-					</div>
-					<div class="col-1">
-						<form>
-							<select class="form-select js-choice"
-								aria-label=".form-select-sm">
-								<option>10개</option>
-								<option>30개</option>
-								<option>50개</option>
-							</select>
-						</form>
-					</div>`;
+			let cardData = $("#cardData");
+			cardData.empty();
 
-			
-
-			payoutListCountTap.append(countTap);
-
-
-
-		/* 정산내역 리스트 card START */
-			let payoutListCard = $("#payoutListCard");
-			payoutListCard.empty();
-
-			// 정산내역 리스트 card header
-			let cardHead = 
-				`<div class="card-header border-bottom d-sm-flex justify-content-sm-between align-items-sm-center">
-					<div class="mb-1 mb-sm-0 text-center text-sm-start">
-						<h5 class="card-title mb-1">정산 내역</h5>
-						<span>정산일 기준 ${param.calculate_date_start} ~  ${param.calculate_date_end}</span>
-					</div>
-					<a href="#" class="btn btn-dark-soft mb-0 border-0"> <i
-						class="fa-solid fa-download"></i></a>
-				</div>`;
-			payoutListCard.append(cardHead);
-
-
-			// 정산내역 리스트 card body
-			let cardBody = $("<div>").addClass("card-body");
-			payoutListCard.append(cardBody);
-
-			let tableHead = 
-				`<div class="bg-light rounded p-3 d-none d-sm-block">
-					<div class="row row-cols-7 g-4">
-						<div class="col">
-							<h6 class="mb-0">정산일</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0">총 판매 금액</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0">총 정산 금액</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0">정산 대기</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0">정산 완료</h6>
-						</div>
-					</div>
-				</div>`;
-			cardBody.append(tableHead);
-				
-			for(data of payoutList) {
+			// 정산내역 리스트 Data 반복 출력
+			for(data of payoutList) { 
 				let tableData =
 						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 							<div class="col">
@@ -233,7 +170,7 @@ const payout = (function() {
 								</div>
 							</div>
 						</div>`;
-				cardBody.append(tableData);
+					cardData.append(tableData);
 
 			}
 			// Card footer START
@@ -279,59 +216,34 @@ const payout = (function() {
 
 
 			/* 정산 상세정보 modal START */
-			let payoutmodalBody = $("#payoutmodalBody");
-			payoutmodalBody.empty();
-
 			// 정산일
-			let modalBoby1 = 
-				`<h6 class="fw-bold">정산일</h6>
-				<div class="mb-3 border p-3">
-					<p class="mb-0">${list.calculate_date}</p>
-				</div>`;
-				payoutmodalBody.append(modalBoby1);
+			$("#modalCalculateDate").html(`${list.calculate_date}`);
+
+			// 정산 내역 데이터
+			let tbody = $("#modalTBody");
+			tbody.empty();
 
 			for(data of list.PayoutDetailList) {
 
 				console.log("data값은 ??? >>>>");
-						console.log(data);  // calculate_date가 들어있어야 함
+				console.log(data);  // calculate_date가 들어있어야 함
 
 				// 정산 내역
-				let modalBody2 = 
-					`<h6 class="fw-bold">정산 내역</h6>
-					<div class="table-responsive">
-						<table class="table border">
-							<thead class="table-light">
-								<tr>
-									<th>예약번호</th>
-									<th>객실 타입</th>
-									<th>판매금액</th>
-									<th>정산금액</th>
-									<th>정산여부</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>${data.idx}</td>
-									<td>${data.room_type}</td>
-									<td>${data.price}원</td>
-									<td>${data.calculate_price}원</td>
-									<td>${data.calculate_stauts}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>`;	
-					payoutmodalBody.append(modalBody2);
+				let tdata =  
+					`<tr>
+						<td>${data.idx}</td>
+						<td>${data.room_type}</td>
+						<td>${data.price}원</td>
+						<td>${data.calculate_price}원</td>
+						<td>${data.calculate_stauts}</td>
+					</tr>`;	
+				tbody.append(tdata);
 			}
 			/* 정산 상세정보 modal END */
 
 		}
-		
-		
-				
     };
 
-
- 
     return {
         init
     };

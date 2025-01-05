@@ -6,25 +6,7 @@ const payout = (function() {
 		fetchPayoutList();  // 페이지 로드 시 전체리스트 조회
 		_eventInit();    
 	};      
-       
-	// 이벤트 초기화          
-	function _eventInit() {
-		let evo = $("[data-src='reservation'][data-act]").off();
-		evo.on("click", function(e) {
-			_eventAction(e); 
-		});  
-	};          
-	                    
-	// 이벤트 분기       
-	function _eventAction(e) {  
-		let evo = $(e.currentTarget);  
-		let action = evo.attr("data-act");  
-		let type = e.type; 
-		if(type == "click") { 
-		};  
-	};   
  
-
 	// 초기화 버튼 클릭 시
 	$("#resetButton").click(function() {
 		$("#searchForm")[0].reset();  // 폼 모든 입력 초기화
