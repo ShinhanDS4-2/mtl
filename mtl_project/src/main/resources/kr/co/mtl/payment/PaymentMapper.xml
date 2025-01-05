@@ -27,7 +27,7 @@
 			, #{check_out_date}
 			, #{guest_cnt}
 			, #{price}
-			, 'Y'
+			, 'P'
 			, YEAR(CURRENT_DATE)
 			, MONTH(CURRENT_DATE)
 			, DAY(CURRENT_DATE)

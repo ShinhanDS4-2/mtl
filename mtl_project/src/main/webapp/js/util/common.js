@@ -109,14 +109,14 @@ const comm = {
 			zoom : 15,
 			// 위도 경도
 			latitude : 37,
-			hardness : 127
+			longitude : 127
         }
         
         _option = $.extend(_option, option);
 	
 		// 지도 옵션 설정
         let mapOptions = {
-            center: new naver.maps.LatLng(_option.latitude, _option.hardness),
+            center: new naver.maps.LatLng(_option.latitude, _option.longitude),
             zoom: _option.zoom
         };
 
@@ -125,7 +125,7 @@ const comm = {
         
         // 마커 추가
         let marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(_option.latitude, _option.hardness), // 마커 위치
+            position: new naver.maps.LatLng(_option.latitude, _option.longitude), // 마커 위치
             map: map 
         });
 	},

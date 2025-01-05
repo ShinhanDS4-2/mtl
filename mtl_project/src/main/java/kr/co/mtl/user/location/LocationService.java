@@ -12,7 +12,10 @@ public interface LocationService {
 
 	// 랜덤 여행지 리스트
 	Map<String, Object> getRandomLocationList(Map<String, Object> param); 
+	
+	// 여행지 추천 리스트
+	Map<String, Object> getCustomList(Map<String, Object> param); 
 
-
-
+	// 여행지 정보
+	Map<String, Object> getLocationMinDetail(Map<String, Object> param); 
 }

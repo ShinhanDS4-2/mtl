@@ -96,4 +96,9 @@ public class PageController {
 		return "user/service/notice";
 	}
 	
+	// 여행지 추천
+	@GetMapping("custom/location")
+	public String customLocation() {
+		return "user/location/customLocation";
+	}
 }

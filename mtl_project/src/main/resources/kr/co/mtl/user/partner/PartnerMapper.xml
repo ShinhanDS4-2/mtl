@@ -249,7 +249,7 @@
 			, p.type
 			, p.score
 			, p.latitude
-			, p.hardness
+			, p.longitude
 		FROM
 			PARTNER p
 		WHERE
@@ -349,5 +349,21 @@
 			PARTNER p
 		ON r.partner_idx = p.idx
 		WHERE r.idx = #{room_idx}
+	</select>
+	
+	<!-- 숙소 위치 정보 -->
+	<select id="getPartnerGeo" parameterType="HashMap">
+		SELECT
+			  p.area
+			, p.address
+			, p.address_si
+			, p.address_dong
+			, p.latitude
+			, p.longitude
+		FROM	  
+			PARTNER p
+		JOIN RESERVATION r 
+		ON r.partner_idx = p.idx 
+		WHERE r.idx = #{reservation_idx}
 	</select>
 </mapper>

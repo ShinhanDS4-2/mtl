@@ -46,4 +46,7 @@ public interface PartnerMapper {
 
 	// 객실 상세
 	public Map<String, Object> getRoomDetail(Map<String, Object> param);
+	
+	// 숙소 위치 정보
+	public Map<String, Object> getPartnerGeo(Map<String, Object> param);
 }
