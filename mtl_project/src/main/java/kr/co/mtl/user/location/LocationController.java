@@ -69,6 +69,5 @@ public class LocationController {
 		Map<String, Object> result = locationService.getPartnerPayoutList(param);
 		return result;
 	}
-
 	
 }

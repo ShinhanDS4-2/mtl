@@ -46,9 +46,9 @@ public class PartnerPageController {
 	}
 	
 	// hotel
-	@GetMapping("/hotelregist")
+	@GetMapping("/regist")
 	public String hotelregist() {
-		return "partner/hotel/hotelregist";
+		return "partner/hotel/regist";
 	}
 	
 	@GetMapping("/roomregist")

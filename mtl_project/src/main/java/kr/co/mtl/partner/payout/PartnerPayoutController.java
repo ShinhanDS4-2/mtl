@@ -1,20 +1,22 @@
 package kr.co.mtl.partner.payout;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
+//@Controller("partnerPayoutController")  // admin>payout에서의 빈이름과 동일하므로 빈 이름을 명시적으로 다르게 설정해줘서 충돌방지
 @RequestMapping("/api/partner/payout")
-public class PayoutController {
+public class PartnerPayoutController {
 
 	@Autowired
-	private PayoutService payoutService;
+	private PartnerPayoutService payoutService;
 
 
 	/** 시온 - API 완료

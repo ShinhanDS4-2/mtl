@@ -78,6 +78,7 @@ public class PartnerServiceImpl implements PartnerService {
 		data.put("imageList", partnerMapper.getPartnerImageList(param));				// 이미지
 		data.put("commonFacilitiesList", partnerMapper.getPartnerFacilities(param));	// 공통시설
 		data.put("roomFacilitiesList", partnerMapper.getPartnerRoomFacilities(param));	// 객실시설
+		data.put("noticeList", partnerMapper.getPartnerNoticeList(param));				// 이용안내
 		
 		result.put("data", data);
 		

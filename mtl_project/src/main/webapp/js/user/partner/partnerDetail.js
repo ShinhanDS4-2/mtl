@@ -155,6 +155,9 @@ const partnerDetail = (function() {
 		    _draw.drawCommonFacilities(data.commonFacilitiesList);
 		    _draw.drawRoomFacilities(data.roomFacilitiesList);
 		    
+		    // 이용안내
+		    _draw.drawNoticeList(data.noticeList);
+		    
 		    // 사진
 		    let imageList = data.imageList;
 		    $("#thumbnail").css("background-image", "url(" + encodeURI(imageList[0].url) + ")");
@@ -208,6 +211,17 @@ const partnerDetail = (function() {
 				let li = $("<li>").addClass("list-group-item pb-0");
 				li.append("<i class='fa-solid fa-check-circle text-success me-2'></i>");
 				li.append(data.name);
+				listObj.append(li);
+			};
+		},
+		
+		// 이용안내
+		drawNoticeList: function(list) {
+			let listObj = $("#parterNoticeList").empty();
+			for (let data of list) {
+				let li = $("<li>").addClass("list-group-item h6 fw-light d-flex mb-0");
+				li.append("<i class='bi bi-patch-check-fill text-success me-2'></i>");
+				li.append(data.content);
 				listObj.append(li);
 			};
 		},

@@ -346,29 +346,29 @@
 												<th>정산여부</th>
 											</tr>
 										</thead>
-										<tbody>
+										<tbody> 
 										<!-- Table data START (정산내역 리스트에서 1줄) / js에서 반복 돌릴 부분 -->
 											<tr>
 												<td>240123</td>
 												<td>프리미엄 트윈</td>
-												<td>55,000원</td>
+							  					<td>55,000원</td>
 												<td>45,000원</td>
 												<td>정산완료</td>
 											</tr>
 										<!-- Table data END (정산내역 리스트에서 1줄) / js에서 반복 돌릴 부분 -->
 										</tbody>
-									</table>
+									</table>     
 								</div> 
-							</div>
-
+							</div>       
+          
 							<!-- 모달 푸터 -->
 							<div class="modal-footer">
 								<button type="button" class="btn btn-primary">출력</button>
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">닫기</button>
-							</div>
-						</div>
-					</div>
+							</div>    
+						</div>                   
+					</div>       
 				</div>
 				<!-- 정산 상세 내역 Modal END -->
 			</div>

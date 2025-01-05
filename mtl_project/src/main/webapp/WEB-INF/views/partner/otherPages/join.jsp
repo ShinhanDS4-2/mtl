@@ -31,14 +31,14 @@
 									<form class="mt-4 text-start">
 										<!-- Email -->
 										<div class="mb-1">
-											<label class="form-label">대표 이메일 <span class="text-danger">*</span></label>
+											<label class="form-label" for="joinEmail">대표 이메일 <span class="text-danger">*</span></label>
 											<div class="row">
 												<div class="col-8 pe-1">
-													<input type="email" class="form-control" id="authNum" placeholder="이메일을 입력해 주세요.">
+													<input type="email" class="form-control" id="joinEmail" placeholder="이메일을 입력해 주세요.">
 												</div>
 												<div class="col-4 ps-1">
 													<div class="d-grid">
-														<button class="btn btn-primary" type="button">중복 확인</button>
+														<button class="btn btn-primary" type="button" data-src="join" data-act="clickEmailCheck">중복 확인</button>
 													</div>
 												</div>
 											</div>
@@ -57,7 +57,7 @@
 										<div class="mb-2">
 											<label class="form-label" for="joinPw">비밀번호 <span class="text-danger">*</span></label>
 											<input type="password" class="form-control" id="joinPw" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상">
-											<span class="text-danger smaller">올바른 비밀번호를 입력해 주세요.</span>
+											<!-- <span class="text-danger smaller">올바른 비밀번호를 입력해 주세요.</span> -->
 										</div>
 										<!-- 비밀번호 확인 -->
 										<div class="mb-2">
@@ -69,33 +69,33 @@
 										<!-- 업체명 -->
 										<div class="mb-2">
 											<label class="form-label">업체명 <span class="text-danger">*</span></label>
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" id="joinName">
 										</div>
 
 										<!-- 사업자명 -->
 										<div class="mb-2">
 											<label class="form-label">사업자명 <span class="text-danger">*</span></label> 
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" id="joinBusiness_Name">
 										</div>
 
 										<!-- 사업자 등록 번호 -->
 										<div class="mb-2">
 											<label class="form-label">사업자 등록 번호 <span class="text-danger">*</span></label>
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" id="joinBusiness_Number">
 										</div>
 
 										<!-- 업체 연락처 -->
 										<div class="mb-2">
 											<label class="form-label">업체 연락처 <span class="text-danger">*</span></label>
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" id="joinPhone">
 										</div>
 										<!-- 사업자 연락처 -->
 										<div class="mb-4">
 											<label class="form-label">사업자 연락처 <span class="text-danger">*</span></label>
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" id="joinBusiness_Phone">
 										</div>
 										<!-- Button -->
-										<div><button type="button" class="btn btn-primary w-100 mb-2">회원가입</button></div>
+										<div><button type="button" class="btn btn-primary w-100 mb-2" data-src="join" data-act="clickJoin">회원가입</button></div>
 										<div><a href="partner/login" type="button" class="btn btn-primary-soft w-100 mb-0">로그인</a></div>
 									</form>
 									<!-- Form END -->
@@ -111,5 +111,11 @@
 
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
+
+<!-- page script -->
+<script src="/mtl/js/partner/join.js"></script>
+<script type="text/javascript">
+	join.init();
+</script>
 </body>
 </html>

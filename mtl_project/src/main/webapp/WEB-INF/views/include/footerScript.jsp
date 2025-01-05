@@ -30,6 +30,8 @@
 
 <!-- common JS -->
 <script src="js/util/common.js"></script>
+<!-- 커스텀 모달 js -->
+<script src="js/util/customModal.js"></script>
 <!-- paging -->
 <script src="js/util/page.js"></script>
 
@@ -37,4 +39,10 @@
 <script src="js/include/header.js"></script>
 <script type="text/javascript">
 	header.init();
+</script>
+
+<!-- 판매자 topbar JS -->
+<script src="js/partner/partnerTopbar.js"></script>
+<script type="text/javascript">
+	partnerTopbar.init();
 </script>

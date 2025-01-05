@@ -29,6 +29,9 @@ public interface PartnerMapper {
 	// 숙소 객실 시설 리스트
 	public List<Map<String, Object>> getPartnerRoomFacilities(Map<String, Object> param);
 
+	// 숙소 이용안내 리스트
+	public List<Map<String, Object>> getPartnerNoticeList(Map<String, Object> param);
+
 	// 숙소 상세
 	public Map<String, Object> getPartnerDetail(Map<String, Object> param);
 

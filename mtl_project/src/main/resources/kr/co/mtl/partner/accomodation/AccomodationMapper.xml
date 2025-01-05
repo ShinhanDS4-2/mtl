@@ -7,31 +7,111 @@
 		UPDATE PARTNER
 		SET
 			  address = #{address}
-			, address_si = #{address_si}
-			, address_dong = #{address_dong}
 			, description = #{description}
 			, check_in = #{check_in}
 			, check_out = #{check_out} 
-			, latitude = #{latitude} 
-			, hardness = #{hardness} 
 			, type = #{type} 
+			, area = #{area} 
 			, info_yn = 'Y'
 			, update_date = now()
+			<if test="address_si != null and address_si != ''">
+			, address_si = #{address_si}
+			</if>
+			<if test="address_dong != null and address_dong != ''">
+			, address_dong = #{address_dong}
+			</if>
+			<if test="latitude != null and latitude != ''">
+			, latitude = #{latitude} 
+			</if>
+			<if test="hardness != null and hardness != ''">
+			, hardness = #{hardness} 
+			</if>
 		WHERE 
 			idx = #{partner_idx}
 	</update>
+	
+	<!-- 숙소 시설 등록 -->
+	<insert id="insertPartnerFacilities" parameterType="HashMap">
+		INSERT INTO PARTNER_FACILITIES (
+			  partner_idx
+			, facilities_idx
+		) VALUES 
+		<foreach collection="facilitiesIdxList" item="facilities_idx" separator=",">
+		(
+			  #{partner_idx}
+			, #{facilities_idx}
+		)
+		</foreach>
+	</insert>
+	
+	<!-- 숙소 시설 삭제 -->
+	<delete id="deletePartnerFacilities" parameterType="HashMap">
+		DELETE FROM PARTNER_FACILITIES
+		WHERE 
+			partner_idx = #{partner_idx}
+	</delete>
+	
+	<!-- 숙소 이미지 등록 -->
+	<insert id="insertPartnerImage" parameterType="HashMap">
+		INSERT INTO IMAGE (
+			  mapping_idx
+			, url
+			, origin_filename
+			, thumbnail_yn
+			, type
+		) VALUES (
+			  #{partner_idx}
+			, #{url}
+			, #{origin_filename}
+			, #{thumbnail_yn}
+			, 'P'
+		)
+	</insert>
+	
+	<!-- 숙소 이미지 삭제 -->
+	<delete id="deletePartnerImage" parameterType="HashMap">
+		DELETE FROM IMAGE
+		WHERE 
+			mapping_idx = #{partner_idx}
+		AND type = 'P'
+	</delete>
+	
+	<!-- 숙소 키워드 등록 -->
+	<insert id="insertPartnerKeyword" parameterType="HashMap">
+		INSERT INTO PARTNER_KEYWORD (
+			  partner_idx
+			, keyword_idx
+		) VALUES 
+		<foreach collection="keywordIdxList" item="keyword_idx" separator=",">
+		(
+			  #{partner_idx}
+			, #{keyword_idx}
+		)
+		</foreach>
+	</insert>
+
+	<!-- 숙소 키워드 삭제 -->
+	<delete id="deletePartnerKeyword" parameterType="HashMap">
+		DELETE FROM PARTNER_KEYWORD
+		WHERE 
+			partner_idx = #{partner_idx}
+	</delete>
 	
 	<!-- 숙소 상세 -->
 	<select id="getDetail" parameterType="HashMap">
 		SELECT
 			  name
 			, type
+			, area
 			, phone
 			, business_phone
 			, check_in
 			, check_out
 			, address
+			, address_si
+			, address_dong
 			, description
+			, info_yn
 		FROM
 			PARTNER
 		WHERE
@@ -41,7 +121,7 @@
 	<!-- 숙소 시설 -->
 	<select id="getFacilitiesList" parameterType="HashMap">
 		SELECT
-			  facilities_idx
+			facilities_idx
 		FROM
 			PARTNER_FACILITIES
 		WHERE
@@ -51,13 +131,63 @@
 	<!-- 숙소 이미지 -->
 	<select id="getImageList" parameterType="HashMap">
 		SELECT
-			    idx AS image_idx
-			  , url
+			  idx AS image_idx
+			, url
 		FROM
 			IMAGE
 		WHERE
 			mapping_idx = #{partner_idx}
 		AND type = 'P'
 	</select>
+
+	<!-- 키워드 이미지 -->
+	<select id="getKeywordList" parameterType="HashMap">
+		SELECT
+			keyword_idx
+		FROM
+			PARTNER_KEYWORD
+		WHERE
+			partner_idx = #{partner_idx}
+	</select>
 	
+	<!-- 이용안내 등록 -->
+	<insert id="insertPartnerNotice" parameterType="HashMap">
+		INSERT INTO PARTNER_NOTICE (
+			  partner_idx
+			, content
+		)
+		VALUES (
+			  #{partner_idx}
+			, #{content}
+		)
+	</insert>
+	
+	<!-- 이용안내 수정 -->	
+	<update id="updatePartnerNotice" parameterType="HashMap">
+		UPDATE PARTNER_NOTICE
+		SET
+			  content = #{content}
+			, update_date = NOW()
+		WHERE 
+			idx = #{notice_idx}
+	</update>	
+	
+	<!-- 이용안내 삭제 -->
+	<delete id="deletePartnerNotice" parameterType="HashMap">
+		DELETE FROM PARTNER_NOTICE
+		WHERE 
+			idx = #{notice_idx}
+	</delete>
+
+	<!-- 이용안내 리스트 -->
+	<select id="getPartnerNoticeList" resultType="HashMap">
+		SELECT 
+			  idx AS notice_idx
+			, content
+		FROM 
+			PARTNER_NOTICE
+		WHERE
+			partner_idx = #{partner_idx}
+		ORDER BY create_date DESC
+	</select>
 </mapper>

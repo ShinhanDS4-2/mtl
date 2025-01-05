@@ -24,8 +24,4 @@ public interface LocationMapper {
 	List<Map<String, Object>> getRandomLocationList(Map<String, Object> param);
 	
 	
-/* [관리자] 정산 관리 > 정산내역 */	
-
-	
-	
 }

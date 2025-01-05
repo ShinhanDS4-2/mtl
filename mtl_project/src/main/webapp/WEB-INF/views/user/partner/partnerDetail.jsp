@@ -156,11 +156,7 @@
 							
 							<!-- List -->
 							<h5 class="fw-light mt-4 mb-2">이용 안내</h5>
-							<ul class="list-group list-group-borderless mb-0">
-								<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Every hotel staff to have Proper PPT kit for COVID-19</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Every staff member wears face masks and gloves at all service times.</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>Hotel staff ensures to maintain social distancing at all times.</li>
-								<li class="list-group-item h6 fw-light d-flex mb-0"><i class="bi bi-patch-check-fill text-success me-2"></i>The hotel has In-Room Dining options available </li>
+							<ul class="list-group list-group-borderless mb-0" id="parterNoticeList">
 							</ul>
 						</div>
 						<!-- Card body END -->

@@ -53,7 +53,7 @@ const comm = {
 		$.ajax({
 			type: method,
 			url: url_v,
-			data: fData,
+			data: data_v,
 			contentType : false,
 		    processData: false,
 		    enctype: "multipart/form-data",
@@ -188,11 +188,9 @@ const comm = {
 	// 이미지 미리보기
 	setPreview: function(evo) {
 		let files = evo.get(0).files;
-		let preview = $("#preview");
+		let preview = $("#preview").empty();
 		
 		if (files && files.length > 0) {
-            preview.empty();
-
             Array.from(files).forEach(file => {
                 let reader = new FileReader();
                 reader.onload = function(e) {
@@ -206,4 +204,23 @@ const comm = {
             });
         };
 	},
+	
+	// 폼데이터로 변경
+	changeFormData: function(data) {
+        let formData = new FormData();
+        let keys = Object.keys(data);
+
+        for (let key of keys) {
+            let value = data[key];
+			if (value instanceof FileList) {
+				for (let file of value) {
+					formData.append(key, file);
+				}
+			} else {
+				formData.append(key, value);
+			} 
+        }
+
+        return formData;
+    },
 }

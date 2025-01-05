@@ -33,7 +33,7 @@
 					<ul class="nav collapse flex-column" id="collapsehotel"
 						data-bs-parent="#navbar-sidebar">
 						<li class="nav-item"><a class="nav-link "
-							href="/mtl/partner/hotelregist">숙소 등록</a></li>
+							href="/mtl/partner/regist">숙소 등록</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/mtl/partner/roomregist">객실 관리</a></li>
 					</ul></li>
