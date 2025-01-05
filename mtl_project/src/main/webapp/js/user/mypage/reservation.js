@@ -123,7 +123,7 @@ const reservation = (function() {
 						`<div class="col-md-9">
 							<div class="card-body py-md-2 d-flex flex-column h-100">
 								<!-- Title -->
-								<h5 class="card-title mb-1"><a href="partner/detail">${data.name}</a></h5>
+								<h5 class="card-title mb-1"><a href="partner/detail?idx=${data.partner_idx}">${data.name}</a></h5>
 								<small><i class="bi bi-geo-alt me-2"></i>${data.address}</small>
 								<small class="mt-2">
 									<i class="fa-regular fa-calendar me-2"></i>${data.check_in_date} ~ ${data.check_out_date}
