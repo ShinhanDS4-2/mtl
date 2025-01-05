@@ -28,4 +28,7 @@ public interface LocationMapper {
 
 	/* 여행지 정보 */
 	Map<String, Object> getLocationMinDetail(Map<String, Object> param);
+
+	/* 여행지 추천 저장 */
+	int insertCustomLocation(Map<String, Object> param);
 }

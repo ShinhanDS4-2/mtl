@@ -29,6 +29,8 @@ const customLocation = (function() {
 				_event.clickPrev();
 			} else if (action == "clickLocationCard") {
 				_event.clickLocationCard(evo);
+			} else if (action == "clickSave") {
+				_event.clickSave();
 			}
 		};        
 	};   
@@ -84,7 +86,42 @@ const customLocation = (function() {
 		    comm.sendJson(url, data, "POST", function(resp) {
 		    	_draw.drawLocationDetail(resp.data);
 		    });
-		}
+		},
+		
+		// 저장하기 클릭
+		clickSave: function() {
+			let reservationIdx = comm.getUrlParam().idx;
+			let locationList = $("#locationList .card").map(function () {
+		        return $(this).attr("data-location-idx");
+		    }).get();
+
+			modal.confirm({
+				"content" : "저장하시겠습니까?",
+				"confirmCallback" : function() {
+					let url = "/user/location/custom/save";
+					
+					let data = {
+						"reservation_idx" : reservationIdx,
+						"locationList" : locationList
+				    };
+				    
+				    comm.sendJson(url, data, "POST", function(resp) {
+				    	if (resp.result == true) {
+				    		modal.alert({
+				    			"content" : "저장되었습니다.<br>예약내역으로 이동합니다.",
+				    			"confirmCallback" : function() {
+				    				location.href = "/mtl/mypage/reservation";
+				    			}
+				    		});
+				    	} else {
+				    		modal.alert({
+				    			"content" : "저장에 실패하였습니다.<br>다시 시도해 주세요."
+				    		});
+				    	}
+				    });
+				}
+			});
+		},
 	};
 	 
 	// 키워드 세팅

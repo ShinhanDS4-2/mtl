@@ -87,4 +87,18 @@ public class LocationController {
 		return result;
 	}
 
+	/**
+	 * 여행지 추천 저장
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/custom/save")
+	public Map<String, Object> insertCustomLocation(@RequestBody Map<String, Object> param) {
+		Map<String, Object> result = new HashMap<>();
+		
+		result = locationService.insertCustomLocation(param);
+		
+		return result;
+	}
+
 }

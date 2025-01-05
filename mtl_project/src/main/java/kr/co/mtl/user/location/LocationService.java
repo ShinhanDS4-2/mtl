@@ -18,4 +18,7 @@ public interface LocationService {
 
 	// 여행지 정보
 	Map<String, Object> getLocationMinDetail(Map<String, Object> param); 
+
+	// 여행지 추천 저장
+	Map<String, Object> insertCustomLocation(Map<String, Object> param); 
 }

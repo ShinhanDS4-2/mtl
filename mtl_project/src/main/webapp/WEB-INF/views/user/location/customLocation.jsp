@@ -111,7 +111,7 @@
 		</div>
 		<div class="d-flex justify-content-end mt-3">
 			<button type="button" class="btn btn-primary-soft me-2" data-src="customLocation" data-act="clickPrev">이전으로</button>
-			<button type="button" class="btn btn-primary">저장하기</button>
+			<button type="button" class="btn btn-primary" data-src="customLocation" data-act="clickSave">저장하기</button>
 		</div>
 	</div>
 </section>

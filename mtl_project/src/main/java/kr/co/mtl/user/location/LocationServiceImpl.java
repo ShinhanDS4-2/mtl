@@ -101,7 +101,26 @@ public class LocationServiceImpl implements LocationService {
 		
 		return result;
 	};
+	
+	/**
+	 * 여행지 추천 저장
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> insertCustomLocation(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		if (locationMapper.insertCustomLocation(param) <= 0) {
+			result.put("result", false);
+			return result;
+		}
+		
+		result.put("result", true);
 
+		return result;
+	};
+	
 	/**
 	 * 여행지 추천 리스트
 	 * @param param
@@ -128,7 +147,7 @@ public class LocationServiceImpl implements LocationService {
 
 			// 숙소와 여행지 간의 최단 거리
 			double distance = calculateDistance(geoParam);
-			System.out.println(distance);
+			
 			// 반경 15km 이내 여행지
 			if(distance <= 20) {
 				nearLocationList.add(location);
