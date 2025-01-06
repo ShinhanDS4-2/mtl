@@ -3,7 +3,7 @@
 <mapper namespace="kr.co.mtl.admin.location.AdminLocationMapper">
 
 	<!-- 여행지 기본정보 등록  ~  (지역, 분류, 장소명, 주소, 상세정보, 등록일) -->
-	<insert id="registLocationInfo" parameterType="map" useGeneratedKeys="true" keyProperty="location_idx">>
+	<insert id="registLocationInfo" parameterType="map" useGeneratedKeys="true" keyProperty="location_idx">
 		INSERT INTO LOCATION(area, type, name, address, description, create_date) 
 			VALUES(#{area}, #{type}, #{name}, #{address}, #{description}, now());
 

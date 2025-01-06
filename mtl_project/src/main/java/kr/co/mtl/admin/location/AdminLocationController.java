@@ -1,6 +1,7 @@
 package kr.co.mtl.admin.location;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/admin/location")
@@ -22,26 +24,28 @@ public class AdminLocationController {
 	 * @return result(true/false), message
 	 */
 	@PostMapping("/regist")
-	public Map<String,Object> registLocation(@RequestParam Map<String,Object> param) {
+	public Map<String,Object> registLocation(@RequestParam Map<String,Object> param,
+											@RequestParam(required = false, name = "images") List<MultipartFile> images) {
 		
 		Map<String, Object> result = new HashMap<>();
-		result = adminLocationService.deleteLocation(param);
+		result = adminLocationService.registLocation(param, images);
 
 		return result;
 	};
 	
 
 	/** 
-	 * 여행지 수정 - 보류
-	 * @param param
-	 * @param request
-	 * @return
+	 * 여행지 수정
+	 * @param (기본정보수정)location_idx, area, type, name, address, description / (이미지,키워드 삭제)location_idx / 
+	 * 		(사진등록 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드등록 keywords 키값으로 배열저장)keyword_idx
+	 * @return result(true/false), message
 	 */
 	@PostMapping("/update")
-	public Map<String,Object> updateLocation(@RequestParam Map<String,Object> param) {
+	public Map<String,Object> updateLocation(@RequestParam Map<String,Object> param,
+											@RequestParam(required = false, name = "images") List<MultipartFile> images) {
 		
 		Map<String, Object> result = new HashMap<>();
-		
+		result = adminLocationService.updateLocation(param, images);
 		
 		return result;
 	};
