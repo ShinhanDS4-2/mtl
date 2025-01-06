@@ -4,14 +4,14 @@ import java.sql.Timestamp;
 
 public class Notice {
 
-    private Integer idx;          
+    private Integer idx;         
     private String type;         
-    private String title;         
+    private String title;        
     private String content;       
     private Timestamp createDate; 
     private Timestamp updateDate; 
-    private String status;       
-    private String target;        
+    private String status;        // 상태 (Y: 게시 중 / N: 게시 중단)
+    private String target;        // 공지사항 노출 대상 (U: 사용자 / P: 판매자)
 
     public Integer getIdx() {
         return idx;
@@ -77,4 +77,3 @@ public class Notice {
         this.target = target;
     }
 }
-
