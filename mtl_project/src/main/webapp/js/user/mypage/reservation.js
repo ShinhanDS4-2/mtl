@@ -40,13 +40,40 @@ const reservation = (function() {
 			let reservationIdx = evo.attr("data-reservation-idx");
 			location.href = "/mtl/custom/location?idx=" + reservationIdx;
 		},
+		
+		// 예약 취소
+		clickResevationCancel: function(evo) {
+			let reservationIdx = evo.attr("data-reservation-idx");
+			
+			let url = "/user/reservation/cancel";
+			
+			let data = {
+				"reservation_idx" : reservationIdx
+			};
+			
+			modal.confirm({
+				"content" : "예약을 취소하시겠습니까?",
+				"confirmCallback" : function() {
+					comm.sendJson(url, data, "POST", function(resp) {
+						if (resp.result == 1) {
+							modal.alert({
+								"content" : "예약취소가 완료되었습니다.",
+								"confirmCallback" : function() {
+									fetchReservationList();
+									$("#reservationDetail").modal("hide");
+								}
+							});
+						};
+					});
+				}
+			});
+		},
 	};
 	
 	// 메뉴 active
 	function _menuActive() {
 		$("#menuReservation").addClass("active");
 	};
-
 
 	// fetchReservationList();  페이지 로드 시 예약내역 리스트를 가져오는 함수
 	function fetchReservationList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
