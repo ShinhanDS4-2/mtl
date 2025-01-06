@@ -204,17 +204,16 @@
 				<!-- Card footer START -->
 				<div class="card-footer pt-0">
 					<!-- Pagination (페이지 전환 하단 바)-->
-					<nav class="d-flex justify-content-center">
-						<ul class="pagination pagination-sm pagination-primary-soft mb-0">
+					<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+						<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
 							<li class="page-item disabled"> <!-- disabled: 버튼 비활성화-->
 								<a class="page-link" href="#" tabindex="-1">&lt;</a>
 							</li>
 							<li class="page-item"><a class="page-link" href="#">1</a></li>
 							<li class="page-item active"><a class="page-link" href="#">2</a></li>
 							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item disabled"><a class="page-link" href="#">..</a></li>
-							<li class="page-item"><a class="page-link" href="#">11</a></li>
-							<li class="page-item"><a class="page-link" href="#">12</a></li>
+							<li class="page-item"><a class="page-link" href="#">4</a></li>
+							<li class="page-item"><a class="page-link" href="#">5</a></li>
 							<li class="page-item">
 								<a class="page-link" href="#">&gt;</a>
 							</li>
@@ -556,7 +555,7 @@
 								분류 <span class="text-danger">*</span>
 							</label>
 							<select id="keyword" class="form-select">
-								<option value="" disabled="disabled">선택</option>
+								<option value="" disabled="disabled" selected="selected">선택</option>
 								<option value="PARTNER">숙소</option>
 								<option value="LOCATION">여행지</option>
 							</select>
@@ -566,13 +565,13 @@
 							<label for="placeName" class="form-label fw-bold">
 								키워드 <span class="text-danger">*</span>
 							</label>
-							<input type="text" class="form-control" id="placeName" placeholder="장소명을 입력해 주세요.">
+							<input type="text" class="form-control" id="keyword" placeholder="키워드를 입력해 주세요.">
 						</div>
 						<div class="col-md-2">
 							<label for="placeName" class="form-label fw-bold">
 								<span lass="text-danger">*</span>
 							</label> 
-							<a href="#" class="d-block btn btn-dark-soft mb-0 border-0">중복확인</a>
+							<a href="#" class="d-block btn btn-primary-soft mb-0 border-0">중복확인</a>
 						</div>
 					</div>
 				</form>

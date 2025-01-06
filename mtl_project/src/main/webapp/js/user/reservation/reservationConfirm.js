@@ -40,7 +40,7 @@ let reservationConfirm = (function() {
 
 		// 여행지 추천 클릭
 		clickCustom: function() {
-			// location.href = "/mtl/mypage/reservation";
+			location.href = "/mtl/custom/location?idx=" + comm.getUrlParam().idx;
 		},
 		
 		// 예약 정보 가져오기

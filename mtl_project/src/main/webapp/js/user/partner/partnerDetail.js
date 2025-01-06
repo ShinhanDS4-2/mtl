@@ -423,7 +423,7 @@ const partnerDetail = (function() {
 		let option = {
 			zoom: 16,
 			latitude: data.latitude,
-			hardness: data.hardness,
+			longitude: data.longitude,
 		};
 		
 		comm.setMapWithGeo(option);

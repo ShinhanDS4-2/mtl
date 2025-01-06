@@ -33,7 +33,6 @@
 		<if test="limit != null and offset != null">
 			LIMIT ${limit} OFFSET ${offset}
 		</if>
-		
 	</select>
 	
 	<!-- 지역 별 여행지 썸네일 사진 -->  <!-- 주의!! mapping_idx가 같아도, type(P: 숙소 / R: 객실 / V: 리뷰 / L: 여행지)에 따라 여러 사진이 나옴 -->
@@ -65,9 +64,9 @@
 
 	
 	<!-- 여행지(관광지/맛집) 상세페이지 정보 :  
-	LOCATION 여행지 테이블에서 name이름, address_si시/군/구, address_dong동, description설명, latitude위도, hardness경도 -->
+	LOCATION 여행지 테이블에서 name이름, address_si시/군/구, address_dong동, description설명, latitude위도, longitude경도 -->
 	<select id="getLocationDetailDescription" parameterType="map">
-		SELECT idx AS location_idx, name, address, address_si, address_dong, description, latitude, hardness
+		SELECT idx AS location_idx, name, address, address_si, address_dong, description, latitude, longitude
 		FROM LOCATION
 		WHERE idx = #{location_idx}
 	</select>
@@ -82,8 +81,8 @@
 	</select>
 <!-- [사용자] 여행지(관광지/맛집) 상세페이지 조회 END-->		
 
-<!-- 랜덤 여행지 -->
-	<select id="getRandomLocationList" parameterType="map">
+	<!-- 랜덤 여행지 -->
+	<select id="getRandomLocationList" parameterType="HashMap">
 		SELECT 
 			  l.idx AS location_idx
 			, l.name
@@ -95,5 +94,64 @@
 		LIMIT 4
 	</select>
 	
+	<!-- 여행지 추천 -->
+	<select id="getLocationListWithCustom" parameterType="HashMap">
+		SELECT
+			  l.idx AS location_idx
+			, l.name
+			, l.type
+			, l.address
+			, l.latitude
+			, l.longitude
+			, l.description
+			, (SELECT url FROM IMAGE WHERE mapping_idx = l.idx AND type = 'L' AND thumbnail_yn = 'Y') AS image
+		FROM
+			LOCATION l
+		WHERE
+			l.area = #{area}
+		AND l.idx IN (
+			SELECT 	
+				location_idx
+			FROM
+				LOCATION_KEYWORD lk
+			<where>
+				<if test="keywordList != null and keywordList.size() > 0">
+				AND lk.keyword_idx IN
+				<foreach item="keyword" collection="keywordList" separator="," open="(" close=")">
+					#{keyword}
+				</foreach>
+				</if>
+			</where>
+		)
+		ORDER BY l.create_date DESC, l.name 
+	</select>
 
+	<!-- 여행지 정보 -->
+	<select id="getLocationMinDetail" parameterType="HashMap">
+		SELECT 
+			  l.idx AS location_idx
+			, l.name
+			, l.description
+			, l.latitude
+			, l.longitude
+			, (SELECT url FROM IMAGE WHERE mapping_idx = l.idx AND type = 'L' AND thumbnail_yn = 'Y') AS image
+		FROM 
+			LOCATION l
+		WHERE
+			l.idx = #{location_idx}
+	</select>
+	
+	<!-- 여행지 추천 저장 -->
+	<insert id="insertCustomLocation" parameterType="HashMap">
+		INSERT INTO RESERVATION_TOUR (
+			  reservation_idx
+			, location_idx
+		) VALUES
+		<foreach collection="locationList" item="location_idx" separator=",">
+		(
+			  #{reservation_idx}
+			, #{location_idx}
+		)
+		</foreach>
+	</insert>
 </mapper>
