@@ -21,9 +21,30 @@
 	
 	<!-- 키워드 조회 -->
 	<select id="selectAllKeywords" parameterType="HashMap">
-		SELECT keyword
+		SELECT idx AS keyword_idx, keyword, type
 		FROM KEYWORD
 		WHERE type = #{type}
 		ORDER BY create_date DESC
 	</select>
+	
+	<!-- 키워드 삭제 -->
+	<delete id="deleteKeyword" parameterType="HashMap">
+		DELETE FROM KEYWORD
+		WHERE
+			idx = #{keyword_idx}
+	</delete>
+
+	<!-- 여행지 키워드 삭제 -->
+	<delete id="deleteKeywordLocation" parameterType="HashMap">
+		DELETE FROM LOCATION_KEYWORD
+		WHERE
+			keyword_idx = #{keyword_idx}
+	</delete>
+
+	<!-- 여행지 키워드 삭제 -->
+	<delete id="deleteKeywordPartner" parameterType="HashMap">
+		DELETE FROM PARTNER_KEYWORD
+		WHERE
+			keyword_idx = #{keyword_idx}
+	</delete>
 </mapper>

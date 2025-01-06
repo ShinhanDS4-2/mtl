@@ -1,6 +1,5 @@
 package kr.co.mtl.admin.keyword;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +35,21 @@ public class KeywordController {
 		
 		keywordService.registerKeyword(param);
 	}
+
+	/**
+	 * 키워드 삭제
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/delete") 
+	public void deleteKeyword(@RequestParam Map<String,String> param) {
+		
+		keywordService.deleteKeyword(param);
+	}
 	
 	//조회
 	@PostMapping("/list")
-	public List<Map<String, String>> getAllKeywords(@RequestParam Map<String,String> param) {
+	public Map<String, Object> getAllKeywords(@RequestParam Map<String,String> param) {
 	    return keywordService.getKeywordList(param);
 	}
 	

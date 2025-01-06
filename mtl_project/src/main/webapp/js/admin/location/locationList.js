@@ -32,6 +32,8 @@ const locationList = (function() {
 				_event.clickKeywordRegist();
 			} else if (action == "clickKeywordTab") {
 				_event.clickKeywordTab(evo);
+			} else if (action == "clickKeywordDelete") {
+				_event.clickKeywordDelete(evo);
 			}
 		};
 	};
@@ -45,7 +47,7 @@ const locationList = (function() {
 		        method: "POST",  // POST 방식
 		        data: { "type" : keywordType },
 		        success: function(resp) {
-		        	_draw.drawKeywordList(resp);
+		        	_draw.drawKeywordList(resp.list);
 		        },
 			});
 		},
@@ -140,6 +142,39 @@ const locationList = (function() {
 
 			_event.clickKeywordList(evo);
 		},
+		
+		// 키워드 삭제
+		clickKeywordDelete: function(evo) {
+			let keywordIdx = evo.attr("data-keyword-idx");
+			let keywordType = evo.attr("data-keyword-type");
+			
+			modal.confirm({
+				"content" : "키워드를 삭제하시겠습니까?",
+				"confirmCallback" : function() {
+					$.ajax({
+				        url: "/mtl/api/admin/location/keyword/delete",
+				        method: "POST",  
+				        data: {
+				            "keyword_idx": keywordIdx,
+				            "type": keywordType,
+				        },
+				        success: function(resp) {
+				        	modal.alert({
+			            		"content" : "정상적으로 삭제되었습니다.",
+			            		"confirmCallback" : function() {
+			            			_event.clickKeywordList();
+			            		}
+			            	});
+				        },
+				        error: function() {
+				        	modal.alert({
+			            		"content" : "삭제에 실패하였습니다.<br>다시 시도해주세요."
+			            	});
+				        }
+				    });	
+				}	
+			});
+		},
 	};
 	
 	// 그리기
@@ -158,8 +193,22 @@ const locationList = (function() {
 				let div = $("<div>").addClass("border-bottom text-center p-2");
 				keywordList.append(div);
 				
-				let keyword = $("<strong>").html(data.keyword);
+				let keyword = $("<strong>");
+				keyword.append("<i class='fa-solid fa-hashtag'></i>");
+				keyword.append(data.keyword);
 				div.append(keyword);
+				
+				let deleteBtn = $("<a>").addClass("text-danger ms-2").append("<i class='fa-solid fa-xmark'></i>");
+				deleteBtn.attr({
+					"href" : "javascript:;",
+					"data-src" : "locationList",
+					"data-act" : "clickKeywordDelete",
+					"data-keyword-idx" : data.keyword_idx,
+					"data-keyword-type" : data.type
+				});
+				div.append(deleteBtn);
+				
+				_eventInit();
 			};
 		},
 	};
