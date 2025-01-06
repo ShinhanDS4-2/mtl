@@ -2,24 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mtl.admin.keyword.KeywordMapper">
 
+	<!-- 키워드 등록 -->
 	<insert id="insertKeyword" parameterType="HashMap">
 		INSERT INTO KEYWORD 
-			(keyword,type,create_date)
+			(keyword, type)
 		VALUES (
-			#{keyword},#{type},NOW()
-			)
+			#{keyword}, #{type}
+		)
 	</insert>
 	
 	<!-- 중복 키워드 확인 -->
-	<select id="countKeywordByKeyword" resultType="int">
+	<select id="checkKeywordDuplicate" parameterType="HashMap" resultType="int">
 		SELECT COUNT(*) 
 		FROM KEYWORD 
-		WHERE keyword=#{keyword}
+		WHERE keyword = #{keyword}
+		AND type = #{type}
 	</select>
 	
-	<select id="selectAllKeywords" resultType="map">
+	<!-- 키워드 조회 -->
+	<select id="selectAllKeywords" parameterType="HashMap">
 		SELECT keyword
 		FROM KEYWORD
+		WHERE type = #{type}
 		ORDER BY create_date DESC
 	</select>
 </mapper>

@@ -13,15 +13,20 @@ public class KeywordServiceImpl implements KeywordService{
 	private KeywordMapper keywordMapper;
 	
 	@Override
+	public int checkKeywordDuplicate(Map<String, Object> param) {
+		return keywordMapper.checkKeywordDuplicate(param);
+	}
+	
+	@Override
 	public void registerKeyword(Map<String,String>param) {
 			
 		keywordMapper.insertKeyword(param);
 	}
 
 	@Override
-	public List<Map<String, String>> getKeywordList() {
-		
-		return keywordMapper.selectAllKeywords();
+	public List<Map<String, String>> getKeywordList(Map<String,String> param) {
+		System.out.println(param);
+		return keywordMapper.selectAllKeywords(param);
 	}
 
 }
