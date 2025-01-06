@@ -49,8 +49,8 @@
 							<div class="card-body">
 								<!-- item -->
 								<div class="mb-3">
-									<label class="form-label">이름</label> <input type="text"
-										class="form-control" value="${login_partner_name }" disabled>
+									<label class="form-label">이름</label> 
+									<input type="text" class="form-control" id="businessName" disabled>
 									<!-- disabled : 수정불가 -->
 								</div>
 								<!-- item -->
@@ -83,9 +83,8 @@
 								</div>
 								<!-- 비밀번호 변경하기 Button 클릭 시 모달창 표시 -->
 								<div>
-									<a role="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
-										data-bs-target="#changePassword">비밀번호 변경하기</a>
-									<p class="mb-0 small">최근 변경 일자: </p>
+									<a role="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#changePassword">비밀번호 변경하기</a>
+									<p class="mb-0 small">최근 변경 일자: <span id="passwordUpdateDate"></span></p>
 								</div>
 							</div>
 						</div>
@@ -107,24 +106,24 @@
 									<!-- item -->
 									<div class="col-12">
 										<label class="form-label">업체명</label> <input type="email"
-											class="form-control" id="name" disabled>
+											class="form-control" value="${login_partner_name }" disabled>
 									</div>
 									<!-- item -->
 									<div class="col-12">
 										<label class="form-label">사업자등록번호</label> <input type="email"
-											class="form-control" value="532-86-2265" disabled>
+											class="form-control" id="business_number" disabled>
 									</div>
 
 									<!-- item -->
 									<div class="col-12">
 										<label class="form-label">사업장 주소지</label> <input type="email"
-											class="form-control" value="서울특별시 00구 00" disabled>
+											class="form-control" id="address" disabled>
 									</div>
 
 									<!-- item -->
 									<div class="mb-3">
 										<label class="form-label">업체 대표 번호</label> <input type="text"
-											class="form-control" value="010-7737-6314" disabled
+											class="form-control" id="business_phone" disabled
 											placeholder="업체 대표 번호를 입력하세요.">
 									</div>
 
@@ -133,7 +132,7 @@
 										<label class="form-label">정산계좌</label>
 										<div
 											class="form-border-bottom form-control-transparent form-fs-lg">
-											<select class="form-select js-choice">
+											<select class="form-select js-choice" id="account_bank">
 												<option>우리은행</option>
 												<option>카카오뱅크</option>
 												<option>기업은행</option>
@@ -147,13 +146,13 @@
 									<!-- item 정산계좌-->
 									<div class="col-lg-8">
 										<label class="form-label">계좌번호</label> <input type="email"
-											class="form-control" value="1002-352-072937"
+											class="form-control" id="account_number"
 											placeholder="계좌번호를 입력하세요.">
 									</div>
 
 									<!-- Save button -->
 									<div class="d-flex justify-content-end mt-4">
-										<a href="#" class="btn btn-primary">저장</a>
+										<a href="javascript:;" class="btn btn-primary" data-src="info" data-act="updateBusinessInfo">저장</a>
 									</div>
 								</form>
 							</div>

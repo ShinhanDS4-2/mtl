@@ -94,9 +94,9 @@
 			<!-- Sidebar footer START -->
 			<div
 				class="d-flex align-items-center justify-content-between text-primary-hover mt-auto p-3">
-				<a class="h6 fw-light mb-0 text-body" href="/mtl/partner/signin"
+				<a class="h6 fw-light mb-0 text-body" href="javascript:;"
 					data-bs-toggle="tooltip" data-bs-placement="top"
-					aria-label="Sign out"> <i
+					aria-label="Sign out" data-src="partnerTopbar" data-act="clickLogoutBtn"> <i
 					class="fa-solid fa-arrow-right-from-bracket"></i> Log out
 				</a> <a class="h6 mb-0 text-body" href="/mtl/partner/mypage"
 					data-bs-toggle="tooltip" data-bs-placement="top"

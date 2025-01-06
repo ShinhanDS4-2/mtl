@@ -28,6 +28,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.zaxxer.hikari.HikariDataSource;
 
 import kr.co.mtl.interceptor.LoginInterceptor;
+import kr.co.mtl.interceptor.PartnerLoginInterceptor;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
@@ -104,18 +105,30 @@ public class MvcConfig implements WebMvcConfigurer {
 		return dtm;
 	}
 	
-	// 인터셉터
+	// 사용자 인터셉터
 	@Bean
 	public LoginInterceptor interception() {
 		return new LoginInterceptor();
 	}
 	
+	// 파트너 인터셉터
+	@Bean
+    public PartnerLoginInterceptor partnerInterceptor() {
+        return new PartnerLoginInterceptor();
+    }
+	
 	// 인터셉터 설정
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
+		// 사용자
 		registry.addInterceptor(interception())
 			.addPathPatterns("/mypage/**", "/reservation", "reservationConfirm")
 			.excludePathPatterns("/login", "/join", "/resources/**", "/assets/**", "/error"); // 예외 경로
+		
+		// 파트너
+		registry.addInterceptor(partnerInterceptor())
+        .addPathPatterns("/partner/**") // 파트너 경로
+        .excludePathPatterns("/partner/login", "/partner/join", "/resources/**", "/assets/**", "/error"); // 예외 경로
 	}
 	
 	// 정적 페이지 처리
