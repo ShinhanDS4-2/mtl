@@ -41,7 +41,7 @@ const partnerTopbar = (function() {
 			let url = "/partner/logout";
 			
 			comm.send(url, {}, "POST", function() {
-				modal.alret({
+				modal.alert({
 					"content" : "로그아웃 되었습니다.",
 					"confirmCallback" : function() {
 						location.href = "/mtl/partner/login";

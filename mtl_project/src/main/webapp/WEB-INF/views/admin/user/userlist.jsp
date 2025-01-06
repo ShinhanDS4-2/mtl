@@ -91,123 +91,29 @@
 			<div class="card shadow mb-5">
 				<!-- Card header -->
 				<div class="card-header border-bottom">
-					<h5 class="card-header-title">검색필터(예시)</h5>
+					<h5 class="card-header-title">검색</h5>
 				</div>
 				<!-- Card body START -->
 				<div class="card-body">
 					<form class="row g-4 align-items-center">
-						<!-- 드롭다운 -->
-						<div class="col-2">
-							<label class="h6 fw-normal mb-0"><i
-								class="bi bi-calendar text-primary me-1"></i>기간</label>
-							<!-- Input field -->
-							<div
-								class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-								<select class="form-select js-choice">
-									<option value="">입실일</option>
-									<option>퇴실일</option>
-									<option>예약일</option>
-									<option>취소일</option>
-								</select>
-							</div>
-						</div>
-
-						<!-- 기간 설정. 어제/오늘/내일 -->
-						<div class="col-2">
-							<ul class="nav nav-pills nav-pills-dark" id="pills-tab"
-								role="tablist">
-								<li class="nav-item" role="presentation">
-									<button class="nav-link rounded-start rounded-0 mb-0 active"
-										id="tab1" data-bs-toggle="pill" type="button" role="tab"
-										aria-selected="true">어제</button>
-								</li>
-								<li class="nav-item" role="presentation">
-									<button class="nav-link rounded-0 rounded-0 mb-0" id="tab2"
-										data-bs-toggle="pill" type="button" role="tab"
-										aria-selected="false">오늘</button>
-								</li>
-								<li class="nav-item" role="presentation">
-									<button class="nav-link rounded-end rounded-0 mb-0" id="tab3"
-										data-bs-toggle="pill" type="button" role="tab"
-										aria-selected="false">내일</button>
-								</li>
-							</ul>
-						</div>
-
-						<!-- 기간(시작일) 설정 -->
-						<div class="col-3">
-							<label class="h6 fw-normal mb-0"><i
-								class="bi bi-calendar text-primary me-1"></i>시작일</label>
-							<!-- Input field -->
-							<div
-								class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-								<input type="text" class="form-control flatpickr py-2"
-									data-date-format="d M Y" placeholder="시작일">
-							</div>
-						</div>
-						<!-- 기간(종료일) 설정 -->
-						<div class="col-3">
-							<!--col-md-6: medium화면에서 가로 12칸 중 6칸 차지, col-lg-2: large화면에서 12칸 중 2칸 차지-->
-							<label class="h6 fw-normal mb-0"><i
-								class="bi bi-calendar text-primary me-1"></i>종료일</label>
-							<!-- Input field -->
-							<div
-								class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-								<input type="text" class="form-control flatpickr py-2"
-									data-date-format="d M Y" placeholder="종료일">
-							</div>
-						</div>
-
 						<!-- Radio items -->
 						<div class="col-12">
-							<label class="form-label">예약 상태</label>
+							<label class="form-label">상태</label>
 							<div class="d-sm-flex">
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault1" checked="">
-									<label class="form-check-label" for="flexRadioDefault1">
-										전체 </label>
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+									<label class="form-check-label" for="flexRadioDefault1">전체</label>
 								</div>
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault2"> <label
-										class="form-check-label" for="flexRadioDefault2">
-										예약완료 </label>
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+									<label class="form-check-label" for="flexRadioDefault2">정상</label>
 								</div>
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault3"> <label
-										class="form-check-label" for="flexRadioDefault3">
-										예약취소(고객) </label>
-								</div>
-								<!-- Radio -->
-								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio"
-										name="flexRadioDefault" id="flexRadioDefault4"> <label
-										class="form-check-label" for="flexRadioDefault4">
-										예약취소(관리자) </label>
-								</div>
-							</div>
-						</div>
-
-						<!-- 객실 타입 드롭다운 -->
-						<div class="col-12">
-							<div class="col-4">
-								<label class="h6 fw-normal mb-0"><i
-									class="fa-solid fa-person-skating text-primary me-1"></i>객실 타입</label>
-								<!-- Input field -->
-								<div
-									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-									<select class="form-select js-choice">
-										<option value="">전체</option>
-										<option>스탠다드</option>
-										<option>디럭스</option>
-										<option>트윈룸</option>
-										<option>객실타입</option>
-									</select>
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+									<label class="form-check-label" for="flexRadioDefault3">탈퇴</label>
 								</div>
 							</div>
 						</div>
@@ -217,16 +123,15 @@
 							<label class="h6 fw-normal mb-0">검색어</label>
 							<div
 								class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-								<select class="form-select js-choice">
-									<option value="">예약자명</option>
-									<option>예약번호</option>
+								<select class="form-select js-choice" id="searchType">
+									<option value="name">이름</option>
+									<option value="email">이메일</option>
 								</select>
 							</div>
 						</div>
 						<!-- 검색어 입력 input -->
 						<div class="col-6">
-							<label class="form-label">-</label> <input type="text"
-								class="form-control" placeholder="예약자명을 입력하세요">
+							<label class="form-label"></label> <input type="text" class="form-control" placeholder="검색어를 입력하세요">
 						</div>
 
 						<!-- 초기화/검색 button -->
@@ -239,18 +144,10 @@
 			</div>
 			<!-- 검색 필터 설정 END -->
 
-
-
 			<!-- 예약 내역 List 상단 Tab -->
-			<div class="row g-4 justify-content-between align-items-center mb-2">
+			<div class="row g-4 justify-content-start align-items-center mb-2">
 				<div class="col-md-6 col-lg-6">
 					<h6 class="mb-1">전체 사용자 50명</h6>
-				</div>
-				<div class="col-md-6 col-lg-6 d-flex justify-content-end">
-					<div class="mb-sm-0 d-flex justify-content-center">
-						<a href="#" class="btn btn-dark-soft mb-0 border-0"><i
-							class="fa-solid fa-download"></i></a>
-					</div>
 				</div>
 			</div>
 
@@ -262,13 +159,10 @@
 					<div class="bg-light rounded p-3 d-none d-sm-block">
 						<div class="row row-cols-7 g-4">
 							<div class="col">
-								<h6 class="mb-0">아이디</h6>
+								<h6 class="mb-0">이메일</h6>
 							</div>
 							<div class="col">
 								<h6 class="mb-0">이름</h6>
-							</div>
-							<div class="col">
-								<h6 class="mb-0">이메일</h6>
 							</div>
 							<div class="col">
 								<h6 class="mb-0">연락처</h6>
@@ -286,23 +180,16 @@
 					</div>
 
 					<!-- Table data (1번째 예약내역 상세 데이터)-->
-					<div
-						class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-sm-none">아이디</small>
-							<!-- 작은 화면일때만 보이는 텍스트-->
-							<h6 class="ms-1 mb-0 fw-normal">admin123</h6>
+							<small class="d-block d-sm-none">이메일</small>
+							<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">이름</small>
 							<h6 class="ms-1 mb-0 fw-normal">김시온</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
@@ -312,7 +199,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09(수)</h6>
+							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
@@ -329,23 +216,16 @@
 					</div>
 
 					<!-- Table data (2번째 예약내역 상세 데이터)-->
-					<div
-						class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-sm-none">아이디</small>
-							<!-- 작은 화면일때만 보이는 텍스트-->
-							<h6 class="ms-1 mb-0 fw-normal">admin45683</h6>
+							<small class="d-block d-sm-none">이메일</small>
+							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">이름</small>
 							<h6 class="ms-1 mb-0 fw-normal">홍홍홍</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
@@ -355,7 +235,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09(수)</h6>
+							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
@@ -371,23 +251,16 @@
 						</div>
 					</div>
 					<!-- Table data (3번째 예약내역 상세 데이터)-->
-					<div
-						class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-sm-none">아이디</small>
-							<!-- 작은 화면일때만 보이는 텍스트-->
-							<h6 class="ms-1 mb-0 fw-normal">admin45683</h6>
+							<small class="d-block d-sm-none">이메일</small>
+							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">이름</small>
 							<h6 class="ms-1 mb-0 fw-normal">가나다</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
@@ -397,7 +270,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09(수)</h6>
+							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
@@ -413,23 +286,16 @@
 						</div>
 					</div>
 					<!-- Table data (4번째 예약내역 상세 데이터)-->
-					<div
-						class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-sm-none">아이디</small>
-							<!-- 작은 화면일때만 보이는 텍스트-->
-							<h6 class="ms-1 mb-0 fw-normal">admin45683</h6>
+							<small class="d-block d-sm-none">이메일</small>
+							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">이름</small>
 							<h6 class="ms-1 mb-0 fw-normal">홍홍홍</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
@@ -439,7 +305,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09(수)</h6>
+							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
@@ -455,23 +321,16 @@
 						</div>
 					</div>
 					<!-- Table data (5번째 예약내역 상세 데이터)-->
-					<div
-						class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-sm-none">아이디</small>
-							<!-- 작은 화면일때만 보이는 텍스트-->
-							<h6 class="ms-1 mb-0 fw-normal">admin45683</h6>
+							<small class="d-block d-sm-none">이메일</small>
+							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">이름</small>
 							<h6 class="ms-1 mb-0 fw-normal">홍홍홍</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
@@ -481,7 +340,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09(수)</h6>
+							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
 						</div>
 						<!-- Data item -->
 						<div class="col">
