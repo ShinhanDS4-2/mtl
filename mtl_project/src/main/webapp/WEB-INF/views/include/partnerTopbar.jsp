@@ -62,8 +62,6 @@
 								class="bi bi-power fa-fw me-2"></i>로그아웃</a></li>
 					</ul></li>
 				<!-- 프로필 드롭다운 END -->
-
-
 			</ul>
 			<!-- Top bar right END -->
 		</div>
