@@ -41,8 +41,12 @@ const header = (function() {
 			let url = "/user/logout";
 			
 			comm.send(url, {}, "POST", function() {
-				alert("로그아웃 되었습니다.");
-				location.href = "/mtl/";
+				modal.alert({
+					"content" : "로그아웃 되었습니다.",
+					"confirmCallback" : function() {
+						location.href = "/mtl/";
+					}
+				});
 			});
 		}
 	};

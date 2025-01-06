@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mtl.user.mypage.MypageMapper">
 
-
 <!-- [사용자] 마이페이지 예약내역 조회 START-->	
 	<!-- 예약내역 리스트 총 개수 --> 
 	<select id="getReservationHistoryListCount" parameterType="map">
@@ -16,7 +15,11 @@
 		 result: 예약idx, 판매자(=숙소)idx, 숙소이름, 숙소위치정보, 예약 입실/퇴실 일자, 예약인원, 객실 금액
 		  * 여러 행의 결과값을 반환 하므로 List 형태로 반환되어야 함. -->
 	<select id="getReservationHistoryList" parameterType="map">
-		SELECT r.idx AS reservation_idx, p.idx AS partner_idx, p.name, p.address, r.check_in_date, r.check_out_date, r.guest_cnt, r.price
+		SELECT r.idx AS reservation_idx, p.idx AS partner_idx, p.name, p.address, r.check_in_date, r.check_out_date, r.guest_cnt, r.price,
+			   CASE 
+			       WHEN r.check_in_date > CURDATE() THEN 'Y' 
+			       ELSE 'N' 
+			   END AS check_date
 		FROM PARTNER p JOIN RESERVATION r ON(p.idx = r.partner_idx)   <!-- 숙소랑 예약 테이블 조인 -->
 		WHERE r.user_idx = #{user_idx}  <!-- 로그인 세션을 통해 param값으로 사용자 정보 idx가 넘어와야 함 -->
 	</select>
@@ -33,7 +36,6 @@
 				  AND mapping_idx = #{partner_idx} <!-- param값으로 숙소 정보 idx가 넘어와야 함 -->
 	</select>
 	
-	
 	<!-- 예약내역 객실타입정보만 추출하기 위함 START -->
 	<!-- param : reservation_idx (예약테이블의 idx)
 		 result: 객실타입 room_type
@@ -44,26 +46,21 @@
 		WHERE rs.idx = #{reservation_idx}
 	</select>
 	
-	
 	<!-- 예약내역 상세정보 START -->
 	<!-- param : reservation_idx (예약테이블의 idx)
 		 result: 예약idx, 객실타입, 체크인일자, 체크아웃일자, 객실 금액, 예약인원, 객실 이미지정보
 		  * 단일행 반환 Map 형태로 반환되어야 함.-->
 	<select id="getReservationHistoryDetail" parameterType="map">
-		SELECT rs.idx AS reservation_idx, rm.room_type, rs.check_in_date, rs.check_out_date, rs.guest_cnt, rs.price, img.url, img.origin_filename
+		SELECT rs.idx AS reservation_idx, rm.room_type, rs.check_in_date, rs.check_out_date, rs.guest_cnt, rs.price, img.url, img.origin_filename,
+			   CASE 
+			       WHEN rs.check_in_date > CURDATE() THEN 'Y' 
+			       ELSE 'N' 
+			   END AS check_date
 		FROM RESERVATION rs JOIN ROOM rm ON(rs.room_idx = rm.idx) JOIN IMAGE img ON(rs.room_idx = img.mapping_idx)
-		WHERE img.type = 'R' AND img.thumbnail_yn = 'Y' AND rs.idx = #{reservation_idx};
+		WHERE img.type = 'R' AND img.thumbnail_yn = 'Y' AND rs.idx = #{reservation_idx}
 	</select>
 	
-	
-	
-	
-	
 <!-- [사용자] 마이페이지 예약내역 조회 END-->
-
-
-
-
 
 </mapper>
 

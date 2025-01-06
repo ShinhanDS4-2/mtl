@@ -140,7 +140,7 @@
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 
 <!-- page script -->
-<script src="/mtl/js/common/join.js"></script>
+<script src="/mtl/js/user/join.js"></script>
 <script type="text/javascript">
 	join.init();
 </script>

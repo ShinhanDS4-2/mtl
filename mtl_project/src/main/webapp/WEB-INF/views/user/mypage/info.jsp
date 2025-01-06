@@ -44,7 +44,7 @@
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">이메일</label>
-									<input type="email" id="email" class="form-control text-secondary" disabled="disabled">
+									<input type="email" id="email" class="form-control text-secondary" readonly>
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">연락처</label>
@@ -52,7 +52,7 @@
 								</div>
 								<div class="col-md-6">
 									<label class="form-label">생년월일</label>
-									<input type="text" id="birth" class="form-control text-secondary" disabled="disabled">
+									<input type="text" id="birth" class="form-control text-secondary" readonly>
 								</div>
 								<!--
 								<div class="col-md-6">
