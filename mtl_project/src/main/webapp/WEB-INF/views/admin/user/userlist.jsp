@@ -121,8 +121,7 @@
 						<!-- 검색어 드롭다운 -->
 						<div class="col-2">
 							<label class="h6 fw-normal mb-0">검색어</label>
-							<div
-								class="form-border-bottom form-control-transparent form-fs-lg mt-2">
+							<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 								<select class="form-select js-choice" id="searchType">
 									<option value="name">이름</option>
 									<option value="email">이메일</option>
@@ -131,7 +130,8 @@
 						</div>
 						<!-- 검색어 입력 input -->
 						<div class="col-6">
-							<label class="form-label"></label> <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+							<label class="form-label"></label>
+							<input type="text" class="form-control" placeholder="검색어를 입력하세요">
 						</div>
 
 						<!-- 초기화/검색 button -->
@@ -147,7 +147,7 @@
 			<!-- 예약 내역 List 상단 Tab -->
 			<div class="row g-4 justify-content-start align-items-center mb-2">
 				<div class="col-md-6 col-lg-6">
-					<h6 class="mb-1">전체 사용자 50명</h6>
+					<h6 class="mb-1">전체 사용자 <span>50</span>명</h6>
 				</div>
 			</div>
 
@@ -157,7 +157,7 @@
 				<div class="card-body">
 					<!-- Table head -->
 					<div class="bg-light rounded p-3 d-none d-sm-block">
-						<div class="row row-cols-7 g-4">
+						<div class="row row-cols-6 g-4">
 							<div class="col">
 								<h6 class="mb-0">이메일</h6>
 							</div>

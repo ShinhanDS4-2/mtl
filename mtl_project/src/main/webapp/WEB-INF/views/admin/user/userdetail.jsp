@@ -38,10 +38,6 @@
 					<!-- 왼쪽 카드 START -->
 					<div class="card-body col-6">
 						<div class="mb-3">
-							<label class="form-label">아이디</label>
-							<input type="text" class="form-control" value="admin" readonly>
-						</div>
-						<div class="mb-3">
 							<label class="form-label">이메일</label> 
 							<input type="text" class="form-control" value="222 555 666" readonly>
 						</div>
@@ -52,6 +48,10 @@
 						<div class="mb-3">
 							<label class="form-label">가입일</label>
 							<input type="text" class="form-control" value="2024-12-01" readonly>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">상태</label>
+							<input type="text" class="form-control" value="정상" readonly>
 						</div>
 					</div>
 					<!-- 왼쪽 카드 END -->
@@ -70,10 +70,6 @@
 							<label class="form-label">구분</label>
 							<input type="text" class="form-control" value="일반 or 관리자" readonly>
 						</div>
-						<div class="mb-3">
-							<label class="form-label">상태</label>
-							<input type="text" class="form-control" value="정상" readonly>
-						</div>
 					</div>
 					<!-- 오른쪽 카드 END -->
 				</div>
@@ -91,9 +87,9 @@
 				<div class="card-body">
 					<!-- Table head -->
 					<div class="bg-light rounded p-3 d-none d-lg-block">
-						<div class="row row-cols-6 justify-content-between g-4">
+						<div class="row row-cols-8 justify-content-between g-4">
 							<div class="col">
-								<h6 class="mb-0">-</h6>
+								<h6 class="mb-0"></h6>
 							</div>
 							<div class="col">
 								<h6 class="mb-0">숙소명</h6>
@@ -102,7 +98,10 @@
 								<h6 class="mb-0">객실</h6>
 							</div>
 							<div class="col">
-								<h6 class="mb-0">체크인 ~ 체크아웃</h6>
+								<h6 class="mb-0">체크인</h6>
+							</div>
+							<div class="col">
+								<h6 class="mb-0">체크아웃</h6>
 							</div>
 							<div class="col">
 								<h6 class="mb-0">예약일</h6>
@@ -120,92 +119,70 @@
 					<div class="row align-items-md-center justify-content-between border-bottom px-2 py-4">
 						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-lg-none">업장명</small>
 							<div class="d-flex align-items-center">
 								<!-- Image -->
-								<div class="w-80px flex-shrink-0">
+								<div class="w-80px flex-shrink-0 ms-3">
 									<img src="assets/images/category/hotel/4by3/01.jpg" class="rounded" alt="">
 								</div>
 							</div>
 						</div>
 						<div class="col">
-							<!-- Title -->
-							<h6 class="mb-0 ms-2">오션뷰 디럭스</h6>
+							<h6 class="mb-0">오션뷰 디럭스</h6>
 						</div>
-						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-lg-none">객실 타입</small>
 							<h6 class="mb-0 fw-normal">스탠다드 디럭스</h6>
 						</div>
-						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-lg-none">체크인/체크아웃</small>
+							<h6 class="mb-0 fw-normal">2024-12-15</h6>
+						</div>
+						<div class="col">
+							<h6 class="mb-0 fw-normal">2024-12-16</h6>
+						</div>
+						<div class="col">
 							<h6 class="mb-0 fw-normal">2024-12-12</h6>
 						</div>
-						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-lg-none">예약일</small>
-							<h6 class="mb-0 fw-normal">2024-12-12</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-lg-none">금액</small>
 							<h6 class="mb-0 fw-bold">95,000원</h6>
 						</div>
-						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-sm-none">상태</small>
-							<div class="badge bg-success bg-opacity-10 text-success">이용완료</div>
+							<div class="badge bg-success bg-opacity-10 text-success">예약완료</div>
 						</div>
 					</div>
 
 					<!-- Table data -->
-					<div
-						class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-2 g-sm-4 align-items-md-center justify-content-between border-bottom px-2 py-4">
+					<div class="row align-items-md-center justify-content-between border-bottom px-2 py-4">
 						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-lg-none">업장명</small>
 							<div class="d-flex align-items-center">
-								<!-- Image -->
-								<div class="w-80px flex-shrink-0">
-									<img src="assets/images/category/hotel/4by3/01.jpg"
-										class="rounded" alt="">
+								<div class="w-80px flex-shrink-0 ms-3">
+									<img src="assets/images/category/hotel/4by3/01.jpg" class="rounded" alt="">
 								</div>
-								<!-- Title -->
-								<h6 class="mb-0 ms-2">오션뷰 디럭스</h6>
 							</div>
 						</div>
-						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-lg-none">객실 타입</small>
+							<h6 class="mb-0">오션뷰 디럭스</h6>
+						</div>
+						<div class="col">
 							<h6 class="mb-0 fw-normal">스탠다드 디럭스</h6>
 						</div>
-						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-lg-none">체크인/체크아웃</small>
+							<h6 class="mb-0 fw-normal">2024-12-15</h6>
+						</div>
+						<div class="col">
+							<h6 class="mb-0 fw-normal">2024-12-16</h6>
+						</div>
+						<div class="col">
 							<h6 class="mb-0 fw-normal">2024-12-12</h6>
 						</div>
-						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-lg-none">예약일</small>
-							<h6 class="mb-0 fw-normal">2024-12-12</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-lg-none">금액</small>
 							<h6 class="mb-0 fw-bold">95,000원</h6>
 						</div>
-						<!-- Data item -->
 						<div class="col">
-							<small class="d-block d-sm-none">상태</small>
 							<div class="badge bg-danger bg-opacity-10 text-danger">환불완료</div>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
-
 		</div>
 		<!-- Page main content END -->
 	</div>
