@@ -205,6 +205,9 @@ const reservation = (function() {
 										</li>
 									</ul>
 								</div>
+								<div class="mt-2">
+									<button class="btn btn-primary" type="button">예약 취소</button>
+								</div>
 							</div>
 						</div>`
 
