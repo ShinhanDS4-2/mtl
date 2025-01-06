@@ -2,6 +2,7 @@ const customLocation = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
+		_checkData();
 		_setKeyword();
 		_eventInit();
 	};
@@ -124,6 +125,36 @@ const customLocation = (function() {
 		},
 	};
 	 
+	// 기존 여행지 추천 저장 데이터 유무 확인
+	function _checkData() {
+		let reservationIdx = comm.getUrlParam().idx;
+		
+		let url = "/user/location/custom/check";
+		
+		let data = { "reservation_idx" : reservationIdx };
+		
+		comm.sendJson(url, data, "POST", function(resp) {
+			if (resp.result > 0) {
+				_getCustomLocationList(reservationIdx);
+
+				$("#keywordSelect").attr("hidden", true);
+				$("#locationCustom").attr("hidden", false);
+				$("#saveBtn").attr("hidden", true);
+			};
+		});
+	};
+	
+	// 기존 여행지 추천 리스트
+	function _getCustomLocationList(idx) {
+		let url = "/user/location/custom/save/list";
+		
+		let data = { "reservation_idx" : idx };
+		
+		comm.sendJson(url, data, "POST", function(resp) {
+			_draw.drawLocation(resp.list);
+		});
+	};
+	 
 	// 키워드 세팅
 	function _setKeyword() {
 		let url = "/common/keyword/list";
@@ -143,22 +174,23 @@ const customLocation = (function() {
 		drawKeyword: function(list) {
 			let keywordList = $("#keywordList");
 			
+			
 			for (let data of list) {
-				let div = $("<div>").addClass("col-3");
-				keywordList.append(div);
-				
+				let li = $("<li>").addClass("list-inline-item mb-1 me-1");
+				keywordList.append(li);
+
 				let input = $("<input>").addClass("btn-check").attr({
 					"type" : "checkbox",
 					"id" : "keyword" + data.keyword_idx
 				}).val(data.keyword_idx);
-				div.append(input);
+				li.append(input);
 				
-				let label = $("<label>").addClass("btn btn-primary-soft btn-primary-check rounded-4 w-120").attr({
+				let label = $("<label>").addClass("btn btn-primary-soft btn-primary-check rounded-4").attr({
 					"for" : "keyword" + data.keyword_idx				
 				});
 				label.append("<i class='fa-solid fa-hashtag me-1'></i>");
 				label.append(data.keyword);
-				div.append(label);
+				li.append(label);
 			};
 		}, 
 		
@@ -217,7 +249,7 @@ const customLocation = (function() {
 				"longitude" : data.longitude,
 				"zoom" : 16
 			});
-		}
+		},
 	};
 	
 	return {

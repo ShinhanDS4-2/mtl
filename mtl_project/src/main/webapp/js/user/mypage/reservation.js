@@ -25,24 +25,20 @@ const reservation = (function() {
 		let type = e.type;
 		 
 		if(type == "click") { 
-			/* 
-			if(action == "clickDeatilModal") {
-				_event.clickDeatilModal(evo); 
+			if(action == "clickCustomLocation") {
+				_event.clickCustomLocation(evo); 
 			}
-				*/
 		};
 	};
 	
 	// 이벤트
-	/*
 	let _event = {
-		// 예약내역 상세 정보 모달 클릭 시
-		clickDeatilModal : function(evo) {
-			let reservation_idx evo.attr("data-reservation-idx");
-			let src = evo.attr("data-src"); // 데이터 소스 ("reservation")
-		}
+		// 추천 여행지 클릭
+		clickCustomLocation : function(evo) {
+			let reservationIdx = evo.attr("data-reservation-idx");
+			location.href = "/mtl/custom/location?idx=" + reservationIdx;
+		},
 	};
-	*/
 	
 	// 메뉴 active
 	function _menuActive() {
@@ -134,7 +130,7 @@ const reservation = (function() {
 										<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> ${comm.numberWithComma(data.price)}</h5>
 									</div>
 									<div class="mt-3 mt-sm-0">
-										<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0">추천 여행지</a>    
+										<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0" data-src="reservation" data-act="clickCustomLocation" data-reservation-idx="${data.reservation_idx}">추천 여행지</a>    
 										<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0"  data-bs-toggle="modal" data-bs-target="#reviewModal">후기 작성</a>    
 										<a href="javascript:;" class="btn btn-sm btn-primary mb-0 reservDetail" data-bs-toggle="modal" data-bs-target="#reservationDetail" 
 												data-src="reservation" data-reservation-idx="${data.reservation_idx}">상세 정보</a>    
