@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="kr.co.mtl.mapper.NoticeMapper">
+<mapper namespace="kr.co.mtl.notice.NoticeMapper">
 
     <!-- 공지사항 목록 조회 -->
-    <select id="selectAllNotices" resultType="kr.co.mtl.model.Notice">
+    <select id="selectAllNotices" >
         SELECT * FROM NOTICE WHERE status = 'Y'
     </select>
 
-    <!-- 공지사항 상세 조회 -->
-    <select id="selectNoticeById" resultType="kr.co.mtl.model.Notice">
+   	<!-- 공지사항 상세 조회 -->
+    <select id="selectNoticeById" >
         SELECT * FROM NOTICE WHERE idx = #{idx}
     </select>
 
