@@ -26,9 +26,9 @@ public class LocationServiceImpl implements LocationService {
 		int count = locationMapper.getLocationListCount(param);
 		
 		for(Map<String, Object> data : list) {  // 반복문 돌면서 data에는 여행지 정보, 사진, 키워드 데이터가 합쳐짐
-			param.put("location_idx", data.get("location_idx"));
+			param.put("location_idx", data.get("location_idx")); // param으로 location_idx를 넘겨줌
 			
-			Map<String, Object> img = locationMapper.getLocationImage(param); // param으로 location_idx를 넘겨줌
+			Map<String, Object> img = locationMapper.getLocationImage(param);
 			System.out.println("img: " + img);
 			data.put("image", img);
 			

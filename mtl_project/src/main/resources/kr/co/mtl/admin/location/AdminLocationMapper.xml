@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.admin.location.AdminLocationMapper">
+
+	<!-- 여행지 기본정보 등록  ~  (지역, 분류, 장소명, 주소, 상세정보, 등록일) -->
+	<insert id="registLocationInfo" parameterType="map" useGeneratedKeys="true" keyProperty="location_idx">>
+		INSERT INTO LOCATION(area, type, name, address, description, create_date) 
+			VALUES(#{area}, #{type}, #{name}, #{address}, #{description}, now());
+
+<!-- 여기서 관리자가 직접 등록하는 정보 외에 위도, 경도, 시/군/구, 동 주소 정보는 어떻게 입력?  
+		=> 경도, 위도는 네이버지도 API사용, 나머지는 다음 주소API사용 -->
+	</insert>
+	
+	
+	
+	
+	<!-- 여행지 기본정보 수정  ~  (지역, 분류, 장소명, 주소, 상세정보, 수정일)  -->
+	<update id="updateLocationInfo" parameterType="map">
+		UPDATE LOCATION
+		SET 
+			 area = #{area}
+			,type = #{type}
+			,name = #{name}
+			,address = #{address}
+			,description = #{description}
+			,update_date = now()
+		WHERE 
+			 idx = #{location_idx}
+	</update>
+	
+	
+	<!-- 여행지 기본정보 삭제 -->
+	<delete id="deleteLocationInfo" parameterType="map">
+		DELETE 
+		FROM LOCATION
+		WHERE idx = #{location_idx}
+	</delete>
+	
+	
+	
+	<!-- 여행지 이미지 등록 -->
+	<insert id="registLocationImg" parameterType="map">
+		INSERT INTO IMAGE(mapping_idx, type, url, thumbnail_yn, origin_filename)
+			VALUES(#{location_idx}, 'L', #{url}, #{thumbnail_yn}, #{origin_filename})
+	</insert>
+	
+	
+	<!-- 여행지 이미지 삭제 -->
+	<delete id="deleteLocationImg" parameterType="map">
+		DELETE 
+		FROM IMAGE 
+		WHERE mapping_idx=#{location_idx} AND type='L'
+	</delete>
+
+
+	<!-- 여행지 키워드 등록 -->
+	<insert id="registLocationKeyword" parameterType="map">
+		INSERT INTO LOCATION_KEYWORD(location_idx, keyword_idx)
+		VALUES(#{location_idx}, #{keyword_idx})
+	</insert>
+	
+	
+	<!-- 여행지 키워드 삭제 -->
+	<delete id="deleteLocationKeyword" parameterType="map">
+		DELETE FROM LOCATION_KEYWORD
+		WHERE location_idx=#{location_idx}
+	</delete>
+	
+	
+	<!-- 여행지 리스트 조회  (*다중행 반환) -->
+	<select id="getLocationList">
+		SELECT *
+		FROM LOCATION
+		ORDER BY create_date DESC
+	</select>
+	
+	<!-- 여행지 상세정보(기본정보) 조회  (*단일행 반환) -->
+	<select id="getLocationDetail" parameterType="map">
+		SELECT *
+		FROM LOCATION
+		WHERE idx = #{location_idx}
+	</select>
+	
+	<!-- 여행지 상세정보(이미지) 조회  (*다중행 반환) -->
+	<select id="getLocationDetailImg" parameterType="map">
+		SELECT *
+		FROM IMAGE
+		WHERE mapping_idx = #{location_idx} AND type = 'L'
+	</select>
+	
+	<!-- 여행지 상세정보(키워드) 조회  (*다중행 반환) ==> 수정필요함!! 키워드 테이블에서 type 컬럼이 애매해서 확인 필요-->
+	<select id="getLocationDetailKeyword" parameterType="map">
+		SELECT *
+		FROM KEYWORD k JOIN LOCATION_KEYWORD lk ON (k.idx = lk.keyword_idx)
+		WHERE lk.location_idx = #{location_idx}
+	</select>
+	
+	
+	
+
+</mapper>
