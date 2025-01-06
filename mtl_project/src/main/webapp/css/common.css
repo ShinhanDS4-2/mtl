@@ -201,3 +201,11 @@
 	height: 100px; 
 	object-fit: cover;
 }
+
+.w-120 {
+	width: 120% !important;
+}
+
+.text-smaller {
+	font-size: smaller;	
+}

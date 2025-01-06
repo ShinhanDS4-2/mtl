@@ -23,8 +23,8 @@
 			<if test="latitude != null and latitude != ''">
 			, latitude = #{latitude} 
 			</if>
-			<if test="hardness != null and hardness != ''">
-			, hardness = #{hardness} 
+			<if test="longitude != null and longitude != ''">
+			, longitude = #{longitude} 
 			</if>
 		WHERE 
 			idx = #{partner_idx}

@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="col-12 mb-4 mb-sm-5">
 					<h1 class="h3 mb-2">여행지 관리</h1>
-					<span>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ.</span>
+					<span>주요 관광 지역의 여행지와 취향 키워드를 등록/관리합니다.</span>
 				</div>
 			</div>
 			<!-- 상단 navbar START -->
@@ -34,7 +34,7 @@
 						<i class="bi bi-plus-lg fa-fw"></i>여행지 등록
 					</button>
 					<!-- 키워드 등록 버튼 클릭 시 <키워드 목록> 모달창 표시 -->
-					<button type="button" class="btn btn-primary-soft ms-2" data-bs-toggle="modal" data-bs-target="#keywordListModal">
+					<button type="button" class="btn btn-primary-soft ms-2" data-bs-toggle="modal" data-bs-target="#keywordListModal" data-src="locationList" data-act="clickKeywordList">
 						<i class="bi bi-plus-lg fa-fw"></i>키워드 등록
 					</button>
 				</div>				
@@ -204,17 +204,16 @@
 				<!-- Card footer START -->
 				<div class="card-footer pt-0">
 					<!-- Pagination (페이지 전환 하단 바)-->
-					<nav class="d-flex justify-content-center">
-						<ul class="pagination pagination-sm pagination-primary-soft mb-0">
+					<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+						<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
 							<li class="page-item disabled"> <!-- disabled: 버튼 비활성화-->
 								<a class="page-link" href="#" tabindex="-1">&lt;</a>
 							</li>
 							<li class="page-item"><a class="page-link" href="#">1</a></li>
 							<li class="page-item active"><a class="page-link" href="#">2</a></li>
 							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item disabled"><a class="page-link" href="#">..</a></li>
-							<li class="page-item"><a class="page-link" href="#">11</a></li>
-							<li class="page-item"><a class="page-link" href="#">12</a></li>
+							<li class="page-item"><a class="page-link" href="#">4</a></li>
+							<li class="page-item"><a class="page-link" href="#">5</a></li>
 							<li class="page-item">
 								<a class="page-link" href="#">&gt;</a>
 							</li>
@@ -411,10 +410,10 @@
 					<div class="col-12">
 						<div class="bg-light pb-0 px-2 px-lg-0">
 							<ul class="nav nav-tabs nav-bottom-line nav-responsive border-0 nav-justified" role="tablist">
-								<li class="nav-item">
+								<li class="nav-item" data-src="locationList" data-act="clickKeywordTab" data-type="PARTNER">
 									<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab1">숙소</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item" data-src="locationList" data-act="clickKeywordTab" data-type="LOCATION">
 									<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab2">여행지</a>
 								</li>
 							</ul>
@@ -429,45 +428,7 @@
 					<div class="tab-pane fade show active" id="tab1">
 						<!-- 상단 네비게이션 바를 클릭하면 탭에 따라 콘텐츠가 변경되는 부분-->
 						<div class="card">
-							<div class="card-body overflow-y-auto h-400px">
-								<!-- overflow-y-auto h-400px 스크롤 생성-->
-								<!-- items -->
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
+							<div class="card-body overflow-y-auto h-400px" id="keywordList1">
 							</div>
 						</div>
 					</div>
@@ -478,45 +439,7 @@
 					<div class="tab-pane fade" id="tab2">
 						<!-- 상단 네비게이션 바를 클릭하면 탭에 따라 콘텐츠가 변경되는 부분-->
 						<div class="card">
-							<div class="card-body overflow-y-auto h-400px">
-								<!-- overflow-y-auto h-400px 스크롤 생성-->
-								<!-- items -->
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
-								<div class="border-bottom text-center p-2">
-									<strong># OOOOOO</strong><br>
-								</div>
+							<div class="card-body overflow-y-auto h-400px" id="keywordList2">
 							</div>
 						</div>
 					</div>
@@ -555,8 +478,8 @@
 							<label for="keyword" class="form-label fw-bold">
 								분류 <span class="text-danger">*</span>
 							</label>
-							<select id="keyword" class="form-select">
-								<option value="" disabled="disabled">선택</option>
+							<select id="keywordType" class="form-select">
+								<option value="" disabled="disabled" selected="selected">선택</option>
 								<option value="PARTNER">숙소</option>
 								<option value="LOCATION">여행지</option>
 							</select>
@@ -566,13 +489,13 @@
 							<label for="placeName" class="form-label fw-bold">
 								키워드 <span class="text-danger">*</span>
 							</label>
-							<input type="text" class="form-control" id="placeName" placeholder="장소명을 입력해 주세요.">
+							<input type="text" class="form-control" id="keyword" placeholder="키워드를 입력해 주세요.">
 						</div>
 						<div class="col-md-2">
 							<label for="placeName" class="form-label fw-bold">
 								<span lass="text-danger">*</span>
 							</label> 
-							<a href="#" class="d-block btn btn-dark-soft mb-0 border-0">중복확인</a>
+							<a href="javascript:;" class="d-block btn btn-primary-soft mb-0 border-0" data-src="locationList" data-act="clickDuplication">중복확인</a>
 						</div>
 					</div>
 				</form>
@@ -580,7 +503,7 @@
 			<!-- 확인/취소 button -->
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-primary">확인</button>
+				<button type="button" class="btn btn-primary" id="keywordRegistBtn" data-check="0" data-src="locationList" data-act="clickKeywordRegist">등록</button>
 			</div>
 		</div>
 	</div>
@@ -589,6 +512,11 @@
 
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
+
+<script src="js/admin/location/locationList.js"></script>
+<script type="text/javascript">
+	locationList.init();
+</script>
 </body>
 
 </html>

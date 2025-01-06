@@ -5,9 +5,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -51,13 +51,82 @@ public class LocationController {
 	 * @throws Exception
 	 */
 	@PostMapping("/random/list")
-	public Map<String, Object> getRandomLocationList(@RequestParam Map<String, Object> param) throws Exception {
+	public Map<String, Object> getRandomLocationList(@RequestParam Map<String, Object> param) {
 		Map<String, Object> result = new HashMap<>();
+	
 		result = locationService.getRandomLocationList(param);
+		
 		return result;
 	}
 
 
-	
-	
+	/**
+	 * 여행지 추천 리스트
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/custom/list")
+	public Map<String, Object> getCustomList(@RequestBody Map<String, Object> param) {
+		Map<String, Object> result = new HashMap<>();
+		
+		result = locationService.getCustomList(param);
+		
+		return result;
+	}
+
+	/**
+	 * 여행지 정보
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/min/detail")
+	public Map<String, Object> getLocationMinDetail(@RequestBody Map<String, Object> param) {
+		Map<String, Object> result = new HashMap<>();
+		
+		result = locationService.getLocationMinDetail(param);
+		
+		return result;
+	}
+
+	/**
+	 * 여행지 추천 저장
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/custom/save")
+	public Map<String, Object> insertCustomLocation(@RequestBody Map<String, Object> param) {
+		Map<String, Object> result = new HashMap<>();
+		
+		result = locationService.insertCustomLocation(param);
+		
+		return result;
+	}
+
+	/**
+	 * 여행지 유무 확인
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/custom/check")
+	public Map<String, Object> checkCustomLocation(@RequestBody Map<String, Object> param) {
+		Map<String, Object> result = new HashMap<>();
+		
+		result = locationService.checkCustomLocation(param);
+		
+		return result;
+	}
+
+	/**
+	 * 저장된 여행지 추천 리스트
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/custom/save/list")
+	public Map<String, Object> getSavedCustomList(@RequestBody Map<String, Object> param) {
+		Map<String, Object> result = new HashMap<>();
+		
+		result = locationService.getSavedCustomList(param);
+		
+		return result;
+	}
 }

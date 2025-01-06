@@ -1,5 +1,6 @@
 package kr.co.mtl.user.location;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,11 +8,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.mtl.user.partner.PartnerMapper;
+
 @Service
 public class LocationServiceImpl implements LocationService {
 
 	@Autowired
 	private LocationMapper locationMapper;
+
+	@Autowired
+	private PartnerMapper partnrMapper;
 
 	/** 시온
 	 * [사용자] 지역 별 여행지 리스트 조회
@@ -74,7 +80,6 @@ public class LocationServiceImpl implements LocationService {
 	 * @return
 	 */
 	public Map<String, Object> getRandomLocationList(Map<String, Object> param) {
-		// 여기는 처음부터 param 값에 location_idx가 들어옴. 리스트에서 클릭해서 location_idx값에 대한 상세정보를 조회하는 것이기 때문.
 
 		Map<String, Object> result = new HashMap<>();
 
@@ -82,10 +87,131 @@ public class LocationServiceImpl implements LocationService {
 
 		return result;
 	};
-	
 
+	/**
+	 * 여행지 정보
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> getLocationMinDetail(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("data", locationMapper.getLocationMinDetail(param));
+		
+		return result;
+	};
+	
+	/**
+	 * 여행지 추천 저장
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> insertCustomLocation(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		if (locationMapper.insertCustomLocation(param) <= 0) {
+			result.put("result", false);
+			return result;
+		}
+		
+		result.put("result", true);
 
+		return result;
+	};
+	
+	/**
+	 * 여행지 추천 리스트
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> getCustomList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		Map<String, Object> geoParam = new HashMap<>();
+
+		// 숙소 위도, 경도 확인
+		Map<String, Object> geo = partnrMapper.getPartnerGeo(param);
+		geoParam.put("partnerLat", geo.get("latitude"));
+		geoParam.put("partnerLon", geo.get("longitude"));
+
+		List<Map<String, Object>> nearLocationList= new ArrayList<>();
+		
+		// 같은 지역 여행지 위도, 경도
+		List<Map<String, Object>> locationList = locationMapper.getLocationListWithCustom(geo);
+		for (Map<String, Object> location : locationList) {
+			geoParam.put("locationLat", location.get("latitude"));
+			geoParam.put("locationLon", location.get("longitude"));
+
+			// 숙소와 여행지 간의 최단 거리
+			double distance = calculateDistance(geoParam);
+			
+			// 반경 15km 이내 여행지
+			if(distance <= 20) {
+				nearLocationList.add(location);
+			}
+		}
+		
+		result.put("list", nearLocationList);
+		
+		return result;
+	};
+	
+	/**
+	 * 여행지 추천 유무 확인
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> checkCustomLocation(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("result", locationMapper.checkCustomLocation(param));
+		
+		return result;
+	};
+
+	/**
+	 * 저장된 여행지 추천 리스트
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> getSavedCustomList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("list", locationMapper.getSavedCustomList(param));
+		
+		return result;
+	};
 	
 	
+	/**
+	 * 하버사인 공식
+	 * @return 두 지점 간의 최단 거리
+	 */
+	private double calculateDistance(Map<String, Object> geo) {
+		
+		// 지구 반지름
+		final double EARTH_RADIUS = 6371.0;
+		
+		// 위도, 경도
+		double partnerLat = Double.parseDouble((String) geo.get("partnerLat"));
+		double partnerLon = Double.parseDouble((String) geo.get("partnerLon"));
+		double locationLat = Double.parseDouble((String) geo.get("locationLat"));
+		double locationLon = Double.parseDouble((String) geo.get("locationLon"));
+		
+		double dLat = Math.toRadians(locationLat - partnerLat);
+        double dLon = Math.toRadians(locationLon - partnerLon);
 
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(Math.toRadians(partnerLat)) * Math.cos(Math.toRadians(locationLat))
+                * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		
+		return EARTH_RADIUS * c;
+	};
 }

@@ -2,24 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mtl.admin.keyword.KeywordMapper">
 
+	<!-- 키워드 등록 -->
 	<insert id="insertKeyword" parameterType="HashMap">
 		INSERT INTO KEYWORD 
-			(keyword,type,create_date)
+			(keyword, type)
 		VALUES (
-			#{keyword},#{type},NOW()
-			)
+			#{keyword}, #{type}
+		)
 	</insert>
 	
 	<!-- 중복 키워드 확인 -->
-	<select id="countKeywordByKeyword" resultType="int">
+	<select id="checkKeywordDuplicate" parameterType="HashMap" resultType="int">
 		SELECT COUNT(*) 
 		FROM KEYWORD 
-		WHERE keyword=#{keyword}
+		WHERE keyword = #{keyword}
+		AND type = #{type}
 	</select>
 	
-	<select id="selectAllKeywords" resultType="map">
-		SELECT keyword
+	<!-- 키워드 조회 -->
+	<select id="selectAllKeywords" parameterType="HashMap">
+		SELECT idx AS keyword_idx, keyword, type
 		FROM KEYWORD
+		WHERE type = #{type}
 		ORDER BY create_date DESC
 	</select>
+	
+	<!-- 키워드 삭제 -->
+	<delete id="deleteKeyword" parameterType="HashMap">
+		DELETE FROM KEYWORD
+		WHERE
+			idx = #{keyword_idx}
+	</delete>
+
+	<!-- 여행지 키워드 삭제 -->
+	<delete id="deleteKeywordLocation" parameterType="HashMap">
+		DELETE FROM LOCATION_KEYWORD
+		WHERE
+			keyword_idx = #{keyword_idx}
+	</delete>
+
+	<!-- 여행지 키워드 삭제 -->
+	<delete id="deleteKeywordPartner" parameterType="HashMap">
+		DELETE FROM PARTNER_KEYWORD
+		WHERE
+			keyword_idx = #{keyword_idx}
+	</delete>
 </mapper>

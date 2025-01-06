@@ -55,7 +55,7 @@ public class MapService {
                 JSONObject addressesObj = (JSONObject) addresses.get(0);
                 
                 param.put("latitude", addressesObj.get("y"));
-                param.put("hardness", addressesObj.get("x"));
+                param.put("longitude", addressesObj.get("x"));
             }
         } catch (Exception e) {
         	e.printStackTrace();
