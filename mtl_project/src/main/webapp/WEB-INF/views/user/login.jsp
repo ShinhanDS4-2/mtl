@@ -114,7 +114,7 @@
 <!-- page script -->
 <!-- 로그인 MD5 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script src="js/common/login.js"></script>
+<script src="js/user/login.js"></script>
 <script type="text/javascript">
 	login.init();
 </script>

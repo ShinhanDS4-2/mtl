@@ -27,6 +27,8 @@ const reservation = (function() {
 		if(type == "click") { 
 			if(action == "clickCustomLocation") {
 				_event.clickCustomLocation(evo); 
+			} else if (action == "clickResevationCancel") {
+				_event.clickResevationCancel(evo);
 			}
 		};
 	};
@@ -81,13 +83,9 @@ const reservation = (function() {
 				_draw.drawReservationList(response.ReservationList);
 				page.drawPage(response.ReservationListCount);
 				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.
-			},
-			error: function(xhr, status, error) {
-				console.error("Error :", error);  // 오류 처리
 			}
 		});  
 	}
-
 
 	let _draw = {  
 		// 예약 내역 리스트
@@ -96,8 +94,6 @@ const reservation = (function() {
 		/* 예약내역 리스트 card START */
 			let reservCard = $("#reservCard");
 			reservCard.empty(); // 기존 내용을 비워줌
-
-
 
 			for(data of list) {  // 예약내역 list에서 1개의 예약내역 data만 뽑아냄
 				
@@ -113,6 +109,12 @@ const reservation = (function() {
 							<img src="${data.img.url}" class="card-img rounded-2" alt="Card image">
 						</div>`;
 				row.append(cardImgStr);
+				
+				// 후기 버튼
+				let reviewBtn = ``;
+				if (data.check_date == "N") {
+					reviewBtn = `<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0 me-2" data-bs-toggle="modal" data-bs-target="#reviewModal" data-src="reservation" data-act="clickReview" data-reservation-idx="${data.reservation_idx}">후기 작성</a>` 
+				};
 
 				// Card body
 				let cardBody =
@@ -129,9 +131,9 @@ const reservation = (function() {
 									<div class="d-flex align-items-center">
 										<h5 class="fw-bold mb-0 me-1"><i class="fa-solid fa-won-sign"></i> ${comm.numberWithComma(data.price)}</h5>
 									</div>
-									<div class="mt-3 mt-sm-0">
-										<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0" data-src="reservation" data-act="clickCustomLocation" data-reservation-idx="${data.reservation_idx}">추천 여행지</a>    
-										<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0"  data-bs-toggle="modal" data-bs-target="#reviewModal">후기 작성</a>    
+									<div class="mt-3 mt-sm-0">`
+										+ reviewBtn +
+										`<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0" data-src="reservation" data-act="clickCustomLocation" data-reservation-idx="${data.reservation_idx}">추천 여행지</a>    
 										<a href="javascript:;" class="btn btn-sm btn-primary mb-0 reservDetail" data-bs-toggle="modal" data-bs-target="#reservationDetail" 
 												data-src="reservation" data-reservation-idx="${data.reservation_idx}">상세 정보</a>    
 									</div>                  
@@ -153,13 +155,8 @@ const reservation = (function() {
 					data: { reservation_idx: reservation_idx },  // 호출 시 param값으로 넘겨줄 것 reservation-idx(예약 idx)
 					
 					success: function(response){ //  API 호출 결과 값이 response에 들어있음
-						console.log("ajax에서 response값은 ??? >>>>");
-						console.log(response);
 						_draw.drawReservationDetailModal(response);  // 받은 응답을 모달에 렌더링
 						_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.
-					},
-					error: function(xhr, status, error) {
-						console.error("Error :", error);  // 오류 처리
 					}
 				});
 			});
@@ -174,6 +171,14 @@ const reservation = (function() {
 		// 모달 내용을 추가하기 전에 기존 내용을 비워준다. => 필수!! 이거 없으면 모달창에 예약상세정보 카드가 중복으로 여러번 추가된다. 
 
 			reservDetailModal.empty();
+			
+			// 체크인 일자가 오늘보다 크면 예약 취소 버튼 O
+			let cancelBtn = ``;
+			if (reservData.check_date == 'Y') {
+				cancelBtn = `<div class="mt-2 text-center">
+								<button class="btn btn-primary" type="button" data-src="reservation" data-act="clickResevationCancel" data-reservation-idx="${reservData.reservation_idx}">예약 취소</button>
+							</div>`
+			};
 
 			let modalBody = 
 					`<div class="card bg-transparent m-3 border">
@@ -201,11 +206,14 @@ const reservation = (function() {
 										</li>
 										<li class="list-group-item">
 											<span class="h6 mb-0 me-1">총 금액 : </span>
-											<span class="h6 fw-light mb-0">${comm.numberWithComma(reservData.price)}</span>
+											<span class="h6 fw-light mb-0">${comm.numberWithComma(reservData.price)}원</span>
 										</li>
 									</ul>
-								</div>
-							</div>
+								</div>`
+							+
+								cancelBtn
+							+
+							`</div>
 						</div>`
 
 			reservDetailModal.append(modalBody);
