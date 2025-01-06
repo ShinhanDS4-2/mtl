@@ -11,3 +11,4 @@ public interface NoticeMapper {
 
     Notice selectNoticeById(int idx);
 }
+ 

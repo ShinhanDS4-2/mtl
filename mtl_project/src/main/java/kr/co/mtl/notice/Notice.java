@@ -12,7 +12,7 @@ public class Notice {
     private Timestamp updateDate; 
     private String status;        // 상태 (Y: 게시 중 / N: 게시 중단)
     private String target;        // 공지사항 노출 대상 (U: 사용자 / P: 판매자)
-
+ 
     public Integer getIdx() {
         return idx;
     }
