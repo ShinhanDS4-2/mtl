@@ -7,7 +7,14 @@
         SELECT 
               email,
               name,
-              phone
+              phone,
+              business_name,
+              business_number,
+              address,
+              business_phone,
+              account_bank,
+              account_number,
+              DATE_FORMAT (password_update_date, "%Y-%m-%d") AS password_update_date
         FROM 
             PARTNER
         WHERE 
@@ -41,7 +48,7 @@
 	    WHERE email = #{email}
 	</select>
 	
-	<!-- 마이페이지 수정 -->
+	<!-- 마이페이지 회원 정보 수정 -->
 	<update id="updateUser" parameterType="map">
 	    UPDATE PARTNER
 	    SET phone = #{phone}
@@ -65,7 +72,13 @@
 	      AND password = #{password} -- DB의 현재 비밀번호와 입력한 비밀번호를 비교
 	</select>
 	
-	
+	<!-- 마이페이지 업체 정보 수정 -->
+	<update id="updateBusiness" parameterType="map">
+	    UPDATE PARTNER
+	    SET account_bank = #{account_bank},
+	        account_number = #{account_number}
+	    WHERE idx = #{partnerIdx}
+	</update>
     
 
 </mapper>
