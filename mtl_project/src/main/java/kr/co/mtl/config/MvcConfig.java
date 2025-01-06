@@ -128,7 +128,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		// 파트너
 		registry.addInterceptor(partnerInterceptor())
         .addPathPatterns("/partner/**") // 파트너 경로
-        .excludePathPatterns("/partner/login", "/partner/join", "/resources/**", "/assets/**", "/error"); // 예외 경로
+        .excludePathPatterns("/partner/login", "/partner/join", "/resources/**", "/assets/**", "/error" , "/partner/list", "/partner/detail"); // 예외 경로
 	}
 	
 	// 정적 페이지 처리
