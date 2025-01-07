@@ -96,7 +96,7 @@
 												<!-- 검색어 드롭다운 -->
 												<div class="mb-3">
 													<label class="form-label">객실수</label> 
-													<input type="text" id="room_count" name="room_count" class="form-control">
+													<input type="text" id="room_count" name="room_count" class="form-control" value="111">
 												</div>
 	
 												<div class="mb-3">
@@ -415,45 +415,29 @@
 						<!-- 객실 옵션 설정 Card END -->
 
 						<!-- 객실 사진 등록 Card Start -->
-						<div class="card border mb-3">
-							<div class="card-header border-bottom">
-								<h5 class="card-header-title">객실 사진 등록</h5>
-							</div>
-							<div class="card-body">
-								<!-- 사진 리스트 -->
-								<div class="d-flex gap-3">
-									<!-- 이미지 1 -->
-									<div class="position-relative">
-										<img src="https://via.placeholder.com/150" alt="사진 1"
-											class="rounded border"
-											style="width: 150px; height: 100px; object-fit: cover;">
-									</div>
-									<!-- 이미지 2 -->
-									<div class="position-relative">
-										<img src="https://via.placeholder.com/150" alt="사진 2"
-											class="rounded border"
-											style="width: 150px; height: 100px; object-fit: cover;">
-									</div>
-									<!-- 이미지 3 -->
-									<div class="position-relative">
-										<img src="https://via.placeholder.com/150" alt="사진 3"
-											class="rounded border"
-											style="width: 150px; height: 100px; object-fit: cover;">
-									</div>
-									<!-- 업로드 버튼 -->
-									<div class="border rounded d-flex justify-content-center align-items-center" style="width: 150px; height: 100px; background-color: #f8f9fa;">
-										<label class="text-center" style="cursor: pointer;"> 
-											<i class="bi bi-upload"></i><br>숙소 사진 업로드 
-											<input type="file" id="roomImageUpload" class="d-none" multiple>
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 객실 사진 등록 Card END -->
-						<div class="d-flex justify-content-end">
-							<button id="registerRoom" class="btn btn-danger-soft px-4 mb-4">등록</button>
-						</div>
+					<div class="card border mb-3">
+					    <div class="card-header border-bottom">
+					        <h5 class="card-header-title">객실 사진 등록</h5>
+					    </div>
+					    <div class="card-body d-flex align-items-center">
+					        <!-- 업로드 버튼 -->
+					        <div class="border rounded d-flex justify-content-center align-items-center" style="width: 150px; height: 100px; background-color: #f8f9fa; margin-right:17px;">
+					            <label class="text-center" style="cursor: pointer;"> 
+					                <i class="bi bi-upload"></i><br>숙소 사진 업로드 
+					                <input type="file" id="roomImageUpload" class="d-none" multiple>
+					            </label>
+					        </div>
+					        
+					        <!-- 사진 리스트(미리보기) -->
+					        <div id="imagePreviewContainer" class="d-flex gap-10 ml-3">
+					            <!-- 기존 이미지들 (이미지가 없으면 미리보기로 동적으로 추가됨) -->
+					        </div>
+					    </div>
+					</div>
+					<!-- 객실 사진 등록 Card END -->
+					<div class="d-flex justify-content-end">
+					    <button id="registerRoom" class="btn btn-danger-soft px-4 mb-4">등록</button>
+					</div>
 					</div>
 					<!-- #tab2 / 객실추가 Tap END -->
 					<!-- ******************************************** -->
