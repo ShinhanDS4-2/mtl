@@ -221,7 +221,14 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
     }
     
     
-
+    /**
+     * 업체 정보 수정
+     */
+    @Override
+    public boolean updateBusinessInfo(Map<String, Object> param, HttpSession session) throws Exception {
+        int rowsAffected = partnerMapper.updateBusiness(param);
+        return rowsAffected > 0;
+    }
     
 
 }

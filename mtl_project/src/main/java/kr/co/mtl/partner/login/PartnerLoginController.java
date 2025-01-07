@@ -146,7 +146,25 @@ public class PartnerLoginController {
         return result;
     }
     
+    
+    /**
+     * 업체 정보 수정
+     */
+    @PostMapping("/businessupdate")
+    public Map<String, Object> updateBusiness(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
+        HttpSession session = request.getSession();
 
+        // 세션에서 사용자 ID 가져오기
+        param.put("partnerIdx", session.getAttribute("login_partner_idx"));
+
+        Map<String, Object> result = new HashMap<>();
+
+        // Service 호출
+        boolean isBusinessUpdated = loginService.updateBusinessInfo(param, session);
+        result.put("result", isBusinessUpdated);
+
+        return result;
+    }
 
     
     

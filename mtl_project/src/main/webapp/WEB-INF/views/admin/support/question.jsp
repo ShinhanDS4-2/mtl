@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head>
-<title>[관리자] 고객 문의 > 1:1문의</title>
+<title>떠날지도 - 관리자</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
@@ -160,7 +160,7 @@
 														<div class="col">
 								<small class="d-block d-lg-none">제목</small>
 								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<a href="admin/questionreply" class="text-primary fw-bold">우하하</a>
+									<a href="admin/question/reply" class="text-primary fw-bold">우하하</a>
 								</h6>
 							</div>
 
@@ -195,7 +195,7 @@
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
 								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<a href="admin/questionreply" class="text-primary fw-bold">환불해주세요ㅡㅡ</a>
+									<a href="admin/question/reply" class="text-primary fw-bold">환불해주세요ㅡㅡ</a>
 								</h6>
 							</div>
 
@@ -230,7 +230,7 @@
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
 								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<a href="admin/questionreply" class="text-primary fw-bold">일정변경대나요????????</a>
+									<a href="admin/question/reply" class="text-primary fw-bold">일정변경대나요????????</a>
 								</h6>
 							</div>
 
@@ -265,7 +265,7 @@
 							<div class="col">
 								<small class="d-block d-lg-none">제목</small>
 								<h6 class="ms-1 mb-0 fw-normal text-primary">
-									<a href="admin/questionreply" class="text-primary fw-bold">제목제목제목제목제목제목</a>
+									<a href="admin/question/reply" class="text-primary fw-bold">제목제목제목제목제목제목</a>
 								</h6>
 							</div>
 
@@ -283,10 +283,7 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-lg-none">답변상태</small>
-								<div class="ms-1 col">
-									<a href="admin-guest-detail.html"
-										class="btn btn-sm btn-light mb-0">View</a>
-								</div>
+								<div class="ms-1 badge bg-danger bg-opacity-10 text-danger">답변대기</div>
 							</div>
 						</div>
 

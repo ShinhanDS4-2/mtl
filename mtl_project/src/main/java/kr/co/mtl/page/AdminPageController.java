@@ -14,106 +14,106 @@ public class AdminPageController {
 		return "admin/home/dashboard";
 	}
 
-	// 예약
-	@GetMapping("/bookinglist")
-	public String bookinglist() {
-		return "admin/hotel/bookinglist";
+	// 숙소 관리 - 예약 관리
+	@GetMapping("/accomodation/reservation/list")
+	public String reservationList() {
+		return "admin/accomodation/reservationList";
 	}
 
-	// 
-	@GetMapping("/hotedetail")
-	public String hotedetail() {
-		return "admin/hotel/hotedetail";
+	// 숙소 관리 - 상세
+	@GetMapping("/accomodation/detail")
+	public String accomodationDetail() {
+		return "admin/accomodation/partnerDetail";
 	}
 
-	@GetMapping("/hotellist")
-	public String hotellist() {
-		return "admin/hotel/hotellist";
+	// 숙소 관리 - 리스트
+	@GetMapping("/accomodation/list")
+	public String accomodationList() {
+		return "admin/accomodation/partnerList";
 	}
 
-	@GetMapping("/question")
-	public String question() {
-		return "admin/hotel/question";
+	// 숙소 관리 - 숙소 문의 관리
+	@GetMapping("/accomodation/question")
+	public String accomodationQuestion() {
+		return "admin/accomodation/question";
 	}
 
-	// location
-	@GetMapping("/locationdetail")
-	public String locationdetail() {
-		return "admin/location/locationdetail";
+	// 여행지 관리 - 여행지 상세
+	@GetMapping("/location/detail")
+	public String locationDetail() {
+		return "admin/location/locationDetail";
 	}
 
-	@GetMapping("/locationlist")
-	public String locationlist() {
-		return "admin/location/locationlist";
+	// 여행지 관리 - 여행지 리스트
+	@GetMapping("/location/list")
+	public String locationList() {
+		return "admin/location/locationList";
 	}
 
-	// payout
-	@GetMapping("/payoutlist")
-	public String payoutlist() {
-		return "admin/payout/payoutlist";
+	// 정산 관리
+	@GetMapping("/payout")
+	public String payoutList() {
+		return "admin/payout/payoutList";
 	}
 
-	// support
+	// 고객 문의 - 공지사항
 	@GetMapping("/notice")
 	public String notice() {
 		return "admin/support/notice";
 	}
 
+	// 고객 문의 - 자주 묻는 질문
 	@GetMapping("/qna")
 	public String qna() {
 		return "admin/support/qna";
 	}
 
-	@GetMapping("/question2")
-	public String question2() {
+	// 고객 문의 - 1:1 문의
+	@GetMapping("/question")
+	public String question() {
 		return "admin/support/question";
 	}
 
-	@GetMapping("/questionreply")
-	public String questionreply() {
-		return "admin/support/questionreply";
+	// 고객 문의 - 1:1 문의 답변
+	@GetMapping("/question/reply")
+	public String questionReply() {
+		return "admin/support/questionReply";
 	}
 
-	// user
-	@GetMapping("/partnerdetail")
-	public String partnerdetail() {
-		return "admin/user/partnerdetail";
+	// 회원 관리 - 판매자 상세
+	@GetMapping("/partner/detail")
+	public String partnerDetail() {
+		return "admin/user/partnerDetail";
 	}
 
-	@GetMapping("/partnerlist")
-	public String partnerlist() {
-		return "admin/user/partnerlist";
+	// 회원 관리 - 판매자 리스트
+	@GetMapping("/partner/list")
+	public String partnerList() {
+		return "admin/user/partnerList";
 	}
 
-	@GetMapping("/userdetail")
-	public String userdetail() {
-		return "admin/user/userdetail";
+	// 회원 관리 - 사용자 상세
+	@GetMapping("/user/detail")
+	public String userDetail() {
+		return "admin/user/userDetail";
 	}
 
-	@GetMapping("/userlist")
-	public String userlist() {
-		return "admin/user/userlist";
+	// 회원 관리 - 사용자 리스트
+	@GetMapping("/user/list")
+	public String userList() {
+		return "admin/user/userList";
 	}
 
-	// otherPages
-	@GetMapping("/forgotpassword")
-	public String forgotpassword() {
-		return "admin/otherPages/forgotpassword";
-	}
-
+	// 내 정보 수정
 	@GetMapping("/mypage")
 	public String mypage() {
 		return "admin/otherPages/mypage";
 	}
 
+	// 로그인
 	@GetMapping("/login")
 	public String login() {
 		return "admin/otherPages/login";
-	}
-
-	@GetMapping("/signup")
-	public String signup() {
-		return "admin/otherPages/signup";
 	}
 	
 }

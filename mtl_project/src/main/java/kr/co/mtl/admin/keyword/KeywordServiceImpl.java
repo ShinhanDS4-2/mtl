@@ -1,6 +1,6 @@
 package kr.co.mtl.admin.keyword;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +13,37 @@ public class KeywordServiceImpl implements KeywordService{
 	private KeywordMapper keywordMapper;
 	
 	@Override
+	public int checkKeywordDuplicate(Map<String, Object> param) {
+		return keywordMapper.checkKeywordDuplicate(param);
+	}
+	
+	@Override
 	public void registerKeyword(Map<String,String>param) {
 			
 		keywordMapper.insertKeyword(param);
 	}
 
 	@Override
-	public List<Map<String, String>> getKeywordList() {
+	public void deleteKeyword(Map<String,String>param) {
 		
-		return keywordMapper.selectAllKeywords();
+		String type = param.get("type");
+		
+		if ("PARTNER".equals(type)) {
+			keywordMapper.deleteKeywordPartner(param);
+		} else if ("LOCATION".equals(type)) { 
+			keywordMapper.deleteKeywordLocation(param);
+		}
+		
+		keywordMapper.deleteKeyword(param);
+	}
+
+	@Override
+	public Map<String, Object> getKeywordList(Map<String,String> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+			
+		result.put("list", keywordMapper.selectAllKeywords(param));
+		return result;
 	}
 
 }

@@ -112,8 +112,5 @@
 <script type="text/javascript">
 	login.init();
 </script>
-
-
-
 </body>
 </html>

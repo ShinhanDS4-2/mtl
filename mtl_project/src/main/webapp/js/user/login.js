@@ -8,7 +8,7 @@ const login = (function() {
 	// 이벤트 초기화 
 	function _eventInit() {
 		let evo = $("[data-src='login'][data-act]").off();
-		evo.on("click keyup", function(e) {
+		evo.on("click", function(e) {
 			_eventAction(e);
 		});
 		
@@ -18,7 +18,6 @@ const login = (function() {
             	_event.handleLogin();
         	}
     	});
-	
 	};
 	
 	// 이벤트 분기
@@ -32,13 +31,10 @@ const login = (function() {
 		if(type == "click") {
 			if(action == "clickLoginBtn") {
 				_event.handleLogin();
-			}	
-		} else if(type == "keyup") {
-			if (window.event.keyCode == 13) {
-				_event.handleLogin();
+			} else if (action == "clickPartnerCenter") {
+				location.href = "/mtl/partner/login";
 			}
 		}
-		
 	};
 	
 	// 이벤트
@@ -49,7 +45,6 @@ const login = (function() {
 			let formData = {
 	        	email: $("#email").val(),
 	        	// MD5 암호화 적용
-	            // password: $("#pw").val(),
 	            password: CryptoJS.MD5($("#pw").val()).toString(),
 	        };
 			
@@ -60,15 +55,17 @@ const login = (function() {
                     location.href = "/mtl/";
                 } else if (code == 600) {
                     // 실패 메시지 표시
-                    alert("로그인에 실패했습니다. 다시 시도해주세요.");
+                    modal.alert({
+                    	"content" : "로그인에 실패하였습니다.<br>다시 시도해 주세요." 
+                    });
                 }
 			}, function(error) {
                 console.error("Login error:", error);
-                alert("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
+                modal.alert({
+                	"content" : "오류가 발생하였습니다.<br>다시 시도해 주세요."
+                });
 			});
 		},
-		
-		
 	};
 	
 	return {
