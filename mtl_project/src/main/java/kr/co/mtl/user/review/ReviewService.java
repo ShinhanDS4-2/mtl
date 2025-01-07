@@ -12,5 +12,8 @@ public interface ReviewService {
 	// 리뷰 등록
 	Map<String, Object> registReview(Map<String, Object> param, List<MultipartFile> mfile);
 
+	// 숙소 리뷰 리스트
+	Map<String, Object> getReviewList(Map<String, Object> param);
+
 }
 

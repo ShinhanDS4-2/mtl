@@ -36,6 +36,13 @@ public class ReviewServiceImpl implements ReviewService {
 			return result;
 		};
 		
+		// 숙소 평점 업데이트
+		param.put("partner_idx", reviewMapper.getPartnerIdx(param));
+		if (reviewMapper.updateScore(param) <= 0) {
+			result.put("result", false);
+			return result;
+		};
+		
 		// 이미지
 		try {
 			if (mfile.size() > 0) {
@@ -65,6 +72,27 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		
 		result.put("result", true);
+		
+		return result;
+	};
+	
+	/**
+	 * 숙소 리뷰 리스트
+	 * @param param
+	 * @return 
+	 */
+	public Map<String, Object> getReviewList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		// 리뷰
+		List<Map<String, Object>> reviewList = reviewMapper.getReviewList(param);
+		for (Map<String, Object> review : reviewList) {
+			review.put("imageList", reviewMapper.getReviewImageList(review));
+		}
+		
+		result.put("list", reviewMapper.getReviewList(param));
+		result.put("total", reviewMapper.getReviewCnt(param));
 		
 		return result;
 	};

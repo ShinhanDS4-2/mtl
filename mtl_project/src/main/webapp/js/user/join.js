@@ -169,7 +169,7 @@ console.log(1);
             // 서버로 데이터 전송
             modal.confirm({
             	"content" : "가입하시겠습니까?",
-            	"confrimCallback" : function() {
+            	"confirmCallback" : function() {
 		            comm.send("/user/join", formData, "POST", function(response) {
 		                if (response.code == 200) {
 		                	modal.alert({

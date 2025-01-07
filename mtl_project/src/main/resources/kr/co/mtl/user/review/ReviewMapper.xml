@@ -42,4 +42,93 @@
 		)
 	</insert>
 	
+	<!-- 숙소 평점 업데이트 -->
+	<update id="updateScore" parameterType="HashMap">
+		UPDATE PARTNER 
+		SET score = (
+			SELECT
+				AVG(r.score_avg)
+			FROM 
+				REVIEW r
+			JOIN RESERVATION r2 
+			ON r2.idx = r.reservation_idx 
+			WHERE r2.partner_idx = #{partner_idx}
+			AND r.status = 'Y'
+		)
+		WHERE idx = #{partner_idx}
+	</update>
+	
+	<!-- 숙소 idx -->
+	<select id="getPartnerIdx" parameterType="HashMap">
+		SELECT
+			partner_idx
+		FROM
+			RESERVATION
+		WHERE
+			idx = #{reservation_idx}
+	</select>
+	
+	<!-- 숙소 별 리뷰 리스트 -->
+	<select id="getReviewList" parameterType="HashMap">
+		SELECT
+			  r.idx AS review_idx
+			, r.content
+			, r.score_avg
+			, DATE_FORMAT(r.create_date, '%Y-%m-%d') AS create_date
+			, (SELECT name FROM USER WHERE idx = r2.user_idx) AS user
+			, (SELECT COUNT(*) FROM REVIEW WHERE user_idx = r2.user_idx GROUP BY user_idx) AS user_total_review
+			, r.reply
+		FROM	
+			REVIEW r
+		JOIN RESERVATION r2
+		ON r2.idx = r.reservation_idx
+		WHERE 
+			r2.partner_idx = #{partner_idx}
+		AND r.status = 'Y'
+		<if test="limit != null and offset != null">
+			LIMIT ${limit} OFFSET ${offset}
+		</if>
+	</select>
+
+	<!-- 숙소 별 리뷰 개수 -->
+	<select id="getReviewCnt" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM	
+			REVIEW r
+		JOIN RESERVATION r2
+		ON r2.idx = r.reservation_idx
+		WHERE 
+			r2.partner_idx = #{partner_idx}
+		AND r.status = 'Y'
+	</select>
+	
+	<!-- 숙소 전체 평균 평점 -->
+	<select id="getReviewScore">
+		SELECT
+			  AVG(r.score_1) AS score1
+			, AVG(r.score_2) AS score2
+			, AVG(r.score_3) AS score3
+			, AVG(r.score_4) AS score4
+			, (SELECT score FROM PARTNER WHERE idx = #{partner_idx}) AS score_avg
+		FROM	
+			REVIEW r
+		JOIN RESERVATION r2
+		ON r2.idx = r.reservation_idx
+		WHERE 
+			r2.partner_idx = #{partner_idx}
+	</select>
+	
+	<!-- 리뷰 이미지 리스트 -->
+	<select id="getReviewImageList" parameterType="HashMap">
+		SELECT
+			url
+		FROM
+			IMAGE
+		WHERE
+			type = 'V'
+		AND
+			mapping_idx = #{review_idx}
+	</select>
+	
 </mapper>

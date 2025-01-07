@@ -38,4 +38,19 @@ public class ReviewController {
 		return result;
 	}
 	
+	/**
+	 * 숙소 리뷰 리스트
+	 * @param param
+	 * @return 
+	 */
+	@PostMapping("/list")
+	public Map<String, Object> registReview(@RequestBody Map<String, Object> param) {
+		
+		Map<String, Object> result = reviewService.getReviewList(param);
+		
+		return result;
+	}
+	
+	
+	
 }

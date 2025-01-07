@@ -1,9 +1,12 @@
 const partnerDetail = (function() {
 
+	let _offset = 0;
+
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
 		_setSearch();
+		_list.setReview();
 		_event.clickSearch();
 	};
 
@@ -66,6 +69,9 @@ const partnerDetail = (function() {
 				_event.clickReservation(evo);
 			} else if (action == "clickRoomDetail") {
 				_event.clickRoomDetail(evo);
+			} else if (action == "clickMore") {
+				_offset = _offset + 2;
+				_list.setReview();
 			}
 		};
 	};
@@ -190,6 +196,25 @@ const partnerDetail = (function() {
 			    _draw.drawRoomList(resp.list);
 	        });
 		},
+		
+		setReview: function() {
+			let partnerIdx = comm.getUrlParam().idx;
+			
+			let url = "/user/review/list";
+			
+			let data = { 
+				"partner_idx" : partnerIdx,
+				"limit" : 2,
+				"offset" : _offset
+			 };
+			
+			comm.sendJson(url, data, "POST", function(resp) {
+				if (resp.total <= 2) {
+					$("#moreBtn").css("display", "none");
+				}
+				_draw.drawReview(resp.list);
+			});
+		}
 	};
 	
 	let _draw = {
@@ -413,6 +438,80 @@ const partnerDetail = (function() {
 				
 				let span = $("<span>").addClass("h6 fw-light mb-0").html(facilities.name);
 				li.append(span);
+			};
+		},
+		
+		// 리뷰 그리기
+		drawReview: function(list) {
+			let reviewList = $("#reviewList");
+
+			for (let data of list) {
+				let flex = $("<div>").addClass("d-md-flex my-4");
+				reviewList.append(flex);
+	
+				let div = $("<div>").addClass("w-100");
+				flex.append(div);
+				
+				let flex2 = $("<div>").addClass("d-flex justify-content-between mt-1 mt-md-0");
+				div.append(flex2);
+	
+				let div2 = $("<div>");
+				flex2.append(div2);
+	
+				let h6 = $("<h6>").addClass("me-3 mb-0");
+				h6.append("<i class='fa-solid fa-user-pen'></i> ");
+				h6.append(data.user);
+				div2.append(h6);
+
+				let ul = $("<ul>").addClass("nav nav-divider small mb-2");
+				div2.append(ul);
+
+				let li1 = $("<li>").addClass("nav-item").html(data.create_date);
+				ul.append(li1);
+
+				let li2 = $("<li>").addClass("nav-item").html("후기 작성 수 : " + data.user_total_review + " 개");
+				ul.append(li2);
+
+				let score = $("<div>").addClass("icon-md rounded text-bg-warning fs-6").html(data.score_avg);
+				flex2.append(score);
+
+				let content = $("<p>").addClass("mb-2 space").html(data.content);
+				div.append(content);
+
+				if (data.imageList != null) {
+					let row = $("<div>").addClass("row g-4");
+					div.append(row);
+
+					for (let image of data.imageList) {
+						let col = $("<div>").addClass("col-4 col-sm-3 col-lg-2 w-150px h-100px");
+						row.append(col);
+
+						let img = $("<img>").addClass("rounded w-100 h-100").attr("src", image.url);
+						col.append(img);
+					};
+				};
+
+				if(data.reply != null) {
+					let div = $("<div>").addClass("my-4");
+					reviewList.append(div);
+
+					let flex = $("<div>").addClass("d-md-flex p-3 bg-light rounded-3");
+					div.action(flex);
+
+					let div2 = $("<div>").addClass("mt-2 mt-md-0");
+					flex.append(div2);
+
+					let h6 = $("<h6>").addClass("mb-1");
+					h6.append("<i class='fa-solid fa-hotel'></i> ");
+					div2.append(h6);
+
+					let p = $("<p>").addClass("mb-0").html(data.reply);
+					div2.append(p);
+				};
+
+				let hr = $("<hr>");
+				reviewList.append(hr);
+				
 			};
 		},
 	};
