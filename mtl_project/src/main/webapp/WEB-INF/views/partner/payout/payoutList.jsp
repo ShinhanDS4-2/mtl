@@ -376,7 +376,7 @@
 	<%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 	
 	<!-- page script -->
-<script src="js/partner/payoutList.js"></script>
+<script src="js/partner/payout/payoutList.js"></script>
 <script type="text/javascript">
 	payout.init();
 </script>

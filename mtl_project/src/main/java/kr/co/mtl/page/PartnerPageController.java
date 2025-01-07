@@ -7,16 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/partner")
 public class PartnerPageController {
+	
 	// 예약 리스트
-	@GetMapping("/bookingdetail")
-	public String bookingdetail() {
-		return "partner/booking/bookingdetail";
+	@GetMapping("/reservation/detail")
+	public String reservationDetail() {
+		return "partner/reservation/reservationDetail";
 	}
 	
 	// 예약 상세
-	@GetMapping("/bookinglist")
-	public String bookinglist() {
-		return "partner/booking/bookinglist";
+	@GetMapping("/reservation/list")
+	public String reservationList() {
+		return "partner/reservation/reservationList";
 	}
 	
 	// 1:1 문의
@@ -26,15 +27,15 @@ public class PartnerPageController {
 	}
 	
 	// 1:1 문의 답변
-	@GetMapping("/questionreply")
-	public String questionreply() {
-		return "partner/customer/questionreply";
+	@GetMapping("/question/reply")
+	public String questionReply() {
+		return "partner/customer/questionReply";
 	}
 	
 	// 후기
-	@GetMapping("/reviews")
-	public String reviews() {
-		return "partner/customer/reviews";
+	@GetMapping("/review")
+	public String review() {
+		return "partner/customer/review";
 	}
 	
 	// home
@@ -44,15 +45,15 @@ public class PartnerPageController {
 	}
 	
 	// 숙소 등록
-	@GetMapping("/regist")
+	@GetMapping("/accomodation")
 	public String hotelregist() {
-		return "partner/hotel/regist";
+		return "partner/accomodation/regist";
 	}
 	
 	// 객실 등록
-	@GetMapping("/roomregist")
-	public String roomregist() {
-		return "partner/hotel/roomregist";
+	@GetMapping("/accomodation/room")
+	public String room() {
+		return "partner/accomodation/room";
 	}
 	
 	@GetMapping("/mypage")
@@ -78,9 +79,9 @@ public class PartnerPageController {
 	}
 	
 	// payout
-	@GetMapping("/payoutlist")
+	@GetMapping("/payout/list")
 	public String payoutlist() {
-		return "partner/payout/payoutlist";
+		return "partner/payout/payoutList";
 	}
 }
 

@@ -34,8 +34,7 @@
 				<!-- Menu item -->
 				<li class="nav-item">
 					<a class="nav-link" data-bs-toggle="collapse" href="#collapsehotel" role="button" aria-expanded="false" aria-controls="collapsehotel"> 숙소 관리 </a> <!-- Submenu -->
-					<ul class="nav collapse flex-column" id="collapsehotel"
-						data-bs-parent="#navbar-sidebar">
+					<ul class="nav collapse flex-column" id="collapsehotel" data-bs-parent="#navbar-sidebar">
 						<li class="nav-item">
 							<a class="nav-link" href="/mtl/admin/accomodation/list">숙소 관리</a></li>
 						<li class="nav-item">

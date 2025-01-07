@@ -4,7 +4,6 @@ const payout = (function() {
 	// js 로딩 시 이벤트 초기화 실행 
 	function init() {
 		fetchPayoutList();  // 페이지 로드 시 전체리스트 조회
-		_eventInit();    
 	};      
 
 	// 검색버튼 클릭 시
@@ -70,7 +69,6 @@ const payout = (function() {
 			success: function(response) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: PayoutListCount, PayoutList, Param)
 				_draw.drawPayoutList(response);
 				page.drawPage(response.ReservationListCount); 
-				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함. 
 			},
 			error: function(xhr, status, error) {
 				console.error("Error :", error); 
