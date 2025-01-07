@@ -68,7 +68,7 @@
 	        idx AS user_idx
 	    FROM USER
 	    WHERE idx = #{userIdx}
-	      AND password = #{password} -- DB의 현재 비밀번호와 입력한 비밀번호를 비교
+	      AND password = #{password} 
 	</select>
 	
 	<!-- 회원탈퇴 -->
@@ -78,8 +78,5 @@
 	        leave_date = NOW()
 	    WHERE idx = #{userIdx}
 	</update>
-	
-	
-    
 
 </mapper>

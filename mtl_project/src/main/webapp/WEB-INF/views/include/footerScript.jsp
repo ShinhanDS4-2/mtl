@@ -42,7 +42,13 @@
 </script>
 
 <!-- 판매자 topbar JS -->
-<script src="js/partner/partnerTopbar.js"></script>
+<script src="js/include/partnerTopbar.js"></script>
 <script type="text/javascript">
 	partnerTopbar.init();
+</script>
+
+<!-- 관리자 topbar JS -->
+<script src="js/include/adminTopbar.js"></script>
+<script type="text/javascript">
+	adminTopbar.init();
 </script>
