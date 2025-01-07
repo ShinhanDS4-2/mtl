@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-//@Controller("adminPayoutController")  // partner>payout에서의 빈이름과 동일하므로 빈 이름을 명시적으로 다르게 설정해줘서 충돌방지
 @RequestMapping("/api/admin/payout")
 public class AdminPayoutController {
 

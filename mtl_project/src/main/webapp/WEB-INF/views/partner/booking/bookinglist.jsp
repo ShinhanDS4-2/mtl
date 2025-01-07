@@ -168,28 +168,6 @@
 								</div>
 							</div>
 
-							<!-- 기간 설정. 어제/오늘/내일 -->
-							<div class="col-2">
-								<ul class="nav nav-pills nav-pills-dark" id="pills-tab"
-									role="tablist">
-									<li class="nav-item" role="presentation">
-										<button class="nav-link rounded-start rounded-0 mb-0 active"
-											id="tab1" data-bs-toggle="pill" type="button" role="tab"
-											aria-selected="true">어제</button>
-									</li>
-									<li class="nav-item" role="presentation">
-										<button class="nav-link rounded-0 rounded-0 mb-0" id="tab2"
-											data-bs-toggle="pill" type="button" role="tab"
-											aria-selected="false">오늘</button>
-									</li>
-									<li class="nav-item" role="presentation">
-										<button class="nav-link rounded-end rounded-0 mb-0" id="tab3"
-											data-bs-toggle="pill" type="button" role="tab"
-											aria-selected="false">내일</button>
-									</li>
-								</ul>
-							</div>
-
 							<!-- 기간(시작일) 설정 -->
 							<div class="col-3">
 								<label class="h6 fw-normal mb-0"><i
@@ -220,31 +198,18 @@
 								<div class="d-sm-flex">
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault1" checked="">
-										<label class="form-check-label" for="flexRadioDefault1">
-											전체 </label>
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked="">
+										<label class="form-check-label" for="flexRadioDefault1" value=""> 전체 </label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault2"> <label
-											class="form-check-label" for="flexRadioDefault2">
-											예약완료 </label>
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"> 
+										<label class="form-check-label" for="flexRadioDefault2" value="P"> 예약완료 </label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault3"> <label
-											class="form-check-label" for="flexRadioDefault3">
-											예약취소(고객) </label>
-									</div>
-									<!-- Radio -->
-									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault4"> <label
-											class="form-check-label" for="flexRadioDefault4">
-											예약취소(관리자) </label>
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"> 
+										<label class="form-check-label" for="flexRadioDefault3" value="R"> 예약취소 </label>
 									</div>
 								</div>
 							</div>

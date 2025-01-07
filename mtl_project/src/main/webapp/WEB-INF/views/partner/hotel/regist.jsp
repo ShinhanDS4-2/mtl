@@ -29,7 +29,7 @@
 
 			<!-- 상단 navbar START -->
 			<div class="row g-4 mb-4">
-				<div class="col-12">
+				<div class="col-12"> 
 					<div class="bg-light pb-0 px-2 px-lg-0">
 						<ul
 							class="nav nav-tabs nav-bottom-line nav-responsive border-0 nav-justified"
