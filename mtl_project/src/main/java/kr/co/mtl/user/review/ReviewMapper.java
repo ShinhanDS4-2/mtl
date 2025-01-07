@@ -23,7 +23,7 @@ public interface ReviewMapper {
 	// 숙소 별 리뷰 리스트
 	public List<Map<String, Object>> getReviewList(Map<String, Object> param);
 
-	// 숙소 별 리뷰 리스트
+	// 숙소 별 리뷰 개수
 	public int getReviewCnt(Map<String, Object> param);
 	
 	// 숙소 별 리뷰 이미지 리스트
@@ -31,4 +31,10 @@ public interface ReviewMapper {
 	
 	// 숙소 전체 평균 평점
 	public Map<String, Object> getReviewScore(Map<String, Object> param);
+
+	// 내가 쓴 리뷰 리스트
+	public List<Map<String, Object>> getMyReviewList(Map<String, Object> param);
+	
+	// 내가 쓴 리뷰 개수
+	public int getMyReviewCnt(Map<String, Object> param);
 }

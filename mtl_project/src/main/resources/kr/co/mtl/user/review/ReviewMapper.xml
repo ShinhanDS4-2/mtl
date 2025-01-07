@@ -131,4 +131,38 @@
 			mapping_idx = #{review_idx}
 	</select>
 	
+	<!-- 내가 쓴 후기 리스트 -->
+	<select id="getMyReviewList" parameterType="HashMap">
+		SELECT
+			  r.idx AS review_idx
+			, r.content
+			, r.score_1
+			, r.score_2
+			, r.score_3
+			, r.score_4
+			, r.reply
+			, (SELECT name FROM PARTNER WHERE idx = r2.partner_idx) AS name
+			, r2.check_in_date 
+			, r2.check_out_date 
+		FROM
+			REVIEW r
+		JOIN RESERVATION r2
+		ON r2.idx = r.reservation_idx
+		WHERE 
+			r.user_idx = #{user_idx}
+	</select>
+	
+	<!-- 내가 쓴 후기 개수 -->
+	<select id="getMyReviewCnt" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM
+			REVIEW r
+		JOIN RESERVATION r2
+		ON r2.idx = r.reservation_idx
+		WHERE 
+			r.user_idx = #{user_idx}
+	</select>
+	
+	
 </mapper>

@@ -44,13 +44,26 @@ public class ReviewController {
 	 * @return 
 	 */
 	@PostMapping("/list")
-	public Map<String, Object> registReview(@RequestBody Map<String, Object> param) {
+	public Map<String, Object> getReviewList(@RequestBody Map<String, Object> param) {
 		
 		Map<String, Object> result = reviewService.getReviewList(param);
 		
 		return result;
 	}
-	
-	
-	
+
+	/**
+	 * 내가 쓴 리뷰 리스트
+	 * @param param
+	 * @return 
+	 */
+	@PostMapping("/my/list")
+	public Map<String, Object> getMyReviewList(@RequestBody Map<String, Object> param, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		param.put("user_idx", session.getAttribute("login_user_idx"));
+		
+		Map<String, Object> result = reviewService.getMyReviewList(param);
+		
+		return result;
+	}
 }
