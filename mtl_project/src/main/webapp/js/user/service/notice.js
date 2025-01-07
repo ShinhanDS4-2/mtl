@@ -14,7 +14,7 @@ const notice = (function() {
         let pagingElement = $("#noticePaging");
         if (pagingElement.length) {
             _initPaging(pagingElement);
-        }
+        } 
     };
 
     function _eventAction(e) {
