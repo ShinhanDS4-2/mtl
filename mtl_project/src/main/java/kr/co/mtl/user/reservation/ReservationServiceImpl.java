@@ -34,20 +34,4 @@ public class ReservationServiceImpl implements ReservationService {
 		return result;
 	};
 
-	/**
-	 * 예약 취소
-	 * @param param
-	 * @return 
-	 */
-	public Map<String, Object> cancelReservation(Map<String, Object> param) {
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		// TODO 아임포트 환불
-		
-		result.put("result", reservationMapper.cancelReservation(param));
-		
-		return result;
-	};
-	
 }

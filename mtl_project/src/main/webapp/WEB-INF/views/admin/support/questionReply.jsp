@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>[관리자] 고객 문의 > 1:1문의 답변</title>
+<title>떠날지도 - 관리자</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
@@ -95,10 +95,6 @@
 					</div>
 				</div>
 				<!-- 문의 내역 상세조회 END -->
-
-
-
-
 
 			</div>
 			<!-- Page main content END -->
