@@ -1,21 +1,21 @@
 const locationList = (function() {
-	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리
-	let keywordType = "PARTNER";
+	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리  
+	let keywordType = "PARTNER";        
 
-	// js 로딩 시 이벤트 초기화 실행
-	function init() { 
-		_eventInit();    
+	// js 로딩 시 이벤트 초기화 실행            
+	function init() {      
+		_eventInit();      
 		_draw.drawModalKeyword(); // 여행지 등록 모달창에서 > 키워드 리스트 서버에서 받아서 그려주는 것
 		fetchLocationList();  // 페이지 로드 시 여행지 전체리스트 조회
-	};      
-                    
-	// 이벤트 초기화     
+	};        
+                        
+	// 이벤트 초기화        
 	function _eventInit() {
 		let evo = $("[data-src='locationList'][data-act]").off();
 		evo.on("click change", function(e) {
 			_eventAction(e); 
 		});
-	};  
+	};   
 	   
 	// 이벤트 분기
 	function _eventAction(e) {
@@ -45,9 +45,7 @@ const locationList = (function() {
 				_event.clickLocationRegist(evo);
 			} else if (action == "clickSearchButton") {	// 여행지 리스트 조회 페이지 > 검색버튼 클릭 시 
 				_event.clickSearchButton(evo);
-			} else if (action == "clickLocationDetail") {	// 여행지 리스트 조회 페이지 > 상세보기 클릭 시
-				_event.clickLocationDetail(evo); ////
-			}  
+			}
 		} else if (type == "change") {
 			if (action == "changeFile") {
 				comm.setPreview(evo); 		// 이미지 미리보기 생성
@@ -279,27 +277,6 @@ const locationList = (function() {
 			alert( "검색필터 적용 테스트.");
 		},
 
-		// 여행지 리스트 조회 페이지 > 상세보기 클릭 시
-		clickLocationDetail: function() {
-			let location_idx = $(this).data("location-idx");
-
-			$.ajax({
-				type: "POST",
-				url: "",
-				data: {"location_idx" : location_idx},
-				success: function(response){
-
-				}, 
-				error:function(xhr, status, error) {
-					console.error("Error :", error);  // 오류 처리
-				} 
-			});
-		},
-
-
-
-
-
 	};  // let _event 끝
 
 	
@@ -446,16 +423,16 @@ const locationList = (function() {
 							<div class="col">			
 								<small class="d-block d-sm-none">상세보기</small>
 								<div class="ms-1 col">
-									<a role="button" href="admin/location/detail?${data.location_idx}" class="btn btn-sm btn-light mb-0" 
+									<a role="button" href="admin/location/detail?location_idx=${data.location_idx}" class="btn btn-sm btn-light mb-0" 
 										data-src="locationList" data-act="clickLocationDetail">상세보기</a>
 								</div>
 							</div>
 						</div>`;
-
+   
 				locationList.append(Data);
 			}
 		},
-
+  
 
 		// 여행지 등록 모달창에서 > 키워드 리스트 서버에서 받아서 그려줌
 		drawModalKeyword: function() {

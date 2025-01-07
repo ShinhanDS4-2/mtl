@@ -114,8 +114,6 @@ const areaList = (function() {
 				tab = $("#tab2"); 
 			}
 			
-			tab.empty();
-			
 			tab.empty(); // 기존 내용을 비워줌
  			 
 			let row = $("<div>").addClass("row g-4");

@@ -99,7 +99,6 @@
 			   WHEN type = 'A' THEN '관광지'
 			   WHEN type = 'R' THEN '맛집'
 			END AS type
-			
 		FROM LOCATION
 		<where>
 		<!-- type타입, area지역, name장소명에 따른 검색필터 -->
@@ -119,7 +118,19 @@
 	
 	<!-- 여행지 상세정보(기본정보) 조회  (*단일행 반환) -->
 	<select id="getLocationDetail" parameterType="map">
-		SELECT *
+		SELECT idx AS location_idx, name, description, address, address_si, address_dong, latitude, longitude, DATE_FORMAT(create_date, '%Y-%m-%d') AS create_date,
+			CASE 
+			   WHEN area = 'SEOUL' THEN '서울'
+			   WHEN area = 'GANGNEUNG' THEN '강릉'
+			   WHEN area = 'YEOSU' THEN '여수'
+			   WHEN area = 'BUSAN' THEN '부산'
+			   WHEN area = 'JEJU' THEN '제주'
+			END AS area,
+			CASE 
+			   WHEN type = 'A' THEN '관광지'
+			   WHEN type = 'R' THEN '맛집'
+			END AS type
+			
 		FROM LOCATION
 		WHERE idx = #{location_idx}
 	</select>
