@@ -11,7 +11,7 @@ const reservation = (function() {
 	// 이벤트 초기화  
 	function _eventInit() {
 		let evo = $("[data-src='reservation'][data-act]").off();
-		evo.on("click", function(e) {
+		evo.on("click mouseenter mouseleave change", function(e) {
 			_eventAction(e);
 		});
 	};
@@ -29,8 +29,30 @@ const reservation = (function() {
 				_event.clickCustomLocation(evo); 
 			} else if (action == "clickResevationCancel") {
 				_event.clickResevationCancel(evo);
+			} else if (action == "hover") {
+				_event.clickRating(evo);
+			} else if (action == "clickReviewRegist") {
+				_event.clickReviewRegist(evo);
+			} else if (action == "clickReview") {
+				$("input[type='radio']").prop("checked", false);
+				$("input[type='radio']").siblings("span").removeClass("star-icon-select").addClass("star-icon");
+				$("#reviewContent").val("");
+				$("#preview").empty();
+				$("#reviewBtn").attr("data-reservation-idx", evo.attr("data-reservation-idx"));
 			}
-		};
+		} else if (type == "mouseenter") {
+			if (action == "hover") {
+				_event.mouseEnterRating(evo);
+			}
+		} else if (type == "mouseleave") {
+			if (action == "hover") {
+				_event.mouseLeaveRating(evo);
+			}
+		} else if (type == "change") {
+			if (action == "changeFile") {
+				comm.setPreview(evo);
+			};
+		}
 	};
 	
 	// 이벤트
@@ -64,6 +86,105 @@ const reservation = (function() {
 								}
 							});
 						};
+					});
+				}
+			});
+		},
+		
+		// 별점 mouseenter
+		mouseEnterRating: function(evo) {
+			evo.children("span").removeClass("star-icon").addClass("star-icon-fill");
+			let prevStar = evo.prevAll().children("span");
+			prevStar.each(function() {
+			    $(this).removeClass("star-icon").addClass("star-icon-fill");
+			});
+		},
+		
+		// 별점 mouseleave
+		mouseLeaveRating: function(evo) {
+			evo.children("span").removeClass("star-icon-fill").addClass("star-icon");
+			let nextStar = evo.nextAll().children("span");
+			nextStar.each(function() {
+			    $(this).removeClass("star-icon-fill").addClass("star-icon");
+			});
+			
+			// 별점 전체 지우기
+			evo.siblings("label").children("span").removeClass("star-icon-fill").addClass("star-icon");
+		},
+		
+		// 별점 클릭
+		clickRating: function(evo) {
+			let target = evo.children("input");
+			$(target).prop("checked", true);
+			
+			// 부모 요소에서 몇 번째 별인지 가져오기 (input의 value 사용)
+		    let ratingValue = parseInt(target.val(), 10);
+		
+		    // 모든 별 초기화
+		    let parent = evo.parent(); 
+		    parent.children().each(function() {
+		        $(this).children("span").removeClass("star-icon-select").addClass("star-icon"); 
+		    });
+		
+		    // 클릭한 별까지 채워진 별로 변경
+		    for (let i = 0; i <= ratingValue; i++) {
+		        let star = parent.children().eq(i); // i번째 별
+		        star.children("span").removeClass("star-icon").addClass("star-icon-select");
+		    }
+		},
+		
+		// 리뷰 등록
+		clickReviewRegist: function(evo) {
+			let url = "/user/review/regist";
+			
+			let reservationIdx = evo.attr("data-reservation-idx");
+			
+			let rating1 = $("input[name=rating_1]:checked").val();
+			let rating2 = $("input[name=rating_2]:checked").val();
+			let rating3 = $("input[name=rating_3]:checked").val();
+			let rating4 = $("input[name=rating_4]:checked").val();
+			
+			let data = {
+				"reservation_idx" : reservationIdx,
+				"rating1" : rating1,
+				"rating2" : rating2,
+				"rating3" : rating3,
+				"rating4" : rating4,
+				"content" : $("#reviewContent").val()
+			};
+			
+			// 데이터 null 체크
+			for (let key in data) {
+				if (data[key] == null || data[key] == "") {
+					modal.alert({
+						"content" : "입력되지 않은 값이 있습니다."
+					});
+					return;
+				};
+			};
+			
+			data.mfile = $("#reviewImage").get(0).files;
+			
+			// 파일 전송을 위한 폼데이터 변경			
+			let formData = comm.changeFormData(data);
+
+			modal.confirm({
+				"content" : "리뷰를 작성하시겠습니까?",
+				"confirmCallback" : function() {
+					comm.sendFile(url, formData, "POST", function(resp) {
+						if (resp.result == true) {
+							modal.alert({
+								"content" : "정상적으로 작성되었습니다.",
+								"confirmCallback" : function() {
+									location.reload();
+									$("#reviewModal").modal("hide");
+								}
+							});
+						} else {
+							modal.alert({
+								"content" : "오류가 발생하였습니다.<br>다시 시도해 주세요."
+							});
+						}
 					});
 				}
 			});
@@ -140,7 +261,9 @@ const reservation = (function() {
 				// 후기 버튼
 				let reviewBtn = ``;
 				if (data.check_date == "N") {
-					reviewBtn = `<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0 me-2" data-bs-toggle="modal" data-bs-target="#reviewModal" data-src="reservation" data-act="clickReview" data-reservation-idx="${data.reservation_idx}">후기 작성</a>`; 
+					if (data.review == null) {
+						reviewBtn = `<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0 me-2" data-bs-toggle="modal" data-bs-target="#reviewModal" data-src="reservation" data-act="clickReview" data-reservation-idx="${data.reservation_idx}">후기 작성</a>`; 
+					};
 				};
 				
 				// 추천 여행지 버튼 
