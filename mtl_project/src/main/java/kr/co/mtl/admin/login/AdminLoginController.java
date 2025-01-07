@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.mtl.util.CommonUtil;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@Slf4j
 @RequestMapping("/api/admin")
 public class AdminLoginController {
 
@@ -54,9 +52,6 @@ public class AdminLoginController {
         CommonUtil.checkIsNull(param, "admin_email");
         CommonUtil.checkIsNull(param, "admin_password");
 
-        // 디버깅용 파라미터 출력
-        log.info("Login parameters =============> " + param);
-
         // 로그인 처리
         Map<String, Object> result = loginService.login(param, request);
 
@@ -77,11 +72,7 @@ public class AdminLoginController {
         if (session.getAttribute("login_admin_idx") != null) {
             session.invalidate(); // 세션 무효화
         }
-        
-//        return result;
     }
- 
-    
     
     /**
      * 회원가입 처리
@@ -98,7 +89,6 @@ public class AdminLoginController {
         return result;
     }
     
-    
     /**
      * 회원가입 이메일 중복 체크
      */
@@ -111,7 +101,6 @@ public class AdminLoginController {
 
         return result;
     }
-    
     
     /**
      * 마이페이지 관리자 정보 수정 처리
@@ -129,7 +118,6 @@ public class AdminLoginController {
         
         return result;
     }
-
     
     /**
      * 비밀번호 변경
@@ -145,8 +133,5 @@ public class AdminLoginController {
                
         return result;
     }
-    
-    
-    
     
 }
