@@ -134,60 +134,116 @@
 						<div class="col-12">
 							<!-- 후기 별점 -->
 							<div class="d-flex justify-content-between align-items-center">
-								<div class="me-4">
-									<span>친절도</span>
-									<ul class="list-inline mb-2">
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-									</ul>
+								<div class="me-3 mb-2 d-flex">
+									<span class="me-2">친절도</span>
+									<label for="rating1" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_1" id="rating1" class="rating-input" value="1">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating2" class="rating-label"  data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_1" id="rating2" class="rating-input" value="2">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating3" class="rating-label"  data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_1" id="rating3" class="rating-input" value="3">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating4" class="rating-label"  data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_1" id="rating4" class="rating-input" value="4">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating5" class="rating-label"  data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_1" id="rating5" class="rating-input" value="5">
+										<span class="star-icon"></span>
+									</label>
 								</div>
-								<div class="me-4">
-									<span>청결도</span>
-									<ul class="list-inline mb-2">
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-									</ul>
+								<div class="me-3 mb-2 d-flex">
+									<span class="me-2">청결도</span>
+									<label for="rating6" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_2" id="rating6" class="rating-input" value="1">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating7" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_2" id="rating7" class="rating-input" value="2">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating8" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_2" id="rating8" class="rating-input" value="3">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating9" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_2" id="rating9" class="rating-input" value="4">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating10" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_2" id="rating10" class="rating-input" value="5">
+										<span class="star-icon"></span>
+									</label>
 								</div>
-								<div class="me-4">
-									<span>서비스</span>
-									<ul class="list-inline mb-2">
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-									</ul>
+								<div class="me-3 mb-2 d-flex">
+									<span class="me-2">편의성</span>
+									<label for="rating11" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_3" id="rating11" class="rating-input" value="1">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating2" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_3" id="rating12" class="rating-input" value="2">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating13" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_3" id="rating13" class="rating-input" value="3">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating14" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_3" id="rating14" class="rating-input" value="4">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating15" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_3" id="rating15" class="rating-input" value="5">
+										<span class="star-icon"></span>
+									</label>
 								</div>
-								<div class="me-4">
-									<span>위치</span>
-									<ul class="list-inline mb-2">
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-										<li class="list-inline-item me-0 star-item"><i class="far fa-star text-warning"></i></li>
-									</ul>
+								<div class="mb-2 d-flex">
+									<span class="me-2">위치</span>
+									<label for="rating16" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_4" id="rating16" class="rating-input" value="1">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating17" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_4" id="rating17" class="rating-input" value="2">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating18" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_4" id="rating18" class="rating-input" value="3">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating19" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_4" id="rating19" class="rating-input" value="4">
+										<span class="star-icon"></span>
+									</label>
+									<label for="rating20" class="rating-label" data-src="reservation" data-act="hover" role="button">
+										<input type="radio" name="rating_4" id="rating20" class="rating-input" value="5">
+										<span class="star-icon"></span>
+									</label>
 								</div>
 							</div>
 							<!-- 후기 답변 -->
 							<div class="d-flex mt-1 mb-3">
-								<textarea rows="5" class="form-control" placeholder="이용 후기를 작성해 주세요."></textarea>
+								<textarea rows="5" class="form-control" placeholder="이용 후기를 작성해 주세요." id="reviewContent"></textarea>
 							</div>
-							<!-- 후기 이미지 -->
-							<div class="d-flex align-items-center">
-								<div
-									class="border rounded d-flex justify-content-center align-items-center"
-									style="width: 150px; height: 100px; background-color: #f8f9fa;">
+						</div>
+						<!-- 후기 사진 등록 Card Start -->
+						<div class="card-body border rounded mt-2">
+							<!-- 사진 리스트 -->
+							<div class="d-flex gap-3">
+								<!-- 업로드 버튼 -->
+								<div class="border rounded d-flex justify-content-center align-items-center" style="width: 150px; height: 100px; background-color: #f8f9fa;">
 									<label class="text-center" style="cursor: pointer;"> 
-										<i class="bi bi-upload"></i><br>숙소 사진 업로드 
-										<input type="file" class="d-none">
+										<i class="bi bi-upload"></i><br>후기 사진 업로드 
+										<input type="file" class="d-none" multiple="multiple" data-src="reservation" data-act="changeFile" id="reviewImage">
 									</label>
+								</div>
+								<div id="preview" class="d-flex">
 								</div>
 							</div>
 						</div>
@@ -195,7 +251,7 @@
 					<!-- Card body END -->
 					<div class="card-footer">
 						<div class="d-flex mt-3 justify-content-center">
-							<button class="btn btn-primary">등록</button>
+							<button class="btn btn-primary" data-src="reservation" data-act="clickReviewRegist" id="reviewBtn">등록</button>
 						</div>
 					</div>
 				</div>

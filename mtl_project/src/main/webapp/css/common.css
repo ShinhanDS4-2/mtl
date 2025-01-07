@@ -209,3 +209,32 @@
 .text-smaller {
 	font-size: smaller;	
 }
+
+
+.rating-input {
+	display: none;
+}
+
+.rating-label .star-icon {
+	width: 24px;
+	height: 24px;
+	display: block;
+	background-image: url("../assets/images/star-regular.svg");
+	background-repeat: no-repeat;
+}
+
+.rating-label .star-icon-fill {
+	width: 24px;
+	height: 24px;
+	display: block;
+	background-image: url("../assets/images/star-solid.svg");
+	background-repeat: no-repeat;
+}
+
+.rating-label .star-icon-select {
+	width: 24px;
+	height: 24px;
+	display: block;
+	background-image: url("../assets/images/star-solid.svg");
+	background-repeat: no-repeat;
+}

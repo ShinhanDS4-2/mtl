@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.user.review.ReviewMapper">
+
+	<!-- 리뷰 등록 -->
+	<insert id="registReview" parameterType="HashMap" useGeneratedKeys="true" keyProperty="review_idx">
+		INSERT INTO REVIEW (
+			  user_idx
+			, reservation_idx
+			, content
+			, score_1
+			, score_2
+			, score_3
+			, score_4
+			, score_avg
+		) VALUES (
+			  #{user_idx}
+			, #{reservation_idx}
+			, #{content}
+			, #{rating1}
+			, #{rating2}
+			, #{rating3}
+			, #{rating4}
+			, (#{rating1} + #{rating2} + #{rating3} + #{rating4}) / 4
+		)
+	</insert>
+	
+	<!-- 리뷰 이미지 등록 -->
+	<insert id="registReviewImage" parameterType="HashMap">
+		INSERT INTO IMAGE (
+			  mapping_idx
+			, type
+			, url
+			, origin_filename
+			, thumbnail_yn
+		) VALUES (
+			  #{review_idx}
+			, 'V'
+			, #{url}
+			, #{origin_filename}
+			, #{thumbnail_yn}
+		)
+	</insert>
+	
+</mapper>
