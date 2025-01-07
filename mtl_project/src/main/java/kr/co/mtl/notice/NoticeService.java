@@ -3,7 +3,7 @@ package kr.co.mtl.notice;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
- 
+
 @Service
 public class NoticeService {
 
@@ -13,13 +13,13 @@ public class NoticeService {
         this.noticeMapper = noticeMapper;
     }
 
-    // 공지사항 목록 조회
-    public List<Notice> getAllNotices() {
-        return noticeMapper.selectAllNotices();
+    // Notice 목록을 페이지 처리해서 가져오기
+    public List<Notice> getNoticesWithPaging(int limit, int offset) {
+        return noticeMapper.selectNoticesWithPaging(limit, offset);
     }
 
-    // 공지사항 상세 조회
-    public Notice getNoticeById(int idx) {
-        return noticeMapper.selectNoticeById(idx);
+    // 전체 Notice 개수 가져오기
+    public int getTotalNoticeCount() {
+        return noticeMapper.selectTotalNoticeCount();
     }
 }

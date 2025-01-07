@@ -56,20 +56,17 @@
 							<!-- 모달 head -->
 							<div class="modal-header">
 								<h5 class="modal-title">새 공지 등록</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 							</div>
 							<!-- 모달 body -->
 							<div class="modal-body m-3">
 								<h6 class="fw-bold">제목</h6>
-								<input type="text" class="form-control" id="questionTitle"
-									placeholder="제목을 입력하세요">
+								<input type="text" class="form-control" id="questionTitle" placeholder="제목을 입력하세요">
 
 								<h6 class="fw-bold mt-4">내용</h6>
-								<textarea class="form-control" id="questionContent" rows="15"
-									placeholder="내용을 입력하세요"></textarea>
+								<textarea class="form-control" id="questionContent" rows="15" placeholder="내용을 입력하세요"></textarea>
 							</div>
-							<div class="col-3 mt-4">
+							<div class="col-2 mt-4">
 									<select class="form-select js-choice" aria-label=".form-select-sm">
 										<option>사용자</option>
 										<option>판매자</option>
@@ -330,6 +327,19 @@
 					<!-- Card footer END -->
 				</div>
 				<!-- 문의 내역 List END -->
+				 <!-- 페이징 -->
+                    <div id="paging" class="col-12 mt-4">
+                        <script>
+                            $(function() {
+                                $('#paging').customPaging({
+                                    limit: ${limit}, 
+                                    showPageNum: 5
+                                }, function(pageNum) {
+                                    location.href = "/notice?page=" + pageNum;
+                                }).drawPage(${totalCount});
+                            });
+                        </script>
+                    </div>
 			</div>
 			<!-- Page main content END -->
 		</div>

@@ -7,8 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface NoticeMapper {
 
-    List<Notice> selectAllNotices();
+    // 페이지 처리된 Notice 목록 조회
+    List<Notice> selectNoticesWithPaging(int limit, int offset);
 
-    Notice selectNoticeById(int idx);
+    // 전체 Notice 개수 조회
+    int selectTotalNoticeCount();
 }
- 
