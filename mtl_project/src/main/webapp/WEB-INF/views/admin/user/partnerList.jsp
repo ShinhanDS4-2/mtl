@@ -147,7 +147,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<div class="ms-1 col">
-								<a href="admin/partnerdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
@@ -176,7 +176,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<div class="ms-1 col">
-								<a href="admin/partnerdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
@@ -206,7 +206,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<div class="ms-1 col">
-								<a href="admin/partnerdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
@@ -236,7 +236,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<div class="ms-1 col">
-								<a href="admin/partnerdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
@@ -266,7 +266,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<div class="ms-1 col">
-								<a href="admin/partnerdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
@@ -296,7 +296,7 @@
 						<!-- Data item -->
 						<div class="col">
 							<div class="ms-1 col">
-								<a href="admin/partnerdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>

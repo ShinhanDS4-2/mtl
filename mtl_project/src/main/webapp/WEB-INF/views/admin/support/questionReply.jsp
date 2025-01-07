@@ -96,10 +96,6 @@
 				</div>
 				<!-- 문의 내역 상세조회 END -->
 
-
-
-
-
 			</div>
 			<!-- Page main content END -->
 		</div>

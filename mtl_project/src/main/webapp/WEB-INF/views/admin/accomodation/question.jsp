@@ -256,7 +256,7 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="admin/questionreply" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col"><a href="admin/question/reply" class="btn btn-sm btn-light mb-0">상세보기</a></div>
 							</div>
 						</div>
 						<!-- Table data-->
@@ -289,11 +289,9 @@
 							<!-- Data item -->
 							<div class="col">
 								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="admin/questionreply" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+								<div class="ms-1 col"><a href="admin/question/reply" class="btn btn-sm btn-light mb-0">상세보기</a></div>
 							</div>
 						</div>
-
-
 					</div>
 					<!-- Card body END -->
 

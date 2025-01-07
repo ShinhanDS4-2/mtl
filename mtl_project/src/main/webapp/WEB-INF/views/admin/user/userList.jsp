@@ -210,7 +210,7 @@
 						<div class="col">
 							<small class="d-block d-sm-none">상세보기</small>
 							<div class="ms-1 col">
-								<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
@@ -246,7 +246,7 @@
 						<div class="col">
 							<small class="d-block d-sm-none">상세보기</small>
 							<div class="ms-1 col">
-								<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
@@ -281,7 +281,7 @@
 						<div class="col">
 							<small class="d-block d-sm-none">상세보기</small>
 							<div class="ms-1 col">
-								<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
@@ -316,7 +316,7 @@
 						<div class="col">
 							<small class="d-block d-sm-none">상세보기</small>
 							<div class="ms-1 col">
-								<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
@@ -351,7 +351,7 @@
 						<div class="col">
 							<small class="d-block d-sm-none">상세보기</small>
 							<div class="ms-1 col">
-								<a href="admin/userdetail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
 							</div>
 						</div>
 					</div>
