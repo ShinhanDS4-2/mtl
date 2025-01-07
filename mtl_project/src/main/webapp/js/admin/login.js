@@ -45,27 +45,31 @@ const login = (function() {
 	let _event = {
 		handleLogin: function() {
 		console.log(1);
-			let url = "/partner/login";
+			let url = "/admin/login";
 
 			let formData = {
-	        	email: $("#email").val(),
+	        	admin_email: $("#admin_email").val(),
 	        	// MD5 암호화 적용
-	            //password: $("#pw").val(),
-	            password: CryptoJS.MD5($("#pw").val()).toString(),
+	            //admin_password: $("#pw").val(),
+	            admin_password: CryptoJS.MD5($("#pw").val()).toString(),
 	        };
 			
 			comm.send(url, formData, "POST", function(response) {
             	let code = response.code;
                 if (code == 200) {
                     // 로그인 성공 시 메인 페이지로 이동
-                    location.href = "/mtl/partner/dashboard";
+                    location.href = "/mtl/admin/dashboard";
                 } else if (code == 600) {
                     // 실패 메시지 표시
-                    alert("로그인에 실패했습니다. 다시 시도해주세요.");
+                    modal.alert({
+	            		"content" : "로그인에 실패했습니다.<br>다시 시도해주세요." 
+	            	});
                 }
 			}, function(error) {
                 console.error("Login error:", error);
-                alert("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
+                modal.alert({
+					"content" : "로그인 중 오류가 발생했습니다.<br>다시 시도해 주세요." 
+				});
 			});
 		},
 		

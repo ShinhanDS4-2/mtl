@@ -37,7 +37,7 @@
 				<li class="nav-item ms-3 dropdown"><a
 					class="text-dark fw-bold p-1" href="/mtl/admin/dashboard" id="profileDropdown"
 					role="button" data-bs-auto-close="outside" data-bs-display="static"
-					data-bs-toggle="dropdown" aria-expanded="false"> 관리자 님 </a>
+					data-bs-toggle="dropdown" aria-expanded="false">${login_admin_name } 님</a>
 					<ul
 						class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
 						aria-labelledby="profileDropdown">
@@ -46,8 +46,8 @@
 							<div class="d-flex align-items-center">
 
 								<div>
-									<a class="h6 mt-2 mt-sm-0" href="#">관리자 님</a>
-									<p class="small m-0">example@gmail.com</p>
+									<a class="h6 mt-2 mt-sm-0" href="#">${login_admin_name } 님</a>
+									<p class="small m-0">${login_admin_email }</p>
 									<!-- 아이디 들어오는 곳 -->
 								</div>
 							</div>
@@ -60,7 +60,7 @@
 						
 						<li><a class="dropdown-item" href="/mtl/admin/mypage"><i
 								class="bi bi-heart fa-fw me-2"></i>마이페이지</a></li>
-						<li><a class="dropdown-item" href="/mtl/admin/signin"><i
+						<li><a class="dropdown-item" href="javascript:;" data-src="adminTopbar" data-act="clickLogoutBtn"><i
 								class="bi bi-power fa-fw me-2"></i>로그아웃</a></li>
 					</ul></li>
 				<!-- 프로필 드롭다운 END -->

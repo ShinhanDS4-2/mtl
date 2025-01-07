@@ -33,7 +33,7 @@
 									<form class="mt-4 text-start">
 										<!-- Email -->
 										<div class="form-floating mb-3">
-											<input type="email" class="form-control" id="email" placeholder="이메일 (example@gmail.com)">
+											<input type="email" class="form-control" id="admin_email" placeholder="이메일 (example@gmail.com)">
 											<label for="email" class="form-label">이메일</label>
 										</div>
 										<!-- Password -->
@@ -47,7 +47,7 @@
 										</div>
 										<!-- Button -->
 										<div class="mb-3">
-											<button type="button" class="btn btn-primary w-100 mb-0">로그인</button>
+											<button type="button" class="btn btn-primary w-100 mb-0" id="loginBtn" data-src="login" data-act="clickLoginBtn">로그인</button>
 										</div>
 									</form>
 									<!-- Form END -->
@@ -100,5 +100,15 @@
 
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
+
+
+
+<!-- page script -->
+<!-- 로그인 MD5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="js/admin/login.js"></script>
+<script type="text/javascript">
+	login.init();
+</script>
 </body>
 </html>

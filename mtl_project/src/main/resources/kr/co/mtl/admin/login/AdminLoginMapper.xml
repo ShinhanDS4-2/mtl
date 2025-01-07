@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.admin.login.AdminLoginMapper">
+
+    <!-- 사용자 정보 가져오기 -->
+    <select id="getUserInfo" parameterType="map" resultType="map">
+        SELECT 
+              admin_email,
+              admin_name,
+              DATE_FORMAT (password_update_date, "%Y-%m-%d") AS password_update_date
+        FROM 
+            ADMIN
+        WHERE 
+            idx = #{adminIdx}
+    </select>
+
+    <!-- 사용자 인증 정보 확인 -->
+    <select id="getUserCheck" parameterType="map" resultType="map">
+        SELECT
+        	  idx AS admin_idx, 
+              admin_email,
+              admin_name
+        FROM 
+           ADMIN
+        WHERE 
+            admin_email = #{admin_email}
+        AND admin_password = #{admin_password}
+    </select>
+    
+    <!-- 관리자 등록 -->
+    <insert id="insertUser" parameterType="map">
+	    INSERT INTO ADMIN (admin_email, admin_name, admin_password)
+	    VALUES (#{admin_email}, #{admin_name}, #{admin_password})
+	</insert>
+	
+	<!-- 관리자 등록 이메일 중복 체크 -->
+	<select id="checkEmailDuplication" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+	    FROM ADMIN
+	    WHERE admin_email = #{admin_email}
+	</select>
+	
+	<!-- 마이페이지 회원 정보 수정 -->
+	<update id="updateUser" parameterType="map">
+	    UPDATE ADMIN
+	    SET admin_name = #{admin_name}
+	    WHERE idx = #{adminIdx}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updatePassword" parameterType="map">
+	    UPDATE ADMIN
+	    SET admin_password = #{newPassword},
+	    	password_update_date = now()
+	    WHERE idx = #{adminIdx}
+	</update>
+	
+	<!-- 현재 비밀번호 확인 -->
+	<select id="getPasswordCheck" parameterType="map" resultType="map">
+	    SELECT
+	        idx AS admin_idx
+	    FROM ADMIN
+	    WHERE idx = #{adminIdx}
+	      AND admin_password = #{admin_password} -- DB의 현재 비밀번호와 입력한 비밀번호를 비교
+	</select>
+
+
+</mapper>
