@@ -8,7 +8,7 @@ const login = (function() {
 	// 이벤트 초기화 
 	function _eventInit() {
 		let evo = $("[data-src='login'][data-act]").off();
-		evo.on("click keyup", function(e) {
+		evo.on("click", function(e) {
 			_eventAction(e);
 		});
 		
@@ -31,10 +31,8 @@ const login = (function() {
 		if(type == "click") {
 			if(action == "clickLoginBtn") {
 				_event.handleLogin();
-			}	
-		} else if(type == "keyup") {
-			if (window.event.keyCode == 13) {
-				_event.handleLogin();
+			} else if (action == "clickPartnerCenter") {
+				location.href = "/mtl/partner/login";
 			}
 		}
 	};

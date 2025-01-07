@@ -51,13 +51,15 @@
 									<!-- Divider -->
 									<div class="position-relative my-4">
 										<hr>
-										<p class="small bg-mode position-absolute top-50 start-50 translate-middle px-2">Or sign in with</p>
+										<p class="small bg-mode position-absolute top-50 start-50 translate-middle px-2"></p>
 									</div>
 		
 									<!-- Google and facebook button -->
 									<div class="vstack gap-3">
-										<a href="#" class="btn btn-light mb-0"><i class="fab fa-fw fa-google text-google-icon me-2"></i>Sign in with Google</a>
+										<a href="javascript:;" class="btn btn-light mb-0" data-src="login" data-act="clickPartnerCenter"><i class="fa-regular fa-handshake me-2"></i>파트너 센터</a>
+										<!-- 
 										<a href="#" class="btn btn-light mb-0"><i class="fab fa-fw fa-facebook-f text-facebook me-2"></i>Sign in with Facebook</a>
+										 -->
 									</div>
 								</form>
 								<!-- Form END -->

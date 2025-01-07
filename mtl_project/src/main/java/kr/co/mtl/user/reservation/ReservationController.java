@@ -29,18 +29,5 @@ public class ReservationController {
 		
 		return result;
 	}
-
-	/**
-	 * 예약 취소
-	 * @param param
-	 * @return
-	 */
-	@PostMapping("/cancel")
-	public Map<String, Object> cancelReservation(@RequestBody Map<String, Object> param) throws Exception {
-		
-		Map<String, Object> result = reservationService.cancelReservation(param);
-		
-		return result;
-	}
 	
 }

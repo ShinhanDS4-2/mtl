@@ -243,7 +243,7 @@ const partnerDetail = (function() {
 				// 이미지 단일 / 다중
 				let imageList = data.imageList;
 				if (imageList.length == 1) {
-					let img = $("<img>").addClass("card-img rounded-2 h-180px").attr({
+					let img = $("<img>").addClass("card-img rounded-2 h-180px w-100").attr({
 						"src" : imageList[0].url 
 					});
 					imgCard.append(img);
@@ -263,7 +263,7 @@ const partnerDetail = (function() {
 						let imgDiv = $("<div>");
 						tiny.append(imgDiv);
 
-						let img = $("<img>").addClass("h-180px").attr("src", image.url);
+						let img = $("<img>").addClass("h-180px w-100").attr("src", image.url);
 						imgDiv.append(img);
 					};
 				};

@@ -24,14 +24,4 @@
 		AND r.user_idx = #{user_idx}
 	</select>
 	
-	<!-- 예약 취소 -->
-	<update id="cancelReservation" parameterType="HashMap">
-		UPDATE RESERVATION
-		SET 
-			  payment_status = 'R'
-			, refund_price = price
-			, refund_date = NOW()
-		WHERE
-			idx = #{reservation_idx} 
-	</update>
 </mapper>
