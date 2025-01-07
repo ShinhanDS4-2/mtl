@@ -4,25 +4,20 @@
 <html lang="ko">
 
 <head>
-<title>[관리자] 숙소 관리 > 숙소 관리</title>
+<title>떠날지도 - 관리자</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
 </head>
 <body>
-
-	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
 		<!-- Sidebar -->
 		<%@ include file="/WEB-INF/views/include/adminSidebar.jsp"%>
 
 		<!-- Page content START -->
 		<div class="page-content">
-
 			<!-- Topbar -->
 			<%@ include file="/WEB-INF/views/include/adminTopbar.jsp"%>
-
-
 			<!-- Page main content START -->
 			<div class="page-content-wrapper p-xxl-4">
 
@@ -30,7 +25,7 @@
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
 						<h1 class="h3 mb-2">숙소 관리</h1>
-						<span>ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ.</span>
+						<span>승인 받은 숙소의 상세 정보를 확인할 수 있습니다.</span>
 					</div>
 				</div>
 
@@ -38,142 +33,52 @@
 				<div class="card shadow mt-4 mb-5">
 					<!-- Card header -->
 					<div class="card-header border-bottom">
-						<h5 class="card-header-title">검색필터(예시)</h5>
+						<h5 class="card-header-title">검색</h5>
 					</div>
 					<!-- Card body START -->
 					<div class="card-body">
 						<form class="row g-4 align-items-center">
-							<!-- 드롭다운 -->
-							<div class="col-2">
-								<label class="h6 fw-normal mb-0"><i
-									class="bi bi-calendar text-primary me-1"></i>기간</label>
-								<!-- Input field -->
-								<div
-									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-									<select class="form-select js-choice">
-										<option value="">입실일</option>
-										<option>퇴실일</option>
-										<option>예약일</option>
-										<option>취소일</option>
-									</select>
-								</div>
-							</div>
-
-							<!-- 기간 설정. 어제/오늘/내일 -->
-							<div class="col-2">
-								<ul class="nav nav-pills nav-pills-dark" id="pills-tab"
-									role="tablist">
-									<li class="nav-item" role="presentation">
-										<button class="nav-link rounded-start rounded-0 mb-0 active"
-											id="tab1" data-bs-toggle="pill" type="button" role="tab"
-											aria-selected="true">어제</button>
-									</li>
-									<li class="nav-item" role="presentation">
-										<button class="nav-link rounded-0 rounded-0 mb-0" id="tab2"
-											data-bs-toggle="pill" type="button" role="tab"
-											aria-selected="false">오늘</button>
-									</li>
-									<li class="nav-item" role="presentation">
-										<button class="nav-link rounded-end rounded-0 mb-0" id="tab3"
-											data-bs-toggle="pill" type="button" role="tab"
-											aria-selected="false">내일</button>
-									</li>
-								</ul>
-							</div>
-
-							<!-- 기간(시작일) 설정 -->
-							<div class="col-3">
-								<label class="h6 fw-normal mb-0"><i
-									class="bi bi-calendar text-primary me-1"></i>시작일</label>
-								<!-- Input field -->
-								<div
-									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-									<input type="text" class="form-control flatpickr py-2"
-										data-date-format="d M Y" placeholder="시작일">
-								</div>
-							</div>
-							<!-- 기간(종료일) 설정 -->
-							<div class="col-3">
-								<!--col-md-6: medium화면에서 가로 12칸 중 6칸 차지, col-lg-2: large화면에서 12칸 중 2칸 차지-->
-								<label class="h6 fw-normal mb-0"><i
-									class="bi bi-calendar text-primary me-1"></i>종료일</label>
-								<!-- Input field -->
-								<div
-									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-									<input type="text" class="form-control flatpickr py-2"
-										data-date-format="d M Y" placeholder="종료일">
-								</div>
-							</div>
-
 							<!-- Radio items -->
 							<div class="col-12">
-								<label class="form-label">예약 상태</label>
+								<label class="form-label">지역</label>
 								<div class="d-sm-flex">
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault1" checked="">
-										<label class="form-check-label" for="flexRadioDefault1">
-											전체 </label>
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" checked>
+										<label class="form-check-label" for="flexRadioDefault1">전체</label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault2"> <label
-											class="form-check-label" for="flexRadioDefault2">
-											예약완료 </label>
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2">
+										<label class="form-check-label" for="flexRadioDefault2">서울</label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault3"> <label
-											class="form-check-label" for="flexRadioDefault3">
-											예약취소(고객) </label>
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault3">
+										<label class="form-check-label" for="flexRadioDefault3">강릉</label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio"
-											name="flexRadioDefault" id="flexRadioDefault4"> <label
-											class="form-check-label" for="flexRadioDefault4">
-											예약취소(관리자) </label>
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault4">
+										<label class="form-check-label" for="flexRadioDefault4">여수</label>
+									</div>
+									<!-- Radio -->
+									<div class="form-check radio-bg-light me-4">
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault5">
+										<label class="form-check-label" for="flexRadioDefault5">부산</label>
+									</div>
+									<!-- Radio -->
+									<div class="form-check radio-bg-light me-4">
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault6">
+										<label class="form-check-label" for="flexRadioDefault6">제주</label>
 									</div>
 								</div>
 							</div>
 
-							<!-- 객실 타입 드롭다운 -->
-							<div class="col-12">
-								<div class="col-4">
-									<label class="h6 fw-normal mb-0"><i
-										class="fa-solid fa-person-skating text-primary me-1"></i>객실 타입</label>
-									<!-- Input field -->
-									<div
-										class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-										<select class="form-select js-choice">
-											<option value="">전체</option>
-											<option>스탠다드</option>
-											<option>디럭스</option>
-											<option>트윈룸</option>
-											<option>객실타입</option>
-										</select>
-									</div>
-								</div>
-							</div>
-
-							<!-- 검색어 드롭다운 -->
-							<div class="col-2">
-								<label class="h6 fw-normal mb-0">검색어</label>
-								<div
-									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-									<select class="form-select js-choice">
-										<option value="">예약자명</option>
-										<option>예약번호</option>
-									</select>
-								</div>
-							</div>
 							<!-- 검색어 입력 input -->
-							<div class="col-6">
-								<label class="form-label">-</label> <input type="text"
-									class="form-control" placeholder="예약자명을 입력하세요">
+							<div class="col-6 mb-2">
+								<label class="form-label">숙소명</label>
+								<input type="text" class="form-control" placeholder="숙소명을 입력하세요">
 							</div>
 
 							<!-- 초기화/검색 button -->
@@ -186,18 +91,10 @@
 				</div>
 				<!-- 검색 필터 설정 END -->
 
-
-
 				<!-- 예약 내역 List 상단 Tab -->
 				<div class="row g-4 justify-content-between align-items-center mb-2">
 					<div class="col-md-6 col-lg-6">
-						<h6 class="mb-1">전체 상품 50개</h6>
-					</div>
-					<div class="col-md-6 col-lg-6 d-flex justify-content-end">
-						<div class="mb-sm-0 d-flex justify-content-center">
-							<a href="#" class="btn btn-dark-soft mb-0 border-0"><i
-								class="fa-solid fa-download"></i></a>
-						</div>
+						<h6 class="mb-1">전체 숙소 <span id="totalCnt">50</span>개</h6>
 					</div>
 				</div>
 
