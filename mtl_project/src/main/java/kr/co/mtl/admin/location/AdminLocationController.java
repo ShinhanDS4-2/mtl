@@ -35,7 +35,7 @@ public class AdminLocationController {
 	
 
 	/** 
-	 * 여행지 수정
+	 * 여행지 수정 
 	 * @param (기본정보수정)location_idx, area, type, name, address, description / (이미지,키워드 삭제)location_idx / 
 	 * 		(사진등록 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드등록 keywords 키값으로 배열저장)keyword_idx
 	 * @return result(true/false), message
@@ -67,14 +67,14 @@ public class AdminLocationController {
 	
 	/** 완료
 	 * 여행지 리스트 조회
-	 * @param X
-	 * @return locationList
+	 * @param (검색조건) searchType, searchArea, searchName
+	 * @return locationListCount, locationList
 	 */
 	@PostMapping("/getList")
-	public Map<String,Object> getLocationList() {
-		
+	public Map<String,Object> getLocationList(@RequestParam Map<String,Object> param) {
+		System.out.println("param값은 ?????????" + param);
 		Map<String, Object> result = new HashMap<>();
-		result = adminLocationService.getLocationList();
+		result = adminLocationService.getLocationList(param);
 		System.out.println(result);
 		return result;
 	};

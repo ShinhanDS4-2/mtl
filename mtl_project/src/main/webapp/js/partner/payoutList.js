@@ -4,16 +4,8 @@ const payout = (function() {
 	// js 로딩 시 이벤트 초기화 실행 
 	function init() {
 		fetchPayoutList();  // 페이지 로드 시 정산내역 리스트를 가져옴
-		_eventInit();    
 	};             
-	 
- 	// 초기화 버튼 클릭 시
-	 $("#resetButton").click(function() {
-		$("#searchForm")[0].reset();  // 폼 모든 입력 초기화
-		isSearchClicked = false;
-		fetchPayoutList();  // 전체 리스트 조회
-	});
-
+   
 	// 검색버튼 클릭 시
 	$("#searchButton").click(function() {
 		isSearchClicked = true;
@@ -35,7 +27,7 @@ const payout = (function() {
 			let [startDate, endDate] = $("#dateRange").val().split(" ~ ").map(date => date.trim());
 			let payoutStatus = $("input[name='payoutStatus']:checked").val();  // Y/N
 			
-			let param = { // ajax로 넘겨줄 data값 변수 선언
+			param = { // ajax로 넘겨줄 data값 변수 선언
 				"calculate_date_start" : startDate, 
 				"calculate_date_end" : endDate,
 				"calculate_stauts" : payoutStatus
@@ -47,7 +39,7 @@ const payout = (function() {
 
 		// 페이징 START   
 		let pageOption = {
-			limit: 2  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+			limit: 5  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
 		
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
@@ -75,7 +67,6 @@ const payout = (function() {
 				console.log(response);
 				_draw.drawPayoutList(response);
 				page.drawPage(response.PayoutListCount);  // 페이지번호 계산 및 렌더링 (=> 서버에서 반환한 전체 리스트 개수를 전달, 이를 기반으로 전체 페이지 수를 계산해서 사용자가 이동할 수 있는 페이지 번호를 화면에 표시해준다. )
-				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.
 			},
 			error: function(xhr, status, error) {
 				console.error("Error :", error); 

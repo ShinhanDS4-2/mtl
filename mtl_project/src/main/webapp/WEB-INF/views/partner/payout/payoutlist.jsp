@@ -154,7 +154,7 @@
 
 							<!-- 초기화/검색 button -->
 							<div class="d-sm-flex justify-content-end border-top pt-3">
-								<button type="button" id="resetButton" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
+								<button type="reset" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
 								<button type="button" id="searchButton" class="btn btn-primary mb-0 ms-2">검색</button>
 							</div>
 						</form>

@@ -68,8 +68,8 @@
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">  
 										<input class="form-check-input" type="radio"
-											name="payoutStatus" id="payoutCompleted" value="" checked>
-										<label class="form-check-label" for="payoutCompleted"> 전체 </label>
+											name="payoutStatus" id="payoutAll" value="" checked>
+										<label class="form-check-label" for="payoutAll"> 전체 </label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
@@ -88,7 +88,7 @@
 
 							<!-- 초기화/검색 button -->
 							<div class="d-sm-flex justify-content-end border-top pt-3">
-								<button type="button" id="resetButton" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
+								<button type="reset" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
 								<button type="button" id="searchButton" class="btn btn-primary mb-0 ms-2">검색</button>
 							</div>
 						</form>

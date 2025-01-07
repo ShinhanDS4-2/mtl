@@ -30,7 +30,7 @@
 			<div class="row g-4 align-items-center border-bottom">
 				<!-- 여행지 등록 버튼 클릭 시 <여행지 등록> 모달창 표시 -->
 				<div class="col-lg-12 d-flex justify-content-end">
-					<button type="button" class="btn btn-primary-soft" data-bs-toggle="modal" data-bs-target="#touristModal">
+					<button type="button" class="btn btn-primary-soft" data-bs-toggle="modal" data-bs-target="#locationRegistModal">
 						<i class="bi bi-plus-lg fa-fw"></i>여행지 등록
 					</button>
 					<!-- 키워드 등록 버튼 클릭 시 <키워드 목록> 모달창 표시 -->
@@ -52,22 +52,22 @@
 					<form class="row g-4 align-items-center">
 						<!-- Radio items -->
 						<div class="col-12">
-							<label class="form-label">분류</label>
+							<label class="h6 fw-normal mb-2">여행지 타입</label>
 							<div class="d-sm-flex">
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-									<label class="form-check-label" for="flexRadioDefault1">전체</label>
+									<input class="form-check-input" type="radio" name="searchLocationType" id="radioType1" value="" checked>
+									<label class="form-check-label" for="radioType1">전체</label>
 								</div>
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-									<label class="form-check-label" for="flexRadioDefault2">관광지</label>
+									<input class="form-check-input" type="radio" name="searchLocationType" id="radioType2" value="A">
+									<label class="form-check-label" for="radioType2" >관광지</label>
 								</div>
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-									<label class="form-check-label" for="flexRadioDefault3">맛집</label>
+									<input class="form-check-input" type="radio" name="searchLocationType" id="radioType3" value="R">
+									<label class="form-check-label" for="radioType3">맛집</label>
 								</div>
 							</div>
 						</div>
@@ -76,7 +76,7 @@
 						<div class="col-2">
 							<label class="h6 fw-normal mb-0">지역</label>
 							<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-								<select class="form-select js-choice">
+								<select id="searchLocationArea" class="form-select js-choice">
 									<option value="" disabled="disabled" selected="selected">선택</option>
 									<option value="SEOUL">서울</option>
 									<option value="GANGNEUNG">강릉</option>
@@ -89,23 +89,24 @@
 						<!-- 검색어 입력 input -->
 						<div class="col-6">
 							<label class="form-label">-</label>
-							<input type="text" class="form-control" placeholder="장소명을 입력하세요">
+							<input id="searchLocationName" type="text" class="form-control" placeholder="장소명을 입력하세요">
 						</div>
 
 						<!-- 초기화/검색 button -->
 						<div class="d-sm-flex justify-content-end border-top pt-3">
 							<button type="reset" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
-							<button type="button" class="btn btn-primary mb-0 ms-2">검색</button>
+							<button id="searchButton" type="button" class="btn btn-primary mb-0 ms-2"
+							 	data-src="locationList" data-act="clickSearchButton">검색</button>
 						</div>
 					</form>
 				</div>
 			</div>
 			<!-- 검색 필터 설정 END -->
 
-			<!-- 예약 내역 List 상단 Tab -->
+			<!-- 여행지 List 상단 Tab -->
 			<div class="row g-4 justify-content-between align-items-center mb-2">
 				<div class="col-md-6 col-lg-6">
-					<h6 class="mb-1">전체 1654건</h6>
+					<h6 class="mb-1" id="locationListCount">총 1654건</h6>  <!-- js에서 값 변경 -->
 				</div>
 				<div class="col-md-6 col-lg-6 d-flex justify-content-end">
 					<div class="mb-sm-0 ms-2 d-flex justify-content-center">
@@ -138,66 +139,40 @@
 							</div>
 						</div>
 					</div>
-
-					<!-- Table data (1번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">지역</small><!-- 작은 화면일때만 보이는 텍스트-->
-							<h6 class="ms-1 mb-0 fw-normal">서울</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">분류</small>
-							<h6 class="ms-1 mb-0 fw-normal">관광지</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">장소명</small>
-							<h6 class="ms-1 mb-0 fw-normal">동대문 역사문화공원</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">등록일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상세보기</small>
-							<div class="ms-1 col"><a href="admin/location/detail" class="btn btn-sm btn-light mb-0">상세보기</a></div>
-						</div>
-					</div>
-
-					<!-- Table data (2번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">지역</small><!-- 작은 화면일때만 보이는 텍스트-->
-							<h6 class="ms-1 mb-0 fw-normal">부산</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">분류</small>
-							<h6 class="ms-1 mb-0 fw-normal">맛집</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">장소명</small>
-							<h6 class="ms-1 mb-0 fw-normal">동대문 역사문화공원</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">등록일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상세보기</small>
-							<div class="ms-1 col"><a href="admin/location/detail" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+					<div id="locationList"> 
+						<!-- Table data (1번째 예약내역 상세 데이터)-->
+						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">지역</small><!-- 작은 화면일때만 보이는 텍스트-->
+								<h6 class="ms-1 mb-0 fw-normal">서울</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">분류</small>
+								<h6 class="ms-1 mb-0 fw-normal">관광지</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">장소명</small>
+								<h6 class="ms-1 mb-0 fw-normal">동대문 역사문화공원</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">등록일</small>
+								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
+							</div>
+	
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">상세보기</small>
+								<div class="ms-1 col"><a href="admin/location/detail" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+							</div>
 						</div>
 					</div>
+					<!-- Table data (1번째 예약내역 상세 데이터) / js에서 반복돌릴 부분-->
+					
+					
 				</div>
 				<!-- Card body END -->
 
@@ -231,12 +206,12 @@
 </main>
 
 <!-- 여행지 등록 Modal START -->
-<div class="modal fade" id="touristModal" tabindex="-1" aria-labelledby="touristModalLabel" aria-hidden="true">
+<div class="modal fade" id="locationRegistModal" tabindex="-1" aria-labelledby="touristModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="touristModalLabel">여행지 등록</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-src="locationList" data-act="clickLocationCancle"></button>
 			</div>
 			<div class="modal-body">
 				<form>
@@ -245,23 +220,23 @@
 						<label class="form-label fw-bold">지역 <span class="text-danger">*</span></label>
 						<div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="region" id="regionSeoul" value="서울" checked>
+								<input class="form-check-input" type="radio" name="areaType" id="regionSeoul" value="SEOUL" checked>
 								<label class="form-check-label" for="regionSeoul">서울</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="region" id="regionGangneung" value="강릉">
+								<input class="form-check-input" type="radio" name="areaType" id="regionGangneung" value="GANGNEUNG">
 								<label class="form-check-label" for="regionGangneung">강릉</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="region" id="regionYeosu" value="여수">
+								<input class="form-check-input" type="radio" name="areaType" id="regionYeosu" value="YEOSU">
 								<label class="form-check-label" for="regionYeosu">여수</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="region" id="regionBusan" value="부산"> 
+								<input class="form-check-input" type="radio" name="areaType" id="regionBusan" value="BUSAN"> 
 									<label class="form-check-label" for="regionBusan">부산</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="region" id="regionJeju" value="제주">
+								<input class="form-check-input" type="radio" name="areaType" id="regionJeju" value="JEJU">
 								<label class="form-check-label" for="regionJeju">제주</label>
 							</div>
 						</div>
@@ -272,12 +247,12 @@
 						<label class="form-label fw-bold">분류 <span class="text-danger">*</span></label>
 						<div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="category" id="categoryTour" value="관광지" checked>
-								<label class="form-check-label" for="categoryTour">관광지</label>
+								<input class="form-check-input" type="radio" name="categoryType" id="attraction" value="A" checked>
+								<label class="form-check-label" for="attraction">관광지</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="category" id="categoryFood" value="맛집">
-								<label class="form-check-label" for="categoryFood">맛집</label>
+								<input class="form-check-input" type="radio" name="categoryType" id="restaurant" value="R">
+								<label class="form-check-label" for=""restaurant"">맛집</label>
 							</div>
 						</div>
 					</div>
@@ -308,14 +283,15 @@
 					<!-- 상세정보 입력 -->
 					<div class="mb-3">
 						<label for="details" class="form-label fw-bold">상세정보 <span class="text-danger">*</span></label>
-						<textarea class="form-control" id="details" rows="3" placeholder="상세정보를 입력해 주세요."></textarea>
+						<textarea class="form-control" id="detailInfo" rows="3" placeholder="상세정보를 입력해 주세요."></textarea>
 					</div>
 
 					<!-- 키워드 선택 드롭다운-->
 					<div class="mb-3">
 						<label for="keyword" class="form-label fw-bold">키워드 <span class="text-danger">*</span></label>
-						<div class="mb-1">
+						<div class="mb-1">   
 							<div class="row row-cols-4 g-3" id="keywordList">
+								<!-- js -->
 								<div class="col">
 									<div class="form-check">
 										<input class="form-check-input" type="checkbox" value="" id="keyword1">
@@ -325,11 +301,12 @@
 										<input class="form-check-input" type="checkbox" value="" id="keyword2">
 										<label class="form-check-label" for="keyword2">함께걷기</label>
 									</div>
-									<div class="form-check">
+									<div class="form-check"> <!-- name="keywordList" 필수 -->
 										<input class="form-check-input" type="checkbox" value="" id="keyword3">
 										<label class="form-check-label" for="keyword3">데이트코스</label>
 									</div>
 								</div>
+								<!-- js -->
 								<div class="col">
 									<div class="form-check">
 										<input class="form-check-input" type="checkbox" value="" id="keyword4">
@@ -344,22 +321,9 @@
 										<label class="form-check-label" for="keyword6">데이트코스</label>
 									</div>
 								</div>
-								<div class="col">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="keyword7">
-										<label class="form-check-label" for="keyword7">가족여행</label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="keyword8">
-										<label class="form-check-label" for="keyword8">함께걷기</label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="keyword9">
-										<label class="form-check-label" for="keyword9">데이트코스</label>
-									</div>
-								</div>
+								
 							</div>
-						</div>
+						</div> 
 					</div>
 					<!-- 이미지 업로드 -->
 					<div class="mb-3">
@@ -370,14 +334,14 @@
 								<!-- 사진 리스트 -->
 								<div class="d-flex gap-3">
 									<!-- 업로드 버튼 -->
-									<div class="border rounded d-flex justify-content-center align-items-center" style="width: 150px; height: 100px; background-color: #f8f9fa;">
-										<label class="text-center" style="cursor: pointer;">
-											<i class="bi bi-upload"></i><br>사진 업로드
-											<input type="file" class="d-none">
-										</label>
-									</div>
-									<div id="preview" class="d-flex">
-									</div>	
+								<div class="border rounded d-flex justify-content-center align-items-center" style="width: 150px; height: 100px; background-color: #f8f9fa;">
+									<label class="text-center" style="cursor: pointer;"> 
+										<i class="bi bi-upload"></i><br>숙소 사진 업로드 
+										<input type="file" class="d-none" multiple="multiple" data-src="locationList" data-act="changeFile" id="partnerImage">
+									</label>
+								</div>
+								<div id="preview" class="d-flex">
+								</div>	
 								</div>
 							</div>
 						</div>
@@ -387,9 +351,8 @@
 			</div>
 			<!-- 확인/취소 button -->
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-primary">확인</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-src="locationList" data-act="clickLocationCancle" >취소</button>
+				<button type="button" class="btn btn-primary" data-src="locationList" data-act="clickLocationRegist">확인</button>
 			</div>
 		</div>
 	</div>

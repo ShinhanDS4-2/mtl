@@ -8,12 +8,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.mtl.map.MapService;
 import kr.co.mtl.s3.S3Service;
 
 @Service
+@Transactional
 public class AdminLocationServiceImpl implements AdminLocationService{
 	@Autowired
 	private AdminLocationMapper adminLocationMapper;
@@ -27,30 +29,23 @@ public class AdminLocationServiceImpl implements AdminLocationService{
 	
 	/**
 	 * 여행지 등록
-	 * @param (기본정보)area, type, name, address, description / (사진정보 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드 정보 keywordList 키값으로 배열저장)keyword_idx
+	 * @param (기본정보)area, type, name, description, address, address_si, address_dong / (사진정보 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드 정보 keywordList 키값으로 배열저장)keyword_idx
 	 * @return result(true/false)
 	 */
 	@Override
 	public Map<String, Object> registLocation(Map<String,Object> param, List<MultipartFile> images) {
 	    Map<String, Object> result = new HashMap<>();
 	    try {
-	    
-	    // 여행지 기본정보 등록  param : #{area}, #{type}, #{name}, #{address}, #{description}
+	    	// param에 위도 경도 추가
+	    	mapService.getGeoInfo(param);
+	    	// 여행지 기본정보 등록  param : area, type, name, description, address, address_si, address_dong, 위도latitude, 경도longitude
 	    	int registInfo = adminLocationMapper.registLocationInfo(param);
-	    	
-	    	// registLocationInfo 실행 후, param에 'location_idx'가 추가되어 있음 (매퍼에서 데이터 삽입 후 자동생성된 기본키를 가져오도록 설정해줬기 때문)
-	    	Integer location_idx = (Integer) param.get("location_idx");
-	    	
-	    	if (location_idx == null) {
-	    		result.put("result", false);
-	    		result.put("message", "여행지 기본정보 등록 실패");
-	    		return result;
-	    	}
-	    	
+	    	System.out.println("param값은  ?????");
+	    	System.out.println(param); 
+	    	  
 	    	
 	    // 사진 등록
 	    	//  ㄴ images에 배열로 저장되어 있음.  매퍼로 넘겨줘야 하는 값 => #{location_idx}, #{url}, #{thumbnail_yn}, #{origin_filename})
-	    	
 	    	Map<String, Object> imageParam = new HashMap<>();
 	    	imageParam.put("location_idx", param.get("location_idx"));  // imageParam에는 location_idx가 있음
 	    	
@@ -82,11 +77,11 @@ public class AdminLocationServiceImpl implements AdminLocationService{
 	    	if (keywordList != null && !keywordList.isEmpty()) { 
 	    		for (Integer keywordIdx : keywordList) {  // keywordList 배열 요소를 하나하나 반복문 돌림
 	    			Map<String, Object> keywordParam = new HashMap<>();  // 키워드 등록 매퍼로 넘길 param값 저장할 변수 선언
-	    			keywordParam.put("location_idx", location_idx);
+	    			keywordParam.put("location_idx", param.get("location_idx"));
 	    			keywordParam.put("keyword_idx", keywordIdx);
 	    			adminLocationMapper.registLocationKeyword(keywordParam);  // 키워드 등록 (param값으로 location_idx, keyword_idx 넘겨줌)
 	    		}
-	    	}
+	    	} 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result.put("result", false);
@@ -190,14 +185,17 @@ public class AdminLocationServiceImpl implements AdminLocationService{
 	
 	/** 완료
 	 * 여행지 리스트 조회
-	 * @param X
-	 * @return locationList
+	 * @param 검색필터(searchType, searchArea, searchName)
+	 * @return locationListCount, locationList
 	 */
 	@Override
-	public Map<String, Object> getLocationList() {
+	public Map<String, Object> getLocationList(Map<String, Object> param) {
 		Map<String, Object> result = new HashMap<>();
-		List<Map<String, Object>> list = adminLocationMapper.getLocationList(); // 여행지 리스트 조회(파라미터 없이 호출)
 		
+		int count = adminLocationMapper.getLocationListCount(param);  // 여행지 리스트 총 개수
+		List<Map<String, Object>> list = adminLocationMapper.getLocationList(param); // 여행지 리스트 조회
+		
+		result.put("locationListCount", count);
 		result.put("locationList", list);
 		return result;
 	}

@@ -19,13 +19,11 @@
 			FROM RESERVATION
 			WHERE partner_idx = #{partner_idx}
 				AND payment_status = "P"
-				AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
-				AND calculate_stauts = #{calculate_stauts}
 			<if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_start != ''">
-				AND r.calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
+				AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
 			</if>
 			<if test="calculate_stauts != null and calculate_stauts != ''">
-				AND r.calculate_stauts = #{calculate_stauts}	
+				AND calculate_stauts = #{calculate_stauts}	
 			</if>	
 			GROUP BY calculate_date 
 		) AS subquery
@@ -43,14 +41,22 @@
 		FROM RESERVATION
 		WHERE partner_idx = #{partner_idx}  <!-- 로그인 되어있는 판매자에 대한 정산내역만 출력되야 하므로 -->
 			AND payment_status = "P"
-			AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
-			AND calculate_stauts = #{calculate_stauts}
-		<if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_start != ''">
-			AND r.calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
-		</if>
-		<if test="calculate_stauts != null and calculate_stauts != ''">
-			AND r.calculate_stauts = #{calculate_stauts}	
-		</if>
+	<!-- 필터적용 -->	
+        <!-- 날짜 필터 -->
+        <if test="calculate_date_start != null and calculate_date_start != ''">
+            <if test="calculate_date_end != null and calculate_date_end != ''">
+                AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
+            </if>
+            <if test="calculate_date_end == null or calculate_date_end == ''">
+                AND calculate_date = #{calculate_date_start}
+            </if>
+        </if>
+
+        <!-- 정산 상태 필터 -->
+        <if test="calculate_stauts != null and calculate_stauts != ''">
+            AND calculate_stauts = #{calculate_stauts}
+        </if>
+        
 		GROUP BY calculate_date 
 		ORDER BY calculate_date DESC
 		<!-- 페이징 처리 -->

@@ -16,7 +16,7 @@ public interface AdminLocationService {
 	Map<String, Object> deleteLocation(Map<String,Object> param);
 	
 	// 여행지 리스트 조회
-	Map<String, Object> getLocationList();  // 파라미터X
+	Map<String, Object> getLocationList(Map<String,Object> param);
 	
 	// 여행지 상세정보 조회
 	Map<String, Object> getLocationDetail(Map<String,Object> param);
