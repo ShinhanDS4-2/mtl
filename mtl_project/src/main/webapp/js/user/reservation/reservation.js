@@ -61,32 +61,37 @@ let reservation = (function() {
 				
 		// 결제
 		clickPayment: function() {
-			let IMP = window.IMP; 
-        	IMP.init("imp87617854"); 
-        	
-        	// 예약정보
-        	let roomIdx = comm.getUrlParam().idx;
-        	let code = comm.makeReservationCode(roomIdx);
-        	let name = "떠날지도 숙소 예약 - " + $("#partnerName").text() + " / " + $("#roomType").text() ;
-        	let amount = $("#totalPrice").text().replaceAll(",", "");
-        	
-        	// 일자 분리
-        	let checkInDate = $("#checkInDate").attr("data-date");
-        	let checkOutDate = $("#checkOutDate").attr("data-date");
-        	
-        	data = {
-				"partner_idx" : $("#partnerName").attr("data-partner-idx"),
-        		"room_idx" : roomIdx,
-        		"check_in_date" : checkInDate,
-        		"check_out_date" : checkOutDate,
-        		"guest_cnt" : $("#guest").text(),
-        		"price" : amount,
-        		"calculate_price" : amount - Math.ceil(amount / 10),
-        		"reservation_code" : code,
-        		"name" : name,
-        	};
-        	
-        	requestPay(data);
+			modal.confirm({
+				"content" : "결제하시겠습니까?",
+				"confirmCallback" : function() {
+					let IMP = window.IMP; 
+		        	IMP.init("imp87617854"); 
+		        	
+		        	// 예약정보
+		        	let roomIdx = comm.getUrlParam().idx;
+		        	let code = comm.makeReservationCode(roomIdx);
+		        	let name = "떠날지도 숙소 예약 - " + $("#partnerName").text() + " / " + $("#roomType").text() ;
+		        	let amount = $("#totalPrice").text().replaceAll(",", "");
+		        	
+		        	// 일자 분리
+		        	let checkInDate = $("#checkInDate").attr("data-date");
+		        	let checkOutDate = $("#checkOutDate").attr("data-date");
+		        	
+		        	data = {
+						"partner_idx" : $("#partnerName").attr("data-partner-idx"),
+		        		"room_idx" : roomIdx,
+		        		"check_in_date" : checkInDate,
+		        		"check_out_date" : checkOutDate,
+		        		"guest_cnt" : $("#guest").text(),
+		        		"price" : amount,
+		        		"calculate_price" : amount - Math.ceil(amount / 10),
+		        		"reservation_code" : code,
+		        		"name" : name,
+		        	};
+		        	
+		        	requestPay(data);
+				}
+			});
 		},
 	};
 	
@@ -139,6 +144,7 @@ let reservation = (function() {
             buyer_name : $("#buyerName").val(),
             buyer_tel : $("#buyerPhone").val(),
         }, function (resp) { 
+        	console.log(resp);
 			if (resp.success) {
 				let url = "/payment/reservation";
 				
@@ -146,13 +152,17 @@ let reservation = (function() {
 				
 				comm.sendJson(url, data, "POST", function(resp2) {
 					if(resp2.result == true) {
-						alert("결제가 완료되었습니다.");
-						location.href = "/mtl/reservation/confirm?idx=" + resp2.reservation_idx;
+						modal.alert({
+							"content" : "결제가 완료되었습니다.",
+							"confirmCallback" : function() {
+								location.href = "/mtl/reservation/confirm?idx=" + resp2.reservation_idx;
+							}
+						});
 					};
 				});
 			} else {
 				// 에러
-				alert("결제에 실패하였습니다.");
+				modal.alert({ "content" : "결제에 실패하였습니다." });
 			}
         });
     };

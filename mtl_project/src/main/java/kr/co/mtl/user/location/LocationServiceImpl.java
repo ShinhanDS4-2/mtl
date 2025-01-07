@@ -159,6 +159,34 @@ public class LocationServiceImpl implements LocationService {
 		return result;
 	};
 	
+	/**
+	 * 여행지 추천 유무 확인
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> checkCustomLocation(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("result", locationMapper.checkCustomLocation(param));
+		
+		return result;
+	};
+
+	/**
+	 * 저장된 여행지 추천 리스트
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> getSavedCustomList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("list", locationMapper.getSavedCustomList(param));
+		
+		return result;
+	};
+	
 	
 	/**
 	 * 하버사인 공식

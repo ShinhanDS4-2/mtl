@@ -154,4 +154,34 @@
 		)
 		</foreach>
 	</insert>
+	
+	<!-- 여행지 추천 유무 확인 -->
+	<select id="checkCustomLocation" parameterType="HashMap">
+		SELECT 
+			COUNT(*)
+		FROM 
+			RESERVATION_TOUR
+		WHERE
+			reservation_idx = #{reservation_idx}
+	</select>
+	
+	<!-- 저장된 여행지 추천 리스트 -->
+	<select id="getSavedCustomList" parameterType="HashMap">
+		SELECT
+			  l.idx AS location_idx
+			, l.name
+			, l.type
+			, l.address
+			, l.latitude
+			, l.longitude
+			, l.description
+			, (SELECT url FROM IMAGE WHERE mapping_idx = l.idx AND type = 'L' AND thumbnail_yn = 'Y') AS image
+		FROM 	
+			RESERVATION_TOUR rt 
+		JOIN LOCATION l 
+		ON l.idx = rt.location_idx 
+		WHERE
+			rt.reservation_idx = #{reservation_idx}
+		ORDER BY rt.idx
+	</select>
 </mapper>

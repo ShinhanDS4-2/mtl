@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>[관리자] 홈(대시보드)</title>
+<title>떠날지도 - 관리자</title>
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>

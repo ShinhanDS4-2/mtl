@@ -19,7 +19,7 @@ public interface PartnerLoginMapper {
     // 이메일 중복 체크 (회원가입)
     int checkEmailDuplication(String email);
     
-    // 마이페이지 수정
+    // 마이페이지 회원 정보 수정
     int updateUser(Map<String, Object> param);
     
     // 마이페이지 비밀번호 변경
@@ -28,6 +28,7 @@ public interface PartnerLoginMapper {
     // 마이페이지 현재 비밀번호 비교 확인
     Map<String, Object> getPasswordCheck(Map<String, Object> param);
     
-
+    // 마이페이지 업체 정보 수정
+    int updateBusiness(Map<String, Object> param);
 
 }
