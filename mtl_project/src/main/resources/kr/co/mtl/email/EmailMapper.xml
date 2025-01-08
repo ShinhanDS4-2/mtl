@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.email.EmailMapper">
+	
+	<!-- 사용자 유무 체크 -->
+	<select id="checkUser" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM	
+			USER
+		WHERE 
+			email = #{email}
+		AND 
+			name = #{name}
+	</select>
+	
+	<!-- 판매자 유무 체크 -->
+	<select id="checkPartner" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM	
+			PARTNER
+		WHERE 
+			email = #{email}
+		AND 
+			business_name = #{name}
+	</select>
+	
+	<!-- 관리자 유무 체크 -->
+	<select id="checkAdmin" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM	
+			ADMIN
+		WHERE 
+			admin_email = #{email}
+		AND 
+			admin_name = #{name}
+	</select>
+	
+	<!-- 비밀번호 업데이트 -->
+	<update id="updateTempPassword" parameterType="HashMap">
+		UPDATE USER
+		SET password = #{password}
+		WHERE
+			email = #{email}
+		AND
+			name = #{name}
+	</update>
+	
+	<!-- 비밀번호 업데이트 - 판매자 -->
+	<update id="updateTempPasswordPartner" parameterType="HashMap">
+		UPDATE PARTNER
+		SET password = #{password}
+		WHERE
+			email = #{email}
+		AND
+			business_name = #{name}
+	</update>
+	
+	<!-- 비밀번호 업데이트 - 관리자 -->
+	<update id="updateTempPasswordAdmin" parameterType="HashMap">
+		UPDATE ADMIN
+		SET admin_password = #{password}
+		WHERE
+			admin_email = #{email}
+		AND
+			admin_name = #{name}
+	</update>
+	
+</mapper>
