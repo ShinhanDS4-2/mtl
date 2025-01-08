@@ -1,6 +1,7 @@
 package kr.co.mtl.user.reservation;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +31,22 @@ public class ReservationServiceImpl implements ReservationService {
 		
 		Map<String, Object> data = reservationMapper.getDetail(param);
 		result.put("data", data);
+		
+		return result;
+	};
+
+	/**
+	 * 회원 별 예약 리스트
+	 * @param param
+	 * @return 예약 리스트
+	 */
+	public Map<String, Object> getList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		List<Map<String, Object>> list = reservationMapper.getList(param);
+		result.put("list", list);
+		result.put("totalCnt", reservationMapper.getListCnt(param));
 		
 		return result;
 	};
