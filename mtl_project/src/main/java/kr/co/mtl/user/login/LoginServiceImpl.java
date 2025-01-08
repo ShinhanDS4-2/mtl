@@ -218,8 +218,14 @@ public class LoginServiceImpl implements LoginService {
      * 사용자 정보 가져오기 list admin 사용자 관리에서 사용
      */
     @Override
-    public List<Map<String, Object>> getAllUser(Map<String, Object> param) throws Exception {
-        return loginMapper.getAllUser(param);
+    public Map<String, Object> getAllUser(Map<String, Object> param) throws Exception {
+    	
+    	Map<String, Object> result = new HashMap<>();
+    	
+    	result.put("list", loginMapper.getAllUser(param));
+    	result.put("totalCnt", loginMapper.getAllUserCnt(param));
+    	
+        return result;
     }
     
     

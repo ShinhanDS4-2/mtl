@@ -20,7 +20,7 @@ const userList = (function() {
 	};
 	
 	// 사용자 목록
-	function _loadUserList() {
+	function _loadUserList(curPage = 1) {
 		const status = $("input[name='flexRadioDefault']:checked").val(); // 선택된 상태 값
         const searchType = $("#searchType").val(); // 검색 타입
         const searchKeyword = $("#searchKeyword").val(); // 검색어
@@ -31,13 +31,29 @@ const userList = (function() {
             searchType: searchType,
             searchKeyword: searchKeyword
         };
+        
+        // 페이징
+		let pageOption = {
+			limit: 5
+		};
+		
+		let page = $("#pagination").customPaging(pageOption, function(_curPage){
+			_loadUserList(_curPage);
+		});
+		
+		let pageParam = page.getParam(curPage);
+		
+		if(pageParam) {
+			filter.offset = pageParam.offset;
+			filter.limit = pageParam.limit;
+		};
+		// 페이징 끝
 	
         comm.send("/admin/list", filter, "POST", function(response) {
-            if (response.userList) {
-                _renderUserList(response.userList);
-                $(".totalCount").text(response.totalCount); // 사용자 수 업데이트
-            } else {
-                alert("사용자 목록을 불러오지 못했습니다.");
+            if (response.list) {
+                _renderUserList(response.list);
+                $(".totalCount").text(response.totalCnt); // 사용자 수 업데이트
+                page.drawPage(response.totalCnt);
             }
         }, function(error) {
             console.error("사용자 목록 로드 오류:", error);
@@ -122,7 +138,7 @@ const userList = (function() {
 		checkEmail: function() {
 			let email = $("#joinEmail").val();
 			if (!comm.validateEmail(email)) {
-			    alert('올바른 이메일 주소를 입력하세요.');
+			    modal.alert({ "content" : "올바른 이메일 주소를 입력하세요." });
 			    return;
 		    }
 	    },
@@ -134,12 +150,16 @@ const userList = (function() {
             	admin_email: $("#joinEmail").val(),
             };
 	    	if (!formData.admin_email) {
-		        alert("이메일을 입력해주세요.");
+		        modal.alert({
+            		"content" : "이메일을 입력해 주세요." 
+            	});
 		        return;
 		    }
 		    // 이메일 형식 체크
 		    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.admin_email)) {
-		        alert("올바른 이메일 주소를 입력해주세요! 예: example@gmail.com");
+				modal.alert({
+            		"content" : "올바른 이메일 주소를 입력해 주세요<br>예: example@gmail.com" 
+            	});
 		        return;
 		    }
 		    
@@ -147,20 +167,14 @@ const userList = (function() {
 		    // 서버로 이메일 중복 확인 요청
         	comm.send("/admin/clickEmailCheck", formData, "POST", function(response) {
 	            if (response.duplicated == false) {
-	                alert("사용 가능한 이메일입니다.");
+	                modal.alert({ "content" : "사용 가능한 이메일입니다." });
 	            } else {
-	                alert("이미 사용 중인 이메일입니다. 다른 이메일을 입력하세요.");
+	                modal.alert({ "content" : "이미 사용 중인 이메일입니다. 다른 이메일을 입력하세요." });
 	            }
         	}, function(error) {
-	            console.error("중복 확인 오류:", error);
-	            alert("중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+                modal.alert({ "content" : "오류가 발생하였습니다.<br>다시 시도해주세요." });
         	});
-		    
-		    
-		    
 		},
-	    
-	    
 	    
 	    // 회원가입
         handleJoin: function() {
@@ -173,41 +187,48 @@ const userList = (function() {
             
             // 유효성 검사
 		    if (!formData.admin_email) {
-		        alert("이메일을 입력해주세요.");
+		        modal.alert({
+            		"content" : "이메일을 입력해 주세요." 
+            	});
 		        return;
 		    }
             // 이메일 형식 확인
 		    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.admin_email)) {
-		        alert("올바른 이메일 주소를 입력해주세요! 예: example@gmail.com");
+				modal.alert({
+            		"content" : "올바른 이메일 주소를 입력해 주세요<br>예: example@gmail.com" 
+            	});
 		        return;
 		    }
 		    if (!formData.admin_name) {
-                alert("이름을 입력해주세요.");
+                modal.alert({
+            		"content" : "이름을 입력해 주세요." 
+            	});
                 return;
             }
             if (!formData.admin_password) {
-                alert("비밀번호를 입력해주세요.");
+                modal.alert({
+            		"content" : "비밀번호를 입력해 주세요." 
+            	});
                 return;
             }
             // 비밀번호 길이 확인
             if (formData.admin_password.length < 8) {
-		        alert("비밀번호는 최소 8자리 이상이어야 합니다.");
+		        modal.alert({
+            		"content" : "비밀번호는 최소 8자리 이상이어야 합니다." 
+            	});
 		        return;
 		    }
-            
-            
 
             // 서버로 데이터 전송
             comm.send("/admin/join", formData, "POST", function(response) {
                 if (response.code == 200) {
-                    alert("관리자 등록이 완료되었습니다.");
+                    modal.alert({ "content" : "관리자 등록이 완료되었습니다." });
                     location.reload();
                 } else {
-                    alert("관리자 등록에 실패했습니다. 다시 시도해주세요.");
+                    modal.alert({ "content" : "관리자 등록에 실패했습니다. 다시 시도해주세요." });
                 }
             }, function(error) {
-                console.error("회원가입 중 오류:", error);
-                alert("관리자 등록 중 오류가 발생했습니다. 다시 시도해주세요.");
+                modal.alert({ "content" : "오류가 발생하였습니다.<br>다시 시도해주세요." });
             });
         },
         

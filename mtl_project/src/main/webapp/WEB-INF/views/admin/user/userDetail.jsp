@@ -188,7 +188,7 @@
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 
 <!-- page script -->
-<script src="/mtl/js/admin/userDetail.js"></script>
+<script src="/mtl/js/admin/user/userDetail.js"></script>
 <script type="text/javascript">
 	userDetail.init();
 </script>

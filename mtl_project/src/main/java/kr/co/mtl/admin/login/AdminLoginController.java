@@ -150,13 +150,7 @@ public class AdminLoginController {
         Map<String, Object> result = new HashMap<>();
         try {
             // User의 LoginService를 사용해 데이터 가져오기
-            List<Map<String, Object>> userList = userLoginService.getAllUser(param);
-            
-            // 전체 사용자 수
-            int totalCount = userList.size();
-            
-            result.put("userList", userList);
-            result.put("totalCount", totalCount);
+            result = userLoginService.getAllUser(param);
         } catch (Exception e) {
             e.printStackTrace();
             result.put("error", "사용자 목록 조회 중 오류가 발생했습니다.");

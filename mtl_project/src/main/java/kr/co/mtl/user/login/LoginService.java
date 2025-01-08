@@ -66,7 +66,7 @@ public interface LoginService {
     /**
      * 사용자 정보 가져오기 list admin 사용자 관리에서 사용
      */
-    List<Map<String, Object>> getAllUser(Map<String, Object> param) throws Exception;
+    Map<String, Object> getAllUser(Map<String, Object> param) throws Exception;
     
     /**
      * 사용자 정보 가져오기2 admin 사용자 관리에서 사용 views/user/userDetail.jsp에서 사용
