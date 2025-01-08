@@ -23,11 +23,9 @@
 					<small>여러 개를 고를 수록 다양한 결과가 나옵니다.</small>
 				</div>
 			</div>
-	
-			<div class="row g-4 pe-4 mb-5" id="keywordList">
-			</div>
-			
-			<div class="row">
+			<ul class="list-inline mb-0 g-4" id="keywordList">
+			</ul>
+			<div class="row mt-3">
 				<div class="d-grid gap-2">
 					<button class="btn btn-primary rounded-4" type="button" data-src="customLocation" data-act="clickNext">계속하기</button>
 				</div>
@@ -109,10 +107,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="d-flex justify-content-end mt-3">
-			<button type="button" class="btn btn-primary-soft me-2" data-src="customLocation" data-act="clickPrev">이전으로</button>
-			<button type="button" class="btn btn-primary" data-src="customLocation" data-act="clickSave">저장하기</button>
-		</div>
+		<section id="saveBtn">
+			<div class="d-flex justify-content-end">
+				<button type="button" class="btn btn-primary-soft me-2" data-src="customLocation" data-act="clickPrev">이전으로</button>
+				<button type="button" class="btn btn-primary" data-src="customLocation" data-act="clickSave">저장하기</button>
+			</div>
+		</section>
 	</div>
 </section>
 </main>

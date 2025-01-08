@@ -55,6 +55,9 @@ public interface PartnerLoginService {
      */
     Map<String, Object> changePassword(Map<String,Object> param) throws Exception;
     
-    
+    /**
+     * 업체 정보 수정
+     */
+    boolean updateBusinessInfo(Map<String, Object> param, HttpSession session) throws Exception;
 
 }

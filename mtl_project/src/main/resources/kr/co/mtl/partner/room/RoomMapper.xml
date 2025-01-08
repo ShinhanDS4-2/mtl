@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mtl.partner.room.RoomMapper">
-
+	
+	<!-- 객실 등록 -->
 	<insert id="roomRegister" parameterType="HashMap">
 		INSERT INTO ROOM 
-			(room_type,description,count,standard,maximum,basic_price,weekend_price)
+			(partner_idx,room_type,description,count,standard,maximum,basic_price,weekend_price)
 		VALUES (
-			#{room_type},#{description},#{count},#{standard},#{maximum},#{basic_price},#{weekend_price}
+			#{partner_idx},#{room_type},#{description},#{count},#{standard},#{maximum},#{basic_price},#{weekend_price}
 			)
 	</insert>
 	
+	<!-- 인덱스 가져오기  -->
 	<select id="getIdx" resultType="int">
 		SELECT LAST_INSERT_ID()
 	</select>
 	
+	<!-- 시설 옵션 등록 -->
 	<insert id="roomFacilitiesRegister">
 		INSERT INTO ROOM_FACILITIES 
 			(room_idx,facilities_idx)
@@ -21,36 +24,112 @@
 			(#{room_idx},#{option})
 	</insert>
 	
+	<!-- 이미지 저장 -->
+	<insert id="saveImageInfo">
+		INSERT INTO IMAGE
+			(mapping_idx,type,url,thumbnail_yn,origin_filename)
+		VALUES
+			(#{room_idx},#{type},#{url},#{thumbnail_yn},#{filename})
+	</insert>
+	
+	<!-- 객실 상세 조회 -->
+	<select id="getRoomDetail">
+		SELECT 
+	        idx AS idx,
+	        room_type,
+	        description,
+	        count,
+	        standard,
+	        maximum,
+	        basic_price,
+	        weekend_price
+	    FROM ROOM 
+	    WHERE idx=#{room_idx}
+	</select>
+	
+	<!-- 객실 시설 옵션 상세 조회 -->
+	<select id="getRoomFacility">
+		SELECT
+			facilities_idx
+		FROM
+			ROOM_FACILITIES
+		WHERE
+			room_idx = #{room_idx}
+	</select>
+	
+	<select id="getImageUrl">
+		SELECT
+			url
+		FROM
+			IMAGE
+		WHERE
+			mapping_idx = #{room_idx}
+		AND type = 'R'
+	</select>
+	
+	<!-- 객실 업데이트 -->
 	<update id="roomUpdate" parameterType="HashMap">
 		UPDATE ROOM
 		SET
-			room_type=#{room_type},
-			description=#{descriptioin},
-			count=#{count},
-			standard = #{standard},
-            maximum = #{maximum},
+			room_type=#{RoomType},
+			description=#{update_description},
+			count=#{room_count},
+			standard = #{standard_person},
+            maximum = #{maximum_person},
             basic_price = #{basic_price},
             weekend_price = #{weekend_price}
         WHERE
-        	idx=#{idx}
+        	idx=#{room_idx}
     </update>
     
-    <delete id="roomDelete" parameterType="int">
-    	DELETE FROM ROOM
-    	WHERE idx=#{idx}
+    <!-- 객실 시설 옵션 삭제 -->
+    <delete id="roomFacilitiesDelete">
+    	DELETE FROM ROOM_FACILITIES
+    	WHERE room_idx=#{room_idx}
     </delete>
+    
+    <!-- 객실 이미지 url 가져오기 -->
+    <select id="getImagesByRoomIdx" parameterType="int" resultType="HashMap">
+        SELECT 
+            url 
+        FROM 
+            IMAGE 
+        WHERE 
+            mapping_idx = #{room_idx} 
+            AND type = 'P'
+    </select>
+    
+    <!-- 이미지 삭제 -->
+    <delete id="deleteImage">
+    	DELETE FROM IMAGE
+    	WHERE mapping_idx=#{room_idx}
+    </delete>
+    
+    <!-- 객실 삭제, 사실 update -->
+    <update id="roomDelete">
+    	UPDATE ROOM
+    	SET
+    		status='N'
+    	WHERE 
+    		idx=#{room_idx}
+    </update>
     
     <select id="getRoomList" resultType="HashMap">
         SELECT 
-            room_type,
-            description,
-            count,
-            standard,
-            maximum,
-            basic_price,
-            weekend_price
-        FROM ROOM
-        WHERE 
-        	partner_idx=#{partner_idx}
+		    r.idx AS room_idx,
+		    r.room_type,
+		    r.description,
+		    r.count,
+		    r.standard,
+		    r.maximum,
+		    r.basic_price,
+		    r.weekend_price,
+		    i.url AS image_url
+		FROM ROOM r
+		LEFT JOIN IMAGE i ON r.idx = i.mapping_idx AND i.type = 'R'
+		WHERE 
+	        r.partner_idx = #{partner_idx}
+	        AND r.status = 'Y'
+	        AND i.thumbnail_yn = 'Y'
     </select>
 </mapper>

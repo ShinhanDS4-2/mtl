@@ -1,9 +1,12 @@
 const partnerDetail = (function() {
 
+	let _offset = 0;
+
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
 		_setSearch();
+		_list.setReview();
 		_event.clickSearch();
 	};
 
@@ -66,6 +69,14 @@ const partnerDetail = (function() {
 				_event.clickReservation(evo);
 			} else if (action == "clickRoomDetail") {
 				_event.clickRoomDetail(evo);
+			} else if (action == "clickMore") {
+				_offset = _offset + 2;
+				_list.setReview();
+			} else if (action == "clickQuestion") {
+				_event.clickQuestion();
+			} else if (action == "clickQnaModal") {
+				$("#qnaTitle").val("");
+				$("#qnaContent").val("");
 			}
 		};
 	};
@@ -127,6 +138,39 @@ const partnerDetail = (function() {
 				_draw.drawRoomDetail(resp.data);
 			});
 		},
+		
+		// 문의 전송
+		clickQuestion: function() {
+			let partnerIdx = comm.getUrlParam().idx;
+			
+			let url = "/user/question/regist";
+			
+			let data = {
+				"partner_idx" : partnerIdx,
+				"title" : $("#qnaTitle").val(),
+				"content" : $("#qnaContent").val()
+			};
+			
+			modal.confirm({
+				"content" : "해당 숙소에 문의하시겠습니까?",
+				"confirmCallback" : function() {
+					comm.sendJson(url, data, "POST", function(resp) {
+						if (resp.result == true) {
+							modal.alert({
+								"content" : "문의가 완료되었습니다.",
+								"confirmCallback": function() {
+									$("#qnaModal").modal("hide");
+								}
+							});
+						} else {
+							modal.alert({
+								"content" : "오류가 발생하였습니다.<br>다시 시도해 주세요."
+							});
+						}
+					});
+				}
+			});
+		}
 	};
 	
 	// 리스트
@@ -190,6 +234,25 @@ const partnerDetail = (function() {
 			    _draw.drawRoomList(resp.list);
 	        });
 		},
+		
+		setReview: function() {
+			let partnerIdx = comm.getUrlParam().idx;
+			
+			let url = "/user/review/list";
+			
+			let data = { 
+				"partner_idx" : partnerIdx,
+				"limit" : 2,
+				"offset" : _offset
+			 };
+			
+			comm.sendJson(url, data, "POST", function(resp) {
+				if (resp.total <= 2) {
+					$("#moreBtn").css("display", "none");
+				}
+				_draw.drawReview(resp.list);
+			});
+		}
 	};
 	
 	let _draw = {
@@ -243,7 +306,7 @@ const partnerDetail = (function() {
 				// 이미지 단일 / 다중
 				let imageList = data.imageList;
 				if (imageList.length == 1) {
-					let img = $("<img>").addClass("card-img rounded-2 h-180px").attr({
+					let img = $("<img>").addClass("card-img rounded-2 h-180px w-100").attr({
 						"src" : imageList[0].url 
 					});
 					imgCard.append(img);
@@ -263,7 +326,7 @@ const partnerDetail = (function() {
 						let imgDiv = $("<div>");
 						tiny.append(imgDiv);
 
-						let img = $("<img>").addClass("h-180px").attr("src", image.url);
+						let img = $("<img>").addClass("h-180px w-100").attr("src", image.url);
 						imgDiv.append(img);
 					};
 				};
@@ -413,6 +476,80 @@ const partnerDetail = (function() {
 				
 				let span = $("<span>").addClass("h6 fw-light mb-0").html(facilities.name);
 				li.append(span);
+			};
+		},
+		
+		// 리뷰 그리기
+		drawReview: function(list) {
+			let reviewList = $("#reviewList");
+
+			for (let data of list) {
+				let flex = $("<div>").addClass("d-md-flex my-4");
+				reviewList.append(flex);
+	
+				let div = $("<div>").addClass("w-100");
+				flex.append(div);
+				
+				let flex2 = $("<div>").addClass("d-flex justify-content-between mt-1 mt-md-0");
+				div.append(flex2);
+	
+				let div2 = $("<div>");
+				flex2.append(div2);
+	
+				let h6 = $("<h6>").addClass("me-3 mb-0");
+				h6.append("<i class='fa-solid fa-user-pen'></i> ");
+				h6.append(data.user);
+				div2.append(h6);
+
+				let ul = $("<ul>").addClass("nav nav-divider small mb-2");
+				div2.append(ul);
+
+				let li1 = $("<li>").addClass("nav-item").html(data.create_date);
+				ul.append(li1);
+
+				let li2 = $("<li>").addClass("nav-item").html("후기 작성 수 : " + data.user_total_review + " 개");
+				ul.append(li2);
+
+				let score = $("<div>").addClass("icon-md rounded text-bg-warning fs-6").html(data.score_avg);
+				flex2.append(score);
+
+				let content = $("<p>").addClass("mb-2 space").html(data.content);
+				div.append(content);
+
+				if (data.imageList != null) {
+					let row = $("<div>").addClass("row g-4");
+					div.append(row);
+
+					for (let image of data.imageList) {
+						let col = $("<div>").addClass("col-4 col-sm-3 col-lg-2 w-150px h-100px");
+						row.append(col);
+
+						let img = $("<img>").addClass("rounded w-100 h-100").attr("src", image.url);
+						col.append(img);
+					};
+				};
+
+				if(data.reply != null) {
+					let div = $("<div>").addClass("my-4");
+					reviewList.append(div);
+
+					let flex = $("<div>").addClass("d-md-flex p-3 bg-light rounded-3");
+					div.action(flex);
+
+					let div2 = $("<div>").addClass("mt-2 mt-md-0");
+					flex.append(div2);
+
+					let h6 = $("<h6>").addClass("mb-1");
+					h6.append("<i class='fa-solid fa-hotel'></i> ");
+					div2.append(h6);
+
+					let p = $("<p>").addClass("mb-0").html(data.reply);
+					div2.append(p);
+				};
+
+				let hr = $("<hr>");
+				reviewList.append(hr);
+				
 			};
 		},
 	};

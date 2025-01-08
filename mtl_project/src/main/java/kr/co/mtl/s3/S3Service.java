@@ -56,5 +56,15 @@ public class S3Service {
 
         s3Client.deleteObject(deleteObjectRequest);
 	}
-	 
+	
+	//파일 추출
+	public String extractFilePathFromUrl(String url) {
+		
+		String bucketUrlPrefix = String.format("https://%s.s3.%s.amazonaws.com/", BUCKET, REGION);
+	    if (url.startsWith(bucketUrlPrefix)) {
+	        return url.substring(bucketUrlPrefix.length());
+	    }
+	    
+	    return null;
+	}
 }

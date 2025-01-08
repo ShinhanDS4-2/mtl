@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.partner.review.PartnerReviewMapper">
+	
+	<!-- 리뷰 검색 조건 -->
+	<sql id="reviewSql">
+		WHERE
+			r2.partner_idx = #{partner_idx}
+		<if test='reply_status == "Y"'>
+		AND r.reply IS NOT NULL
+		</if>
+		<if test='reply_status == "N"'>
+		AND r.reply IS NULL
+		</if>
+		<if test="score1 > 0">
+		AND	score_1 = #{score1}
+		</if>
+		<if test="score2 > 0">
+		AND	score_2 = #{score2}
+		</if>
+		<if test="score3 > 0">
+		AND	score_3 = #{score3}
+		</if>
+		<if test="score4 > 0">
+		AND	score_4 = #{score4}
+		</if>
+	</sql>
+	
+	<!-- 리뷰 리스트 -->
+	<select id="getReviewList" parameterType="HashMap">
+		SELECT
+			  r.idx AS review_idx
+			, r.content
+			, r.score_1
+			, r.score_2
+			, r.score_3
+			, r.score_4
+			, r.status
+			, DATE_FORMAT(r.create_date, '%Y-%m-%d') AS review_date
+			, (SELECT room_type FROM ROOM WHERE idx = r2.room_idx) AS room_type
+			, r.reply 
+			, r.status 
+			, r2.check_in_date
+			, r2.check_out_date
+			, (SELECT name FROM USER WHERE idx = r2.user_idx) AS name
+		FROM
+			REVIEW r
+		JOIN RESERVATION r2
+		ON r2.idx = r.reservation_idx
+		<include refid="reviewSql"></include>
+		ORDER BY r.create_date DESC, name
+	</select>
+
+	<!-- 리뷰 개수 -->
+	<select id="getReviewCnt" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM
+			REVIEW r
+		JOIN RESERVATION r2
+		ON r2.idx = r.reservation_idx
+		<include refid="reviewSql"></include>
+	</select>
+	
+	<!-- 이미지 리스트 -->
+	<select id="getReviewImageList" parameterType="HashMap">
+		SELECT
+			url
+		FROM
+			IMAGE
+		WHERE
+			mapping_idx = #{review_idx}
+		AND
+			type = 'V'
+	</select>
+	
+	<!-- 답변 달기 -->
+	<update id="registReviewReply" parameterType="HashMap">
+		UPDATE REVIEW
+		SET  
+			  reply = #{reply}
+			, reply_date = NOW()
+		WHERE
+			idx = #{review_idx}
+	</update>
+	
+	<!-- 후기 상태 업데이트 -->
+	<update id="updateReviewReply" parameterType="HashMap">
+		UPDATE REVIEW
+		SET status = 'N'
+		WHERE
+			idx = #{review_idx}
+	</update>
+	
+</mapper>

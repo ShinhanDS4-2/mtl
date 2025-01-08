@@ -66,7 +66,7 @@ const areaList = (function() {
 			"type" : locationType
 		};
 
-		// 페이징
+		// 페이징 START
 		let pageOption = {
 			limit: 8  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
@@ -85,7 +85,7 @@ const areaList = (function() {
 			param.offset = pageParam.offset;
 			param.limit = pageParam.limit;
 		};
-		// 페이징 끝
+		// 페이징 END
 		
 		$.ajax({
 			type: "POST", 
@@ -93,7 +93,7 @@ const areaList = (function() {
 			data: param,   // 호출 시 param값으로 넘겨줄 것 type: "R" or "A"
 			success: function(response) {   //  API 호출 결과 값이 response 에 들어있음	
 				_draw.drawLocationList(response.LocationList);
-				page.drawPage(response.LocationListCount);
+				page.drawPage(response.LocationListCount);  // 페이지번호 계산 및 렌더링 (=> 서버에서 반환한 전체 데이터 개수를 넣어주고 페이지네이션 그려주는 함수 호출해야함)
 				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.
 			},
 			error: function(xhr, status, error) {
@@ -113,8 +113,6 @@ const areaList = (function() {
 			} else if(locationType == "R") {
 				tab = $("#tab2"); 
 			}
-			
-			tab.empty();
 			
 			tab.empty(); // 기존 내용을 비워줌
  			 

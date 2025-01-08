@@ -42,7 +42,7 @@ public class LocationController {
 		Map<String, Object> result = new HashMap<>();
 		result = locationService.getLocationDetail(param);
 		return result;
-	}
+	} 
 	
 	/**
 	 * 랜덤 여행지 리스트
@@ -58,6 +58,7 @@ public class LocationController {
 		
 		return result;
 	}
+
 
 	/**
 	 * 여행지 추천 리스트
@@ -101,4 +102,31 @@ public class LocationController {
 		return result;
 	}
 
+	/**
+	 * 여행지 유무 확인
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/custom/check")
+	public Map<String, Object> checkCustomLocation(@RequestBody Map<String, Object> param) {
+		Map<String, Object> result = new HashMap<>();
+		
+		result = locationService.checkCustomLocation(param);
+		
+		return result;
+	}
+
+	/**
+	 * 저장된 여행지 추천 리스트
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/custom/save/list")
+	public Map<String, Object> getSavedCustomList(@RequestBody Map<String, Object> param) {
+		Map<String, Object> result = new HashMap<>();
+		
+		result = locationService.getSavedCustomList(param);
+		
+		return result;
+	}
 }

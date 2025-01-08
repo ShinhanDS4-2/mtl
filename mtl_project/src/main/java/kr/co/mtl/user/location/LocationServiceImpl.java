@@ -32,9 +32,9 @@ public class LocationServiceImpl implements LocationService {
 		int count = locationMapper.getLocationListCount(param);
 		
 		for(Map<String, Object> data : list) {  // 반복문 돌면서 data에는 여행지 정보, 사진, 키워드 데이터가 합쳐짐
-			param.put("location_idx", data.get("location_idx"));
+			param.put("location_idx", data.get("location_idx")); // param으로 location_idx를 넘겨줌
 			
-			Map<String, Object> img = locationMapper.getLocationImage(param); // param으로 location_idx를 넘겨줌
+			Map<String, Object> img = locationMapper.getLocationImage(param);
 			System.out.println("img: " + img);
 			data.put("image", img);
 			
@@ -155,6 +155,34 @@ public class LocationServiceImpl implements LocationService {
 		}
 		
 		result.put("list", nearLocationList);
+		
+		return result;
+	};
+	
+	/**
+	 * 여행지 추천 유무 확인
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> checkCustomLocation(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("result", locationMapper.checkCustomLocation(param));
+		
+		return result;
+	};
+
+	/**
+	 * 저장된 여행지 추천 리스트
+	 * @param param
+	 * @return
+	 */
+	public Map<String, Object> getSavedCustomList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("list", locationMapper.getSavedCustomList(param));
 		
 		return result;
 	};

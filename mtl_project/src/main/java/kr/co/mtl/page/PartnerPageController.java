@@ -7,36 +7,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/partner")
 public class PartnerPageController {
-	// booking
-	@GetMapping("/bookingdetail")
-	public String bookingdetail() {
-		return "partner/booking/bookingdetail";
+	
+	// 예약 리스트
+	@GetMapping("/reservation/detail")
+	public String reservationDetail() {
+		return "partner/reservation/reservationDetail";
 	}
 	
-	@GetMapping("/bookinglist")
-	public String bookinglist() {
-		return "partner/booking/bookinglist";
+	// 예약 상세
+	@GetMapping("/reservation/list")
+	public String reservationList() {
+		return "partner/reservation/reservationList";
 	}
 	
-	// customer	
+	// 1:1 문의
 	@GetMapping("/question")
 	public String question() {
 		return "partner/customer/question";
 	}
 	
-	@GetMapping("/questionreply")
-	public String questionreply() {
-		return "partner/customer/questionreply";
+	// 1:1 문의 답변
+	@GetMapping("/question/reply")
+	public String questionReply() {
+		return "partner/customer/questionReply";
 	}
 	
-	@GetMapping("/reviews")
-	public String reviews() {
-		return "partner/customer/reviews";
-	}
-	
-	@GetMapping("/reviews2")
-	public String reviews2() {
-		return "partner/customer/reviews2";
+	// 후기
+	@GetMapping("/review")
+	public String review() {
+		return "partner/customer/review";
 	}
 	
 	// home
@@ -45,43 +44,44 @@ public class PartnerPageController {
 		return "partner/home/dashboard";
 	}
 	
-	// hotel
-	@GetMapping("/regist")
+	// 숙소 등록
+	@GetMapping("/accomodation")
 	public String hotelregist() {
-		return "partner/hotel/regist";
+		return "partner/accomodation/regist";
 	}
 	
-	@GetMapping("/roomregist")
-	public String roomregist() {
-		return "partner/hotel/roomregist";
+	// 객실 등록
+	@GetMapping("/accomodation/room")
+	public String room() {
+		return "partner/accomodation/room";
 	}
 	
-	// otherPages
-	@GetMapping("/forgotpassword")
-	public String forgotpassword() {
-		return "partner/otherPages/forgotpassword";
-	}
 	@GetMapping("/mypage")
 	public String mypage() {
-		return "partner/otherPages/mypage";
+		return "partner/mypage";
 	}
+	
 	@GetMapping("/notice")
 	public String notice() {
 		return "partner/otherPages/notice";
 	}
+	
+	// 로그인
 	@GetMapping("/login")
 	public String login() {
-		return "partner/otherPages/login";
+		return "partner/login";
 	}
+	
+	// 회원가입
 	@GetMapping("/join")
 	public String join() {
-		return "partner/otherPages/join";
+		return "partner/join";
 	}
 	
 	// payout
-	@GetMapping("/payoutlist")
+	@GetMapping("/payout/list")
 	public String payoutlist() {
-		return "partner/payout/payoutlist";
+		return "partner/payout/payoutList";
 	}
 }
 

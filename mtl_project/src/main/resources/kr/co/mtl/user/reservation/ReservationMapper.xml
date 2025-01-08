@@ -23,4 +23,5 @@
 			r.idx = #{reservation_idx}
 		AND r.user_idx = #{user_idx}
 	</select>
+	
 </mapper>

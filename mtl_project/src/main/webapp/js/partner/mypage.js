@@ -1,8 +1,7 @@
 const info = (function() {
-console.log(1177);
+
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
-		_menuActive();
 		_setInfo();
 		_eventInit();
 	};
@@ -29,117 +28,196 @@ console.log(1177);
 				_event.updateInfo();
 			} else if(action == "changePassword") {
 				_event.changePassword();
-			} else if(action == "withdraw") {
-				_event.withdraw();
+			} else if(action == "updateBusinessInfo") {
+				_event.updateBusinessInfo();
 			};
 		};
 	};
 	
 	// 이벤트
 	let _event = {
-		// 사용자 정보 수정
+		// 마이페이지 회원 정보 수정
 		updateInfo: function() {
             const formData = {
                 partnerIdx: $("#partnerIdx").val(),
                 name: $("#name").val(),
-                phone: $("#phone").val(),
+                phone: $("#phone").val()
             };
             
-        // 유효성 검사
-	    if (!formData.phone) {
-	        alert("연락처를 입력해주세요.");
-	        return;
-	    }
-		if (!/^010-\d{3,4}-\d{4}$/.test(formData.phone)) {
-		    alert("올바른 연락처를 입력하세요. 형식은 010-0000-0000입니다.");
-		    return;
-		}
-		
-		// 서버로 데이터 전송
-            comm.send("/partner/update", formData, "POST", function(response) {
-                if (response.result == true) {
-                    alert("내 정보 수정이 완료되었습니다.");
-                    // 마이페이지 수정 성공 시 페이지 이동x
-                    location.reload();
-                } else {
-                    alert("내 정보 수정에 실패했습니다. 다시 시도해주세요.");
-                }
-            }, function(error) {
-                console.error("내 정보 수정 중 오류:", error);
-                alert("내 정보 수정 중 오류가 발생했습니다. 다시 시도해주세요.");
-            });
+	        // 유효성 검사
+		    if (!formData.phone) {
+		    	modal.alert({
+		    		"content" : "연락처를 입력해주세요."
+		    	});
+		        return;
+		    }
+			if (!/^010-\d{3,4}-\d{4}$/.test(formData.phone)) {
+				modal.alert({
+		    		"content" : "올바른 연락처를 입력하세요.<br>형식은 010-0000-0000입니다."
+		    	});	
+			    return;
+			}
+			
+			// 서버로 데이터 전송
+        	modal.confirm({
+        		"content" : "정보를 수정하시겠습니까?",
+        		"confirmCallback" : function() {
+		            comm.send("/partner/update", formData, "POST", function(response) {
+		                if (response.result == true) {
+		                	modal.alert({
+					    		"content" : "내 정보 수정이 완료되었습니다.",
+					    		"confirmCallback" : function() {
+				                    location.reload();
+					    		}
+					    	});
+		                } else {
+		                	modal.alert({
+					    		"content" : "내 정보 수정에 실패했습니다. 다시 시도해주세요."
+					    	});
+		                }
+		            }, function(error) {
+		            	modal.alert({
+				    		"content" : "내 정보 수정 중 오류가 발생했습니다. 다시 시도해주세요."
+				    	});
+		            });
+	    		} 
+        	});
         },
         
         
         // 비밀번호 변경
         changePassword: function() {
-        	const formData = {
-        		password: $("#password").val(),
-                newPassword: $("#newPassword").val(),
-                confirmPassword: $("#confirmPassword").val(),
-        	};
-        
-        // 유효성 검사
-        if (!formData.password) {
-            alert("기존 비밀번호를 입력해주세요.");
-            return;
-        }
-        if (!formData.newPassword) {
-            alert("새 비밀번호를 입력해주세요.");
-            return;
-        }
-        if (formData.newPassword !== formData.confirmPassword) {
-            alert("새 비밀번호와 일치하지 않습니다.");
-            return;
-        }
-        	
-        // 서버로 데이터 전송
-            comm.send("/partner/changePassword", formData, "POST", function(response) {
-                if (response.result) {
-                    alert(response.message);
-                    location.href = "/mtl/partner/mypage";
-                } else {
-                    alert(response.message);
-                }
-            }, function(error) {
-                console.error("비밀번호 변경 중 오류:", error);
-                alert("비밀번호 변경 중 오류가 발생했습니다. 다시 시도해주세요.");
-            });
-        
-        },
-        
-        
-        // 회원탈퇴
-        withdraw: function() {
-        	comm.send("/user/withdraw", null, "POST", function(response) {
- 				if (response.status == true) {
-        			alert("회원 탈퇴 되셨습니다. 감사합니다!");
-        				location.href = "/mtl/";
-				} else {
-        			alert("회원 탈퇴에 실패하셨습니다.");
-    			}
-    		}, function(error) {
-					alert("회원 탈퇴 중 오류가 발생했습니다. 다시 시도해주세요.");
+        	modal.confirm({
+        		"content" : "비밀번호를 변경하시겠습니까?",
+        		"confirmCallback" : function() {
+		        	const formData = {
+		        		password: $("#password").val(),
+		                newPassword: $("#newPassword").val(),
+		                confirmPassword: $("#confirmPassword").val(),
+		        	};
+		        
+			        // 유효성 검사
+			        if (!formData.password) {
+						alert("기존 비밀번호를 입력해주세요.");
+			            return;
+			        }
+			        if (!formData.newPassword) {
+						alert("새 비밀번호를 입력해주세요.");
+			            return;
+			        }
+			        if (formData.newPassword !== formData.confirmPassword) {
+			            alert("새 비밀번호와 일치하지 않습니다.");
+			            return;
+			        }
+			        	
+			        // 서버로 데이터 전송
+		            comm.send("/partner/changePassword", formData, "POST", function(response) {
+		                if (response.result) {
+		                	modal.alert({
+		                		"content" : response.message,
+		                		"confirmCallback" : function() {
+				                    location.href = "/mtl/partner/mypage";
+		                		}
+		                	});
+		                } else {
+		                	modal.alert({
+		                		"content" : response.message
+		                	});
+		                }
+		            }, function(error) {
+		            	modal.alert({
+		            		"content" : "비밀번호 변경 중 오류가 발생했습니다.<br>다시 시도해주세요."
+		            	});
+		            });
+        		}
         	});
-        
         },
-        
-	};
-	
-	function _setInfo() {
+    	
+    	// 마이페이지 업체 정보 수정
+    	updateBusinessInfo: function() {
+    		modal.confirm({
+    			"content" : "정보를 수정하시겠습니까?",
+				"confirmCallback" : function() {
+					const formData = {
+						partnerIdx: $("#partnerIdx").val(),
+			        	account_bank: $("#account_bank").val(),
+			        	account_number: $("#account_number").val(),
+					};
+		
+					// 유효성 검사
+					if (!formData.account_bank) {
+						modal.alert({
+		            		"content" : "정산계좌 은행을 선택해주세요."
+		            	});
+				        return;
+				    }
+				    if (!formData.account_number) {
+				    	modal.alert({
+		            		"content" : "계좌번호를 입력해주세요."
+		            	});
+				        return;
+				    }
+			
+					// 서버로 데이터 전송
+				    comm.send("/partner/businessupdate", formData, "POST", function(response) {
+				        if (response.result) {
+				        	modal.alert({
+			            		"content" : "업체 정보 수정이 완료되었습니다.",
+			            		"confirmCallback": function() {
+						            location.reload();
+			            		}
+			            	});
+				        } else {
+				        	modal.alert({
+			            		"content" : "업체 정보 수정에 실패했습니다. 다시 시도해주세요."
+			            	});
+				        }
+				    }, function(error) {
+				    	modal.alert({
+		            		"content" : "업체 정보 수정 중 오류가 발생했습니다. 다시 시도해주세요."
+		            	});
+				    });
+				}    			
+    		});
+		},	
+    };
+    
+    // 정보 세팅
+    function _setInfo() {
 		comm.send("/partner/info", null, "POST", function(response) {
+			// select
+			let element = document.getElementById("account_bank");
+			let choices = "";
+		    if (element) {
+		        choices = new Choices(element, {
+		            searchEnabled: false, 
+		        });
+		    };
+		    
+		    if (response.account_bank != null) {
+		        // 선택 값 변경
+		        choices.setChoiceByValue(response.account_bank);
+			};
+			
 			$("#name").val(response.name);
 			$("#email").val(response.email);
 			$("#phone").val(response.phone);
+			
+			$("#businessName").val(response.business_name);
+			$("#business_number").val(response.business_number);
+			$("#address").val(response.address);
+			$("#business_phone").val(response.business_phone);
+			$("#account_bank").val(response.account_bank);
+			$("#account_number").val(response.account_number);
+			
+			if (response.password_update_date != null) {
+				$("#passwordUpdateDate").html(response.password_update_date);
+			} else {
+				$("#passwordUpdateDate").html("-");
+			};
         }, function(error) {
         
         });
-	};
-     
-	
-	// 메뉴 active
-	function _menuActive() {
-		$("#menuInfo").addClass("active");
 	};
 	
 	return {

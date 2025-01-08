@@ -31,4 +31,10 @@ public interface LocationMapper {
 
 	/* 여행지 추천 저장 */
 	int insertCustomLocation(Map<String, Object> param);
+
+	/* 여행지 추천 유무 확인 */
+	int checkCustomLocation(Map<String, Object> param);
+
+	/* 저장된 여행지 추천 리스트 */
+	List<Map<String, Object>> getSavedCustomList(Map<String, Object> param);
 }

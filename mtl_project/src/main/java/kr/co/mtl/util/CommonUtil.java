@@ -27,7 +27,7 @@ public class CommonUtil {
 		}
 	}
 	
-	/**
+	/** 
 	 * 랜덤 문자열 생성
 	 * @param len
 	 * @return 랜덤 문자열

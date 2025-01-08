@@ -36,7 +36,7 @@
 				<li class="nav-item ms-3 dropdown"><a
 					class="text-dark fw-bold p-1" href="/mtl/partner/hotelregist" id="profileDropdown"
 					role="button" data-bs-auto-close="outside" data-bs-display="static"
-					data-bs-toggle="dropdown" aria-expanded="false"> ${login_partner_name } 님 </a>
+					data-bs-toggle="dropdown" aria-expanded="false">${login_partner_name } 님 </a>
 					<ul
 						class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
 						aria-labelledby="profileDropdown">
@@ -62,8 +62,6 @@
 								class="bi bi-power fa-fw me-2"></i>로그아웃</a></li>
 					</ul></li>
 				<!-- 프로필 드롭다운 END -->
-
-
 			</ul>
 			<!-- Top bar right END -->
 		</div>

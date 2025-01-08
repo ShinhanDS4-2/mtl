@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.mtl.util.CommonUtil;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@Slf4j
 @RequestMapping("/api/partner")
 public class PartnerLoginController {
 
@@ -54,9 +52,6 @@ public class PartnerLoginController {
         CommonUtil.checkIsNull(param, "email");
         CommonUtil.checkIsNull(param, "password");
 
-        // 디버깅용 파라미터 출력
-        log.info("Login parameters =============> " + param);
-
         // 로그인 처리
         Map<String, Object> result = loginService.login(param, request);
 
@@ -77,12 +72,8 @@ public class PartnerLoginController {
         if (session.getAttribute("login_partner_idx") != null) {
             session.invalidate(); // 세션 무효화
         }
-        
-//        return result;
     }
  
-    
-    
     /**
      * 회원가입 처리
      * @param param 회원가입 요청 파라미터
@@ -98,7 +89,6 @@ public class PartnerLoginController {
         return result;
     }
     
-    
     /**
      * 회원가입 이메일 중복 체크
      */
@@ -111,7 +101,6 @@ public class PartnerLoginController {
 
         return result;
     }
-    
     
     /**
      * 내 정보 수정 처리
@@ -130,7 +119,6 @@ public class PartnerLoginController {
         return result;
     }
 
-    
     /**
      * 비밀번호 변경
      */
@@ -146,8 +134,23 @@ public class PartnerLoginController {
         return result;
     }
     
+    /**
+     * 업체 정보 수정
+     */
+    @PostMapping("/businessupdate")
+    public Map<String, Object> updateBusiness(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
+        HttpSession session = request.getSession();
 
+        // 세션에서 사용자 ID 가져오기
+        param.put("partnerIdx", session.getAttribute("login_partner_idx"));
 
-    
+        Map<String, Object> result = new HashMap<>();
+
+        // Service 호출
+        boolean isBusinessUpdated = loginService.updateBusinessInfo(param, session);
+        result.put("result", isBusinessUpdated);
+
+        return result;
+    }
     
 }

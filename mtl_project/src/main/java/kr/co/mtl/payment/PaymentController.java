@@ -30,4 +30,17 @@ public class PaymentController {
 		
 		return result;
   	}
+	
+	/**
+	 * 예약 취소
+	 * @param param
+	 * @return
+	 */
+	@PostMapping("/refund")
+	public Map<String, Object> cancelReservation(@RequestBody Map<String, Object> param) {
+		
+		Map<String, Object> result = paymentService.cancelReservation(param);
+		
+		return result;
+	}
 }
