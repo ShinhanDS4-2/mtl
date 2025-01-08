@@ -45,8 +45,6 @@ public class AccomodationServiceImpl implements AccomodationService{
 			// 정보 업데이트
 			accomodationMapper.updateAccomodationInfo(param);
 			
-			System.out.println("param값은?ㅁㅁ??ㅁ?ㅁㅁ?ㅁ?");
-			System.out.println(param);
 			/**
 			 * 키워드와 시설은 매핑테이블을 삭제 후 재등록
 			 */

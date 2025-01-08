@@ -65,11 +65,11 @@
 							<div class="card-body col-6 pb-0">
 								<div class="mb-3">
 									<label class="form-label">숙소명</label>
-									<input type="text" class="form-control" id="partnerName" disabled="disabled">
+									<input type="text" class="form-control" id="partnerName" readonly>
 								</div>
 								<div class="mb-3">
 									<label class="form-label">사업자 연락처</label>
-									<input type="text" class="form-control" id="businessPhone" disabled="disabled">
+									<input type="text" class="form-control" id="businessPhone" readonly>
 								</div>
 								<div class="mb-3">
 									<label class="form-label">체크인 시간</label>
@@ -82,7 +82,7 @@
 										<label class="h6 fw-normal mb-0 form-label">숙소 유형</label>
 										<div class="mt-2">
 											<select class="form-select" id="partnerType">
-												<option value="" selected disabled="disabled">선택</option>
+												<option value="" selected disabled>선택</option>
 												<option value="HOTEL">호텔</option>
 												<option value="MOTEL">모텔</option>
 												<option value="GUESTHOUSE">게스트하우스</option>
@@ -95,7 +95,7 @@
 										<label class="h6 fw-normal mb-0 form-label">지역</label>
 										<div class="mt-2">
 											<select class="form-select" id="partnerArea">
-												<option value="" selected disabled="disabled">선택</option>
+												<option value="" selected disabled>선택</option>
 												<option value="SEOUL">서울</option>
 												<option value="GANGNEUNG">강릉</option>
 												<option value="YEOSU">여수</option>
@@ -108,7 +108,7 @@
 
 								<div class="mb-3">
 									<label class="form-label">숙소 연락처</label>
-									<input type="text" class="form-control"  id="partnerPhone" disabled="disabled">
+									<input type="text" class="form-control"  id="partnerPhone" readonly>
 								</div>
 								<div>
 									<label class="form-label">체크아웃 시간</label> 
