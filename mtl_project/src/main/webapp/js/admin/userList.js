@@ -1,17 +1,99 @@
-const join = (function() {
+const userList = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
 		_eventInit();
+		_loadUserList(); // 사용자 목록 초기화
 	};
 
 	// 이벤트 초기화 
 	function _eventInit() {
-		let evo = $("[data-src='join'][data-act]").off();
+		let evo = $("[data-src='userList'][data-act]").off();
 		evo.on("click", function(e) {
 			_eventAction(e);
 		});
+		
+		// 검색 버튼
+		$("#searchButton").on("click", function() {
+            _loadUserList();
+        });
 	};
+	
+	// 사용자 목록
+	function _loadUserList() {
+		const status = $("input[name='flexRadioDefault']:checked").val(); // 선택된 상태 값
+        const searchType = $("#searchType").val(); // 검색 타입
+        const searchKeyword = $("#searchKeyword").val(); // 검색어
+		
+        // 검색 조건
+        const filter = {
+            status: status,
+            searchType: searchType,
+            searchKeyword: searchKeyword
+        };
+	
+        comm.send("/admin/list", filter, "POST", function(response) {
+            if (response.userList) {
+                _renderUserList(response.userList);
+                $(".totalCount").text(response.totalCount); // 사용자 수 업데이트
+            } else {
+                alert("사용자 목록을 불러오지 못했습니다.");
+            }
+        }, function(error) {
+            console.error("사용자 목록 로드 오류:", error);
+        });
+    };
+	
+	
+	// 사용자 목록 렌더링
+    function _renderUserList(userList) {
+        const tableBody = $("#userList"); // 테이블 tbody의 ID
+        tableBody.empty(); // 기존 데이터 초기화
+
+        userList.forEach(user => {
+        	let statusClass = user.user_status == 'A' ? 'bg-success text-success' : 'bg-danger text-danger';
+        	let statusText = user.user_status == 'A' ? '정상' : '탈퇴';
+        	
+            let row = 
+	            `<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+					<!-- Data item -->
+					<div class="col">
+						<small class="d-block d-sm-none">이메일</small>
+						<h6 class="ms-1 mb-0 fw-normal">${user.email}</h6>
+					</div>
+					<!-- Data item -->
+					<div class="col">
+						<small class="d-block d-sm-none">이름</small>
+						<h6 class="ms-1 mb-0 fw-normal">${user.name}</h6>
+					</div>
+					<!-- Data item -->
+					<div class="col">
+						<small class="d-block d-sm-none">연락처</small>
+						<h6 class="ms-1 mb-1 fw-light">${user.phone}</h6>
+					</div>
+					<!-- Data item -->
+					<div class="col">
+						<small class="d-block d-sm-none">가입일</small>
+						<h6 class="ms-1 mb-1 fw-light">${user.create_date}</h6>
+					</div>
+					<!-- Data item -->
+					<div class="col">
+						<small class="d-block d-sm-none">상태</small>
+						<div class="badge bg-success bg-opacity-10 ${statusClass}">${statusText}</div>
+					</div>
+					<!-- Data item -->
+					<div class="col">
+						<small class="d-block d-sm-none">상세보기</small>
+						<div class="ms-1 col">
+							<a href="admin/user/detail?idx=${user.user_idx}" class="btn btn-sm btn-light mb-0">상세보기</a>
+						</div>
+					</div>
+				</div>`
+
+            tableBody.append(row);
+        });
+    }
+	
 	
 	// 이벤트 분기
 	function _eventAction(e) {

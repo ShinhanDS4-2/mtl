@@ -1,5 +1,6 @@
 package kr.co.mtl.user.login;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -31,5 +32,10 @@ public interface LoginMapper {
     // 회원탈퇴
     int deactivateUser(Map<String, Object> param);
 
-
+    // 사용자 정보 가져오기 list admin 사용자 관리에서 사용
+    List<Map<String, Object>> getAllUser(Map<String, Object> param);
+    
+    // 사용자 정보 가져오기2 admin 사용자 관리에서 사용 views/user/userDetail.jsp에서 사용
+    Map<String, Object> getUserDetail(Map<String, Object> param);
+    
 }

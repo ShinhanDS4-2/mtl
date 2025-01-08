@@ -55,5 +55,5 @@ public interface AdminLoginService {
      */
     Map<String, Object> changePassword(Map<String,Object> param) throws Exception;
     
-
+    
 }

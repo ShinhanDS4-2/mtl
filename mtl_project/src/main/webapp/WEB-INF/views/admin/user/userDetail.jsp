@@ -39,19 +39,15 @@
 					<div class="card-body col-6">
 						<div class="mb-3">
 							<label class="form-label">이메일</label> 
-							<input type="text" class="form-control" value="222 555 666" readonly>
+							<input type="text" class="form-control" id="email" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">생년월일</label>
-							<input type="text" class="form-control" value="1990-01-01" readonly>
+							<input type="text" class="form-control" id="birth" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">가입일</label>
-							<input type="text" class="form-control" value="2024-12-01" readonly>
-						</div>
-						<div class="mb-3">
-							<label class="form-label">상태</label>
-							<input type="text" class="form-control" value="정상" readonly>
+							<input type="text" class="form-control" id="create_date" readonly>
 						</div>
 					</div>
 					<!-- 왼쪽 카드 END -->
@@ -60,15 +56,15 @@
 					<div class="card-body col-6">
 						<div class="mb-3">
 							<label class="form-label">이름</label>
-							<input type="text" class="form-control" value="가나다" readonly>
+							<input type="text" class="form-control" id="name" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">연락처</label>
-							<input type="text" class="form-control" value="010-1234-5678" readonly>
+							<input type="text" class="form-control" id="phone" readonly>
 						</div>
 						<div class="mb-3">
-							<label class="form-label">구분</label>
-							<input type="text" class="form-control" value="일반 or 관리자" readonly>
+							<label class="form-label">상태</label>
+							<input type="text" class="form-control" id="user_status" readonly>
 						</div>
 					</div>
 					<!-- 오른쪽 카드 END -->
@@ -190,5 +186,12 @@
 </main>
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
+
+<!-- page script -->
+<script src="/mtl/js/admin/userDetail.js"></script>
+<script type="text/javascript">
+	userDetail.init();
+</script>
+
 </body>
 </html>

@@ -2,9 +2,8 @@ package kr.co.mtl.user.login;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -213,5 +212,21 @@ public class LoginServiceImpl implements LoginService {
         int rowsAffected = loginMapper.deactivateUser(param);
         return rowsAffected > 0;
     }
-
+    
+    
+    /**
+     * 사용자 정보 가져오기 list admin 사용자 관리에서 사용
+     */
+    @Override
+    public List<Map<String, Object>> getAllUser(Map<String, Object> param) throws Exception {
+        return loginMapper.getAllUser(param);
+    }
+    
+    
+    /**
+     * 사용자 정보 가져오기2 admin 사용자 관리에서 사용 views/user/userDetail.jsp에서 사용
+     */
+    public Map<String, Object> getUserDetail(Map<String, Object> param) throws Exception {
+        return loginMapper.getUserDetail(param);
+    }
 }

@@ -27,5 +27,6 @@ public interface AdminLoginMapper {
     
     // 마이페이지 현재 비밀번호 비교 확인
     Map<String, Object> getPasswordCheck(Map<String, Object> param);
+    
 
 }
