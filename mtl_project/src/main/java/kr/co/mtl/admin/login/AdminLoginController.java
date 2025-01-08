@@ -1,6 +1,7 @@
 package kr.co.mtl.admin.login;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.co.mtl.user.login.LoginService;
 import kr.co.mtl.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,7 +25,10 @@ public class AdminLoginController {
 
     @Autowired
     private AdminLoginService loginService;
-
+    
+    @Autowired
+    private LoginService userLoginService; // 사용자 정보 가져오기 list가져와야 해서 추가
+    
     /**
      * 사용자 정보 가져오기
      * @param param 사용자 정보 요청 파라미터
@@ -146,7 +151,50 @@ public class AdminLoginController {
         return result;
     }
     
+    /**
+     * 사용자 정보 가져오기 list
+     * 사용자 LoginMapper.java -> LoginMapper.xml에서 사용자 목록 조회 SQL 생성 -> LoginService.java를 통해 데이터 가져옴
+     * AdminLoginController.java 에서 LoginService를 호출 USER 정보를 가져옴
+     * userList.js에 AJAX 요청 전송 -> userList.jsp
+     */
+    @PostMapping("/list")
+    public Map<String, Object> getUserList(@RequestParam Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            // User의 LoginService를 사용해 데이터 가져오기
+            List<Map<String, Object>> userList = userLoginService.getAllUser(param);
+            
+            // 전체 사용자 수
+            int totalCount = userList.size();
+            
+            result.put("userList", userList);
+            result.put("totalCount", totalCount);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("error", "사용자 목록 조회 중 오류가 발생했습니다.");
+        }
+        return result;
+    }
     
     
+    /**
+     * 사용자 정보 가져오기2
+     * admin 사용자 관리에서 사용 views/user/userDetail.jsp에서 사용
+     */
+    @PostMapping("/detail")
+    public Map<String, Object> getUserDetail(@RequestParam Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            // 사용자 상세 정보 조회
+            Map<String, Object> userDetail = userLoginService.getUserDetail(param);
+
+            // 결과에 사용자 정보 추가
+            result.put("userDetail", userDetail);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("error", "사용자 상세 정보 조회 중 오류가 발생했습니다.");
+        }
+        return result;
+    }
     
 }

@@ -78,5 +78,44 @@
 	        leave_date = NOW()
 	    WHERE idx = #{userIdx}
 	</update>
-
+	
+	<!-- 사용자 정보 가져오기 list admin 사용자 관리에서 사용 -->
+	<select id="getAllUser" parameterType="map" resultType="map">
+	    SELECT 
+	        idx AS user_idx,
+	        email,
+	        name,
+	        phone,
+	        DATE_FORMAT (create_date, "%Y-%m-%d") AS create_date,
+	        user_status,
+	        birth
+	    FROM USER
+	    <where>
+		    <if test="status != null and status != ''">
+		        AND user_status = #{status}
+		    </if>
+		    <if test="searchType == 'name' and searchKeyword != null and searchKeyword != ''">
+		        AND name LIKE CONCAT('%', #{searchKeyword}, '%')
+		    </if>
+		    <if test="searchType == 'email' and searchKeyword != null and searchKeyword != ''">
+		        AND email LIKE CONCAT('%', #{searchKeyword}, '%')
+		    </if>
+		</where>
+	    ORDER BY create_date DESC
+	</select>
+	
+	<!-- 사용자 정보 가져오기2 admin 사용자 관리에서 사용 views/user/userDetail.jsp에서 사용 -->
+	<select id="getUserDetail" parameterType="map" resultType="map">
+        SELECT 
+            idx AS user_idx,
+            email,
+            name,
+            birth,
+            phone,
+            DATE_FORMAT (create_date, "%Y-%m-%d") AS create_date,
+            user_status
+        FROM USER
+        WHERE idx = #{userIdx}
+    </select>
+    
 </mapper>
