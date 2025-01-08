@@ -43,7 +43,7 @@
 										</div>
 										<!-- 비밀번호 찾기 -->
 										<div class="mb-1 d-sm-flex justify-content-center small">
-											<a href="javascript:;" class="text-secondary" data-bs-toggle="modal" data-bs-target="#findPwModal">비밀번호 찾기</a>
+											<a href="javascript:;" class="text-secondary" data-bs-toggle="modal" data-bs-target="#findPwModal" data-src="login" data-act="clickFindModal">비밀번호 찾기</a>
 										</div>
 										<!-- 회원가입 -->
 										<div class="mb-4 d-sm-flex justify-content-center small">
@@ -93,7 +93,7 @@
 							<label for="findPwName">사업자명</label>
 						</div>
 						<div class="d-grid gap-2 mt-3">
-							<button class="btn btn-primary px-4 mb-0 flex-shrink-0">임시 비밀번호 발송</button>
+							<button class="btn btn-primary px-4 mb-0 flex-shrink-0" data-src="login" data-act="clickSendMail">임시 비밀번호 발송</button>
 						</div>
 					</div>
 				</div>
