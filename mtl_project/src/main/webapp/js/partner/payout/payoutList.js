@@ -18,7 +18,7 @@ const payout = (function() {
 		let param = { // ajax로 넘겨줄 data값 변수 선언
 			"calculate_date_start" : '', 
 			"calculate_date_end" : '',
-			"calculate_stauts" : ''
+			"calculate_stauts" : ''     
 		};  // Ajax 요청 파라미터
 
 		// 검색 버튼이 클릭된 경우 조건 추가

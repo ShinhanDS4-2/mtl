@@ -77,7 +77,7 @@
 							<label class="h6 fw-normal mb-0">지역</label>
 							<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 								<select id="searchLocationArea" class="form-select js-choice">
-									<option value="" disabled="disabled" selected="selected">선택</option>
+									<option value="" disabled="disabled" selected="selected">전체</option>
 									<option value="SEOUL">서울</option>
 									<option value="GANGNEUNG">강릉</option>
 									<option value="YEOSU">여수</option>
@@ -85,7 +85,7 @@
 									<option value="JEJU">제주</option>
 								</select>
 							</div>
-						</div>
+						</div> 
 						<!-- 검색어 입력 input -->
 						<div class="col-6">
 							<label class="form-label">-</label>
@@ -94,11 +94,11 @@
 
 						<!-- 초기화/검색 button -->
 						<div class="d-sm-flex justify-content-end border-top pt-3">
-							<button type="reset" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
+							<button type="button" class="btn btn-primary-soft mb-0 ms-2" onclick="window.location.reload();">초기화</button>
 							<button id="searchButton" type="button" class="btn btn-primary mb-0 ms-2"
 							 	data-src="locationList" data-act="clickSearchButton">검색</button>
-						</div>
-					</form>
+						</div>  
+					</form>    
 				</div>
 			</div>
 			<!-- 검색 필터 설정 END -->
@@ -106,13 +106,15 @@
 			<!-- 여행지 List 상단 Tab -->
 			<div class="row g-4 justify-content-between align-items-center mb-2">
 				<div class="col-md-6 col-lg-6">
-					<h6 class="mb-1" id="locationListCount">총 1654건</h6>  <!-- js에서 값 변경 -->
+					<h6 class="mb-1" id="locationListCount">총 00건</h6>  <!-- js에서 값 변경 -->
 				</div>
+				<!-- 엑셀버튼 제거
 				<div class="col-md-6 col-lg-6 d-flex justify-content-end">
 					<div class="mb-sm-0 ms-2 d-flex justify-content-center">
 						<a href="#" class="btn btn-dark-soft mb-0 border-0"><i class="fa-solid fa-download"></i></a>
 					</div>
 				</div>
+				 -->
 			</div>
 
 			<!-- 사용자 List START -->
@@ -252,7 +254,7 @@
 							</div>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="categoryType" id="restaurant" value="R">
-								<label class="form-check-label" for=""restaurant"">맛집</label>
+								<label class="form-check-label" for="restaurant">맛집</label>
 							</div>
 						</div>
 					</div>
@@ -274,7 +276,8 @@
 							</div>
 							<div class="col-2">
 								<div class="d-grid gap-2">
-									<input class="btn btn-primary-soft" type="button" id="findAddress" data-src="locationList" data-act="findAddress" value="주소 찾기">
+									<input class="btn btn-primary-soft" type="button" id="findAddress" 
+										data-src="locationList" data-act="findAddress" value="주소 찾기">
 								</div>
 							</div>
 						</div>
