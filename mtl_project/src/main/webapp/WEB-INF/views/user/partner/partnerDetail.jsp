@@ -259,7 +259,7 @@
 							</div>
 						</div>	
 						<div class="d-grid gap-2">
-							<button class="btn btn-primary-soft" type="button" data-bs-toggle="modal" data-bs-target="#qnaModal">문의하기</button>
+							<button class="btn btn-primary-soft" type="button" data-bs-toggle="modal" data-bs-target="#qnaModal"  data-src="partnerDetail" data-act="clickQnaModal">문의하기</button>
 						</div>	
 					</div>
 				</div>	
@@ -357,10 +357,10 @@ About hotel END -->
 							<label for ="qnaTitle">제목</label>
 						</div>
 						<div class="d-flex mt-1">
-							<textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false"></textarea>
+							<textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false" id="qnaContent"></textarea>
 						</div>
 						<div class="d-grid gap-2 mt-3">
-							<button class="btn btn-sm btn-primary-soft px-4 mb-0 flex-shrink-0"><i class="fas fa-paper-plane fs-5"></i></button>
+							<button class="btn btn-sm btn-primary-soft px-4 mb-0 flex-shrink-0" data-src="partnerDetail" data-act="clickQuestion"><i class="fas fa-paper-plane"></i> 전송</button>
 						</div>
 					</div>
 				</div>
