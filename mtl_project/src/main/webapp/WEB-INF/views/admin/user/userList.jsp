@@ -61,7 +61,7 @@
 
 									<!-- 중복확인 버튼 -->
 									<div class="col-4 d-grid gab-2">
-										<button type="button" class="btn btn-secondary" data-src="join" data-act="clickEmailCheck">중복 확인</button>
+										<button type="button" class="btn btn-secondary" data-src="userList" data-act="clickEmailCheck">중복 확인</button>
 									</div>
 								</div>
 
@@ -80,7 +80,7 @@
 						<!-- 확인/취소 button -->
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-primary" data-src="join" data-act="clickJoin">확인</button>
+							<button type="button" class="btn btn-primary" data-src="userList" data-act="clickJoin">확인</button>
 						</div>
 					</div>
 				</div>
@@ -95,24 +95,24 @@
 				</div>
 				<!-- Card body START -->
 				<div class="card-body">
-					<form class="row g-4 align-items-center">
+					<div class="row g-4 align-items-center">
 						<!-- Radio items -->
 						<div class="col-12">
 							<label class="form-label">상태</label>
 							<div class="d-sm-flex">
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked value="">
 									<label class="form-check-label" for="flexRadioDefault1">전체</label>
 								</div>
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="A">
 									<label class="form-check-label" for="flexRadioDefault2">정상</label>
 								</div>
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="L">
 									<label class="form-check-label" for="flexRadioDefault3">탈퇴</label>
 								</div>
 							</div>
@@ -131,15 +131,15 @@
 						<!-- 검색어 입력 input -->
 						<div class="col-6">
 							<label class="form-label"></label>
-							<input type="text" class="form-control" placeholder="검색어를 입력하세요">
+							<input type="text" class="form-control" id="searchKeyword" placeholder="검색어를 입력하세요">
 						</div>
 
 						<!-- 초기화/검색 button -->
 						<div class="d-sm-flex justify-content-end border-top pt-3">
-							<button type="button" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
-							<button type="button" class="btn btn-primary mb-0 ms-2">검색</button>
+							<button type="button" class="btn btn-primary-soft mb-0 ms-2" onclick="window.location.reload()">초기화</button>
+							<button type="button" class="btn btn-primary mb-0 ms-2" id="searchButton">검색</button>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 			<!-- 검색 필터 설정 END -->
@@ -147,7 +147,7 @@
 			<!-- 예약 내역 List 상단 Tab -->
 			<div class="row g-4 justify-content-start align-items-center mb-2">
 				<div class="col-md-6 col-lg-6">
-					<h6 class="mb-1">전체 사용자 <span>50</span>명</h6>
+					<h6 class="mb-1">전체 사용자 <span class="totalCount"></span>명</h6>
 				</div>
 			</div>
 
@@ -178,184 +178,83 @@
 							</div>
 						</div>
 					</div>
-
-					<!-- Table data (1번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
+					
+					<div id="userList">
+						<!-- Table data (1번째 예약내역 상세 데이터)-->
+						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">이메일</small>
+								<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">이름</small>
+								<h6 class="ms-1 mb-0 fw-normal">김시온</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">연락처</small>
+								<h6 class="ms-1 mb-1 fw-light">010-7737-6314</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">가입일</small>
+								<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">상태</small>
+								<div class="badge bg-success bg-opacity-10 text-success">정상</div>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">상세보기</small>
+								<div class="ms-1 col">
+									<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								</div>
+							</div>
 						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이름</small>
-							<h6 class="ms-1 mb-0 fw-normal">김시온</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">연락처</small>
-							<h6 class="ms-1 mb-1 fw-light">010-7737-6314</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상태</small>
-							<div class="badge bg-success bg-opacity-10 text-success">정상</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상세보기</small>
-							<div class="ms-1 col">
-								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
+						
+						<!-- Table data (2번째 예약내역 상세 데이터)-->
+						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">이메일</small>
+								<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">이름</small>
+								<h6 class="ms-1 mb-0 fw-normal">김시온</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">연락처</small>
+								<h6 class="ms-1 mb-1 fw-light">010-7737-6314</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">가입일</small>
+								<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">상태</small>
+								<div class="badge bg-success bg-opacity-10 text-success">정상</div>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<small class="d-block d-sm-none">상세보기</small>
+								<div class="ms-1 col">
+									<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								</div>
 							</div>
 						</div>
 					</div>
-
-					<!-- Table data (2번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이름</small>
-							<h6 class="ms-1 mb-0 fw-normal">홍홍홍</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">연락처</small>
-							<h6 class="ms-1 mb-1 fw-light">010-1234-6314</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상태</small>
-							<div class="badge bg-danger bg-opacity-10 text-danger">탈퇴</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상세보기</small>
-							<div class="ms-1 col">
-								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-							</div>
-						</div>
-					</div>
-					<!-- Table data (3번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이름</small>
-							<h6 class="ms-1 mb-0 fw-normal">가나다</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">연락처</small>
-							<h6 class="ms-1 mb-1 fw-light">010-1234-6314</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상태</small>
-							<div class="badge bg-danger bg-opacity-10 text-danger">탈퇴</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상세보기</small>
-							<div class="ms-1 col">
-								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-							</div>
-						</div>
-					</div>
-					<!-- Table data (4번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이름</small>
-							<h6 class="ms-1 mb-0 fw-normal">홍홍홍</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">연락처</small>
-							<h6 class="ms-1 mb-1 fw-light">010-1234-6314</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상태</small>
-							<div class="badge bg-success bg-opacity-10 text-success">정상</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상세보기</small>
-							<div class="ms-1 col">
-								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-							</div>
-						</div>
-					</div>
-					<!-- Table data (5번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이메일</small>
-							<h6 class="ms-1 mb-0 fw-normal">csdsis@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">이름</small>
-							<h6 class="ms-1 mb-0 fw-normal">홍홍홍</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">연락처</small>
-							<h6 class="ms-1 mb-1 fw-light">010-1234-6314</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">가입일</small>
-							<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상태</small>
-							<div class="badge bg-success bg-opacity-10 text-success">정상</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<small class="d-block d-sm-none">상세보기</small>
-							<div class="ms-1 col">
-								<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-							</div>
-						</div>
-					</div>
-				</div>
+		
+				
+		
 				<!-- Card body END -->
 
 				<!-- Card footer START -->
@@ -363,17 +262,6 @@
 					<!-- Pagination (페이지 전환 하단 바)-->
 					<nav class="d-flex justify-content-center">
 						<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
-							<li class="page-item disabled">
-								<!-- disabled: 버튼 비활성화--> <a class="page-link" href="#"
-								tabindex="-1">&lt;</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item active"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">&gt;</a>
-							</li>
 						</ul>
 					</nav>
 
@@ -390,9 +278,9 @@
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 
 <!-- page script -->
-<script src="/mtl/js/admin/userlist.js"></script>
+<script src="/mtl/js/admin/user/userList.js"></script>
 <script type="text/javascript">
-	join.init();
+	userList.init();
 </script>
 
 </body>

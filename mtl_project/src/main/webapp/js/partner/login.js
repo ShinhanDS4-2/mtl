@@ -36,7 +36,12 @@ const login = (function() {
 		} else if(type == "keyup") {
 			if (window.event.keyCode == 13) {
 				_event.handleLogin();
-			}
+			} else if (action == "clickFindModal") {
+				$("#findPwEmail").val("");
+				$("#findPwName").val("");
+			} else if (action == "clickSendMail") {
+				_event.clickSendMail();
+			};
 		}
 	};
 	
@@ -69,6 +74,32 @@ const login = (function() {
                 });
 			});
 		},
+		
+		// 비밀번호 찾기
+		clickSendMail: function() {
+			let url = "/email/find/password";
+			
+			let data = {
+				"target" : "PARTNER",
+				"email" : $("#findPwEmail").val(),
+				"name" : $("#findPwName").val(),
+			};
+			
+			comm.sendJson(url, data, "POST", function(resp) {
+				if (resp.result == true) {
+					modal.alert({
+						"content" : "입력하신 메일로 임시 비밀번호가 발송되었습니다.",
+						"confirmCallback" : function() {
+							$("#findPwModal").modal("hide");
+						}
+					});
+				} else {
+					modal.alert({
+						"content" : "존재하지 않는 회원입니다.",
+					});
+				}
+			});
+		}
 	};
 	
 	return {

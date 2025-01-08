@@ -365,7 +365,10 @@ const regist = (function() {
 			// 가입 후 정보 등록을 했을 경우 기존 정보들 세팅
 			if(info.info_yn == "Y") {
 				$("#partnerDescription").val(info.description);
-				$("#address").val(info.address).attr("disabled", true);
+				$("#address").val(info.address).attr({
+					"readonly" : true,
+					"data-act" : ""
+				});
 				$("#findAddress").attr("disabled", true)
 				$("#addressSi").val(info.address_si);
 				$("#addressDong").val(info.address_dong);
@@ -375,16 +378,20 @@ const regist = (function() {
 		        areaChoices.setChoiceByValue(info.area);
 	
 	        	// 키워드
-	        	for (let item of resp.keywordList) {
-	        		let id = "#keyword" + item.keyword_idx;
-	        		$(id).prop("checked", true);
-	        	};
+	        	if (resp.keywordList != null) {
+		        	for (let item of resp.keywordList) {
+		        		let id = "#keyword" + item.keyword_idx;
+		        		$(id).prop("checked", true);
+		        	};
+				};
 
 		        // 시설
-	        	for (let item of resp.facilitiesList) {
-	        		let id = "#facilities" + item.facilities_idx;
-	        		$(id).prop("checked", true);
-	        	};
+		        if (resp.facilitiesList != null) {
+		        	for (let item of resp.facilitiesList) {
+		        		let id = "#facilities" + item.facilities_idx;
+		        		$(id).prop("checked", true);
+		        	};
+		        };
 	        	
 	        	// 이미지
         		let preview = $("#preview");

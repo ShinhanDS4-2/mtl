@@ -72,6 +72,11 @@ const partnerDetail = (function() {
 			} else if (action == "clickMore") {
 				_offset = _offset + 2;
 				_list.setReview();
+			} else if (action == "clickQuestion") {
+				_event.clickQuestion();
+			} else if (action == "clickQnaModal") {
+				$("#qnaTitle").val("");
+				$("#qnaContent").val("");
 			}
 		};
 	};
@@ -133,6 +138,39 @@ const partnerDetail = (function() {
 				_draw.drawRoomDetail(resp.data);
 			});
 		},
+		
+		// 문의 전송
+		clickQuestion: function() {
+			let partnerIdx = comm.getUrlParam().idx;
+			
+			let url = "/user/question/regist";
+			
+			let data = {
+				"partner_idx" : partnerIdx,
+				"title" : $("#qnaTitle").val(),
+				"content" : $("#qnaContent").val()
+			};
+			
+			modal.confirm({
+				"content" : "해당 숙소에 문의하시겠습니까?",
+				"confirmCallback" : function() {
+					comm.sendJson(url, data, "POST", function(resp) {
+						if (resp.result == true) {
+							modal.alert({
+								"content" : "문의가 완료되었습니다.",
+								"confirmCallback": function() {
+									$("#qnaModal").modal("hide");
+								}
+							});
+						} else {
+							modal.alert({
+								"content" : "오류가 발생하였습니다.<br>다시 시도해 주세요."
+							});
+						}
+					});
+				}
+			});
+		}
 	};
 	
 	// 리스트

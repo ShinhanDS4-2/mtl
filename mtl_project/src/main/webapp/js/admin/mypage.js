@@ -2,7 +2,6 @@ const info = (function() {
 console.log(1178);
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
-		_menuActive();
 		_setInfo();
 		_eventInit();
 	};
@@ -88,34 +87,35 @@ console.log(1178);
             return;
         }
         if (!formData.newPassword) {
-        	alert("새 비밀번호를 입력해주세요.");
+        	modal.alert({ "content" : "새 비밀번호를 입력해주세요." });
             return;
         }
         if (formData.newPassword !== formData.confirmPassword) {
-        	alert("새 비밀번호와 일치하지 않습니다.");
+        	modal.alert({ "content" : "새 비밀번호와 일치하지 않습니다." });
             return;
         }
         	
         // 서버로 데이터 전송
             comm.send("/admin/changePassword", formData, "POST", function(response) {
                 if (response.result) {
-                    alert(response.message);
-                    location.href = "/mtl/admin/mypage";
+                	modal.alert({ 
+                		"content" : "새 비밀번호와 일치하지 않습니다.",
+                		"confirmCallback" : function() {
+		                    location.href = "/mtl/admin/mypage";
+                		}
+                	});
                 } else {
-                    alert(response.message);
+	                modal.alert({
+						"content" : response.message 
+					});
                 }
             }, function(error) {
                 modal.alert({
-				"content" : "비밀번호 변경 중 오류가 발생했습니다.<br>다시 시도해주세요." 
+					"content" : "비밀번호 변경 중 오류가 발생했습니다.<br>다시 시도해주세요." 
 				});
             });
         
         },
-    	
-    	
-    	
-    
-    
     };
     
     // 정보 세팅
@@ -132,14 +132,6 @@ console.log(1178);
         }, function(error) {
         
         });
-	};
-	
-	
-	    
-	
-	// 메뉴 active
-	function _menuActive() {
-		$("#menuInfo").addClass("active");
 	};
 	
 	return {
