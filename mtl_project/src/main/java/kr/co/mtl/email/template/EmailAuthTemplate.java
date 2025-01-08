@@ -1,0 +1,48 @@
+package kr.co.mtl.email.template;
+
+import lombok.Data;
+
+@Data
+@SuppressWarnings("unused")
+public class EmailAuthTemplate {
+
+	private String email;
+	private String authCode;
+	private String content;
+	
+	public String getContent() {
+		StringBuilder content = new StringBuilder();
+		
+		content.append("<html lang='ko'>");
+			content.append("<body style='background-color:#fff; width:100%; height:100%;'>");
+				content.append("<div style='width:800px; background: #fff; margin: 0 auto; padding-top: 50px;'>");
+					content.append("<div style='flex-direction: column; align-items: center; width: 800px;'>");
+						content.append("<div style='margin-top: 40px; font-size: 18px;'>");
+							content.append("<div style='padding:60px; line-height:30px; border: 1px solid #adadad; border-radius: 25px;'>");
+								content.append("<div style='margin-bottom: 1em;'>");
+									content.append("<p style='margin-bottom: 0; line-height: 40px;'>");
+										content.append("안녕하세요. <span style='font-weight: bold; color:#5143d9;'>" + email + "</span>님<br>");
+										content.append("이메일 인증 요청에 따라 인증 번호를 발급해 드렸습니다.");
+									content.append("</p>");
+								content.append("</div>");
+								content.append("<div style='width:680px; height:140px; background:#dcd9f7; display:flex; flex-direction:column; justify-content:center; line-height:30px; padding-left:20px; border-radius: 25px;'>");
+									content.append("<p style='font-weight: bold;'>");
+										content.append("인증 코드: " + authCode);
+									content.append("</p>");
+								content.append("</div>");
+								content.append("<div style='margin-top: 30px; line-height: 30px;'>");
+									content.append("<p style='line-height: 40px;'>");
+										content.append("회원가입 시 인증 번호 란에 입력해 주시기 바랍니다.<br>");
+										content.append("감사합니다.");
+									content.append("</p>");
+								content.append("</div>");
+							content.append("</div>");
+						content.append("</div>");
+					content.append("</div>");
+				content.append("</div>");
+			content.append("</body>");
+		content.append("</html>");
+		
+	 	return content.toString();
+	}
+}

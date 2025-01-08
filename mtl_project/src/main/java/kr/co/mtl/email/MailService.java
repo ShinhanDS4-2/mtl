@@ -1,7 +1,6 @@
 package kr.co.mtl.email;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Map;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;

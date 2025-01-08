@@ -3,10 +3,14 @@ package kr.co.mtl.email;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.co.mtl.email.template.EmailAuthTemplate;
 import kr.co.mtl.email.template.FindPasswordTemplate;
 import kr.co.mtl.util.CommonUtil;
 
@@ -71,6 +75,67 @@ public class EmailServiceImpl implements EmailService {
 		} else {
 			throw new Exception();
 		}
+		
+		return result;
+	};
+	
+	/**
+	 * 이메일 인증
+	 * @param param
+	 * @return 
+	 */
+	public Map<String, Object> emailAuth(Map<String, Object> param, HttpServletRequest request) throws Exception {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		String authCode = CommonUtil.makeRandStr(8);
+		
+		EmailAuthTemplate template = new EmailAuthTemplate();
+		template.setEmail((String) param.get("email"));
+		template.setAuthCode(authCode);
+		
+		MailVO vo = new MailVO();
+		vo.setTitle("[떠날지도] 이메일 인증 안내");
+		vo.setEmail((String) param.get("email"));
+		vo.setContent(template.getContent());
+		
+		if(mailService.sendMail(vo)) {
+			result.put("result", true);
+		} else {
+			throw new Exception();
+		}
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("auth_email", (String) param.get("email"));
+		session.setAttribute("auth_code", authCode);
+		
+		return result;
+	};
+	
+	/**
+	 * 이메일 인증 확인
+	 * @param param
+	 * @return 
+	 */
+	public Map<String, Object> emailAuthCheck(Map<String, Object> param, HttpServletRequest request) throws Exception {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		HttpSession session = request.getSession();
+		String sessionEmail = (String) session.getAttribute("auth_email"); 
+		String sessionAuthCode = (String) session.getAttribute("auth_code"); 
+		
+		String inputEmail = (String) param.get("email");
+		String inputAuthCode = (String) param.get("authcode");
+		
+		if (sessionEmail.equals(inputEmail) && sessionAuthCode.equals(inputAuthCode)) {
+			result.put("result", true);
+		} else {
+			result.put("result", false);
+		}
+		
+		session.removeAttribute("auth_email");
+		session.removeAttribute("auth_code");
 		
 		return result;
 	};
