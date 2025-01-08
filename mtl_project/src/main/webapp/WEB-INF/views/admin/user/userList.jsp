@@ -56,31 +56,31 @@
 
 									<!-- 이메일 앞 입력 -->
 									<div class="col-md-8">
-										<input type="text" class="form-control" id="email" placeholder="이메일을 입력해 주세요.">
+										<input type="text" class="form-control" id="joinEmail" placeholder="이메일을 입력해 주세요.">
 									</div>
 
 									<!-- 중복확인 버튼 -->
 									<div class="col-4 d-grid gab-2">
-										<button type="button" class="btn btn-secondary">중복 확인</button>
+										<button type="button" class="btn btn-secondary" data-src="join" data-act="clickEmailCheck">중복 확인</button>
 									</div>
 								</div>
 
 								<!-- 이름 입력 -->
 								<div class="mb-3">
 									<label for="placeName" class="form-label fw-bold">이름 <span class="text-danger">*</span></label> 
-									<input type="text" class="form-control" id="placeName" placeholder="이름을 입력해 주세요.">
+									<input type="text" class="form-control" id="joinName" placeholder="이름을 입력해 주세요.">
 								</div>
 								<!-- 비밀번호 입력 -->
 								<div class="mb-3">
 									<label for="placeName" class="form-label fw-bold">비밀번호 <span class="text-danger">*</span></label>
-									<input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력해 주세요.">
+									<input type="password" class="form-control" id="joinPw" placeholder="비밀번호를 입력해 주세요.">
 								</div>
 							</form>
 						</div>
 						<!-- 확인/취소 button -->
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-primary">확인</button>
+							<button type="button" class="btn btn-primary" data-src="join" data-act="clickJoin">확인</button>
 						</div>
 					</div>
 				</div>
@@ -388,5 +388,12 @@
 </main>
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
+
+<!-- page script -->
+<script src="/mtl/js/admin/userlist.js"></script>
+<script type="text/javascript">
+	join.init();
+</script>
+
 </body>
 </html>

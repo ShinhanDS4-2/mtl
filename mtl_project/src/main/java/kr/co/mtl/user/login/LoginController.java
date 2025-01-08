@@ -8,17 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.mtl.util.CommonUtil;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@Slf4j
 @RequestMapping("/api/user")
 public class LoginController {
 
@@ -55,9 +52,6 @@ public class LoginController {
         CommonUtil.checkIsNull(param, "email");
         CommonUtil.checkIsNull(param, "password");
 
-        // 디버깅용 파라미터 출력
-        log.info("Login parameters =============> " + param);
-
         // 로그인 처리
         Map<String, Object> result = loginService.login(param, request);
 
@@ -72,11 +66,6 @@ public class LoginController {
      */
     @PostMapping("/logout")
     public void logout(@RequestParam Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        // 필수 파라미터 null 체크
-//        CommonUtil.checkIsNull(param, "userIdx");
-
-        // 로그아웃 처리
-//      Map<String, Object> result = loginService.logout(param, request);
     	
     	HttpSession session = request.getSession();
     	
@@ -84,10 +73,7 @@ public class LoginController {
             session.invalidate(); // 세션 무효화
         }
         
-//        return result;
     }
- 
-    
     
     /**
      * 회원가입 처리
@@ -97,21 +83,12 @@ public class LoginController {
      */
     @PostMapping("/join")
     public Map<String, Object> join(@RequestParam Map<String, Object> param) throws Exception {
-        // 필수 파라미터 체크
-//        CommonUtil.checkIsNull(param, "password");
-//        CommonUtil.checkIsNull(param, "name");
-//        CommonUtil.checkIsNull(param, "birthYear");
-//        CommonUtil.checkIsNull(param, "birthMonth");
-//        CommonUtil.checkIsNull(param, "birthDay");;
-//        
-//        CommonUtil.checkIsNull(param, "phone");
 
         // 회원가입 처리
         Map<String, Object> result = loginService.registerUser(param);
 
         return result;
     }
-    
     
     /**
      * 회원가입 이메일 중복 체크
@@ -125,7 +102,6 @@ public class LoginController {
 
         return result;
     }
-    
     
     /**
      * 내 정보 수정 처리
@@ -143,7 +119,6 @@ public class LoginController {
         
         return result;
     }
-
     
     /**
      * 비밀번호 변경
@@ -160,21 +135,6 @@ public class LoginController {
         return result;
     }
     
-    /**
-     * 비밀번호 변경시 현재 비밀번호와 일치하는지 확인
-     */
-//    @PostMapping("/checkPassword")
-//    public Map<String, Object> checkPassword(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
-//        HttpSession session = request.getSession();
-//        param.put("userIdx", session.getAttribute("login_user_idx"));
-//
-//        Map<String, Object> result = new HashMap<>();
-//        
-//
-//       return 
-//
-//    }
-
     /**
      * 회원탈퇴
      */
@@ -193,7 +153,5 @@ public class LoginController {
         
         return result;
     }
-
-    
     
 }

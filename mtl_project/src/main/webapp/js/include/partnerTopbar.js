@@ -2,6 +2,7 @@ const partnerTopbar = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
+		_menuActive();
 		_eventInit();
 	};
 
@@ -49,6 +50,45 @@ const partnerTopbar = (function() {
 				});
 			});
 		}
+	};
+	
+	function _menuActive() {
+		let url = window.location.pathname;
+		let path = url.replace("/mtl/partner/", "");
+		let index = path.indexOf("/");
+		if (index == -1) {
+			index = path.length;
+		};
+		let prePath = path.substring(0, index);
+		
+		let link = "";
+		
+		switch (prePath) {
+			case "accomodation":
+				link = "#collapsehotel";
+		    	break;
+			case "reservation":
+				link = "#collapsebooking";
+		    	break;
+		    case "payout":
+		    	link = "#collapsepayment";
+		    	break;
+		    case "review":
+		    case "question":
+		    	link = "#collapseguest";
+		    	break;
+		    case "notice":
+		    	link = "#collapseauthenticatio";
+		    	break;
+		  	default:
+		    	break;
+		};
+		
+		if (prePath != "dashbord") {
+			$(link + " a[href='" + url + "']").addClass("active");
+			$(link).addClass("show");
+			$(link).siblings("a").attr("aria-expanded", true);
+		};
 	};
 	
 	return {

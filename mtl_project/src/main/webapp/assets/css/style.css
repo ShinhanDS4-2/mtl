@@ -16631,6 +16631,10 @@ textarea.form-control-lg {
   width: 150px !important;
 }
 
+.h-100px {
+  height: 100px !important;
+}
+
 .w-450px {
   width: 450px !important;
 }

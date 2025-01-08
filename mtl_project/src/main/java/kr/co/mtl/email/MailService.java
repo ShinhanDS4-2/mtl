@@ -1,6 +1,7 @@
 package kr.co.mtl.email;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -18,8 +19,9 @@ public class MailService {
     private static int number;  // 인증 코드 저장
 
     // 이메일 발송
-    public void sendMail(String to, String subject, String body) {
+    public void sendMail(Map<String, Object> param) {
         MimeMessage message = mailSender.createMimeMessage();
+        
         try {
             MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
@@ -28,12 +30,11 @@ public class MailService {
                 messageHelper.setFrom("shinhands472@gmail.com", "Admin");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
-                // 예외 처리, 적절한 로깅 또는 대체 방법
             }
 
-            messageHelper.setSubject(subject);
-            messageHelper.setTo(to);
-            messageHelper.setText(body);
+            messageHelper.setSubject((String) param.get("subject"));
+            messageHelper.setTo((String) param.get("to"));
+            messageHelper.setText((String) param.get("text"));
             mailSender.send(message);
 
         } catch (MessagingException e) {
@@ -41,15 +42,15 @@ public class MailService {
         }
     }
 
-    // 인증번호 생성 및 메일 전송
-    public int sendCodeMail(String email) {
-        // 인증번호 생성
-        number = (int) (Math.random() * 900000) + 100000; // 100000 ~ 999999 랜덤 생성
-        String subject = "이메일 인증번호";
-        String body = "인증번호: " + number;
-        sendMail(email, subject, body);  // 이메일 발송
-        return number;  // 인증번호 반환
-    }
+//    // 인증번호 생성 및 메일 전송
+//    public int sendCodeMail(String email) {
+//        // 인증번호 생성
+//        number = (int) (Math.random() * 900000) + 100000; // 100000 ~ 999999 랜덤 생성
+//        String subject = "이메일 인증번호";
+//        String body = "인증번호: " + number;
+//        sendMail(email, subject, body);  // 이메일 발송
+//        return number;  // 인증번호 반환
+//    }
 
     // 인증번호 가져오기
     public static int getNumber() {

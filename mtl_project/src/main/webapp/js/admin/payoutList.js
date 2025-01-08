@@ -4,33 +4,7 @@ const payout = (function() {
 	// js 로딩 시 이벤트 초기화 실행 
 	function init() {
 		fetchPayoutList();  // 페이지 로드 시 전체리스트 조회
-		_eventInit();    
 	};      
-       
-	// 이벤트 초기화          
-	function _eventInit() {
-		let evo = $("[data-src='reservation'][data-act]").off();
-		evo.on("click", function(e) {
-			_eventAction(e); 
-		});  
-	};          
-	                    
-	// 이벤트 분기       
-	function _eventAction(e) {  
-		let evo = $(e.currentTarget);  
-		let action = evo.attr("data-act");  
-		let type = e.type; 
-		if(type == "click") { 
-		};  
-	};   
- 
-
-	// 초기화 버튼 클릭 시
-	$("#resetButton").click(function() {
-		$("#searchForm")[0].reset();  // 폼 모든 입력 초기화
-		isSearchClicked = false;
-		fetchPayoutList();  // 전체 리스트 조회
-	});
 
 	// 검색버튼 클릭 시
 	$("#searchButton").click(function() {
@@ -95,7 +69,6 @@ const payout = (function() {
 			success: function(response) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: PayoutListCount, PayoutList, Param)
 				_draw.drawPayoutList(response);
 				page.drawPage(response.ReservationListCount); 
-				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함. 
 			},
 			error: function(xhr, status, error) {
 				console.error("Error :", error); 
@@ -137,7 +110,7 @@ const payout = (function() {
 							<a role="button" class="payoutDetail mb-0 fw-normal ms-1"
 								data-bs-toggle="modal" data-bs-target="#payoutDetailModal"
 								data-src="payout" data-reservation-idx="${data.reservation_idx}">상세보기</a>
-						</div> 
+						</div>     
 						<div class="col">
 							<small class="d-block d-sm-none">판매자명</small>
 							<h6 class="ms-1 mb-0 fw-normal">${data.name}</h6>

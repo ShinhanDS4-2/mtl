@@ -43,27 +43,19 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         Map<String, Object> result = new HashMap<>();
 
         HttpSession session = request.getSession();
-//        session.setMaxInactiveInterval(-1);
+        session.setMaxInactiveInterval(-1);
         
         // 사용자 인증
         Map<String, Object> partner = partnerMapper.getUserCheck(param);
 
-        // 사용자 존재 여부 확인
-//        if (user == null) {
-//        	return result;
-//        }
-
         /**
-         * TODO
          * 로그인 성공 후 세션 처리
          * 세션에다가 가져온 유저 정보 넣기
          */
-        //
         if(partner == null) {
         	result.put("code", Code.LOGIN_ERROR.code);
         	return result;
         }
-        
         
         // 로그인 성공 세션 처리
         session.setAttribute("login_partner_idx", partner.get("partner_idx"));	//세션에 사용자 정보 저장
@@ -97,7 +89,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         return result;
     }
     
-    
     /**
      * 사용자 회원가입
      * @param param 회원가입 요청 파라미터
@@ -128,7 +119,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         return result;
     }
     
-    
     /**
      * 회원가입 이메일 중복 체크
      */
@@ -144,8 +134,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         int count = partnerMapper.checkEmailDuplication(email);
         return count > 0; // count가 0보다 크면 중복된 이메일
     }
-    
-    
     
     /**
      * MD5 암호화 메서드
@@ -169,8 +157,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         }
     }
     
-    
-    
     /**
      * 마이페이지 수정
      */
@@ -182,7 +168,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
 
         return rowsAffected > 0;
     }
-    
     
     /**
      * 현재 비밀번호 확인 + 비밀번호  변경
@@ -220,7 +205,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
     	return result;
     }
     
-    
     /**
      * 업체 정보 수정
      */
@@ -230,5 +214,4 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         return rowsAffected > 0;
     }
     
-
 }

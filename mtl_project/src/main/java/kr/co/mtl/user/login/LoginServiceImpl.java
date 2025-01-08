@@ -43,27 +43,19 @@ public class LoginServiceImpl implements LoginService {
         Map<String, Object> result = new HashMap<>();
 
         HttpSession session = request.getSession();
-//        session.setMaxInactiveInterval(-1);
+        session.setMaxInactiveInterval(-1);
         
         // 사용자 인증
         Map<String, Object> user = loginMapper.getUserCheck(param);
 
-        // 사용자 존재 여부 확인
-//        if (user == null) {
-//        	return result;
-//        }
-
         /**
-         * TODO
          * 로그인 성공 후 세션 처리
          * 세션에다가 가져온 유저 정보 넣기
          */
-        //
         if(user == null) {
         	result.put("code", Code.LOGIN_ERROR.code);
         	return result;
         }
-        
         
         // 로그인 성공 세션 처리
         session.setAttribute("login_user_idx", user.get("user_idx"));	//세션에 사용자 정보 저장
@@ -97,7 +89,6 @@ public class LoginServiceImpl implements LoginService {
         return result;
     }
     
-    
     /**
      * 사용자 회원가입
      * @param param 회원가입 요청 파라미터
@@ -128,7 +119,6 @@ public class LoginServiceImpl implements LoginService {
         return result;
     }
     
-    
     /**
      * 회원가입 이메일 중복 체크
      */
@@ -144,8 +134,6 @@ public class LoginServiceImpl implements LoginService {
         int count = loginMapper.checkEmailDuplication(email);
         return count > 0; // count가 0보다 크면 중복된 이메일
     }
-    
-    
     
     /**
      * MD5 암호화 메서드
@@ -169,8 +157,6 @@ public class LoginServiceImpl implements LoginService {
         }
     }
     
-    
-    
     /**
      * 마이페이지 수정
      */
@@ -182,7 +168,6 @@ public class LoginServiceImpl implements LoginService {
 
         return rowsAffected > 0;
     }
-    
     
     /**
      * 현재 비밀번호 확인 + 비밀번호  변경
@@ -220,52 +205,6 @@ public class LoginServiceImpl implements LoginService {
     	return result;
     }
     
-    
-    
-    
-    
-//    /**
-//     * 비밀번호 변경
-//     */
-//    @Override
-//    public boolean changePassword(Map<String, Object> param) throws Exception {
-//        // 현재 비밀번호 확인
-//        Map<String, Object> user = loginMapper.getUserCheck(param);
-//        if (user == null) {
-//            return false; // 현재 비밀번호가 일치하지 않음
-//        }
-//
-//        // 새 비밀번호 암호화
-//        String rawPassword = param.get("newPassword").toString();
-//        String hashedPassword = encryptMD5(rawPassword); // 기존 MD5 암호화 방식 사용
-//        param.put("newPassword", hashedPassword);
-//
-//        // 비밀번호 업데이트
-//        int rowsAffected = loginMapper.updatePassword(param);
-//        return rowsAffected > 0;
-//    }
-//    
-//    /**
-//     * 비밀번호 변경시 현재 비밀번호와 일치하는지 확인
-//     */
-//    @Override
-//    public boolean checkPassword(Map<String, Object> param) throws Exception {
-//       
-//    	// 현재 비밀번호 확인
-//        boolean isPasswordMatch = loginService.checkPassword(param);
-//        if (!isPasswordMatch) {
-//            result.put("result", false);
-//            result.put("message", "현재 비밀번호가 일치하지 않습니다.");
-//            return result;
-//        }
-//        
-//        if (user == null) {
-//            return false; // 비밀번호가 일치하지 않음
-//        }
-//        return true; // 비밀번호가 일치함
-//    }
-
-    
     /**
      * 회원탈퇴
      */
@@ -274,7 +213,5 @@ public class LoginServiceImpl implements LoginService {
         int rowsAffected = loginMapper.deactivateUser(param);
         return rowsAffected > 0;
     }
-    
-    
 
 }

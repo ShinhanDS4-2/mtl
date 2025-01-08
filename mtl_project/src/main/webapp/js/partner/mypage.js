@@ -98,11 +98,11 @@ const info = (function() {
 		        
 			        // 유효성 검사
 			        if (!formData.password) {
-			            alert("기존 비밀번호를 입력해주세요.");
+						alert("기존 비밀번호를 입력해주세요.");
 			            return;
 			        }
 			        if (!formData.newPassword) {
-			            alert("새 비밀번호를 입력해주세요.");
+						alert("새 비밀번호를 입력해주세요.");
 			            return;
 			        }
 			        if (formData.newPassword !== formData.confirmPassword) {
