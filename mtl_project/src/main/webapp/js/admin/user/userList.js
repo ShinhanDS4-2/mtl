@@ -71,33 +71,27 @@ const userList = (function() {
         	let statusText = user.user_status == 'A' ? '정상' : '탈퇴';
         	
             let row = 
-	            `<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-					<!-- Data item -->
+	            `<div class="row row-cols-xl-6 g-4 align-items-sm-center border-bottom px-2 py-4">
 					<div class="col">
 						<small class="d-block d-sm-none">이메일</small>
 						<h6 class="ms-1 mb-0 fw-normal">${user.email}</h6>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<small class="d-block d-sm-none">이름</small>
 						<h6 class="ms-1 mb-0 fw-normal">${user.name}</h6>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<small class="d-block d-sm-none">연락처</small>
 						<h6 class="ms-1 mb-1 fw-light">${user.phone}</h6>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<small class="d-block d-sm-none">가입일</small>
 						<h6 class="ms-1 mb-1 fw-light">${user.create_date}</h6>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<small class="d-block d-sm-none">상태</small>
 						<div class="badge bg-success bg-opacity-10 ${statusClass}">${statusText}</div>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<small class="d-block d-sm-none">상세보기</small>
 						<div class="ms-1 col">
