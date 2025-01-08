@@ -4,6 +4,7 @@ const userDetail = (function () {
 	function init() {
 		_eventInit();
 		_loadUserDetail();
+		_loadUserReservationList();
 	};
 
 	// 이벤트 초기화 
@@ -23,16 +24,8 @@ const userDetail = (function () {
 		let type = e.type;
 		
 		if(type == "click") {
-			if(action == "clickEmailAuth") {
-				_event.checkEmail();
-			}
 		};
 	};
-	
-	
-	
-	
-    
     
     // userDetail.jsp
 	function _loadUserDetail() {
@@ -48,39 +41,90 @@ const userDetail = (function () {
                 $('#birth').val(user.birth);
                 $('#phone').val(user.phone);
                 $('#create_date').val(user.create_date);
-                $('#user_status').val(user.user_status);
-            } else {
-                alert("사용자 상세 정보를 불러오지 못했습니다.");
+                $('#user_status').val(user.user_status == "A" ? "정상" : "탈퇴");
             }
         }, function(error) {
-            console.error("사용자 상세 정보 로드 오류:", error);
         });
     }
     
-
-
-
-
-
-	
-	
-	// 이벤트
-	let _event = {
-		// 이메일 형식 체크
-		checkEmail: function() {
-			let email = $("#joinEmail").val();
-			if (!comm.validateEmail(email)) {
-			    alert('올바른 이메일 주소를 입력하세요.');
-			    return;
-		    }
-	    },
-	    
-	    
-	    
-	    
-	    
-        
+    // 예약 정보
+    function _loadUserReservationList(curPage = 1) {
+    	let userIdx = comm.getUrlParam().idx;
+    
+    	let url = "/user/reservation/list";
+    	
+    	let data = {
+    		"user_idx" : userIdx
+    	};
+    	
+    	// 페이징
+		let pageOption = {
+			limit: 5
+		};
+		
+		let page = $("#pagination").customPaging(pageOption, function(_curPage){
+			_loadUserReservationList(_curPage);
+		});
+		
+		let pageParam = page.getParam(curPage);
+		
+		if(pageParam) {
+			data.offset = pageParam.offset;
+			data.limit = pageParam.limit;
+		};
+		// 페이징 끝
+    	
+    	comm.sendJson(url, data, "POST", function(resp) {
+    		_draw.drawReservationList(resp.list);
+    		page.drawPage(resp.totalCnt);
+    	});
     };
+    
+    _draw = {
+    	drawReservationList: function(list) {
+    		let reservationList = $("#reservationList").empty();
+    		
+    		for (let data of list) {
+    			let status = data.payment_status;
+    			let color = status == "P" ? "success" : "danger";
+    			let text = status == "P" ? "예약완료" : "예약취소";
+    			
+	    		let row = 
+	    			`<div class="row align-items-md-center justify-content-between border-bottom px-2 py-4">
+						<div class="col">
+							<div class="d-flex align-items-center">
+								<div class="w-80px h-60px flex-shrink-0 ms-3">
+									<img src="${data.image}" class="rounded w-100 h-100" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<h6 class="mb-0">${data.partner_name}</h6>
+						</div>
+						<div class="col">
+							<h6 class="mb-0 fw-normal">${data.room_type}</h6>
+						</div>
+						<div class="col">
+							<h6 class="mb-0 fw-normal">${data.check_in_date}</h6>
+						</div>
+						<div class="col">
+							<h6 class="mb-0 fw-normal">${data.check_out_date}</h6>
+						</div>
+						<div class="col">
+							<h6 class="mb-0 fw-normal">${data.reservation_date_format}</h6>
+						</div>
+						<div class="col">
+							<h6 class="mb-0 fw-bold">${comm.numberWithComma(data.price)}원</h6>
+						</div>
+						<div class="col">
+							<div class="badge bg-${color} bg-opacity-10 text-${color}">${text}</div>
+						</div>
+					</div>`
+					
+				reservationList.append(row);
+			}
+    	}
+    }
 	
 	return {
 		init,

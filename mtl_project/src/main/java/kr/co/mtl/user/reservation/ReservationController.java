@@ -30,4 +30,17 @@ public class ReservationController {
 		return result;
 	}
 	
+	/**
+	 * 회원별 예약 리스트
+	 * @param param
+	 * @return 예약 리스트
+	 */
+	@PostMapping("/list")
+	public Map<String, Object> getList(@RequestBody Map<String, Object> param) throws Exception {
+		
+		Map<String, Object> result = reservationService.getList(param);
+		
+		return result;
+	}
+	
 }

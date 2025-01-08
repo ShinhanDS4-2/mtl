@@ -111,72 +111,14 @@
 						</div>
 					</div>
 
-					<!-- Table data -->
-					<div class="row align-items-md-center justify-content-between border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<div class="d-flex align-items-center">
-								<!-- Image -->
-								<div class="w-80px flex-shrink-0 ms-3">
-									<img src="assets/images/category/hotel/4by3/01.jpg" class="rounded" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<h6 class="mb-0">오션뷰 디럭스</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">스탠다드 디럭스</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-15</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-16</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-12</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-bold">95,000원</h6>
-						</div>
-						<div class="col">
-							<div class="badge bg-success bg-opacity-10 text-success">예약완료</div>
-						</div>
+					<div id="reservationList">
 					</div>
-
-					<!-- Table data -->
-					<div class="row align-items-md-center justify-content-between border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<div class="d-flex align-items-center">
-								<div class="w-80px flex-shrink-0 ms-3">
-									<img src="assets/images/category/hotel/4by3/01.jpg" class="rounded" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<h6 class="mb-0">오션뷰 디럭스</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">스탠다드 디럭스</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-15</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-16</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-12</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-bold">95,000원</h6>
-						</div>
-						<div class="col">
-							<div class="badge bg-danger bg-opacity-10 text-danger">환불완료</div>
-						</div>
-					</div>
+					
+					<!-- Pagination (페이지 전환 하단 바)-->
+					<nav class="d-flex justify-content-center">
+						<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
+						</ul>
+					</nav>
 				</div>
 			</div>
 		</div>
