@@ -290,14 +290,16 @@ console.log("data?최최종확인>>>>>>>>>", data);
 			// 	ㄴ js 로딩 시 이벤트 초기화 실행 => init() 메서드에서 _draw.drawModalKeyword(); 호출해서 서버에서 받은 키워드리스트 미리 모달창에 그려놓음
 
 			// 키워드 체크박스
-			for(data of list.keyword) {  // 키워드 수만큼 반복
-				$("input[type='checkbox']").each(function() {  // 페이지에 동적으로 뿌려준 체크박스 요소 하나씩 반복 돌면서 검사
-						// 서버에서 받아온 키워드 값과, 동적으로 뿌려놓은 키워드체크박스 라벨text가 같으면 체크해준다. 
-					if (data.keyword.trim() === $(this).next("label").text().trim()) {  // $(this).next("label")은 현재 선택한 체크박스 바로 뒤에 있는 <label> 요소를 선택
-						$(this).prop("checked", true);
-					}
-				}); 
-			}
+			if (list.keyword) {
+				for(data of list.keyword) {  // 키워드 수만큼 반복
+					$("input[type='checkbox']").each(function() {  // 페이지에 동적으로 뿌려준 체크박스 요소 하나씩 반복 돌면서 검사
+							// 서버에서 받아온 키워드 값과, 동적으로 뿌려놓은 키워드체크박스 라벨text가 같으면 체크해준다. 
+						if (data.keyword.trim() === $(this).next("label").text().trim()) {  // $(this).next("label")은 현재 선택한 체크박스 바로 뒤에 있는 <label> 요소를 선택
+							$(this).prop("checked", true);
+						}
+					}); 
+				}
+			};
 			
 			// 이미지 (=> 서버에서 이미지 데이터 받아와서 미리보기로 그려줌)
 			console.log("list.img값은??????//", list.img)

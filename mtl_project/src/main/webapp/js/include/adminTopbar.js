@@ -79,7 +79,7 @@ const adminTopbar = (function() {
 		    	link = "#collapsetravel";
 		    	break;
 		    case "question":
-		    case "qna":
+		    case "faq":
 		    case "notice":
 		    	link = "#customerInquiry";
 		    	break;

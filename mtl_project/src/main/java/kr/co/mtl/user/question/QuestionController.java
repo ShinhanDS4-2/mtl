@@ -38,6 +38,12 @@ public class QuestionController {
 		return result;
 	};
 	
+	/**
+	 * 자주 묻는 질문 리스트
+	 * @param param
+	 * @param request
+	 * @return
+	 */
 	@PostMapping("/list")
 	public Map<String, Object> getQuestionList(@RequestBody Map<String, Object> param, HttpServletRequest request) {
 		

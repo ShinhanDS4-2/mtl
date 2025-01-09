@@ -74,7 +74,7 @@
 							<a class="nav-link" href="/mtl/admin/question">1:1 문의</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/mtl/admin/qna">자주 묻는 질문</a>
+							<a class="nav-link" href="/mtl/admin/faq">자주 묻는 질문</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/mtl/admin/notice">공지사항</a>
