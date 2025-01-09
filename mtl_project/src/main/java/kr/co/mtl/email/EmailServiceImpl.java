@@ -130,12 +130,11 @@ public class EmailServiceImpl implements EmailService {
 		
 		if (sessionEmail.equals(inputEmail) && sessionAuthCode.equals(inputAuthCode)) {
 			result.put("result", true);
+			session.removeAttribute("auth_email");
+			session.removeAttribute("auth_code");
 		} else {
 			result.put("result", false);
 		}
-		
-		session.removeAttribute("auth_email");
-		session.removeAttribute("auth_code");
 		
 		return result;
 	};
