@@ -195,13 +195,7 @@ public class AdminLoginController {
         Map<String, Object> result = new HashMap<>();
         try {
             // Partner의 PartnerLoginService를 사용해 데이터 가져오기
-            List<Map<String, Object>> partnerList = partnerLoginService.getAllPartner(param);
-            
-            // 전체 사용자 수
-            int totalCount = partnerList.size();
-            
-            result.put("partnerList", partnerList);
-            result.put("totalCount", totalCount);
+        	result = partnerLoginService.getAllPartner(param);
         } catch (Exception e) {
             e.printStackTrace();
             result.put("error", "판매자 목록 조회 중 오류가 발생했습니다.");
@@ -225,6 +219,26 @@ public class AdminLoginController {
         } catch (Exception e) {
             e.printStackTrace();
             result.put("error", "판매자 상세 정보 조회 중 오류가 발생했습니다.");
+        }
+        return result;
+    }
+    
+    
+    /**
+     * 판매자 상태 승인
+     */
+    @PostMapping("/updateApprovalStatus")
+    public Map<String, Object> updateApprovalStatus(@RequestParam Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            // 현재 상태 확인
+        	partnerLoginService.updateApprovalStatus(param);
+            result.put("success", true);
+            result.put("message", "상태가 성공적으로 변경되었습니다.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("success", false);
+            result.put("error", "상태 변경 중 오류가 발생했습니다.");
         }
         return result;
     }

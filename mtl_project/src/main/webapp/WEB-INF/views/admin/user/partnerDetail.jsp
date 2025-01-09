@@ -70,7 +70,7 @@
 				</div>
 				<!-- 승인 버튼 -->
 				<div class="d-flex mb-4 justify-content-center">
-					<button type="button" class="btn btn-primary w-25">승인</button>
+					<button type="button" class="btn btn-primary w-25 d-none" id="approveButton" data-src="partnerDetail" data-act="clickApproval">승인</button>
 				</div>
 			</div>
 			<!-- 판매자 정보 Card END -->

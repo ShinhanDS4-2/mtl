@@ -20,7 +20,7 @@ const partnerList = (function() {
 	};
 	
 	// 판매자 목록
-	function _loadPartnerList() {
+	function _loadPartnerList(curPage = 1) {
 		const status = $("input[name='flexRadioDefault']:checked").val(); // 선택된 상태 값
         const searchType = $("#searchType").val(); // 검색 타입
         const searchKeyword = $("#searchKeyword").val(); // 검색어
@@ -31,11 +31,29 @@ const partnerList = (function() {
             searchType: searchType,
             searchKeyword: searchKeyword
         };
+        
+        // 페이징
+		let pageOption = {
+			limit: 5
+		};
+		
+		let page = $("#pagination").customPaging(pageOption, function(_curPage){
+			_loadPartnerList(_curPage);
+		});
+		
+		let pageParam = page.getParam(curPage);
+		
+		if(pageParam) {
+			filter.offset = pageParam.offset;
+			filter.limit = pageParam.limit;
+		};
+		// 페이징 끝
 	
         comm.send("/admin/partnerList", filter, "POST", function(response) {
-            if (response.partnerList) {
-                _renderPartnerList(response.partnerList);
-                $(".totalCount").text(response.totalCount); // 사용자 수 업데이트
+            if (response.list) {
+                _renderPartnerList(response.list);
+                $(".totalCount").text(response.totalCnt); // 사용자 수 업데이트
+                page.drawPage(response.totalCnt);
             } else {
                 alert("사용자 목록을 불러오지 못했습니다.");
             }
@@ -55,7 +73,7 @@ const partnerList = (function() {
         	let statusText = partner.approval_status == 'Y' ? '승인' : '미승인';
         	
             let row = 
-	            `<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+	            `<div class="row row-cols-xl-6 g-4 align-items-sm-center border-bottom px-2 py-4">
 					<!-- Data item -->
 					<div class="col">
 						<h6 class="ms-1 mb-0 fw-normal">${partner.name}</h6>

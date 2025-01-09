@@ -23,14 +23,11 @@ const partnerDetail = (function () {
 		let type = e.type;
 		
 		if(type == "click") {
-			if(action == "clickEmailAuth") {
-				_event.checkEmail();
+			if(action == "clickApproval") {
+				_event.clickApproval();
 			}
 		};
 	};
-	
-	
-	
 	
     
     
@@ -51,6 +48,11 @@ const partnerDetail = (function () {
                 $('#business_phone').val(partner.business_phone);
                 $('#create_date').val(partner.create_date);
                 $('#approval_status').val(approval_status);
+                
+                // 상테에 따라 승인 버튼 표시/숨김 처리
+                if (approval_status != "승인") {
+	                $("#approveButton").removeClass("d-none"); // 미승인 상태면 버튼 표시
+	            }
             } else {
                 alert("사용자 상세 정보를 불러오지 못했습니다.");
             }
@@ -59,28 +61,37 @@ const partnerDetail = (function () {
         });
     }
     
+    
+    // 판매자 상태 승인
+    function _updateApprovalStatus() {
+    const partnerIdx = comm.getUrlParam().idx; // URL에서 partner_idx 가져오기
+
+    const param = {
+        partner_idx: partnerIdx,
+    };
+
+    // 서버로 상태 변경 요청
+    comm.send("/admin/updateApprovalStatus", param, "POST", function(response) {
+        if (response.success) {
+            modal.alert({ "content" : response.message} );
+            $("#approval_status").val("승인"); // 상태를 승인으로 갱신
+            $("#approveButton").hide(); // 승인 버튼 숨김
+        } else {
+            alert(response.message); // 서버에서 반환된 실패 메시지 표시
+        }
+    }, function(error) {
+        console.error("상태 변경 오류:", error);
+    });
+}
+
+    
 
 
-
-
-
-	
-	
 	// 이벤트
 	let _event = {
-		// 이메일 형식 체크
-		checkEmail: function() {
-			let email = $("#joinEmail").val();
-			if (!comm.validateEmail(email)) {
-			    alert('올바른 이메일 주소를 입력하세요.');
-			    return;
-		    }
-	    },
-	    
-	    
-	    
-	    
-	    
+	    clickApproval: function() {
+	    	_updateApprovalStatus();
+	    }
         
     };
 	

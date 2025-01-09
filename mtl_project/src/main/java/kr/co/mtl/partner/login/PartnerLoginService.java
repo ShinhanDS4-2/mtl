@@ -64,10 +64,15 @@ public interface PartnerLoginService {
     /**
      * 판매자 정보 가져오기 list admin 사용자 관리에서 사용
      */
-    List<Map<String, Object>> getAllPartner(Map<String, Object> param) throws Exception;
+    Map<String, Object> getAllPartner(Map<String, Object> param) throws Exception;
     
     /**
      * 판매자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/partnerDetail.jsp에서 사용
      */
     Map<String, Object> getPartnerDetail(Map<String, Object> param) throws Exception;
+    
+    /**
+     * 판매자 상태 승인
+     */
+    boolean updateApprovalStatus(Map<String, Object> param) throws Exception;
 }

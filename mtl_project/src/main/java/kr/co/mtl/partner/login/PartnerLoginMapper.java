@@ -34,7 +34,13 @@ public interface PartnerLoginMapper {
     
     // 판매자 정보 가져오기 list admin 사용자 관리에서 사용
     List<Map<String, Object>> getAllPartner(Map<String, Object> param);
+
+    // 판매자 정보 가져오기 list  개수
+    int getAllPartnerCnt(Map<String, Object> param);
     
     // 판매자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/partnerDetail.jsp에서 사용
     Map<String, Object> getPartnerDetail(Map<String, Object> param);
+    
+    // 판매자 상태 승인
+    int updateApprovalStatus(Map<String, Object> param);
 }

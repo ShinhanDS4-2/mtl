@@ -217,8 +217,14 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
      * 판매자 정보 가져오기 list admin 사용자 관리에서 사용
      */
     @Override
-    public List<Map<String, Object>> getAllPartner(Map<String, Object> param) throws Exception {
-        return partnerMapper.getAllPartner(param);
+    public Map<String, Object> getAllPartner(Map<String, Object> param) throws Exception {
+    	
+    	Map<String, Object> result = new HashMap<>();
+    	
+    	result.put("list", partnerMapper.getAllPartner(param));
+    	result.put("totalCnt", partnerMapper.getAllPartnerCnt(param));
+    	
+        return result;
     }
     
     /**
@@ -228,4 +234,11 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         return partnerMapper.getPartnerDetail(param);
     }
     
+    /**
+     * 판매자 상태 승인
+     */
+    public boolean updateApprovalStatus(Map<String, Object> param) throws Exception {
+    	int rowsAffected = partnerMapper.updateApprovalStatus(param);
+        return rowsAffected > 0;
+    }
 }

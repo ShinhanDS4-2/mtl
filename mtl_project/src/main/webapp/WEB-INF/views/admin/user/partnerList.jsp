@@ -38,24 +38,24 @@
 			</div>
 			<!-- Card body START -->
 			<div class="card-body">
-				<form class="row g-4 align-items-center">
+				<div class="row g-4 align-items-center">
 					<!-- Radio items -->
 					<div class="col-12">
 						<label class="form-label">상태</label>
 						<div class="d-sm-flex">
 							<!-- Radio -->
 							<div class="form-check radio-bg-light me-4">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked value="">
 								<label class="form-check-label" for="flexRadioDefault1">전체</label>
 							</div>
 							<!-- Radio -->
 							<div class="form-check radio-bg-light me-4">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Y">
 								<label class="form-check-label" for="flexRadioDefault2">승인</label>
 							</div>
 							<!-- Radio -->
 							<div class="form-check radio-bg-light me-4">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="N">
 								<label class="form-check-label" for="flexRadioDefault3">미승인</label>
 							</div>
 						</div>
@@ -80,9 +80,9 @@
 					<!-- 초기화/검색 button -->
 					<div class="d-sm-flex justify-content-end border-top pt-3">
 						<button type="button" class="btn btn-primary-soft mb-0 ms-2" onclick="window.location.reload()">초기화</button>
-						<button type="button" class="btn btn-primary mb-0 ms-2">검색</button>
+						<button type="button" class="btn btn-primary mb-0 ms-2" id="searchButton">검색</button>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 		<!-- 검색 필터 설정 END -->
@@ -123,64 +123,6 @@
 					</div>
 
 					<div id="partnerList">
-						<!-- Table data (1번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<h6 class="ms-1 mb-0 fw-normal">00호텔</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<h6 class="ms-1 mb-1 fw-light">010-7737-6314</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<div class="badge bg-success bg-opacity-10 text-success">승인</div>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<div class="ms-1 col">
-									<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-								</div>
-							</div>
-						</div>
-						<!-- Table data (2번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<h6 class="ms-1 mb-0 fw-normal">히든베이호텔텔</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<h6 class="ms-1 mb-0 fw-normal">cc@naver.com</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<h6 class="ms-1 mb-1 fw-light">010-1234-5678</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<div class="badge bg-success bg-opacity-10 text-success">승인</div>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<div class="ms-1 col">
-									<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-								</div>
-							</div>
-						</div>
 					</div>
 					
 					
@@ -192,17 +134,6 @@
 					<!-- Pagination (페이지 전환 하단 바)-->
 					<nav class="d-flex justify-content-center">
 						<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
-							<li class="page-item disabled">
-								<!-- disabled: 버튼 비활성화--> <a class="page-link" href="#"
-								tabindex="-1">&lt;</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item active"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">&gt;</a>
-							</li>
 						</ul>
 					</nav>
 				</div>
