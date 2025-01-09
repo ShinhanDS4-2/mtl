@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<head>
+<head> 
 <title>떠날지도 - 관리자</title>
 
 <!-- headerScript -->
@@ -37,22 +37,22 @@
 					</div>
 				</div>
 
-				<!-- 검색 필터 START -->
-				<div class="card shadow mt-4 mb-5">
+				<!-- 검색 필터 START -->   
+				<div class="card shadow mb-5">
 					<!-- Card header -->
 					<div class="card-header border-bottom">
-						<h5 class="card-header-title">검색필터(예시)</h5>
+						<h5 class="card-header-title">검색필터</h5>
 					</div> 
 					<!-- Card body START --> 
-					<div class="card-body">
+					<div class="card-body"> 
 				<!-- form START --> 
 						<form id="searchForm" class="row g-4 align-items-center">							
 							<!-- 기간 설정 -->
-							<div class="col-lg-3">
+							<div class="col-lg-4">  
 								<div class="d-flex">
 									<!-- 달력 아이콘 -->
 									<i class="bi bi-calendar fs-3 me-2 mt-2"></i>
-									<!-- 날짜 선택 -->
+									<!-- 날짜 선택 --> 
 									<div class="form-control-border form-control-transparent form-fs-md">
 										<label class="form-label">시작일 - 종료일</label> 
 										<input id="dateRange" type="text" class="form-control flatpickr" data-mode="range"
@@ -83,14 +83,16 @@
 											name="payoutStatus" id="payoutPending" value="N"> 
 										<label class="form-check-label" for="payoutPending"> 정산대기 </label>
 									</div>
-								</div>
+								</div>   
 							</div>
 
 							<!-- 초기화/검색 button -->
 							<div class="d-sm-flex justify-content-end border-top pt-3">
-								<button type="reset" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
-								<button type="button" id="searchButton" class="btn btn-primary mb-0 ms-2">검색</button>
-							</div>
+								<button type="button" class="btn btn-primary-soft mb-0 ms-2" onclick="window.location.reload();">초기화</button>
+								<button id="searchButton" type="button" class="btn btn-primary mb-0 ms-2"
+								 	data-src="payout" data-act="clickSearchButton">검색</button>
+							</div>  
+							
 						</form>
 				<!-- form END -->
 					</div>
@@ -104,14 +106,8 @@
 					<div class="col-md-6 col-lg-6">
 						<h6 class="mb-1" id="payoutListCount">전체 1654건</h6>  <!-- js에서 동적으로 그려줌 -->
 					</div>
-					<div class="col-md-6 col-lg-6 d-flex justify-content-end">
-						<div class="mb-sm-0 ms-2 d-flex justify-content-center">
-							<a href="#" class="btn btn-dark-soft mb-0 border-0"><i
-								class="fa-solid fa-download"></i></a>
-						</div>
-					</div>
 				</div>
-
+  
 
 				<!-- 정산 내역 List START -->
 				<div class="card shadow border">
@@ -136,7 +132,7 @@
 								</div>
 								<div class="col">
 									<h6 class="mb-0">정산금액</h6>
-								</div>
+								</div>  
 								<div class="col">
 									<h6 class="mb-0">정산상태</h6>
 								</div>
@@ -158,7 +154,7 @@
 								<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">  <!-- id="pagination" -->
 								</ul>
 							</nav>
-						</div>
+						</div> 
 					</div>
 					<!-- 페이징 처리 END -->
 					<!-- Card footer END -->
@@ -214,7 +210,7 @@
 									<p class="mb-0">정산일: </p>
 			 						<p class="mb-0">정산 계좌정보:  (은행, 예금주명, 계좌번호)</p>
 								</div>
-							</div>
+							</div> 
 							<!-- js에서 동적으로 그려줄 부분 END (반복X, 1번만) -->
 							
  
@@ -241,7 +237,7 @@
 	<script src="js/admin/payoutList.js"></script>
 	<script type="text/javascript">
 		payout.init();
-	</script>
+	</script>   
 	
 </body>
 </html>

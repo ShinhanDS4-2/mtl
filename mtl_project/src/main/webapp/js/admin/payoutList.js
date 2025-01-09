@@ -2,53 +2,108 @@ const payout = (function() {
 	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리
 	
 	// js 로딩 시 이벤트 초기화 실행 
-	function init() {
-		fetchPayoutList();  // 페이지 로드 시 전체리스트 조회
-	};      
+	function init() {     
+		fetchPayoutList();  // 전체정산내역 리스트를 조회
+		_eventInit();
+	};  
+    
+	// 이벤트 초기화          
+	function _eventInit() {  
+		let evo = $("[data-src='payout'][data-act]").off();
+		evo.on("click", function(e) {   
+			_eventAction(e);     
+		});               
+	};         
 
-	// 검색버튼 클릭 시
-	$("#searchButton").click(function() {
-		isSearchClicked = true;
-		fetchPayoutList();  // 조건에 맞는 리스트 조회
-	});
+	// 이벤트 분기      
+	function _eventAction(e) {   
+		let evo = $(e.currentTarget); 
+		let action = evo.attr("data-act");
+		let type = e.type;      
+		        
+		if(type == "click") {        
+			if(action == "clickSearchButton") {  // 검색필터에서 검색버튼 클릭 시 
+				_event.clickSearchButton(evo);
+			} else if(action == "payoutButton") {  // 정산하기 버튼 클릭 시 
+				_event.clickPayoutButton(evo);
+			}
+		};
+	}; 
+	 
+		 
+	// 이벤트 
+	let _event = {
+		// 검색필터 검색 버튼 클릭 시
+		clickSearchButton: function() {   
+			isSearchClicked = true; // 검색 버튼 클릭 여부 상태 관리     
+			fetchPayoutList();  // 조건에 맞는 리스트 조회
+		},  
+
+		// 정산하기 버튼 클릭 시 
+		clickPayoutButton: function() {   
+			// $.ajax({
+			// 	type: "POST", stauts
+			// 	url: "/mtl/api/admin/payout/list",   // API 호출
+			// 	data: param,   // 호출 시 param값으로 넘겨줄 것 => 필터(정산기간시작일, 정산기간종료일, 정산상태)
+			// 	success: function(resp) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: PayoutListCount, PayoutList, Param)
+			// 		_draw.drawPayoutList(resp);  // 리스트 그리기
+			// 		page.drawPage(resp.PayoutListCount);  
+			// 	},
+			// 	error: function(xhr, status, error) {
+			// 		console.error("Error :", error); 
+			// 	}
+			// });
+
+		
+
+			fetchPayoutList();  // 조건에 맞는 리스트 조회
+		},  
+    
+	};  // let _event 끝
 
 
 	// fetchPayoutList(): 리스트 조회 함수
 	function fetchPayoutList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
-		let param = {
+		// 그냥 조회했을 때 기본 param값 => 전체조회
+		let param = { 
+			// 검색필터
 			"calculate_date_start" : '', 
 			"calculate_date_end" : '',
-			"calculate_stauts" : ''
-		};  // Ajax 요청 파라미터
+			"calculate_status" : ''
+		};  
+  
+		if (isSearchClicked) {  // 필터 검색했을 때
 
-		// 검색 버튼이 클릭된 경우 조건 추가
-		if (isSearchClicked) {
 			// 검색필터에 입력된 데이터 가져오기
 			let [startDate, endDate] = $("#dateRange").val().split(" ~ ").map(date => date.trim());
-			let payoutStatus = $("input[name='payoutStatus']:checked").val();  // Y/N
-			
-			let param = { // ajax로 넘겨줄 data값 변수 선언
+			let payoutStatus = $("input[name='payoutStatus']:checked").val();  // ""/Y/N
+
+			/* 검색필터 날짜 -> 경우에 따라 분기 
+				1. 날짜 하루만 조회 시 (시작일 데이터는 있고, 종료일 데이터: "" 안들어옴)
+				2. 날짜 하루이상 조회 시 (모두 값이 있는 경우)
+			*/  
+			if (endDate == null || endDate == "" ) {  // 1. 날짜 하루만 조회 시 (종료일, 시작일 데이터 동일하게 만들어줌)
+				endDate = startDate;  
+			}  // 2. 날짜 하루이상 조회 시 -> 별도 처리 안해줘도댐
+
+			param = { // ajax로 넘겨줄 data값 변수 선언
 				"calculate_date_start" : startDate, 
 				"calculate_date_end" : endDate,
-				"calculate_stauts" : payoutStatus
+				"calculate_status" : payoutStatus
 			};
 
-			console.log("검색 조건:", param);
-
+			console.log("검색 조건은??????????:", param);  // 여기도 잘나옴
+ 
 		} else {
 			console.log("전체 리스트 조회");  
 		}
 
-		// 페이징 START
+		/* 페이징 START */    
 		let pageOption = {
-			limit: 5  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+			limit: 10  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
-		
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
-		let page = $("#pagination").customPaging(pageOption, function(_curPage){  // customPaging은 사용자 정의함수로 페이징 로직을 생성한다. 
-												// ㄴ pageOption객체를 넘겨 한 페이지에 표시할 데이터 수(limit)를 전달.
-												// _curPage: 현재 사용자가 보고 있는 페이지 번호.
-
+		let page = $("#pagination").customPaging(pageOption, function(_curPage){  
 			fetchPayoutList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
 		});
 		
@@ -58,7 +113,7 @@ const payout = (function() {
 			param.offset = pageParam.offset;
 			param.limit = pageParam.limit;
 		};
-		// 페이징 END
+		/* 페이징 END */
 		
 		// Ajax 요청
 		$.ajax({
@@ -66,9 +121,9 @@ const payout = (function() {
 			url: "/mtl/api/admin/payout/list",   // API 호출
 			data: param,   // 호출 시 param값으로 넘겨줄 것 => 필터(정산기간시작일, 정산기간종료일, 정산상태)
 
-			success: function(response) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: PayoutListCount, PayoutList, Param)
-				_draw.drawPayoutList(response);
-				page.drawPage(response.ReservationListCount); 
+			success: function(resp) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: PayoutListCount, PayoutList, Param)
+				_draw.drawPayoutList(resp);  // 리스트 그리기
+				page.drawPage(resp.PayoutListCount);  
 			},
 			error: function(xhr, status, error) {
 				console.error("Error :", error); 
@@ -80,7 +135,7 @@ const payout = (function() {
 	let _draw = {  
 		// 정산내역 리스트
 		drawPayoutList: function(list) {  // 위에 API 호출 결과 값으로 받은 response(=PayoutListCount, PayoutList, Param)값을 list라는 이름의 매개변수로 넘겨준다. 
-
+			console.log("drawPayoutList >>>>>>>list", list);   
 			// 정산 내역 List 상단 Tab : 목록 갯수 출력
 			$("#payoutListCount").html("전체 " + list.PayoutListCount + "건");
 
@@ -95,7 +150,7 @@ const payout = (function() {
 			for(data of list.PayoutList) {  // data에는 1개의 정산내역 정보가 들어있음  
 				// 정산 상태에 따른 버튼 모양 구분
 				let button = '';
-				if(data.calculate_stauts == 'Y') {  // 정산완료이면
+				if(data.calculate_status == 'Y') {  // 정산완료이면
 					button = `<div class="badge bg-success bg-opacity-10 text-success">정산완료</div>`
 				} else {
 					button = `<div class="badge bg-danger bg-opacity-10 text-danger">정산대기</div>`
@@ -131,7 +186,8 @@ const payout = (function() {
 						<div class="col">
 							<small class="d-block d-sm-none">정산</small>
 							<div class="ms-1 col">
-								<a href="정산하기 버튼 누르면 정산이 되어야함" class="btn btn-sm btn-light mb-0">정산하기</a>
+								<a href="정산하기 버튼 누르면 정산이 되어야함" class="btn btn-sm btn-light mb-0"
+									data-src="payout" data-act="payoutButton" data-reservation-idx="${data.reservation_idx}">정산하기</a>
 							</div>
 						</div>
 					</div>`;		
@@ -204,7 +260,7 @@ const payout = (function() {
 				<p class="mb-0">객실요금: ${data.price}원</p>
 				<p class="mb-0">수수료율: ${data.charge}%</p>
 				<p class="mb-0">정산금액: ${data.calculate_price}</p>
-				<p class="mb-0">정산상태: ${data.calculate_stauts}</p>
+				<p class="mb-0">정산상태: ${data.calculate_status}</p>
 				<p class="mb-0">정산일: ${data.calculate_date}</p>
 				<p class="mb-0">판매자 관리번호: ${data.partner_idx}</p>
 					<p class="mb-0">정산 계좌정보: ${data.account_name}  ${data.account_bank}  ${data.account_number}</p>
@@ -214,15 +270,9 @@ const payout = (function() {
 			/* 정산 상세정보 modal END */
 
 		}
-		
-		
-				
-    };
-
-
- 
+    }; 
     return {
         init
     };
 
-})();
+})();  

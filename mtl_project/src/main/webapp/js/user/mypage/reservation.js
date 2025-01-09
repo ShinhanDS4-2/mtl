@@ -25,7 +25,7 @@ const reservation = (function() {
 		let type = e.type;
 		 
 		if(type == "click") { 
-			if(action == "clickCustomLocation") {
+			if(action == "clickCustomLocation") {  // 추천여행지 버튼 클릭 시
 				_event.clickCustomLocation(evo); 
 			} else if (action == "clickResevationCancel") {
 				_event.clickResevationCancel(evo);
@@ -33,7 +33,7 @@ const reservation = (function() {
 				_event.clickRating(evo);
 			} else if (action == "clickReviewRegist") {
 				_event.clickReviewRegist(evo);
-			} else if (action == "clickReview") {
+			} else if (action == "clickReview") {  // 후기작성버튼 클릭 시
 				$("input[type='radio']").prop("checked", false);
 				$("input[type='radio']").siblings("span").removeClass("star-icon-select").addClass("star-icon");
 				$("#reviewContent").val("");
@@ -202,16 +202,12 @@ const reservation = (function() {
 		let param = { // ajax로 넘겨줄 data값 변수 선언
 		};
 
-		// 페이징
+		/* 페이징 START */
 		let pageOption = {
-			limit: 5  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+			limit: 10  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
-		
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
-		let page = $("#pagination").customPaging(pageOption, function(_curPage){  // customPaging은 사용자 정의함수로 페이징 로직을 생성한다. 
-												// ㄴ pageOption객체를 넘겨 한 페이지에 표시할 데이터 수(limit)를 전달.
-												// _curPage: 현재 사용자가 보고 있는 페이지 번호.
-
+		let page = $("#pagination").customPaging(pageOption, function(_curPage){  
 			fetchReservationList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
 		});
 		
@@ -219,20 +215,21 @@ const reservation = (function() {
 		
 		if(pageParam) {  // 위 코드에서 받은 pageParam값을 ajax에 넘겨줄 데이터에 설정하는 부분
 			param.offset = pageParam.offset;
-			param.limit = pageParam.limit;
+			param.limit = pageParam.limit; 
 		};
-		// 페이징 끝
+		/* 페이징 END */ 
+
 		
 		$.ajax({
 			type: "POST", 
 			url: "/mtl/api/user/mypage/reservationHistoryList",   // API 호출
 			data: param,   // 호출 시 param값으로 넘겨줄 것 user_idx
-			success: function(response) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: ReservationListCount, ReservationList)
-				_draw.drawReservationList(response.ReservationList);
-				page.drawPage(response.ReservationListCount);
+			success: function(resp) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: ReservationListCount, ReservationList)
+				_draw.drawReservationList(resp.ReservationList);
+				page.drawPage(resp.ReservationListCount);  // 파람값으로 리스트 총 갯수 넣어주면 하단 페이징 넘버 동적으로 알아서 그려줌
 				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.
 			}
-		});  
+		});    
 	}
 
 	let _draw = {  

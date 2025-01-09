@@ -10,4 +10,9 @@ public interface AdminPayoutService {
 	// [관리자] 정산 상세내역 조회
 	Map<String, Object> getAdminPayoutDetail(Map<String, Object> param);
 	
+	// [관리자] 정산 상태 변경
+	Map<String, Object> updateCalculateStatus(Map<String, Object> param);
+		
+	
 }
+ 

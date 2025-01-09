@@ -52,7 +52,7 @@ public class PartnerReservationController {
 	
 	/** 시온
 	 * [판매자] 숙소에 등록되어 있는 객실타입 조회
-	 * @param partner_idx
+	 * @param partner_idx (세션에서 가져오는거임)
 	 * @return roomTypeList
 	 */    
 	@PostMapping("/roomList")

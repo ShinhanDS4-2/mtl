@@ -21,7 +21,7 @@
 
 			<!-- Page main content START -->
 			<div class="page-content-wrapper p-xxl-4">
-
+ 
 				<!-- Title -->    
 				<div class="row">  
 					<div class="col-12 mb-4 mb-sm-5">
@@ -92,20 +92,21 @@
 					<div class="card-body">
 						<form id="searchForm" class="row g-4 align-items-center">							
 							<!-- 기간 설정 -->
-							<div class="col-lg-3">
+							<div class="col-lg-4">
 								<div class="d-flex">
 									<!-- 달력 아이콘 -->
 									<i class="bi bi-calendar fs-3 me-2 mt-2"></i>
 									<!-- 날짜 선택 -->
 									<div class="form-control-border form-control-transparent form-fs-md">
 										<label class="form-label">시작일 - 종료일</label> 
-										<input id="dateRange" type="text" class="form-control flatpickr" data-mode="range"
+										<input id="searchDateRange" type="text" class="form-control flatpickr" data-mode="range"
 											placeholder="날짜를 선택하세요." value="">
 									</div> 
 								</div>   
 							</div>   
 
 							<!-- 기간 설정. 어제/오늘/내일 --> 
+							<!-- 
 							<div class="col-lg-7">
 								<ul class="nav nav-pills nav-pills-dark" id="pills-tab"
 									role="tablist">
@@ -126,7 +127,8 @@
 									</li>
 								</ul>
 							</div>
-
+ 							-->   
+ 							
 							<!-- Radio items -->
 							<div class="col-lg-12">
 								<label class="form-label">정산 상태</label>
@@ -150,46 +152,35 @@
 										<label class="form-check-label" for="payoutPending"> 정산대기 </label>
 									</div>
 								</div>
-							</div>
-
+							</div>  
+    
 							<!-- 초기화/검색 button -->
 							<div class="d-sm-flex justify-content-end border-top pt-3">
-								<button type="reset" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
-								<button type="button" id="searchButton" class="btn btn-primary mb-0 ms-2">검색</button>
-							</div>
-						</form>
+								<button type="button" class="btn btn-primary-soft mb-0 ms-2" onclick="window.location.reload();">초기화</button>
+								<button id="searchButton" type="button" class="btn btn-primary mb-0 ms-2"
+								 	data-src="payout" data-act="clickSearchButton">검색</button>
+							</div>  
+						</form> 
 					<!-- form END -->
 					</div>
 				</div>
 				<!-- 검색 필터 설정 END -->
-
+ 
 				<!-- 정산 내역 List 상단 Tab   //  js에서 동적으로 그려줄 부분 START-->
 				<div class="row g-4 justify-content-between align-items-center mb-2 mt-2">
 					<div class="col-2">
 						<h6 class="mb-1" id="payoutListCount">총 101개</h6>  <!--js-->
 					</div>
-					<div class="col-1">
-						<form>
-							<select class="form-select js-choice"
-								aria-label=".form-select-sm">
-								<option>10개</option>
-								<option>30개</option>
-								<option>50개</option>
-							</select>
-						</form>
-					</div> 
-				</div>
+				</div> 
 				<!-- 정산 내역 List START -->
-				<div class="card shadow">	
+				<div class="card shadow">	 
 					<!-- Card header -->
 					<div class="card-header border-bottom d-sm-flex justify-content-sm-between align-items-sm-center">
 						<div class="mb-1 mb-sm-0 text-center text-sm-start">
-							<h5 class="card-title mb-1">정산 내역</h5>
-							<span id="settlementDateLabel">정산일 기준 2024.12.08(일) ~ 2024.12.14(토)</span>  <!--js변경-->
-						</div>
-						<a href="#" class="btn btn-dark-soft mb-0 border-0"> <i
-							class="fa-solid fa-download"></i></a>
-					</div>
+							<h5 class="card-title mb-1">기간 설정 조건</h5>
+							<span id="settlementDateLabel">정산일 기준 2024.12.08(일) ~ 정적 jsp입니다</span>  <!--js변경-->
+						</div>  
+					</div>   
 
 					<!-- Card body START -->
 					<div class="card-body">
@@ -219,28 +210,23 @@
 								<!-- Data item -->
 								<div class="col">
 									<small class="d-block d-sm-none">정산일</small>
-									<!-- 작은 화면일때만 보이는 텍스트-->
-									<h6 class="ms-1 mb-0 fw-normal">2024.12.09(월)</h6>
+									<!-- 작은 화면일때만 보이는 텍스트-->        
+									<h6 class="ms-1 mb-0 fw-normal">2024.12.09</h6>
 									<a role="button" class="payoutDetail mb-0 fw-normal ms-1"
 										data-bs-toggle="modal" data-bs-target="#payoutDetailModal"
-										data-src="payout" data-calculate-date="2024-12-30">상세보기</a>
-								<!-- 
-								data-src="payout" : 현재 요소가 "payout(정산)"과 관련된 동작임을 나타냄. 
-								data-payout-idx="${data.calculate_date}" : 서버에서 전달받은 '정산일'정보를 동적으로 채우고, 
-												ㄴ 정산 상세보기 클릭 시 서버로 요청할 때 calculate_date를 전달하기 위함
-								-->
-								</div>  
-
+										data-calculate-date="2024-12-30">상세보기</a>
+								</div>     
+  
 								<!-- Data item -->
 								<div class="col">
 									<small class="d-block d-sm-none">총 판매 금액</small>
-									<h6 class="ms-1 mb-0 fw-normal">65,000원</h6>
+									<h6 class="ms-1 mb-0 fw-normal">65,000원 ㅌㅅㅌ</h6>
 								</div>
-
+  
 								<!-- Data item --> 
 								<div class="col">
 									<small class="d-block d-sm-none">총 정산 금액</small>
-									<h6 class="ms-1 mb-0 fw-normal">55,000원</h6>
+									<h6 class="ms-1 mb-0 fw-normal">55,000원 ㅌㅅㅌ</h6>
 								</div>
 								<!-- Data item -->
 								<div class="col">

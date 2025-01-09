@@ -18,27 +18,7 @@
 		FROM RESERVATION r JOIN ROOM rm ON (r.room_idx = rm.idx) JOIN USER u ON (r.user_idx = u.idx)
 		WHERE r.partner_idx = #{partner_idx}
 	<!-- 필터적용 해야함 -->	
-        <!-- 날짜 필터 -->
-        <!-- 
-        <if test="calculate_date_start != null and calculate_date_start != ''">
-            <if test="calculate_date_end != null and calculate_date_end != ''">
-                AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
-            </if>
-            <if test="calculate_date_end == null or calculate_date_end == ''">
-                AND calculate_date = #{calculate_date_start}
-            </if>
-        </if>
- 		-->        
-        <!-- 정산 상태 필터 -->
-        <!-- 
-        <if test="calculate_stauts != null and calculate_stauts != ''">
-            AND calculate_stauts = #{calculate_stauts}
-        </if>
-        -->
-        <!-- 
-		GROUP BY calculate_date 
-		ORDER BY calculate_date DESC 
-		-->
+       
 		<!-- 페이징 처리 -->
 	    <if test="limit != null and offset != null">
 	        LIMIT ${limit} OFFSET ${offset}
@@ -58,8 +38,8 @@
 	
 	<!-- 판매자 idx로 조회해서 판매자가 등록해둔 객실타입 조회 (=> 예약내역 검색필터에 객실타입 동적으로 뿌리기 위함) -->
 	<select id="getRoomTypeList" parameterType="map">
-		SELECT p.idx AS partner_idx, r.room_type 
-		FROM PARTNER p JOIN ROOM r ON (p.idx = r.partner_idx)
+		SELECT p.idx AS partner_idx, r.idx AS room_idx, r.room_type
+		FROM PARTNER p JOIN ROOM r ON (p.idx = r.partner_idx) 
 		WHERE p.idx = #{partner_idx}
 	</select>
 
