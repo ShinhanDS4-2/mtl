@@ -1,31 +1,30 @@
-const locationList = (function() {
-	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리  
-	let keywordType = "PARTNER";        
+const locationList = (function() {  
+	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리      
+	let keywordType = "PARTNER";                     
 
-	// js 로딩 시 이벤트 초기화 실행            
-	function init() {      
-		_eventInit();      
+	// js 로딩 시 이벤트 초기화 실행                 
+	function init() {          
 		_draw.drawModalKeyword(); // 여행지 등록 모달창에서 > 키워드 리스트 서버에서 받아서 그려주는 것
-		fetchLocationList();  // 페이지 로드 시 여행지 전체리스트 조회
+		fetchLocationList();  // 페이지 로드 시 여행지 전체리스트 조회 
 	};        
-                        
+                          
 	// 이벤트 초기화        
-	function _eventInit() {
+	function _eventInit() {  
 		let evo = $("[data-src='locationList'][data-act]").off();
 		evo.on("click change", function(e) {
 			_eventAction(e); 
-		});
-	};   
+		});   
+	};           
 	   
 	// 이벤트 분기
-	function _eventAction(e) {
+	function _eventAction(e) {   
 		let evo = $(e.currentTarget);
 		
 		let action = evo.attr("data-act");
 		
-		let type = e.type;
-		
-		if(type == "click") {    
+		let type = e.type;  
+		   
+		if(type == "click") {       
 			if(action == "clickKeywordList") {  // data-act="clickKeywordList"
 				_event.clickKeywordList(evo);
 			} else if (action == "clickDuplication") {
@@ -152,6 +151,9 @@ const locationList = (function() {
 			});
 		},
 		
+	
+		
+
 		// 키워드 탭 클릭
 		clickKeywordTab: function(evo) {
 			keywordType = evo.attr("data-type");
@@ -274,7 +276,6 @@ const locationList = (function() {
 		clickSearchButton: function() {
 			isSearchClicked = true;
 			fetchLocationList();  // 조건에 맞는 리스트 조회
-			alert( "검색필터 적용 테스트.");
 		},
 
 	};  // let _event 끝
@@ -315,7 +316,7 @@ const locationList = (function() {
 
 		/* 페이징 START */
 		let pageOption = {
-			limit: 5  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+			limit: 10  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
 		
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
@@ -323,7 +324,7 @@ const locationList = (function() {
 												// ㄴ pageOption객체를 넘겨 한 페이지에 표시할 데이터 수(limit)를 전달.
 												// _curPage: 현재 사용자가 보고 있는 페이지 번호.
 
-			fetchReservationList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
+			fetchLocationList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
 		});
 		
 		let pageParam = page.getParam(curPage);  // 현재 페이지 번호(curPage)를 기준으로 페이징에 필요한 정보(예: offset, limit)를 반환.
@@ -334,15 +335,16 @@ const locationList = (function() {
 		};
 		/* 페이징 END */
 		
+		console.log(param);
 		// Ajax 요청 - 여행지 리스트 조회 API호출
 		$.ajax({   
 			type: "POST", 
 			url: "/mtl/api/admin/location/getList",  
-			data: param,   // param값 => 검색필터(여행지 타입, 지역, 장소명)
+			data: param,   // param값 => 검색필터(여행지 타입, 지역, 장소명, offset, limit)
 
 			success: function(response) {   //  API 호출 성공 시 결과 response(여기서 API 리턴값: locationListCount, locationList)
 				_draw.drawLocationList(response);  // 리스트 그리기
-				// page.drawPage(response.ReservationListCount);  // 페이징 그려주는거
+				page.drawPage(response.locationListCount);  // 하단 페이징 넘버 그려주는거 => 리스트 총 갯수를 파람으로 넣어주면 알아서 그려줌
 				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함. 
 			},
 			error: function(xhr, status, error) {
@@ -406,11 +408,11 @@ const locationList = (function() {
 						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 							<div class="col">
 								<small class="d-block d-sm-none">지역</small>
-								<h6 class="ms-1 mb-0 fw-normal">${data.area}</h6>
+								<h6 class="ms-1 mb-0 fw-normal">${data.area_name}</h6>
 							</div>     
 							<div class="col">
 								<small class="d-block d-sm-none">분류</small>
-								<h6 class="ms-1 mb-0 fw-normal">${data.type}</h6>
+								<h6 class="ms-1 mb-0 fw-normal">${data.type_name}</h6>
 							</div>
 							<div class="col">
 								<small class="d-block d-sm-none">장소명</small>
@@ -418,7 +420,7 @@ const locationList = (function() {
 							</div>
 							<div class="col">
 								<small class="d-block d-sm-none">등록일</small>
-								<h6 class="ms-1 mb-1 fw-light">${data.create_date}</h6>
+								<h6 class="ms-1 mb-1 fw-light">${data.createdate}</h6>
 							</div>
 							<div class="col">			
 								<small class="d-block d-sm-none">상세보기</small>

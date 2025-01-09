@@ -17,7 +17,7 @@
 		<div class="page-content">
 			<!-- Topbar -->
 			<%@ include file="/WEB-INF/views/include/adminTopbar.jsp"%>
-			<!-- Page main content START -->
+			<!-- Page main content START -->  
 			<div class="page-content-wrapper p-xxl-4">
 
 				<!-- Title -->
@@ -38,23 +38,23 @@
 					<a role="button" class="btn btn-danger-soft text-nowrap ms-1 mb-0"
 						data-src="locationDetail" data-act="clickLocationDelete">삭제하기</a>
 				</div>
-				<!-- 여행지 수정 Modal START -->
+				
+			<!-- 여행지 수정 Modal START -->
 				<div class="modal fade" id="touristEditModal" tabindex="-1"
 					aria-labelledby="touristModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-lg modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="touristModalLabel">여행지 등록</h5>
+								<h5 class="modal-title" id="touristModalLabel">여행지 수정</h5>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close" data-src="locationList"
+									aria-label="Close" data-src="locationDetail"
 									data-act="clickLocationCancle"></button>
-							</div>
+							</div> 
 							<div class="modal-body">
 								<form>
 									<!-- 지역 선택 -->
 									<div class="mb-3">
-										<label class="form-label fw-bold">지역 <span
-											class="text-danger">*</span></label>
+										<label class="form-label fw-bold">지역 <span class="text-danger">*</span></label>
 										<div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="radio" name="areaType"
@@ -91,17 +91,17 @@
 										<div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="radio"
-													name="categoryType" id="attraction" value="A" checked>
+													name="locationType" id="attraction" value="A" checked>
 												<label class="form-check-label" for="attraction">관광지</label>
 											</div>
 											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="radio"
-													name="categoryType" id="restaurant" value="R"> <label
+													name="locationType" id="restaurant" value="R"> <label
 													class="form-check-label" for=""restaurant"">맛집</label>
 											</div>
 										</div>
 									</div>
-
+   
 									<!-- 장소명 입력 -->
 									<div class="mb-3">
 										<label for="placeName" class="form-label fw-bold">장소명
@@ -117,14 +117,14 @@
 										<div class="row">
 											<div class="col-10">
 												<input type="text" class="form-control" id="address"
-													data-src="locationList" data-act="clickAddress"> <input
+													data-src="locationDetail" data-act="clickAddress"> <input
 													type="hidden" class="form-control" id="addressSi">
 												<input type="hidden" class="form-control" id="addressDong">
 											</div>
 											<div class="col-2">
 												<div class="d-grid gap-2">
 													<input class="btn btn-primary-soft" type="button"
-														id="findAddress" data-src="locationList"
+														id="findAddress" data-src="locationDetail"
 														data-act="findAddress" value="주소 찾기">
 												</div>
 											</div>
@@ -139,7 +139,7 @@
 											placeholder="상세정보를 입력해 주세요."></textarea>
 									</div>
 
-									<!-- 키워드 선택 드롭다운-->
+									<!-- 키워드 선택 체크박스-->
 									<div class="mb-3">
 										<label for="keyword" class="form-label fw-bold">키워드 <span
 											class="text-danger">*</span></label>
@@ -149,19 +149,19 @@
 												<div class="col">
 													<div class="form-check">
 														<input class="form-check-input" type="checkbox" value=""
-															id="keyword1"> <label class="form-check-label"
-															for="keyword1">가족여행</label>
+															id="keyword1" checked> <label class="form-check-label"
+															for="keyword1">키워드예시</label>
 													</div>
 													<div class="form-check">
 														<input class="form-check-input" type="checkbox" value=""
 															id="keyword2"> <label class="form-check-label"
-															for="keyword2">함께걷기</label>
+															for="keyword2">키워드예시</label>
 													</div>
 													<div class="form-check">
 														<!-- name="keywordList" 필수 -->
 														<input class="form-check-input" type="checkbox" value=""
 															id="keyword3"> <label class="form-check-label"
-															for="keyword3">데이트코스</label>
+															for="keyword3">키워드예시</label>
 													</div>
 												</div>
 												<!-- js -->
@@ -169,63 +169,91 @@
 													<div class="form-check">
 														<input class="form-check-input" type="checkbox" value=""
 															id="keyword4"> <label class="form-check-label"
-															for="keyword4">가족여행</label>
+															for="keyword4">키워드예시</label>
 													</div>
 													<div class="form-check">
-														<input class="form-check-input" type="checkbox" value=""
+														<input class="form-check-input" type="checkbox" value="keword_idx"
 															id="keyword5"> <label class="form-check-label"
-															for="keyword5">함께걷기</label>
+															for="keyword5">키워드예시</label>
 													</div>
 													<div class="form-check">
 														<input class="form-check-input" type="checkbox" value=""
 															id="keyword6"> <label class="form-check-label"
-															for="keyword6">데이트코스</label>
+															for="keyword6">키워드예시</label>
 													</div>
 												</div>
 
 											</div>
 										</div>
-									</div>
+									</div> 
 									<!-- 이미지 업로드 -->
 									<div class="mb-3">
 										<label class="form-label fw-bold d-block">이미지 <span
 											class="text-danger">*</span></label>
 										<!-- 숙소 사진 등록 Card Start -->
-										<div class="card border mb-3">
-											<div class="card-body">
-												<!-- 사진 리스트 -->
-												<div class="d-flex gap-3">
+										<div class="card border mb-3 mx-auto">
+										    <div class="card-body"> 
+										        <!-- 사진 리스트 -->   
+										        <div id="imageList" class="d-flex gap-3 flex-wrap">
+										            <!-- 업로드 버튼 -->
+										            <div id="imageUploadButton" class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px; background-color: #f8f9fa;">
+										                <label class="text-center" style="cursor: pointer;">
+										                    <i class="bi bi-upload"></i><br>여행지 사진 업로드
+										                    <input type="file" class="d-none" multiple="multiple" data-src="locationDetail" data-act="changeFile" id="partnerImage">
+										                </label>
+										            </div>
 													<!-- 업로드 버튼 -->
-													<div
-														class="border rounded d-flex justify-content-center align-items-center"
-														style="width: 150px; height: 100px; background-color: #f8f9fa;">
-														<label class="text-center" style="cursor: pointer;">
-															<i class="bi bi-upload"></i><br>숙소 사진 업로드 <input
-															type="file" class="d-none" multiple="multiple"
-															data-src="locationList" data-act="changeFile"
-															id="partnerImage">
-														</label>
-													</div>
-													<div id="preview" class="d-flex"></div>
-												</div>
-											</div>
+													
+										            <!-- 사진 미리보기 영역 띄우는 부분 id="preview" -->
+										            <div id="preview" class="d-flex"> </div>
+										            	
+										            <!-- 사진 미리보기 영역 / js에서 반복 -->
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <!-- 사진 미리보기 영역 / js에서 반복 -->
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										             
+										        </div>
+										    </div>  
 										</div>
 										<!-- 숙소 사진 등록 Card END -->
-									</div>
-								</form>
+									</div>  
+								</form> 
 							</div>
 							<!-- 확인/취소 button -->
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
-									data-bs-dismiss="modal" data-src="locationList"
+									data-bs-dismiss="modal" data-src="locationDetail"
 									data-act="clickLocationCancle">취소</button>
 								<button type="button" class="btn btn-primary"
-									data-src="locationList" data-act="clickLocationRegist">확인</button>
+									data-src="locationDetail" data-act="clickModalUpdate">확인</button>
 							</div>
 						</div>
-					</div>
+					</div> 
 				</div>
-				<!-- 여행지 수정 Modal END -->
+			<!-- 여행지 수정 Modal END -->
 
 				<!-- 여행지 상세보기 Card START -->
 				<div class="card shadow border mt-2 mb-3 p-3">

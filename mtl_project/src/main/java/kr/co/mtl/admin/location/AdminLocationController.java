@@ -20,7 +20,8 @@ public class AdminLocationController {
 	
 	/** 완료
 	 * 여행지 등록
-	 * @param (기본정보)area, type, name, address, description / (사진정보 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드 정보 keywords 키값으로 배열저장)keyword_idx
+	 * @param (기본정보)area, type, name, address, description / 
+	 * (사진정보 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드 정보 keywordList 키값으로 배열저장)keyword_idx
 	 * @return result(true/false), message
 	 */
 	@PostMapping("/regist")
@@ -37,7 +38,7 @@ public class AdminLocationController {
 	/** 
 	 * 여행지 수정 
 	 * @param (기본정보수정)location_idx, area, type, name, address, description / (이미지,키워드 삭제)location_idx / 
-	 * 		(사진등록 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드등록 keywords 키값으로 배열저장)keyword_idx
+	 * 		(사진등록 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드등록 keywordList 키값으로 배열저장)keyword_idx
 	 * @return result(true/false), message
 	 */
 	@PostMapping("/update")

@@ -38,15 +38,15 @@
 					<div class="card-body col-6">
 						<div class="mb-3">
 							<label class="form-label">이메일</label>
-							<input type="text" class="form-control" value="222 555 666" readonly>
+							<input type="text" class="form-control" id="email" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">사업자 등록번호</label>
-							<input type="text" class="form-control" value="532-86-21256" readonly>
+							<input type="text" class="form-control" id="business_number" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">가입일</label>
-							<input type="text" class="form-control" value="2024-12-01" readonly>
+							<input type="text" class="form-control" id="create_date" readonly>
 						</div>
 					</div>
 					<!-- 왼쪽 카드 END -->
@@ -54,23 +54,23 @@
 					<!-- 오른쪽 카드 START -->
 					<div class="card-body col-6">
 						<div class="mb-3">
-							<label class="form-label">숙소명명</label>
-							<input type="text" class="form-control" value="히든베이" readonly>
+							<label class="form-label">숙소명</label>
+							<input type="text" class="form-control" id="name" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">연락처</label>
-							<input type="text" class="form-control" value="010-1234-5678" readonly>
+							<input type="text" class="form-control" id="business_phone" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">상태</label>
-							<input type="text" class="form-control" value="승인" readonly>
+							<input type="text" class="form-control" id="approval_status" readonly>
 						</div>
 					</div>
 					<!-- 오른쪽 카드 END -->
 				</div>
 				<!-- 승인 버튼 -->
 				<div class="d-flex mb-4 justify-content-center">
-					<button type="button" class="btn btn-primary w-25">승인</button>
+					<button type="button" class="btn btn-primary w-25 d-none" id="approveButton" data-src="partnerDetail" data-act="clickApproval">승인</button>
 				</div>
 			</div>
 			<!-- 판매자 정보 Card END -->
@@ -80,5 +80,13 @@
 
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
+
+<!-- page script -->
+<script src="/mtl/js/admin/partnerDetail.js"></script>
+<script type="text/javascript">
+	partnerDetail.init();
+</script>
+
+
 </body>
 </html>

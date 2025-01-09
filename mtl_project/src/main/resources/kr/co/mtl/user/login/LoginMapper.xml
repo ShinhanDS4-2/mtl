@@ -79,7 +79,7 @@
 	    WHERE idx = #{userIdx}
 	</update>
 	
-	<!-- 사용자 정보 가져오기 list admin 사용자 관리에서 사용 -->
+	<!-- 사용자 정보 가져오기 list admin 사용자 관리에서 사용 + 검색-->
 	<select id="getAllUser" parameterType="map" resultType="map">
 	    SELECT 
 	        idx AS user_idx,
@@ -125,7 +125,7 @@
 		</where>
 	</select>
 	
-	<!-- 사용자 정보 가져오기2 admin 사용자 관리에서 사용 views/user/userDetail.jsp에서 사용 -->
+	<!-- 사용자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/userDetail.jsp에서 사용 -->
 	<select id="getUserDetail" parameterType="map" resultType="map">
         SELECT 
             idx AS user_idx,

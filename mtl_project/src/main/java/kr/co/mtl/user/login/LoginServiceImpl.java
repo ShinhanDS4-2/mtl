@@ -230,7 +230,7 @@ public class LoginServiceImpl implements LoginService {
     
     
     /**
-     * 사용자 정보 가져오기2 admin 사용자 관리에서 사용 views/user/userDetail.jsp에서 사용
+     * 사용자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/userDetail.jsp에서 사용
      */
     public Map<String, Object> getUserDetail(Map<String, Object> param) throws Exception {
         return loginMapper.getUserDetail(param);

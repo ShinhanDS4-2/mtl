@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -163,8 +164,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
     @Override
     public boolean updateUserInfo(Map<String, Object> param, HttpSession session) throws Exception {
         int rowsAffected = partnerMapper.updateUser(param);
-        // 1
-        session.setAttribute("login_partner_name", param.get("name"));
 
         return rowsAffected > 0;
     }
@@ -214,4 +213,32 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         return rowsAffected > 0;
     }
     
+    /**
+     * 판매자 정보 가져오기 list admin 사용자 관리에서 사용
+     */
+    @Override
+    public Map<String, Object> getAllPartner(Map<String, Object> param) throws Exception {
+    	
+    	Map<String, Object> result = new HashMap<>();
+    	
+    	result.put("list", partnerMapper.getAllPartner(param));
+    	result.put("totalCnt", partnerMapper.getAllPartnerCnt(param));
+    	
+        return result;
+    }
+    
+    /**
+     * 판매자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/partnerDetail.jsp에서 사용
+     */
+    public Map<String, Object> getPartnerDetail(Map<String, Object> param) throws Exception {
+        return partnerMapper.getPartnerDetail(param);
+    }
+    
+    /**
+     * 판매자 상태 승인
+     */
+    public boolean updateApprovalStatus(Map<String, Object> param) throws Exception {
+    	int rowsAffected = partnerMapper.updateApprovalStatus(param);
+        return rowsAffected > 0;
+    }
 }
