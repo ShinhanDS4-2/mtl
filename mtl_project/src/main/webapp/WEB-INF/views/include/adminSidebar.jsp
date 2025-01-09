@@ -4,9 +4,9 @@
 <!-- adminSidebar START -->
 <nav class="navbar sidebar navbar-expand-xl navbar-light">
 	<!-- Navbar brand for xl START (사이드바 로고) -->
-	<div class="d-flex align-items-center">
-		<a class="navbar-brand" href="/mtl/admin/dashboard">
-			<img class="light-mode-item navbar-brand-item" src="assets/images/logo-130.png" alt="logo">
+	<div class="d-flex justify-content-center">
+		<a class="navbar-brand pe-0 d-flex justify-content-center" href="/mtl/admin/dashboard">
+			<img class="light-mode-item w-80" src="assets/images/logo-200.png" alt="logo">
 		</a>
 	</div>
 	<!-- Navbar brand for xl END -->
