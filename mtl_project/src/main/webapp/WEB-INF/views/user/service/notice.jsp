@@ -27,7 +27,14 @@
 						<i class="fas fa-sliders-h"></i> 메뉴
 					</button>
 				</div>
-
+				
+					<!-- Title -->
+					<div class="row">
+						<div class="col-12 mb-4 mb-sm-5">
+							<h1 class="h3 mb-2">공지사항</h1>
+							<span>파트너센터의 공지사항과 소식을 확인할 수 있습니다. </span>
+						</div>
+					</div>
 				<!-- 공지사항 -->
 				<div class="vstack gap-4">
 					<div class="row">
@@ -35,15 +42,16 @@
 							<div class="card border">
 								<!-- Card header -->
 								<div class="card-header border-bottom">
-									<h4 class="card-header-title">공지사항</h4>
+									<!-- <h4 class="card-header-title">공지사항</h4> -->
 								</div>
 								<!-- Card body START -->
 								<div class="card-body">
-									<!-- Hotel room list START -->
+									<!-- 사용자 공지사항 리스트 -->
 									<div class="table-responsive border-0">
 										<table class="table align-middle p-4 mb-0 table-hover table-shrink">
 											<tbody class="border-top-0" id="noticeList"> 
-												<tr>
+												<tr>	
+													<small class="d-block d-lg-none">제목</small>
 													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
@@ -96,8 +104,10 @@
 						<h3 class="card-title mb-0">서비스 이용 안내</h3>
 					</div>
 					<div class="card-body">
-						<p class="space">
-						</p>
+						<div class="mb-3 border p-3">		
+							<p class="space">
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

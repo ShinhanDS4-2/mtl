@@ -124,7 +124,7 @@
                 _callback(pageNum);
             }
         }
-
+	
         return {
             getParam: function(curPage) {
                 return _getParam(curPage);

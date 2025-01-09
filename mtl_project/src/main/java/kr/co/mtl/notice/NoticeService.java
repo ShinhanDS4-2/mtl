@@ -21,11 +21,11 @@ public interface NoticeService {
 		
 		Map<String, Object> searchNotices(Map<String, Object> param);
 
-
 		List<Map<String, Object>> getUserNotices(Map<String, Object> param);
 	    int getUserNoticeCount();
 
-		Map<String, Object> getNoticeDetailByTitle(String trim);
+		List<Map<String, Object>> getPartnerNotices(Map<String, Object> param);
+		int getPartnerNoticeCount();
 
-
+		Map<String, Object> getNoticeDetailByIdx(Integer notice_idx);
 }

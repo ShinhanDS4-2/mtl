@@ -69,7 +69,7 @@
                 </div>
                 <!-- 공지사항 등록 모달창 END -->
 				<!-- 공지사항 상세 모달창 START -->
-				<div id="noticeDetailModal" class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="true">
+				<div id="noticeDetailModal" class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="static">
 				    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 				        <div class="modal-content">
 				            <div class="modal-header">
@@ -88,7 +88,7 @@
 				            </div>
 				            <div class="modal-footer">
 				                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-				                <button type="button" class="btn btn-primary" onclick="_openEditModal()">수정하기</button>
+				                <button type="button" class="btn btn-primary" onclick="updatenotice()">수정하기</button>
 				            </div>
 				        </div>
 				    </div>
@@ -96,7 +96,7 @@
 				<!-- 공지사항 상세 모달창 END -->
 				
                 <!-- 공지사항 수정 모달창 START -->
-				<div id="noticeEditModal" class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="true">
+				<div id="updateNotice" class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="static">
 				    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
 				        <div class="modal-content">
 				            <div class="modal-header">
@@ -107,11 +107,12 @@
 				                <h6 class="fw-bold">제목</h6>
 				                <!-- 제목 필드 -->
 				                <input type="text" class="form-control" id="editTitle" placeholder="제목을 입력하세요">
-				
+									<tr>
+										<td> <small class="d-block d-lg-none">제목</small><h6 class="text-primary fw-bold ms-1 mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
+									</tr>
 				                <h6 class="fw-bold mt-4">내용</h6>
 				                <!-- 내용 필드 -->
 				                <textarea class="form-control" id="editContent" rows="15" placeholder="내용을 입력하세요"></textarea>
-				
 				                <h6 class="fw-bold mt-4">상태</h6>
 				                <!-- 상태 선택 -->
 				                <select id="editStatus" class="form-select js-choice" aria-label=".form-select-sm">
@@ -121,7 +122,7 @@
 				            </div>
 				            <div class="modal-footer">
 				                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-				                <button type="button" class="btn btn-primary" onclick="_editNotice()">수정하기</button>
+				                <button type="button" class="btn btn-primary">수정하기</button>
 				            </div>
 				        </div>
 				    </div>
@@ -182,19 +183,19 @@
 						<div class="bg-light rounded p-3 d-none d-sm-block">
 							<div class="row row-cols-6 g-4">
 								<div class="col">
-									<h6 class="mb-0">숙소명</h6>
+									<h6 class="mb-0">분류</h6>
 								</div>
 								<div class="col">
-									<h6 class="mb-0">이메일</h6>
+									<h6 class="mb-0">제목</h6>
 								</div>
 								<div class="col">
-									<h6 class="mb-0">문의 내용</h6>
+									<h6 class="mb-0">내용</h6>
 								</div>
 								<div class="col">
-									<h6 class="mb-0">등록일</h6>
+									<h6 class="mb-0">상태</h6>
 								</div>
 								<div class="col">
-									<h6 class="mb-0">답변상태</h6>
+									<h6 class="mb-0">게시일</h6>
 								</div>
 								<div class="col">
 									<h6 class="mb-0"></h6>
@@ -209,14 +210,13 @@
 					</div>
                 </div>
                 <!-- 페이징 컨테이너 -->
-                	<!-- Card footer START -->
-				<div class="card-footer pt-0">
-					<!-- Pagination (페이지 전환 하단 바)-->
-					<nav class="d-flex justify-content-center">
-					    <ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination"></ul>
+                <!-- Card footer START -->
+				<div class="d-sm-flex justify-content-sm-center align-items-sm-center">
+					<!-- Pagination -->
+					<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
+						<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
+						</ul>
 					</nav>
-
-
 				</div>
                 
             </div>
