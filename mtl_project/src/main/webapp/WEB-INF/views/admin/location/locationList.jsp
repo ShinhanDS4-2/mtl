@@ -178,25 +178,14 @@
 				</div>
 				<!-- Card body END -->
 
-				<!-- Card footer START -->
+				<!-- Card footer START --> 
 				<div class="card-footer pt-0">
 					<!-- Pagination (페이지 전환 하단 바)-->
 					<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
 						<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-							<li class="page-item disabled"> <!-- disabled: 버튼 비활성화-->
-								<a class="page-link" href="#" tabindex="-1">&lt;</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item active"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#">&gt;</a>
-							</li>
+							<!-- 동적으로 페이지네이션 그려주는 곳 page.drawPage(리스트 총 갯수) -->
 						</ul>
 					</nav>
-
 				</div>
 				<!-- Card footer END -->
 			</div>
