@@ -51,7 +51,9 @@
 	<!-- 마이페이지 회원 정보 수정 -->
 	<update id="updateUser" parameterType="map">
 	    UPDATE PARTNER
-	    SET phone = #{phone}
+	    SET 
+	    	  business_phone = #{phone}
+	    	, business_name = #{name}
 	    WHERE idx = #{partnerIdx}
 	</update>
 	
@@ -69,7 +71,7 @@
 	        idx AS partner_idx
 	    FROM PARTNER
 	    WHERE idx = #{partnerIdx}
-	      AND password = #{password} -- DB의 현재 비밀번호와 입력한 비밀번호를 비교
+	      AND password = #{password} 
 	</select>
 	
 	<!-- 마이페이지 업체 정보 수정 -->
@@ -80,5 +82,70 @@
 	    WHERE idx = #{partnerIdx}
 	</update>
     
+    <!-- 판매자 정보 가져오기 list admin 사용자 관리에서 사용 + 검색-->
+	<select id="getAllPartner" parameterType="map" resultType="map">
+	    SELECT 
+	        idx AS partner_idx,
+	        name,
+	        email,
+	        phone,
+	        DATE_FORMAT (create_date, "%Y-%m-%d") AS create_date,
+	        approval_status
+	    FROM PARTNER
+	    <where>
+		    <if test="status != null and status != ''">
+		        AND approval_status = #{status}
+		    </if>
+		    <if test="searchType == 'name' and searchKeyword != null and searchKeyword != ''">
+		        AND name LIKE CONCAT('%', #{searchKeyword}, '%')
+		    </if>
+		    <if test="searchType == 'email' and searchKeyword != null and searchKeyword != ''">
+		        AND email LIKE CONCAT('%', #{searchKeyword}, '%')
+		    </if>
+		</where>
+	    ORDER BY create_date DESC
+	    <if test="limit != null and offset != null">
+	    	LIMIT ${limit} OFFSET ${offset}
+	    </if>
+	</select>
+
+    <!-- 판매자 정보 가져오기 list 개수 -->
+	<select id="getAllPartnerCnt" parameterType="map">
+	    SELECT 
+	        COUNT(*)
+	    FROM PARTNER
+	    <where>
+		    <if test="status != null and status != ''">
+		        AND approval_status = #{status}
+		    </if>
+		    <if test="searchType == 'name' and searchKeyword != null and searchKeyword != ''">
+		        AND name LIKE CONCAT('%', #{searchKeyword}, '%')
+		    </if>
+		    <if test="searchType == 'email' and searchKeyword != null and searchKeyword != ''">
+		        AND email LIKE CONCAT('%', #{searchKeyword}, '%')
+		    </if>
+		</where>
+	</select>
+	
+	<!-- 판매자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/partnerDetail.jsp에서 사용 -->
+	<select id="getPartnerDetail" parameterType="map" resultType="map">
+        SELECT 
+            idx AS partner_idx,
+	        email,
+	        name,
+	        business_number,
+	        business_phone,
+	        DATE_FORMAT (create_date, "%Y-%m-%d") AS create_date,
+	        approval_status
+	    FROM PARTNER
+        WHERE idx = #{partnerIdx}
+    </select>
+    
+    <!-- 판매자 상태 승인 -->
+    <update id="updateApprovalStatus" parameterType="map">
+	    UPDATE PARTNER
+	    SET approval_status = 'Y'
+	    WHERE idx = #{partner_idx}
+	</update>
 
 </mapper>

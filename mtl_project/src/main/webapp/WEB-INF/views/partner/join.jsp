@@ -38,19 +38,19 @@
 												</div>
 												<div class="col-4 ps-1">
 													<div class="d-grid">
-														<button class="btn btn-primary" type="button" data-src="join" data-act="clickEmailCheck">중복 확인</button>
+														<button id="dupleBtn" class="btn btn-primary" type="button" data-src="join" data-act="clickEmailCheck" data-check="0">중복 확인</button>
 													</div>
 												</div>
 											</div>
 										</div>
 										<div class="mb-3">
-											<button type="button" class="btn btn-primary-soft w-100 mb-0">이메일 인증</button>
+											<button type="button" class="btn btn-primary-soft w-100 mb-0" data-src="join" data-act="clickSendMail">이메일 인증</button>
 										</div>
 										<!-- Email 인증번호  -->
 										<label class="form-label">인증번호 <span class="text-danger">*</span></label>
 										<div class="mb-2 d-flex align-items-center">
-											<input type="email" class="form-control me-2" style="flex: 1;" placeholder="인증번호를 입력해주세요.">
-											<button type="button" class="btn btn-primary">인증 확인</button>
+											<input type="text" class="form-control me-2" id="authNum"  style="flex: 1;" placeholder="인증번호를 입력해주세요."  data-auth-check="0">
+											<button type="button" class="btn btn-primary" data-src="join" data-act="clickAuthCheck">인증 확인</button>
 										</div>
 
 										<!-- 비밀번호 -->

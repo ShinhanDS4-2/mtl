@@ -36,7 +36,7 @@ const payout = (function() {
 			console.log("검색 조건:", param);
 
 		} else {
-			console.log("전체 리스트 조회");
+			console.log("전체 리스트 조회");  
 		}
 
 		// 페이징 START
@@ -49,7 +49,7 @@ const payout = (function() {
 												// ㄴ pageOption객체를 넘겨 한 페이지에 표시할 데이터 수(limit)를 전달.
 												// _curPage: 현재 사용자가 보고 있는 페이지 번호.
 
-			fetchReservationList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
+			fetchPayoutList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
 		});
 		
 		let pageParam = page.getParam(curPage);  // 현재 페이지 번호(curPage)를 기준으로 페이징에 필요한 정보(예: offset, limit)를 반환.

@@ -39,19 +39,15 @@
 					<div class="card-body col-6">
 						<div class="mb-3">
 							<label class="form-label">이메일</label> 
-							<input type="text" class="form-control" value="222 555 666" readonly>
+							<input type="text" class="form-control" id="email" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">생년월일</label>
-							<input type="text" class="form-control" value="1990-01-01" readonly>
+							<input type="text" class="form-control" id="birth" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">가입일</label>
-							<input type="text" class="form-control" value="2024-12-01" readonly>
-						</div>
-						<div class="mb-3">
-							<label class="form-label">상태</label>
-							<input type="text" class="form-control" value="정상" readonly>
+							<input type="text" class="form-control" id="create_date" readonly>
 						</div>
 					</div>
 					<!-- 왼쪽 카드 END -->
@@ -60,15 +56,15 @@
 					<div class="card-body col-6">
 						<div class="mb-3">
 							<label class="form-label">이름</label>
-							<input type="text" class="form-control" value="가나다" readonly>
+							<input type="text" class="form-control" id="name" readonly>
 						</div>
 						<div class="mb-3">
 							<label class="form-label">연락처</label>
-							<input type="text" class="form-control" value="010-1234-5678" readonly>
+							<input type="text" class="form-control" id="phone" readonly>
 						</div>
 						<div class="mb-3">
-							<label class="form-label">구분</label>
-							<input type="text" class="form-control" value="일반 or 관리자" readonly>
+							<label class="form-label">상태</label>
+							<input type="text" class="form-control" id="user_status" readonly>
 						</div>
 					</div>
 					<!-- 오른쪽 카드 END -->
@@ -115,72 +111,14 @@
 						</div>
 					</div>
 
-					<!-- Table data -->
-					<div class="row align-items-md-center justify-content-between border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<div class="d-flex align-items-center">
-								<!-- Image -->
-								<div class="w-80px flex-shrink-0 ms-3">
-									<img src="assets/images/category/hotel/4by3/01.jpg" class="rounded" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<h6 class="mb-0">오션뷰 디럭스</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">스탠다드 디럭스</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-15</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-16</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-12</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-bold">95,000원</h6>
-						</div>
-						<div class="col">
-							<div class="badge bg-success bg-opacity-10 text-success">예약완료</div>
-						</div>
+					<div id="reservationList">
 					</div>
-
-					<!-- Table data -->
-					<div class="row align-items-md-center justify-content-between border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<div class="d-flex align-items-center">
-								<div class="w-80px flex-shrink-0 ms-3">
-									<img src="assets/images/category/hotel/4by3/01.jpg" class="rounded" alt="">
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<h6 class="mb-0">오션뷰 디럭스</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">스탠다드 디럭스</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-15</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-16</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-normal">2024-12-12</h6>
-						</div>
-						<div class="col">
-							<h6 class="mb-0 fw-bold">95,000원</h6>
-						</div>
-						<div class="col">
-							<div class="badge bg-danger bg-opacity-10 text-danger">환불완료</div>
-						</div>
-					</div>
+					
+					<!-- Pagination (페이지 전환 하단 바)-->
+					<nav class="d-flex justify-content-center">
+						<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
+						</ul>
+					</nav>
 				</div>
 			</div>
 		</div>
@@ -190,5 +128,12 @@
 </main>
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
+
+<!-- page script -->
+<script src="/mtl/js/admin/user/userDetail.js"></script>
+<script type="text/javascript">
+	userDetail.init();
+</script>
+
 </body>
 </html>
