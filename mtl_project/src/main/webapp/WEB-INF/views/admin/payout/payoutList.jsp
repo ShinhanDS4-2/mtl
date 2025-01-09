@@ -143,38 +143,26 @@
 								<div class="col">
 									<h6 class="mb-0"></h6>
 								</div>
-							</div>
+							</div>   
 						</div>
-						<div id="cardBody"></div>
+						<div id="cardBody"></div> 
 					</div>
 	
 					<!-- Table data (정산내역 리스트에서 1줄 데이터) / js에서 내용 추가함(id="cardBody" 아래에 append) -->					
 
-
-
-					<!-- Card footer START / 페이징 처리 -->
-					<div class="card-footer pt-0">
-						<!-- Pagination (페이지 전환 하단 바)-->
-						<nav class="d-flex justify-content-center">
-							<ul class="pagination pagination-sm pagination-primary-soft mb-0">
-								<li class="page-item disabled">
-									<!-- disabled: 버튼 비활성화--> <a class="page-link" href="#"
-									tabindex="-1">&lt;</a>
-								</li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item active"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item disabled"><a class="page-link"
-									href="#">..</a></li>
-								<li class="page-item"><a class="page-link" href="#">11</a></li>
-								<li class="page-item"><a class="page-link" href="#">12</a></li>
-								<li class="page-item"><a class="page-link" href="#">&gt;</a>
-								</li>
-							</ul>
-						</nav>
-
+					<!-- Card footer START -->
+					 <!-- 페이징 처리 START -->
+					<div class="row">
+						<div class="col-12">
+							<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+								<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">  <!-- id="pagination" -->
+								</ul>
+							</nav>
+						</div>
 					</div>
-					<!-- Card footer END / 페이징 처리 -->
+					<!-- 페이징 처리 END -->
+					<!-- Card footer END -->
+					
 				</div>
 				<!-- 정산 내역 List END -->
 

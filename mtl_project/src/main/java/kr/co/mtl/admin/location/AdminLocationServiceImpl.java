@@ -29,7 +29,8 @@ public class AdminLocationServiceImpl implements AdminLocationService{
 	
 	/**
 	 * 여행지 등록
-	 * @param (기본정보)area, type, name, description, address, address_si, address_dong / (사진정보 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드 정보 keywordList 키값으로 배열저장)keyword_idx
+	 * @param (기본정보)area, type, name, description, address, address_si, address_dong / 
+	 * (사진정보 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드 정보 keywordList 키값으로 배열저장)keyword_idx
 	 * @return result(true/false)
 	 */
 	@Override
@@ -75,10 +76,10 @@ public class AdminLocationServiceImpl implements AdminLocationService{
 	    	param.put("keywordList", keywordList);  // param에 location_idx도 있고, keywordList도 있음
 	    	
 	    	if (keywordList != null && !keywordList.isEmpty()) { 
-	    		for (Integer keywordIdx : keywordList) {  // keywordList 배열 요소를 하나하나 반복문 돌림
+	    		for (Integer keyword_idx : keywordList) {  // keywordList 배열 요소를 하나하나 반복문 돌림
 	    			Map<String, Object> keywordParam = new HashMap<>();  // 키워드 등록 매퍼로 넘길 param값 저장할 변수 선언
 	    			keywordParam.put("location_idx", param.get("location_idx"));
-	    			keywordParam.put("keyword_idx", keywordIdx);
+	    			keywordParam.put("keyword_idx", keyword_idx);
 	    			adminLocationMapper.registLocationKeyword(keywordParam);  // 키워드 등록 (param값으로 location_idx, keyword_idx 넘겨줌)
 	    		}
 	    	} 
@@ -94,59 +95,75 @@ public class AdminLocationServiceImpl implements AdminLocationService{
 
 	/**
 	 * 여행지 수정
-	 * @param (기본정보수정)location_idx, area, type, name, address, description / (이미지,키워드 삭제)location_idx / 
-	 * 		(사진등록 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드등록 keywords 키값으로 배열저장)keyword_idx
+	 * @param (기본정보수정)location_idx, area, type, name, address, address_si, address_dong, description / (이미지,키워드 삭제)location_idx / 
+	 * 		(사진등록 images 키값으로 배열저장)url, thumbnail_yn, origin_filename / (키워드등록 keywordList 키값으로 배열저장)keyword_idx
 	 * @return result(true/false)
 	 */
 	@Override
 	public Map<String, Object> updateLocation(Map<String, Object> param, List<MultipartFile> images) {
 	    Map<String, Object> result = new HashMap<>();
+    	System.out.println("여행지 수정 param값은  ?????");
+    	System.out.println(param); 
+    	
+    	System.out.println("여행지 수정 images값은  ?????");
+    	System.out.println(images); 
+    	
 		try {
-		// 여행지 기본정보 수정 param : #{location_idx}, #{area}, #{type}, #{name}, #{address}, #{description}
+		// 여행지 기본정보 수정 param : #{location_idx}, #{area}, #{type}, #{name}, #{address}, #{address_si}, #{address_dong}, #{description}
 			int updateInfo = adminLocationMapper.updateLocationInfo(param);
-			
-			
-		// 사진 삭제 param : #{location_idx}
-			int deleteImg = adminLocationMapper.deleteLocationImg(param);
-			
-		// 사진 등록 param : #{location_idx}, images: #{url}, #{thumbnail_yn}, #{origin_filename}
-			Map<String, Object> imageParam = new HashMap<>();
-			imageParam.put("location_idx", param.get("location_idx"));  // imageParam에는 location_idx가 있음
-			
-			String thumbnailYN = "Y";  // 첫번째 이미지만 썸네일로 설정
-			for(MultipartFile img : images) {
-				// 파일 s3 업로드
-				String url = "location/" + param.get("location_idx") + "/" + img.getOriginalFilename();
-				String s3Url = s3Service.uploadFile(img, url);
-				
-				// db 업로드
-				imageParam.put("origin_filename", img.getOriginalFilename());
-				imageParam.put("url", s3Url);
-				imageParam.put("thumbnail_yn", thumbnailYN);
-				
-				thumbnailYN = "N";
-				
-				adminLocationMapper.registLocationImg(imageParam);
-			}
-			
-		// 키워드 삭제 param : #{location_idx}
+		
+		// 키워드 삭제 후 재등록
+			// 키워드 삭제 param : #{location_idx}
 			int deleteKeyword = adminLocationMapper.deleteLocationKeyword(param);
 			
-		// 키워드 등록 param : #{location_idx}, #{keyword_idx})
-	    	String keywordString = String.valueOf(param.get("keywordList"));
-	    	List<Integer> keywordList = Arrays.stream(keywordString.split(",")) 
-	    			.map(Integer::parseInt)
-	    			.collect(Collectors.toList());
-	    	param.put("keywordList", keywordList);  // param에 location_idx도 있고, keywordList도 있음
-	    	
-	    	if (keywordList != null && !keywordList.isEmpty()) { 
-	    		for (Integer keywordIdx : keywordList) {  // keywordList 배열 요소를 하나하나 반복문 돌림
-	    			Map<String, Object> keywordParam = new HashMap<>();  // 키워드 등록 매퍼로 넘길 param값 저장할 변수 선언
-	    			keywordParam.put("location_idx", param.get("location_idx"));
-	    			keywordParam.put("keyword_idx", keywordIdx);
-	    			adminLocationMapper.registLocationKeyword(keywordParam);  // 키워드 등록 (param값으로 location_idx, keyword_idx 넘겨줌)
-	    		}
-	    	}
+			// 키워드 등록 param : #{location_idx}, #{keyword_idx})
+			String keywordString = String.valueOf(param.get("keywordList"));
+			List<Integer> keywordList = Arrays.stream(keywordString.split(","))   // param으로 넘어온 keywordList 파싱해서 배열형식으로 다시 저장
+					.map(Integer::parseInt)
+					.collect(Collectors.toList());
+			param.put("keywordList", keywordList);  // 파싱한 키워드배열을 다시 param에 넣어줌(같은 키값으로 덮어쓰기)
+			
+			if (keywordList != null && !keywordList.isEmpty()) { 
+				for (Integer keyword_idx : keywordList) {  // keywordList 배열 요소를 하나하나 반복문 돌림
+					Map<String, Object> keywordParam = new HashMap<>();  // 키워드 등록 매퍼로 넘길 param값 저장할 변수 선언
+					keywordParam.put("location_idx", param.get("location_idx"));
+					keywordParam.put("keyword_idx", keyword_idx);
+					adminLocationMapper.registLocationKeyword(keywordParam);  // 키워드 등록 (param값으로 location_idx, keyword_idx 넘겨줌)
+				}
+			}    
+			
+			System.out.println("파라미터로 넘어온 images 값 확인!!!!" + images);
+			
+		// 사진이 없을 수도 있기 때문에 경우에 따라 분기
+			if(images != null && !images.isEmpty()) {  // 이미지가 있는 경우
+				 System.out.println("이미지가 있음!!!!!!!!!!!!!");
+				// 사진 삭제 param : #{location_idx}
+				int deleteImg = adminLocationMapper.deleteLocationImg(param);
+				
+				// 사진 등록 param : #{location_idx}, images: #{url}, #{thumbnail_yn}, #{origin_filename}
+				Map<String, Object> imageParam = new HashMap<>();
+				imageParam.put("location_idx", param.get("location_idx"));  // imageParam에는 location_idx가 있음
+				
+				String thumbnailYN = "Y";  // 첫번째 이미지만 썸네일로 설정
+				for(MultipartFile img : images) {   
+					// 파일 s3 업로드
+					String url = "location/" + param.get("location_idx") + "/" + img.getOriginalFilename();
+					String s3Url = s3Service.uploadFile(img, url);
+					
+					// db 업로드
+					imageParam.put("origin_filename", img.getOriginalFilename());
+					imageParam.put("url", s3Url);
+					imageParam.put("thumbnail_yn", thumbnailYN);
+					
+					thumbnailYN = "N";
+					
+					adminLocationMapper.registLocationImg(imageParam);
+				}
+			} else {  // 이미지 배열이 빈 배열인 경우
+				  System.out.println("이미지가 없음!!!!!!!!!!!!!");
+			}
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -177,7 +194,7 @@ public class AdminLocationServiceImpl implements AdminLocationService{
 		} else {
 			result.put("result", false);
 		}
-
+		System.out.println("여행지 삭제 시 result값은 ?>>>>>"+result);
 		return result;
 	}
 	
