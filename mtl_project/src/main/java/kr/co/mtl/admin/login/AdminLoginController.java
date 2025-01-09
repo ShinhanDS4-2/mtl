@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.co.mtl.partner.login.PartnerLoginService;
 import kr.co.mtl.user.login.LoginService;
 import kr.co.mtl.util.CommonUtil;
 
@@ -26,6 +27,9 @@ public class AdminLoginController {
     
     @Autowired
     private LoginService userLoginService; // 사용자 정보 가져오기 list가져와야 해서 추가
+    
+    @Autowired
+    private PartnerLoginService partnerLoginService; // 판매자 정보 가져오기 list가져와야 해서 추가
     
     /**
      * 사용자 정보 가져오기
@@ -161,7 +165,7 @@ public class AdminLoginController {
     
     /**
      * 사용자 정보 가져오기2
-     * admin 사용자 관리에서 사용 views/user/userDetail.jsp에서 사용
+     * admin 사용자 관리에서 사용 views/admin/user/userDetail.jsp에서 사용
      */
     @PostMapping("/detail")
     public Map<String, Object> getUserDetail(@RequestParam Map<String, Object> param) {
@@ -178,4 +182,52 @@ public class AdminLoginController {
         }
         return result;
     }
+    
+    
+    /**
+     * 판매자 정보 가져오기 list
+     * 판매자 PartnerLoginMapper.java -> PartnerLoginMapper.xml에서 사용자 목록 조회 SQL 생성 -> PartnerLoginService.java를 통해 데이터 가져옴
+     * AdminLoginController.java 에서 LoginService를 호출 USER 정보를 가져옴
+     * partnerList.js에 AJAX 요청 전송 -> partnerList.jsp
+     */
+    @PostMapping("/partnerList")
+    public Map<String, Object> getPartnerList(@RequestParam Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            // Partner의 PartnerLoginService를 사용해 데이터 가져오기
+            List<Map<String, Object>> partnerList = partnerLoginService.getAllPartner(param);
+            
+            // 전체 사용자 수
+            int totalCount = partnerList.size();
+            
+            result.put("partnerList", partnerList);
+            result.put("totalCount", totalCount);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("error", "판매자 목록 조회 중 오류가 발생했습니다.");
+        }
+        return result;
+    }
+    
+    /**
+     * 판매자 정보 가져오기2
+     * admin 판매자 관리에서 사용 views/admin/user/partnerDetail.jsp에서 사용
+     */
+    @PostMapping("/partnerDetail")
+    public Map<String, Object> getPartnerDetail(@RequestParam Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            // 사용자 상세 정보 조회
+            Map<String, Object> partnerDetail = partnerLoginService.getPartnerDetail(param);
+
+            // 결과에 사용자 정보 추가
+            result.put("partnerDetail", partnerDetail);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("error", "판매자 상세 정보 조회 중 오류가 발생했습니다.");
+        }
+        return result;
+    }
+    
+    
 }

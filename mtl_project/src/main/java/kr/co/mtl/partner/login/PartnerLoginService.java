@@ -1,5 +1,6 @@
 package kr.co.mtl.partner.login;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,5 +60,14 @@ public interface PartnerLoginService {
      * 업체 정보 수정
      */
     boolean updateBusinessInfo(Map<String, Object> param, HttpSession session) throws Exception;
-
+    
+    /**
+     * 판매자 정보 가져오기 list admin 사용자 관리에서 사용
+     */
+    List<Map<String, Object>> getAllPartner(Map<String, Object> param) throws Exception;
+    
+    /**
+     * 판매자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/partnerDetail.jsp에서 사용
+     */
+    Map<String, Object> getPartnerDetail(Map<String, Object> param) throws Exception;
 }

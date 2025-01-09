@@ -74,12 +74,12 @@
 					<!-- 검색어 입력 input -->
 					<div class="col-6">
 						<label class="form-label"></label> 
-						<input type="text" class="form-control" placeholder="검색어를 입력하세요">
+						<input type="text" class="form-control" id="searchKeyword" placeholder="검색어를 입력하세요">
 					</div>
 
 					<!-- 초기화/검색 button -->
 					<div class="d-sm-flex justify-content-end border-top pt-3">
-						<button type="button" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
+						<button type="button" class="btn btn-primary-soft mb-0 ms-2" onclick="window.location.reload()">초기화</button>
 						<button type="button" class="btn btn-primary mb-0 ms-2">검색</button>
 					</div>
 				</form>
@@ -90,7 +90,7 @@
 			<!-- 예약 내역 List 상단 Tab -->
 			<div class="row g-4 justify-content-start align-items-center mb-2">
 				<div class="col-md-6 col-lg-6">
-					<h6 class="mb-1">전체 판매자 <span>50</span>명</h6>
+					<h6 class="mb-1">전체 판매자 <span class="totalCount"></span>명</h6>
 				</div>
 			</div>
 
@@ -122,185 +122,69 @@
 						</div>
 					</div>
 
-					<!-- Table data (1번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">00호텔</h6>
+					<div id="partnerList">
+						<!-- Table data (1번째 예약내역 상세 데이터)-->
+						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<!-- Data item -->
+							<div class="col">
+								<h6 class="ms-1 mb-0 fw-normal">00호텔</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<h6 class="ms-1 mb-1 fw-light">010-7737-6314</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<div class="badge bg-success bg-opacity-10 text-success">승인</div>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<div class="ms-1 col">
+									<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								</div>
+							</div>
 						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">010-7737-6314</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="badge bg-success bg-opacity-10 text-success">승인</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="ms-1 col">
-								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
+						<!-- Table data (2번째 예약내역 상세 데이터)-->
+						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<!-- Data item -->
+							<div class="col">
+								<h6 class="ms-1 mb-0 fw-normal">히든베이호텔텔</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<h6 class="ms-1 mb-0 fw-normal">cc@naver.com</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<h6 class="ms-1 mb-1 fw-light">010-1234-5678</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<div class="badge bg-success bg-opacity-10 text-success">승인</div>
+							</div>
+							<!-- Data item -->
+							<div class="col">
+								<div class="ms-1 col">
+									<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
+								</div>
 							</div>
 						</div>
 					</div>
-					<!-- Table data (2번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">히든베이호텔텔</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">cc@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">010-1234-5678</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="badge bg-success bg-opacity-10 text-success">승인</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="ms-1 col">
-								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-							</div>
-						</div>
-					</div>
-					<!-- Table data (3번째 예약내역 상세 데이터)-->
-					<div
-						class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">히든베이호텔텔</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">cc@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">010-1234-5678</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="badge bg-danger bg-opacity-10 text-danger">미승인</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="ms-1 col">
-								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-							</div>
-						</div>
-					</div>
-					<!-- Table data (4번째 예약내역 상세 데이터)-->
-					<div
-						class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">시그니엘 서울</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">010-7737-6314</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="badge bg-success bg-opacity-10 text-success">승인</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="ms-1 col">
-								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-							</div>
-						</div>
-					</div>
-					<!-- Table data (5번째 예약내역 상세 데이터)-->
-					<div
-						class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">파크하얏트</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">cc@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">010-1234-5678</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="badge bg-success bg-opacity-10 text-success">승인</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="ms-1 col">
-								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-							</div>
-						</div>
-					</div>
-					<!-- Table data (6번째 예약내역 상세 데이터)-->
-					<div
-						class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">스카이베이</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">cc@naver.com</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">010-1234-5678</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="badge bg-danger bg-opacity-10 text-danger">미승인</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="ms-1 col">
-								<a href="admin/partner/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-							</div>
-						</div>
-					</div>
-				</div>
+					
+					
+					
 				<!-- Card body END -->
 
 				<!-- Card footer START -->
@@ -329,6 +213,13 @@
 
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
-</body>
 
+<!-- page script -->
+<script src="/mtl/js/admin/partnerList.js"></script>
+<script type="text/javascript">
+	partnerList.init();
+</script>
+
+
+</body>
 </html>

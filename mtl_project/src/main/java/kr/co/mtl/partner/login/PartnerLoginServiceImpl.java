@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -210,6 +211,21 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
     public boolean updateBusinessInfo(Map<String, Object> param, HttpSession session) throws Exception {
         int rowsAffected = partnerMapper.updateBusiness(param);
         return rowsAffected > 0;
+    }
+    
+    /**
+     * 판매자 정보 가져오기 list admin 사용자 관리에서 사용
+     */
+    @Override
+    public List<Map<String, Object>> getAllPartner(Map<String, Object> param) throws Exception {
+        return partnerMapper.getAllPartner(param);
+    }
+    
+    /**
+     * 판매자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/partnerDetail.jsp에서 사용
+     */
+    public Map<String, Object> getPartnerDetail(Map<String, Object> param) throws Exception {
+        return partnerMapper.getPartnerDetail(param);
     }
     
 }

@@ -82,5 +82,31 @@
 	    WHERE idx = #{partnerIdx}
 	</update>
     
+    <!-- 판매자 정보 가져오기 list admin 사용자 관리에서 사용 + 검색-->
+	<select id="getAllPartner" parameterType="map" resultType="map">
+	    SELECT 
+	        idx AS partner_idx,
+	        name,
+	        email,
+	        phone,
+	        DATE_FORMAT (create_date, "%Y-%m-%d") AS create_date,
+	        approval_status
+	    FROM PARTNER
+	    ORDER BY create_date DESC
+	</select>
+	
+	<!-- 판매자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/partnerDetail.jsp에서 사용 -->
+	<select id="getPartnerDetail" parameterType="map" resultType="map">
+        SELECT 
+            idx AS partner_idx,
+	        email,
+	        name,
+	        business_number,
+	        business_phone,
+	        DATE_FORMAT (create_date, "%Y-%m-%d") AS create_date,
+	        approval_status
+	    FROM PARTNER
+        WHERE idx = #{partnerIdx}
+    </select>
 
 </mapper>
