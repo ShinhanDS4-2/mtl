@@ -13,4 +13,10 @@ public interface FaqMapper {
 	
 	// 자주 묻는 질문 리스트 개수 관리자
 	int getListCnt(Map<String, Object> param);
+	
+	// 상태 업데이트
+	int updateStatus(Map<String, Object> param);
+
+	// 자주 묻는 질문 등록
+	int registFaq(Map<String, Object> param);
 }

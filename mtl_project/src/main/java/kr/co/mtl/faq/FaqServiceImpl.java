@@ -35,5 +35,33 @@ public class FaqServiceImpl implements FaqService {
 		
 		return result;
 	};
+
+	/**
+	 * 상태 업데이트
+	 * @param param
+	 * @return 
+	 */
+	public Map<String, Object> updateStatus(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("result", faqMapper.updateStatus(param));
+		
+		return result;
+	};
+
+	/**
+	 * 자주 묻는 질문 등록
+	 * @param param
+	 * @return 
+	 */
+	public Map<String, Object> registFaq(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("result", faqMapper.registFaq(param));
+		
+		return result;
+	};
 	
 }

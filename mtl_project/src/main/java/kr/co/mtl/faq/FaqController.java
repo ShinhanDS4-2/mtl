@@ -2,8 +2,6 @@ package kr.co.mtl.faq;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,6 +24,32 @@ public class FaqController {
 	public Map<String, Object> getList(@RequestBody Map<String, Object> param) {
 		
 		Map<String, Object> result = faqService.getList(param);
+		
+		return result;
+	}
+
+	/**
+	 * 자주 묻는 질문 업데이트
+	 * @param param
+	 * @return 
+	 */
+	@PostMapping("/update")
+	public Map<String, Object> updateStatus(@RequestBody Map<String, Object> param) {
+		
+		Map<String, Object> result = faqService.updateStatus(param);
+		
+		return result;
+	}
+
+	/**
+	 * 자주 묻는 질문 등록
+	 * @param param
+	 * @return 
+	 */
+	@PostMapping("/regist")
+	public Map<String, Object> registFaq(@RequestBody Map<String, Object> param) {
+		
+		Map<String, Object> result = faqService.registFaq(param);
 		
 		return result;
 	}

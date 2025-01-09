@@ -28,7 +28,7 @@
 			<div class="row g-4 border-bottom">
 				<!-- 새 질문 등록 버튼 클릭 시 모달창 표시 -->
 				<div class="col-lg-12 d-flex justify-content-end">
-					<button type="button" class="btn btn-primary-soft" data-bs-toggle="modal" data-bs-target="#qnaRegistModal">
+					<button type="button" class="btn btn-primary-soft" data-bs-toggle="modal" data-bs-target="#qnaRegistModal" data-src="faq" data-act="clickModal">
 						<i class="bi bi-plus-lg fa-fw"></i>새 질문 등록
 					</button>
 				</div>
@@ -88,7 +88,7 @@
 						</div>
 						<!-- 초기화/검색 button -->
 						<div class="d-sm-flex justify-content-end border-top pt-3">
-							<button type="button" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
+							<button type="button" class="btn btn-primary-soft mb-0 ms-2" onclick="window.location.reload()">초기화</button>
 							<button type="button" class="btn btn-primary mb-0 ms-2" data-src="faq" data-act="clickSearch">검색</button>
 						</div>
 					</div>
@@ -125,37 +125,6 @@
 					</div>
 					
 					<div id="faqList" class="accordion">
-						<div class="row align-items-lg-center border-bottom g-4 px-2 py-4">
-							<div class="col-2">
-								<small class="d-block d-lg-none">분류</small>
-								<h6 class="ms-1 mb-0 fw-normal">서비스</h6>
-							</div>
-							<div class="col-6">
-								<small class="d-block d-lg-none">제목</small>
-								<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">sfasdfd</a>
-							</div>
-							<div class="col-2">
-								<small class="d-block d-lg-none">작성일</small>
-								<h6 class="ms-1 mb-0 fw-normal">2020-01-01</h6>
-							</div>
-							<div class="col-2">
-								<small class="d-block d-lg-none">상태</small>
-								<div class="ms-1 badge bg-opacity-10 bg-success text-success">게시중</div>
-							</div>	
-						</div>
-						<!-- Body -->
-						<div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="heading-1" data-bs-parent="#faqList">
-							<div class="accordion-body mt-3 border rounded">
-								<p class="space">
-									내용
-									내용
-									
-									내용
-									
-									내용
-								</p>
-							</div>
-						</div>
 					</div>
 				</div>
 				<!-- Card body END -->
@@ -181,36 +150,32 @@
 			<!-- 모달 head -->
 			<div class="modal-header">
 				<h5 class="modal-title">새 질문 등록</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<!-- 모달 body -->
 			<div class="modal-body m-3">
 				<h6 class="fw-bold">제목</h6>
-				<input type="text" class="form-control" id="questionTitle"
-					placeholder="제목을 입력하세요">
+				<input type="text" class="form-control" id="questionTitle" placeholder="제목을 입력하세요">
 
 				<h6 class="fw-bold mt-4">내용</h6>
-				<textarea class="form-control" id="questionContent" rows="15"
-					placeholder="내용을 입력하세요"></textarea>
+				<textarea class="form-control" id="questionContent" rows="15" placeholder="내용을 입력하세요"></textarea>
 
 				<!-- 상태 드롭다운 -->
 				<div class="col-2 mt-4">
-					<form>
-						<select class="form-select js-choice"
-							aria-label=".form-select-sm">
-							<option>게시중</option>
-							<option>게시중단</option>
-						</select>
-					</form>
+					<label class="form-label">분류</label>
+					<select class="form-select js-choice" aria-label=".form-select-sm" id="questionType">
+						<option value="" selected="selected" disabled="disabled">선택</option>
+						<option value="SERVICE">서비스</option>
+						<option value="RESERVATION">예약/결제</option>
+						<option value="USE">이용문의</option>
+					</select>
 				</div>
 			</div>
 
 			<!-- 확인/취소 button -->
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-primary">확인</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-primary" data-src="faq" data-act="clickRegist">확인</button>
 			</div>
 		</div>
 	</div>

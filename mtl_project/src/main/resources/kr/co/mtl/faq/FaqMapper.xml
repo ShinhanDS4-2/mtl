@@ -49,4 +49,26 @@
 		</where>
 	</sql>
 	
+	<!-- 상태 업데이트 -->
+	<update id="updateStatus" parameterType="HashMap">
+		UPDATE FAQ
+		SET 
+			  status = #{status}
+			, update_date = NOW()
+		WHERE 
+			idx = #{faq_idx}
+	</update>
+	
+	<!-- 자주 묻는 질문 등록 -->
+	<insert id="registFaq" parameterType="HashMap">
+		INSERT INTO FAQ (
+			  title
+			, content
+			, type
+		) VALUES (
+			  #{title}
+			, #{content}
+			, #{type}
+		)
+	</insert>
 </mapper>
