@@ -8,52 +8,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/api/notice")
 public class NoticeController {
+	
+	@Autowired
+	private NoticeService noticeService;
+	
 
-    @Autowired
-    private NoticeService noticeService;
-
-    @GetMapping("/notice")
-    public String getNoticeList(@RequestParam(defaultValue = "1") int page, Model model) {
-        int limit = 10; 
-        int offset = (page - 1) * limit; 
-        List<Notice> notices = noticeService.getNoticesWithPaging(limit, offset);
-        int totalCount = noticeService.getTotalNoticeCount();
-        int totalPages = (int) Math.ceil((double) totalCount / limit);
-
-        model.addAttribute("notices", notices);
-        model.addAttribute("totalCount", totalCount);
-        model.addAttribute("currentPage", page);
-        model.addAttribute("limit", limit);
-        model.addAttribute("totalPages", totalPages); // 전체 페이지
-
-        return "/notice/noticeList";
-    }
-
-
-	@PostMapping("/notice/regist")
-	public Map<String,Object> registPartnerNotice(@RequestBody Map<String,Object>param, HttpServletRequest request) {
+	@PostMapping("/regist")
+	public Map<String,Object> registNotice(@RequestBody Map<String,Object>param, HttpServletRequest request) {
 		
 		Map<String, Object> result = new HashMap<>();
-		
-		HttpSession session = request.getSession();
-		
-		result = noticeService.insertNotice(param);
-		
+
+	        System.out.println("받은 파라미터: " + param);
+			HttpSession session = request.getSession();
+			
+			result = noticeService.insertNotice(param);
+
 		return result;
 	}
 	
-
-	@PostMapping("/notice/update")
-	public Map<String,Object> updatePartnerNotice(@RequestBody Map<String,Object>param, HttpServletRequest request) {
+	
+	/**@PostMapping("/update")
+	public Map<String,Object> updateNotice(@RequestBody Map<String,Object>param, HttpServletRequest request) {
 		
 		Map<String, Object> result = new HashMap<>();
 		
@@ -62,11 +46,27 @@ public class NoticeController {
 		result = noticeService.updateNotice(param);
 		
 		return result;
+	}**/
+	
+	@PostMapping("/update")
+	public Map<String, Object> updateNotice(@RequestBody Map<String, Object> param) {
+	    Map<String, Object> result = new HashMap<>();
+
+	    try {
+	        // Service 호출
+	        result = noticeService.updateNotice(param);
+	    } catch (Exception e) {
+	        result.put("success", false);
+	        result.put("message", "공지사항 수정 중 오류가 발생했습니다.");
+	        e.printStackTrace();
+	    }
+
+	    return result;
 	}
-	
-	
-	@PostMapping("/notice/delete")
-	public Map<String,Object> deletePartnerNotice(@RequestBody Map<String,Object>param, HttpServletRequest request) {
+
+
+	@PostMapping("/delete")
+	public Map<String,Object> deleteNotice(@RequestBody Map<String,Object>param, HttpServletRequest request) {
 	
 		Map<String, Object> result = new HashMap<>();
 		
@@ -77,4 +77,74 @@ public class NoticeController {
 		return result;
 	}
 	
+	@PostMapping("/list")
+	public Map<String, Object> getNoticeList(@RequestBody Map<String, Object> param, HttpServletRequest request) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        result = noticeService.getNoticeList(param);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        result.put("error", "Internal Server Error");
+	    }
+	    return result;
+	}
+	
+	@PostMapping("/search")
+	public Map<String, Object> searchNotices(@RequestBody Map<String, Object> param) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        // NoticeService의 searchNotices 메서드 호출
+	        result = noticeService.searchNotices(param);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        result.put("error", "검색 중 오류 발생");
+	    }
+	    return result;
+	}
+	@PostMapping("/detail")
+	public Map<String, Object> getNoticeDetail(@RequestBody Map<String, Object> param) {
+	    Map<String, Object> result = new HashMap<>();
+
+	    // 요청으로 받은 공지사항 제목 확인
+	    String title = (String) param.get("title");
+	    if (title == null || title.trim().isEmpty()) {
+	        result.put("result", false);
+	        result.put("message", "공지사항 제목이 제공되지 않았습니다.");
+	        return result;
+	    }
+
+	    System.out.println("조회 요청 받은 공지사항 제목: " + title);
+
+	    // 공지사항 서비스 호출
+	    try {
+	        result = noticeService.getNoticeDetailByTitle(title.trim());
+	    } catch (Exception e) {
+	        result.put("result", false);
+	        result.put("message", "공지사항 조회 중 오류가 발생했습니다.");
+	        e.printStackTrace();
+	    }
+
+	    return result;
+	}
+
+	// 사용자용 공지사항 조회
+    @PostMapping("/user/list")
+    public Map<String, Object> getUserNotices(@RequestBody Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+
+        try {
+            List<Map<String, Object>> notices = noticeService.getUserNotices(param);
+            int totalCnt = noticeService.getUserNoticeCount();
+
+            result.put("list", notices);
+            result.put("totalCnt", totalCnt);
+            result.put("result", true);
+        } catch (Exception e) {
+            result.put("result", false);
+            result.put("message", "공지사항 조회 중 오류가 발생했습니다.");
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

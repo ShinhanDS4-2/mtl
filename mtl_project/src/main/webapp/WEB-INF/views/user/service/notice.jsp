@@ -42,60 +42,12 @@
 									<!-- Hotel room list START -->
 									<div class="table-responsive border-0">
 										<table class="table align-middle p-4 mb-0 table-hover table-shrink">
-											<!-- Table body START -->
-											<tbody class="border-top-0">
+											<tbody class="border-top-0" id="noticeList"> 
 												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">공지</span></h6> </td>
 													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">안내</span></h6> </td>
-													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">서비스 이용 안내</a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">이벤트</span></h6> </td>
-													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">11월 이벤트 당첨 안내</a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">공지</span></h6> </td>
-													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">안내</span></h6> </td>
-													<td> <h6 class="mb-0"><a href="#">서비스 이용 안내</a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">이벤트</span></h6> </td>
-													<td> <h6 class="mb-0"><a href="#">11월 이벤트 당첨 안내</a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">공지</span></h6> </td>
-													<td> <h6 class="mb-0"><a href="#">이용약관 변경 안내</a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">안내</span></h6> </td>
-													<td> <h6 class="mb-0"><a href="#">서비스 이용 안내</a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">이벤트</span></h6> </td>
-													<td> <h6 class="mb-0"><a href="#">11월 이벤트 당첨 안내</a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-												<tr>
-													<td class="w-40px"> <h6 class="mb-0"><span class="badge bg-primary bg-opacity-10 text-primary">이벤트</span></h6> </td>
-													<td> <h6 class="mb-0"><a href="#">11월 이벤트 당첨 안내</a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 											</tbody>
-											<!-- Table body END -->
 										</table>
 									</div>
 									<!-- Hotel room list END -->
@@ -108,14 +60,7 @@
 									<div class="d-sm-flex justify-content-sm-center align-items-sm-center">
 										<!-- Pagination -->
 										<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
-											<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-												<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
-												<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
-												<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
-												<li class="page-item mb-0"><a class="page-link" href="#">3</a></li>
-												<li class="page-item mb-0"><a class="page-link" href="#">4</a></li>
-												<li class="page-item mb-0"><a class="page-link" href="#">5</a></li>
-												<li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+											<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
 											</ul>
 										</nav>
 									</div>
@@ -152,26 +97,6 @@
 					</div>
 					<div class="card-body">
 						<p class="space">
-							안녕하세요. 떠날지도입니다.
-		
-							더 나은 서비스 제공을 위한 점검 안내드립니다.
-							점검 시간 동안에는 떠날지도 서비스 이용이 일시 중지됩니다.
-							
-							■ 떠날지도 시스템 점검 안내
-							1. 점검 일정:
-							- 2024년 12월 03일(화) 오전 3시 00분 ~ 5시 30분 (2시간 30분)
-							
-							2. 점검 사유:
-							- 시스템 업그레이드
-							
-							3. 점검 영향:
-							- 점검 시간 동안 떠날지도 서비스 이용 불가
-							 
-							점검 시간은 변경될 수 있으며 변경 시 공지를 통해 안내해 드리겠습니다.
-							
-							더 좋은 서비스로 보답하는 떠날지도가 되겠습니다.
-							
-							감사합니다.
 						</p>
 					</div>
 				</div>
@@ -189,7 +114,7 @@
 <!-- page script -->
 <script src="js/user/service/notice.js"></script>
 <script type="text/javascript">
-	notice.init();
+	userNotice.init();
 </script>
 </body>
 </html>

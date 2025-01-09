@@ -2,45 +2,145 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mtl.notice.NoticeMapper">
 
-    <!-- 공지사항 목록 조회 (페이징 처리) -->
-    <select id="selectNoticesWithPaging" parameterType="map" >
-        SELECT notice_idx, title, contents, target, created_date, update_date
-        FROM NOTICE
-        WHERE status = 'Y'
-        ORDER BY created_date DESC
-        LIMIT #{limit} OFFSET #{offset}
-    </select>
+    <!-- 공통 컬럼 정의 -->
+    <sql id="noticeColumns">
+        idx AS notice_idx,
+        title,
+        content,
+        status,
+        target,
+        DATE_FORMAT(create_date, '%Y-%m-%d') AS create_date_format,
+        update_date
+    </sql>
 
-    <!-- 공지사항 작성 -->
+    <!-- 공지사항 등록 -->
     <insert id="insertNotice" parameterType="map">
-        INSERT INTO NOTICE (title, contents, target, created_date, status)
-        VALUES (#{title}, #{contents}, #{target}, NOW(), 'Y')
+        INSERT INTO NOTICE (
+            title,
+            content,
+            status,
+            target,
+            create_date,
+            update_date
+        ) VALUES (
+            #{title},
+            #{content},
+            #{status},
+            #{target},
+            NOW(),
+            NULL
+        )
     </insert>
 
     <!-- 공지사항 상세 조회 -->
-    <select id="selectNotice" parameterType="int" >
-        SELECT notice_idx, title, contents, target, created_date, update_date
+    <!-- <mapper namespace="kr.co.mtl.notice.NoticeMapper"> --> 
+    <select id="findByTitle" parameterType="string" resultType="map">
+        SELECT
+            idx AS notice_idx,
+            title,
+            content,
+            status,
+            target,
+            DATE_FORMAT(create_date, '%Y-%m-%d') AS create_date
         FROM NOTICE
-        WHERE notice_idx = #{notice_idx}
+        WHERE title = #{title}
     </select>
+
+
 
     <!-- 공지사항 수정 -->
     <update id="updateNotice" parameterType="map">
         UPDATE NOTICE
         SET
-            contents = #{contents},
+        	title = #{title}
+            content = #{content},
+            target = #{target},
+            update_date = NOW()
+        WHERE
+            title = #{title}
+    </update>
+
+    <!-- 공지사항 삭제 (상태 변경) -->
+    <update id="deleteNotice" parameterType="long">
+        UPDATE NOTICE
+        SET
+            status = 'N',
             update_date = NOW()
         WHERE
             notice_idx = #{notice_idx}
-            AND status = 'Y'
     </update>
 
-    <!-- 공지사항 삭제 -->
-    <delete id="deleteNotice" parameterType="map">
-        DELETE FROM NOTICE
+    <!-- 공지사항 리스트 조회 -->
+    <select id="getNoticeList" resultType="map">
+        SELECT
+            <include refid="noticeColumns" />
+        FROM
+            NOTICE
         WHERE
-            notice_idx = #{notice_idx}
-            AND status = 'Y'
-    </delete>
+            status = 'Y'
+        ORDER BY
+            create_date DESC
+        <if test="limit != null and offset != null">
+       	LIMIT #{offset}, #{limit}
+        </if>
+    </select>
+
+    <!-- 페이지네이션 공지사항 조회 -->
+    <select id="getNoticeListByPage" parameterType="map" resultType="map">
+        SELECT
+            <include refid="noticeColumns" />
+        FROM
+            NOTICE
+        WHERE
+            status = 'y'
+        ORDER BY
+            create_date DESC
+        LIMIT #{offset}, #{limit}
+    </select>
+    
+    <select id="searchNotices" parameterType="map" resultType="map">
+	    SELECT
+	        <include refid="noticeColumns" />
+	    FROM
+	        NOTICE
+	    WHERE
+	        1=1
+	        <if test="keyword != null and keyword != ''">
+	            AND title LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	        <if test="status != null and status != ''">
+	            AND status = #{status}
+	        </if>
+	        <if test="target != null and target != ''">
+	            AND target = #{target}
+	        </if>
+	    ORDER BY
+	        create_date DESC
+	    LIMIT #{offset}, #{limit}
+	</select>
+
+	<!-- 사용자 공지 리스트 -->
+    <select id="selectUserNotices" resultType="map">
+        SELECT
+            title,
+            content,
+            DATE_FORMAT(create_date, '%Y-%m-%d') AS create_date_format
+        FROM NOTICE
+        WHERE status = 'Y'
+        AND target = 'U'
+        ORDER BY create_date DESC
+        <if test="limit != null and offset != null">
+        	LIMIT ${limit} OFFSET ${offset}
+        </if>
+    </select>
+
+	<!-- 사용자 공지 리스트 개수 -->
+    <select id="selectUserNoticeCount" resultType="int">
+        SELECT COUNT(*)
+        FROM NOTICE
+        WHERE status = 'Y'
+        AND target = 'U'
+    </select>
+
 
 </mapper>

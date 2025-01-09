@@ -1,6 +1,7 @@
 package kr.co.mtl.user.question;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,18 @@ public class QuestionServiceImpl implements QuestionService{
 		
 		return result;
 	}
+
+	public Map<String, Object> getQuestionList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		// 리뷰
+		List<Map<String, Object>> questionList = questionMapper.getQuestionList(param);
 	
+		result.put("list", questionList);
+		result.put("total", questionMapper.getQuestionCnt(param));
+		
+		return result;
+	};
 
 }

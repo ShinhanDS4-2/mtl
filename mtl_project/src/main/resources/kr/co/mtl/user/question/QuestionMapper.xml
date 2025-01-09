@@ -16,5 +16,30 @@
 			, #{content}
 		)
 	</insert>
+		<!-- 내가 쓴 후기 리스트 -->
+	<select id="getQuestionList" parameterType="HashMap">
+		SELECT
+			  user_idx
+			, content
+			, answer
+			, (SELECT name FROM ADMIN WHERE idx = admin_idx) AS name
+			, create_date 
+			, answer_date 
+		FROM
+			QUESTION
+		WHERE 
+			user_idx = #{user_idx}
+	</select>
+	
+	<!-- 내가 쓴 후기 개수 -->
+	<select id="getQuestionCnt" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM
+			QUESTION
+		WHERE 
+			user_idx = #{user_idx}
+	</select>
+	
 	
 </mapper>
