@@ -19,44 +19,38 @@
 			FROM RESERVATION
 			WHERE partner_idx = #{partner_idx}
 				AND payment_status = "P"
-			<if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_start != ''">
-				AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
-			</if>
-			<if test="calculate_stauts != null and calculate_stauts != ''">
-				AND calculate_stauts = #{calculate_stauts}	
-			</if>	
+			<!-- 달력 기간설정 필터 --> 
+	        <if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
+		        AND DATE(calculate_date) &gt;= #{calculate_date_start} AND DATE(calculate_date) &lt;= #{calculate_date_end}     
+		    </if>      
+	        <!-- 정산 상태 필터 -->    
+	        <if test="calculate_status != null and calculate_status != ''">
+	            AND calculate_status = #{calculate_status}
+	        </if> 	
 			GROUP BY calculate_date 
 		) AS subquery
-	</select> 
+	</select>      
 	 
 	<!-- 정산내역 리스트 조회-->
-	<!-- param : partner_idx, calculate_date_start, calculate_date_end, calculate_stauts
+	<!-- param : partner_idx, calculate_date_start, calculate_date_end, calculate_status
 		 result: 정산일, 총 판매 금액, 총 정산 금액, 총 수수료, 정산 대기중인 금액(=정산 상태가 N일 때 정산금액 총합), 정산 완료된 금액(=정산 상태가 Y일 때 정산금액 총합)  
 		  * 다중행 반환 List 형태로 반환되어야 함.  -->
 	<select id="getPartnerPayoutList" parameterType="map"  resultType="map">
 		SELECT partner_idx, DATE_FORMAT(calculate_date, '%Y-%m-%d') AS calculate_date, SUM(price) AS total_price, 
 			SUM(calculate_price) AS total_calculate_price, 
-			SUM(CASE WHEN calculate_stauts="N" THEN calculate_price ELSE 0 END) AS pending_amount, 
-			SUM(CASE WHEN calculate_stauts="Y" THEN calculate_price ELSE 0 END) AS completed_amount
+			SUM(CASE WHEN calculate_status="N" THEN calculate_price ELSE 0 END) AS pending_amount, 
+			SUM(CASE WHEN calculate_status="Y" THEN calculate_price ELSE 0 END) AS completed_amount
 		FROM RESERVATION   
 		WHERE partner_idx = #{partner_idx}  <!-- 로그인 되어있는 판매자에 대한 정산내역만 출력되야 하므로 -->
-			AND payment_status = "P"
-	<!-- 필터적용 -->	
-        <!-- 날짜 필터 -->
-        <if test="calculate_date_start != null and calculate_date_start != ''">
-            <if test="calculate_date_end != null and calculate_date_end != ''">
-                AND calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
-            </if>
-            <if test="calculate_date_end == null or calculate_date_end == ''">
-                AND calculate_date = #{calculate_date_start}
-            </if>
-        </if>
-
-        <!-- 정산 상태 필터 -->
-        <if test="calculate_stauts != null and calculate_stauts != ''">
-            AND calculate_stauts = #{calculate_stauts}
-        </if>
-        
+			AND payment_status = "P"		
+		<!-- 달력 기간설정 필터 --> 
+        <if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
+	        AND DATE(calculate_date) &gt;= #{calculate_date_start} AND DATE(calculate_date) &lt;= #{calculate_date_end}     
+	    </if>      
+        <!-- 정산 상태 필터 -->    
+        <if test="calculate_status != null and calculate_status != ''">
+            AND calculate_status = #{calculate_status}
+        </if> 
 		GROUP BY calculate_date 
 		ORDER BY calculate_date DESC
 		<!-- 페이징 처리 -->
@@ -69,16 +63,16 @@
 		 
 	<!-- 정산 상세 내역 리스트 조회 -->
 	<!-- param : partner_idx, calculate_date(정산일)
-		 result: calculate_date(정산일), idx(예약번호), room_type(객실명), price(객실요금), calculate_price(정산금액), calculate_stauts(정산 상태)
+		 result: calculate_date(정산일), idx(예약번호), room_type(객실명), price(객실요금), calculate_price(정산금액), calculate_status(정산 상태)
 		  * 다중행 반환 List 형태로 반환되어야 함.  -->
 	<select id="getPartnerPayoutDetailList" parameterType="map">
 		SELECT rs.partner_idx, DATE_FORMAT(rs.calculate_date, '%Y-%m-%d') AS calculate_date, rs.idx, rm.room_type, rs.price, rs.calculate_price, 
-				(CASE WHEN rs.calculate_stauts="Y" THEN "정산완료" ELSE "정산대기" END) AS calculate_stauts
+				(CASE WHEN rs.calculate_status="Y" THEN "정산완료" ELSE "정산대기" END) AS calculate_status
 		FROM RESERVATION rs JOIN ROOM rm ON(rs.room_idx = rm.idx)
 		WHERE rs.partner_idx = #{partner_idx} 
 			AND rs.payment_status = "P"  
 			AND DATE(calculate_date)=#{calculate_date}
-	</select>
+	</select>   
 	
 <!-- [판매자] 결제 관리 > 정산내역 END-->
 

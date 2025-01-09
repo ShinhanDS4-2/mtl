@@ -2,50 +2,69 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mtl.admin.payout.AdminPayoutMapper">
 
-	
 <!-- [관리자] 정산내역 START-->	
+
 	<!-- 정산내역 리스트 총 개수 --> 
 	<select id="getAdminPayoutListCount" parameterType="map">
 		SELECT COUNT(*)
-		FROM RESERVATION
+		FROM RESERVATION 
 		WHERE payment_status = "P" 
-		<if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_start != ''">
-			AND r.calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
-		</if>
-		<if test="calculate_stauts != null and calculate_stauts != ''">
-			AND r.calculate_stauts = #{calculate_stauts}	
-		</if>
-	</select> 
-	
+		<!-- 필터적용 -->	  
+		<!-- 날짜 필터 <는 &lt; >는 &gt;--> 
+        <if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
+	        AND DATE(calculate_date) &gt;= #{calculate_date_start} AND DATE(calculate_date) &lt;= #{calculate_date_end}     
+	    </if>      
+        <!-- 정산 상태 필터 -->    
+        <if test="calculate_status != null and calculate_status != ''">
+            AND calculate_status = #{calculate_status}
+        </if> 
+	</select>   
+	   
 	<!-- 정산내역 리스트 조회-->
-	<!-- param : calculate_date_start, calculate_date_end, calculate_stauts (필터 적용)
+	<!-- param : calculate_date_start, calculate_date_end, calculate_status (필터 적용)
 		  * 다중행 반환 List 형태로 반환되어야 함.  -->
 	<select id="getAdminPayoutList" parameterType="map">
 		SELECT r.idx AS reservation_idx, DATE_FORMAT(r.calculate_date, '%Y-%m-%d') AS calculate_date, r.price, r.calculate_price,
-			r.calculate_stauts, p.name
+			r.calculate_status, p.name
 		FROM RESERVATION r JOIN PARTNER p ON (r.partner_idx = p.idx)
 		WHERE r.payment_status = "P"  
-		<if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_start != ''">
-			AND r.calculate_date BETWEEN #{calculate_date_start} AND #{calculate_date_end}
-		</if>
-		<if test="calculate_stauts != null and calculate_stauts != ''">
-			AND r.calculate_stauts = #{calculate_stauts}	
-		</if>
-		
-	</select> 
-		  
-	<!-- 정산내역 상세정보 -->
+		<!-- 필터적용 -->	  
+		<!-- 날짜 필터 <는 &lt; >는 &gt;--> 
+        <if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
+	        AND DATE(calculate_date) &gt;= #{calculate_date_start} AND DATE(calculate_date) &lt;= #{calculate_date_end}     
+	    </if>      
+        <!-- 정산 상태 필터 -->    
+        <if test="calculate_status != null and calculate_status != ''">
+            AND calculate_status = #{calculate_status}
+        </if> 
+		ORDER BY r.calculate_date DESC
+		<!-- 페이징 처리 -->    
+	    <if test="limit != null and offset != null">
+	        LIMIT ${limit} OFFSET ${offset}
+	    </if> 
+	</select>  
+		      
+		    
+	<!-- 정산내역 상세정보 -->     
 	<!-- param : reservation_idx  /  result: 넘많음
-		  * 단일행 반환 MAP 형태로 반환되어야 함.  -->
+		  * 단일행 반환 MAP 형태로 반환되어야 함.  -->   
 	<select id="getAdminPayoutDetail" parameterType="map">
 		SELECT r.partner_idx, p.name, p.phone, p.email, p.business_name, p.business_number, p.account_bank, p.account_name, p.account_number, 
 			   r.user_idx, r.check_in_date, r.check_out_date, DATE_FORMAT(r.reservation_date, '%Y-%m-%d') AS reservation_date, (CASE WHEN r.payment_status='P' THEN '결제완료' ELSE '환불완료' END) AS payment_status,
-			   r.price, r.charge, (CASE WHEN r.calculate_stauts="Y" THEN '정산완료' ELSE '정산대기' END) AS calculate_stauts, r.calculate_price, DATE_FORMAT(r.calculate_date, '%Y-%m-%d') AS calculate_date, p.account_bank, p.account_name, p.account_number
+			   r.price, r.charge, (CASE WHEN r.calculate_status="Y" THEN '정산완료' ELSE '정산대기' END) AS calculate_status, r.calculate_price, DATE_FORMAT(r.calculate_date, '%Y-%m-%d') AS calculate_date
 		FROM RESERVATION r JOIN PARTNER p ON (r.partner_idx = p.idx)
 		WHERE r.idx = #{reservation_idx};
 	</select>
 	
+	<!-- 정산상태 변경(정산하기 버튼 클릭 시) -->     
+	<!-- param : reservation_idx -->   
+	<select id="updateCalculateStatus" parameterType="map">
+		UPDATE RESERVATION
+		SET calculate_status = #{newStatus}
+		WHERE idx = #{reservation_idx}; 
+	</select>
 	
+	   
 <!-- [관리자] 정산내역 END-->
 
 

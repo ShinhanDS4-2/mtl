@@ -46,25 +46,23 @@
 					<div class="card-body">
 						<form class="row g-4 align-items-center">
 							<!-- 드롭다운 -->
-							<div class="col-2">
+							<div class="col-2 me-3">     
 								<label class="h6 fw-normal mb-0"><i
-									class="bi bi-calendar text-primary me-1"></i>기간</label>
-								<!-- Input field -->
-								<div
-									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
+									class="bi bi-calendar text-primary me-1"></i> 기간</label>
+								<!-- Input field -->    
+								<div 
+									class="form-border-bottom form-control-transparent form-fs-lg">
 									<select class="form-select js-choice">
-										<option value="">예약일시</option>
-										<option>입실일시</option>
-										<option>퇴실일시</option>
-									</select>
-								</div>
-							</div> 
+										<option value="">예약일</option>
+										<option>입실일</option>
+										<option>퇴실일</option>
+									</select>  
+								</div>   
+							</div>  
  
 							<!-- 기간 설정 -->
 							<div class="col-lg-5">
 								<div class="d-flex">
-									<!-- 달력 아이콘 --> 
-									<i class="bi bi-calendar fs-3 ms-2 me-2 mt-2"></i>
 									<!-- 날짜 선택 -->
 									<div class="form-control-border form-control-transparent form-fs-md">
 										<label class="form-label">시작일 - 종료일</label> 
@@ -72,11 +70,11 @@
 											placeholder="날짜를 선택하세요." value="">
 									</div> 
 								</div>   
-							</div>  
+							</div>   
 
-							<!-- Radio items -->
+							<!-- Radio items -->   
 							<div class="col-12">
-								<label class="form-label">예약 상태</label>
+								<label class="h6 fw-normal mb-2"> 예약 상태</label>
 								<div class="d-sm-flex">
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
@@ -95,39 +93,25 @@
 									</div>
 								</div>
 							</div>
-
+ 
 							<!-- 객실 타입 드롭다운 -->
 							<div class="col-12">
 								<div class="col-4"> 
-									<label class="h6 fw-normal mb-0">객실 타입</label>
+									<label class="h6 fw-normal mb-0"> 객실 타입</label>
 									<!-- Input field -->
-									<div
-										class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-										<select class="form-select js-choice">
+									<div class="form-border-bottom form-control-transparent form-fs-lg">
+										<select id="selectRoomType" class="form-select"> <!-- 드롭다운 라이브러리도 js에서 새로 만들어줌 --> 
 											<option value="">전체</option>
-											<option>스탠다드</option>
-											<option>디럭스</option>
-											<option>트윈룸</option>
-											<option>객실타입</option>
 										</select>
 									</div>
 								</div>
 							</div>
 
-							<!-- 검색어 드롭다운 -->
-							<div class="col-2">
-								<label class="h6 fw-normal mb-0">검색어</label>
-								<div
-									class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-									<select class="form-select js-choice">
-										<option value="">예약자명</option>
-										<option>예약번호</option>
-									</select>
-								</div>
-							</div>
-							<!-- 검색어 입력 input -->
+						     
+							<!-- 검색어 입력 input -->     
 							<div class="col-6">
-								<label class="form-label">-</label> <input type="text"
+								<label class="h6 fw-normal mb-2"> 예약자명</label>
+								<input type="text"
 									class="form-control" placeholder="예약자명을 입력하세요">
 							</div>
 
@@ -234,9 +218,6 @@
 						<div class="bg-light rounded p-3 d-none d-sm-block">
 							<div class="row row-cols-7 g-4">
 								<div class="col">
-									<h6 class="mb-0">예약번호</h6>
-								</div>
-								<div class="col">
 									<h6 class="mb-0">예약자명</h6>
 								</div>
 								<div class="col">
@@ -262,18 +243,11 @@
 							<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 								<!-- Data item -->
 								<div class="col">
-									<small class="d-block d-sm-none">예약번호</small>
-									<!-- 작은 화면일때만 보이는 텍스트-->
-									<h6 class="ms-1 mb-0 fw-normal">1234</h6>
-									<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
-										data-bs-target="#bookingDetailModal">상세보기</a>
-								</div>  
-	
-								<!-- Data item -->
-								<div class="col">
 									<small class="d-block d-sm-none">예약자명</small>
 									<h6 class="ms-1 mb-0 fw-normal">김시온</h6>
-								</div>
+									<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
+										data-bs-target="#bookingDetailModal">상세보기</a>
+								</div>      
 	
 								<!-- Data item -->
 								<div class="col">

@@ -3,19 +3,20 @@ const reservationList = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행                 
 	function init() {          
+		fetchRoomList();  // 검색필터에서 객실타입 리스트 가져와서 동적으로 그려줌 
 		fetchReservationList();  // 페이지 로드 시 예약내역 전체리스트 조회 
-		_eventInit();  
+		_eventInit();   
 	};        
                           
-	// 이벤트 초기화        
+	// 이벤트 초기화         
 	function _eventInit() {  
 		let evo = $("[data-src='ReservationList'][data-act]").off();
-		evo.on("click", function(e) {
+		evo.on("click", function(e) {   
 			_eventAction(e); 
-		});   
-	};           
-	   
-	// 이벤트 분기   
+		});          
+	};               
+	         
+	// 이벤트 분기      
 	function _eventAction(e) {   
 		let evo = $(e.currentTarget);
 		let action = evo.attr("data-act");
@@ -39,7 +40,7 @@ const reservationList = (function() {
 	};  // let _event 끝
 
 	
-	/* 예약내역 리스트 조회 START */
+/* 예약내역 리스트 조회 START */
 	function fetchReservationList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
 		// 그냥 조회했을 때 기본 param값 => 전체조회
 		let param = {  
@@ -74,7 +75,7 @@ const reservationList = (function() {
 			console.log("전체 리스트 조회");
 		}
 
-
+  
 		/* 페이징 START */
 		let pageOption = {
 			limit: 10  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
@@ -101,9 +102,10 @@ const reservationList = (function() {
 			url: "/mtl/api/partner/reservation/list",  
 			data: param,   // param값 => partner_idx, 검색필터값(~~, offset, limit)
 
-			success: function(response) {  // 성공 시 API 리턴값: Param, List, Count
-				_draw.drawReservationList(response);  // 리스트 그리기
-				page.drawPage(response.Count);  // 파람값으로 리스트 총 갯수 넣어주면 하단 페이징 넘버 동적으로 알아서 그려줌
+			success: function(resp) {  // 성공 시 API 리턴값: Param, List, Count
+				console.log("resp????????", resp)
+				_draw.drawReservationList(resp);  // 리스트 그리기
+				page.drawPage(resp.Count);  // 파람값으로 리스트 총 갯수 넣어주면 하단 페이징 넘버 동적으로 알아서 그려줌
 				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함. 
 			},  
 			error: function(xhr, status, error) {
@@ -111,7 +113,26 @@ const reservationList = (function() {
 			}
 		});  
 	}
-	
+/* 예약내역 리스트 조회 END */
+
+/* 숙소가 가지고 있는 객실리스트 가져오기 START */
+	function fetchRoomList() {
+		$.ajax({   
+			type: "POST", 
+			url: "/mtl/api/partner/reservation/roomList",  
+			data: {"partner_idx" : 11},  // 이거는 테스트위해 임시로 설정해둔거고 삭제해야함   
+			// data: 서버로 넘겨줄 데이터 없어서 생략
+			success: function(resp) {  // 성공 시 API 리턴값: roomTypeList
+				console.log("서버 응답 데이터:", resp); // 서버 응답 데이터 출력
+				_draw.drawRoomList(resp.roomTypeList);  // 검색필터 > 객실타입 리스트 그리기
+				_eventInit();  
+			},   
+			error: function(xhr, status, error) {
+				console.error("Error :", error); 
+			}
+		});  
+	}  
+/* 숙소가 가지고 있는 객실리스트 가져오기 END */	
 	
 	// 그리기
 	let _draw = {
@@ -135,21 +156,17 @@ const reservationList = (function() {
 				if(data.payment_status == 'P') {   // 결제완료이면
 					button = `<div class="badge bg-success bg-opacity-10 text-success">예약완료</div>`
 				} else {  // 환불상태이면
-					button = `<div class="badge bg-danger bg-opacity-10 text-danger">취소됨</div>`
+					button = `<div class="badge bg-danger bg-opacity-10 text-danger">취소완료</div>`
 				}
-
-				 // 예약내역 리스트 반복할 부분
-				let reservData =  
+ 
+				 // 예약내역 리스트 반복할 부분          
+				let reservData =      
 					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<div class="col">
-							<small class="d-block d-sm-none">예약번호</small>
-							<h6 class="ms-1 mb-0 fw-normal">${data.reservation_idx}</h6>
-							<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
-								data-bs-target="#bookingDetailModal">상세보기</a>
-						</div>  
 						<div class="col">
 							<small class="d-block d-sm-none">예약자명</small>
 							<h6 class="ms-1 mb-0 fw-normal">${data.username}</h6>
+							<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
+								data-bs-target="#bookingDetailModal">상세보기</a>
 						</div>
 						<div class="col">
 							<small class="d-block d-sm-none">객실타입</small>
@@ -160,7 +177,7 @@ const reservationList = (function() {
 							<small class="d-block d-sm-none">입실/퇴실일시</small>
 							<h6 class="ms-1 mb-1 fw-light">${data.check_in_date}</h6>
 							<h6 class="ms-1 mb-0 fw-light">${data.check_out_date}</h6>
-						</div>
+						</div>   
 						<div class="col">
 							<small class="d-block d-sm-none">예약일시</small>
 							<h6 class="ms-1 mb-1 fw-light">${data.reservation_date}</h6>
@@ -179,9 +196,35 @@ const reservationList = (function() {
 			}    
 		},
 
-		// 검색필터에서 숙소가 가지고 있는 객실리스트 동적으로 표시
-	 	drawRoomList: function(list) {  
-		},
+		// 검색필터에서 숙소가 가지고 있는 객실리스트 > 서버에서 받아서 동적으로 표시 
+	 	drawRoomList: function(list) {  // list에는 객실목록이 들어있음
+			// 드롭다운  
+			let roomType = document.getElementById("selectRoomType");
+			let choices = new Choices(roomType, {
+				shouldSort: false,
+				searchEnabled: false
+			});
+
+			// let selectRoomType = $("#selectRoomType").empty();
+			// selectRoomType.append(`<option value="">전체</option>`);
+			console.log("list????????????/", list);
+
+			let roomArray = list.map(data => ({
+				value : data.room_idx,
+				label : data.room_type
+			}));
+			/*
+			for(data of list) {
+				let option = { value : data.room_idx, label: data.room_type };
+				roomArray.push(option);
+				console.log("vdata????????????/", data); 
+				let roomType = `<option>${data.room_type}</option>`;
+				selectRoomType.append(roomType);
+			} 
+			*/ 
+			console.log("roomArray????", roomArray);
+			choices.setChoices(roomArray, 'value', 'label', true); // true: 기존 선택 초기화
+		},  
 
 
 
