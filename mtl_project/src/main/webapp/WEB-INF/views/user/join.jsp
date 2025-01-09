@@ -63,14 +63,14 @@
 									<!-- 비밀번호 -->
 									<div class="mb-2">
 										<label class="form-label" for="joinPw">비밀번호 <span class="text-danger">*</span></label>
-										<input type="password" class="form-control" id="joinPw" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상">
-										<!-- <span class="text-danger smaller">올바른 비밀번호를 입력해 주세요.</span> -->
+										<input type="password" class="form-control" id="joinPw" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상" data-src="join" data-act="changePw">
+										<span class="text-danger smaller d-none" id="pwNotice">올바른 비밀번호를 입력해 주세요.</span>
 									</div>
 									<!-- 비밀번호 확인 -->
 									<div class="mb-2">
 										<label class="form-label" for="joinPwCheck">비밀번호 확인 <span class="text-danger">*</span></label>
-										<input type="password" class="form-control" id="joinPwCheck" placeholder="비밀번호를 다시 입력해 주세요.">
-										<span class="text-danger smaller" hidden>비밀번호가 일치하지 않습니다.</span>
+										<input type="password" class="form-control" id="joinPwCheck" placeholder="비밀번호를 다시 입력해 주세요."  data-src="join" data-act="changePwCheck">
+										<span class="text-danger smaller d-none"  id="pwChkNotice">비밀번호가 일치하지 않습니다.</span>
 									</div>
 									<!-- 이름 -->
 									<div class="mb-2">
@@ -81,42 +81,42 @@
 									<div class="mb-2">
 										<label class="form-label" for="joinBirthYear">생년월일 <span class="text-danger">*</span></label>
 										<div class="row">
-											<div class="col-4 pe-0">
-												<select class="form-select d-inline w-75" id="joinBirthYear">
+											<div class="col-4 pe-2">
+												<select class="form-select d-inline js-choice" id="joinBirthYear">
 													<option value="" selected disabled="disabled">연도</option>
 													<%
-														for (int year = 1970; year <= 2025; year++) {
+														for (int year = 2025; year >=1920; year--) {
 															out.print("<option>" + year + "</option>");
 														}
 													%>
-												</select> 년
+												</select>
 											</div>
-											<div class="col-4 pe-0 ps-0">
-												<select class="form-select d-inline w-75" id="joinBirthMonth">
+											<div class="col-4 pe-2 ps-1">
+												<select class="form-select d-inline js-choice" id="joinBirthMonth">
 													<option value="" selected disabled="disabled">월</option>
 													<%
 														for (int month = 1; month <= 12; month++) {
 															out.print("<option>" + String.format("%02d", month) + "</option>");
 														}
 													%>
-												</select> 월
+												</select>
 											</div>
-											<div class="col-4 pe-0 ps-0">
-												<select class="form-select d-inline w-75" id="joinBirthDay">
+											<div class="col-4 pe-3 ps-1">
+												<select class="form-select d-inline js-choice" id="joinBirthDay">
 													<option value="" selected disabled="disabled">일</option>
 													<%
 														for (int day = 1; day <= 31; day++) {
 															out.print("<option>" + String.format("%02d", day) + "</option>");
 														}
 													%>
-												</select> 일
+												</select>
 											</div>
 										</div>
 									</div>
 									<!-- 연락처 -->
 									<div class="mb-4">
 										<label class="form-label" for="joinPhone">연락처 <span class="text-danger">*</span></label>
-										<input type="text" class="form-control" id="joinPhone" placeholder="010-1234-1234">
+										<input type="text" class="form-control" id="joinPhone" placeholder="010-1234-1234" data-src="join" data-act="changePhone">
 									</div>
 									
 									<!-- Button -->

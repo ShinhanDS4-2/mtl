@@ -223,4 +223,11 @@ const comm = {
 
         return formData;
     },
+    
+    // 전화번호 - 추가
+	formatPhone: function(num) {
+		num = num.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+	   
+	    return num;
+	},
 }
