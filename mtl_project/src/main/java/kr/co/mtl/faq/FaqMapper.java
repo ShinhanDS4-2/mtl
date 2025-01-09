@@ -19,4 +19,7 @@ public interface FaqMapper {
 
 	// 자주 묻는 질문 등록
 	int registFaq(Map<String, Object> param);
+
+	// 자주 묻는 질문 리스트 사용자
+	List<Map<String, Object>> getListWithUser(Map<String, Object> param);
 }

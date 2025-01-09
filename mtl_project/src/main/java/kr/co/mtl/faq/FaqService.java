@@ -13,5 +13,7 @@ public interface FaqService {
 	// 자주 묻는 질문 등록
 	Map<String, Object> registFaq(Map<String, Object> param);
 
+	// 자주 묻는 질문 리스트 사용자
+	Map<String, Object> getListWithUser(Map<String, Object> param);
 }
 

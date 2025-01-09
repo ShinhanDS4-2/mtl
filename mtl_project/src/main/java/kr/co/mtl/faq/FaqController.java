@@ -53,4 +53,17 @@ public class FaqController {
 		
 		return result;
 	}
+	
+	/**
+	 * 자주 묻는 질문 리스트 사용자
+	 * @param param
+	 * @return 
+	 */
+	@PostMapping("/user/list")
+	public Map<String, Object> getListWithUser(@RequestBody Map<String, Object> param) {
+		
+		Map<String, Object> result = faqService.getListWithUser(param);
+		
+		return result;
+	}
 }

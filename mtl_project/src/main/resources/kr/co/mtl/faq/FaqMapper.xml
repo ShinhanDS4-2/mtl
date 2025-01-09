@@ -71,4 +71,22 @@
 			, #{type}
 		)
 	</insert>
+	
+	<!-- 자주 묻는 질문 리스트 사용자 -->
+	<select id="getListWithUser" parameterType="HashMap">
+		SELECT
+			  f.idx AS faq_idx
+			, f.title
+			, f.content
+			, DATE_FORMAT(f.create_date, '%Y-%m-%d') AS create_date_format
+			, (SELECT codename FROM CODE WHERE code = f.type) AS type
+		FROM
+			FAQ f
+		WHERE 
+			status = 'Y'
+		<if test="type != 'ALL'">
+			AND f.type = #{type}
+		</if>
+		ORDER BY f.create_date DESC
+	</select>
 </mapper>
