@@ -38,7 +38,7 @@
 			SUM(calculate_price) AS total_calculate_price, 
 			SUM(CASE WHEN calculate_stauts="N" THEN calculate_price ELSE 0 END) AS pending_amount, 
 			SUM(CASE WHEN calculate_stauts="Y" THEN calculate_price ELSE 0 END) AS completed_amount
-		FROM RESERVATION
+		FROM RESERVATION   
 		WHERE partner_idx = #{partner_idx}  <!-- 로그인 되어있는 판매자에 대한 정산내역만 출력되야 하므로 -->
 			AND payment_status = "P"
 	<!-- 필터적용 -->	

@@ -14,14 +14,16 @@
 	
 	
 	
-	<!-- 여행지 기본정보 수정  ~  (지역, 분류, 장소명, 주소, 상세정보, 수정일)  -->
+	<!-- 여행지 기본정보 수정 -->
 	<update id="updateLocationInfo" parameterType="map">
 		UPDATE LOCATION
-		SET 
+		SET  
 			 area = #{area}
 			,type = #{type}
 			,name = #{name}
 			,address = #{address}
+			,address_si = #{address_si}
+			,address_dong = #{address_dong}
 			,description = #{description}
 			,update_date = now()
 		WHERE 
@@ -87,24 +89,24 @@
 	
 	<!-- 여행지 리스트 조회  (*다중행 반환) -->
 	<select id="getLocationList" parameterType="map">
-		SELECT idx AS location_idx, name, DATE_FORMAT(create_date, '%Y-%m-%d') AS create_date,
+		SELECT idx AS location_idx, name, DATE_FORMAT(create_date, '%Y-%m-%d') AS createdate,
 			CASE 
 			   WHEN area = 'SEOUL' THEN '서울'
 			   WHEN area = 'GANGNEUNG' THEN '강릉'
 			   WHEN area = 'YEOSU' THEN '여수'
 			   WHEN area = 'BUSAN' THEN '부산'
 			   WHEN area = 'JEJU' THEN '제주'
-			END AS area,
+			END AS area_name,
 			CASE 
 			   WHEN type = 'A' THEN '관광지'
 			   WHEN type = 'R' THEN '맛집'
-			END AS type
+			END AS type_name
 		FROM LOCATION
 		<where>
 		<!-- type타입, area지역, name장소명에 따른 검색필터 -->
 			<if test="searchType != null and searchType != ''">
 				AND type=#{searchType}
-			</if>
+			</if> 
 			<if test="searchArea != null and searchArea != ''">
 				AND area=#{searchArea}
 			</if>
@@ -113,23 +115,28 @@
 			</if>
 		</where>
 		ORDER BY create_date DESC
+		<!-- 페이징 처리 -->
+	    <if test="limit != null and offset != null">
+	        LIMIT ${limit} OFFSET ${offset}
+	    </if>
 	</select>
 	
 	
 	<!-- 여행지 상세정보(기본정보) 조회  (*단일행 반환) -->
 	<select id="getLocationDetail" parameterType="map">
-		SELECT idx AS location_idx, name, description, address, address_si, address_dong, latitude, longitude, DATE_FORMAT(create_date, '%Y-%m-%d') AS create_date,
+		SELECT idx AS location_idx, name, description, address, address_si, address_dong, latitude, longitude, DATE_FORMAT(create_date, '%Y-%m-%d') AS create_date
+			, area, type,
 			CASE 
 			   WHEN area = 'SEOUL' THEN '서울'
 			   WHEN area = 'GANGNEUNG' THEN '강릉'
 			   WHEN area = 'YEOSU' THEN '여수'
 			   WHEN area = 'BUSAN' THEN '부산'
 			   WHEN area = 'JEJU' THEN '제주'
-			END AS area,
+			END AS area_name,
 			CASE 
 			   WHEN type = 'A' THEN '관광지'
 			   WHEN type = 'R' THEN '맛집'
-			END AS type
+			END AS type_name
 			
 		FROM LOCATION
 		WHERE idx = #{location_idx}

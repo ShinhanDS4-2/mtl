@@ -184,9 +184,9 @@ const comm = {
 		    }
 		}).open();
 	},
-	
+	  
 	// 이미지 미리보기
-	setPreview: function(evo) {
+	setPreview: function(evo) { 
 		let files = evo.get(0).files;
 		let preview = $("#preview").empty();
 		
@@ -204,7 +204,7 @@ const comm = {
             });
         };
 	},
-	
+
 	// 폼데이터로 변경
 	changeFormData: function(data) {
         let formData = new FormData();
