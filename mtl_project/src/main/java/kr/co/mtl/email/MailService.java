@@ -25,7 +25,7 @@ public class MailService {
 
             // 이메일 발송 시 사용자의 이메일과 이름 설정
             try {
-                messageHelper.setFrom("shinhanDS472@gmail.com", "관리자");
+                messageHelper.setFrom("shinhanDS472@gmail.com", "떠날지도");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

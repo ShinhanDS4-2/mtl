@@ -8,7 +8,7 @@ const join = (function() {
 	// 이벤트 초기화 
 	function _eventInit() {
 		let evo = $("[data-src='join'][data-act]").off();
-		evo.on("click", function(e) {
+		evo.on("click blur keyup", function(e) {
 			_eventAction(e);
 		});
 	};
@@ -33,7 +33,27 @@ const join = (function() {
 			} else if (action == "clickSendMail") {
 				_event.clickSendMail();
 			}
-		};
+		} else if(type == "blur") {
+			if(action == "changePw") {
+				_event.changePw();
+			} else if(action == "changePwCheck") {
+				_event.changePwCheck();
+			}
+		} else if(type == "keyup") {
+			if(action == "changePhone") {
+				let num = $("#joinBusiness_Phone").val();
+				let formatNum = comm.formatPhone(num);
+				$("#joinBusiness_Phone").val(formatNum);
+			} else if(action == "changePartnerPhone") {
+				let num = $("#joinPhone").val();
+				let formatNum = comm.formatPartnerPhone(num);
+				$("#joinPhone").val(formatNum);
+			} else if (action == "changeBusinessNum") {
+				let num = $("#joinBusiness_Number").val();
+				let formatNum = comm.formatBusinessNum(num);
+				$("#joinBusiness_Number").val(formatNum);
+			}
+		}
 	};
 	
 	// 이벤트
@@ -276,6 +296,28 @@ const join = (function() {
 	            	$("#authNum").attr("data-auth-check", "0");
 	            }
         	});
+        },
+        
+        changePw: function() {
+        	let regex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,16}$/;
+        	let pw = $("#joinPw").val();
+        	
+        	if (!regex.test(pw)) {
+        		$("#pwNotice").removeClass("d-none");
+        	} else {
+        		$("#pwNotice").addClass("d-none");
+        	};
+        },
+        
+        changePwCheck: function() {
+        	let pw = $("#joinPw").val();
+        	let pwChk = $("#joinPwCheck").val();
+        	
+        	if (pw != pwChk) {
+        		$("#pwChkNotice").removeClass("d-none");
+        	} else {
+        		$("#pwChkNotice").addClass("d-none");
+        	};
         },
         
     };

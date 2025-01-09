@@ -230,4 +230,30 @@ const comm = {
 	   
 	    return num;
 	},
+	
+    // 업체 연락처 - 추가
+	formatPartnerPhone: function(num) {
+		num = num.replace(/[^0-9]/g, '');
+	
+	    if (num.length === 9) {
+	        num = num.replace(/^02(\d{3})(\d{4})$/, `02-$1-$2`);
+	    } else if (num.length == 10) {
+	    	if (num.startsWith('02')) {
+		        num = num.replace(/^02(\d{4})(\d{4})$/, `02-$1-$2`);
+	    	} else {
+		        num = num.replace(/^(\d{3})(\d{3})(\d{4})$/, `$1-$2-$3`);
+	    	}
+	    } else if (num.length == 10 || num.length === 11) {
+	        num = num.replace(/^(\d{3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+	    }
+	
+	    return num;
+	},
+
+    // 사업자 등록 번호 - 추가
+	formatBusinessNum: function(num) {
+		num = num.replace(/[^0-9]/g, '').replace(/^(\d{3})(\d{2})(\d{5})$/, `$1-$2-$3`);
+	
+	    return num;
+	},
 }
