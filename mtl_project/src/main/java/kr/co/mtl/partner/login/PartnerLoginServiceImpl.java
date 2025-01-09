@@ -163,8 +163,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
     @Override
     public boolean updateUserInfo(Map<String, Object> param, HttpSession session) throws Exception {
         int rowsAffected = partnerMapper.updateUser(param);
-        // 1
-        session.setAttribute("login_partner_name", param.get("name"));
 
         return rowsAffected > 0;
     }

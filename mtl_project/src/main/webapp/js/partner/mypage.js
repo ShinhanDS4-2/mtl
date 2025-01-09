@@ -39,7 +39,6 @@ const info = (function() {
 		// 마이페이지 회원 정보 수정
 		updateInfo: function() {
             const formData = {
-                partnerIdx: $("#partnerIdx").val(),
                 name: $("#name").val(),
                 phone: $("#phone").val()
             };
@@ -139,7 +138,6 @@ const info = (function() {
     			"content" : "정보를 수정하시겠습니까?",
 				"confirmCallback" : function() {
 					const formData = {
-						partnerIdx: $("#partnerIdx").val(),
 			        	account_bank: $("#account_bank").val(),
 			        	account_number: $("#account_number").val(),
 					};
@@ -199,14 +197,13 @@ const info = (function() {
 		        choices.setChoiceByValue(response.account_bank);
 			};
 			
-			$("#name").val(response.name);
+			$("#name").val(response.business_name);
 			$("#email").val(response.email);
-			$("#phone").val(response.phone);
+			$("#business_phone").val(response.phone);
 			
-			$("#businessName").val(response.business_name);
 			$("#business_number").val(response.business_number);
 			$("#address").val(response.address);
-			$("#business_phone").val(response.business_phone);
+			$("#phone").val(response.business_phone);
 			$("#account_bank").val(response.account_bank);
 			$("#account_number").val(response.account_number);
 			
