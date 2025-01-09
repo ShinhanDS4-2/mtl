@@ -31,26 +31,18 @@ public class NoticeServiceImpl implements NoticeService{
 	    }
 	    return result;
 	}
-	
-	/**@Override
-	public Map<String, Object> updateNotice(Map<String, Object> param) {
-		
+	@Override
+	 public Map<String, Object> getNoticeDetailByIdx(Integer notice_idx) {
 		Map<String, Object> result = new HashMap<>();
 
-		if (noticeMapper.updateNotice(param) > 0) {
-			result.put("result", true);
-		} else {
-			result.put("result", false);
-		}
-		
-		return result;
-	}**/
-	 @Override
-	 public Map<String, Object> getNoticeDetailByTitle(String title) {
-		Map<String, Object> result = new HashMap<>();
+		if (notice_idx == null || notice_idx <= 0) {
+	        result.put("result", false);
+	        result.put("message", "유효하지 않은 공지사항 ID입니다.");
+	        return result;
+	    }
 
         // 공지사항 데이터 조회
-        Map<String, Object> notice = noticeMapper.findByTitle(title);
+        Map<String, Object> notice = noticeMapper.findByIdx(notice_idx);
 
         if (notice != null) {
             result.put("result", true);
@@ -90,7 +82,7 @@ public class NoticeServiceImpl implements NoticeService{
 
         return result;
     }
-	
+	//삭제
 	@Override
 	public Map<String, Object> deleteNotice(Map<String, Object> param) {
 		
@@ -104,7 +96,7 @@ public class NoticeServiceImpl implements NoticeService{
 		
 		return result;
 	}
-	
+	//리스트
 	@Override
 	public Map<String, Object> getNoticeList(Map<String, Object> param) {
 	    Map<String, Object> result = new HashMap<>();
@@ -117,7 +109,7 @@ public class NoticeServiceImpl implements NoticeService{
 	    }
 	    return result;
 	}
-	
+	//검색
 	@Override
     public Map<String, Object> searchNotices(Map<String, Object> param) {
         Map<String, Object> result = new HashMap<>();
@@ -131,8 +123,8 @@ public class NoticeServiceImpl implements NoticeService{
         }
         return result;
     }
-	
-	 @Override
+	//사용자
+	@Override
     public List<Map<String, Object>> getUserNotices(Map<String, Object> param) {
         return noticeMapper.selectUserNotices(param);
     }
@@ -141,5 +133,16 @@ public class NoticeServiceImpl implements NoticeService{
     public int getUserNoticeCount() {
         return noticeMapper.selectUserNoticeCount();
     }
+    
+    //파트너
+    @Override
+    public List<Map<String, Object>> getPartnerNotices(Map<String, Object> param) {
+        return noticeMapper.selectPartnerNotices(param);
+    }
 
+    @Override
+    public int getPartnerNoticeCount() {
+        return noticeMapper.selectPartnerNoticeCount();
+    }
+    
 }

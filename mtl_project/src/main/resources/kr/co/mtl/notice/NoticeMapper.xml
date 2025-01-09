@@ -33,7 +33,6 @@
     </insert>
 
     <!-- 공지사항 상세 조회 -->
-    <!-- <mapper namespace="kr.co.mtl.notice.NoticeMapper"> --> 
     <select id="findByTitle" parameterType="string" resultType="map">
         SELECT
             idx AS notice_idx,
@@ -92,7 +91,7 @@
         FROM
             NOTICE
         WHERE
-            status = 'y'
+            status = 'Y'
         ORDER BY
             create_date DESC
         LIMIT #{offset}, #{limit}
@@ -141,6 +140,28 @@
         WHERE status = 'Y'
         AND target = 'U'
     </select>
+	
+	<!-- 파트너 공지 리스트 -->
+    <select id="selectPartnerNotices" resultType="map">
+        SELECT
+            title,
+            content,
+            DATE_FORMAT(create_date, '%Y-%m-%d') AS create_date_format
+        FROM NOTICE
+        WHERE status = 'Y'
+        AND target = 'P'
+        ORDER BY create_date DESC
+        <if test="limit != null and offset != null">
+        	LIMIT ${limit} OFFSET ${offset}
+        </if>
+    </select>
 
+	<!-- 사용자 공지 리스트 개수 -->
+    <select id="selectPartnerNoticeCount" resultType="int">
+        SELECT COUNT(*)
+        FROM NOTICE
+        WHERE status = 'Y'
+        AND target = 'P'
+    </select>
 
 </mapper>

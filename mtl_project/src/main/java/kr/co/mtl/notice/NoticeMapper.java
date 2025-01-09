@@ -21,10 +21,17 @@ public interface NoticeMapper {
 	// 이용안내 리스트
 	List<Map<String, Object>> getNoticeList(Map<String, Object> param);
 	
+	//검색
 	List<Map<String, Object>> searchNotices(Map<String, Object> param);
-
+	
+	//사용자
 	List<Map<String, Object>> selectUserNotices(Map<String, Object> param);
     int selectUserNoticeCount();
     
-	Map<String, Object> findByTitle(String title);
+    //파트너
+    List<Map<String, Object>> selectPartnerNotices(Map<String, Object> param);
+    int selectPartnerNoticeCount();
+
+	Map<String, Object> findByIdx(Integer notice_idx);
+
 }

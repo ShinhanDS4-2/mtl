@@ -35,19 +35,6 @@ public class NoticeController {
 		return result;
 	}
 	
-	
-	/**@PostMapping("/update")
-	public Map<String,Object> updateNotice(@RequestBody Map<String,Object>param, HttpServletRequest request) {
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		HttpSession session = request.getSession();
-
-		result = noticeService.updateNotice(param);
-		
-		return result;
-	}**/
-	
 	@PostMapping("/update")
 	public Map<String, Object> updateNotice(@RequestBody Map<String, Object> param) {
 	    Map<String, Object> result = new HashMap<>();
@@ -102,22 +89,22 @@ public class NoticeController {
 	    return result;
 	}
 	@PostMapping("/detail")
-	public Map<String, Object> getNoticeDetail(@RequestBody Map<String, Object> param) {
+	public Map<String, Object> getNoticeDetailByIdx(@RequestBody Map<String, Object> param) {
 	    Map<String, Object> result = new HashMap<>();
 
 	    // 요청으로 받은 공지사항 제목 확인
-	    String title = (String) param.get("title");
-	    if (title == null || title.trim().isEmpty()) {
+	    Integer notice_idx = (Integer) param.get("notice_idx");
+	    if (notice_idx == null) {
 	        result.put("result", false);
-	        result.put("message", "공지사항 제목이 제공되지 않았습니다.");
+	        result.put("message", "공지사항 ID가 제공되지 않았습니다.");	
 	        return result;
 	    }
 
-	    System.out.println("조회 요청 받은 공지사항 제목: " + title);
+	    System.out.println("조회 요청 받은 공지사항 제목: " + notice_idx);
 
 	    // 공지사항 서비스 호출
 	    try {
-	        result = noticeService.getNoticeDetailByTitle(title.trim());
+	        result = noticeService.getNoticeDetailByIdx(notice_idx);
 	    } catch (Exception e) {
 	        result.put("result", false);
 	        result.put("message", "공지사항 조회 중 오류가 발생했습니다.");
@@ -135,6 +122,26 @@ public class NoticeController {
         try {
             List<Map<String, Object>> notices = noticeService.getUserNotices(param);
             int totalCnt = noticeService.getUserNoticeCount();
+
+            result.put("list", notices);
+            result.put("totalCnt", totalCnt);
+            result.put("result", true);
+        } catch (Exception e) {
+            result.put("result", false);
+            result.put("message", "공지사항 조회 중 오류가 발생했습니다.");
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+	// 판매자용 공지사항 조회
+    @PostMapping("/partner/list")
+    public Map<String, Object> getPartnerNotices(@RequestBody Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+
+        try {
+            List<Map<String, Object>> notices = noticeService.getPartnerNotices(param);
+            int totalCnt = noticeService.getPartnerNoticeCount();
 
             result.put("list", notices);
             result.put("totalCnt", totalCnt);
