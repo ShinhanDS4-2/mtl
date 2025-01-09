@@ -38,4 +38,15 @@ public class QuestionController {
 		return result;
 	};
 	
+	@PostMapping("/list")
+	public Map<String, Object> getQuestionList(@RequestBody Map<String, Object> param, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		param.put("user_idx", session.getAttribute("login_user_idx"));
+		
+		Map<String, Object> result = new HashMap<>();
+//		result = QuestionService.getQuestionList(param);
+		
+		return result;
+	}
 }
