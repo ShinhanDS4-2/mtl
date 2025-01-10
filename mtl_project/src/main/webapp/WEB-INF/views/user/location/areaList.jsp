@@ -22,7 +22,7 @@
 				<div class="col-2">
 					<div class="card bg-transparent text-center p-1 h-100 area-icon">
 						<!-- Image -->
-						<img src="assets/images/icon/서울.jpg" class="rounded-circle" alt="">
+						<img src="assets/images/icon/마커.png" class="rounded-circle bg-white" alt="">
 	
 			 			<div class="card-body p-0 pt-3">
 							<h5 class="card-title"><a href="javascript:;" class="stretched-link" data-src="areaList" data-act="clickArea" data-value="ALL">전체</a></h5>
