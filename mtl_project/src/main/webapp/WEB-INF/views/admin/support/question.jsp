@@ -24,8 +24,8 @@
 				<!-- Title -->
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
-						<h1 class="h3 mb-2">숙소 문의 관리</h1>
-						<span>숙소 별 1:1 문의 현황을 확인할 수 있습니다.</span>
+						<h1 class="h3 mb-2">문의 관리</h1>
+						<span>1:1 문의 현황을 확인할 수 있습니다.</span>
 					</div>
 				</div>
 
@@ -43,18 +43,18 @@
 							<div class="d-sm-flex">
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked value="">
 									<label class="form-check-label" for="flexRadioDefault1">전체</label>
 								</div>
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-									<label class="form-check-label" for="flexRadioDefault2">답변 대기</label>
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Y">
+									<label class="form-check-label" for="flexRadioDefault2">답변 완료</label>
 								</div>
-								<!-- Radio -->
+									<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-									<label class="form-check-label" for="flexRadioDefault3">답변 완료</label>
+									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="N">
+									<label class="form-check-label" for="flexRadioDefault3">답변 대기</label>
 								</div>
 							</div>
 						</div>
@@ -66,8 +66,8 @@
 								<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 									<select class="form-select js-choice">
 										<option value="" disabled="disabled" selected="selected">선택</option>
-										<option value="partnerName">숙소명</option>
-										<option value="email">사용자 이메일</option>
+										
+										<option value="userName">사용자명</option>
 										<option value="content">내용</option>
 									</select>
 								</div>
@@ -76,14 +76,14 @@
 							<!-- 검색어 입력 input -->
 							<div class="col-6">
 								<label class="form-label">-</label>
-								<input type="text" class="form-control" placeholder="검색어를 입력하세요">
+								<input type="text" class="form-control" placeholder="검색어를 입력하세요" id="searchText">
 							</div>
 						</div>
 						
 						<!-- 초기화/검색 button -->
 						<div class="d-sm-flex justify-content-end border-top pt-3">
-							<button type="button" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
-							<button type="button" class="btn btn-primary mb-0 ms-2">검색</button>
+							<button type="button" id="resetButton" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
+							<button type="button" id="searchButton" class="btn btn-primary mb-0 ms-2">검색</button>
 						</div>
 				</div>
 			</div>
@@ -92,7 +92,7 @@
 			<!-- 예약 내역 List 상단 Tab -->
 			<div class="row g-4 justify-content-between align-items-center mb-2">
 				<div class="col-md-6 col-lg-6">
-					<h6 class="mb-1">전체 문의 <span id="totalCnt">524</span>건</h6>
+					<h6 class="mb-1">문의 <span id="totalCnt"></span>건</h6>
 				</div>
 			</div>
 
@@ -102,12 +102,12 @@
 				<div class="card-body">
 					<!-- Table head -->
 					<div class="bg-light rounded p-3 d-none d-sm-block">
-						<div class="row row-cols-6 g-4">
+						<div class="row row-cols-6 g-4 text-center">
 							<div class="col">
-								<h6 class="mb-0">숙소명</h6>
+								<h6 class="mb-0">제목</h6>
 							</div>
 							<div class="col">
-								<h6 class="mb-0">이메일</h6>
+								<h6 class="mb-0">사용자명</h6>
 							</div>
 							<div class="col">
 								<h6 class="mb-0">문의 내용</h6>
@@ -125,59 +125,12 @@
 					</div>
 
 					<!-- Table data (1번째 예약내역 상세 데이터)-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">성심당</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">test1234</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">환불해줘어어어ㅓㅇ</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="badge bg-success bg-opacity-10 text-success">답변 완료</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="ms-1 col"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#questionModal" class="btn btn-sm btn-light mb-0">상세보기</a></div>
+					<div id="answerList" >
+						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							
 						</div>
 					</div>
-					<!-- Table data-->
-					<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">히든베이</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">testtes</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-0 fw-normal">비회원 예약중 결제 오류</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="badge bg-primary bg-opacity-10 text-primary">대기</div>
-						</div>
-						<!-- Data item -->
-						<div class="col">
-							<div class="ms-1 col"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#questionModal" class="btn btn-sm btn-light mb-0">상세보기</a></div>
-						</div>
-					</div>
+					
 				</div>
 				<!-- Card body END -->
 
@@ -220,12 +173,12 @@
 			<div class="modal-body m-3">
 				<h6 class="fw-bold">문의 내용</h6>
 				<div class="border rounded p-3">
-					<p class="space" id="questionContent">문의 내용</p>
+					<p class="space" id="questionContent"></p>
 				</div>
 
 				<h6 class="fw-bold mt-4">숙소 답변</h6>
 				<div class="border rounded p-3">
-					<p class="space" id="replyContent">답변 내용</p>
+					<p class="space" id="replyContent"></p>
 				</div>
 			</div>
 
@@ -237,5 +190,10 @@
 </div>
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
+<!-- page script -->
+<script src="js/admin/question.js"></script>
+<script type="text/javascript">
+	questionManagement.init();
+</script>
 </body>
 </html>

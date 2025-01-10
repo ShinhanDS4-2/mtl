@@ -22,9 +22,14 @@ const notice = (function () {
             registerNotice();
         });
 
+        // 상세내용 수정 버튼 클릭 이벤트
+        $('#noticeDetailModal .btn-primary').off().on("click", function () {
+            loadNoticeDetailByIdx();
+        });
+        
         // 수정 버튼 클릭 이벤트
-        $('#noticeEditModal .btn-primary').off().on("click", function () {
-            editNotice();
+        $('#updateNotice .btn-primary').off().on("click", function () {
+            updateNotice();
         });
         
         // 검색 버튼 클릭 이벤트
@@ -102,8 +107,8 @@ const notice = (function () {
 	            }
 	        },
 	        error: function (err) {
-	            console.error("공지사항 조회 중 오류:", err);
-	            alert("공지사항 조회 중 오류가 발생했습니다.");
+	            console.error("공지사항 상세조회 중 오류:", err);
+	            alert("공지사항 상세조회 중 오류가 발생했습니다.");
 	        }
 	    });
 	}

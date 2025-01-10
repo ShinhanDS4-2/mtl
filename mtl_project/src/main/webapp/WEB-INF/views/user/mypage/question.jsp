@@ -51,7 +51,7 @@
 							<div class="tab-pane fade show active" id="tab-1">
 								<div class="text-align-last">
 									<h6 class="d-inline-block">사이트 문의</h6>
-									<button type="button" class="btn btn-sm btn-primary d-inline-block me-1" data-bs-toggle="modal" data-bs-target="#qnaModal">문의하기</button>								
+									<button type="button" class="btn btn-sm btn-primary d-inline-block me-1" data-bs-toggle="modal" data-bs-target="#qnaModal">문의하기</button>
 								</div>
 								
 								<!-- 테이블 -->
@@ -159,45 +159,43 @@
 </section>
 </main>
 
-<!-- 1:1 문의 작성 모달 -->
+<!-- 문의하기 Modal -->
 <div class="modal fade" id="qnaModal" tabindex="-1" aria-labelledby="qnaLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-lg">
-		<div class="modal-content p-0">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content p-0">
+            <div class="modal-header p-3">
+                <h5 class="modal-title mb-0" id="qnaLabel">1:1 문의</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-			<!-- Title -->
-			<div class="modal-header p-3">
-				<h5 class="modal-title mb-0" id="qnaLabel">1:1 문의</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-
-			<!-- Modal body -->
-			<div class="modal-body p-0">
-				<div class="card bg-transparent p-3">
-					<div class="card-body pt-2">
-						<div class="d-flex mt-1">
-							<select class="form-select col-10" id="qnaType">
-								<option value="" disabled="disabled" selected>유형 선택</option>
-								<option>예약</option>
-								<option>결제</option>
-								<option>이용문의</option>
-							</select>
-						</div>
-						<div class="d-flex mt-1 form-floating">
-							<input type="text" class="form-control" id="qnaTitle" placeholder="제목을 작성해 주세요.">
-							<label for ="qnaTitle">제목</label>
-						</div>
-						<div class="d-flex mt-1">
-							<textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false"></textarea>
-						</div>
-						<div class="d-grid gap-2 mt-3">
-							<button class="btn btn-sm btn-primary-soft px-4 mb-0 flex-shrink-0"><i class="fas fa-paper-plane fs-5"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="modal-body p-0">
+                <div class="card bg-transparent p-3">
+                    <div class="card-body pt-2">
+                        <div class="d-flex mt-1">
+                            <select class="form-select col-10" id="qnaType">
+                                <option value="" disabled="disabled" selected>유형 선택</option>
+                                <option>예약</option>
+                                <option>결제</option>
+                                <option>이용문의</option>
+                            </select>
+                        </div>
+                        <div class="d-flex mt-1 form-floating">
+                            <input type="text" class="form-control" id="qnaTitle" placeholder="제목을 작성해 주세요.">
+                            <label for ="qnaTitle">제목</label>
+                        </div>
+                        <div class="d-flex mt-1">
+                            <textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false" id="qnaContent"></textarea>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <button class="btn btn-sm btn-primary-soft px-4 mb-0 flex-shrink-0" id="registQuestionBtn"><i class="fas fa-paper-plane fs-5"></i> 등록</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <!-- 문의 상세 모달 -->
 <div class="modal fade" id="qnaDetailModal" tabindex="-1" aria-labelledby="qnaDetailLabel" aria-hidden="true">

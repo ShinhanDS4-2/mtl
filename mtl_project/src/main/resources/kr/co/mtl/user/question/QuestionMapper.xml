@@ -41,5 +41,26 @@
 			user_idx = #{user_idx}
 	</select>
 	
-	
+	<!-- 
+	<insert id="registQuestion" parameterType="HashMap">
+        INSERT INTO QUESTION (user_idx, admin_idx, title, content)
+        VALUES (#{user_idx}, #{admin_idx}, #{title}, #{content})
+    </insert>
+
+    <select id="getQuestionList" parameterType="HashMap">
+        SELECT user_idx, content, answer, create_date, answer_yn
+        FROM QUESTION
+        WHERE user_idx = #{user_idx}
+        ORDER BY create_date DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="getQuestionDetail" parameterType="HashMap">
+        SELECT * FROM QUESTION WHERE id = #{id}
+    </select>
+
+    <select id="getQuestionCnt" parameterType="HashMap">
+        SELECT COUNT(*) FROM QUESTION WHERE user_idx = #{user_idx}
+    </select>
+	 -->
 </mapper>

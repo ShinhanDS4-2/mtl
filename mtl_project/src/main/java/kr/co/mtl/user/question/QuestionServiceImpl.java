@@ -49,4 +49,31 @@ public class QuestionServiceImpl implements QuestionService{
 		return result;
 	};
 
+//	@Override
+//    public Map<String, Object> registQuestion(Map<String, Object> param) {
+//        Map<String, Object> result = new HashMap<>();
+//        if (questionMapper.registQuestion(param) <= 0) {
+//            result.put("result", false);
+//        } else {
+//            result.put("result", true);
+//        }
+//        return result;
+//    }
+//
+//    @Override
+//    public Map<String, Object> getQuestionList(Map<String, Object> param) {
+//        Map<String, Object> result = new HashMap<>();
+//        List<Map<String, Object>> questions = questionMapper.getQuestionList(param);
+//        result.put("list", questions);
+//        result.put("total", questionMapper.getQuestionCnt(param));
+//        return result;
+//    }
+//
+//    @Override
+//    public Map<String, Object> getQuestionDetail(Map<String, Object> param) {
+//        Map<String, Object> result = new HashMap<>();
+//        result.put("question", questionMapper.getQuestionDetail(param));
+//        return result;
+//    }
+	
 }

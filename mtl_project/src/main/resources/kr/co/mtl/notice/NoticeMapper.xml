@@ -33,7 +33,7 @@
     </insert>
 
     <!-- 공지사항 상세 조회 -->
-    <select id="findByTitle" parameterType="string" resultType="map">
+    <select id="findByIdx" parameterType="int" resultType="map">
         SELECT
             idx AS notice_idx,
             title,
@@ -42,7 +42,7 @@
             target,
             DATE_FORMAT(create_date, '%Y-%m-%d') AS create_date
         FROM NOTICE
-        WHERE title = #{title}
+        WHERE idx = #{notice_idx}
     </select>
 
 

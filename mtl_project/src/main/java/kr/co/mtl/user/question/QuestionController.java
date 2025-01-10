@@ -55,4 +55,22 @@ public class QuestionController {
 		
 		return result;
 	}
+	
+	
+//	  @PostMapping("/regist")
+//	    public Map<String, Object> registQuestion(@RequestBody Map<String, Object> param) {
+//	        Map<String, Object> result = new HashMap<>();
+//	        result = questionService.registQuestion(param);
+//	        return result;
+//	    }
+//	
+//	    @PostMapping("/list")
+//	    public Map<String, Object> getQuestionList(@RequestBody Map<String, Object> param) {
+//	        return questionService.getQuestionList(param);
+//	    }
+//	
+//	    @PostMapping("/detail")
+//	    public Map<String, Object> getQuestionDetail(@RequestBody Map<String, Object> param) {
+//	        return questionService.getQuestionDetail(param);
+//	    }
 }

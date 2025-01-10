@@ -24,10 +24,9 @@ const questionManagement = (function() {
         
 		// 페이징 START
 		let pageOption = {
-            limit: 5  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+            limit: 5  
 		};
 		
-		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
 		let page = $("#pagination").customPaging(pageOption, function(_curPage){  // customPaging은 사용자 정의함수로 페이징 로직을 생성한다. 
             // ㄴ pageOption객체를 넘겨 한 페이지에 표시할 데이터 수(limit)를 전달.
             // _curPage: 현재 사용자가 보고 있는 페이지 번호.

@@ -9,4 +9,6 @@ public interface QuestionService {
 
 	Map<String, Object> getQuestionList(Map<String, Object> param);
 
+//	Map<String, Object> getQuestionDetail(Map<String, Object> param);
+
 }
