@@ -1,4 +1,4 @@
-const questionManagement = (function() {
+const partnerList = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
@@ -43,20 +43,24 @@ const questionManagement = (function() {
 		};
 		// 페이징 END
 		
-		let answerStatus=$("input[name='flexRadioDefault']:checked").val();     	  //라디오 버튼 (전체, 답변 대기, 완료 중 선택)
-        let searchField=$(".form-select.js-choice").val();                            //숙소명, 사용자명, 내용 중 선택
-        let searchText=$("input[type='text']").val();                                 //입력창에 검색한 내용
+		let answerArea=$("input[name='flexRadioDefault']:checked")
+            .map(function(){
+                return $(this).val();
+            })
+            .get();
+
+        console.log(answerArea);
+        let searchText=$("input[name='searchText']").val();                                 //입력창에 검색한 내용
         
-        console.log(answerStatus);
-        console.log(searchField);
+        console.log(answerArea);
         console.log(searchText);
-        
-        param.answerStatus = answerStatus;
-        param.searchField = searchField;
-        param.searchText = searchText;
+        if (answerArea.length > 0) {
+            param.answerArea=answerArea;
+        }
+        param.searchText=searchText;
 
         $.ajax({
-            url:"/mtl/admin/accomodation/question/search",
+            url:"/mtl/admin/accomodation/list",
             type:"POST",
             contentType:"application/json",
             data:JSON.stringify(param),
@@ -93,58 +97,44 @@ const questionManagement = (function() {
 
             for(let data of list){
 
-                let button='';
-
-                if(data.answerYN == 'Y'){
-                    button=`<div class="badge bg-success bg-opacity-10 text-success">답변 완료</div>`
-                } else{
-                    button=`<div class="badge bg-danger bg-opacity-10 text-danger">답변 대기</div>`
-                }
+                console.log(data);
 
                 let row = $("<div>").addClass("row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center d-flex justify-content-center align-items-center");
                 answerList.append(row);
 
-                let partner_col=$("<div>").addClass("col");
-                row.append(partner_col);
+                let area_col=$("<div>").addClass("col");
+                row.append(area_col);
 
-                let partner_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.partnerName);
-                partner_col.append(partner_h6);
+                let area_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.area);
+                area_col.append(area_h6);
 
-                let user_col=$("<div>").addClass("col");
-                row.append(user_col);
+                let name_col=$("<div>").addClass("col");
+                row.append(name_col);
 
-                let user_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.userName);
-                user_col.append(user_h6);
+                let name_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.name);
+                name_col.append(name_h6);
 
-                let content_col=$("<div>").addClass("col");
-                row.append(content_col);
+                let room_col=$("<div>").addClass("col");
+                row.append(room_col);
 
-                let content_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.content);
-                content_col.append(content_h6);
+                let room_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.room_count);
+                room_col.append(room_h6);
 
                 let create_date_col=$("<div>").addClass("col");
                 row.append(create_date_col);
 
                 let create_date_h6=$("<h6>").addClass("ms-1 mb-1 fw-light").html(this.ToDate(data.create_date));
                 create_date_col.append(create_date_h6);
-
-                let answer_yn=$("<div>").addClass("col");
-                row.append(answer_yn);
-
-                answer_yn.append(button);
                 
                 let detail = $("<div>").addClass("col");
 	            row.append(detail);
-	            
+
 	            let detail_link = $("<a>")
 	                .addClass("btn btn-sm btn-light mb-0")
 	                .html("상세보기")
-	                .attr("href", "javascript:;")
+	                .attr("href", "admin/accomodation/detail")
 	                .on("click", function () {
 
-	                    $("#questionContent").html(data.content);
-	                    $("#replyContent").html(data.answer || "답변 대기 중입니다..");
-	                    $("#questionModal").modal("show");
 	                });
 	            detail.append(detail_link);
 

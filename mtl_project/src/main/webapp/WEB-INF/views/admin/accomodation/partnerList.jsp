@@ -41,35 +41,35 @@
 							<!-- Radio items -->
 							<div class="col-12">
 								<label class="form-label">지역</label>
-								<div class="d-sm-flex">
+								<div class="d-sm-flex" id="areaCheck">
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" checked>
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" checked value="">
 										<label class="form-check-label" for="flexRadioDefault1">전체</label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2">
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" value="seoul">
 										<label class="form-check-label" for="flexRadioDefault2">서울</label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault3">
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault3" value="gangneung">
 										<label class="form-check-label" for="flexRadioDefault3">강릉</label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault4">
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault4" value="yeosu">
 										<label class="form-check-label" for="flexRadioDefault4">여수</label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault5">
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault5" value="busan">
 										<label class="form-check-label" for="flexRadioDefault5">부산</label>
 									</div>
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault6">
+										<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault6" value="jeju">
 										<label class="form-check-label" for="flexRadioDefault6">제주</label>
 									</div>
 								</div>
@@ -78,13 +78,13 @@
 							<!-- 검색어 입력 input -->
 							<div class="col-6 mb-2">
 								<label class="form-label">숙소명</label>
-								<input type="text" class="form-control" placeholder="숙소명을 입력하세요">
+								<input type="text" class="form-control" placeholder="숙소명을 입력하세요" name="searchText">
 							</div>
 
 							<!-- 초기화/검색 button -->
 							<div class="d-sm-flex justify-content-end border-top pt-3">
-								<button type="button" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
-								<button type="button" class="btn btn-primary mb-0 ms-2">검색</button>
+								<button type="button" id="resetButton"class="btn btn-primary-soft mb-0 ms-2">초기화</button>
+								<button type="button" id="searchButton" class="btn btn-primary mb-0 ms-2">검색</button>
 							</div>
 						</form>
 					</div>
@@ -104,7 +104,7 @@
 					<div class="card-body">
 						<!-- Table head -->
 						<div class="bg-light rounded p-3 d-none d-sm-block">
-							<div class="row row-cols-7 g-4">
+							<div class="row row-cols-7 g-4 text-center">
 								<div class="col">
 									<h6 class="mb-0">지역</h6>
 								</div>
@@ -124,130 +124,37 @@
 						</div>
 
 						<!-- Table data (1번째 예약내역 상세 데이터)-->
-						<div
-							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">지역</small>
-								<!-- 작은 화면일때만 보이는 텍스트-->
-								<h6 class="ms-1 mb-0 fw-normal">서울</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">숙소명</small>
-								<h6 class="ms-1 mb-0 fw-normal">히든베이 호텔</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">객실수</small>
-								<h6 class="ms-1 mb-0 fw-normal">50 개</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">등록일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">
-									<a href="admin/accomodation/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-								</div>
-							</div>
-						</div>
-						<!-- Table data (2번째 예약내역 상세 데이터)-->
-						<div
-							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">지역</small>
-								<!-- 작은 화면일때만 보이는 텍스트-->
-								<h6 class="ms-1 mb-0 fw-normal">서울</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">숙소명</small>
-								<h6 class="ms-1 mb-0 fw-normal">오꼬노미야끼 호텔</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">객실수</small>
-								<h6 class="ms-1 mb-0 fw-normal">50 개</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">등록일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">
-									<a href="admin/accomodation/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-								</div>
-							</div>
-						</div>
-						<!-- Table data (3번째 예약내역 상세 데이터)-->
-						<div
-							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">지역</small>
-								<!-- 작은 화면일때만 보이는 텍스트-->
-								<h6 class="ms-1 mb-0 fw-normal">대전</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">숙소명</small>
-								<h6 class="ms-1 mb-0 fw-normal">신라신라 호텔</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">객실수</small>
-								<h6 class="ms-1 mb-0 fw-normal">50 개</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">등록일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">
-									<a href="admin/accomodation/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-								</div>
-							</div>
-						</div>
+						
 						<!-- Table data (4번째 예약내역 상세 데이터)-->
-						<div
-							class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">지역</small>
-								<!-- 작은 화면일때만 보이는 텍스트-->
-								<h6 class="ms-1 mb-0 fw-normal">제주</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">숙소명</small>
-								<h6 class="ms-1 mb-0 fw-normal">메리메리 호텔</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">객실수</small>
-								<h6 class="ms-1 mb-0 fw-normal">100 개</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">등록일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">
-									<a href="admin/accomodation/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
+						<div id="answerList">
+							<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
+								<!-- Data item -->
+								<div class="col">
+									<small class="d-block d-sm-none">지역</small>
+									<!-- 작은 화면일때만 보이는 텍스트-->
+									<h6 class="ms-1 mb-0 fw-normal">제주</h6>
+								</div>
+								<!-- Data item -->
+								<div class="col">
+									<small class="d-block d-sm-none">숙소명</small>
+									<h6 class="ms-1 mb-0 fw-normal">메리메리 호텔</h6>
+								</div>
+								<!-- Data item -->
+								<div class="col">
+									<small class="d-block d-sm-none">객실수</small>
+									<h6 class="ms-1 mb-0 fw-normal">100 개</h6>
+								</div>
+								<!-- Data item -->
+								<div class="col">
+									<small class="d-block d-sm-none">등록일</small>
+									<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
+								</div>
+								<!-- Data item -->
+								<div class="col">
+									<small class="d-block d-sm-none">상세보기</small>
+									<div class="ms-1 col">
+										<a href="admin/accomodation/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -258,7 +165,7 @@
 					<div class="card-footer pt-0">
 						<!-- Pagination (페이지 전환 하단 바)-->
 						<nav class="d-flex justify-content-center">
-							<ul class="pagination pagination-sm pagination-primary-soft mb-0">
+							<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
 								<li class="page-item disabled">
 									<!-- disabled: 버튼 비활성화--> <a class="page-link" href="#"
 									tabindex="-1">&lt;</a>
@@ -288,6 +195,11 @@
 
 	<!-- footerScript -->
 	<%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
+<!-- page script -->
+<script src="js/admin/partnerList.js"></script>
+<script type="text/javascript">
+	partnerList.init();
+</script>
 
 </body>
 </html>
