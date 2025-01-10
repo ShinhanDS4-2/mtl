@@ -7,13 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/partner")
 public class PartnerPageController {
-	
-	// 예약 리스트
-	@GetMapping("/reservation/detail")
-	public String reservationDetail() {
-		return "partner/reservation/reservationDetail";
-	}
-	
+	  
 	// 예약 상세
 	@GetMapping("/reservation/list")
 	public String reservationList() {

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-
+   
+  
 @RestController  
 @RequestMapping("/api/admin/reservation")
 public class AdminReservationController {
@@ -21,46 +21,26 @@ public class AdminReservationController {
 	private AdminReservationService reservationService;
  
 	/** 시온
-	 * [판매자] 예약내역 리스트 조회 
-	 * 페이지 접속 => http://localhost:8090/mtl/partner/reservation/list
-	 * @param partner_idx, 및 필터들
+	 * [관리자] 예약내역 리스트 조회 
+	 * @param 검색필터(date_start시작일, date_end종료일, payment_status정산상태, partnerName숙소명)
 	 * @return List, Count, Param
 	 */
 	@PostMapping("/list")
-	public Map<String, Object> getReservationList(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
-//		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));  // 세션에서 partner_idx 얻어서 param에 넣어주기
-		
+	public Map<String, Object> getReservationList(@RequestParam Map<String, Object> param) throws Exception {
 		Map<String, Object> result = reservationService.getReservationList(param);
 		return result;
-	}
+	}  
 	
 	/** 시온
-	 * [판매자] 예약내역 상세조회
+	 * [관리자] 예약내역 상세조회
 	 * @param reservation_idx(예약idx 값 받아서 조회)
 	 * @return Detail, Param
-	 */  
-	@PostMapping("/detail")
-	public Map<String, Object> getReservationDetail(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
-//		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));  // 세션에서 partner_idx 얻어서 param에 넣어주기
-		
+	 */ 
+	@PostMapping("/detail")   
+	public Map<String, Object> getReservationDetail(@RequestParam Map<String, Object> param) throws Exception {
 		Map<String, Object> result = reservationService.getReservationDetail(param);
 		return result;
 	}
 	
-	/** 시온
-	 * [판매자] 숙소에 등록되어 있는 객실타입 조회
-	 * @param partner_idx (세션에서 가져오는거임)
-	 * @return roomTypeList
-	 */    
-	@PostMapping("/roomList")
-	public Map<String, Object> getRoomTypeList(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
-//		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));  // 세션에서 partner_idx 얻어서 param에 넣어주기
-		
-		Map<String, Object> result = reservationService.getRoomTypeList(param);
-		return result;
-	}
 	
 }

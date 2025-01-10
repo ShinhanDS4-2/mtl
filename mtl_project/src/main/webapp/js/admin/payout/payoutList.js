@@ -13,7 +13,7 @@ const payout = (function() {
 		evo.on("click", function(e) {   
 			_eventAction(e);            
 		});               
-	};         
+	};            
       
 	// 이벤트 분기      
 	function _eventAction(e) {   
@@ -271,9 +271,8 @@ const payout = (function() {
 				<p class="mb-0">정산일: ${data.calculate_date}</p>
 				<p class="mb-0">판매자 관리번호: ${data.partner_idx}</p>
 					<p class="mb-0">정산 계좌정보: ${data.account_name}  ${data.account_bank}  ${data.account_number}</p>
-				</div>`;
-			modalBoby.append(modalData);
-			
+				</div>`; 
+			modalBoby.append(modalData);              
 			/* 정산 상세정보 modal END */
 
 		}

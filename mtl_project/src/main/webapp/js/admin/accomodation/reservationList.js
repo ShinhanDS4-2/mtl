@@ -14,26 +14,52 @@ const reservationList = (function() {
 			_eventAction(e); 
 		});          
 	};                   
-	         
+	           
 	// 이벤트 분기      
 	function _eventAction(e) {   
 		let evo = $(e.currentTarget);
 		let action = evo.attr("data-act");
 		let type = e.type;  
-		   
+		       
 		if(type == "click") {       
 			if(action == "clickSearchButton") {  // 검색필터에서 검색버튼 클릭 시 
 				_event.clickSearchButton(evo);
+			} else if(action == "clickDetailModal") {  // 상세보기 모달 클릭 시
+				_event.clickDetailModal(evo);
 			}
 		};
-	};
-	
+	}; 
+	 
 	// 이벤트
 	let _event = {
 		// 검색필터 검색 버튼 클릭 시
 		clickSearchButton: function() {   
 			isSearchClicked = true; // 검색 버튼 클릭 여부 상태 관리     
 			fetchReservationList();  // 조건에 맞는 리스트 조회
+		}, 
+
+		// 상세보기 버튼 클릭 시 모달창
+		clickDetailModal: function(e) {    
+			// Ajax 요청 - 예약내역 상세보기 조회 API호출
+			let reservation_idx = $(e).data("reservation-idx");  // 예약내역 idx를 가져옴
+			$.ajax({     
+				type: "POST", 
+				url: "/mtl/api/admin/reservation/detail",  
+				data: {reservation_idx:reservation_idx},   
+
+				success: function(resp) {  // 성공 시 API 리턴값: Detail, Param
+					console.log("detail 성공 시 API 리턴값:????????", resp)  
+					_draw.drawDetailModal(resp.Detail);  // 상세조회 모달 그리기
+					_eventInit();       
+					
+					  // html이 전부 그려진 후 호출되어야 작동함. 
+				},  
+				error: function(xhr, status, error) {  
+					console.error("Error :", error); 
+				}
+			});       
+
+			// fetchReservationList();  // 조건에 맞는 리스트 조회
 		}, 
 
 	};  // let _event 끝
@@ -46,7 +72,7 @@ const reservationList = (function() {
 			// 필터부분 
 			"date_start" : '',   // 달력 시작일
 			"date_end" : '',   // 달력 종료일
-			"reservation_status" : '',  // 예약 상태 (전체"" / 예약완료 P / 예약취소 R)
+			"payment_status" : '',  // 예약 상태 (전체"" / 예약완료 P / 예약취소 R)
 			"partnerName" : '', // 숙소명
 		};  
 		console.log("검색 안했을때: param값은 ????", param);
@@ -68,7 +94,7 @@ const reservationList = (function() {
 			 param = {         
 				"date_start" : startDate,   // 달력 시작일
 				"date_end" : endDate,   // 달력 종료일
-				"reservation_status" : reservationStatus,  // 예약 상태 (전체"" / 예약완료 P / 예약취소 R)
+				"payment_status" : reservationStatus,  // 예약 상태 (전체"" / 예약완료 P / 예약취소 R)
 				"partnerName" : searchInput, // 숙소명
 			};
 
@@ -103,34 +129,33 @@ const reservationList = (function() {
 		// Ajax 요청 - 예약내역 리스트 조회 API호출
 		$.ajax({   
 			type: "POST", 
-			url: "/mtl/api/???????? ",  
-			data: param,   // param값 => 검색필터값(~~, offset, limit)
+			url: "/mtl/api/admin/reservation/list",  
+			data: param,   // param값 => 검색필터값(date_start, date_end, payment_status, partnerName, offset, limit)
 
-			success: function(resp) {  // 성공 시 API 리턴값: ??????????????
-				console.log("resp????????", resp)
+			success: function(resp) {  // 성공 시 API 리턴값: List, Count, Param
+				console.log("성공 시 API 리턴값:????????", resp)
 				_draw.drawReservationList(resp);  // 리스트 그리기
-				page.drawPage(resp.Count);  // 파람값으로 리스트 총 갯수 넣어주면 하단 페이징 넘버 동적으로 알아서 그려줌
+				page.drawPage(resp.Count);  // 페이징 하단바 그리기
 				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함. 
 			},  
 			error: function(xhr, status, error) {
 				console.error("Error :", error); 
-			}
+			}    
 		});   
 	}
 /* 예약내역 리스트 조회 END */
-
+      
 
 	
 	// 그리기
 	let _draw = {
 	// 예약내역 리스트 조회 그리기 
-		drawReservationList: function(list) {  // list에는 ??  값이 들어있음
-			// 여기 전부 복붙한거라 변경필요함 
+		drawReservationList: function(list) {  // list에는 List, Count, Param 값이 들어있음
 			// 예약내역 리스트 총 갯수
-			let reservationCount = $("#reservationCount").html(`총 ${list.Count}개`);
+			$("#reservationCount").html(`총 ${list.Count}개`);
 
 			// 기간 설정 조건
-			let searchDateRange = $("#searchDateRange").html(`검색필터 날짜기준 ~ 여기 검색필터 하면 동적으로 뿌려줘야함 `);
+			$("#searchDateRange").html(`예약일 기준 ${list.Param.date_start} ~ ${list.Param.date_end}`);
 
 			// 예약내역 리스트 데이터들을 감싸고 있는 큰 div태그 부분
 			let reservationListData = $("#reservationListData");
@@ -138,9 +163,8 @@ const reservationList = (function() {
 
 			// 예약 내역 리스트 출력
 			for(data of list.List) {
-
-				// 결제 상태에 따른 버튼 모양 구분
-				let button = '';
+				// 예약 상태에 따른 버튼 모양 구분
+				let button = '';  
 				if(data.payment_status == 'P') {   // 결제완료이면
 					button = `<div class="badge bg-success bg-opacity-10 text-success">예약완료</div>`
 				} else {  // 환불상태이면
@@ -149,41 +173,83 @@ const reservationList = (function() {
  
 				 // 예약내역 리스트 반복할 부분          
 				let reservData =      
-					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-						<div class="col">
-							<small class="d-block d-sm-none">예약자명</small>
-							<h6 class="ms-1 mb-0 fw-normal">${data.username}</h6>
-							<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
-								data-bs-target="#bookingDetailModal">상세보기</a>
-						</div>
-						<div class="col">
-							<small class="d-block d-sm-none">객실타입</small>
-							<h6 class="ms-1 mb-0 fw-normal">${data.room_type}</h6>
-						</div> 
-
-						<div class="col">
-							<small class="d-block d-sm-none">입실/퇴실일시</small>
-							<h6 class="ms-1 mb-1 fw-light">${data.check_in_date}</h6>
-							<h6 class="ms-1 mb-0 fw-light">${data.check_out_date}</h6>
-						</div>   
-						<div class="col">
-							<small class="d-block d-sm-none">예약일시</small>
-							<h6 class="ms-1 mb-1 fw-light">${data.reservation_date}</h6>
-						</div>
-						<div class="col">
-							<small class="d-block d-sm-none">예약상태</small>`
-							+ button +
-						`</div>
-
-						<div class="col">
-							<small class="d-block d-sm-none">판매가</small>  
-							<h6 class="mb-0 fw-light">${data.price} 원</h6>
-						</div> 
-					</div>`;		   
+						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+							<div class="col">
+								<small class="d-block d-sm-none">숙소명</small>
+								<h6 class="ms-1 mb-0 fw-normal">${data.name}</h6>
+							</div>  
+							<div class="col">  
+								<small class="d-block d-sm-none">고객 아이디</small>
+								<h6 class="ms-1 mb-1 fw-light">${data.email}</h6>
+							</div>
+							<div class="col">
+								<small class="d-block d-sm-none">예약일</small> 
+								<h6 class="ms-1 mb-1 fw-light">${data.reservation_date}</h6>
+							</div>
+							<div class="col">
+								<small class="d-block d-sm-none">판매가</small>
+								<h6 class="ms-1 mb-1 fw-light">${data.price} 원</h6>
+							</div>
+							<div class="col">
+								<small class="d-block d-sm-none">상태</small>`
+								+ button +
+							`</div>
+							<div class="col">
+								<small class="d-block d-sm-none">상세보기</small>
+								<div class="ms-1 col">     
+									<a role="button" class="btn btn-sm btn-light mb-0 clickDetailModal" data-bs-toggle="modal" data-bs-target="#detailModal"
+										data-src="ReservationList" data-act="clickDetailModal"
+										data-reservation-idx="${data.reservation_idx}">상세보기
+									</a>   
+								</div> 
+							</div>
+						</div>`   
 				reservationListData.append(reservData);   
-			}    
+			}
+			    
 		},
 
+		// 예약내역 상세보기 모달 그리기
+		drawDetailModal: function(data) {   // data에는 API호출 시 응답받은 Detail 값이 들어있음
+			let modalBody = $("#modalBody");
+			modalBody.empty();
+
+			let modalData = 
+					`<h6 class="fw-bold">예약일시</h6>
+					<div class="mb-3 border p-3">
+						<p class="mb-0">${data.reservation_date}</p>
+					</div> 
+
+					<h6 class="fw-bold">예약자 정보</h6> 
+					<div class="mb-3 border p-3">       
+						<p class="mb-0">아이디: ${data.user_email}</p>
+						<p class="mb-0">이름: ${data.user_name}</p>
+						<p class="mb-0">연락처: ${data.user_phone}</p>
+					</div>   
+ 
+					<h6 class="fw-bold">판매자 정보</h6>
+					<div class="mb-3 border p-3">       
+						<p class="mb-0">아이디: ${data.pertner_email}</p>
+						<p class="mb-0">숙소명: ${data.pertner_name}</p>
+						<p class="mb-0">숙소유형: ${data.pertner_type}</p>
+							<p class="mb-0">연락처: ${data.pertner_phone}</p>
+						<p class="mb-0">업체주소: ${data.pertner_address}</p>
+						
+					</div> 
+						
+					<h6 class="fw-bold">예약 정보</h6>
+					<div class="mb-3 border p-3">
+						<p class="mb-0">예약자명: ${data.user_name}</p>
+						<p class="mb-0">객실타입: ${data.room_type} 트윈</p>    
+						<p class="mb-0">입실일: ${data.check_in_date}</p>       
+						<p class="mb-0">퇴실일: ${data.check_out_date}</p>       
+						<p class="mb-0">예약일: ${data.reservation_date}</p>  
+						<p class="mb-0">금액: ${data.price} 원</p>  
+					</div>`;
+			modalBody.html(modalData);     
+			// $("#detailModal").modal("show"); // 모달 표시 안해줘도 뜨는데??? 
+			// 모달 show 안해도 data-bs-target="#detailModal" 이랑 모달에 id="detailModal" 가 동일하게 매핑되어 있으면 뜸
+		},
 
 
 	};  // let _draw 끝

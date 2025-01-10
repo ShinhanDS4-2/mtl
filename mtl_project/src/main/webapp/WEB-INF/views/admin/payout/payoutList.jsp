@@ -154,14 +154,14 @@
 								<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">  <!-- id="pagination" -->
 								</ul>
 							</nav>
-						</div> 
-					</div>
+						</div>  
+					</div> 
 					<!-- 페이징 처리 END -->
 					<!-- Card footer END -->
 					
 				</div>
 				<!-- 정산 내역 List END -->
-
+     
 				<!-- 정산 상세 내역 Modal START -->
 				<div id="payoutDetailModal"class="modal fade" tabindex="-1" aria-labelledby="payoutDetailModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-lg modal-dialog-centered">

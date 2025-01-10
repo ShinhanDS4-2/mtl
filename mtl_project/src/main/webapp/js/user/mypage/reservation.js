@@ -203,8 +203,8 @@ const reservation = (function() {
 		};
 
 		/* 페이징 START */
-		let pageOption = {
-			limit: 10  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+		let pageOption = {      
+			limit: 5  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
 		let page = $("#pagination").customPaging(pageOption, function(_curPage){  

@@ -10,17 +10,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
-
+     
 @Service
 public class AdminReservationServiceImpl implements AdminReservationService {
 
 	@Autowired
 	private AdminReservationMapper reservationMapper;
- 
 
-	/** 시온
-	 * [판매자] 예약내역 리스트 조회 
-	 * @param partner_idx, 및 필터들
+	/** 시온  
+	 * [관리자] 예약내역 리스트 조회 
+	 * @param 검색필터(date_start시작일, date_end종료일, payment_status정산상태, partnerName숙소명)
 	 * @return List, Count, Param
 	 */
 	@Override
@@ -36,14 +35,12 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 		result.put("List", list);
 		result.put("Param", param);  // 요청데이터를 응답에 포함
 		
-		
 		return result;
-  
 		
 	}
-	
+	  
 	/** 시온
-	 * [판매자] 예약내역 상세조회
+	 * [관리자] 예약내역 상세조회
 	 * @param reservation_idx(예약idx 값 받아서 조회)
 	 * @return Detail, Param
 	 */
@@ -61,27 +58,5 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 		return result;
 		 
 	}
-
-	/** 시온
-	 * [판매자] 숙소에 등록되어 있는 객실타입 조회
-	 * @param partner_idx
-	 * @return roomTypeList
-	 */
-	@Override
-	public Map<String, Object> getRoomTypeList(Map<String, Object> param) {
-		System.out.println("param 값은? " + param);
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		List<Map<String, Object>> list = reservationMapper.getRoomTypeList(param);  // 숙소가 가지고 있는 객실타입 목록이 반환됨
-		
-		result.put("roomTypeList", list);
-		
-		return result;
-	}
-
-
-	
-	
 
 }

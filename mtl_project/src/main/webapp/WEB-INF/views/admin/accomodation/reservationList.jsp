@@ -2,10 +2,10 @@
 <%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
+   
 <head>
 <title>떠날지도 - 관리자</title>
-
+         
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
 </head>
@@ -98,70 +98,10 @@
 				</div>
 				<!-- 검색 필터 설정 END -->
 
-
-
-			 	<!-- 예약 상세보기 모달 START -->
-				<div id="bookingdetailModal" class="modal" tabindex="-1" role="dialog">
-					<div class="modal-dialog modal-xl modal-dialog-centered" role="document">  <!-- 매우 큰 모달 -->
-					  	<div class="modal-content">
-						<!-- 모달 head -->
-							<div class="modal-header">
-								<h5 class="modal-title">예약 상세 정보</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<!-- 모달 body -->
-							<div class="modal-body">
-								<!-- 예약번호 -->
-								<h6 class="fw-bold">예약일시</h6>
-								<div class="mb-3 border p-3">
-									<p class="mb-0">2024.12.09</p>
-								</div>
-			
-								<!-- 예약자 정보 -->
-								<h6 class="fw-bold">예약자 정보</h6>
-								<div class="mb-3 border p-3">       
-									<p class="mb-0">아이디: user1234</p>
-									<p class="mb-0">이름: 김시온</p>
-									<p class="mb-0">연락처: 010-7737-6314</p>
-								</div>   
-								<!-- 판매자 정보 -->
-								<h6 class="fw-bold">판매자 정보</h6>
-								<div class="mb-3 border p-3">       
-									<p class="mb-0">아이디: user1234</p>
-									<p class="mb-0">숙소명: 히든베이</p>
-									<p class="mb-0">숙소유형: 호텔/펜션 type</p>
-     									<p class="mb-0">연락처: 010-7737-6314</p>
-									<p class="mb-0">업체주소: address</p>
-									
-								</div> 
-								       
-								<!-- 예약 정보 -->
-								<h6 class="fw-bold">예약 정보</h6>
-								<div class="mb-3 border p-3">
-								<p class="mb-0">예약자명: 김미밈</p>
-								<p class="mb-0">객실타입: 프리미엄 트윈</p>    
-								<p class="mb-0">입실일: 2024.12.09</p>
-								<p class="mb-0">퇴실일: 2024.12.11</p>
-								<p class="mb-0">예약일: 2024.12.09</p>
-								<p class="mb-0">예약상태: 예약완료</p>    
-								<p class="mb-0">금액: 120,000원</p>  
-								</div>
-							</div>	   
-		
-							<!-- 모달 footer -->
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">출력</button>
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-							</div>
-					    </div>
-					</div>
-				</div>
-				<!-- 예약 상세보기 모달 END -->
-
 				<!-- 예약 내역 List 상단 Tab -->
 				<div class="row g-4 justify-content-between align-items-center mb-2">
 					<div class="col-md-6 col-lg-6">
-						<h6 class="mb-1">총 524건</h6>
+						<h6 id="reservationCount" class="mb-1">총 524건</h6>
 					</div>     
 				</div>
    
@@ -198,68 +138,115 @@
 								</div>
 							</div>
 						</div>
-  
-						<!-- Table data (1번째 예약내역 상세 데이터) / js에서 반복할 부분 -->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->   
-							<div class="col">
-								<small class="d-block d-sm-none">숙소명</small>
-								<h6 class="ms-1 mb-0 fw-normal">히든베이</h6>
-							</div>  
-							<!-- Data item -->
-							<div class="col">  
-								<small class="d-block d-sm-none">고객 아이디</small>
-								<h6 class="ms-1 mb-1 fw-light">test0asd</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">예약일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">판매가</small>
-								<h6 class="ms-1 mb-1 fw-light">425,300원</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상태</small>
-								<div class="badge bg-success bg-opacity-10 text-success">예약완료</div>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">
-									<a role="button" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#bookingdetailModal">상세보기</a>
+ 						<div id="reservationListData">
+							<!-- Table data (1번째 예약내역 상세 데이터) / js에서 반복할 부분 -->
+							<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+								<!-- Data item -->   
+								<div class="col">
+									<small class="d-block d-sm-none">숙소명</small>
+									<h6 class="ms-1 mb-0 fw-normal">히든베이</h6>
+								</div>  
+								<!-- Data item -->
+								<div class="col">  
+									<small class="d-block d-sm-none">고객 아이디</small>
+									<h6 class="ms-1 mb-1 fw-light">test0asd</h6>
 								</div>
-							</div>
+								<!-- Data item -->
+								<div class="col">
+									<small class="d-block d-sm-none">예약일</small>
+									<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
+								</div>
+								<!-- Data item -->
+								<div class="col">
+									<small class="d-block d-sm-none">판매가</small> 
+									<h6 class="ms-1 mb-1 fw-light">425,300원</h6>
+								</div> 
+								<!-- Data item -->
+								<div class="col">
+									<small class="d-block d-sm-none">상태</small>
+									<div class="badge bg-success bg-opacity-10 text-success">예약완료</div>
+								</div>
+								<!-- Data item -->  
+								<div class="col">
+									<small class="d-block d-sm-none">상세보기</small>
+									<a id="clickDetailModal" role="button" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="detailModal"
+										data-src="ReservationList" data-act="clickDetailModal"
+										data-reservation-idx="">상세보기 <!-- data-reservation-idx="${data.reservation_idx}" -->
+									</a>   
+								</div>     
+							</div>    
+							<!-- Table data (1번째 예약내역 상세 데이터) / js에서 반복할 부분 --> 
 						</div>
-						<!-- Table data (1번째 예약내역 상세 데이터) / js에서 반복할 부분 --> 
 					</div>
-					<!-- Card body END -->
-
+					<!-- Card body END -->      
+					
+					<!-- 예약 상세보기 모달 START -->
+					<div id="detailModal" class="modal" tabindex="-1" role="dialog">
+						<div class="modal-dialog modal-xl modal-dialog-centered" role="document">  <!-- 매우 큰 모달 -->
+						  	<div class="modal-content">
+							<!-- 모달 head -->
+								<div class="modal-header">
+									<h5 class="modal-title">예약 상세 정보</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<!-- 모달 body -->
+								<div id="modalBody" class="modal-body">
+									<!-- 예약번호 -->
+									<h6 class="fw-bold">예약일시</h6>
+									<div class="mb-3 border p-3">
+										<p class="mb-0">2024.12.09</p>
+									</div>
+				
+									<!-- 예약자 정보 -->
+									<h6 class="fw-bold">예약자 정보</h6>
+									<div class="mb-3 border p-3">       
+										<p class="mb-0">아이디: user1234</p>
+										<p class="mb-0">이름: 김시온</p>
+										<p class="mb-0">연락처: 010-7737-6314</p>
+									</div>   
+									<!-- 판매자 정보 --> 
+									<h6 class="fw-bold">판매자 정보</h6>
+									<div class="mb-3 border p-3">       
+										<p class="mb-0">아이디: user1234</p>
+										<p class="mb-0">숙소명: 히든베이</p>
+										<p class="mb-0">숙소유형: 호텔/펜션 type</p>
+	     									<p class="mb-0">연락처: 010-7737-6314</p>
+										<p class="mb-0">업체주소: address</p>
+										
+									</div> 
+									       
+									<!-- 예약 정보 -->
+									<h6 class="fw-bold">예약 정보</h6>
+									<div class="mb-3 border p-3">
+										<p class="mb-0">예약자명: 김미밈</p>
+										<p class="mb-0">객실타입: 프리미엄 트윈</p>    
+										<p class="mb-0">입실일: 2024.12.09</p>
+										<p class="mb-0">퇴실일: 2024.12.11</p>
+										<p class="mb-0">예약일: 2024.12.09</p>  
+										<p class="mb-0">금액: 120,000원</p>  
+									</div>
+								</div>	   
+			
+								<!-- 모달 footer -->
+								<div class="modal-footer">   
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+								</div>
+						    </div>
+						</div>
+					</div>
+					<!-- 예약 상세보기 모달 END -->
+   
 					<!-- Card footer START -->
-					<div class="card-footer pt-0">
-						<!-- Pagination (페이지 전환 하단 바)-->
-						<nav class="d-flex justify-content-center">
-							<ul class="pagination pagination-sm pagination-primary-soft mb-0">
-								<li class="page-item disabled">
-									<!-- disabled: 버튼 비활성화--> <a class="page-link" href="#"
-									tabindex="-1">&lt;</a>
-								</li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item active"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item disabled"><a class="page-link"
-									href="#">..</a></li>
-								<li class="page-item"><a class="page-link" href="#">11</a></li>
-								<li class="page-item"><a class="page-link" href="#">12</a></li>
-								<li class="page-item"><a class="page-link" href="#">&gt;</a>
-								</li>
-							</ul>
-						</nav>
-
+					 <!-- 페이징 처리 START -->
+					<div class="row">
+						<div class="col-12">
+							<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+								<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">  <!-- id="pagination" -->
+								</ul>
+							</nav>
+						</div> 
 					</div>
+					<!-- 페이징 처리 END -->
 					<!-- Card footer END -->
 				</div>
 				<!-- 사용자 List END -->
