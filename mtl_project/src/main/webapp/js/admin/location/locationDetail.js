@@ -6,7 +6,9 @@ const locationDetail = (function() {
 	function init() {                   
 		// 현재 페이지의 URL에서 쿼리 스트링 파라미터를 가져옴      
 		const urlParams = new URLSearchParams(window.location.search);  // window.location.search: 현재 URL에서 쿼리 스트링 부분을 반환
+		
 		location_idx = urlParams.get('location_idx');  // location_idx 이름의 특정 파라미터 값을 가져옴
+
 		fetchLocationDetail();  // 페이지 로드 시 Location 여행지 상세정보를 가져옴
 		_draw.drawModalKeyword(); // 여행지 수정 모달창에 키워드 리스트 동적으로 그려줌
 		_eventInit();                      

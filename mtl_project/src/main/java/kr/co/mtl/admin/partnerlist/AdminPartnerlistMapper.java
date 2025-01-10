@@ -1,0 +1,15 @@
+package kr.co.mtl.admin.partnerlist;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface AdminPartnerlistMapper {
+	
+	List<Map<String,Object>> selectPartnerlist(Map<String,Object> param);
+	int getTotal(Map<String,Object>param);
+	
+	Map<String,Object> getPartnerDetail(Map<String,Object> param);
+}

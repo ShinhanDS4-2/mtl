@@ -3,10 +3,9 @@ const reservationList = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행                 
 	function init() {          
-		fetchRoomList();  // 검색필터에서 객실타입 리스트 가져와서 동적으로 그려줌 
 		fetchReservationList();  // 페이지 로드 시 예약내역 전체리스트 조회 
 		_eventInit();   
-	};        
+	};           
                           
 	// 이벤트 초기화         
 	function _eventInit() {  
@@ -14,7 +13,7 @@ const reservationList = (function() {
 		evo.on("click", function(e) {   
 			_eventAction(e); 
 		});          
-	};                  
+	};                   
 	         
 	// 이벤트 분기      
 	function _eventAction(e) {   
@@ -44,55 +43,34 @@ const reservationList = (function() {
 	function fetchReservationList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
 		// 그냥 조회했을 때 기본 param값 => 전체조회
 		let param = {  
-			// partner_idx는 서버에서 세션에 저장된 데이터를 읽어서 사용하기 때문에 여기서 넘겨줄 필요가 없음
-			"partner_idx" : 11,  // 이거는 데이터값 확인하기 위해 임시로 설정해둔거고 삭제해야함
-
 			// 필터부분 
-			"date_value" : '',  // 예약 기간 조회 기준 (예약일, 입실일, 퇴실일)
 			"date_start" : '',   // 달력 시작일
 			"date_end" : '',   // 달력 종료일
 			"reservation_status" : '',  // 예약 상태 (전체"" / 예약완료 P / 예약취소 R)
-			"RoomType" : '', // 객실 타입
-			"Name" : '', // 예약자명
-			"OrderBy" : '', // 리스트 정렬 
-		};
+			"partnerName" : '', // 숙소명
+		};  
 		console.log("검색 안했을때: param값은 ????", param);
 
 		// 검색 버튼이 클릭된 경우 조건 추가
 		if (isSearchClicked) {
 			// 검색필터에 입력된 데이터 가져오기
 
-			// 달력 범위
+			// 달력 범위 
 			let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
 
-			// 예약일, 입실일, 퇴실일 기준 (드롭다운 값 가져오기)
-			let selectedValue = $('#selectedValue').val(); // 현재 선택된 option의 value  // val값은 reservation_date, check_in_date, check_out_date
-		 
 			 // 예약 상태 (라디오 버튼 값 가져오기)
 			 let reservationStatus = $('input[name="flexRadioDefault"]:checked').next('label').attr('value'); // value 속성 값 (전체, P, R)
-			
-			 // 객실 타입 (드롭다운 값 가져오기)
-			 let selectRoomType = $('#selectRoomType').val(); // 현재 선택된 option의 value => 여기는 동적으로 뿌려줌
 		 
-			 // 예약자명 (텍스트 입력 값 가져오기)
-			 let searchReservName = $('#searchReservName').val(); // 입력된 텍스트 값
+			 // 숙소명 (텍스트 입력 값 가져오기)
+			 let searchInput = $('#searchInput').val(); // 입력된 텍스트 값
 		 
-			 // 정렬
-			 let selectedOrderBy = $('#selectedOrderBy').val();
-
 			 // 파람에 값 저장
-			 param = {  
-				// 필터부분
-				"date_value" : selectedValue,  // 예약 기간 조회 기준 (예약일, 입실일, 퇴실일)
+			 param = {         
 				"date_start" : startDate,   // 달력 시작일
 				"date_end" : endDate,   // 달력 종료일
 				"reservation_status" : reservationStatus,  // 예약 상태 (전체"" / 예약완료 P / 예약취소 R)
-				"RoomType" : selectRoomType, // 객실 타입
-				"Name" : searchReservName, // 예약자명
-				"OrderBy" : selectedOrderBy, // 리스트 정렬 
+				"partnerName" : searchInput, // 숙소명
 			};
-
- // ★★★★★★★★★★ 기간 (choice.js 사용해서 동적으로 뿌려져있는 드롭다운 가져와야 함)
 
 			// 데이터 잘 가져왔나 확인
 			console.log("검색 조건: param값은 ????", param);
@@ -109,7 +87,7 @@ const reservationList = (function() {
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
 		let page = $("#pagination").customPaging(pageOption, function(_curPage){  
 			fetchReservationList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
-		});
+		});  
 		
 		let pageParam = page.getParam(curPage);  // 현재 페이지 번호(curPage)를 기준으로 페이징에 필요한 정보(예: offset, limit)를 반환.
 		
@@ -125,10 +103,10 @@ const reservationList = (function() {
 		// Ajax 요청 - 예약내역 리스트 조회 API호출
 		$.ajax({   
 			type: "POST", 
-			url: "/mtl/api/partner/reservation/list",  
-			data: param,   // param값 => partner_idx, 검색필터값(~~, offset, limit)
+			url: "/mtl/api/???????? ",  
+			data: param,   // param값 => 검색필터값(~~, offset, limit)
 
-			success: function(resp) {  // 성공 시 API 리턴값: Param, List, Count
+			success: function(resp) {  // 성공 시 API 리턴값: ??????????????
 				console.log("resp????????", resp)
 				_draw.drawReservationList(resp);  // 리스트 그리기
 				page.drawPage(resp.Count);  // 파람값으로 리스트 총 갯수 넣어주면 하단 페이징 넘버 동적으로 알아서 그려줌
@@ -141,29 +119,13 @@ const reservationList = (function() {
 	}
 /* 예약내역 리스트 조회 END */
 
-/* 숙소가 가지고 있는 객실리스트 가져오기 START */
-	function fetchRoomList() {
-		$.ajax({   
-			type: "POST", 
-			url: "/mtl/api/partner/reservation/roomList",  
-			data: {"partner_idx" : 11},  // 이거는 테스트위해 임시로 설정해둔거고 삭제해야함   
-			// data: 서버로 넘겨줄 데이터 없어서 생략
-			success: function(resp) {  // 성공 시 API 리턴값: roomTypeList
-				console.log("서버 응답 데이터:", resp); // 서버 응답 데이터 출력
-				_draw.drawRoomList(resp.roomTypeList);  // 검색필터 > 객실타입 리스트 그리기
-				_eventInit();  
-			},   
-			error: function(xhr, status, error) {
-				console.error("Error :", error); 
-			}
-		});  
-	}  
-/* 숙소가 가지고 있는 객실리스트 가져오기 END */	
+
 	
 	// 그리기
 	let _draw = {
 	// 예약내역 리스트 조회 그리기 
-		drawReservationList: function(list) {  // list에는 Param, List, Count 값이 들어있음
+		drawReservationList: function(list) {  // list에는 ??  값이 들어있음
+			// 여기 전부 복붙한거라 변경필요함 
 			// 예약내역 리스트 총 갯수
 			let reservationCount = $("#reservationCount").html(`총 ${list.Count}개`);
 
@@ -221,36 +183,6 @@ const reservationList = (function() {
 				reservationListData.append(reservData);   
 			}    
 		},
-
-		// 검색필터에서 숙소가 가지고 있는 객실리스트 > 서버에서 받아서 동적으로 표시 
-	 	drawRoomList: function(list) {  // list에는 객실목록이 들어있음
-			// 드롭다운  
-			let roomType = document.getElementById("selectRoomType");
-			let choices = new Choices(roomType, {
-				shouldSort: false,
-				searchEnabled: false
-			});
-
-			// let selectRoomType = $("#selectRoomType").empty();
-			// selectRoomType.append(`<option value="">전체</option>`);
-			console.log("list????????????/", list);
-
-			let roomArray = list.map(data => ({
-				value : data.room_idx,
-				label : data.room_type
-			}));
-			/*
-			for(data of list) {
-				let option = { value : data.room_idx, label: data.room_type };
-				roomArray.push(option);
-				console.log("vdata????????????/", data); 
-				let roomType = `<option>${data.room_type}</option>`;
-				selectRoomType.append(roomType);
-			} 
-			*/ 
-			console.log("roomArray????", roomArray);
-			choices.setChoices(roomArray, 'value', 'label', true); // true: 기존 선택 초기화
-		},  
 
 
 

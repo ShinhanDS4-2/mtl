@@ -50,15 +50,14 @@
 								<label class="h6 fw-normal mb-0"><i
 									class="bi bi-calendar text-primary me-1"></i> 기간</label>
 								<!-- Input field -->    
-								<div 
-									class="form-border-bottom form-control-transparent form-fs-lg">
-									<select class="form-select js-choice">
-										<option value="">예약일</option>
-										<option>입실일</option>
-										<option>퇴실일</option>
-									</select>  
-								</div>   
-							</div>  
+								<div class="form-border-bottom form-control-transparent form-fs-lg">
+									<select id= "selectedValue" class="form-select js-choice">
+										<option value="reservation_date" selected>예약일</option>
+										<option value="check_in_date">입실일</option>
+										<option value="check_out_date">퇴실일</option>
+									</select>     
+								</div>      
+							</div>      
  
 							<!-- 기간 설정 -->
 							<div class="col-lg-5">
@@ -66,7 +65,7 @@
 									<!-- 날짜 선택 -->
 									<div class="form-control-border form-control-transparent form-fs-md">
 										<label class="form-label">시작일 - 종료일</label> 
-										<input id="dateRange" type="text" class="form-control flatpickr" data-mode="range"
+										<input id="searchDate" type="text" class="form-control flatpickr" data-mode="range"
 											placeholder="날짜를 선택하세요." value="">
 									</div> 
 								</div>   
@@ -78,7 +77,7 @@
 								<div class="d-sm-flex">
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
-										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked="">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
 										<label class="form-check-label" for="flexRadioDefault1" value=""> 전체 </label>
 									</div>
 									<!-- Radio -->
@@ -111,7 +110,7 @@
 							<!-- 검색어 입력 input -->     
 							<div class="col-6">
 								<label class="h6 fw-normal mb-2"> 예약자명</label>
-								<input type="text"
+								<input id="searchReservName" type="text"
 									class="form-control" placeholder="예약자명을 입력하세요">
 							</div>
 
@@ -183,22 +182,22 @@
 					</div>
 				</div>
 				<!-- 예약내역 상세보기 Moadl END -->
-				
-				
+				  
+				   
 
-				<!-- 예약 내역 List 상단 Tab -->
+				<!-- 예약 내역 List 상단 Tab -->  
 				<div class="row g-4 justify-content-between align-items-center mb-2">
 					<div class="col-lg-9">
 						<h6 class="mb-1" id="reservationCount">총 120개</h6>  <!-- js -->
 					</div>
 					<div class="col-md-4 col-lg-2">
-						<form>
-							<select class="form-select js-choice"
+						<form>     
+							<select id="selectedOrderBy" class="form-select js-choice"
 								aria-label=".form-select-sm">
-								<option value="">최근 예약일순</option>
-								<option>과거 예약일순</option>
-								<option>최근 입실일순</option>
-								<option>과거 입실일순</option>
+								<option value="reservationDate_Desc">최근 예약일순</option>
+								<option value="reservationDate_Asc">과거 예약일순</option>
+								<option value="checkIn_Desc">최근 입실일순</option>
+								<option value="checkIn_Asc">과거 입실일순</option>
 							</select>
 						</form>
 					</div>

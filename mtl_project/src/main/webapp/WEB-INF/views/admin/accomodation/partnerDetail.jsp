@@ -363,6 +363,10 @@
 
 	<!-- footerScript -->
 	<%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
-
+<!-- page script -->
+<script src="js/admin/accomodation/partnerList.js"></script>
+<script type="text/javascript">
+	partnerList.init();
+</script>
 </body>
 </html>

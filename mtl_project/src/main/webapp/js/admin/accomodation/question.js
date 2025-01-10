@@ -56,7 +56,7 @@ const questionManagement = (function() {
 
         $.ajax({
             url:"/mtl/admin/accomodation/question/search",
-            type:"POSt",
+            type:"POST",
             contentType:"application/json",
             data:JSON.stringify(param),
             success:function(response){
@@ -72,40 +72,6 @@ const questionManagement = (function() {
         });
 	}
 	
-	// 이벤트
-	let _event = {
-		
-		handleSearch:function(){
-
-            let answerStatus=$("input[name='flexRadioDefault']:checked").val();      //라디오 버튼 (전체, 답변 대기, 완료 중 선택)
-            let searchField=$(".form-select.js-choice").val();                            //숙소명, 사용자명, 내용 중 선택
-            let searchText=$("input[type='text']").val();                                 //입력창에 검색한 내용
-            
-            console.log(answerStatus);
-            console.log(searchField);
-            console.log(searchText);
-
-            $.ajax({
-                url:"/mtl/admin/accomodation/question/search",
-                type:"POST",
-                contentType:"application/json",
-                data:JSON.stringify({
-                    answerStatus:answerStatus,
-                    searchField:searchField,
-                    searchText:searchText
-                }),
-                success:function(response){
-                    console.log("검색 결과 : ",response);
-                    
-                    $("#totalCnt").text(response.length);
-                    _draw.drawAnswerList(response);
-                },
-                error:function(error){
-                    console.error("검색 오류 : ",error);
-                }
-            });
-        },
-	};
 	
 	let _draw = {
 
