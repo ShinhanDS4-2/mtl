@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>떠날지도 - 파트너센턴</title>
+<title>떠날지도 - 파트너센터</title>
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
 </head>
