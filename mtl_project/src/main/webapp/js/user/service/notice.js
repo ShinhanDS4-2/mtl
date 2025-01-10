@@ -9,7 +9,7 @@ const userNotice = (function () {
 
 		// 페이징
 		let pageOption = {
-			limit: 10
+			limit: 5
 		};
 		
 		let page = $("#pagination").customPaging(pageOption, function(_curPage){

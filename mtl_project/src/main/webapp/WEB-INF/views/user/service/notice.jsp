@@ -35,6 +35,7 @@
 							<span>파트너센터의 공지사항과 소식을 확인할 수 있습니다. </span>
 						</div>
 					</div>
+					
 				<!-- 공지사항 -->
 				<div class="vstack gap-4">
 					<div class="row">
@@ -52,7 +53,7 @@
 											<tbody class="border-top-0" id="noticeList"> 
 												<tr>	
 													<small class="d-block d-lg-none">제목</small>
-													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
+													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal"></a></h6> </td>
 													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
 												</tr>
 											</tbody>
@@ -86,34 +87,33 @@
 </section>
 </main>
 
-<!-- 공지 상세 모달 -->
-<div class="modal fade" id="noticeModal" tabindex="-1" aria-labelledby="noticeDetailLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-lg">
-		<div class="modal-content p-0">
 
-			<!-- Title -->
-			<div class="modal-header p-3">
-				<h5 class="modal-title mb-0" id="noticeDetailLabel">공지사항</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-
-			<!-- Modal body -->
-			<div class="modal-body p-0">
-				<div class="card bg-transparent p-3">
-					<div class="card-header bg-transparent pb-0">
-						<h3 class="card-title mb-0">서비스 이용 안내</h3>
-					</div>
-					<div class="card-body">
-						<div class="mb-3 border p-3">		
-							<p class="space">
-							</p>
-						</div>
-					</div>
+<!-- 공지사항 상세 모달창 START -->
+				<div id="noticeDetailModal" class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="static">
+				    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				        <div class="modal-content">
+				            <div class="modal-header">
+				                <h5 class="modal-title">공지사항 상세</h5>
+				                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				            </div>
+				            <div class="modal-body">
+				                <h6 class="fw-bold">제목</h6>
+				                <p id="detailTitle" class="mb-3"></p>
+				
+				                <h6 class="fw-bold">내용</h6>
+				                <p id="detailContent" class="mb-3"></p>
+				
+				                <h6 class="fw-bold">상태</h6>
+				                <p id="detailStatus" class="mb-3"></p>
+				            </div>
+				            <div class="modal-footer">
+				                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+				            </div>
+				        </div>
+				    </div>
 				</div>
-			</div>
-		</div>
-	</div>
-</div>
+				<!-- 공지사항 상세 모달창 END -->
+				<!-- 문의 내용 모달 -->
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
