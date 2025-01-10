@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <!-- 공지사항 등록 모달창 END -->
-				<!-- 공지사항 상세 모달창 START -->
+				<!-- 공지사항 상세 조회 모달 -->
 				<div id="noticeDetailModal" class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="static">
 				    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 				        <div class="modal-content">
@@ -77,57 +77,25 @@
 				                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				            </div>
 				            <div class="modal-body">
-				                <h6 class="fw-bold">제목</h6>
-				                <p id="detailTitle" class="mb-3"></p>
+				                <h6 class="fw-bold">제목</h6>    
+				                <input type="text" id="editTitle" class="form-control" placeholder="제목을 입력하세요">
 				
 				                <h6 class="fw-bold">내용</h6>
-				                <p id="detailContent" class="mb-3"></p>
+				                <textarea id="editContent" class="form-control" rows="5" placeholder="내용을 입력하세요"></textarea>
 				
 				                <h6 class="fw-bold">상태</h6>
 				                <p id="detailStatus" class="mb-3"></p>
 				            </div>
 				            <div class="modal-footer">
 				                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-				                <button type="button" class="btn btn-primary" onclick="updateNotice()">수정하기</button>
+				                <button type="button" class="btn btn-primary" id="saveButton">수정하기</button>
 				            </div>
 				        </div>
 				    </div>
 				</div>
+
 				<!-- 공지사항 상세 모달창 END -->
 				
-                <!-- 공지사항 수정 모달창 START -->
-				<div id="updateNotice" class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="static">
-				    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-				        <div class="modal-content">
-				            <div class="modal-header">
-				                <h5 class="modal-title">공지사항 수정</h5>
-				                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				            </div>
-				            <div class="modal-body m-3">
-				                <h6 class="fw-bold">제목</h6>
-				                <!-- 제목 필드 -->
-				                <input type="text" class="form-control" id="editTitle" placeholder="제목을 입력하세요">
-									<tr>
-										<td> <small class="d-block d-lg-none">제목</small><h6 class="text-primary fw-bold ms-1 mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">이용약관 변경 안내</a></h6> </td>
-									</tr>
-				                <h6 class="fw-bold mt-4">내용</h6>
-				                <!-- 내용 필드 -->
-				                <textarea class="form-control" id="editContent" rows="15" placeholder="내용을 입력하세요"></textarea>
-				                <h6 class="fw-bold mt-4">상태</h6>
-				                <!-- 상태 선택 -->
-				                <select id="editStatus" class="form-select js-choice" aria-label=".form-select-sm">
-				                    <option value="Y">게시중</option>
-				                    <option value="N">게시중단</option>
-				                </select>
-				            </div>
-				            <div class="modal-footer">
-				                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-				                <button type="button" class="btn btn-primary">확인</button>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-				<!-- 공지사항 수정 모달창 END -->
 				                 
 				<div class="card shadow mt-4 mb-5">
 					<!-- Card header -->
@@ -181,27 +149,27 @@
 	                <div class="card-body">
 						<!-- Table head -->
 						<div class="bg-light rounded p-3 d-none d-sm-block">
-							<div class="row row-cols-6 g-4">
-								<div class="col">
-									<h6 class="mb-0">분류</h6>
-								</div>
-								<div class="col">
-									<h6 class="mb-0">제목</h6>
-								</div>
-								<div class="col">
-									<h6 class="mb-0">내용</h6>
-								</div>
-								<div class="col">
-									<h6 class="mb-0">상태</h6>
-								</div>
-								<div class="col">
-									<h6 class="mb-0">게시일</h6>
-								</div>
-								<div class="col">
-									<h6 class="mb-0"></h6>
-								</div>
-					          </div>
-				            </div>
+						    <div class="row row-cols-6 g-4">
+						        <div class="col text-center">
+						            <h6 class="mb-0">분류</h6>
+						        </div>
+						        <div class="col text-center">
+						            <h6 class="mb-0">제목</h6>
+						        </div>
+						        <div class="col text-center">
+						            <h6 class="mb-0">내용</h6>
+						        </div>
+						        <div class="col text-center">
+						            <h6 class="mb-0">상태</h6>
+						        </div>
+						        <div class="col text-center">
+						            <h6 class="mb-0">게시일</h6>
+						        </div>
+						        <div class="col text-center">
+						            <h6 class="mb-0"></h6>
+						        </div>
+						    </div>
+						</div>
 						<div id="noticeList" class="card-body">
 				                			<!-- 사용자 List START -->
 					

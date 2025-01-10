@@ -35,21 +35,17 @@ public class NoticeController {
 		return result;
 	}
 	
-	@PostMapping("/update")
-	public Map<String, Object> updateNotice(@RequestBody Map<String, Object> param) {
-	    Map<String, Object> result = new HashMap<>();
+	 @PostMapping("/update")
+	    public Map<String, Object> updateNotice(@RequestBody Map<String, Object> param, HttpServletRequest request) {
+	        Map<String, Object> result = new HashMap<>();
 
-	    try {
-	        // Service 호출
+	        System.out.println("받은 파라미터: " + param);
+	        HttpSession session = request.getSession();
+	        
 	        result = noticeService.updateNotice(param);
-	    } catch (Exception e) {
-	        result.put("success", false);
-	        result.put("message", "공지사항 수정 중 오류가 발생했습니다.");
-	        e.printStackTrace();
-	    }
 
-	    return result;
-	}
+	        return result;
+	    }
 
 
 	@PostMapping("/delete")

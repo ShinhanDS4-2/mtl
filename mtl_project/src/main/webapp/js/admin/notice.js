@@ -27,10 +27,6 @@ const notice = (function () {
             loadNoticeDetailByIdx();
         });
         
-        // 수정 버튼 클릭 이벤트
-        $('#updateNotice .btn-primary').off().on("click", function () {
-            updateNotice();
-        });
         
         // 검색 버튼 클릭 이벤트
         $('#searchButton').click(function () {
@@ -88,66 +84,103 @@ const notice = (function () {
 	        }
 	    });
 	}
-	function loadNoticeDetailByIdx(notice_idx) {
-	    $.ajax({
-	        url: '/mtl/api/notice/detail',
-	        type: 'POST',
-	        contentType: 'application/json',
-	        data: JSON.stringify({ notice_idx: notice_idx }),
-	        success: function (response) {
-	            if (response.result) {
-	                // 성공 시 상세 데이터 표시
-	                const notice = response.data;
-	                $('#detailTitle').text(notice.title);
-	                $('#detailContent').text(notice.content);
-	                $('#detailStatus').text(notice.status === 'Y' ? '게시중' : '게시중단');
-	                $('#noticeDetailModal').modal('show');
-	            } else {
-	                alert(response.message || "공지사항을 불러오는 데 실패했습니다.");
-	            }
-	        },
-	        error: function (err) {
-	            console.error("공지사항 상세조회 중 오류:", err);
-	            alert("공지사항 상세조회 중 오류가 발생했습니다.");
-	        }
-	    });
-	}
+let currentNoticeId = null; // 현재 공지사항의 ID를 추적하는 변수
 
-	//모달 수정하기
-	function updateNotice() {
-	    const title = $('#editTitle').val();
-	    const content = $('#editContent').val();
-	    const status = $('#editStatus').val();
-	
-	    if (!title || !content) {
-	        alert("제목과 내용을 입력하세요.");
-	        return;
-	    }
-	
-	    const data = { title, content, status };
-	
-	    console.log("저장 요청 데이터:", data);
-	
-	    // 서버로 저장 요청
-	    $.ajax({
-	        url: `/mtl/api/notice/update`, // 수정 API 엔드포인트
-	        type: 'POST',
-	        contentType: 'application/json',
-	        data: JSON.stringify(data),
-	        success: function (response) {
-	            if (response.result) {
-	                alert('공지사항이 수정되었습니다.');
-	                location.reload(); // 페이지 새로고침
-	            } else {
-	                alert('공지사항 수정에 실패했습니다.');
-	            }
-	        },
-	        error: function (err) {
-	            console.error("공지사항 수정 중 오류:", err);
-	            alert('공지사항 수정 중 오류가 발생했습니다.');
-	        }
-	    });
-	}
+// 공지사항 상세 불러오기
+function loadNoticeDetailByIdx(notice_idx) {
+    $.ajax({
+        url: '/mtl/api/notice/detail',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ notice_idx: notice_idx }),
+        success: function (response) {
+            if (response.result) {
+                // 성공 시 상세 데이터 표시
+                const notice = response.data;
+
+                // 제목을 입력 필드에 넣기
+                $('#editTitle').val(notice.title);  // 제목을 입력 필드에 넣음
+                $('#editContent').val(notice.content);  // 내용도 입력 필드에 넣음
+                $('#detailStatus').text(notice.status === 'Y' ? '게시중' : '게시중단');
+                
+                // 현재 공지사항 ID 저장 (수정 모드)
+                currentNoticeId = notice.notice_idx;
+
+                // 버튼 텍스트를 "수정하기"로 변경
+                $('#saveButton').text('수정하기');
+
+                // 모달을 띄우기
+                $('#noticeDetailModal').modal('show');
+            } else {
+                alert(response.message || "공지사항을 불러오는 데 실패했습니다.");
+            }
+        },
+        error: function (err) {
+            console.error("공지사항 상세조회 중 오류:", err);
+            alert("공지사항 상세조회 중 오류가 발생했습니다.");
+        }
+    });
+}
+
+// 공지사항 수정
+function updateNotice() {
+    const title = $('#editTitle').val().trim();
+    const content = $('#editContent').val().trim();
+    const status = 'Y'; // 예시로 게시중으로 설정
+
+    if (!title || !content) {
+        alert("제목과 내용을 모두 입력해 주세요.");
+        return;
+    }
+
+    const data = {
+        title: title,
+        content: content,
+        status: status,
+        notice_idx: currentNoticeId // 수정하려는 공지사항의 ID
+    };
+
+    // AJAX 요청 (수정)
+    $.ajax({
+        url: '/mtl/api/notice/update',  // 수정 API URL
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function (response) {
+            if (response.result) {
+                alert('공지사항이 수정되었습니다.');
+                location.reload(); // 페이지 새로고침
+            } else {
+                alert('공지사항 수정에 실패했습니다.');
+            }
+        },
+        error: function (err) {
+            console.error("공지사항 수정 중 오류:", err);
+            alert("공지사항 수정 중 오류가 발생했습니다.");
+        }
+    });
+}
+
+// 모달 초기화 (새 공지사항 등록을 위한 초기화)
+function clearModal() {
+    $('#editTitle').val('');  // 제목 초기화
+    $('#editContent').val('');  // 내용 초기화
+    $('#detailStatus').text('');  // 상태 초기화
+    currentNoticeId = null;  // 현재 공지사항 ID 초기화
+    $('#saveButton').text('수정하기');  // 버튼 텍스트를 수정하기로 변경
+}
+
+// 수정 버튼 클릭 이벤트
+$('#saveButton').click(function() {
+    updateNotice();
+});
+
+// 공지사항 상세 조회 모달 열기
+$('#openModalButton').click(function() {
+    clearModal();
+    $('#noticeDetailModal').modal('show');
+});
+
 
     /**
      * 공지사항 검색
@@ -181,7 +214,7 @@ const notice = (function () {
      * 공지사항 데이터 로드
      */
     function loadNotices(curPage = 1) {
-		const data = { }; // 페이지당 10개
+		const data = { }; // 페이지당 5개
 
 		// 페이징
 		let pageOption = {
@@ -237,12 +270,13 @@ const notice = (function () {
 
             let listItem = $(`
                 <div class="row row-cols-xl-7 align-items-lg-center border-bottom g-4 px-2 py-4">
-                    <div class="col-2"><h6 class="ms-1 mb-0 fw-normal">${targetText}</h6></div>
-                    <div class="col-5">
-                        <a role="button" class="text-primary fw-bold ms-1 mb-0 noticeDetailModal" data-bs-toggle="modal" data-bs-target="noticeDetailModal" data-data-id="${notice.notice_idx}">${notice.title}</a>
+                    <div class="col text-center"><h6 class="ms-1 mb-0 fw-normal">${targetText}</h6></div>
+                    <div class="col text-center">
+                        <a role="button" class="text-primary fw-bold ms-1 mb-0 noticeDetailModal" data-bs-toggle="modal" data-bs-target="noticeDetailModal text-center" data-data-id="${notice.notice_idx}">${notice.title}</a>
                     </div>
-                    <div class="col-2"><h6 class="ms-1 mb-0 fw-normal">${statusText}</h6></div>
-                    <div class="col-3"><h6 class="ms-1 mb-0 fw-normal">${notice.create_date_format}</h6></div>
+                    <div class="col text-center"><h6 class="ms-1 mb-0 fw-normal">${notice.content}</h6></div>
+                    <div class="col text-center"><h6 class="ms-1 mb-0 fw-normal">${statusText}</h6></div>
+                    <div class="col text-center"><h6 class="ms-1 mb-0 fw-normal">${notice.create_date_format}</h6></div>
                 </div>
             `);
             listContainer.append(listItem);

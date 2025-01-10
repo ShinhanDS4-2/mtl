@@ -47,16 +47,11 @@
 
 
 
-    <!-- 공지사항 수정 -->
-    <update id="updateNotice" parameterType="map">
+  	<!-- 공지사항 수정 -->
+    <update id="updateNotice" parameterType="HashMap">
         UPDATE NOTICE
-        SET
-        	title = #{title}
-            content = #{content},
-            target = #{target},
-            update_date = NOW()
-        WHERE
-            title = #{title}
+        SET title = #{title}, content = #{content}, status = #{status}
+        WHERE notice_idx = #{notice_idx}
     </update>
 
     <!-- 공지사항 삭제 (상태 변경) -->

@@ -7,15 +7,11 @@ import java.util.Map;
 public interface NoticeService {
 
 
+		Map<String, Object> updateNotice(Map<String, Object> param);
 	
 		Map<String, Object> insertNotice(Map<String,Object> param);
 
-
-		Map<String, Object> updateNotice(Map<String,Object> param);
-		
-
 		Map<String, Object> deleteNotice(Map<String,Object> param);
-
 
 		Map<String, Object> getNoticeList(Map<String,Object> param);
 		
