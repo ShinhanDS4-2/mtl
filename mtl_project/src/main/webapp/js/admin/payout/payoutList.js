@@ -1,13 +1,13 @@
 const payout = (function() { 
-	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리
-	
-	// js 로딩 시 이벤트 초기화 실행 
-	function init() {     
-		fetchPayoutList();  // 전체정산내역 리스트를 조회
+	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리  
+	  
+	// js 로딩 시 이벤트 초기화 실행      
+	function init() {      
+		fetchPayoutList();  // 전체정산내역 리스트를 조회 
 		_eventInit();
 	};  
-      
-	// 이벤트 초기화          
+       
+	// 이벤트 초기화              
 	function _eventInit() {  
 		let evo = $("[data-src='payout'][data-act]").off();
 		evo.on("click", function(e) {   
@@ -80,7 +80,7 @@ const payout = (function() {
 		};  
   
 		if (isSearchClicked) {  // 필터 검색했을 때
-
+  
 			// 검색필터에 입력된 데이터 가져오기
 			let [startDate, endDate] = $("#dateRange").val().split(" ~ ").map(date => date.trim());
 			let payoutStatus = $("input[name='payoutStatus']:checked").val();  // ""/Y/N

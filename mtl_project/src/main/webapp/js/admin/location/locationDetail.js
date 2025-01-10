@@ -359,7 +359,7 @@ console.log("data?최최종확인>>>>>>>>>", data);
 				ImageList.append(img);
 			}
 			
-		/* 여행지 정보 card */
+		/* 여행지 정보 card */ 
 			// 지역
 			$("#locationArea").html(list.info.area_name);  
 			// 분류

@@ -43,9 +43,9 @@
 						<h5 class="card-header-title">예약내역 상세 검색</h5>
 					</div>
 					<!-- Card body START -->
-					<div class="card-body">
+					<div class="card-body"> 
 						<form class="row g-4 align-items-center">
-							<!-- 드롭다운 -->
+							<!-- 드롭다운 -->  
 							<div class="col-2 me-3">     
 								<label class="h6 fw-normal mb-0"><i
 									class="bi bi-calendar text-primary me-1"></i> 기간</label>
@@ -54,10 +54,10 @@
 									<select id= "selectedValue" class="form-select js-choice">
 										<option value="reservation_date" selected>예약일</option>
 										<option value="check_in_date">입실일</option>
-										<option value="check_out_date">퇴실일</option>
+										<option value="check_out_date">퇴실일</option> 
 									</select>     
-								</div>      
-							</div>      
+								</div>            
+							</div>       
  
 							<!-- 기간 설정 -->
 							<div class="col-lg-5">
@@ -124,10 +124,10 @@
 					</div>
 				</div>
 				<!-- 검색 필터 설정 END -->
-
+        
 
 				<!-- 예약내역 상세보기 Moadl START -->
-				<div id="bookingDetailModal" class="modal" tabindex="-1"
+				<div id="detailModal" class="modal" tabindex="-1"
 					role="dialog">
 					<div class="modal-dialog modal-lg modal-dialog-centered"
 						role="document">
@@ -138,13 +138,13 @@
 								<h5 class="modal-title">예약 상세 정보</h5>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"
 									aria-label="Close"></button>
-							</div>
+							</div>     
 							<!-- 모달 body -->
-							<div class="modal-body">
+							<div id="modalBody" class="modal-body">
 								<!-- 예약번호 -->
-								<h6 class="fw-bold">예약번호</h6>
+								<h6 class="fw-bold">예약번호</h6> 
 								<div class="mb-3 border p-3">
-									<p class="mb-0">240123</p>
+									<p class="mb-0">240123</p>   
 								</div>
 
 								<!-- 예약자 정보 -->
@@ -174,14 +174,13 @@
 
 							<!-- 모달 footer -->
 							<div class="modal-footer">
-								<button type="button" class="btn btn-primary">출력</button>
-								<button type="button" class="btn btn-secondary"
+   								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">닫기</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- 예약내역 상세보기 Moadl END -->
+				<!-- 예약내역 상세보기 Moadl END -->    
 				  
 				   
 
@@ -190,19 +189,8 @@
 					<div class="col-lg-9">
 						<h6 class="mb-1" id="reservationCount">총 120개</h6>  <!-- js -->
 					</div>
-					<div class="col-md-4 col-lg-2">
-						<form>     
-							<select id="selectedOrderBy" class="form-select js-choice"
-								aria-label=".form-select-sm">
-								<option value="reservationDate_Desc">최근 예약일순</option>
-								<option value="reservationDate_Asc">과거 예약일순</option>
-								<option value="checkIn_Desc">최근 입실일순</option>
-								<option value="checkIn_Asc">과거 입실일순</option>
-							</select>
-						</form>
-					</div>
-				</div>
-
+				</div>    
+     
 				<!-- 예약 내역 List START -->
 				<div class="card shadow">
 					<!-- Card header -->
@@ -245,7 +233,7 @@
 									<small class="d-block d-sm-none">예약자명</small>
 									<h6 class="ms-1 mb-0 fw-normal">김시온</h6>
 									<a role="button" class="mb-0 fw-normal ms-1" data-bs-toggle="modal"
-										data-bs-target="#bookingDetailModal">상세보기</a>
+										data-bs-target="#detailModal">상세보기</a>
 								</div>      
 	
 								<!-- Data item -->

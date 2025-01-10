@@ -80,7 +80,7 @@ const reservationList = (function() {
 		// 검색 버튼이 클릭된 경우 조건 추가
 		if (isSearchClicked) {
 			// 검색필터에 입력된 데이터 가져오기
-
+    
 			// 달력 범위 
 			let [startDate, endDate] = $("#searchDate").val().split(" ~ ").map(date => date.trim());
 
@@ -90,8 +90,12 @@ const reservationList = (function() {
 			 // 숙소명 (텍스트 입력 값 가져오기)
 			 let searchInput = $('#searchInput').val(); // 입력된 텍스트 값
 		 
-			 // 파람에 값 저장
-			 param = {         
+			 // 검색필터 달력 -> 날짜 하루만 조회 시 or 날짜 하루이상 조회 시 2가지 경우 분기
+			if (endDate == null || endDate == "" ) {  // 1. 날짜 하루만 조회 시 (종료일, 시작일 데이터 동일하게 만들어줌)
+				endDate = startDate;  
+			}  // 2. 날짜 하루이상 조회 시 -> 별도 처리 안해줘도댐
+  
+			 param = {           
 				"date_start" : startDate,   // 달력 시작일
 				"date_end" : endDate,   // 달력 종료일
 				"payment_status" : reservationStatus,  // 예약 상태 (전체"" / 예약완료 P / 예약취소 R)

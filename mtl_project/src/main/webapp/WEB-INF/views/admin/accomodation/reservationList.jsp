@@ -14,7 +14,7 @@
 
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
-
+  
 		<!-- Sidebar -->
 		<%@ include file="/WEB-INF/views/include/adminSidebar.jsp"%>
 
@@ -182,8 +182,8 @@
 					
 					<!-- 예약 상세보기 모달 START -->
 					<div id="detailModal" class="modal" tabindex="-1" role="dialog">
-						<div class="modal-dialog modal-xl modal-dialog-centered" role="document">  <!-- 매우 큰 모달 -->
-						  	<div class="modal-content">
+						<div class="modal-dialog modal-lg modal-dialog-centered" role="document">  <!-- 매우 큰 모달 -->
+						  	<div class="modal-content">     
 							<!-- 모달 head -->
 								<div class="modal-header">
 									<h5 class="modal-title">예약 상세 정보</h5>
@@ -196,7 +196,7 @@
 									<div class="mb-3 border p-3">
 										<p class="mb-0">2024.12.09</p>
 									</div>
-				
+				 
 									<!-- 예약자 정보 -->
 									<h6 class="fw-bold">예약자 정보</h6>
 									<div class="mb-3 border p-3">       

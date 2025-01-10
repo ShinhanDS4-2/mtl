@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html> 
+<html lang="ko"> 
 
 <head> 
-<title>떠날지도 - 관리자</title>
+<title>떠날지도 - 관리자</title>     
 
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
@@ -14,7 +14,7 @@
 
 	<!-- **************** MAIN CONTENT START **************** -->
 	<main>
- 
+       
 		<!-- Sidebar -->
 		<%@ include file="/WEB-INF/views/include/adminSidebar.jsp"%>
 
@@ -234,9 +234,9 @@
 	<%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 	
 	<!-- page script -->
-	<script src="js/admin/payoutList.js"></script>
+	<script src="js/admin/payout/payoutList.js"></script>
 	<script type="text/javascript">
-		payout.init();
+		payout.init();   
 	</script>   
 	
 </body>

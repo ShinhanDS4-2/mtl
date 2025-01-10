@@ -1,12 +1,12 @@
 const payout = (function() { 
-	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리
-
-	// js 로딩 시 이벤트 초기화 실행  
+	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리 
+ 
+	// js 로딩 시 이벤트 초기화 실행   
 	function init() {         
 		fetchPayoutList();  // 페이지 로드 시 정산내역 리스트를 가져옴
-		_eventInit();
+		_eventInit();  
 	};    
-	                   
+	                      
 	// 이벤트 초기화         
 	function _eventInit() {  
 		let evo = $("[data-src='payout'][data-act]").off();
