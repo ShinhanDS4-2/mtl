@@ -534,7 +534,7 @@ const partnerDetail = (function() {
 					reviewList.append(div);
 
 					let flex = $("<div>").addClass("d-md-flex p-3 bg-light rounded-3");
-					div.action(flex);
+					div.append(flex);
 
 					let div2 = $("<div>").addClass("mt-2 mt-md-0");
 					flex.append(div2);
