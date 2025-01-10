@@ -20,7 +20,7 @@
 		<div class="rounded-3 p-3 p-sm-5 banner" id="banner" style="background-image: url(assets/images/banner/7.jpg);">
 			<div class="row my-2 my-xl-5"> 
 				<div class="col-md-8 mx-auto"> 
-					<h1 class="text-center text-white">뭔가 쓰고 싶은데</h1>
+					<h1 class="text-center text-white mt-6"></h1>
 				</div>
 			</div>
 
@@ -190,10 +190,6 @@
 								</a>
 							</div>
 						</form>
-					</div>
-					<!-- 옵션 초기화 버튼 -->
-					<div class="d-flex justify-content-end p-2 p-xl-0 mt-xl-4">
-						<button class="btn btn-link p-0 mb-0">초기화</button>
 					</div>
 				</div>
 			</aside>

@@ -14,15 +14,6 @@ Footer START -->
 					<a class="me-0" href="index.html">
 						<img class="light-mode-item" src="assets/images/logo-80.png" alt="logo">
 					</a>
-
-					<p class="text-reset mt-4 mb-2">Subscribe to Our Newsletter</p>
-					<!-- Newsletter -->
-					<form class="bg-body rounded-2 p-2">
-						<div class="input-group">
-							<input class="form-control border-0 me-1" type="email" placeholder="Enter your email">
-							<button type="button" class="btn btn-dark rounded-2 mb-0"><i class="bi bi-send"></i></button>
-						</div>
-					</form>
 				</div>
 				<!-- Widget 1 END -->
 
@@ -30,26 +21,11 @@ Footer START -->
 				<div class="col-md-7 col-lg-4">
 					<div class="row g-4 g-lg-5">
 						<!-- Link block -->
-						<div class="col-6">
-							<h5 class="mb-2 mb-md-4">Page</h5>
+						<div class="col-12 text-end">
+							<h5 class="mb-2 mb-md-4 me-2">고객센터</h5>
 							<ul class="nav flex-column">
-								<li class="nav-item"><a class="nav-link pt-0" href="#">Blog</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-							</ul>
-						</div>
-
-						<!-- Link block -->
-						<div class="col-6">
-							<h5 class="mb-2 mb-md-4">Links</h5>
-							<ul class="nav flex-column">
-								<li class="nav-item"><a class="nav-link pt-0" href="#">Sign up</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Sign in</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Privacy Policy</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Cookie</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Supports</a></li>
+								<li class="nav-item"><a class="nav-link pt-0" href="/mtl/service/notice">공지사항</a></li>
+								<li class="nav-item"><a class="nav-link" href="/mtl/service/qna">자주 묻는 질문</a></li>
 							</ul>
 						</div>
 					</div>
