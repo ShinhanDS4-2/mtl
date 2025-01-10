@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.xml.transform.Result;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,9 +32,15 @@ public class AdminPartnerlistServiceImpl implements AdminPartnerlistService{
 	}
 
 	@Override
-	public Map<String, Object> partnerDetail(Map<String,Object> param) {
+	public Map<String, Object> partnerDetail(int idx) {
 		
-		return adminPartnerlistMapper.getPartnerDetail(param);
+		Map<String,Object> result=new HashMap<>();
+		
+		result.put("list",adminPartnerlistMapper.getPartnerDetail(idx));
+		result.put("images",adminPartnerlistMapper.getPartnerUrl(idx));
+		System.out.println("반환한 result 값 : "+result);
+		
+		return result;
 	}
 
 }

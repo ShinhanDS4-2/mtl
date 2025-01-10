@@ -34,4 +34,5 @@ public interface NoticeMapper {
 
 	Map<String, Object> findByIdx(Integer notice_idx);
 
+	int getNoticeListCnt(Map<String, Object> param);
 }

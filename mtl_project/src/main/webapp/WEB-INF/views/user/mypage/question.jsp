@@ -59,7 +59,6 @@
 									<table class="table align-middle p-4 mb-0 table-hover table-shrink">
 										<thead class="table-light">
 											<tr>
-												<th scope="col" class="border-0">유형</th>
 												<th scope="col" class="border-0">제목</th>
 												<th scope="col" class="border-0">문의일</th>
 												<th scope="col" class="border-0">답변상태</th>
@@ -70,7 +69,6 @@
 										<tbody class="border-top-0">
 											<!-- Table item -->
 											<tr>
-												<td> 예약 </td>
 												<td> 객실을 추가 예약하고 싶은데 어떻게 하나요? </td>
 												<td> 2024-12-15 </td>
 												<td> <div class="badge bg-success bg-opacity-10 text-success">답변완료</div> </td> 
@@ -79,7 +77,6 @@
 		
 											<!-- Table item -->
 											<tr>
-												<td> 이용문의 </td>
 												<td> 예약 취소 후 결제 취소는 언제 되나요? </td>
 												<td> 2024-12-15 </td>
 												<td> <div class="badge bg-orange bg-opacity-10 text-orange">답변대기</div> </td>
@@ -100,7 +97,6 @@
 									<table class="table align-middle p-4 mb-0 table-hover table-shrink">
 										<thead class="table-light">
 											<tr>
-												<th scope="col" class="border-0">유형</th>
 												<th scope="col" class="border-0">제목</th>
 												<th scope="col" class="border-0">문의일</th>
 												<th scope="col" class="border-0">답변상태</th>
@@ -111,7 +107,6 @@
 										<tbody class="border-top-0">
 											<!-- Table item -->
 											<tr>
-												<td> 예약 </td>
 												<td> 객실을 추가 예약하고 싶은데 어떻게 하나요? </td>
 												<td> 2024-12-15 </td>
 												<td> <div class="badge bg-success bg-opacity-10 text-success">답변완료</div> </td> 
@@ -120,7 +115,6 @@
 		
 											<!-- Table item -->
 											<tr>
-												<td> 이용문의 </td>
 												<td> 예약 취소 후 결제 취소는 언제 되나요? </td>
 												<td> 2024-12-15 </td>
 												<td> <div class="badge bg-orange bg-opacity-10 text-orange">답변대기</div> </td>
@@ -139,7 +133,7 @@
 					<div class="card-footer pt-0">
 						<div class="d-sm-flex justify-content-sm-center align-items-sm-center">
 							<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
-								<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+								<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
 									<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
 									<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
 									<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
@@ -171,14 +165,6 @@
             <div class="modal-body p-0">
                 <div class="card bg-transparent p-3">
                     <div class="card-body pt-2">
-                        <div class="d-flex mt-1">
-                            <select class="form-select col-10" id="qnaType">
-                                <option value="" disabled="disabled" selected>유형 선택</option>
-                                <option>예약</option>
-                                <option>결제</option>
-                                <option>이용문의</option>
-                            </select>
-                        </div>
                         <div class="d-flex mt-1 form-floating">
                             <input type="text" class="form-control" id="qnaTitle" placeholder="제목을 작성해 주세요.">
                             <label for ="qnaTitle">제목</label>
@@ -215,7 +201,7 @@
 						<div class="row g-3 g-lg-4">
 							<!-- 질문 -->
 							<div class="d-flex justify-content-between">
-								<h6><span class="text-body fw-light">예약</span> 객실을 추가 예약하고 싶은데 어떻게 하나요?</h6>
+								<h6>객실을 추가 예약하고 싶은데 어떻게 하나요?</h6>
 								<span class="small">2024-12-15</span>
 							</div>
 							<p class="space">Far advanced settling say finished raillery. 

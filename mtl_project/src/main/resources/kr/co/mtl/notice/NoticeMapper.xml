@@ -51,7 +51,7 @@
     <update id="updateNotice" parameterType="HashMap">
         UPDATE NOTICE
         SET title = #{title}, content = #{content}, status = #{status}
-        WHERE notice_idx = #{notice_idx}
+        WHERE idx = #{notice_idx}
     </update>
 
     <!-- 공지사항 삭제 (상태 변경) -->
@@ -61,7 +61,7 @@
             status = 'N',
             update_date = NOW()
         WHERE
-            notice_idx = #{notice_idx}
+            idx = #{notice_idx}
     </update>
 
     <!-- 공지사항 리스트 조회 -->
@@ -70,13 +70,41 @@
             <include refid="noticeColumns" />
         FROM
             NOTICE
-        WHERE
-            status = 'Y'
+        <where>
+	        <if test="keyword != null and keyword != ''">
+	            AND title LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	        <if test="status != null and status != ''">
+	            AND status = #{status}
+	        </if>
+	        <if test="target != null and target != ''">
+	            AND target = #{target}
+	        </if>
+	    </where>
         ORDER BY
             create_date DESC
         <if test="limit != null and offset != null">
        	LIMIT #{offset}, #{limit}
         </if>
+    </select>
+
+    <!-- 공지사항 리스트 개수 -->
+    <select id="getNoticeListCnt" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            NOTICE
+        <where>
+	        <if test="keyword != null and keyword != ''">
+	            AND title LIKE CONCAT('%', #{keyword}, '%')
+	        </if>
+	        <if test="status != null and status != ''">
+	            AND status = #{status}
+	        </if>
+	        <if test="target != null and target != ''">
+	            AND target = #{target}
+	        </if>
+	    </where>
     </select>
 
     <!-- 페이지네이션 공지사항 조회 -->

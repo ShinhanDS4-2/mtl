@@ -93,6 +93,7 @@ public class NoticeServiceImpl implements NoticeService{
 	    try {
 	        List<Map<String, Object>> list = noticeMapper.getNoticeList(param);
 	        result.put("list", list);
+	        result.put("totalCnt", noticeMapper.getNoticeListCnt(param));
 	    } catch (Exception e) {
 	        e.printStackTrace(); // 오류 메시지를 확인
 	        throw new RuntimeException("공지사항 조회 중 오류 발생", e);
