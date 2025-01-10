@@ -141,10 +141,8 @@ const partnerList = (function() {
 	            let detail_link = $("<a>")
 	                .addClass("btn btn-sm btn-light mb-0")
 	                .html("상세보기")   
-                    .attr("href", "/mtl/admin/accomodation/detail?idx=" + data.idx);
-	            detail.append(detail_link);
-
-
+    				.attr("href", "/mtl/admin/accomodation/detail?idx=" + data.idx);                
+		            detail.append(detail_link);
             }
         }
 
