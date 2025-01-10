@@ -6,28 +6,28 @@ const payout = (function() {
 		fetchPayoutList();  // 전체정산내역 리스트를 조회
 		_eventInit();
 	};  
-    
+      
 	// 이벤트 초기화          
 	function _eventInit() {  
 		let evo = $("[data-src='payout'][data-act]").off();
 		evo.on("click", function(e) {   
-			_eventAction(e);     
+			_eventAction(e);            
 		});               
 	};         
-
+      
 	// 이벤트 분기      
 	function _eventAction(e) {   
 		let evo = $(e.currentTarget); 
 		let action = evo.attr("data-act");
 		let type = e.type;      
-		        
+		           
 		if(type == "click") {        
 			if(action == "clickSearchButton") {  // 검색필터에서 검색버튼 클릭 시 
 				_event.clickSearchButton(evo);
 			} else if(action == "payoutButton") {  // 정산하기 버튼 클릭 시 
 				_event.clickPayoutButton(evo);
 			}
-		};
+		}; 
 	}; 
 	 
 		 
@@ -40,23 +40,30 @@ const payout = (function() {
 		},  
 
 		// 정산하기 버튼 클릭 시 
-		clickPayoutButton: function() {   
-			// $.ajax({
-			// 	type: "POST", stauts
-			// 	url: "/mtl/api/admin/payout/list",   // API 호출
-			// 	data: param,   // 호출 시 param값으로 넘겨줄 것 => 필터(정산기간시작일, 정산기간종료일, 정산상태)
-			// 	success: function(resp) {   //  API 호출 결과 값이 response 에 들어있음	(여기서 API 리턴값: PayoutListCount, PayoutList, Param)
-			// 		_draw.drawPayoutList(resp);  // 리스트 그리기
-			// 		page.drawPage(resp.PayoutListCount);  
-			// 	},
-			// 	error: function(xhr, status, error) {
-			// 		console.error("Error :", error); 
-			// 	}
-			// });
+		clickPayoutButton: function(evo) {    // 매개변수로 클릭된 요소를 전달받는다
+			// 예약 idx 가져오기
+			let reservation_idx = evo.data('reservation-idx'); // jQuery의 .data() 메서드를 사용해 data-* 속성에 저장된 값을 가져옴.
 
-		
-
-			fetchPayoutList();  // 조건에 맞는 리스트 조회
+			console.log("예약idx 잘 ㄷㄹ어왓안?? ", reservation_idx);
+			$.ajax({
+				type: "POST",
+				url: "/mtl/api/admin/payout/updateState",   // API 호출
+				data: {"reservation_idx" : reservation_idx},   // 호출 시 param값으로 넘겨줄 것 => reservation_idx
+				success: function(resp) {   //  API 호출 결과 값 : result(true/false)  
+					if(resp) {  // 정산상태 업데이트 된 경우
+						modal.alert({ 
+							"content" : "정산이 완료되었습니다.",
+						});
+					} else {    
+						modal.alert({       
+							"content" : "정산에 실패하였습니다.",
+						});
+					}  
+				},
+				error: function(xhr, status, error) {
+					console.error("Error :", error); 
+				}  
+			});   
 		},  
     
 	};  // let _event 끝
@@ -186,15 +193,14 @@ const payout = (function() {
 						<div class="col">
 							<small class="d-block d-sm-none">정산</small>
 							<div class="ms-1 col">
-								<a href="정산하기 버튼 누르면 정산이 되어야함" class="btn btn-sm btn-light mb-0"
+								<a role="button" class="btn btn-sm btn-light mb-0"
 									data-src="payout" data-act="payoutButton" data-reservation-idx="${data.reservation_idx}">정산하기</a>
 							</div>
-						</div>
+						</div> 
 					</div>`;		
 				cardBody.append(cardBodyData);
 
 				// card footer 페이징
-				
 			}
 
 
@@ -223,6 +229,7 @@ const payout = (function() {
 				});
 				
 			});
+			
 			
 
 		},
