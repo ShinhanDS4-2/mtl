@@ -236,13 +236,13 @@ const notice = (function () {
             const statusText = notice.status === 'Y' ? '게시중' : notice.status === 'N' ? '게시중단' : '알 수 없음';
 
             let listItem = $(`
-                <div class="row row-cols-xl-7 align-items-lg-center border-bottom g-4 px-2 py-4">
+                <div class="row border-bottom g-4 px-2 py-4">
                     <div class="col-2"><h6 class="ms-1 mb-0 fw-normal">${targetText}</h6></div>
                     <div class="col-5">
                         <a role="button" class="text-primary fw-bold ms-1 mb-0 noticeDetailModal" data-bs-toggle="modal" data-bs-target="noticeDetailModal" data-data-id="${notice.notice_idx}">${notice.title}</a>
                     </div>
-                    <div class="col-2"><h6 class="ms-1 mb-0 fw-normal">${statusText}</h6></div>
-                    <div class="col-3"><h6 class="ms-1 mb-0 fw-normal">${notice.create_date_format}</h6></div>
+                    <div class="col-2"><div class="badge bg-opacity-10 ${notice.status == 'Y' ? 'bg-success text-success' : 'bg-danger text-danger'}">${notice.status == 'Y' ? '게시중' : '게시중단'}</div></div>
+                    <div class="col-3"><h6 class="mb-0 fw-normal">${notice.create_date_format}</h6></div>
                 </div>
             `);
             listContainer.append(listItem);

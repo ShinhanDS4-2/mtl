@@ -21,13 +21,13 @@
 
 			<!-- Title -->
 			<div class="row">
-				<div class="col-12 mb-4 mb-sm-5">
+				<div class="col-12 mb-3">
 					<h1 class="h3 mb-2">여행지 관리</h1>
 					<span>주요 관광 지역의 여행지와 취향 키워드를 등록/관리합니다.</span>
 				</div>
 			</div>
 			<!-- 상단 navbar START -->
-			<div class="row g-4 align-items-center border-bottom">
+			<div class="row g-4 align-items-center">
 				<!-- 여행지 등록 버튼 클릭 시 <여행지 등록> 모달창 표시 -->
 				<div class="col-lg-12 d-flex justify-content-end">
 					<button type="button" class="btn btn-primary-soft" data-bs-toggle="modal" data-bs-target="#locationRegistModal">
@@ -42,7 +42,7 @@
 			<!-- 상단 navbar END -->
 
 			<!-- 검색 필터 START -->
-			<div class="card shadow mt-4 mb-5">
+			<div class="card shadow mt-2 mb-5">
 				<!-- Card header -->
 				<div class="card-header border-bottom">
 					<h5 class="card-header-title">검색</h5>
@@ -52,7 +52,7 @@
 					<form class="row g-4 align-items-center">
 						<!-- Radio items -->
 						<div class="col-12">
-							<label class="h6 fw-normal mb-2">여행지 타입</label>
+							<label class="h6 fw-normal mb-2 form-label">여행지 타입</label>
 							<div class="d-sm-flex">
 								<!-- Radio -->
 								<div class="form-check radio-bg-light me-4">
@@ -74,7 +74,7 @@
 
 						<!-- 검색어 드롭다운 -->
 						<div class="col-2">
-							<label class="h6 fw-normal mb-0">지역</label>
+							<label class="h6 fw-normal mb-0 form-label">지역</label>
 							<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 								<select id="searchLocationArea" class="form-select js-choice">
 									<option value="" disabled="disabled" selected="selected">전체</option>
@@ -142,38 +142,8 @@
 						</div>
 					</div>
 					<div id="locationList"> 
-						<!-- Table data (1번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">지역</small><!-- 작은 화면일때만 보이는 텍스트-->
-								<h6 class="ms-1 mb-0 fw-normal">서울</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">분류</small>
-								<h6 class="ms-1 mb-0 fw-normal">관광지</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">장소명</small>
-								<h6 class="ms-1 mb-0 fw-normal">동대문 역사문화공원</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">등록일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-							</div>
-	
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col"><a href="admin/location/detail" class="btn btn-sm btn-light mb-0">상세보기</a></div>
-							</div>
-						</div>
 					</div>
 					<!-- Table data (1번째 예약내역 상세 데이터) / js에서 반복돌릴 부분-->
-					
 					
 				</div>
 				<!-- Card body END -->
@@ -259,7 +229,7 @@
 						<label class="form-label fw-bold">주소 <span class="text-danger">*</span></label>
 						<div class="row">
 							<div class="col-10">
-								<input type="text" class="form-control" id="address" data-src="locationList" data-act="clickAddress">
+								<input type="text" class="form-control" id="address" data-src="locationList" data-act="clickAddress" placeholder="주소를 입력해 주세요.">
 								<input type="hidden" class="form-control" id="addressSi">
 								<input type="hidden" class="form-control" id="addressDong">
 							</div>
@@ -283,37 +253,6 @@
 						<label for="keyword" class="form-label fw-bold">키워드 <span class="text-danger">*</span></label>
 						<div class="mb-1">   
 							<div class="row row-cols-4 g-3" id="keywordList">
-								<!-- js -->
-								<div class="col">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="keyword1">
-										<label class="form-check-label" for="keyword1">가족여행</label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="keyword2">
-										<label class="form-check-label" for="keyword2">함께걷기</label>
-									</div>
-									<div class="form-check"> <!-- name="keywordList" 필수 -->
-										<input class="form-check-input" type="checkbox" value="" id="keyword3">
-										<label class="form-check-label" for="keyword3">데이트코스</label>
-									</div>
-								</div>
-								<!-- js -->
-								<div class="col">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="keyword4">
-										<label class="form-check-label" for="keyword4">가족여행</label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="keyword5">
-										<label class="form-check-label" for="keyword5">함께걷기</label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="keyword6">
-										<label class="form-check-label" for="keyword6">데이트코스</label>
-									</div>
-								</div>
-								
 							</div>
 						</div> 
 					</div>
@@ -405,7 +344,7 @@
 			<div class="modal-footer">
 				<!-- 키워드 등록 버튼 클릭 시 <키워드 등록>모달창 표시 -->
 				<div class="col-12 d-flex justify-content-between">
-					<button type="button" class="btn btn-primary-soft ms-2" data-bs-toggle="modal" data-bs-target="#keywordRegisterModal">
+					<button type="button" class="btn btn-primary-soft ms-2" data-bs-toggle="modal" data-bs-target="#keywordRegisterModal" data-src="locationList" data-act="clickKeywordModal">
 						<i class="bi bi-plus-lg fa-fw"></i>키워드 등록
 					</button>
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -448,7 +387,7 @@
 						</div>
 						<div class="col-md-2">
 							<label for="placeName" class="form-label fw-bold">
-								<span lass="text-danger">*</span>
+								<span class="text-danger">*</span>
 							</label> 
 							<a href="javascript:;" class="d-block btn btn-primary-soft mb-0 border-0" data-src="locationList" data-act="clickDuplication">중복확인</a>
 						</div>

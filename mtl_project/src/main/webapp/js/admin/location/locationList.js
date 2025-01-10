@@ -44,6 +44,8 @@ const locationList = (function() {
 				_event.clickLocationRegist(evo);
 			} else if (action == "clickSearchButton") {	// 여행지 리스트 조회 페이지 > 검색버튼 클릭 시 
 				_event.clickSearchButton(evo);
+			} else if (action == "clickKeywordModal") {
+				_event.clickKeywordModal();
 			}
 		} else if (type == "change") {
 			if (action == "changeFile") {
@@ -151,8 +153,10 @@ const locationList = (function() {
 			});
 		},
 		
-	
-		
+		// 키워드 등록 모달 초기화
+		clickKeywordModal: function() {
+			$("#keyword").val("");
+		},
 
 		// 키워드 탭 클릭
 		clickKeywordTab: function(evo) {

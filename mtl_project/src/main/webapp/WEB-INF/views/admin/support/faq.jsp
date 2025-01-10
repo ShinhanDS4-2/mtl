@@ -18,14 +18,14 @@
 		<div class="page-content-wrapper p-xxl-4">
 			<!-- Title -->
 			<div class="row">
-				<div class="col-12 mb-4 mb-sm-5">
+				<div class="col-12 mb-3">
 					<h1 class="h3 mb-2">자주 묻는 질문 QnA</h1>
 					<span>사용자가 자주 문의하는 항목을 관리할 수 있습니다.</span>
 				</div>
 			</div>
 
 			<!-- 상단 navbar START -->
-			<div class="row g-4 border-bottom">
+			<div class="row g-4 mb-2">
 				<!-- 새 질문 등록 버튼 클릭 시 모달창 표시 -->
 				<div class="col-lg-12 d-flex justify-content-end">
 					<button type="button" class="btn btn-primary-soft" data-bs-toggle="modal" data-bs-target="#qnaRegistModal" data-src="faq" data-act="clickModal">
@@ -36,7 +36,7 @@
 			<!-- 상단 navbar END -->
 
 			<!-- 검색 필터 START -->
-			<div class="card shadow border mt-4 mb-5">
+			<div class="card shadow border mb-5">
 				<!-- Card header -->
 				<div class="card-header border-bottom">
 					<h5 class="card-header-title">검색</h5>
@@ -75,7 +75,7 @@
 						<!-- 검색어 입력 input -->
 						<div class="d-sm-flex">
 							<div class="col-2 me-2">
-								<label class="form-label">선택</label>
+								<label class="form-label">검색어</label>
 								<select class="form-select js-choice" aria-label=".form-select-sm" id="searchKeyword">
 									<option value="title">제목</option>
 									<option value="content">내용</option>
@@ -116,10 +116,10 @@
 								<h6 class="mb-0">제목</h6>
 							</div>
 							<div class="col-2">
-								<h6 class="mb-0">작성일</h6>
+								<h6 class="mb-0">상태</h6>
 							</div>
 							<div class="col-2">
-								<h6 class="mb-0">상태</h6>
+								<h6 class="mb-0">작성일</h6>
 							</div>
 						</div>
 					</div>

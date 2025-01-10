@@ -33,7 +33,7 @@
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
 						<h1 class="h3 mb-2">정산 내역</h1>
-						<span>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ.</span>
+						<span>숙소 예약금을 정산/관리합니다.</span>
 					</div>
 				</div>
 

@@ -152,13 +152,13 @@ const faq = (function() {
 									<a role="button" class="text-primary fw-bold ms-1 mb-0" data-bs-toggle="collapse" data-bs-target="#faq${data.faq_idx}" aria-expanded="false" aria-controls="faq${data.faq_idx}">${data.title}</a>
 								</div>
 								<div class="col-2">
+									<small class="d-block d-lg-none">상태</small>
+									<div class="ms-1 badge bg-opacity-10 ${data.status == 'Y' ? 'bg-success text-success' : 'bg-danger text-danger'}">${data.status == 'Y' ? '게시중' : '게시중단'}</div>
+								</div>	
+								<div class="col-2">
 									<small class="d-block d-lg-none">작성일</small>
 									<h6 class="ms-1 mb-0 fw-normal">${data.create_date_format}</h6>
 								</div>
-								<div class="col-2">
-									<small class="d-block d-lg-none">상태</small>
-								<div class="ms-1 badge bg-opacity-10 ${data.status == 'Y' ? 'bg-success text-success' : 'bg-danger text-danger'}">${data.status == 'Y' ? '게시중' : '게시중단'}</div>
-								</div>	
 							</div>
 							<div id="faq${data.faq_idx}" class="accordion-collapse collapse" aria-labelledby="heading-1" data-bs-parent="#faqList">
 								<div class="accordion-body border rounded">

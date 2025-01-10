@@ -33,7 +33,7 @@
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
 						<h1 class="h3 mb-2">예약 관리</h1>
-						<span>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ.</span>
+						<span>숙소 별 예약 현황을 관리할 수 있습니다.</span>
 					</div>
 				</div>
 
@@ -41,7 +41,7 @@
 				<div class="card shadow mb-5">
 					<!-- Card header -->
 					<div class="card-header border-bottom">
-						<h5 class="card-header-title">예약내역 상세 검색</h5>
+						<h5 class="card-header-title">검색</h5>
 					</div>
 					<!-- Card body START -->
 					<div class="card-body">
@@ -53,15 +53,14 @@
 									<!-- 날짜 선택 -->
 									<div class="form-control-border form-control-transparent form-fs-md">
 										<label class="form-label"><i class="bi bi-calendar text-primary me-1"></i> 예약일</label> 
-										<input id="searchDate" type="text" class="form-control flatpickr" data-mode="range"
-											placeholder="날짜를 선택하세요." value="">   
+										<input id="searchDate" type="text" class="form-control flatpickr" data-mode="range" placeholder="날짜를 선택하세요." value="">   
 									</div> 
 								</div>   
 							</div>      
 
 							<!-- Radio items -->   
 							<div class="col-12">
-								<label class="h6 fw-normal mb-2"> 예약 상태</label>
+								<label class="h6 fw-normal mb-2 form-label"> 예약 상태</label>
 								<div class="d-sm-flex">
 									<!-- Radio -->
 									<div class="form-check radio-bg-light me-4">
@@ -83,7 +82,7 @@
  
 							<!-- 검색어 입력 input -->             
 							<div class="col-6">
-								<label class="h6 fw-normal mb-2"> 숙소명</label>
+								<label class="h6 fw-normal mb-2 form-label"> 숙소명</label>
 								<input id="searchInput" type="text"   
 									class="form-control" placeholder="숙소명을 입력하세요">
 							</div> 

@@ -24,14 +24,14 @@
             <div class="page-content-wrapper p-xxl-4">
                 <!-- Title -->
                 <div class="row">
-                    <div class="col-12 mb-4 mb-sm-5">
+                    <div class="col-12 mb-3">
                         <h1 class="h3 mb-2">공지사항</h1>
-                        <span>공지사항을 등록해주세요.</span>
+                        <span>공지사항을 등록/관리할 수 있습니다.</span>
                     </div>
                 </div>
 
                 <!-- 상단 navbar START -->
-                <div class="row g-4 align-items-end border-bottom">
+                <div class="row g-4 align-items-end">
                     <div class="col-12 d-flex justify-content-end">
                         <button type="button" class="btn btn-primary-soft" data-bs-toggle="modal" data-bs-target="#noticeRegistModal">
                             <i class="bi bi-plus-lg fa-fw"></i>공지사항 등록
@@ -129,16 +129,16 @@
 				</div>
 				<!-- 공지사항 수정 모달창 END -->
 				                 
-				<div class="card shadow mt-4 mb-5">
+				<div class="card shadow border mb-5 mt-2">
 					<!-- Card header -->
 					<div class="card-header border-bottom">
 						<h5 class="card-header-title">검색</h5>
 					</div>	
 	                <!-- 검색 필터 START -->
-	                <div class="card-body" style="padding-top: 8px; padding-bottom: 8px;">
+	                <div class="card-body">
 	                    <form id="searchForm" class="row g-4 align-items-center">
 	                        <div class="d-flex">
-	                            <div class="col-2 mt-2">
+	                            <div class="col-2">
 	                                <label for="searchStatus" class="form-label">상태</label>
 	                                <select id="searchStatus" class="form-select js-choice" aria-label=".form-select-sm">
 	                                    <option value="">전체</option>
@@ -146,7 +146,7 @@
 	                                    <option value="N">게시중단</option>
 	                                </select>
 	                            </div>
-	                            <div class="col-2 mt-2 ms-3">
+	                            <div class="col-2 ms-3">
 	                                <label for="searchTarget" class="form-label">분류</label>
 	                                <select id="searchTarget" class="form-select js-choice" aria-label=".form-select-sm">
 	                                    <option value="">전체</option>
@@ -155,11 +155,9 @@
 	                                </select>
 	                            </div>
 	                        </div>
-	                        <div class="col-12">
-	                            <div class="col-6">
-	                                <label for="searchKeyword" class="form-label">제목</label>
-	                                <input id="searchKeyword" type="text" class="form-control" placeholder="내용을 입력하세요">
-	                            </div>
+	                        <div class="col-6">
+                                <label for="searchKeyword" class="form-label">제목</label>
+                                <input id="searchKeyword" type="text" class="form-control" placeholder="내용을 입력하세요">
 	                        </div>
 	                        <div class="d-sm-flex justify-content-end border-top pt-3">
 	                            <button type="reset" id="resetButton" class="btn btn-primary-soft mb-0 ms-2">초기화</button>
@@ -180,33 +178,24 @@
 				
 	                <div class="card-body">
 						<!-- Table head -->
-						<div class="bg-light rounded p-3 d-none d-sm-block">
-							<div class="row row-cols-6 g-4">
-								<div class="col">
+						<div class="bg-light rounded p-3 d-none d-lg-block">
+							<div class="row g-4">
+								<div class="col-2">
 									<h6 class="mb-0">분류</h6>
 								</div>
-								<div class="col">
+								<div class="col-5">
 									<h6 class="mb-0">제목</h6>
 								</div>
-								<div class="col">
-									<h6 class="mb-0">내용</h6>
-								</div>
-								<div class="col">
+								<div class="col-2">
 									<h6 class="mb-0">상태</h6>
 								</div>
-								<div class="col">
+								<div class="col-3">
 									<h6 class="mb-0">게시일</h6>
 								</div>
-								<div class="col">
-									<h6 class="mb-0"></h6>
-								</div>
-					          </div>
 				            </div>
-						<div id="noticeList" class="card-body">
-				                			<!-- 사용자 List START -->
-					
-				                    <!-- 공지사항 목록은 JavaScript에서 동적으로 렌더링됩니다 -->
-						</div>
+					</div>
+					<div id="noticeList">
+	                    <!-- 공지사항 목록은 JavaScript에서 동적으로 렌더링됩니다 -->
 					</div>
                 </div>
                 <!-- 페이징 컨테이너 -->

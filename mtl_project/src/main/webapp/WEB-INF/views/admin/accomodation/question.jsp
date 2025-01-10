@@ -30,7 +30,7 @@
 				</div>
 
 				<!-- 검색 필터 START -->
-				<div class="card shadow mt-4 mb-5">
+				<div class="card shadow mb-5">
 					<!-- Card header -->
 					<div class="card-header border-bottom">
 						<h5 class="card-header-title">검색</h5>
