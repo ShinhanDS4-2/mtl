@@ -33,6 +33,7 @@
         WHERE 
             email = #{email}
         AND password = #{password}
+        AND approval_status = 'Y'
     </select>
     
     <!-- 회원가입 -->
