@@ -222,7 +222,7 @@ const join = (function() {
             comm.send("/partner/join", formData, "POST", function(response) {
                 if (response.code == 200) {
                 	modal.alert({
-						"content" : "회원가입이 완료되었습니다.<br>로그인 페이지도 이동합니다.",
+						"content" : "회원가입이 완료되었습니다.<br>로그인 페이지로 이동합니다.",
 						"confirmCallback" : function() {
 		                    location.href = "/mtl/partner/dashboard";
 						}
