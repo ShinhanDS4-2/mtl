@@ -128,34 +128,7 @@
 						<!-- Table data (4번째 예약내역 상세 데이터)-->
 						<div id="answerList">
 							<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
-								<!-- Data item -->
-								<div class="col">
-									<small class="d-block d-sm-none">지역</small>
-									<!-- 작은 화면일때만 보이는 텍스트-->
-									<h6 class="ms-1 mb-0 fw-normal">제주</h6>
-								</div>
-								<!-- Data item -->
-								<div class="col">
-									<small class="d-block d-sm-none">숙소명</small>
-									<h6 class="ms-1 mb-0 fw-normal">메리메리 호텔</h6>
-								</div>
-								<!-- Data item -->
-								<div class="col">
-									<small class="d-block d-sm-none">객실수</small>
-									<h6 class="ms-1 mb-0 fw-normal">100 개</h6>
-								</div>
-								<!-- Data item -->
-								<div class="col">
-									<small class="d-block d-sm-none">등록일</small>
-									<h6 class="ms-1 mb-1 fw-light">2024.12.09</h6>
-								</div>
-								<!-- Data item -->
-								<div class="col">
-									<small class="d-block d-sm-none">상세보기</small>
-									<div class="ms-1 col">
-										<a href="admin/accomodation/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-									</div>
-								</div>
+								
 							</div>
 						</div>
 					</div>

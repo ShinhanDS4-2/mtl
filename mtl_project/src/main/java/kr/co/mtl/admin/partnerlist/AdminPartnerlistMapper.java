@@ -11,5 +11,6 @@ public interface AdminPartnerlistMapper {
 	List<Map<String,Object>> selectPartnerlist(Map<String,Object> param);
 	int getTotal(Map<String,Object>param);
 	
-	Map<String,Object> getPartnerDetail(Map<String,Object> param);
+	List<Map<String,Object>> getPartnerDetail(int idx);
+	List<String> getPartnerUrl(int idx);
 }

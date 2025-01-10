@@ -326,7 +326,7 @@
 
 								<!-- 답변달기 START -->
 								<div class="d-flex mt-1">
-									<textarea id="description" name="description" class="form-control mb-3 bg-light" placeholder="답변을 작성해주세요." rows="7"></textarea>
+									<textarea id="description" name="description" class="form-control mb-3 bg-light" placeholder="객실을 설명해주세요." rows="7"></textarea>
 								</div>
 
 							</div>

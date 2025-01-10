@@ -2,157 +2,175 @@ const partnerDetail = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
-        fetchPayoutList();
+
 		_eventInit();
+        fetchDetail();
 	};
 
 	// 이벤트 초기화 
 	function _eventInit() {
-		
-		$(document).on("click","#searchButton",function(){
-			fetchPayoutList();
-		});
 
-        $(document).on("click","#resetButton",function(){
-        	window.location.reload();			
-		});
 	};
-	
-    function fetchPayoutList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
 
-		let param = {};
-        
-		// 페이징 START
-		let pageOption = {
-            limit: 5  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
-		};
-		
-		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
-		let page = $("#pagination").customPaging(pageOption, function(_curPage){  // customPaging은 사용자 정의함수로 페이징 로직을 생성한다. 
-            // ㄴ pageOption객체를 넘겨 한 페이지에 표시할 데이터 수(limit)를 전달.
-            // _curPage: 현재 사용자가 보고 있는 페이지 번호.
-            
-            fetchPayoutList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
-		});
-		
-		let pageParam = page.getParam(curPage);  // 현재 페이지 번호(curPage)를 기준으로 페이징에 필요한 정보(예: offset, limit)를 반환.
-		
-		if(pageParam) {  // 위 코드에서 받은 pageParam값을 ajax에 넘겨줄 데이터에 설정하는 부분
-			param.offset = pageParam.offset;
-			param.limit = pageParam.limit;
-		};
-		// 페이징 END
-		
-		let answerArea=$("input[name='flexRadioDefault']:checked")
-            .map(function(){
-                return $(this).val();
-            })
-            .get();
-		
-		answerArea = answerArea.filter(item => item != '');                                 //null 값 없애기
+    function getIdxFromUrl(){
 
-        let searchText=$("input[name='searchText']").val();                                 //입력창에 검색한 내용
+        let urlParams=new URLSearchParams(window.location.search);
+        return urlParams.get('idx');
+    }
 
-        param.answerArea=answerArea;
-        param.searchText=searchText;
+    function fetchDetail(){
+
+        let idx=getIdxFromUrl();
 
         $.ajax({
-            url:"/mtl/admin/accomodation/list",
-            type:"POST",
-            contentType:"application/json",
-            data:JSON.stringify(param),
+            url:"/mtl/admin/accomodation/detail",
+            type: "POST",
+            data:{idx:idx},
             success:function(response){
-                console.log("검색 결과 : ",response);
-                
-                $("#totalCnt").text(response.totalCnt);
-                _draw.drawAnswerList(response.list);
-                page.drawPage(response.totalCnt); 
-            },
-            error:function(error){
-                console.error("검색 오류 : ",error);
-            }
-        });
-	}
-	
-	
-	let _draw = {
 
-        ToDate: function (timestamp) {
+                _draw.drawAnswerList(response.list);
+                _draw.insertInfo(response.list);
+                _draw.insertImage(response.images);
+            },
+            error:function(xhr,status,error){
+                console.log("상세 데이터 가져오기 실패: ",error);
+            }
             
-            let date = new Date(timestamp);
+        });
+    }
+	
+	let _draw={
+
+        insertImage: function (images) {
+
+            let imageList = $("#images").empty(); 
+        
+            let col = `
+                <div class="col-xxl-6">
+                    <div class="row g-2 g-sm-4">
+                        <div class="col-6">
+                            <a data-glightbox data-gallery="gallery" href="${images[0]}">
+                                <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                                    <!-- Image -->
+                                    <img src="${images[0]}" alt="" style="width: 100%; height: 250px; object-fit: cover;">
+                                    <!-- Full screen button -->
+                                    <div class="hover-element w-100 h-100">
+                                        <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a data-glightbox data-gallery="gallery" href="${images[1]}">
+                                <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                                    <!-- Image -->
+                                    <img src="${images[1]}" alt="" style="width: 100%; height: 250px; object-fit: cover;">
+                                    <!-- Full screen button -->
+                                    <div class="hover-element w-100 h-100">
+                                        <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a data-glightbox data-gallery="gallery" href="${images[2]}">
+                                <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                                    <!-- Image -->
+                                    <img src="${images[2]}" alt="" style="width: 100%; height: 250px; object-fit: cover;">
+                                    <!-- Full screen button -->
+                                    <div class="hover-element w-100 h-100">
+                                        <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6">
+                            <a data-glightbox data-gallery="gallery" href="${images[3]}">
+                                <div class="card card-element-hover card-overlay-hover overflow-hidden">
+                                    <!-- Image -->
+                                    <img src="${images[3]}" alt="" style="width: 100%; height: 250px; object-fit: cover;">
+                                    <!-- Full screen button -->
+                                    <div class="hover-element w-100 h-100">
+                                        <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        
+            imageList.append(col);
+        },
+
+        insertInfo:function(list){
+
+            let info = $("#info").empty();
+
+            let col = `
+                <div class="col-xxl-6 mb-5">
+                    <h4>${list[0].name}</h4>
+                    <p class="mb-2 mb-sm-0">
+                        <i class="bi bi-geo-alt me-1 text-primary"></i>${list[0].address}
+                    </p>
+                    <p class="mb-4">${list[0].description}</p>		
+                </div>
+            `;
     
-            let year = date.getFullYear();
-            let month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작
-            let day = String(date.getDate()).padStart(2, '0');
-            
-            return `${year}-${month}-${day}`;
+            info.append(col);
         },
 
         drawAnswerList:function(list){
 
             let answerList=$("#answerList").empty();
+            let index=1;
 
             for(let data of list){
 
-                console.log(data);
-
-                if (data.area === 'SEOUL') {
-                    data.area = '서울';
-                } else if (data.area === 'GANGNEUNG') {
-                    data.area = '강릉';
-                } else if (data.area === 'JEJU') {
-                    data.area = '제주';
-                } else if (data.area === 'YEOSU') {
-                    data.area = '여수';
-                } else if (data.area === 'BUSAN') {
-                    data.area = '부산';
-                }
-
+                
                 let row = $("<div>").addClass("row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center d-flex justify-content-center align-items-center");
                 answerList.append(row);
 
-                let area_col=$("<div>").addClass("col");
-                row.append(area_col);
+                let num_col=$("<div>").addClass("col");
+                row.append(num_col);
 
-                let area_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.area);
-                area_col.append(area_h6);
+                let num_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(index++);
+                num_col.append(num_h6);
 
-                let name_col=$("<div>").addClass("col");
-                row.append(name_col);
+                let type_col=$("<div>").addClass("col");
+                row.append(type_col);
 
-                let name_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.name);
-                name_col.append(name_h6);
+                let type_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.room_type);
+                type_col.append(type_h6);
 
-                let room_col=$("<div>").addClass("col");
-                row.append(room_col);
+                let standard_col=$("<div>").addClass("col");
+                row.append(standard_col);
 
-                let room_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.room_count);
-                room_col.append(room_h6);
+                let standard_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.standard+"인");
+                standard_col.append(standard_h6);
 
-                let create_date_col=$("<div>").addClass("col");
-                row.append(create_date_col);
+                let max_col=$("<div>").addClass("col");
+                row.append(max_col);
 
-                let create_date_h6=$("<h6>").addClass("ms-1 mb-1 fw-light").html(this.ToDate(data.create_date));
-                create_date_col.append(create_date_h6);
+                let max_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.maximum+"인");
+                max_col.append(max_h6);
                 
-                let detail = $("<div>").addClass("col");
-	            row.append(detail);
+                let basicPrice_col=$("<div>").addClass("col");
+                row.append(basicPrice_col);
 
-	            let detail_link = $("<a>")
-	                .addClass("btn btn-sm btn-light mb-0")
-	                .html("상세보기")
-	                .attr("href", "admin/accomodation/detail")
-	                .on("click", function () {
+                let basicPrice_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.basic_price+"원");
+                basicPrice_col.append(basicPrice_h6);
 
-	                });
-	            detail.append(detail_link);
+                let weekendPrice_col=$("<div>").addClass("col");
+                row.append(weekendPrice_col);
 
-
+                let weekendPrice_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.weekend_price+"원");
+                weekendPrice_col.append(weekendPrice_h6);
             }
-        }
 
+
+        }
     }
-	
 	return {
 		init,
 	};

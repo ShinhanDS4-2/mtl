@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -26,10 +27,10 @@ public class AdminPartnerlistController {
 	
 	@PostMapping("/detail")
 	@ResponseBody
-	public Map<String,Object> partnerDetail(Map<String,Object> param){
+	public Map<String,Object> partnerDetail(@RequestParam int idx){
 		
-		System.out.println("partnerDetail Controller 실행 = "+param);
-		return adminPartnerlistService.partnerDetail(param);
+		System.out.println("partnerDetail Controller 실행 = "+idx);
+		return adminPartnerlistService.partnerDetail(idx);
 	}
 
 }

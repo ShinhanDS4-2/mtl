@@ -118,7 +118,7 @@ const questionManagement = (function() {
                 let content_col=$("<div>").addClass("col");
                 row.append(content_col);
 
-                let content_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.content);
+                let content_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.title);
                 content_col.append(content_h6);
 
                 let create_date_col=$("<div>").addClass("col");
@@ -142,7 +142,7 @@ const questionManagement = (function() {
 	                .on("click", function () {
 
 	                    $("#questionContent").html(data.content);
-	                    $("#replyContent").html(data.answer || "답변 대기 중입니다..");
+	                    $("#replyContent").html(data.answer || "");
 	                    $("#questionModal").modal("show");
 	                });
 	            detail.append(detail_link);

@@ -110,7 +110,7 @@
 								<h6 class="mb-0">사용자명</h6>
 							</div>
 							<div class="col">
-								<h6 class="mb-0">문의 내용</h6>
+								<h6 class="mb-0">문의 제목</h6>
 							</div>
 							<div class="col">
 								<h6 class="mb-0">등록일</h6>
