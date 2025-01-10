@@ -8,7 +8,7 @@ const join = (function() {
 	// 이벤트 초기화 
 	function _eventInit() {
 		let evo = $("[data-src='join'][data-act]").off();
-		evo.on("click", function(e) {
+		evo.on("click blur keyup", function(e) {
 			_eventAction(e);
 		});
 	};
@@ -25,13 +25,35 @@ const join = (function() {
 			if(action == "clickEmailAuth") {
 				_event.checkEmail();
 			} else if (action == "clickAuthCheck") {	// 이메일 인증
-				
+				_event.clickAuthCheck();
 			} else if (action == "clickJoin") {		//회원가입
 				_event.handleJoin();
 			} else if (action == "clickEmailCheck") {	// 이메일 중복 확인
 				_event.checkEmailDuplication();
+			} else if (action == "clickSendMail") {
+				_event.clickSendMail();
 			}
-		};
+		} else if(type == "blur") {
+			if(action == "changePw") {
+				_event.changePw();
+			} else if(action == "changePwCheck") {
+				_event.changePwCheck();
+			}
+		} else if(type == "keyup") {
+			if(action == "changePhone") {
+				let num = $("#joinBusiness_Phone").val();
+				let formatNum = comm.formatPhone(num);
+				$("#joinBusiness_Phone").val(formatNum);
+			} else if(action == "changePartnerPhone") {
+				let num = $("#joinPhone").val();
+				let formatNum = comm.formatPartnerPhone(num);
+				$("#joinPhone").val(formatNum);
+			} else if (action == "changeBusinessNum") {
+				let num = $("#joinBusiness_Number").val();
+				let formatNum = comm.formatBusinessNum(num);
+				$("#joinBusiness_Number").val(formatNum);
+			}
+		}
 	};
 	
 	// 이벤트
@@ -73,6 +95,7 @@ const join = (function() {
 	            	modal.alert({
 						"content" : "사용 가능한 이메일입니다."
 					});
+					$("#dupleBtn").attr("data-check", "1");
 	            } else {
 	            	modal.alert({
 						"content" : "이미 사용 중인 이메일입니다.<br>다른 이메일을 입력해 주세요."
@@ -113,6 +136,16 @@ const join = (function() {
 				});
 		        return;
 		    }
+		    
+		     // 이메일 인증 확인
+		    let code = $("#authNum");
+		    if (code.val() == null || code.attr("data-auth-check") != "1") {
+		    	modal.alert({
+            		"content" : "이메일 인증을 진행해 주세요." 
+            	});
+		        return;
+		    }
+		    
             if (!formData.password || !formData.passwordCheck) {
             	modal.alert({
 					"content" : "비밀번호를 입력해 주세요."
@@ -165,9 +198,9 @@ const join = (function() {
                 return;
             }
             // 업체 연락처 형식 확인
-			if (!/^\d{3}-\d{3,4}-\d{4}$/.test(formData.phone)) {
+			if (!/^\d{2,3}-\d{3,4}-\d{4}$/.test(formData.phone)) {
 				modal.alert({
-					"content" : "올바른 업체 연락처를 입력해 주세요.<br>형식은 000-0000-0000입니다."
+					"content" : "올바른 업체 연락처를 입력해 주세요."
 				});	
 			    return;
 			}
@@ -204,6 +237,87 @@ const join = (function() {
 					"content" : "오류가 발생하였습니다.<br>다시 시도해주세요."
 				});
             });
+        },
+        
+        // 이메일 인증
+        clickSendMail: function() {
+        	let check = $("#dupleBtn").attr("data-check");
+        	let email = $("#joinEmail").val();
+        	
+        	if(check != "1" || email == null) {
+				modal.alert({ "content" : "이메일 중복 확인을 먼저 진행해 주세요." });
+				return;
+        	}
+        	
+        	let url = "/email/auth";
+        	
+        	let data = { "email" : email };
+        	
+        	comm.sendJson(url, data, "POST", function(resp) {
+        		if(resp.result == true) {
+	        		modal.alert({
+	            		"content" : "입력하신 메일로 인증 번호가 발송되었습니다.",
+	            	});
+	            } else {
+	            	modal.alert({
+                		"content" : "오류가 발생하였습니다.<br>다시 시도해 주세요." 
+                	});
+	            }
+        	});
+        },
+        
+        // 이메일 인증 확인
+        clickAuthCheck: function() {
+        	let code  = $("#authNum").val();
+        	let email = $("#joinEmail").val();
+        	
+        	if(code == null || email == null) {
+				modal.alert({ "content" : "입력되지 않은 값이 있습니다." });
+				return;
+        	}
+        	
+        	let url = "/email/auth/check";
+        	
+        	let data = { 
+        		"email" : email,
+        		"authcode" : code
+        	};
+        	
+        	comm.sendJson(url, data, "POST", function(resp) {
+        		if(resp.result == true) {
+	        		modal.alert({
+	            		"content" : "이메일 인증이 완료되었습니다.",
+	            	});
+	            	$("#authNum").attr("data-auth-check", "1");
+	            } else {
+	            	modal.alert({
+                		"content" : "인증 번호가 일치하지 않습니다." 
+                	});
+	            	$("#authNum").attr("data-auth-check", "0");
+	            }
+        	});
+        },
+        
+        changePw: function() {
+        	let regex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,16}$/;
+        	let pw = $("#joinPw").val();
+        	
+        	if (!regex.test(pw)) {
+        		$("#pwNotice").removeClass("d-none");
+        	} else {
+        		$("#pwNotice").addClass("d-none");
+        	};
+        },
+        
+        changePwCheck: function() {
+        	let pw = $("#joinPw").val();
+        	let pwChk = $("#joinPwCheck").val();
+        	
+        	if (pw != pwChk) {
+        		$("#pwChkNotice").removeClass("d-none");
+        	} else {
+        		$("#pwChkNotice").addClass("d-none");
+        	};
         },
         
     };

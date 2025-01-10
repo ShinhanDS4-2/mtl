@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.faq.FaqMapper">
+	
+	<!-- 자주 묻는 질문 리스트 관리자 -->
+	<select id="getList" parameterType="HashMap">
+		SELECT
+			  f.idx AS faq_idx
+			, f.title
+			, f.content
+			, DATE_FORMAT(f.create_date, '%Y-%m-%d') AS create_date_format
+			, (SELECT codename FROM CODE WHERE code = f.type) AS type
+			, f.status
+		FROM
+			FAQ f
+		<include refid="listSql"></include>
+		ORDER BY f.create_date DESC
+		<if test="limit != null and offset != null">
+			LIMIT ${limit} OFFSET ${offset}
+		</if>
+	</select>
+	
+	<!-- 자주 묻는 질문 개수 관리자 -->
+	<select id="getListCnt" parameterType="HashMap">
+		SELECT
+			COUNT(*)
+		FROM
+			FAQ f
+		<include refid="listSql"></include>
+	</select>
+	
+	<!-- 자주 묻는 질문 검색 조건 -->
+	<sql id="listSql">
+		<where>
+			<if test="searchStatus != null and searchStatus != ''">
+				AND	f.status = #{searchStatus}
+			</if>
+			<if test="searchType != null and searchType != ''">
+				AND f.type = #{searchType}
+			</if>
+			<if test="searchText != null and searchText != ''">
+				<if test="searchKeyword == 'title'">
+					AND f.title LIKE CONCAT('%', #{searchText}, '%')
+				</if>
+				<if test="searchKeyword == 'content'">
+					AND f.content LIKE CONCAT('%', #{searchText}, '%')
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 상태 업데이트 -->
+	<update id="updateStatus" parameterType="HashMap">
+		UPDATE FAQ
+		SET 
+			  status = #{status}
+			, update_date = NOW()
+		WHERE 
+			idx = #{faq_idx}
+	</update>
+	
+	<!-- 자주 묻는 질문 등록 -->
+	<insert id="registFaq" parameterType="HashMap">
+		INSERT INTO FAQ (
+			  title
+			, content
+			, type
+		) VALUES (
+			  #{title}
+			, #{content}
+			, #{type}
+		)
+	</insert>
+	
+	<!-- 자주 묻는 질문 리스트 사용자 -->
+	<select id="getListWithUser" parameterType="HashMap">
+		SELECT
+			  f.idx AS faq_idx
+			, f.title
+			, f.content
+			, DATE_FORMAT(f.create_date, '%Y-%m-%d') AS create_date_format
+			, (SELECT codename FROM CODE WHERE code = f.type) AS type
+		FROM
+			FAQ f
+		WHERE 
+			status = 'Y'
+		<if test="type != 'ALL'">
+			AND f.type = #{type}
+		</if>
+		ORDER BY f.create_date DESC
+	</select>
+</mapper>

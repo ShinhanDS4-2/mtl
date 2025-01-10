@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface PartnerPayoutService {
  
-
+	
 	// [판매자] 정산내역 리스트 조회	
 	Map<String, Object> getPartnerPayoutList(Map<String, Object> param);
 	

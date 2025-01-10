@@ -1,25 +1,31 @@
 package kr.co.mtl.notice;
 
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.stereotype.Service;
- 
-@Service
-public class NoticeService {
 
-    private final NoticeMapper noticeMapper;
+public interface NoticeService {
 
-    public NoticeService(NoticeMapper noticeMapper) {
-        this.noticeMapper = noticeMapper;
-    }
 
-    // 공지사항 목록 조회
-    public List<Notice> getAllNotices() {
-        return noticeMapper.selectAllNotices();
-    }
+	
+		Map<String, Object> insertNotice(Map<String,Object> param);
 
-    // 공지사항 상세 조회
-    public Notice getNoticeById(int idx) {
-        return noticeMapper.selectNoticeById(idx);
-    }
+
+		Map<String, Object> updateNotice(Map<String,Object> param);
+		
+
+		Map<String, Object> deleteNotice(Map<String,Object> param);
+
+
+		Map<String, Object> getNoticeList(Map<String,Object> param);
+		
+		Map<String, Object> searchNotices(Map<String, Object> param);
+
+		List<Map<String, Object>> getUserNotices(Map<String, Object> param);
+	    int getUserNoticeCount();
+
+		List<Map<String, Object>> getPartnerNotices(Map<String, Object> param);
+		int getPartnerNoticeCount();
+
+		Map<String, Object> getNoticeDetailByIdx(Integer notice_idx);
 }

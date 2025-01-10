@@ -63,9 +63,9 @@ public class AdminPageController {
 	}
 
 	// 고객 문의 - 자주 묻는 질문
-	@GetMapping("/qna")
-	public String qna() {
-		return "admin/support/qna";
+	@GetMapping("/faq")
+	public String faq() {
+		return "admin/support/faq";
 	}
 
 	// 고객 문의 - 1:1 문의

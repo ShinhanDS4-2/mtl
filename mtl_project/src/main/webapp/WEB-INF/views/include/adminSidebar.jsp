@@ -4,9 +4,9 @@
 <!-- adminSidebar START -->
 <nav class="navbar sidebar navbar-expand-xl navbar-light">
 	<!-- Navbar brand for xl START (사이드바 로고) -->
-	<div class="d-flex align-items-center">
-		<a class="navbar-brand" href="/mtl/admin/dashboard">
-			<img class="light-mode-item navbar-brand-item" src="assets/images/logo-130.png" alt="logo">
+	<div class="d-flex justify-content-center">
+		<a class="navbar-brand pe-0 d-flex justify-content-center" href="/mtl/admin/dashboard">
+			<img class="light-mode-item w-80" src="assets/images/logo-200.png" alt="logo">
 		</a>
 	</div>
 	<!-- Navbar brand for xl END -->
@@ -34,8 +34,7 @@
 				<!-- Menu item -->
 				<li class="nav-item">
 					<a class="nav-link" data-bs-toggle="collapse" href="#collapsehotel" role="button" aria-expanded="false" aria-controls="collapsehotel"> 숙소 관리 </a> <!-- Submenu -->
-					<ul class="nav collapse flex-column" id="collapsehotel"
-						data-bs-parent="#navbar-sidebar">
+					<ul class="nav collapse flex-column" id="collapsehotel" data-bs-parent="#navbar-sidebar">
 						<li class="nav-item">
 							<a class="nav-link" href="/mtl/admin/accomodation/list">숙소 관리</a></li>
 						<li class="nav-item">
@@ -75,7 +74,7 @@
 							<a class="nav-link" href="/mtl/admin/question">1:1 문의</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/mtl/admin/qna">자주 묻는 질문</a>
+							<a class="nav-link" href="/mtl/admin/faq">자주 묻는 질문</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/mtl/admin/notice">공지사항</a>

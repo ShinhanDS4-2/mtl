@@ -45,13 +45,13 @@
 							<!-- item -->
 							<div class="mb-3">
 								<label class="form-label">이름</label> 
-								<input type="text" class="form-control" id="businessName" disabled>
+								<input type="text" class="form-control" id="name">
 								<!-- disabled : 수정불가 -->
 							</div>
 							<!-- item -->
 							<div class="mb-3">
 								<label class="form-label">아이디</label>
-								<input type="text" class="form-control" value="${login_partner_email }" disabled>
+								<input type="text" class="form-control" value="${login_partner_email }" readonly>
 							</div>
 							<!-- item -->
 							<div class="mb-3">
@@ -101,24 +101,24 @@
 								<!-- item -->
 								<div class="col-12">
 									<label class="form-label">업체명</label>
-									<input type="email" class="form-control" value="${login_partner_name }" disabled>
+									<input type="text" class="form-control" value="${login_partner_name }" readonly>
 								</div>
 								<!-- item -->
 								<div class="col-12">
 									<label class="form-label">사업자등록번호</label>
-									<input type="email" class="form-control" id="business_number" disabled>
+									<input type="text" class="form-control" id="business_number" readonly>
 								</div>
 
 								<!-- item -->
 								<div class="col-12">
 									<label class="form-label">사업장 주소지</label>
-									<input type="email" class="form-control" id="address" disabled>
+									<input type="text" class="form-control" id="address" readonly>
 								</div>
 
 								<!-- item -->
 								<div class="mb-3">
 									<label class="form-label">업체 대표 번호</label>
-									<input type="text" class="form-control" id="business_phone" disabled placeholder="업체 대표 번호를 입력하세요.">
+									<input type="text" class="form-control" id="business_phone" readonly placeholder="업체 대표 번호를 입력하세요.">
 								</div>
 
 								<!-- item 정산계좌 -->
@@ -140,9 +140,7 @@
 
 								<!-- item 정산계좌-->
 								<div class="col-lg-8">
-									<label class="form-label">계좌번호</label> <input type="email"
-										class="form-control" id="account_number"
-										placeholder="계좌번호를 입력하세요.">
+									<label class="form-label">계좌번호</label> <input type="email" class="form-control" id="account_number" placeholder="계좌번호를 입력하세요.">
 								</div>
 
 								<!-- Save button -->
@@ -156,8 +154,7 @@
 				</div>
 
 				<!-- 비밀번호 변경 Modal START -->
-				<div class="modal fade" id="changePassword" tabindex="-1"
-					aria-labelledby="pwdModalLabel" aria-hidden="true">
+				<div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="pwdModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -165,28 +162,25 @@
 								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
-								<form>
-									<!-- 기존 비밀번호 -->
-									<div class="mb-3">
-										<label for="placeName" class="form-label fw-bold">기존 비밀번호 <span class="text-danger">*</span></label> 
-										<input id="password" type="password" class="form-control" id="placeName" placeholder="기존 비밀번호를 입력해 주세요.">
-									</div>
-									<!-- 새 비밀번호 -->
-									<div class="mb-3">
-										<label for="placeName" class="form-label fw-bold">새 비밀번호 <span class="text-danger">*</span></label>
-										<input id="newPassword" type="password" class="form-control" id="pwd" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상.">
-									</div>
-									<!-- 새 비밀번호 확인 -->
-									<div class="mb-3">
-										<label for="placeName" class="form-label fw-bold">새 비밀번호 확인 <span class="text-danger">*</span></label>
-										<input id="confirmPassword" type="password" class="form-control" id="pwd" placeholder="새 비밀번호를 다시 입력해 주세요.">
-									</div>
-								</form>
+								<!-- 기존 비밀번호 -->
+								<div class="mb-3">
+									<label for="placeName" class="form-label fw-bold">기존 비밀번호 <span class="text-danger">*</span></label> 
+									<input id="password" type="password" class="form-control" id="placeName" placeholder="기존 비밀번호를 입력해 주세요.">
+								</div>
+								<!-- 새 비밀번호 -->
+								<div class="mb-3">
+									<label for="placeName" class="form-label fw-bold">새 비밀번호 <span class="text-danger">*</span></label>
+									<input id="newPassword" type="password" class="form-control" id="pwd" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상.">
+								</div>
+								<!-- 새 비밀번호 확인 -->
+								<div class="mb-3">
+									<label for="placeName" class="form-label fw-bold">새 비밀번호 확인 <span class="text-danger">*</span></label>
+									<input id="confirmPassword" type="password" class="form-control" id="pwd" placeholder="새 비밀번호를 다시 입력해 주세요.">
+								</div>
 							</div>
 							<!-- 확인/취소 button -->
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 								<button type="button" class="btn btn-primary" data-src='info' data-act="changePassword">확인</button>
 							</div>
 						</div>

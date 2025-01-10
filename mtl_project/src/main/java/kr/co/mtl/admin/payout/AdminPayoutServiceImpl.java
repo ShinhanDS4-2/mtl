@@ -12,14 +12,14 @@ public class AdminPayoutServiceImpl implements AdminPayoutService {
 
 	@Autowired
 	private AdminPayoutMapper payoutMapper;
-
+  
 	/** 시온
 	 * [관리자] 정산내역 리스트 조회
-	 * @param calculate_date_start(정산기간필터 시작일), calculate_date_end(정산기간필터 종료일), calculate_stauts(정산상태)
+	 * @param calculate_date_start(정산기간필터 시작일), calculate_date_end(정산기간필터 종료일), calculate_status(정산상태)
 	 * @return PayoutListCount, PayoutList, Param
 	 */
 	public Map<String, Object> getAdminPayoutList(Map<String, Object> param) {
-		System.out.println("param 값은? " + param);  //calculate_date_start, calculate_date_end, calculate_stauts값이 들어있어야 함
+		System.out.println("param 값은? " + param);  //calculate_date_start, calculate_date_end, calculate_status값이 들어있어야 함
 		
 		Map<String, Object> result = new HashMap<>();
 		
@@ -37,7 +37,7 @@ public class AdminPayoutServiceImpl implements AdminPayoutService {
 	/** 시온
 	 * [관리자] 정산 상세내역 리스트 조회
 	 * @param reservation_idx (예약idx)
-	 * @return PayoutDetail
+	 * @return PayoutDetail    
 	 */
 	public Map<String, Object> getAdminPayoutDetail(Map<String, Object> param) {
 		System.out.println("param 값은? " + param);  // reservation_idx값이 들어있어야 함
@@ -48,6 +48,25 @@ public class AdminPayoutServiceImpl implements AdminPayoutService {
 		result.put("PayoutDetail", data);
 		
 		System.out.println("result 값은? " + result);  // PayoutDetail 정보가 들어있어야 함
+		return result;
+	}
+
+	/** 시온
+	 * [관리자] 정산 상태 변경 
+	 * @param reservation_idx (예약idx)
+	 * @return result(true/false)  
+	 */
+	@Override
+	public Map<String, Object> updateCalculateStatus(Map<String, Object> param) {
+		System.out.println("param 값은? " + param); 
+		Map<String, Object> result = new HashMap<>();	
+		
+		int update = payoutMapper.updateCalculateStatus(param);
+		if(update>=1) {
+			result.put("result", true);
+		} else {
+			result.put("result", false);
+		}
 		return result;
 	}
 }

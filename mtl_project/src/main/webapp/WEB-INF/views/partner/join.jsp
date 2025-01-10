@@ -32,67 +32,61 @@
 										<!-- Email -->
 										<div class="mb-1">
 											<label class="form-label" for="joinEmail">대표 이메일 <span class="text-danger">*</span></label>
-											<div class="row">
-												<div class="col-8 pe-1">
-													<input type="email" class="form-control" id="joinEmail" placeholder="이메일을 입력해 주세요.">
-												</div>
-												<div class="col-4 ps-1">
-													<div class="d-grid">
-														<button class="btn btn-primary" type="button" data-src="join" data-act="clickEmailCheck">중복 확인</button>
-													</div>
-												</div>
+											<div class="mb-2 d-flex align-items-center">
+												<input type="email" class="form-control me-2" id="joinEmail" style="flex: 1;" placeholder="이메일을 입력해 주세요.">
+												<button id="dupleBtn" class="btn btn-primary mt-1" type="button" data-src="join" data-act="clickEmailCheck" data-check="0">중복 확인</button>
 											</div>
 										</div>
 										<div class="mb-3">
-											<button type="button" class="btn btn-primary-soft w-100 mb-0">이메일 인증</button>
+											<button type="button" class="btn btn-primary-soft w-100 mb-0" data-src="join" data-act="clickSendMail">이메일 인증</button>
 										</div>
 										<!-- Email 인증번호  -->
 										<label class="form-label">인증번호 <span class="text-danger">*</span></label>
 										<div class="mb-2 d-flex align-items-center">
-											<input type="email" class="form-control me-2" style="flex: 1;" placeholder="인증번호를 입력해주세요.">
-											<button type="button" class="btn btn-primary">인증 확인</button>
+											<input type="text" class="form-control me-2" id="authNum"  style="flex: 1;" placeholder="인증번호를 입력해 주세요."  data-auth-check="0">
+											<button type="button" class="btn btn-primary mt-1" data-src="join" data-act="clickAuthCheck">인증 확인</button>
 										</div>
 
 										<!-- 비밀번호 -->
 										<div class="mb-2">
 											<label class="form-label" for="joinPw">비밀번호 <span class="text-danger">*</span></label>
-											<input type="password" class="form-control" id="joinPw" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상">
-											<!-- <span class="text-danger smaller">올바른 비밀번호를 입력해 주세요.</span> -->
+											<input type="password" class="form-control" id="joinPw" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상" data-src="join" data-act="changePw">
+											<span class="text-danger smaller d-none" id="pwNotice">올바른 비밀번호를 입력해 주세요.</span>
 										</div>
 										<!-- 비밀번호 확인 -->
 										<div class="mb-2">
 											<label class="form-label" for="joinPwCheck">비밀번호 확인 <span class="text-danger">*</span></label>
-											<input type="password" class="form-control" id="joinPwCheck" placeholder="비밀번호를 다시 입력해 주세요.">
-											<span class="text-danger smaller" hidden>비밀번호가 일치하지 않습니다.</span>
+											<input type="password" class="form-control" id="joinPwCheck" placeholder="비밀번호를 다시 입력해 주세요." data-src="join" data-act="changePwCheck">
+											<span class="text-danger smaller d-none" id="pwChkNotice">비밀번호가 일치하지 않습니다.</span>
 										</div>
 
 										<!-- 업체명 -->
 										<div class="mb-2">
 											<label class="form-label">업체명 <span class="text-danger">*</span></label>
-											<input type="text" class="form-control" id="joinName">
+											<input type="text" class="form-control" id="joinName" placeholder="업체명을 입력해 주세요.">
 										</div>
 
 										<!-- 사업자명 -->
 										<div class="mb-2">
 											<label class="form-label">사업자명 <span class="text-danger">*</span></label> 
-											<input type="text" class="form-control" id="joinBusiness_Name">
+											<input type="text" class="form-control" id="joinBusiness_Name" placeholder="사업자명을 입력해 주세요.">
 										</div>
 
 										<!-- 사업자 등록 번호 -->
 										<div class="mb-2">
 											<label class="form-label">사업자 등록 번호 <span class="text-danger">*</span></label>
-											<input type="text" class="form-control" id="joinBusiness_Number">
+											<input type="text" class="form-control" id="joinBusiness_Number" placeholder="사업자등록번호를 입력해 주세요." data-src="join" data-act="changeBusinessNum" >
 										</div>
 
 										<!-- 업체 연락처 -->
 										<div class="mb-2">
 											<label class="form-label">업체 연락처 <span class="text-danger">*</span></label>
-											<input type="text" class="form-control" id="joinPhone">
+											<input type="text" class="form-control" id="joinPhone" placeholder="업체 연락처를 입력해 주세요." data-src="join" data-act="changePartnerPhone" >
 										</div>
 										<!-- 사업자 연락처 -->
 										<div class="mb-4">
 											<label class="form-label">사업자 연락처 <span class="text-danger">*</span></label>
-											<input type="text" class="form-control" id="joinBusiness_Phone">
+											<input type="text" class="form-control" id="joinBusiness_Phone" data-src="join" data-act="changePhone"  placeholder="사업자 연락처를 입력해 주세요.">
 										</div>
 										<!-- Button -->
 										<div><button type="button" class="btn btn-primary w-100 mb-2" data-src="join" data-act="clickJoin">회원가입</button></div>

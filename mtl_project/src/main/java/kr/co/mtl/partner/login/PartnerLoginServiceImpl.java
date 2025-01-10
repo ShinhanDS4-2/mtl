@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,27 +44,19 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         Map<String, Object> result = new HashMap<>();
 
         HttpSession session = request.getSession();
-//        session.setMaxInactiveInterval(-1);
+        session.setMaxInactiveInterval(-1);
         
         // 사용자 인증
         Map<String, Object> partner = partnerMapper.getUserCheck(param);
 
-        // 사용자 존재 여부 확인
-//        if (user == null) {
-//        	return result;
-//        }
-
         /**
-         * TODO
          * 로그인 성공 후 세션 처리
          * 세션에다가 가져온 유저 정보 넣기
          */
-        //
         if(partner == null) {
         	result.put("code", Code.LOGIN_ERROR.code);
         	return result;
         }
-        
         
         // 로그인 성공 세션 처리
         session.setAttribute("login_partner_idx", partner.get("partner_idx"));	//세션에 사용자 정보 저장
@@ -97,7 +90,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         return result;
     }
     
-    
     /**
      * 사용자 회원가입
      * @param param 회원가입 요청 파라미터
@@ -128,7 +120,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         return result;
     }
     
-    
     /**
      * 회원가입 이메일 중복 체크
      */
@@ -144,8 +135,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         int count = partnerMapper.checkEmailDuplication(email);
         return count > 0; // count가 0보다 크면 중복된 이메일
     }
-    
-    
     
     /**
      * MD5 암호화 메서드
@@ -169,20 +158,15 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         }
     }
     
-    
-    
     /**
      * 마이페이지 수정
      */
     @Override
     public boolean updateUserInfo(Map<String, Object> param, HttpSession session) throws Exception {
         int rowsAffected = partnerMapper.updateUser(param);
-        // 1
-        session.setAttribute("login_partner_name", param.get("name"));
 
         return rowsAffected > 0;
     }
-    
     
     /**
      * 현재 비밀번호 확인 + 비밀번호  변경
@@ -220,7 +204,6 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
     	return result;
     }
     
-    
     /**
      * 업체 정보 수정
      */
@@ -230,5 +213,32 @@ public class PartnerLoginServiceImpl implements PartnerLoginService {
         return rowsAffected > 0;
     }
     
-
+    /**
+     * 판매자 정보 가져오기 list admin 사용자 관리에서 사용
+     */
+    @Override
+    public Map<String, Object> getAllPartner(Map<String, Object> param) throws Exception {
+    	
+    	Map<String, Object> result = new HashMap<>();
+    	
+    	result.put("list", partnerMapper.getAllPartner(param));
+    	result.put("totalCnt", partnerMapper.getAllPartnerCnt(param));
+    	
+        return result;
+    }
+    
+    /**
+     * 판매자 정보 가져오기2 admin 사용자 관리에서 사용 views/admin/user/partnerDetail.jsp에서 사용
+     */
+    public Map<String, Object> getPartnerDetail(Map<String, Object> param) throws Exception {
+        return partnerMapper.getPartnerDetail(param);
+    }
+    
+    /**
+     * 판매자 상태 승인
+     */
+    public boolean updateApprovalStatus(Map<String, Object> param) throws Exception {
+    	int rowsAffected = partnerMapper.updateApprovalStatus(param);
+        return rowsAffected > 0;
+    }
 }

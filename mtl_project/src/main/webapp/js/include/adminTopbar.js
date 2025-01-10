@@ -2,6 +2,7 @@ const adminTopbar = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
+		_menuActive();
 		_eventInit();
 	};
 
@@ -49,6 +50,48 @@ const adminTopbar = (function() {
 				});
 			});
 		}
+	};
+	
+	function _menuActive() {
+		let url = window.location.pathname;
+		let path = url.replace("/mtl/admin/", "");
+		let index = path.indexOf("/");
+		if (index == -1) {
+			index = path.length;
+		};
+		let prePath = path.substring(0, index);
+		
+		let link = "";
+		
+		switch (prePath) {
+			case "user":
+			case "partner":
+				link = "#collapsemember";
+		    	break;
+			case "accomodation":
+			case "partner":
+				link = "#collapsehotel";
+		    	break;
+		    case "payout":
+		    	link = "#collapsepayment";
+		    	break;
+		    case "location":
+		    	link = "#collapsetravel";
+		    	break;
+		    case "question":
+		    case "faq":
+		    case "notice":
+		    	link = "#customerInquiry";
+		    	break;
+		  	default:
+		    	break;
+		};
+		
+		if (prePath != "dashbord") {
+			$(link + " a[href='" + url + "']").addClass("active");
+			$(link).addClass("show");
+			$(link).siblings("a").attr("aria-expanded", true);
+		};
 	};
 	
 	return {

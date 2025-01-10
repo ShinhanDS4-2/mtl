@@ -1,45 +1,70 @@
-const notice = (function() {
+const userNotice = (function () {
+    function init() {
+        loadNotices(); // 첫 페이지 로드
+    }
 
-	// js 로딩 시 이벤트 초기화 실행
-	function init() {
-		_menuActive();
-		_eventInit();
-	};
+    // 공지사항 데이터 로드
+    function loadNotices(curPage = 1) {
+        const data = { }; // 페이지당 10개
 
-	// 이벤트 초기화 
-	function _eventInit() {
-		let evo = $("[data-src='notice'][data-act]").off();
-		evo.on("click", function(e) {
-			_eventAction(e);
-		});
-	};
-	
-	// 이벤트 분기
-	function _eventAction(e) {
-		let evo = $(e.currentTarget);
-		
-		let action = evo.attr("data-act");
-		
-		let type = e.type;
-		
-		if(type == "click") {
-			if(action == "") {
-			
-			};
+		// 페이징
+		let pageOption = {
+			limit: 10
 		};
-	};
-	
-	// 이벤트
-	let _event = {
-	
-	};
-	
-	// 메뉴 active
-	function _menuActive() {
-		$("#serviceNotice").addClass("active");
-	};
-	
-	return {
-		init,
-	};
+		
+		let page = $("#pagination").customPaging(pageOption, function(_curPage){
+			loadNotices(_curPage);
+		});
+		
+		let pageParam = page.getParam(curPage);
+		
+		if(pageParam) {
+			data.offset = pageParam.offset;
+			data.limit = pageParam.limit;
+		};
+		// 페이징 끝
+
+        $.ajax({
+            url: "/mtl/api/notice/user/list",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+            console.log(response);
+                if (response) {
+                    renderNotices(response.list);
+                    page.drawPage(response.totalCnt);
+                }
+            },
+            error: function (err) {
+                console.error("공지사항 조회 오류:", err);
+                alert("공지사항 조회 중 오류가 발생했습니다.");
+            }
+        });
+    }
+
+    // 공지사항 목록 렌더링
+    function renderNotices(notices) {
+        const noticeList = $("#noticeList");
+        noticeList.empty();
+
+        notices.forEach(notice => {
+            const row = $(`
+                <tr>
+					<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal">${notice.title}</a></h6> </td>
+					<td class="text-end"> <small class="mb-0 fw-light text-secondary">${notice.create_date_format}</small> </td>
+				</tr>
+            `);
+            noticeList.append(row);
+        });
+    }
+
+    // 공지사항 상세 모달 열기
+    function openNoticeModal(title, content) {
+        $("#modalTitle").text(title);
+        $("#modalContent").text(content);
+        $("#noticeModal").modal("show");
+    }
+
+    return { init, };
 })();

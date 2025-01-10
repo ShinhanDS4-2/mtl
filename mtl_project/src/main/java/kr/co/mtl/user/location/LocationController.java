@@ -42,7 +42,7 @@ public class LocationController {
 		Map<String, Object> result = new HashMap<>();
 		result = locationService.getLocationDetail(param);
 		return result;
-	}
+	} 
 	
 	/**
 	 * 랜덤 여행지 리스트
@@ -58,6 +58,7 @@ public class LocationController {
 		
 		return result;
 	}
+
 
 	/**
 	 * 여행지 추천 리스트

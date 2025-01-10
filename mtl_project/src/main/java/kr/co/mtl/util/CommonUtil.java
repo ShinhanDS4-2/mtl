@@ -1,5 +1,7 @@
 package kr.co.mtl.util;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 /**
@@ -27,13 +29,13 @@ public class CommonUtil {
 		}
 	}
 	
-	/**
+	/** 
 	 * 랜덤 문자열 생성
 	 * @param len
 	 * @return 랜덤 문자열
 	 * @throws Exception
 	 */
-	public static String makeRandStr(int len) throws Exception {
+	public static String makeRandStr(int len) {
 		if (len > 0) {
 			StringBuffer sb = new StringBuffer(len);
 			
@@ -60,4 +62,26 @@ public class CommonUtil {
 			return "";
 		}
 	}
+	
+	/**
+	 * MD5 함수
+	 * @param input
+	 * @return
+	 */
+	public static String encryptMD5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(input.getBytes());
+            byte[] digest = md.digest();
+
+            // 바이트 배열을 16진수 문자열로 변환
+            StringBuilder sb = new StringBuilder();
+            for (byte b : digest) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("MD5 암호화 중 오류 발생", e);
+        }
+    }
 }

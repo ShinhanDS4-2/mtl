@@ -2,8 +2,6 @@ package kr.co.mtl.admin.login;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,27 +41,19 @@ public class AdminLoginServiceImpl implements AdminLoginService {
         Map<String, Object> result = new HashMap<>();
 
         HttpSession session = request.getSession();
-//        session.setMaxInactiveInterval(-1);
+        session.setMaxInactiveInterval(-1);
         
         // 사용자 인증
         Map<String, Object> admin = adminMapper.getUserCheck(param);
 
-        // 사용자 존재 여부 확인
-//        if (user == null) {
-//        	return result;
-//        }
-
         /**
-         * TODO
          * 로그인 성공 후 세션 처리
          * 세션에다가 가져온 유저 정보 넣기
          */
-        //
         if(admin == null) {
         	result.put("code", Code.LOGIN_ERROR.code);
         	return result;
         }
-        
         
         // 로그인 성공 세션 처리
         session.setAttribute("login_admin_idx", admin.get("admin_idx"));	//세션에 사용자 정보 저장
@@ -97,7 +87,6 @@ public class AdminLoginServiceImpl implements AdminLoginService {
         return result;
     }
     
-    
     /**
      * 관리자 회원가입
      * @param param 회원가입 요청 파라미터
@@ -128,7 +117,6 @@ public class AdminLoginServiceImpl implements AdminLoginService {
         return result;
     }
     
-    
     /**
      * 관리자 등록 이메일 중복 체크
      */
@@ -144,8 +132,6 @@ public class AdminLoginServiceImpl implements AdminLoginService {
         int count = adminMapper.checkEmailDuplication(admin_email);
         return count > 0; // count가 0보다 크면 중복된 이메일
     }
-    
-    
     
     /**
      * MD5 암호화 메서드
@@ -169,8 +155,6 @@ public class AdminLoginServiceImpl implements AdminLoginService {
         }
     }
     
-    
-    
     /**
      * 마이페이지 수정
      */
@@ -182,7 +166,6 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 
         return rowsAffected > 0;
     }
-    
     
     /**
      * 현재 비밀번호 확인 + 비밀번호  변경
@@ -219,7 +202,4 @@ public class AdminLoginServiceImpl implements AdminLoginService {
     	
     	return result;
     }
-    
-    
-
 }

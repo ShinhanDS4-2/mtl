@@ -105,21 +105,21 @@
 											<label for="placeName" class="form-label fw-bold">기존
 												비밀번호 <span class="text-danger">*</span>
 											</label>
-											<input id="admin_password" type="text" class="form-control" id="placeName" placeholder="기존 비밀번호를 입력해 주세요.">
+											<input id="admin_password" type="password" class="form-control" id="placeName" placeholder="기존 비밀번호를 입력해 주세요.">
 										</div>
 										<!-- 새 비밀번호 -->
 										<div class="mb-3">
 											<label for="placeName" class="form-label fw-bold">새
 												비밀번호 <span class="text-danger">*</span>
 											</label>
-											<input id="newPassword" type="text" class="form-control" id="pwd" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상.">
+											<input id="newPassword" type="password" class="form-control" id="pwd" placeholder="영문, 숫자, 특수문자를 조합하여 최소 8자리 이상.">
 										</div>
 										<!-- 새 비밀번호 확인 -->
 										<div class="mb-3">
 											<label for="placeName" class="form-label fw-bold">새
 												비밀번호 확인 <span class="text-danger">*</span>
 											</label>
-											<input id="confirmPassword" type="text" class="form-control" id="pwd" placeholder="새 비밀번호를 다시 입력해 주세요.">
+											<input id="confirmPassword" type="password" class="form-control" id="pwd" placeholder="새 비밀번호를 다시 입력해 주세요.">
 										</div>
 									</form>
 								</div>

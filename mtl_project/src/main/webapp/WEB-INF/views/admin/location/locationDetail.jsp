@@ -1,500 +1,388 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<title>떠날지도 - 관리자</title>
-	<!-- headerScript -->
-	<%@ include file="/WEB-INF/views/include/headerScript.jsp" %>
+<title>떠날지도 - 관리자</title>
+<!-- headerScript -->
+<%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
 </head>
 
 <body>
-<main>
-	<!-- Sidebar -->
-	<%@ include file="/WEB-INF/views/include/adminSidebar.jsp"%>
+	<main>
+		<!-- Sidebar -->
+		<%@ include file="/WEB-INF/views/include/adminSidebar.jsp"%>
 
-	<!-- Page content START -->
-	<div class="page-content">
-		<!-- Topbar -->
-		<%@ include file="/WEB-INF/views/include/adminTopbar.jsp" %>
-		<!-- Page main content START -->
-		<div class="page-content-wrapper p-xxl-4">
+		<!-- Page content START -->
+		<div class="page-content">
+			<!-- Topbar -->
+			<%@ include file="/WEB-INF/views/include/adminTopbar.jsp"%>
+			<!-- Page main content START -->  
+			<div class="page-content-wrapper p-xxl-4">
 
-			<!-- Title -->
-			<div class="row">
-				<div class="col-12 mb-3">
-					<h1 class="h3 mb-2">여행지 상세조회</h1>
-					<span>설명설명설명설명설명설명설명설명</span>
+				<!-- Title -->
+				<div class="row">
+					<div class="col-12 mb-3">
+						<h1 class="h3 mb-2">여행지 상세조회</h1>
+						<span>설명설명설명설명설명설명설명설명</span>
+					</div>
+				</div> 
+
+				<!-- Button -->
+				<div class="d-sm-flex justify-content-end align-items-center">
+					<a role="button" class="btn btn-primary-soft text-nowrap mb-0" 
+						data-bs-toggle="modal" data-bs-target="#touristEditModal"
+						data-src="locationDetail" data-act="clickLocationUpdate"> 
+						<i class="bi bi-pencil-square fa-fw"></i>수정하기
+					</a>
+					<a role="button" class="btn btn-danger-soft text-nowrap ms-1 mb-0"
+						data-src="locationDetail" data-act="clickLocationDelete">삭제하기</a>
 				</div>
-			</div>
-
-			<!-- Button -->
-			<div class="d-sm-flex justify-content-end align-items-center">
-				<a role="button" class="btn btn-primary-soft text-nowrap mb-0" data-bs-toggle="modal" data-bs-target="#touristEditModal">
-				<i class="bi bi-pencil-square fa-fw"></i>수정하기</a>
-			</div>
-		
+				
 			<!-- 여행지 수정 Modal START -->
-			<div class="modal fade" id="touristEditModal" tabindex="-1"
-				aria-labelledby="touristEditModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="touristEditModalLabel">여행지 수정</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"
-								aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<form>
-								<!-- 지역 선택 -->
-								<div class="mb-3">
-									<label class="form-label fw-bold">지역 <span
-										class="text-danger">*</span></label>
-									<div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="region"
-												id="regionSeoul" value="서울" checked> <label
-												class="form-check-label" for="regionSeoul">서울</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="region"
-												id="regionGangneung" value="강릉"> <label
-												class="form-check-label" for="regionGangneung">강릉</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="region"
-												id="regionYeosu" value="여수"> <label
-												class="form-check-label" for="regionYeosu">여수</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="region"
-												id="regionBusan" value="부산"> <label
-												class="form-check-label" for="regionBusan">부산</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="region"
-												id="regionJeju" value="제주"> <label
-												class="form-check-label" for="regionJeju">제주</label>
-										</div>
-									</div>
-								</div>
-
-								<!-- 분류 선택 -->
-								<div class="mb-3">
-									<label class="form-label fw-bold">분류 <span
-										class="text-danger">*</span></label>
-									<div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="category"
-												id="categoryTour" value="관광지" checked> <label
-												class="form-check-label" for="categoryTour">관광지</label>
-										</div>
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="category"
-												id="categoryFood" value="맛집"> <label
-												class="form-check-label" for="categoryFood">맛집</label>
+				<div class="modal fade" id="touristEditModal" tabindex="-1"
+					aria-labelledby="touristModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="touristModalLabel">여행지 수정</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close" data-src="locationDetail"
+									data-act="clickLocationCancle"></button>
+							</div> 
+							<div class="modal-body">
+								<form>
+									<!-- 지역 선택 -->
+									<div class="mb-3">
+										<label class="form-label fw-bold">지역 <span class="text-danger">*</span></label>
+										<div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="areaType"
+													id="regionSeoul" value="SEOUL" checked> <label
+													class="form-check-label" for="regionSeoul">서울</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="areaType"
+													id="regionGangneung" value="GANGNEUNG"> <label
+													class="form-check-label" for="regionGangneung">강릉</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="areaType"
+													id="regionYeosu" value="YEOSU"> <label
+													class="form-check-label" for="regionYeosu">여수</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="areaType"
+													id="regionBusan" value="BUSAN"> <label
+													class="form-check-label" for="regionBusan">부산</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="areaType"
+													id="regionJeju" value="JEJU"> <label
+													class="form-check-label" for="regionJeju">제주</label>
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<!-- 장소명 입력 -->
-								<div class="mb-3">
-									<label for="placeName" class="form-label fw-bold">장소명
-										<span class="text-danger">*</span>
-									</label> <input type="text" class="form-control" id="placeName"
-										placeholder="장소명을 입력해 주세요.">
-								</div>
-
-								<!-- 주소 입력 -->
-								<div class="mb-3">
-									<label class="form-label fw-bold">주소 <span
-										class="text-danger">*</span></label> <input type="text"
-										class="form-control mb-2" placeholder="주소"> <input
-										type="text" class="form-control" placeholder="상세주소">
-								</div>
-
-								<!-- 상세정보 입력 -->
-								<div class="mb-3">
-									<label for="details" class="form-label fw-bold">상세정보 <span
-										class="text-danger">*</span></label>
-									<textarea class="form-control" id="details" rows="3"
-										placeholder="상세정보를 입력해 주세요."></textarea>
-								</div>
-
-								<!-- 키워드 선택 드롭다운-->
-								<div class="mb-3">
-									<label for="keyword" class="form-label fw-bold">키워드 <span
-										class="text-danger">*</span></label>
-									<div class="col-3 mb-1">
-										<form class="col-3">
-											<select id="keyword" class="form-select js-choice"
-												aria-label=".form-select-sm">
-												<option value="">선택</option>
-												<option value="가족여행">가족여행</option>
-												<option value="함께걷기">함께걷기</option>
-												<option value="데이트코스">데이트코스</option>
-												<option value="생태관광지">생태관광지</option>
-											</select>
-										</form>
+									<!-- 분류 선택 -->
+									<div class="mb-3">
+										<label class="form-label fw-bold">분류 <span
+											class="text-danger">*</span></label>
+										<div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio"
+													name="locationType" id="attraction" value="A" checked>
+												<label class="form-check-label" for="attraction">관광지</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio"
+													name="locationType" id="restaurant" value="R"> <label
+													class="form-check-label" for=""restaurant"">맛집</label>
+											</div>
+										</div>
 									</div>
-									<div>
-										<span class="tag">#가족여행
-											<button class="btn-close btn-sm"></button>
-										</span> <span class="tag">#함께걷기
-											<button class="btn-close btn-sm"></button>
-										</span>
+   
+									<!-- 장소명 입력 -->
+									<div class="mb-3">
+										<label for="placeName" class="form-label fw-bold">장소명
+											<span class="text-danger">*</span>
+										</label> <input type="text" class="form-control" id="placeName"
+											placeholder="장소명을 입력해 주세요.">
 									</div>
-								</div>
-								<!-- 이미지 업로드 -->
-								<div class="mb-3">
-									<label class="form-label fw-bold d-block">이미지 <span
-										class="text-danger">*</span></label>
-									<!-- 숙소 사진 등록 Card Start -->
-									<div class="card border mb-3">
-										<div class="card-body">
-											<!-- 사진 리스트 -->
-											<div class="d-flex gap-3">
-												<!-- 이미지 1 -->
-												<div class="position-relative">
-													<img src="https://via.placeholder.com/150" alt="사진 1"
-														class="rounded border"
-														style="width: 150px; height: 100px; object-fit: cover;">
-												</div>
-												<!-- 이미지 2 -->
-												<div class="position-relative">
-													<img src="https://via.placeholder.com/150" alt="사진 2"
-														class="rounded border"
-														style="width: 150px; height: 100px; object-fit: cover;">
-												</div>
-												<!-- 이미지 3 -->
-												<div class="position-relative">
-													<img src="https://via.placeholder.com/150" alt="사진 3"
-														class="rounded border"
-														style="width: 150px; height: 100px; object-fit: cover;">
-												</div>
-												<!-- 업로드 버튼 -->
-												<div
-													class="border rounded d-flex justify-content-center align-items-center"
-													style="width: 150px; height: 100px; background-color: #f8f9fa;">
-													<label class="text-center" style="cursor: pointer;">
-														<i class="bi bi-upload"></i><br>사진 업로드 <input
-														type="file" class="d-none">
-													</label>
+
+									<!-- 주소 입력 -->
+									<div class="mb-3">
+										<label class="form-label fw-bold">주소 <span
+											class="text-danger">*</span></label>
+										<div class="row">
+											<div class="col-10">
+												<input type="text" class="form-control" id="address"
+													data-src="locationDetail" data-act="clickAddress"> <input
+													type="hidden" class="form-control" id="addressSi">
+												<input type="hidden" class="form-control" id="addressDong">
+											</div>
+											<div class="col-2">
+												<div class="d-grid gap-2">
+													<input class="btn btn-primary-soft" type="button"
+														id="findAddress" data-src="locationDetail"
+														data-act="findAddress" value="주소 찾기">
 												</div>
 											</div>
 										</div>
 									</div>
-									<!-- 숙소 사진 등록 Card END -->
-								</div>
-							</form>
-						</div>
-						<!-- 확인/취소 button -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-bs-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-primary">확인</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 여행지 수정 Modal END -->
 
-			<!-- 여행지 상세보기 Crad START -->
-			<div class="card shadow border mt-2 mb-3 p-3">
-				<div class="card-body">
-					<!-- 숙소 detail START -->
-					<div class="row g-4 g-xl-5">
-						<div class="col mb-5">
-							<!-- Crad Title START -->
-							<div class="card bg-light p-0 pb-0 mb-5">
-								<!-- Card body -->
-								<div class="card-body d-flex justify-content-between flex-wrap">
-									<!-- Title and badge -->
-									<div>
-										<!-- Badge -->
-										<div class="badge text-bg-dark"><i
-												class="fa-solid fa-spa fa-fw text-warning"></i> Spa</div>
-										<div class="badge text-bg-dark"><i
-												class="bi bi-scissors fa-fw text-warning"></i> Salon</div>
-										<div class="badge text-bg-dark"><i
-												class="fas fa-star fa-fw text-warning"></i> 4.5</div>
-										<!-- Title -->
-										<h1 class="h3 mt-2 mb-1">관광지 스파 Spa</h1>
-										<p class="mb-2 mb-sm-0"><i class="bi bi-geo-alt me-1 text-primary"></i>서울특별시
-											홍대 구로</p>
+									<!-- 상세정보 입력 -->
+									<div class="mb-3">
+										<label for="details" class="form-label fw-bold">상세정보 <span
+											class="text-danger">*</span></label>
+										<textarea class="form-control" id="detailInfo" rows="3"
+											placeholder="상세정보를 입력해 주세요."></textarea>
 									</div>
-								</div>
 
-							</div>
-							<!-- Crad Title END -->
-
-							<!-- Crad 내용 START -->
-							<section class="pt-0">
-								<!-- Tabs contents START -->
-								<div class="tab-content mb-0" id="tour-pills-tabContent">
-
-									<!-- Content item START -->
-									<div class="tab-pane fade show active" id="tab-1" role="tabpanel"
-										aria-labelledby="tab-1">
-										<div class="row g-4 g-lg-5">
-											<!-- Left side START -->
-											<div class="col-lg-7 col-xl-8">
-												<!-- Card START -->
-												<div class="card bg-transparent mb-4">
-													<!-- Card header -->
-													<div class="card-header bg-transparent border-bottom px-0 pt-0">
-														<h4 class="mb-0">설명</h4>
+									<!-- 키워드 선택 체크박스-->
+									<div class="mb-3">
+										<label for="keyword" class="form-label fw-bold">키워드 <span
+											class="text-danger">*</span></label>
+										<div class="mb-1">
+											<div class="row row-cols-4 g-3" id="keywordList">
+												<!-- js -->
+												<div class="col">
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" value=""
+															id="keyword1" checked> <label class="form-check-label"
+															for="keyword1">키워드예시</label>
 													</div>
-													<!-- Card body -->
-													<div class="card-body px-0 pb-0">
-														<p class="mb-3">Demesne far-hearted suppose venture excited
-															see had has. Dependent on so extremely delivered by. Yet
-															no jokes worse her why. <b>Bed one supposing breakfast
-																day fulfilled off depending questions.</b> As it so
-															contrasted oh estimating instrument. Size like body some
-															one had. Are conduct viewing boy minutes warrant the
-															expense?
-															Tolerably behavior may admit daughters offending her ask
-															own. Praise effect wishes change way and any wanted.
-															Lively use looked latter regard had. Do he it part more
-															last in. We understand that theory is important to build
-															a solid foundation, we understand that theory alone
-															isn’t going to
-															get the job done so that’s why this is packed with
-															practical hands-on examples that you can follow step by
-															step.
-														</p>
-
-														<p class="mb-0">Delivered dejection necessary objection
-															do Mr
-															prevailed. Mr feeling does chiefly cordial in do.
-															Water
-															timed folly right aware if oh truth. Large above be
-															to
-															means. Dashwood does provide stronger is.</p>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" value=""
+															id="keyword2"> <label class="form-check-label"
+															for="keyword2">키워드예시</label>
+													</div>
+													<div class="form-check">
+														<!-- name="keywordList" 필수 -->
+														<input class="form-check-input" type="checkbox" value=""
+															id="keyword3"> <label class="form-check-label"
+															for="keyword3">키워드예시</label>
 													</div>
 												</div>
-												<!-- Card END -->
-
-												<!-- Card START -->
-												<div class="card bg-transparent">
-													<!-- Card header -->
-													<div class="card-header bg-transparent border-bottom px-0">
-														<h4 class="mb-0">관광지 이미지</h4>
+												<!-- js -->
+												<div class="col">
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" value=""
+															id="keyword4"> <label class="form-check-label"
+															for="keyword4">키워드예시</label>
 													</div>
-													<!-- Card body -->
-													<div class="card-body px-0 pb-0">
-														<div class="row g-4">
-															<div class="col-md-4">
-																<a class="w-100 h-100" data-glightbox
-																	data-gallery="gallery"
-																	href="assets/images/category/directory/11.jpg">
-																	<div class="card card-element-hover card-overlay-hover overflow-hidden">
-																		<!-- Image -->
-																		<img src="assets/images/category/directory/11.jpg"
-																			class="card-img" alt="">
-																		<!-- Full screen button -->
-																		<div class="hover-element w-100 h-100">
-																			<i
-																				class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-																		</div>
-																	</div>
-																</a>
-															</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" value="keword_idx"
+															id="keyword5"> <label class="form-check-label"
+															for="keyword5">키워드예시</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="checkbox" value=""
+															id="keyword6"> <label class="form-check-label"
+															for="keyword6">키워드예시</label>
+													</div>
+												</div>
 
-															<div class="col-md-4">
-																<a class="w-100 h-100" data-glightbox
-																	data-gallery="gallery"
-																	href="assets/images/category/directory/09.jpg">
-																	<div class="card card-element-hover card-overlay-hover overflow-hidden">
-																		<!-- Image -->
-																		<img src="assets/images/category/directory/09.jpg"
-																			class="card-img" alt="">
-																		<!-- Full screen button -->
-																		<div class="hover-element w-100 h-100">
-																			<i
-																				class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-																		</div>
-																	</div>
-																</a>
-															</div>
+											</div>
+										</div>
+									</div> 
+									<!-- 이미지 업로드 -->
+									<div class="mb-3">
+										<label class="form-label fw-bold d-block">이미지 <span
+											class="text-danger">*</span></label>
+										<!-- 숙소 사진 등록 Card Start -->
+										<div class="card border mb-3 mx-auto">
+										    <div class="card-body"> 
+										        <!-- 사진 리스트 -->   
+										        <div id="imageList" class="d-flex gap-3 flex-wrap">
+										            <!-- 업로드 버튼 -->
+										            <div id="imageUploadButton" class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px; background-color: #f8f9fa;">
+										                <label class="text-center" style="cursor: pointer;">
+										                    <i class="bi bi-upload"></i><br>여행지 사진 업로드
+										                    <input type="file" class="d-none" multiple="multiple" data-src="locationDetail" data-act="changeFile" id="partnerImage">
+										                </label>
+										            </div>
+													<!-- 업로드 버튼 -->
+													
+										            <!-- 사진 미리보기 영역 띄우는 부분 id="preview" -->
+										            <div id="preview" class="d-flex"> </div>
+										            	
+										            <!-- 사진 미리보기 영역 / js에서 반복 -->
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <!-- 사진 미리보기 영역 / js에서 반복 -->
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										            <div class="border rounded d-flex justify-content-center align-items-center"
+										                style="width: 150px; height: 100px;">
+										                <img src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+										            </div> 
+										             
+										        </div>
+										    </div>  
+										</div>
+										<!-- 숙소 사진 등록 Card END -->
+									</div>  
+								</form> 
+							</div>
+							<!-- 확인/취소 button -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal" data-src="locationDetail"
+									data-act="clickLocationCancle">취소</button>
+								<button type="button" class="btn btn-primary"
+									data-src="locationDetail" data-act="clickModalUpdate">확인</button>
+							</div>
+						</div>
+					</div> 
+				</div>
+			<!-- 여행지 수정 Modal END -->
 
-															<div class="col-md-4">
-																<a class="w-100 h-100" data-glightbox
-																	data-gallery="gallery"
-																	href="assets/images/category/directory/03.jpg">
-																	<div class="card card-element-hover card-overlay-hover overflow-hidden">
-																		<!-- Image -->
-																		<img src="assets/images/category/directory/03.jpg"
-																			class="card-img" alt="">
-																		<!-- Full screen button -->
-																		<div class="hover-element w-100 h-100">
-																			<i
-																				class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-																		</div>
-																	</div>
-																</a>
-															</div>
+				<!-- 여행지 상세보기 Card START -->
+				<div class="card shadow border mt-2 mb-3 p-3">
+					<div class="card-body">
+						<!-- 숙소 detail START -->
+						<div class="row g-4 g-xl-5">
+							<div class="col mb-5">
+								<!-- Card Title START -->
+								<div class="card bg-light p-0 pb-0 mb-5">
+									<div class="card-body d-flex justify-content-between flex-wrap">
+										<div>
+											<h1 class="h3 mt-2 mb-1" id="locationName">여행지 이름오는 곳</h1> <!-- js -->
+											<p class="mb-2 mb-sm-0" id="locationAddressSiDong"><i class="bi bi-geo-alt me-1 text-primary"></i> 
+											여행지 주소 시군구동 오는 곳 </p> <!-- js -->
+										</div>
+									</div>
+								</div>
+								<!-- Card Title END -->
 
-															<div class="col-md-4">
-																<a class="w-100 h-100" data-glightbox
-																	data-gallery="gallery"
-																	href="assets/images/category/directory/10.jpg">
-																	<div class="card card-element-hover card-overlay-hover overflow-hidden">
-																		<!-- Image -->
-																		<img src="assets/images/category/directory/10.jpg"
-																			class="card-img" alt="">
-																		<!-- Full screen button -->
-																		<div class="hover-element w-100 h-100">
-																			<i
-																				class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-																		</div>
-																	</div>
-																</a>
-															</div>
+								<!-- Card 내용 START -->
+								<section class="pt-0">
+									<div class="tab-content mb-0" id="tour-pills-tabContent">
+										<div class="tab-pane fade show active" id="tab-1"
+											role="tabpanel" aria-labelledby="tab-1">
+											<div class="row g-4 g-lg-5">
+												<!-- Left side START -->
+												<div class="col-lg-7 col-xl-8">
+													<!-- 설명 Card START -->
+													<div class="card bg-transparent mb-4">
+														<div
+															class="card-header bg-transparent border-bottom px-0 pt-0">
+															<h4 class="mb-0">설명</h4>
+														</div>
+														<div class="card-body px-0 pb-0">
+															<p class="mb-3" id="locationDescription">상세설명 들어올 부분</p> <!-- js -->
+														</div>
+													</div>
 
-															<div class="col-md-4">
-																<a class="w-100 h-100" data-glightbox
-																	data-gallery="gallery"
-																	href="assets/images/category/directory/08.jpg">
-																	<div class="card card-element-hover card-overlay-hover overflow-hidden">
-																		<!-- Image -->
-																		<img src="assets/images/category/directory/08.jpg"
-																			class="card-img" alt="">
-																		<!-- Full screen button -->
-																		<div class="hover-element w-100 h-100">
-																			<i
-																				class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+													<!-- 관광지 이미지 Card START -->
+													<div class="card bg-transparent">
+														<div class="card-header bg-transparent border-bottom px-0">
+															<h4 class="mb-0">관광지 이미지</h4>
+														</div>
+														<div class="card-body px-0 pb-0">
+															<div class="row g-4" id="locationImgList">
+																<!-- 이미지 1장 데이터 / js반복돌려야함 -->
+																<div class="col-md-4">
+																	<a class="w-100 h-100" data-glightbox data-gallery="gallery"
+																		href="assets/images/category/directory/03.jpg">
+																		<div class="card card-element-hover card-overlay-hover overflow-hidden">
+																			<img src="assets/images/category/directory/03.jpg" class="card-img" alt="">
+																			<div class="hover-element w-100 h-100">
+																				<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
+																			</div>
 																		</div>
-																	</div>
-																</a>
-															</div>
-
-															<div class="col-md-4">
-																<a class="w-100 h-100" data-glightbox
-																	data-gallery="gallery"
-																	href="assets/images/category/directory/07.jpg">
-																	<div class="card card-element-hover card-overlay-hover overflow-hidden">
-																		<!-- Image -->
-																		<img src="assets/images/category/directory/07.jpg"
-																			class="card-img" alt="">
-																		<!-- Full screen button -->
-																		<div class="hover-element w-100 h-100">
-																			<i
-																				class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-																		</div>
-																	</div>
-																</a>
+																	</a>
+																</div>
+																<!-- 이미지 1장 데이터 / js반복돌려야함 -->
 															</div>
 														</div>
 													</div>
 												</div>
-												<!-- Card END -->
-											</div>
-											<!-- Left side END -->
 
-											<!-- Right side START -->
-											<div class="col-lg-5 col-xl-4">
-												<!-- 정보 Card START -->
-												<div class="card shadow mb-4">
-													<!-- Card header -->
-													<div class="card-header border-bottom">
-														<h5 class="mb-0">정보</h5>
-													</div>
+												<!-- Right side START -->
+												<div class="col-lg-5 col-xl-4">
+													<!-- 정보 Card START -->
+													<div class="card shadow mb-4">
+														<div class="card-header border-bottom">
+															<h5 class="mb-0">정보</h5>
+														</div>
+														<div class="card-body">
+															<ul class="list-group list-group-borderless mb-0">
+																<li class="list-group-item d-flex justify-content-between">
+																	<span>지역</span> 
+																	<span id="locationArea">서울/강릉/여수/부산/제주 택1 js에서 출력</span><!-- js -->
+																</li>
+																<li class="list-group-item py-0"><hr class="my-1"></li>
+																<li class="list-group-item d-flex justify-content-between">
+																	<span>분류</span> 
+																	<span id="locationType">관광지/맛집 택1 js에서 출력</span><!-- js -->
+																</li>
+																<li class="list-group-item py-0"><hr class="my-1"></li>
+																<li class="list-group-item d-flex justify-content-between">
+																	<span>키워드</span> 
+																	<span id="locationKeword">#가족여행 #호캉스 #000 ... </span><!-- js -->
+																</li>
+															</ul>
+														</div>
+													</div> 
 
-													<!-- Card body -->
-													<div class="card-body">
-														<ul class="list-group list-group-borderless mb-0">
-															<li
-																class="list-group-item d-flex justify-content-between">
-																<span>지역</span>
-																<span>서울/강릉/여수/부산/제주 택1</span>
-															</li>
-
-															<li class="list-group-item py-0">
-																<hr class="my-1">
-															</li>
-
-															<li
-																class="list-group-item d-flex justify-content-between">
-																<span>분류</span>
-																<span>관광지/맛집 택1</span>
-															</li>
-
-															<li class="list-group-item py-0">
-																<hr class="my-1">
-															</li>
-
-															<li
-																class="list-group-item d-flex justify-content-between">
-																<span>키워드</span>
-																<span>#가족여행 #호캉스 #000 ... </span>
-															</li>
-
-															<li class="list-group-item py-0">
-																<hr class="my-1">
-															</li>
-														</ul>
-													</div>
+													<!-- 위치 Card START -->
+													<div class="card shadow mb-1">
+														<div class="card-header border-bottom">
+															<h5 class="mb-0">위치</h5>
+														</div> 
+														<div class="card-body">
+															<!-- 지도 --> 
+															<div class="w-200px h-400px" id="map"></div>
+															<p class="list-group list-group-borderless my-3">
+																<span class="h6 fw-normal mb-0 mt-1" id="locationAddress"><!-- js -->							
+																<i class="bi fa-fw bi-geo-alt me-2"></i>js로 주소 입력해주는 곳!!</span> 
+															</p> 
+														</div>
+													</div>   
 												</div>
-												<!-- 정보 Card END -->
-
-												<!-- 위치 Card START -->
-												<div class="card shadow mb-4">
-													<!-- Card header -->
-													<div class="card-header border-bottom">
-														<h5 class="mb-0">위치</h5>
-													</div>
-
-													<!-- Card body -->
-													<div class="card-body">
-														<!-- Map START -->
-														<iframe class="w-100 grayscale rounded"
-															src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin"
-															height="200" style="border:0;" aria-hidden="false" tabindex="0"></iframe>
-
-														<!-- Info -->
-														<ul class="list-group list-group-borderless my-3">
-															<!-- Address -->
-															<li class="list-group-item">
-																<a href="#" class="h6 fw-normal mb-0"><i class="bi fa-fw bi-geo-alt me-2"></i>5855 서울특별시 홍대연남동</a>
-															</li>
-															<!-- Call no -->
-															<li class="list-group-item">
-																<a href="#" class="h6 fw-normal mb-0"><i class="bi fa-fw bi-telephone-forward me-2"></i>+31 123 456 789</a>
-															</li>
-															<!-- Email -->
-															<li class="list-group-item">
-																<a href="#" class="h6 fw-normal mb-0"><i class="bi fa-fw bi-envelope me-2"></i>example@gmail.com </a>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<!-- 위치 Card END -->
 											</div>
-											<!-- Right side END -->
 										</div>
-									</div>
-									<!-- Content item END -->
-
-								</div>
-								<!-- Tabs contents END -->
-
-							</section>
-							<!-- Crad 내용 END -->
+									</div> 
+								</section>
+								<!-- Card 내용 END -->
+							</div>
 						</div>
 					</div>
 				</div>
+				<!-- 여행지 상세보기 Card END -->
+
 			</div>
 		</div>
-	</div>
-	<!-- Page main content END -->
-	</div>
+		<!-- Page main content END -->
+		</div>
 
-</main>
+	</main>
 
 	<!-- footerScript -->
-	<%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
+	<%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
+	<script src="js/admin/location/locationDetail.js"></script>
+	<script type="text/javascript">
+		locationDetail.init();
+	</script>
 
 </body>
 </html>

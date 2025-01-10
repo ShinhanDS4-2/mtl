@@ -7,11 +7,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.mtl.user.review.ReviewMapper;
+
 @Service
 public class PartnerServiceImpl implements PartnerService {
 
 	@Autowired
 	private PartnerMapper partnerMapper;
+	
+	@Autowired
+	private ReviewMapper reviewMapper;
 
 	/**
 	 * 인기 숙소 리스트
@@ -79,6 +84,9 @@ public class PartnerServiceImpl implements PartnerService {
 		data.put("commonFacilitiesList", partnerMapper.getPartnerFacilities(param));	// 공통시설
 		data.put("roomFacilitiesList", partnerMapper.getPartnerRoomFacilities(param));	// 객실시설
 		data.put("noticeList", partnerMapper.getPartnerNoticeList(param));				// 이용안내
+		
+		// 평점
+		data.put("score", reviewMapper.getReviewScore(param));
 		
 		result.put("data", data);
 		

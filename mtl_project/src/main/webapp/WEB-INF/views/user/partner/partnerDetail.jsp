@@ -217,167 +217,14 @@
 						</div>
 
 						<!-- Card body START -->
-						<div class="card-body pt-4 p-0">
-							<!-- Progress bar and rating START -->
-							<div class="card bg-light p-4 mb-4">
-								<div class="row g-4 align-items-center">
-									<!-- Rating info -->
-									<div class="col-md-4">
-										<div class="text-center">
-											<!-- Info -->
-											<h2 class="mb-0">4.5</h2>
-											<!-- Star -->
-											<ul class="list-inline mb-0">
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
-												<li class="list-inline-item me-0"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
-											</ul>
-										</div>
-									</div>
-
-									<!-- Progress-bar START -->
-									<div class="col-md-8">
-										<div class="card-body p-0">
-											<div class="row gx-3 g-2 align-items-center">
-												<!-- Progress bar and Rating -->
-												<div class="col-9 col-sm-10">
-													<!-- Progress item -->
-													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-														</div>
-													</div>
-												</div>
-												<!-- Percentage -->
-												<div class="col-3 col-sm-2 text-end">
-													<span class="h6 fw-light mb-0">85%</span>
-												</div>
-
-												<!-- Progress bar and Rating -->
-												<div class="col-9 col-sm-10">
-													<!-- Progress item -->
-													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-														</div>
-													</div>
-												</div>
-												<!-- Percentage -->
-												<div class="col-3 col-sm-2 text-end">
-													<span class="h6 fw-light mb-0">75%</span>
-												</div>
-
-												<!-- Progress bar and Rating -->
-												<div class="col-9 col-sm-10">
-													<!-- Progress item -->
-													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-														</div>
-													</div>
-												</div>
-												<!-- Percentage -->
-												<div class="col-3 col-sm-2 text-end">
-													<span class="h6 fw-light mb-0">60%</span>
-												</div>
-
-												<!-- Progress bar and Rating -->
-												<div class="col-9 col-sm-10">
-													<!-- Progress item -->
-													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-														</div>
-													</div>
-												</div>
-												<!-- Percentage -->
-												<div class="col-3 col-sm-2 text-end">
-													<span class="h6 fw-light mb-0">15%</span>
-												</div>
-											</div> <!-- Row END -->
-										</div>
-									</div>
-									<!-- Progress-bar END -->
-
-								</div>
-							</div>
-							<!-- Progress bar and rating END -->
-
+						<div class="card-body pt-2 p-0">
 							<!-- Review item START -->
-							<div class="d-md-flex my-4">
-								<!-- Text -->
-								<div>
-									<div class="d-flex justify-content-between mt-1 mt-md-0">
-										<div>
-											<h6 class="me-3 mb-0"><i class="fa-solid fa-user-pen"></i> Jacqueline Miller</h6>
-											<!-- Info -->
-											<ul class="nav nav-divider small mb-2">
-												<li class="nav-item">Stayed 13 Nov 2022</li>
-												<li class="nav-item">4 Reviews written</li>
-											</ul>
-										</div>
-										<!-- Review star -->
-										<div class="icon-md rounded text-bg-warning fs-6">4.5</div>
-									</div>
-									
-									<p class="mb-2">Handsome met debating sir dwelling age material. As style lived he worse dried. Offered related so visitors we private removed. Moderate do subjects to distance. </p>
-									
-									<!-- Images -->
-									<div class="row g-4">
-										<div class="col-4 col-sm-3 col-lg-2">
-											<img src="assets/images/category/hotel/4by3/07.jpg" class="rounded" alt="">
-										</div>
-										<div class="col-4 col-sm-3 col-lg-2">
-											<img src="assets/images/category/hotel/4by3/08.jpg" class="rounded" alt="">
-										</div>
-										<div class="col-4 col-sm-3 col-lg-2">
-											<img src="assets/images/category/hotel/4by3/05.jpg" class="rounded" alt="">
-										</div>
-									</div>
-								</div>
+							<div id="reviewList">
 							</div>
-
-							<!-- Child review START -->
-							<div class="my-4">
-								<div class="d-md-flex p-3 bg-light rounded-3">
-									<div class="mt-2 mt-md-0">
-										<h6 class="mb-1"><i class="fa-solid fa-hotel"></i> Manager</h6>
-										<p class="mb-0">But discretion frequently sir she instruments unaffected admiration everything. </p>
-									</div>
-								</div>
-							</div>
-							<!-- Child review END -->
-
-							<!-- Divider -->
-							<hr>
-							<!-- Review item END -->
-
-							<!-- Review item START -->
-							<div class="d-md-flex my-4">
-								<!-- Text -->
-								<div>
-									<div class="d-flex justify-content-between mt-1 mt-md-0">
-										<div>
-											<h6 class="me-3 mb-0"><i class="fa-solid fa-user-pen"></i> Dennis Barrett</h6>
-											<!-- Info -->
-											<ul class="nav nav-divider small mb-2">
-												<li class="nav-item">Stayed 02 Nov 2022</li>
-												<li class="nav-item">2 Reviews written</li>
-											</ul>
-										</div>
-										<!-- Review star -->
-										<div class="icon-md rounded text-bg-warning fs-6">4.0</div>
-									</div>
-									
-									<p class="mb-0">Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. Water timed folly right aware if oh truth. Large above be to means. Dashwood does provide stronger is.</p>
-								</div>
-							</div>
-
-							<!-- Divider -->
-							<hr>
-							<!-- Review item END -->
 
 							<!-- Button -->
 							<div class="text-center">
-								<a href="#" class="btn btn-primary-soft mb-0">Load more</a>
+								<a href="javascript:;" class="btn btn-primary-soft mb-0" data-src="partnerDetail" data-act="clickMore" id="moreBtn">더보기</a>
 							</div>
 						</div>
 						<!-- Card body END -->
@@ -412,7 +259,7 @@
 							</div>
 						</div>	
 						<div class="d-grid gap-2">
-							<button class="btn btn-primary-soft" type="button" data-bs-toggle="modal" data-bs-target="#qnaModal">문의하기</button>
+							<button class="btn btn-primary-soft" type="button" data-bs-toggle="modal" data-bs-target="#qnaModal"  data-src="partnerDetail" data-act="clickQnaModal">문의하기</button>
 						</div>	
 					</div>
 				</div>	
@@ -510,10 +357,10 @@ About hotel END -->
 							<label for ="qnaTitle">제목</label>
 						</div>
 						<div class="d-flex mt-1">
-							<textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false"></textarea>
+							<textarea class="form-control mb-0" placeholder="질문을 작성해 주세요." rows="5" spellcheck="false" id="qnaContent"></textarea>
 						</div>
 						<div class="d-grid gap-2 mt-3">
-							<button class="btn btn-sm btn-primary-soft px-4 mb-0 flex-shrink-0"><i class="fas fa-paper-plane fs-5"></i></button>
+							<button class="btn btn-sm btn-primary-soft px-4 mb-0 flex-shrink-0" data-src="partnerDetail" data-act="clickQuestion"><i class="fas fa-paper-plane"></i> 전송</button>
 						</div>
 					</div>
 				</div>
