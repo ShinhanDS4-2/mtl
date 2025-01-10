@@ -70,11 +70,8 @@ public class EmailServiceImpl implements EmailService {
 		vo.setEmail((String) param.get("email"));
 		vo.setContent(template.getContent());
 		
-		if(mailService.sendMail(vo)) {
-			result.put("result", true);
-		} else {
-			throw new Exception();
-		}
+		mailService.sendMail(vo);
+		result.put("result", true);
 		
 		return result;
 	};
@@ -99,11 +96,8 @@ public class EmailServiceImpl implements EmailService {
 		vo.setEmail((String) param.get("email"));
 		vo.setContent(template.getContent());
 		
-		if(mailService.sendMail(vo)) {
-			result.put("result", true);
-		} else {
-			throw new Exception();
-		}
+		mailService.sendMail(vo);
+		result.put("result", true);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("auth_email", (String) param.get("email"));

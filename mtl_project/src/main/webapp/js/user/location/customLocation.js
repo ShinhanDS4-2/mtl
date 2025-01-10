@@ -4,7 +4,9 @@ const customLocation = (function() {
 	function init() {
 		_checkData();
 		_setKeyword();
+		$("#keywordSelect").removeClass("d-none");
 		_eventInit();
+		
 	};
  
 	// 이벤트 초기화 
@@ -62,16 +64,16 @@ const customLocation = (function() {
 		    	_draw.drawLocation(resp.list);
 		    });
 		    
-			$("#keywordSelect").attr("hidden", true);
-			$("#locationCustom").attr("hidden", false);
+			$("#keywordSelect").addClass("d-none");
+			$("#locationCustom").removeClass("d-none");
 		},
 
 		// 이전으로 클릭
 		clickPrev: function(evo) {
 			$("#keywordList .btn-check").prop("checked", false);
 		
-			$("#keywordSelect").attr("hidden", false);
-			$("#locationCustom").attr("hidden", true);
+			$("#keywordSelect").removeClass("d-none");
+			$("#locationCustom").addClass("d-none");
 		},
 		
 		// 여행지 카드 클릭
@@ -137,8 +139,8 @@ const customLocation = (function() {
 			if (resp.result > 0) {
 				_getCustomLocationList(reservationIdx);
 
-				$("#keywordSelect").attr("hidden", true);
-				$("#locationCustom").attr("hidden", false);
+				$("#keywordSelect").addClass("d-none");
+				$("#locationCustom").removeClass("d-none");
 				$("#saveBtn").attr("hidden", true);
 			};
 		});
@@ -236,6 +238,7 @@ const customLocation = (function() {
 			_draw.drawLocationDetail(list[0]);
 			
 			_eventInit();
+			e.stickyBar();
 		},
 		
 		// 여행지 정보 그리기

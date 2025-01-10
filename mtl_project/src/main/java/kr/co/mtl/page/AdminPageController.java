@@ -107,13 +107,13 @@ public class AdminPageController {
 	// 내 정보 수정
 	@GetMapping("/mypage")
 	public String mypage() {
-		return "admin/otherPages/mypage";
+		return "admin/mypage/mypage";
 	}
 
 	// 로그인
 	@GetMapping("/login")
 	public String login() {
-		return "admin/otherPages/login";
+		return "admin/login";
 	}
 	
 }

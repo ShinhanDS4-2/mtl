@@ -454,7 +454,7 @@ var e = {
               if (ifRtl === 'rtl') {
                   sliderDirection = 'rtl';
               }
-
+              
               var tnsSlider = tns({
                   container: slider,
                   mode: sliderMode,

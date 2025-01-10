@@ -437,7 +437,7 @@ const partnerDetail = (function() {
 				let div = $("<div>");
 				roomImageList.append(div);
 				
-				let img = $("<img>").addClass("rounded-2").attr("src", imageList[0].url);
+				let img = $("<img>").addClass("rounded-2 h-300px w-100").attr("src", imageList[0].url);
 				div.append(img);
 			} else {
 				for (let image of imageList) {
@@ -456,7 +456,7 @@ const partnerDetail = (function() {
 			let firstList = facilitiesList.splice(0, half);
 			let secondList = facilitiesList.splice(-half);
 
-			let first = $("#facilitiesList1");
+			let first = $("#facilitiesList1").empty();
 			for (let facilities of firstList) {
 				let li = $("<li>").addClass("list-group-item d-flex mb-0");
 				first.append(li);
@@ -467,7 +467,7 @@ const partnerDetail = (function() {
 				li.append(span);
 			};
 			
-			let second = $("#facilitiesList2");
+			let second = $("#facilitiesList2").empty();
 			for (let facilities of secondList) {
 				let li = $("<li>").addClass("list-group-item d-flex mb-0");
 				second.append(li);

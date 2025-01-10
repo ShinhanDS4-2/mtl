@@ -8,6 +8,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +18,8 @@ public class MailService {
     private JavaMailSender mailSender;
 
     // 이메일 발송
-    public boolean sendMail(MailVO vo) {
+	@Async
+    public void sendMail(MailVO vo) {
         MimeMessage message = mailSender.createMimeMessage();
         
         try {
@@ -35,10 +37,8 @@ public class MailService {
             messageHelper.setText(vo.getContent(), true);
             mailSender.send(message);
 
-            return true;
         } catch (MessagingException e) {
             e.printStackTrace();
-            return false;
         }
     }
 

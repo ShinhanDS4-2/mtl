@@ -82,7 +82,7 @@
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 
 <!-- page script -->
-<script src="/mtl/js/admin/partnerDetail.js"></script>
+<script src="/mtl/js/admin/user/partnerDetail.js"></script>
 <script type="text/javascript">
 	partnerDetail.init();
 </script>

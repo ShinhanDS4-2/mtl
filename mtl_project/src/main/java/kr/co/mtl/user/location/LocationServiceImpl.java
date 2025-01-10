@@ -134,13 +134,14 @@ public class LocationServiceImpl implements LocationService {
 
 		// 숙소 위도, 경도 확인
 		Map<String, Object> geo = partnrMapper.getPartnerGeo(param);
+		param.put("area", geo.get("area"));
 		geoParam.put("partnerLat", geo.get("latitude"));
 		geoParam.put("partnerLon", geo.get("longitude"));
 
 		List<Map<String, Object>> nearLocationList= new ArrayList<>();
 		
 		// 같은 지역 여행지 위도, 경도
-		List<Map<String, Object>> locationList = locationMapper.getLocationListWithCustom(geo);
+		List<Map<String, Object>> locationList = locationMapper.getLocationListWithCustom(param);
 		for (Map<String, Object> location : locationList) {
 			geoParam.put("locationLat", location.get("latitude"));
 			geoParam.put("locationLon", location.get("longitude"));
@@ -149,7 +150,7 @@ public class LocationServiceImpl implements LocationService {
 			double distance = calculateDistance(geoParam);
 			
 			// 반경 15km 이내 여행지
-			if(distance <= 20) {
+			if(distance <= 15) {
 				nearLocationList.add(location);
 			}
 		}

@@ -146,7 +146,7 @@
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 
 <!-- page script -->
-<script src="/mtl/js/admin/partnerList.js"></script>
+<script src="/mtl/js/admin/user/partnerList.js"></script>
 <script type="text/javascript">
 	partnerList.init();
 </script>

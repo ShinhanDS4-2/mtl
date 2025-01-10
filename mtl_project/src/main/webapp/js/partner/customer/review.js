@@ -117,12 +117,12 @@ const review = (function() {
 			};
 			
 			modal.confirm({
-				"content" : "해당 후기를 숨기시겠습니까?<br>숨겨진 후기는 사용자 페이지에 노출되지 않습니다.",
+				"content" : "해당 후기를 삭제하시겠습니까?<br>삭제된 후기는 사용자 페이지에 노출되지 않습니다.",
 				"confirmCallback" : function() {
 					comm.sendJson(url, data, "POST", function(resp) {
 						if (resp.result == true) {
 							modal.alert({ 
-								"content" : "숨김 처리가 완료되었습니다.",
+								"content" : "삭제 처리가 완료되었습니다.",
 								"confirmCallback" : function() {
 									_event.getReviewList();
 								}
@@ -295,13 +295,13 @@ const review = (function() {
 						"data-review-idx" : data.review_idx
 					});
 					if (data.status == 'Y') {
-						hideBtn.append("<i class='bi bi-trash3 me-1'></i>숨기기");
+						hideBtn.append("<i class='bi bi-trash3 me-1'></i>삭제");
 						hideBtn.attr({
 							"data-src" : "review",
 							"data-act" : "clickHide",
 						});
 					} else {
-						hideBtn.append("<i class='bi bi-trash3 me-1'></i>숨겨진 후기입니다.");
+						hideBtn.append("<i class='bi bi-trash3 me-1'></i>삭제된 후기입니다.");
 					};
 					btnFlex.append(hideBtn);
 

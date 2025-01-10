@@ -148,7 +148,7 @@
 	<%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 	
 	<!-- page script -->
-	<script src="js/admin/mypage.js"></script>
+	<script src="js/admin/mypage/mypage.js"></script>
 	<script type="text/javascript">
 		info.init();
 	</script>

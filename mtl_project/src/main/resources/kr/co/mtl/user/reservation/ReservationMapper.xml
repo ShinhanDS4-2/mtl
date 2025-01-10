@@ -42,6 +42,7 @@
 		ON r.room_idx = r2.idx 
 		WHERE 
 			r.user_idx = #{user_idx}
+		ORDER BY r.reservation_date DESC
 		<if test="limit != null and offset != null">
 			LIMIT ${limit} OFFSET ${offset}
 		</if>

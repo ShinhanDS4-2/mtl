@@ -171,10 +171,18 @@
 		</if>
 		<if test="min_price != null and max_price != null">
 		AND (
-			CASE
-				WHEN WEEKDAY(#{start_date}) IN (0, 1, 2, 3, 4) THEN r.basic_price 
-				WHEN WEEKDAY(#{start_date}) IN (5, 6) THEN r.weekend_price 
-			END) BETWEEN ${min_price} AND ${max_price}
+	        SELECT
+	            MIN(
+	                CASE
+	                    WHEN WEEKDAY(#{start_date}) IN (0, 1, 2, 3, 4) THEN r.basic_price
+	                    WHEN WEEKDAY(#{start_date}) IN (5, 6) THEN r.weekend_price
+	                END
+	            )
+	        FROM
+	            ROOM r
+	        WHERE
+	            r.partner_idx = p.idx
+	    ) BETWEEN ${min_price} AND ${max_price}
 		</if>
 		GROUP BY p.idx 
 	</sql>
