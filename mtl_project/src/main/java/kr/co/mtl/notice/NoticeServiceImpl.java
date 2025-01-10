@@ -58,30 +58,20 @@ public class NoticeServiceImpl implements NoticeService{
     public Map<String, Object> updateNotice(Map<String, Object> param) {
         Map<String, Object> result = new HashMap<>();
 
-        // 데이터 추출
-        String title = (String) param.get("title");
-        String content = (String) param.get("content");
-        String status = (String) param.get("status");
-
-        if (title == null || title.isEmpty()) {
-            result.put("success", false);
-            result.put("message", "공지사항 제목이 필요합니다.");
-            return result;
-        }
-
-        // 데이터베이스 수정 작업
-        int updatedRows = noticeMapper.updateNotice(param);
-
-        if (updatedRows > 0) {
-            result.put("success", true);
-            result.put("message", "공지사항이 수정되었습니다.");
+        int rowsUpdated = noticeMapper.updateNotice(param);  // MyBatis 매퍼 호출
+        
+        if (rowsUpdated > 0) {
+            result.put("result", true);
+            result.put("message", "공지사항이 성공적으로 수정되었습니다.");
+            result.put("updatedRows", rowsUpdated);  // 수정된 행의 개수 추가
         } else {
-            result.put("success", false);
-            result.put("message", "수정할 공지사항이 존재하지 않습니다.");
+            result.put("result", false);
+            result.put("message", "공지사항 수정에 실패했습니다.");
         }
 
         return result;
     }
+
 	//삭제
 	@Override
 	public Map<String, Object> deleteNotice(Map<String, Object> param) {
