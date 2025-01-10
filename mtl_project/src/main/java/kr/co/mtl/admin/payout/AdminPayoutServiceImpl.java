@@ -58,13 +58,13 @@ public class AdminPayoutServiceImpl implements AdminPayoutService {
 	 */
 	@Override
 	public Map<String, Object> updateCalculateStatus(Map<String, Object> param) {
-		System.out.println("param 값은? " + param); 
+		System.out.println("정산상태변경 param 값은? " + param); 
 		Map<String, Object> result = new HashMap<>();	
 		
 		int update = payoutMapper.updateCalculateStatus(param);
 		if(update>=1) {
 			result.put("result", true);
-		} else {
+		} else {   
 			result.put("result", false);
 		}
 		return result;
