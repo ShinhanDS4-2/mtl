@@ -79,7 +79,7 @@ public class AdminLoginController {
     	HttpSession session = request.getSession();
     	
         if (session.getAttribute("login_admin_idx") != null) {
-            session.invalidate(); // 세션 무효화
+        	session.removeAttribute("login_admin_idx"); // 세션 무효화 session.invalidate();는 사용자, 파트너, 관리자 상관없이 다 날리므로 사용하면 안됨
         }
     }
     

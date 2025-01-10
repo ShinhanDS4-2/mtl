@@ -55,7 +55,32 @@
 	</select>
 	
 	<select id="getPartnerDetail">
-		
+		SELECT
+			p.name,
+			p.address,
+			p.description,
+			r.room_type,
+			r.standard,
+			r.maximum,
+			r.basic_price,
+			r.weekend_price
+		FROM
+			PARTNER p
+		LEFT JOIN
+			ROOM r
+		ON 
+			p.idx=r.partner_idx
+		WHERE 
+			p.idx=#{idx}		
+	</select>
+	
+	<select id="getPartnerUrl">
+		SELECT
+			url
+		FROM 
+			IMAGE
+		WHERE
+			mapping_idx=#{idx} AND type='P'
 	</select>
 	
 </mapper>

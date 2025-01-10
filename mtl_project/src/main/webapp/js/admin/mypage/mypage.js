@@ -99,7 +99,7 @@ console.log(1178);
             comm.send("/admin/changePassword", formData, "POST", function(response) {
                 if (response.result) {
                 	modal.alert({ 
-                		"content" : "새 비밀번호와 일치하지 않습니다.",
+                		"content" : "비밀번호 변경이 완료되었습니다.",
                 		"confirmCallback" : function() {
 		                    location.href = "/mtl/admin/mypage";
                 		}

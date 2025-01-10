@@ -213,19 +213,29 @@ const userList = (function() {
 		        return;
 		    }
 
-            // 서버로 데이터 전송
-            comm.send("/admin/join", formData, "POST", function(response) {
-                if (response.code == 200) {
-                    modal.alert({ "content" : "관리자 등록이 완료되었습니다." });
-                    location.reload();
-                } else {
-                    modal.alert({ "content" : "관리자 등록에 실패했습니다. 다시 시도해주세요." });
-                }
-            }, function(error) {
-                modal.alert({ "content" : "오류가 발생하였습니다.<br>다시 시도해주세요." });
-            });
-        },
-        
+            // 확인 버튼 누를때 알림창
+            modal.alert({
+	  			"content" : "관리자를 등록하시겠습니까?",
+				"confirmCallback" : function() {
+					// 서버로 데이터 전송
+		            comm.send("/admin/join", formData, "POST", function(response) {
+		                if (response.code == 200) {
+		                    modal.alert({
+		                    	"content" : "관리자 등록이 완료되었습니다.",
+		                    	"confirmCallback" : function() {
+		                    		location.reload();
+		                    	}
+		                    });
+		                } else {
+		                    modal.alert({ "content" : "관리자 등록에 실패했습니다. 다시 시도해주세요." });
+		                }
+		            }, function(error) {
+		                modal.alert({ "content" : "오류가 발생하였습니다.<br>다시 시도해주세요." });
+		            });
+        		},
+        	});
+        	
+        }
     };
 	
 	return {
