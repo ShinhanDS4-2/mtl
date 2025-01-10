@@ -63,7 +63,7 @@
 
 					<!-- 검색어 드롭다운 -->
 					<div class="col-2">
-						<label class="h6 fw-normal mb-0">검색어</label>
+						<label class="h6 fw-normal mb-0 form-label">검색어</label>
 						<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 							<select class="form-select js-choice" id="searchType">
 								<option value="name">숙소명</option>
