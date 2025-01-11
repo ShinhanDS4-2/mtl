@@ -16,7 +16,7 @@ const reservationList = (function() {
 		});           
 	};                  
 	                 
-	// 이벤트 분기      
+	// 이벤트 분기         
 	function _eventAction(e) {   
 		let evo = $(e.currentTarget);
 		let action = evo.attr("data-act");
@@ -201,14 +201,15 @@ const reservationList = (function() {
 			}
   
 			// 예약내역 리스트 총 갯수
-			let reservationCount = $("#reservationCount").html(`총 ${list.Count}개`);
+			$("#reservationCount").html(`총 ${list.Count}개`);
   
 			// 기간 설정 조건    
-			let searchDateRange = $("#searchDateRange").html(date_value + ` 기준 ${list.Param.date_start} ~ ${list.Param.date_end}`);
-    
+			// $("#searchDateRange").html(date_value + ` 기준 ${list.Param.date_start} ~ ${list.Param.date_end}`);
+			$("#searchDateRange").html(date_value + ` 기준 2025-01-01 ~ 2025-01-03`);
+     
 			// 예약내역 리스트 데이터들을 감싸고 있는 큰 div태그 부분ㄴ
 			let reservationListData = $("#reservationListData");
-			reservationListData.empty();
+			reservationListData.empty();       
 
 			// 예약 내역 리스트 출력
 			for(data of list.List) {

@@ -110,8 +110,8 @@
 			<if test="searchArea != null and searchArea != ''">
 				AND area=#{searchArea}
 			</if>
-			<if test="searchName != null and searchName != ''">
-				AND name=#{searchName}
+			<if test="searchName != null and searchName != ''">    
+				AND name LIKE CONCAT('%', #{searchName},'%')  
 			</if>
 		</where>
 		ORDER BY create_date DESC

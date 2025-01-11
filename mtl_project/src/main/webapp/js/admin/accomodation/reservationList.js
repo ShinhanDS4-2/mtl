@@ -1,9 +1,9 @@
 const reservationList = (function() {  
 	let isSearchClicked = false;  // 검색 버튼 클릭 여부 상태 관리      
 
-	// js 로딩 시 이벤트 초기화 실행                 
+	// js 로딩 시 이벤트 초기화 실행                   
 	function init() {          
-		fetchReservationList();  // 페이지 로드 시 예약내역 전체리스트 조회 
+		fetchReservationList();  // 페이지 로드 시 예약내역 전체리스트 조회    
 		_eventInit();   
 	};           
                           
@@ -14,8 +14,8 @@ const reservationList = (function() {
 			_eventAction(e); 
 		});          
 	};                   
-	           
-	// 이벤트 분기      
+	              
+	// 이벤트 분기            
 	function _eventAction(e) {   
 		let evo = $(e.currentTarget);
 		let action = evo.attr("data-act");
@@ -109,10 +109,10 @@ const reservationList = (function() {
 			console.log("전체 리스트 조회");
 		}
 
-  
+     
 		/* 페이징 START */
 		let pageOption = {
-			limit: 2  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+			limit: 10  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
 		let page = $("#pagination").customPaging(pageOption, function(_curPage){  
@@ -167,7 +167,7 @@ const reservationList = (function() {
 
 			// 예약 내역 리스트 출력
 			for(data of list.List) {
-				// 예약 상태에 따른 버튼 모양 구분
+				// 예약 상태에 따른 버튼 모양 구분   
 				let button = '';  
 				if(data.payment_status == 'P') {   // 결제완료이면
 					button = `<div class="badge bg-success bg-opacity-10 text-success">예약완료</div>`
@@ -181,6 +181,10 @@ const reservationList = (function() {
 							<div class="col">
 								<small class="d-block d-sm-none">숙소명</small>
 								<h6 class="ms-1 mb-0 fw-normal">${data.name}</h6>
+								<a role="button" class="mb-0 fw-normal ms-1 clickDetailModal" data-bs-toggle="modal" data-bs-target="#detailModal"
+										data-src="ReservationList" data-act="clickDetailModal"
+										data-reservation-idx="${data.reservation_idx}">상세보기
+								</a>   
 							</div>  
 							<div class="col">  
 								<small class="d-block d-sm-none">고객 아이디</small>
@@ -192,25 +196,16 @@ const reservationList = (function() {
 							</div>
 							<div class="col">
 								<small class="d-block d-sm-none">판매가</small>
-								<h6 class="ms-1 mb-1 fw-light">${data.price} 원</h6>
+								<h6 class="ms-1 mb-1 fw-light">${comm.numberWithComma(data.price)}원</h6>
 							</div>
 							<div class="col">
 								<small class="d-block d-sm-none">상태</small>`
 								+ button +
-							`</div>
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">     
-									<a role="button" class="btn btn-sm btn-light mb-0 clickDetailModal" data-bs-toggle="modal" data-bs-target="#detailModal"
-										data-src="ReservationList" data-act="clickDetailModal"
-										data-reservation-idx="${data.reservation_idx}">상세보기
-									</a>   
-								</div> 
-							</div>
+							`</div>   
 						</div>`   
 				reservationListData.append(reservData);   
 			}
-			    
+			       
 		},
 
 		// 예약내역 상세보기 모달 그리기
@@ -242,13 +237,13 @@ const reservationList = (function() {
 					</div> 
 						
 					<h6 class="fw-bold">예약 정보</h6>
-					<div class="mb-3 border p-3">
+					<div class="mb-3 border p-3">     
 						<p class="mb-0">예약자명: ${data.user_name}</p>
 						<p class="mb-0">객실타입: ${data.room_type} 트윈</p>    
 						<p class="mb-0">입실일: ${data.check_in_date}</p>       
 						<p class="mb-0">퇴실일: ${data.check_out_date}</p>       
 						<p class="mb-0">예약일: ${data.reservation_date}</p>  
-						<p class="mb-0">금액: ${data.price} 원</p>  
+						<p class="mb-0">금액: ${comm.numberWithComma(data.price)}원</p>  
 					</div>`;
 			modalBody.html(modalData);     
 			// $("#detailModal").modal("show"); // 모달 표시 안해줘도 뜨는데??? 

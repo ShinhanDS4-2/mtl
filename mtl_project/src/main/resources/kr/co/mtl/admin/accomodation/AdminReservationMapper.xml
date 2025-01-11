@@ -55,7 +55,7 @@
 		    
 		     
 	<!-- 예약내역 상세조회 --> 
-	<!-- param : reservation_idx(예약idx 값 받아서 조회)   
+	<!-- param : reservation_idx(예약idx 값 받아서 조회)       
 		  * 단일행 반환 Map 형태로 반환되어야 함.  -->         
 	<select id="getReservationDetail" parameterType="map">
 		SELECT r.idx AS reservation_idx, r.check_in_date, r.check_out_date, DATE_FORMAT(r.reservation_date, '%Y-%m-%d') AS reservation_date, r.payment_status, r.price

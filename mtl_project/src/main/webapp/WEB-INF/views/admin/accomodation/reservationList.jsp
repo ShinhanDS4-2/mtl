@@ -132,10 +132,7 @@
 								</div>
 								<div class="col">
 									<h6 class="mb-0">상태</h6>
-								</div>
-								<div class="col">
-									<h6 class="mb-0"></h6>
-								</div>
+								</div> 
 							</div>
 						</div>
  						<div id="reservationListData">

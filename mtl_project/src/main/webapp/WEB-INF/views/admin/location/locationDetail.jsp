@@ -7,7 +7,7 @@
 <!-- headerScript -->
 <%@ include file="/WEB-INF/views/include/headerScript.jsp"%>
 </head>
-
+  
 <body>
 	<main>
 		<!-- Sidebar -->
@@ -21,10 +21,10 @@
 			<div class="page-content-wrapper p-xxl-4">
 
 				<!-- Title -->
-				<div class="row">
+				<div class="row">   
 					<div class="col-12 mb-3">
 						<h1 class="h3 mb-2">여행지 상세조회</h1>
-						<span>설명설명설명설명설명설명설명설명</span>
+						<span>주요 관광 지역의 여행지와 취향 키워드를 등록/관리합니다. </span>
 					</div>
 				</div> 
 

@@ -16,8 +16,8 @@
 
 		<!-- Sidebar -->
 		<%@ include file="/WEB-INF/views/include/partnerSidebar.jsp"%>
-
-
+   
+   
 		<!-- Page content START -->
 		<div class="page-content">
 
