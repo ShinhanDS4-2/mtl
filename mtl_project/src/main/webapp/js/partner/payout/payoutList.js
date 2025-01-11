@@ -14,8 +14,8 @@ const payout = (function() {
 			_eventAction(e);  
 		});            
 	};                  
-	               
-	// 이벤트 분기      
+	                                
+	// 이벤트 분기             
 	function _eventAction(e) {   
 		let evo = $(e.currentTarget);
 		let action = evo.attr("data-act");
@@ -59,7 +59,7 @@ const payout = (function() {
 			if (endDate == null || endDate == "" ) {  // 1. 날짜 하루만 조회 시 (종료일, 시작일 데이터 동일하게 만들어줌)
 				endDate = startDate;  
 			}  // 2. 날짜 하루이상 조회 시 -> 별도 처리 안해줘도댐
-   
+    
 
 			param = { // ajax로 넘겨줄 data값 변수 선언
 				"calculate_date_start" : startDate, 
@@ -144,21 +144,21 @@ const payout = (function() {
 
 							<div class="col">
 								<small class="d-block d-sm-none">총 판매 금액</small>
-								<h6 class="ms-1 mb-0 fw-normal">${data.total_price}원</h6>
+								<h6 class="ms-1 mb-0 fw-normal">${comm.numberWithComma(data.total_price)}원</h6>
 							</div>
 
-							<div class="col">
+							<div class="col">    
 								<small class="d-block d-sm-none">총 정산 금액</small>
-								<h6 class="ms-1 mb-0 fw-normal">${data.total_calculate_price}원</h6>
+								<h6 class="ms-1 mb-0 fw-normal">${comm.numberWithComma(data.total_calculate_price)}원</h6>
 							</div>
 							<div class="col">
 								<small class="d-block d-sm-none">정산 대기</small>
-								<h6 class="ms-1 mb-0 fw-normal">${data.pending_amount}원</h6>
+								<h6 class="ms-1 mb-0 fw-normal">${comm.numberWithComma(data.pending_amount)}원</h6>
 							</div>
-							<div class="col position-relative">
+							<div class="col position-relative"> 
 								<small class="d-block d-sm-none">정산 완료</small>
 								<div class="d-flex">
-									<h6 class="mb-0 me-2 fw-normal">${data.completed_amount}원</h6>
+									<h6 class="mb-0 me-2 fw-normal">${comm.numberWithComma(data.completed_amount)}원</h6>
 									<a href="#" class="h6 mb-0" role="button" id="dropdownShare1"
 										data-bs-toggle="dropdown" aria-expanded="false"> <i
 										class="bi bi-info-circle-fill"></i>
@@ -166,25 +166,25 @@ const payout = (function() {
 									<ul
 										class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
 										aria-labelledby="dropdownShare1">
-										<li>
+										<li> 
 											<div class="d-flex justify-content-between">
-												<span class="small">판매가</span> <span
-													class="h6 mb-0 small ms-2">${data.total_price}</span>
+												<span class="small">판매가</span> <span    
+													class="h6 mb-0 small ms-2">${comm.numberWithComma(data.total_price)}</span>
 											</div>
 											<hr class="my-1"> 
 										</li>
-
+  
 										<li>
 											<div class="d-flex justify-content-between">
 												<span class="me-4 small">수수료</span> <span
-													class="text-danger small ms-2">-${data.total_price-data.total_calculate_price}원</span>
+													class="text-danger small ms-2">-${comm.numberWithComma(data.total_price-data.total_calculate_price)}</span>
 											</div>
 											<hr class="my-1">
 										</li>
 										<li>
 											<div class="d-flex justify-content-between">
 												<span class="small">정산금액</span> <span
-													class="h6 mb-0 small ms-2">${data.total_calculate_price}</span>
+													class="h6 mb-0 small ms-2">${comm.numberWithComma(data.total_calculate_price)}</span>
 											</div>
 										</li>
 									</ul>
@@ -223,15 +223,7 @@ const payout = (function() {
 		},
 		// 정산 상세보기 리스트 모달 그리기
 		drawPayoutDetailModal: function(list) {
-
-				// console.log("list값은 ??? >>>>");
-				// console.log(list);  // PayoutDetailList, calculate_date가 들어있어야 함
-				// console.log("list.calculate_date값은 ??? >>>>");
-				// console.log(list.calculate_date);  // calculate_date가 들어있어야 함
-				// console.log("list.PayoutDetailList값은 ??? >>>>");
-				// console.log(list.PayoutDetailList);  // PayoutDetailList가 들어있어야 함
-
-
+  
 			/* 정산 상세정보 modal START */
 			// 정산일
 			$("#modalCalculateDate").html(`${list.calculate_date}`);
@@ -250,8 +242,8 @@ const payout = (function() {
 					`<tr>
 						<td>${data.idx}</td>
 						<td>${data.room_type}</td>
-						<td>${data.price}원</td>
-						<td>${data.calculate_price}원</td>
+						<td>${comm.numberWithComma(data.price)}원</td>
+						<td>${comm.numberWithComma(data.calculate_price)}원</td>
 						<td>${data.calculate_status}</td>
 					</tr>`;	
 				tbody.append(tdata);

@@ -15,3 +15,4 @@ public interface AdminPayoutMapper {
 	int updateCalculateStatus(Map<String, Object> param);  // 정산상태 변경
 	
 }
+ 

@@ -13,6 +13,6 @@ public interface AdminPayoutService {
 	// [관리자] 정산 상태 변경
 	Map<String, Object> updateCalculateStatus(Map<String, Object> param);
 		
-	
+	 
 }
  

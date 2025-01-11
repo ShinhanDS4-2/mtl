@@ -24,14 +24,16 @@ public class AdminPayoutController {
 	 */
 	@PostMapping("/list")
 	public Map<String, Object> getAdminPayoutList(@RequestParam Map<String, Object> param) throws Exception {
+		System.out.println("param>??????????///" + param);
+		System.out.println("calculate_status 값: " + param.get("calculate_status"));
 		Map<String, Object> result = payoutService.getAdminPayoutList(param);
 		return result;
 	}
 	
-	/** 시온 - API 완료
+	/** 시온 - API 완료 
 	 * [관리자] 정산 상세내역 리스트 조회
 	 * @param reservation_idx (예약idx)
-	 * @return PayoutDetail
+	 * @return PayoutDetail 
 	 */
 	@PostMapping("/detail")
 	public Map<String, Object> getPartnerPayoutDetailList(@RequestParam Map<String, Object> param) throws Exception {
@@ -44,7 +46,7 @@ public class AdminPayoutController {
 	 * @param reservation_idx (예약idx)
 	 * @return result(true/false)  
 	 */
-	@PostMapping("/updateState")
+	@PostMapping("/updateState") 
 	public Map<String, Object> updateCalculateStatus(@RequestParam Map<String, Object> param) throws Exception {
 		Map<String, Object> result = payoutService.updateCalculateStatus(param);
 		return result; 

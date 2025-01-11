@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+   
 @RestController
-//@Controller("partnerPayoutController")  // admin>payout에서의 빈이름과 동일하므로 빈 이름을 명시적으로 다르게 설정해줘서 충돌방지
 @RequestMapping("/api/partner/payout")
 public class PartnerPayoutController {
 
 	@Autowired
 	private PartnerPayoutService payoutService;
  
-
+ 
 	/** 시온 - API 완료
 	 * [판매자] 정산내역 리스트 조회 
 	 * 페이지 접속 => http://localhost:8090/mtl/partner/payoutlist
@@ -31,8 +30,7 @@ public class PartnerPayoutController {
 	@PostMapping("/list")
 	public Map<String, Object> getPartnerPayoutList(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));
-		param.put("partner_idx", 11);  // 현재 세션 데이터가 없어서 임시로 해둔거. 위 코드로 변경해야함
+		param.put("partner_idx", session.getAttribute("login_partner_idx"));
 		
 		Map<String, Object> result = payoutService.getPartnerPayoutList(param);
 		return result;
@@ -46,8 +44,7 @@ public class PartnerPayoutController {
 	@PostMapping("/detailList")
 	public Map<String, Object> getPartnerPayoutDetailList(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));
-		param.put("partner_idx", 11);  // 현재 세션 데이터가 없어서 임시로 해둔거. 위 코드로 변경해야함
+		param.put("partner_idx", session.getAttribute("login_partner_idx"));
 		
 		Map<String, Object> result = payoutService.getPartnerPayoutDetailList(param);
 		return result;

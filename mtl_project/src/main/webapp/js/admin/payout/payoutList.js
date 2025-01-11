@@ -6,16 +6,16 @@ const payout = (function() {
 		fetchPayoutList();  // 전체정산내역 리스트를 조회 
 		_eventInit();
 	};  
-       
-	// 이벤트 초기화              
+           
+	// 이벤트 초기화                            
 	function _eventInit() {  
 		let evo = $("[data-src='payout'][data-act]").off();
 		evo.on("click", function(e) {   
-			_eventAction(e);            
-		});               
-	};            
-      
-	// 이벤트 분기      
+			_eventAction(e);               
+		});                    
+	};             
+                  
+	// 이벤트 분기             
 	function _eventAction(e) {   
 		let evo = $(e.currentTarget); 
 		let action = evo.attr("data-act");
@@ -24,13 +24,10 @@ const payout = (function() {
 		if(type == "click") {        
 			if(action == "clickSearchButton") {  // 검색필터에서 검색버튼 클릭 시 
 				_event.clickSearchButton(evo);
-			} else if(action == "payoutButton") {  // 정산하기 버튼 클릭 시 
-				_event.clickPayoutButton(evo);
 			}
-		}; 
+		};   
 	}; 
 	 
-		 
 	// 이벤트 
 	let _event = {
 		// 검색필터 검색 버튼 클릭 시
@@ -38,38 +35,10 @@ const payout = (function() {
 			isSearchClicked = true; // 검색 버튼 클릭 여부 상태 관리     
 			fetchPayoutList();  // 조건에 맞는 리스트 조회
 		},  
-
-		// 정산하기 버튼 클릭 시 
-		clickPayoutButton: function(evo) {    // 매개변수로 클릭된 요소를 전달받는다
-			// 예약 idx 가져오기
-			let reservation_idx = evo.data('reservation-idx'); // jQuery의 .data() 메서드를 사용해 data-* 속성에 저장된 값을 가져옴.
-
-			console.log("예약idx 잘 ㄷㄹ어왓안?? ", reservation_idx);
-			$.ajax({
-				type: "POST",
-				url: "/mtl/api/admin/payout/updateState",   // API 호출
-				data: {"reservation_idx" : reservation_idx},   // 호출 시 param값으로 넘겨줄 것 => reservation_idx
-				success: function(resp) {   //  API 호출 결과 값 : result(true/false)  
-					if(resp) {  // 정산상태 업데이트 된 경우
-						modal.alert({ 
-							"content" : "정산이 완료되었습니다.",
-						});
-					} else {    
-						modal.alert({       
-							"content" : "정산에 실패하였습니다.",
-						});
-					}  
-				},
-				error: function(xhr, status, error) {
-					console.error("Error :", error); 
-				}  
-			});   
-		},  
-    
-	};  // let _event 끝
+	};  // let _event 끝     
 
 
-	// fetchPayoutList(): 리스트 조회 함수
+	// fetchPayoutList(): 리스트 조회 함수   
 	function fetchPayoutList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
 		// 그냥 조회했을 때 기본 param값 => 전체조회
 		let param = { 
@@ -163,14 +132,14 @@ const payout = (function() {
 					button = `<div class="badge bg-danger bg-opacity-10 text-danger">정산대기</div>`
 				}
 
-				// <!-- js에서 반복 돌릴 부분(id="cardBody" 아래에 append) -->
-				let cardBodyData = 
+				// <!-- js에서 반복 돌릴 부분(id="cardBody" 아래에 append) -->     
+				let cardBodyData =      
 					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
 						<div class="col">
-							<small class="d-block d-sm-none">정산일</small>
+							<small class="d-block d-sm-none">정산일</small> 
 							<h6 class="ms-1 mb-0 fw-normal">${data.calculate_date}</h6>
 							<a role="button" class="payoutDetail mb-0 fw-normal ms-1"
-								data-bs-toggle="modal" data-bs-target="#payoutDetailModal"
+								data-bs-toggle="modal" data-bs-target="#payoutDetailModal" 
 								data-src="payout" data-reservation-idx="${data.reservation_idx}">상세보기</a>
 						</div>     
 						<div class="col">
@@ -180,11 +149,11 @@ const payout = (function() {
 
 						<div class="col"> 
 							<small class="d-block d-sm-none">판매금액</small>
-							<h6 class="ms-1 mb-0 fw-normal">${data.price}원</h6>
+							<h6 class="ms-1 mb-0 fw-normal">${comm.numberWithComma(data.price)}원</h6>
 						</div>
 						<div class="col">
 							<small class="d-block d-sm-none">정산금액</small>
-							<h6 class="ms-1 mb-1 fw-light">${data.calculate_price}원</h6>
+							<h6 class="ms-1 mb-1 fw-light">${comm.numberWithComma(data.calculate_price)}원</h6>
 						</div>
 						<div class="col">
 							<small class="d-block d-sm-none">정산상태</small>`
@@ -192,27 +161,23 @@ const payout = (function() {
 					   `</div>
 						<div class="col">
 							<small class="d-block d-sm-none">정산</small>
-							<div class="ms-1 col">
-								<a role="button" class="btn btn-sm btn-light mb-0"
-									data-src="payout" data-act="payoutButton" data-reservation-idx="${data.reservation_idx}">정산하기</a>
+							<div class="ms-1 col">   
+								<a role="button" class="payoutButton btn btn-sm btn-light mb-0"
+									data-src="payout" data-act="payoutButton" data-reservation-idx="${data.reservation_idx}"
+									data-calculate-status="${data.calculate_status}">정산하기</a>
 							</div>
 						</div> 
 					</div>`;		
 				cardBody.append(cardBodyData);
 
 				// card footer 페이징
-			}
-
-
-			// Card footer START (id="cardBody" 아래에 append)
-
-			
+			}	
 		/* 정산내역 리스트 card END */	
 
-
-			// 정산 상세보기 버튼 클릭 시 이벤트
+		// 정산 상세보기 버튼 클릭 시 이벤트 START
 			$(".payoutDetail").click(function() {
 				let reservation_idx = $(this).data("reservation-idx");
+				console.log("예약idx 잘 ㄷㄹ어왓안?? ", reservation_idx);
 
 				$.ajax({  // ajax로 정산 상세내역 정보를 조회하는 API를 호출하고 param값으로 reservation_idx를 보내준다.
 					type: "POST",
@@ -225,14 +190,61 @@ const payout = (function() {
 					},
 					error: function(xhr, status, error) {
 						console.error("Error :", error);  // 오류 처리
-					} 
+					}   
 				});
-				
+				   
 			});
-			
-			
+		// 정산 상세보기 버튼 클릭 시 이벤트 END
+			    
+		// 정산하기 버튼 클릭 시 이벤트 START
+			$(".payoutButton").click(function() {
+				let reservation_idx = $(this).data("reservation-idx");
+				let calculate_status = $(this).data("calculate-status");
+				console.log("예약idx 잘 ㄷㄹ어왓안?? ", reservation_idx);
+				console.log("정산상태 잘 ㄷㄹ어왓안?? ", calculate_status);
+				
+				// 먼저 정산상태를 검사함 Y/N
+				if(calculate_status == 'Y') {
+					    
+					modal.alert({       
+						"content" : "이미 정산이 완료된 건입니다.",
+					});   
+				} else {
+					// 정산할건지 확인하는 모달창 표시
+					modal.alert({       
+						"content" : "정산하시겠습니까?",
+						"confirmCallback" : function() {
+						$.ajax({
+							type: "POST",
+							url: "/mtl/api/admin/payout/updateState",   // 정산 상태 변경 API 호출
+							data: {"reservation_idx" : reservation_idx},   // 호출 시 param값으로 넘겨줄 것 => reservation_idx
+							success: function(resp) {   //  API 호출 결과 값 : result(true/false)  
+								console.log(" 정산 상태 변경 API 호출 응답값?????", resp);
+								if(resp) {  // 정산상태 업데이트 된 경우
+									modal.alert({    
+										"content" : "정산이 완료되었습니다.",
+										"confirmCallback" : function() {  
+											location.reload();  // 페이지 새로고침   
+										}
+									});
+								} else {    
+									modal.alert({       
+										"content" : "정산에 실패하였습니다.",
+									});    
+								}    
+							},    
+							error: function(xhr, status, error) {
+								console.error("Error :", error); 
+							}  
+						});   
+					}
+					});  
+				}
+			});
+		// 정산하기 버튼 클릭 시 이벤트 END
 
 		},
+
 		// 정산 상세보기 리스트 모달
 		drawPayoutDetailModal: function(data) {
 
@@ -249,8 +261,7 @@ const payout = (function() {
 					<p class="mb-0">연락처: ${data.phone}</p>
 					<p class="mb-0">이메일: ${data.email}</p>
 					<p class="mb-0">사업자명: ${data.business_name}</p>
-					<p class="mb-0">사업자 등록번호: ${data.business_name}</p>
-					<p class="mb-0">정산 계좌 정보: ${data.account_name}  ${data.account_bank}  ${data.account_number}</p>
+					<p class="mb-0">사업자 등록번호: ${data.business_number}</p>
 				</div>
 
 				<h6 class="fw-bold">예약자 정보</h6>
@@ -259,18 +270,16 @@ const payout = (function() {
 					<p class="mb-0">예약일시: ${data.reservation_date}</p>
 					<p class="mb-0">입실일시: ${data.check_in_date}</p>
 					<p class="mb-0">퇴실일시: ${data.check_out_date}</p>
-					<p class="mb-0">결제상태: ${data.payment_status}</p>
+					<p class="mb-0">결제상태: ${data.payment_status}</p>     
 				</div>
 
 				<h6 class="fw-bold">정산 정보</h6>
 				<div class="mb-3 border p-3">
-				<p class="mb-0">객실요금: ${data.price}원</p>
+				<p class="mb-0">객실요금: ${comm.numberWithComma(data.price)} 원</p>
 				<p class="mb-0">수수료율: ${data.charge}%</p>
-				<p class="mb-0">정산금액: ${data.calculate_price}</p>
+				<p class="mb-0">정산금액: ${comm.numberWithComma(data.calculate_price)} 원</p>
 				<p class="mb-0">정산상태: ${data.calculate_status}</p>
-				<p class="mb-0">정산일: ${data.calculate_date}</p>
-				<p class="mb-0">판매자 관리번호: ${data.partner_idx}</p>
-					<p class="mb-0">정산 계좌정보: ${data.account_name}  ${data.account_bank}  ${data.account_number}</p>
+					<p class="mb-0">정산 계좌정보: (예금주: ${data.account_name})  ${data.account_bank}  ${data.account_number}</p>
 				</div>`; 
 			modalBoby.append(modalData);              
 			/* 정산 상세정보 modal END */

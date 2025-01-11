@@ -8,7 +8,7 @@ const reservation = (function() {
 		_eventInit(); 
 	};
 
-	// 이벤트 초기화  
+	// 이벤트 초기화        
 	function _eventInit() {
 		let evo = $("[data-src='reservation'][data-act]").off();
 		evo.on("click mouseenter mouseleave change", function(e) {
@@ -235,13 +235,13 @@ const reservation = (function() {
 	let _draw = {  
 		// 예약 내역 리스트
 		drawReservationList: function(list) {  // fetchReservationList() 함수에서 API 호출 결과 값으로 받은 response.ReservationList값을 list라는 이름의 매개변수로 넘겨준다. 
-			
+			console.log("list값은???", list);
 		/* 예약내역 리스트 card START */
 			let reservCard = $("#reservCard");
 			reservCard.empty(); // 기존 내용을 비워줌
 
 			for(data of list) {  // 예약내역 list에서 1개의 예약내역 data만 뽑아냄
-				
+				console.log("data???", data);
 				let card = $("<div>").addClass("card shadow p-2");
 				reservCard.append(card);
 	

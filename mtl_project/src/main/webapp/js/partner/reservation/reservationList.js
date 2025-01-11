@@ -15,7 +15,7 @@ const reservationList = (function() {
 			_eventAction(e); 
 		});           
 	};                  
-	              
+	                 
 	// 이벤트 분기      
 	function _eventAction(e) {   
 		let evo = $(e.currentTarget);
@@ -253,7 +253,7 @@ const reservationList = (function() {
 
 						<div class="col">
 							<small class="d-block d-sm-none">판매가</small>  
-							<h6 class="mb-0 fw-light">${data.price} 원</h6>
+							<h6 class="mb-0 fw-light">${comm.numberWithComma(data.price)} 원</h6>
 						</div> 
 					</div>`;		   
 				reservationListData.append(reservData);   
@@ -315,8 +315,8 @@ const reservationList = (function() {
 					</div>
 
 					<h6 class="fw-bold">금액 정보</h6>
-					<div class="mb-3 border p-3">
-						<p class="mb-0">객실 판매가: ${data.price} 원</p>
+					<div class="mb-3 border p-3">     
+						<p class="mb-0">객실 판매가: ${comm.numberWithComma(data.price)} 원</p>
 					</div>`	
 				
 			modalBody.html(modalData);      

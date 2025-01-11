@@ -17,7 +17,7 @@
         <!-- 정산 상태 필터 -->    
         <if test="calculate_status != null and calculate_status != ''">
             AND calculate_status = #{calculate_status}
-        </if> 
+        </if>  
 	</select>   
 	   
 	<!-- 정산내역 리스트 조회-->
@@ -27,23 +27,25 @@
 		SELECT r.idx AS reservation_idx, DATE_FORMAT(r.calculate_date, '%Y-%m-%d') AS calculate_date, r.price, r.calculate_price,
 			r.calculate_status, p.name
 		FROM RESERVATION r JOIN PARTNER p ON (r.partner_idx = p.idx)
-		WHERE r.payment_status = "P"  
-		<!-- 필터적용 -->	  
-		<!-- 날짜 필터 <는 &lt; >는 &gt;--> 
-        <if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
-	        AND DATE(calculate_date) &gt;= #{calculate_date_start} AND DATE(calculate_date) &lt;= #{calculate_date_end}     
-	    </if>      
-        <!-- 정산 상태 필터 -->    
-        <if test="calculate_status != null and calculate_status != ''">
-            AND calculate_status = #{calculate_status}
-        </if> 
-		ORDER BY r.calculate_date DESC
+		<!-- 필터적용 -->	       
+		<where>
+			r.payment_status = "P"  
+			<!-- 날짜 필터 <는 &lt; >는 &gt;--> 
+	        <if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
+		        AND DATE(r.calculate_date) &gt;= #{calculate_date_start} AND DATE(r.calculate_date) &lt;= #{calculate_date_end}     
+		    </if>         
+	        <!-- 정산 상태 필터 -->    
+	        <if test="calculate_status != null and calculate_status != ''">
+	            AND r.calculate_status = #{calculate_status}
+	        </if> 
+			ORDER BY r.calculate_date DESC
+		</where>      
 		<!-- 페이징 처리 -->    
-	    <if test="limit != null and offset != null">
-	        LIMIT ${limit} OFFSET ${offset}
-	    </if> 
+		<if test="limit != null and offset != null">
+		    LIMIT ${limit} OFFSET ${offset}
+		</if> 
 	</select>  
-		      
+		       
 		    
 	<!-- 정산내역 상세정보 -->     
 	<!-- param : reservation_idx  /  result: 넘많음
@@ -54,15 +56,15 @@
 			   r.price, r.charge, (CASE WHEN r.calculate_status="Y" THEN '정산완료' ELSE '정산대기' END) AS calculate_status, r.calculate_price, DATE_FORMAT(r.calculate_date, '%Y-%m-%d') AS calculate_date
 		FROM RESERVATION r JOIN PARTNER p ON (r.partner_idx = p.idx)
 		WHERE r.idx = #{reservation_idx};
-	</select>
-	
-	<!-- 정산상태 변경(정산하기 버튼 클릭 시) -->     
+	</select>    
+	 
+	<!-- 정산상태 변경(정산하기 버튼 클릭 시 -> 정산이 안된 건만 'Y'로 변경) -->         
 	<!-- param : reservation_idx -->   
-	<select id="updateCalculateStatus" parameterType="map">
+	<update id="updateCalculateStatus" parameterType="map">          
 		UPDATE RESERVATION
-		SET calculate_status = #{newStatus}
-		WHERE idx = #{reservation_idx}; 
-	</select>
+		SET calculate_status = 'Y'             
+		WHERE idx = #{reservation_idx};  
+	</update>   
 	
 	   
 <!-- [관리자] 정산내역 END-->
