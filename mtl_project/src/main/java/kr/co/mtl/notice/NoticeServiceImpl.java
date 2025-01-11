@@ -136,4 +136,6 @@ public class NoticeServiceImpl implements NoticeService{
         return noticeMapper.selectPartnerNoticeCount();
     }
     
+    
+    
 }
