@@ -35,6 +35,12 @@
 					</div>
 				</div>
 
+				<div class="justify-content-start mb-1">
+					<a href="javascript:window.history.back();" class="h6 text-reset">
+						<i class="fa-solid fa-circle-chevron-left"></i> 뒤로가기
+					</a>
+				</div> 
+
 				<!-- 숙소 상세보기 Crad START -->
 				<div class="card shadow border mt-2 mb-3">
 					<!-- Card header -->
@@ -45,8 +51,8 @@
 						<!-- 숙소 detail START -->
 						<div class="row g-4 g-xl-5">
 							<!-- Image -->
-							<div id="images">
-								<div class="col-xxl-6">
+							<div id="images" class="row mt-5">
+								<div class="col-6">
 									<div class="row g-2 g-sm-4">
 										<div class="col-6">
 											<a data-glightbox data-gallery="gallery" href="assets/images/category/hotel/4by3/02.jpg">
@@ -74,8 +80,7 @@
 										</div>
 										<div class="col-6">
 											<a data-glightbox data-gallery="gallery" href="assets/images/category/hotel/4by3/04.jpg">
-												<div
-													class="card card-element-hover card-overlay-hover overflow-hidden">
+												<div class="card card-element-hover card-overlay-hover overflow-hidden">
 													<!-- Image -->
 													<img src="" class="rounded-3" alt="">
 													<!-- Full screen button -->
@@ -86,8 +91,7 @@
 											</a>
 										</div>
 										<div class="col-6">
-											<a data-glightbox data-gallery="gallery"
-												href="assets/images/category/hotel/4by3/05.jpg">
+											<a data-glightbox data-gallery="gallery" href="javascript:;">
 												<div class="card card-element-hover card-overlay-hover overflow-hidden">
 													<!-- Image -->
 													<img src="" class="rounded-3" alt="">
@@ -105,13 +109,11 @@
 							<div id="info">
 								<!-- Content -->
 								<div class="col-xxl-6 mb-5">
-									<h4>히든베이 호텔</h4>
+									<h4></h4>
 									<p class="mb-2 mb-sm-0">
-										<i class="bi bi-geo-alt me-1 text-primary"></i>서울특별시 홍대 구로
+										<i class="bi bi-geo-alt me-1 text-primary"></i>
 									</p>
-									<p class="mb-4">숙소설명. er ask own. Praise effect wishes to
-										change way and any wanted. Lively use looked latter regard had.
-										Does he part last</p>		
+									<p class="mb-4"></p>		
 								</div>
 							</div>
 							

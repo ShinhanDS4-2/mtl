@@ -22,11 +22,17 @@
 
 			<!-- Title -->
 			<div class="row">
-				<div class="col-12 mb-4 mb-sm-5">
+				<div class="col-12 mb-4">
 					<h1 class="h3 mb-2">사용자 상세 조회</h1>
 					<span>회원의 상세 정보를 확인할 수 있습니다.</span>
 				</div>
 			</div>
+
+			<div class="justify-content-start mb-3">
+				<a href="javascript:window.history.back();" class="h6 text-reset">
+					<i class="fa-solid fa-circle-chevron-left"></i> 뒤로가기
+				</a>
+			</div> 
 
 			<!-- 회원 정보 Card START -->
 			<div class="card shadow-lg border mb-4">
@@ -115,7 +121,7 @@
 					</div>
 					
 					<!-- Pagination (페이지 전환 하단 바)-->
-					<nav class="d-flex justify-content-center">
+					<nav class="d-flex justify-content-center pt-4">
 						<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
 						</ul>
 					</nav>

@@ -31,6 +31,11 @@ const partnerDetail = (function() {
                 _draw.drawAnswerList(response.list);
                 _draw.insertInfo(response.list);
                 _draw.insertImage(response.images);
+                
+                comm.setMapWithGeo({
+                	latitude : response.list[0].latitude,
+					longitude : response.list[0].longitude
+                });
             },
             error:function(xhr,status,error){
                 console.log("상세 데이터 가져오기 실패: ",error);
@@ -98,6 +103,9 @@ const partnerDetail = (function() {
                         </div>
                     </div>
                 </div>
+                <div class="col-xxl-6">
+                	<div class="border rounded" id="map" style="height:525px;"></div>
+                </div>
             `;
         
             imageList.append(col);
@@ -125,50 +133,48 @@ const partnerDetail = (function() {
             let answerList=$("#answerList").empty();
             let index=1;
 
-            for(let data of list){
-
-                
-                let row = $("<div>").addClass("row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center d-flex justify-content-center align-items-center");
-                answerList.append(row);
-
-                let num_col=$("<div>").addClass("col");
-                row.append(num_col);
-
-                let num_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(index++);
-                num_col.append(num_h6);
-
-                let type_col=$("<div>").addClass("col");
-                row.append(type_col);
-
-                let type_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.room_type);
-                type_col.append(type_h6);
-
-                let standard_col=$("<div>").addClass("col");
-                row.append(standard_col);
-
-                let standard_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.standard+"인");
-                standard_col.append(standard_h6);
-
-                let max_col=$("<div>").addClass("col");
-                row.append(max_col);
-
-                let max_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.maximum+"인");
-                max_col.append(max_h6);
-                
-                let basicPrice_col=$("<div>").addClass("col");
-                row.append(basicPrice_col);
-
-                let basicPrice_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.basic_price+"원");
-                basicPrice_col.append(basicPrice_h6);
-
-                let weekendPrice_col=$("<div>").addClass("col");
-                row.append(weekendPrice_col);
-
-                let weekendPrice_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.weekend_price+"원");
-                weekendPrice_col.append(weekendPrice_h6);
-            }
-
-
+			if (list[0].room_type) {
+	            for(let data of list){
+	                let row = $("<div>").addClass("row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center d-flex justify-content-center align-items-center");
+	                answerList.append(row);
+	
+	                let num_col=$("<div>").addClass("col");
+	                row.append(num_col);
+	
+	                let num_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(index++);
+	                num_col.append(num_h6);
+	
+	                let type_col=$("<div>").addClass("col");
+	                row.append(type_col);
+	
+	                let type_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.room_type);
+	                type_col.append(type_h6);
+	
+	                let standard_col=$("<div>").addClass("col");
+	                row.append(standard_col);
+	
+	                let standard_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.standard+"인");
+	                standard_col.append(standard_h6);
+	
+	                let max_col=$("<div>").addClass("col");
+	                row.append(max_col);
+	
+	                let max_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.maximum+"인");
+	                max_col.append(max_h6);
+	                
+	                let basicPrice_col=$("<div>").addClass("col");
+	                row.append(basicPrice_col);
+	
+	                let basicPrice_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(comm.numberWithComma(data.basic_price) + " 원");
+	                basicPrice_col.append(basicPrice_h6);
+	
+	                let weekendPrice_col=$("<div>").addClass("col");
+	                row.append(weekendPrice_col);
+	
+	                let weekendPrice_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(comm.numberWithComma(data.weekend_price)+ " 원");
+	                weekendPrice_col.append(weekendPrice_h6);
+	            }
+			}
         }
     }
 	return {

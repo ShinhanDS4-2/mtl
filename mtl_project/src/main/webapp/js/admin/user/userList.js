@@ -71,7 +71,7 @@ const userList = (function() {
         	let statusText = user.user_status == 'A' ? '정상' : '탈퇴';
         	
             let row = 
-	            `<div class="row row-cols-xl-6 g-4 align-items-sm-center border-bottom px-2 py-4">
+	            `<div class="row row-cols-xl-6 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 					<div class="col">
 						<small class="d-block d-sm-none">이메일</small>
 						<h6 class="ms-1 mb-0 fw-normal">${user.email}</h6>
