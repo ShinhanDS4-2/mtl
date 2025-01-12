@@ -204,7 +204,7 @@ const reservationList = (function() {
 
 			// 예약 내역 리스트 출력
 			for(data of list.List) {
-
+  
 				// 결제 상태에 따른 버튼 모양 구분
 				let button = '';    
 				if(data.payment_status == 'P') {   // 결제완료이면
@@ -214,8 +214,8 @@ const reservationList = (function() {
 				}
  
 				 // 예약내역 리스트 반복할 부분          
-				let reservData =      
-					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">     
+				let reservData =         
+					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">     
 						<div class="col">
 							<small class="d-block d-sm-none">예약자명</small>
 							<h6 class="ms-1 mb-0 fw-normal">${data.username}</h6>

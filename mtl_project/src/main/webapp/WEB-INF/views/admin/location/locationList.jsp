@@ -113,7 +113,7 @@
 					<div class="mb-sm-0 ms-2 d-flex justify-content-center">
 						<a href="#" class="btn btn-dark-soft mb-0 border-0"><i class="fa-solid fa-download"></i></a>
 					</div>
-				</div>
+				</div>  
 				 -->
 			</div>
 
@@ -122,7 +122,7 @@
 				<!-- Card body START -->
 				<div class="card-body">
 					<!-- Table head -->
-					<div class="bg-light rounded p-3 d-none d-sm-block">
+					<div class="bg-light rounded p-3 d-none d-sm-block text-center">
 						<div class="row row-cols-7 g-4">
 							<div class="col">
 								<h6 class="mb-0">지역</h6>

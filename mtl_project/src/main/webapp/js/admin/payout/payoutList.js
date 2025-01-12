@@ -133,8 +133,8 @@ const payout = (function() {
 				}
 
 				// <!-- js에서 반복 돌릴 부분(id="cardBody" 아래에 append) -->     
-				let cardBodyData =      
-					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+				let cardBodyData =         
+					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 						<div class="col">
 							<small class="d-block d-sm-none">정산일</small> 
 							<h6 class="ms-1 mb-0 fw-normal">${data.calculate_date}</h6>

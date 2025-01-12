@@ -182,15 +182,15 @@
 				</div>
 				<!-- 예약내역 상세보기 Moadl END -->    
 				  
-				   
+				    
 
 				<!-- 예약 내역 List 상단 Tab -->  
 				<div class="row g-4 justify-content-between align-items-center mb-2">
-					<div class="col-lg-9">
+					<div class="col-lg-9"> 
 						<h6 class="mb-1" id="reservationCount">총 120개</h6>  <!-- js -->
 					</div>
 				</div>    
-     
+        
 				<!-- 예약 내역 List START -->
 				<div class="card shadow">
 					<!-- Card header -->
@@ -202,7 +202,7 @@
 					<!-- Card body START -->
 					<div class="card-body">
 						<!-- Table head -->
-						<div class="bg-light rounded p-3 d-none d-sm-block">
+						<div class="bg-light rounded p-3 d-none d-sm-block text-center">
 							<div class="row row-cols-7 g-4">
 								<div class="col">
 									<h6 class="mb-0">예약자명</h6>
@@ -221,7 +221,7 @@
 								</div>
 								<div class="col">
 									<h6 class="mb-0">판매가</h6>
-								</div>
+								</div>   
 							</div>
 						</div> 
 						<!-- Table body -->

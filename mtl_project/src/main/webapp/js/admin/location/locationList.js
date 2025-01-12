@@ -394,7 +394,6 @@ const locationList = (function() {
 			};
 		},
 
-	/* 여행지 리스트 - 시온 작업중 */
 		// 여행지 리스트 출력
 		drawLocationList: function(list) {  // 여행지 리스트 뿌려주는 곳 
 			console.log("여행지 등록 모달 그리는 중 list값은 ?? ", list)  // list에는 locationListCount, locationList 값이 들어있음
@@ -407,9 +406,9 @@ const locationList = (function() {
 			locationList.empty();
 
 			// 여행지 List
-			for (data of list.locationList) { // data에는 여행지 정보 1개가 들어있음
+			for (data of list.locationList) { // data에는 여행지 정보 1개가 들어있음  
 				let Data = 
-						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 							<div class="col">
 								<small class="d-block d-sm-none">지역</small>
 								<h6 class="ms-1 mb-0 fw-normal">${data.area_name}</h6>

@@ -174,10 +174,10 @@ const reservationList = (function() {
 				} else {  // 환불상태이면
 					button = `<div class="badge bg-danger bg-opacity-10 text-danger">취소완료</div>`
 				}
- 
+    
 				 // 예약내역 리스트 반복할 부분          
 				let reservData =      
-						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 							<div class="col">
 								<small class="d-block d-sm-none">숙소명</small>
 								<h6 class="ms-1 mb-0 fw-normal">${data.name}</h6>

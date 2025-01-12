@@ -116,7 +116,7 @@
 					<!-- Card body START -->
 					<div class="card-body">
 						<!-- Table head -->
-						<div class="bg-light rounded p-3 d-none d-sm-block">
+						<div class="bg-light rounded p-3 d-none d-sm-block text-center">
 							<div class="row row-cols-7 g-4">
 								<div class="col">
 									<h6 class="mb-0">숙소명</h6>

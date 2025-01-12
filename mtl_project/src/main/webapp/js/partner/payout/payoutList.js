@@ -133,7 +133,7 @@ const payout = (function() {
 			// 정산내역 리스트 Data 반복 출력
 			for(data of payoutList) { 
 				let tableData =
-						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 							<div class="col">
 								<small class="d-block d-sm-none">정산일</small>
 								<h6 class="ms-1 mb-0 fw-normal">${data.calculate_date}</h6>
@@ -146,7 +146,7 @@ const payout = (function() {
 								<small class="d-block d-sm-none">총 판매 금액</small>
 								<h6 class="ms-1 mb-0 fw-normal">${comm.numberWithComma(data.total_price)}원</h6>
 							</div>
-
+  
 							<div class="col">    
 								<small class="d-block d-sm-none">총 정산 금액</small>
 								<h6 class="ms-1 mb-0 fw-normal">${comm.numberWithComma(data.total_calculate_price)}원</h6>
@@ -155,40 +155,35 @@ const payout = (function() {
 								<small class="d-block d-sm-none">정산 대기</small>
 								<h6 class="ms-1 mb-0 fw-normal">${comm.numberWithComma(data.pending_amount)}원</h6>
 							</div>
-							<div class="col position-relative"> 
+							<div class="col">    
 								<small class="d-block d-sm-none">정산 완료</small>
-								<div class="d-flex">
-									<h6 class="mb-0 me-2 fw-normal">${comm.numberWithComma(data.completed_amount)}원</h6>
-									<a href="#" class="h6 mb-0" role="button" id="dropdownShare1"
-										data-bs-toggle="dropdown" aria-expanded="false"> <i
-										class="bi bi-info-circle-fill"></i>
-									</a>
-									<ul
-										class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-										aria-labelledby="dropdownShare1">
-										<li> 
-											<div class="d-flex justify-content-between">
-												<span class="small">판매가</span> <span    
-													class="h6 mb-0 small ms-2">${comm.numberWithComma(data.total_price)}</span>
-											</div>
-											<hr class="my-1"> 
-										</li>
-  
-										<li>
-											<div class="d-flex justify-content-between">
-												<span class="me-4 small">수수료</span> <span
-													class="text-danger small ms-2">-${comm.numberWithComma(data.total_price-data.total_calculate_price)}</span>
-											</div>
-											<hr class="my-1">
-										</li>
-										<li>
-											<div class="d-flex justify-content-between">
-												<span class="small">정산금액</span> <span
-													class="h6 mb-0 small ms-2">${comm.numberWithComma(data.total_calculate_price)}</span>
-											</div>
-										</li>
-									</ul>
-								</div>
+								<h6 class="mb-0 fw-normal d-inline-block">${comm.numberWithComma(data.completed_amount)}원</h6>
+								<a href="#" class="h6 mb-0 d-inline-block" role="button" id="dropdownShare1"
+									data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-info-circle-fill"></i>
+								</a>        
+								<ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
+									aria-labelledby="dropdownShare1">
+									<li>    
+										<div class="d-flex justify-content-between">
+											<span class="small">판매가</span> <span    
+												class="h6 mb-0 small ms-2">${comm.numberWithComma(data.total_price)}</span>
+										</div>     
+										<hr class="my-1"> 
+									</li>
+									<li>
+										<div class="d-flex justify-content-between">
+											<span class="me-4 small">수수료</span> <span
+												class="text-danger small ms-2">-${comm.numberWithComma(data.total_price-data.total_calculate_price)}</span>
+										</div>
+										<hr class="my-1">
+									</li>
+									<li>
+										<div class="d-flex justify-content-between">
+											<span class="small">정산금액</span> <span
+												class="h6 mb-0 small ms-2">${comm.numberWithComma(data.total_calculate_price)}</span>
+										</div>
+									</li>
+								</ul>
 							</div>
 						</div>`;
 					cardData.append(tableData);
