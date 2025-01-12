@@ -1,66 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mtl.user.question.QuestionMapper">
-	
-	<!-- 문의 등록 -->
-	<insert id="registQuestion" parameterType="HashMap">
-		INSERT INTO PARTNER_QUESTION (
-			  user_idx
-			, partner_idx
-			, title
-			, content
-		) VALUES (
-			  #{user_idx}
-			, #{partner_idx}
-			, #{title}
-			, #{content}
-		)
-	</insert>
-		<!-- 내가 쓴 후기 리스트 -->
-	<select id="getQuestionList" parameterType="HashMap">
-		SELECT
-			  user_idx
-			, content
-			, answer
-			, (SELECT name FROM ADMIN WHERE idx = admin_idx) AS name
-			, create_date 
-			, answer_date 
-		FROM
-			QUESTION
-		WHERE 
-			user_idx = #{user_idx}
-	</select>
-	
-	<!-- 내가 쓴 후기 개수 -->
-	<select id="getQuestionCnt" parameterType="HashMap">
-		SELECT
-			COUNT(*)
-		FROM
-			QUESTION
-		WHERE 
-			user_idx = #{user_idx}
-	</select>
-	
-	<!-- 
-	<insert id="registQuestion" parameterType="HashMap">
-        INSERT INTO QUESTION (user_idx, admin_idx, title, content)
-        VALUES (#{user_idx}, #{admin_idx}, #{title}, #{content})
+
+    <!-- 문의 등록 -->
+    <insert id="registQuestion" parameterType="HashMap">
+        INSERT INTO PARTNER_QUESTION (
+              user_idx
+            , partner_idx
+            , title
+            , content
+            , create_date
+        ) VALUES (
+              #{user_idx}
+            , #{partner_idx}
+            , #{title}
+            , #{content}
+            , NOW()  <!-- 현재 시간 자동 추가 -->
+        )
     </insert>
 
+    <!-- 문의 목록 조회 -->
     <select id="getQuestionList" parameterType="HashMap">
-        SELECT user_idx, content, answer, create_date, answer_yn
-        FROM QUESTION
-        WHERE user_idx = #{user_idx}
-        ORDER BY create_date DESC
-        LIMIT #{limit} OFFSET #{offset}
+		SELECT q.user_idx, q.content, q.answer, a.name, q.create_date, q.answer_date
+		FROM QUESTION q
+		LEFT JOIN ADMIN a ON q.admin_idx = a.idx
+		WHERE q.user_idx = ?
+
     </select>
 
-    <select id="getQuestionDetail" parameterType="HashMap">
-        SELECT * FROM QUESTION WHERE id = #{id}
-    </select>
-
+    <!-- 문의 개수 조회 -->
     <select id="getQuestionCnt" parameterType="HashMap">
-        SELECT COUNT(*) FROM QUESTION WHERE user_idx = #{user_idx}
+        SELECT
+            COUNT(*)
+        FROM
+            QUESTION
+        WHERE 
+            user_idx = #{user_idx}
     </select>
-	 -->
+
+    <!-- 문의 상세 조회 -->
+    <select id="getQuestionDetail" parameterType="HashMap">
+        SELECT
+            title,
+            content,
+            create_date,
+            answer,
+            answer_date
+        FROM
+            QUESTION
+        WHERE 
+            id = #{question_idx}
+    </select>
+
 </mapper>

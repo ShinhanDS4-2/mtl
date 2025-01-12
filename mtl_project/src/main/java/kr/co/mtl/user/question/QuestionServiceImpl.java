@@ -7,73 +7,58 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 @Service
 @Transactional
-public class QuestionServiceImpl implements QuestionService{
-	
-	@Autowired
-	private QuestionMapper questionMapper;
-	
-	/**
-	 * 숙소 정보 업데이트
-	 * @param param
-	 * @param request
-	 * @return
-	 */
-	@Override
-	public Map<String, Object> registQuestion(Map<String, Object> param) {
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		if(questionMapper.registQuestion(param) <= 0) {
-			result.put("result", false);
-			return result;
-		}
+public class QuestionServiceImpl implements QuestionService {
 
-		result.put("result", true);
-		
-		return result;
-	}
+    @Autowired
+    private QuestionMapper questionMapper;
 
-	public Map<String, Object> getQuestionList(Map<String, Object> param) {
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		// 리뷰
-		List<Map<String, Object>> questionList = questionMapper.getQuestionList(param);
-	
-		result.put("list", questionList);
-		result.put("total", questionMapper.getQuestionCnt(param));
-		
-		return result;
-	};
+    /**
+     * 문의 등록
+     */
+    @Override
+    public Map<String, Object> registQuestion(Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+        
+        int insertResult = questionMapper.registQuestion(param);
+        if (insertResult <= 0) {
+            result.put("result", false);
+            result.put("message", "문의 등록에 실패했습니다.");
+        } else {
+            result.put("result", true);
+            result.put("message", "문의가 등록되었습니다.");
+        }
 
-//	@Override
-//    public Map<String, Object> registQuestion(Map<String, Object> param) {
-//        Map<String, Object> result = new HashMap<>();
-//        if (questionMapper.registQuestion(param) <= 0) {
-//            result.put("result", false);
-//        } else {
-//            result.put("result", true);
-//        }
-//        return result;
-//    }
-//
-//    @Override
-//    public Map<String, Object> getQuestionList(Map<String, Object> param) {
-//        Map<String, Object> result = new HashMap<>();
-//        List<Map<String, Object>> questions = questionMapper.getQuestionList(param);
-//        result.put("list", questions);
-//        result.put("total", questionMapper.getQuestionCnt(param));
-//        return result;
-//    }
-//
-//    @Override
-//    public Map<String, Object> getQuestionDetail(Map<String, Object> param) {
-//        Map<String, Object> result = new HashMap<>();
-//        result.put("question", questionMapper.getQuestionDetail(param));
-//        return result;
-//    }
-	
+        return result;
+    }
+
+    /**
+     * 문의 목록 조회
+     */
+    @Override
+    public Map<String, Object> getQuestionList(Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+        
+        List<Map<String, Object>> questionList = questionMapper.getQuestionList(param);
+        int totalCount = questionMapper.getQuestionCnt(param);
+
+        result.put("list", questionList);
+        result.put("totalCnt", totalCount);
+
+        return result;
+    }
+
+    /**
+     * 문의 상세 조회
+     */
+    @Override
+    public Map<String, Object> getQuestionDetail(Map<String, Object> param) {
+        Map<String, Object> result = new HashMap<>();
+        
+        Map<String, Object> questionDetail = questionMapper.getQuestionDetail(param);
+        result.put("data", questionDetail);
+
+        return result;
+    }
 }
