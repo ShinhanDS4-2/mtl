@@ -123,7 +123,7 @@
 				<div class="card-body">
 					<!-- Table head -->
 					<div class="bg-light rounded p-3 d-none d-sm-block">
-						<div class="row row-cols-7 g-4">
+						<div class="row row-cols-7 g-4 text-center">
 							<div class="col">
 								<h6 class="mb-0">지역</h6>
 							</div>
@@ -149,10 +149,10 @@
 				<!-- Card body END -->
 
 				<!-- Card footer START --> 
-				<div class="card-footer pt-0">
+				<div class="card-footer pt-4">
 					<!-- Pagination (페이지 전환 하단 바)-->
-					<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-						<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+					<nav class="d-flex justify-content-center" aria-label="navigation">
+						<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
 							<!-- 동적으로 페이지네이션 그려주는 곳 page.drawPage(리스트 총 갯수) -->
 						</ul>
 					</nav>

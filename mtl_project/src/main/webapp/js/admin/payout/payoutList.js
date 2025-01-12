@@ -107,7 +107,7 @@ const payout = (function() {
 
 		/* 페이징 START */    
 		let pageOption = {
-			limit: 10  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+			limit: 5 // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
 		let page = $("#pagination").customPaging(pageOption, function(_curPage){  
@@ -165,7 +165,7 @@ const payout = (function() {
 
 				// <!-- js에서 반복 돌릴 부분(id="cardBody" 아래에 append) -->
 				let cardBodyData = 
-					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 						<div class="col">
 							<small class="d-block d-sm-none">정산일</small>
 							<h6 class="ms-1 mb-0 fw-normal">${data.calculate_date}</h6>
@@ -180,11 +180,11 @@ const payout = (function() {
 
 						<div class="col"> 
 							<small class="d-block d-sm-none">판매금액</small>
-							<h6 class="ms-1 mb-0 fw-normal">${data.price}원</h6>
+							<h6 class="ms-1 mb-0 fw-normal">${comm.numberWithComma(data.price)}원</h6>
 						</div>
 						<div class="col">
 							<small class="d-block d-sm-none">정산금액</small>
-							<h6 class="ms-1 mb-1 fw-light">${data.calculate_price}원</h6>
+							<h6 class="ms-1 mb-1 fw-light">${comm.numberWithComma(data.calculate_price)}원</h6>
 						</div>
 						<div class="col">
 							<small class="d-block d-sm-none">정산상태</small>`

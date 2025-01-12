@@ -120,7 +120,7 @@
 					<div class="card-body">
 						<!-- Table head -->
 						<div class="bg-light rounded p-3 d-none d-sm-block">
-							<div class="row row-cols-7 g-4">
+							<div class="row row-cols-7 g-4 text-center">
 								<div class="col">
 									<h6 class="mb-0">정산일</h6>
 								</div>
@@ -148,13 +148,13 @@
 
 					<!-- Card footer START -->
 					 <!-- 페이징 처리 START -->
-					<div class="row">
-						<div class="col-12">
-							<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-								<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">  <!-- id="pagination" -->
-								</ul>
-							</nav>
-						</div> 
+					 <div class="card-footer pt-4">
+						<!-- Pagination (페이지 전환 하단 바)-->
+						<nav class="d-flex justify-content-center">
+							<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
+								
+							</ul>
+						</nav>
 					</div>
 					<!-- 페이징 처리 END -->
 					<!-- Card footer END -->
@@ -234,7 +234,7 @@
 	<%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
 	
 	<!-- page script -->
-	<script src="js/admin/payoutList.js"></script>
+	<script src="js/admin/payout/payoutList.js"></script>
 	<script type="text/javascript">
 		payout.init();
 	</script>   

@@ -1,4 +1,4 @@
-package kr.co.mtl.admin.partnerlist;
+package kr.co.mtl.admin.partner;
 
 import java.util.Arrays;
 import java.util.HashMap;

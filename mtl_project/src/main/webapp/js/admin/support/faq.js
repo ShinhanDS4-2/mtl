@@ -142,7 +142,7 @@ const faq = (function() {
 	    		let row =
 	    			`
 	    				<div>
-							<div class="row align-items-lg-center g-4 px-2 py-4">
+							<div class="row align-items-lg-center g-4 px-2 py-4 text-center border-bottom">
 								<div class="col-2">
 									<small class="d-block d-lg-none">분류</small>
 									<h6 class="ms-1 mb-0 fw-normal">${data.type}</h6>
@@ -160,7 +160,7 @@ const faq = (function() {
 									<h6 class="ms-1 mb-0 fw-normal">${data.create_date_format}</h6>
 								</div>
 							</div>
-							<div id="faq${data.faq_idx}" class="accordion-collapse collapse" aria-labelledby="heading-1" data-bs-parent="#faqList">
+							<div id="faq${data.faq_idx}" class="accordion-collapse collapse mt-2" aria-labelledby="heading-1" data-bs-parent="#faqList">
 								<div class="accordion-body border rounded">
 									<div class="d-flex justify-content-between">
 										<p class="space pe-2 col-10">${data.content}</p>

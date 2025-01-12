@@ -157,7 +157,7 @@
 				<div class="card-body">
 					<!-- Table head -->
 					<div class="bg-light rounded p-3 d-none d-sm-block">
-						<div class="row row-cols-6 g-4">
+						<div class="row row-cols-6 g-4 text-center">
 							<div class="col">
 								<h6 class="mb-0">이메일</h6>
 							</div>
@@ -180,85 +180,12 @@
 					</div>
 					
 					<div id="userList">
-						<!-- Table data (1번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">이메일</small>
-								<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">이름</small>
-								<h6 class="ms-1 mb-0 fw-normal">김시온</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">연락처</small>
-								<h6 class="ms-1 mb-1 fw-light">010-7737-6314</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">가입일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상태</small>
-								<div class="badge bg-success bg-opacity-10 text-success">정상</div>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">
-									<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Table data (2번째 예약내역 상세 데이터)-->
-						<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">이메일</small>
-								<h6 class="ms-1 mb-0 fw-normal">cion@naver.com</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">이름</small>
-								<h6 class="ms-1 mb-0 fw-normal">김시온</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">연락처</small>
-								<h6 class="ms-1 mb-1 fw-light">010-7737-6314</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">가입일</small>
-								<h6 class="ms-1 mb-1 fw-light">2024-12-09</h6>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상태</small>
-								<div class="badge bg-success bg-opacity-10 text-success">정상</div>
-							</div>
-							<!-- Data item -->
-							<div class="col">
-								<small class="d-block d-sm-none">상세보기</small>
-								<div class="ms-1 col">
-									<a href="admin/user/detail" class="btn btn-sm btn-light mb-0">상세보기</a>
-								</div>
-							</div>
-						</div>
 					</div>
-		
-				
 		
 				<!-- Card body END -->
 
 				<!-- Card footer START -->
-				<div class="card-footer pt-0">
+				<div class="card-footer pt-4">
 					<!-- Pagination (페이지 전환 하단 바)-->
 					<nav class="d-flex justify-content-center">
 						<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
