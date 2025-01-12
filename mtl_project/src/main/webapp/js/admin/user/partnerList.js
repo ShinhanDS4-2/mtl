@@ -73,28 +73,22 @@ const partnerList = (function() {
         	let statusText = partner.approval_status == 'Y' ? '승인' : '미승인';
         	
             let row = 
-	            `<div class="row row-cols-xl-6 g-4 align-items-sm-center border-bottom px-2 py-4">
-					<!-- Data item -->
+	            `<div class="row row-cols-xl-6 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 					<div class="col">
 						<h6 class="ms-1 mb-0 fw-normal">${partner.name}</h6>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<h6 class="ms-1 mb-0 fw-normal">${partner.email}</h6>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<h6 class="ms-1 mb-1 fw-light">${partner.phone}</h6>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<h6 class="ms-1 mb-1 fw-light">${partner.create_date}</h6>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<div class="badge bg-success bg-opacity-10 ${statusClass}">${statusText}</div>
 					</div>
-					<!-- Data item -->
 					<div class="col">
 						<div class="ms-1 col">
 							<a href="admin/partner/detail?idx=${partner.partner_idx}" class="btn btn-sm btn-light mb-0">상세보기</a>
@@ -116,28 +110,10 @@ const partnerList = (function() {
 		let type = e.type;
 		
 		if(type == "click") {
-			if(action == "clickEmailAuth") {
-				_event.checkEmail();
+			if(action == "") {
 			} 
 		};
 	};
-	
-	// 이벤트
-	let _event = {
-		// 이메일 형식 체크
-		checkEmail: function() {
-			let email = $("#joinEmail").val();
-			if (!comm.validateEmail(email)) {
-			    alert('올바른 이메일 주소를 입력하세요.');
-			    return;
-		    }
-	    },
-	    
-	    
-            
-
-        
-    };
 	
 	return {
 		init,

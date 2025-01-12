@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.mtl.admin.partnerlist.AdminPartnerlistMapper">
+<mapper namespace="kr.co.mtl.admin.partner.AdminPartnerlistMapper">
 
 	<select id="selectPartnerlist">
 		SELECT 
@@ -63,7 +63,9 @@
 			r.standard,
 			r.maximum,
 			r.basic_price,
-			r.weekend_price
+			r.weekend_price,
+			p.latitude,
+			p.longitude
 		FROM
 			PARTNER p
 		LEFT JOIN

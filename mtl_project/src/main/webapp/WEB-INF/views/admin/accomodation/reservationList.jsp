@@ -240,7 +240,7 @@
 							<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
 								<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">  <!-- id="pagination" -->
 								</ul>
-							</nav>
+							</nav> 
 						</div> 
 					</div>
 					<!-- 페이징 처리 END -->

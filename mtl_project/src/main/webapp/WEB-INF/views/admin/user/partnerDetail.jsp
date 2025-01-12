@@ -21,11 +21,17 @@
 		<div class="page-content-wrapper p-xxl-4">
 			<!-- Title -->
 			<div class="row">
-				<div class="col-12 mb-4 mb-sm-5">
+				<div class="col-12 mb-4">
 					<h1 class="h3 mb-2">판매자 상세 조회</h1>
 					<span>판매자의 상세 정보를 확인하고 승인할 수 있습니다.</span>
 				</div>
 			</div>
+			
+			<div class="justify-content-start mb-3">
+				<a href="javascript:window.history.back();" class="h6 text-reset">
+					<i class="fa-solid fa-circle-chevron-left"></i> 뒤로가기
+				</a>
+			</div> 
 
 			<!-- 판매자 정보 Card START -->
 			<div class="card shadow-lg border mb-4">

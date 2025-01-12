@@ -325,7 +325,7 @@ const roomRegist = (function() {
 
                 //이동막기
                 let titleLink = $("<a>").attr("href", "javascript:;");
-                titleLink.html(data.name);
+                titleLink.html(data.room_type);
                 title.append(titleLink);
 
                 let ul = $("<ul>").addClass("list-group list-group-borderless small mt-2 mb-0");
@@ -353,8 +353,14 @@ const roomRegist = (function() {
                 let priceDiv = $("<div>").addClass("hstack gap-2 mb-2");
                 cardFooter.append(priceDiv);
 
-                let h6 = $("<h6>").addClass("hstack gap-2 mb-2").append(data.basic_price + "원");
+                let h6 = $("<h6>").addClass("hstack gap-2 mb-2").append("평일: " + comm.numberWithComma(data.basic_price) + "원");
                 priceDiv.append(h6);
+
+				let priceDiv2 = $("<div>").addClass("hstack gap-2 mb-2");
+                cardFooter.append(priceDiv2);
+
+                let h62 = $("<h6>").addClass("hstack gap-2 mb-2").append("주말: " + comm.numberWithComma(data.weekend_price) + "원");
+                priceDiv2.append(h62);
 
                 let btnDiv = $("<div>").addClass("hstack gap-2 mb-2");
                 cardFooter.append(btnDiv);

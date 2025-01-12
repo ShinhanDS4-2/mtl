@@ -135,14 +135,13 @@
 				<!-- Card body END -->
 
 				<!-- Card footer START -->
-				<div class="card-footer pt-0">
+				<div class="card-footer pt-4">
 					<!-- Pagination (페이지 전환 하단 바)-->
 					<nav class="d-flex justify-content-center">
 						<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
 							
 						</ul>
 					</nav>
-
 				</div>
 			</div>
 		</div>

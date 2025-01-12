@@ -132,8 +132,8 @@ const payout = (function() {
 					button = `<div class="badge bg-danger bg-opacity-10 text-danger">정산대기</div>`
 				}
 
-				// <!-- js에서 반복 돌릴 부분(id="cardBody" 아래에 append) -->     
-				let cardBodyData =         
+				// <!-- js에서 반복 돌릴 부분(id="cardBody" 아래에 append) -->
+				let cardBodyData = 
 					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 						<div class="col">
 							<small class="d-block d-sm-none">정산일</small> 

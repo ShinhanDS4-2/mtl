@@ -31,7 +31,7 @@
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
 						<h1 class="h3 mb-2">마이페이지</h1>
-						<span>관리자 정보를 수정.. </span>
+						<span>관리자 정보를 수정할 수 있습니다.</span>
 					</div>
 				</div>
 

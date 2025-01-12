@@ -179,17 +179,15 @@
 				                    <!-- 공지사항 목록은 JavaScript에서 동적으로 렌더링됩니다 -->
 						</div>
 					</div>
+	                <!-- Card footer START -->
+	                <div class="card-footer pt-2">
+						<!-- Pagination (페이지 전환 하단 바)-->
+						<nav class="d-flex justify-content-center">
+							<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
+							</ul>
+						</nav>
+					</div>
                 </div>
-                <!-- 페이징 컨테이너 -->
-                <!-- Card footer START -->
-				<div class="d-sm-flex justify-content-sm-center align-items-sm-center">
-					<!-- Pagination -->
-					<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
-						<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
-						</ul>
-					</nav>
-				</div>
-                
             </div>
             <!-- Page main content END -->
         </div>

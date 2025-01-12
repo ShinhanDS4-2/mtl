@@ -148,14 +148,14 @@
 
 					<!-- Card footer START -->
 					 <!-- 페이징 처리 START -->
-					<div class="row">
-						<div class="col-12">
-							<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-								<ul id="pagination" class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">  <!-- id="pagination" -->
-								</ul>
-							</nav>
-						</div>  
-					</div> 
+					 <div class="card-footer pt-4">
+						<!-- Pagination (페이지 전환 하단 바)-->
+						<nav class="d-flex justify-content-center">
+							<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
+								
+							</ul>
+						</nav>   
+					</div>
 					<!-- 페이징 처리 END -->
 					<!-- Card footer END -->
 					

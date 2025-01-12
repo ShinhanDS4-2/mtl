@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.partner.dashboard.PartnerDashboardMapper">
+
+	<!-- 객실 별 오늘 예약 건수 -->
+	<select id="getRoomReservation" parameterType="HashMap">
+		SELECT 
+			r.room_type,
+			r.count,
+			(SELECT COUNT(idx) FROM RESERVATION r2 WHERE DATE(STR_TO_DATE(r2.reservation_date, '%Y-%m-%d')) = CURDATE() AND r2.room_idx = r.idx ) AS cnt
+		FROM
+			ROOM r
+		WHERE 
+			r.partner_idx = #{partner_idx}
+		AND r.status = 'Y'
+	</select>
+	
+	<!-- 오늘 매출, 한달 매출 -->
+	<select id="getPayout" parameterType="HashMap">
+		SELECT 
+		    SUM(CASE 
+		        WHEN DATE(STR_TO_DATE(check_in_date, '%Y-%m-%d')) = CURDATE() THEN calculate_price 
+		        ELSE 0 
+		    END) AS today_sale,
+		    SUM(CASE 
+		        WHEN MONTH(STR_TO_DATE(check_in_date, '%Y-%m-%d')) = MONTH(CURDATE())
+		          AND YEAR(STR_TO_DATE(check_in_date, '%Y-%m-%d')) = YEAR(CURDATE()) THEN calculate_price 
+		        ELSE 0 
+		    END) AS month_sale
+		FROM RESERVATION
+		WHERE partner_idx = #{partner_idx}
+	</select>
+	
+	<!-- 공지사항 -->
+	<select id="getNotice" parameterType="HashMap">
+		SELECT 
+		    idx AS notice_idx,
+		    title,
+		    DATE_FORMAT(create_date, '%Y-%m-%d') AS date
+		FROM NOTICE
+		WHERE status = 'Y'
+		AND target = 'P'
+		ORDER BY create_date DESC
+		LIMIT 3;
+	</select>
+
+	<!-- 평점 -->
+	<select id="getScore" parameterType="HashMap">
+		SELECT 
+		    score
+		FROM PARTNER
+		WHERE idx = #{partner_idx}
+	</select>
+
+	<!-- 후기 -->
+	<select id="getReview" parameterType="HashMap">
+		SELECT 
+			COUNT(*) AS review_count
+		FROM REVIEW r
+		JOIN RESERVATION r2 
+		ON r2.idx = r.reservation_idx 
+		WHERE r2.partner_idx = #{partner_idx}
+	</select>
+
+	<!-- 미답변 후기 -->
+	<select id="getReviewNoReply" parameterType="HashMap">
+		SELECT 
+			COUNT(*) AS no_review_count
+		FROM REVIEW r
+		JOIN RESERVATION r2 
+		ON r2.idx = r.reservation_idx 
+		WHERE r2.partner_idx = #{partner_idx}
+		AND r.reply IS NULL
+	</select>
+	
+</mapper>

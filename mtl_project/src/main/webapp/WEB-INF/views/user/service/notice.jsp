@@ -32,54 +32,91 @@
 					<div class="row">
 						<div class="col-12 mb-4 mb-sm-5">
 							<h1 class="h3 mb-2">공지사항</h1>
-							<span>파트너센터의 공지사항과 소식을 확인할 수 있습니다. </span>
+							<span>공지사항과 소식을 확인할 수 있습니다. </span>
 						</div>
 					</div>
 					
-				<!-- 공지사항 -->
-				<div class="vstack gap-4">
-					<div class="row">
-						<div class="col-12">
-							<div class="card border">
-								<!-- Card header -->
-								<div class="card-header border-bottom">
-									<!-- <h4 class="card-header-title">공지사항</h4> -->
+				<!-- 문의 상세 모달 -->
+				<div id="getNoticeDetailByIdx" class="modal fade" tabindex="-1" role="dialog" >
+				    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				        <div class="modal-content">
+				            <div class="modal-header">
+				                <h5 class="modal-title">공지사항 상세</h5>
+				                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				            </div>
+				            <div class="modal-body">
+				                <h6 class="fw-bold">제목</h6>    
+				                <p id="modalTitle" class="space" >
+				
+				                <h6 class="fw-bold ">내용</h6>
+				                <p id="modalContent" class="space" ></p>
+	
+				                
+				            </div>
+				            <div class="modal-footer">
+				                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+				             
+				            </div>
+				        </div>
+				    </div>
+				</div>
+
+
+				<!-- 문의 내역 List 상단 Tab -->
+				<div class="row g-4 justify-content-between align-items-center mb-2">
+					
+				</div>
+				<!-- 문의 내역 List START -->
+				<div class="card shadow border">
+					<!-- Card body START -->
+					<div class="card-body">
+						<!-- Table head -->
+						<div class="bg-light rounded p-3 d-none d-lg-block">
+							<div class="row row-cols-4 g-4">
+								<div class="col">
+									<h6 class="mb-0 text-center" >제목</h6>
 								</div>
-								<!-- Card body START -->
-								<div class="card-body">
-									<!-- 사용자 공지사항 리스트 -->
-									<div class="table-responsive border-0">
-										<table class="table align-middle p-4 mb-0 table-hover table-shrink">
-											<tbody class="border-top-0" id="noticeList"> 
-												<tr>	
-													<small class="d-block d-lg-none">제목</small>
-													<td> <h6 class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#noticeModal"></a></h6> </td>
-													<td class="text-end"> <small class="mb-0 fw-light text-secondary">2024-12-01</small> </td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<!-- Hotel room list END -->
+						
+								<div class="col">
+									<h6 class="mb-0"></h6>
 								</div>
-								<!-- Card body END -->
-			
-								<!-- Card footer START -->
-								<div class="card-footer pt-0">
-									<!-- Pagination and content -->
-									<div class="d-sm-flex justify-content-sm-center align-items-sm-center">
-										<!-- Pagination -->
-										<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
-											<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
-											</ul>
-										</nav>
-									</div>
+								<div class="col">
+									<h6 class="mb-0"></h6>
 								</div>
-								<!-- Card footer END -->
+								<div class="col">
+									<h6 class="mb-0 text-center" >등록일</h6>
+								</div>
 							</div>
 						</div>
-					 </div> 
-					<!-- Booking table END -->
+
+						<!-- 사용자 공지사항 리스트 -->
+						<div class="table-responsive border-0">
+							<table class="table align-middle p-4 mb-0 table-hover table-shrink">
+								<tbody class="border-top-0" id="noticeList"> 
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- Card body END -->
+
+					<!-- Card footer START -->
+					<div class="card-footer pt-0">
+						<!-- Pagination (페이지 전환 하단 바)-->
+						<nav class="d-flex justify-content-center">
+							<!-- Pagination -->
+							<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
+								<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
+								</ul>
+							</nav>						
+						</nav>
+
+					</div>
+					<!-- Card footer END -->
 				</div>
+				<!-- 문의 내역 List END -->
+				
+
 			</div>
 			<!-- Main content END -->
 		</div>
@@ -88,32 +125,6 @@
 </main>
 
 
-<!-- 공지사항 상세 모달창 START -->
-				<div id="noticeDetailModal" class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="static">
-				    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-				        <div class="modal-content">
-				            <div class="modal-header">
-				                <h5 class="modal-title">공지사항 상세</h5>
-				                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				            </div>
-				            <div class="modal-body">
-				                <h6 class="fw-bold">제목</h6>
-				                <p id="detailTitle" class="mb-3"></p>
-				
-				                <h6 class="fw-bold">내용</h6>
-				                <p id="detailContent" class="mb-3"></p>
-				
-				                <h6 class="fw-bold">상태</h6>
-				                <p id="detailStatus" class="mb-3"></p>
-				            </div>
-				            <div class="modal-footer">
-				                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-				<!-- 공지사항 상세 모달창 END -->
-				<!-- 문의 내용 모달 -->
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

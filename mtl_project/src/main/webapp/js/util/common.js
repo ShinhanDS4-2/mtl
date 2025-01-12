@@ -133,6 +133,8 @@ const comm = {
 	// 3자리마다 , 찍어서 반환
 	numberWithComma: function(num) {
     	if (num == null || num == undefined) return "";
+    	
+    	if (num == 0) return num;
 
     	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },

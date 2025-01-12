@@ -27,16 +27,21 @@
 						<span>주요 관광 지역의 여행지와 취향 키워드를 등록/관리합니다. </span>
 					</div>
 				</div> 
-
+				
 				<!-- Button -->
-				<div class="d-sm-flex justify-content-end align-items-center">
-					<a role="button" class="btn btn-primary-soft text-nowrap mb-0" 
-						data-bs-toggle="modal" data-bs-target="#touristEditModal"
-						data-src="locationDetail" data-act="clickLocationUpdate"> 
-						<i class="bi bi-pencil-square fa-fw"></i>수정하기
+				<div class="d-sm-flex justify-content-between align-items-center">
+					<a href="javascript:window.history.back();" class="h6 text-reset">
+						<i class="fa-solid fa-circle-chevron-left"></i> 뒤로가기
 					</a>
-					<a role="button" class="btn btn-danger-soft text-nowrap ms-1 mb-0"
-						data-src="locationDetail" data-act="clickLocationDelete">삭제하기</a>
+					<div>
+						<a role="button" class="btn btn-primary-soft text-nowrap mb-0" 
+							data-bs-toggle="modal" data-bs-target="#touristEditModal"
+							data-src="locationDetail" data-act="clickLocationUpdate"> 
+							<i class="bi bi-pencil-square fa-fw"></i>수정하기
+						</a>
+						<a role="button" class="btn btn-danger-soft text-nowrap ms-1 mb-0"
+							data-src="locationDetail" data-act="clickLocationDelete">삭제하기</a>
+					</div>
 				</div>
 				
 			<!-- 여행지 수정 Modal START -->
