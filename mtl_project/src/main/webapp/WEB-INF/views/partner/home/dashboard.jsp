@@ -35,23 +35,11 @@
 						<div class="card-header bg-light">
 							<div class="d-flex justify-content-between align-items-center">
 								<h5 class="mb-0">오늘 예약</h5>
-								<a href="/mtl/partner/bookinglist">예약 내역 &gt;</a>
+								<a href="/mtl/partner/reservation/list">전체보기 &gt;</a>
 							</div>
-							<span>2024.12.24(월)</span>
+							<span id="today"></span>
 						</div>
-						<div class="card-body">
-							<div class="item d-flex justify-content-between border-bottom mt-2 mb-4">
-								<h6>디럭스</h6>
-								<p>2 / 3</p>
-							</div>
-							<div class="item d-flex justify-content-between border-bottom mt-2 mb-4">
-								<h6>트윗</h6>
-								<p>1 / 2</p>
-							</div>
-							<div class="item d-flex justify-content-between border-bottom mt-2 mb-4">
-								<h6>스탠다드</h6>
-								<p>0 / 3</p>
-							</div>
+						<div class="card-body" id="roomList">
 						</div>
 					</div>
 				</div>
@@ -61,18 +49,18 @@
 					<div class="card shadow border-2">
 						<div class="card-header bg-light">
 							<div class="d-flex justify-content-between align-items-center">
-								<h5 class="mb-0">오늘 매출</h5>
-								<a href="/mtl/partner/payoutlist">정산 내역 &gt;</a>
+								<h5 class="mb-0">매출</h5>
+								<a href="/mtl/partner/payout/list">전체보기 &gt;</a>
 							</div>
 						</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between align-items-center">
-								<h6>판매가</h6>
-								<p>1,230,000원</p>
+								<h6>오늘 매출</h6>
+								<p id="today_pay"></p>
 							</div>
 							<div class="d-flex justify-content-between align-items-center">
-								<h6>입금가</h6>
-								<p>1,130,000원</p>
+								<h6>한달 매출</h6>
+								<p id="month_pay"></p>
 							</div>
 						</div>
 					</div>
@@ -81,20 +69,20 @@
 						<div class="card-header bg-light">
 							<div class="d-flex justify-content-between align-items-center">
 								<h5 class="mb-0">최근 7일 후기</h5>
-								<a href="/mtl/partner/reviews">고객 후기 &gt;</a>
+								<a href="/mtl/partner/review">전체보기 &gt;</a>
 							</div>
 						</div>
 						<div class="card-body">
 							<div class="d-flex justify-content-between align-items-center">
 								<h6>평점</h6>
-								<p class="text-warning">★★★★☆</p>
 								<p>
-									<strong>(4.0 / 5)</strong>
+									<span class="text-warning me-1" id="star"></span>
+									<strong>(<span id="score"></span> / 5)</strong>
 								</p>
 							</div>
 							<div class="d-flex justify-content-between align-items-center">
 								<h6>후기</h6>
-								<p>전체 19 / 미답변 2</p>
+								<p>전체 <span id="review"></span> / 미답변 <span id="noReply"></span></p>
 							</div>
 						</div>
 					</div>
@@ -105,22 +93,10 @@
 						<div class="card-header bg-light">
 							<div class="d-flex justify-content-between align-items-center">
 								<h5 class="mb-0">공지사항</h5>
-								<a href="/mtl/partner/notion">전체 보기 &gt;</a>
+								<a href="/mtl/partner/notice">전체 보기 &gt;</a>
 							</div>
 						</div>
-						<div class="card-body">
-							<div class="item d-flex justify-content-between border-bottom mt-2 mb-4">
-								<h6>시스템 점검 안내</h6>
-								<p>2024.12.24(월)</p>
-							</div>
-							<div class="item d-flex justify-content-between border-bottom mt-2 mb-4">
-								<h6>시스템 점검 안내</h6>
-								<p>2024.12.24(월)</p>
-							</div>
-							<div class="item d-flex justify-content-between border-bottom mt-2 mb-4">
-								<h6>시스템 점검 안내</h6>
-								<p>2024.12.24(월)</p>
-							</div>
+						<div class="card-body" id="noticeList">
 						</div>
 					</div>
 				</div>
@@ -130,7 +106,10 @@
 </main>
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
-
+<script src="js/partner/home/dashboard.js"></script>
+<script type="text/javascript">
+	dashboard.init();
+</script>
 </body>
 
 </html>

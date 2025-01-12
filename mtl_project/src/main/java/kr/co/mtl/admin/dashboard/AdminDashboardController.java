@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/dashboard")
-public class DashboardController {
+@RequestMapping("/api/admin/dashboard")
+public class AdminDashboardController {
 
 	@Autowired
-	private DashboardService dashboardService;
+	private AdminDashboardService dashboardService;
 
 	/**
 	 * 대시보드

@@ -30,7 +30,7 @@ const dashboard = (function() {
 	// 이벤트
 	let _event = {
 		getInfo: function() {
-			let url = "/dashboard/info";
+			let url = "/admin/dashboard/info";
 			
 			let data = {};
 			

@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface DashboardMapper {
+public interface AdminDashboardMapper {
 
 	// 사용자 통계
 	public Map<String, Object> getUser(Map<String, Object> param);

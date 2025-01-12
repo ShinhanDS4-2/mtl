@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class DashboardServiceImpl implements DashboardService {
+public class AdminDashboardServiceImpl implements AdminDashboardService {
 
 	@Autowired
-	private DashboardMapper dashboardMapper;
+	private AdminDashboardMapper dashboardMapper;
 
 	/**
 	 * 대시보드
