@@ -102,15 +102,17 @@ public class AdminLocationServiceImpl implements AdminLocationService{
 	@Override
 	public Map<String, Object> updateLocation(Map<String, Object> param, List<MultipartFile> images) {
 	    Map<String, Object> result = new HashMap<>();
-    	System.out.println("여행지 수정 param값은  ?????");
-    	System.out.println(param); 
     	
     	System.out.println("여행지 수정 images값은  ?????");
-    	System.out.println(images); 
+    	System.out.println(images);    
     	
 		try {
-		// 여행지 기본정보 수정 param : #{location_idx}, #{area}, #{type}, #{name}, #{address}, #{address_si}, #{address_dong}, #{description}
+			// param에 위도 경도 추가
+	    	mapService.getGeoInfo(param);
+	    	
+		// 여행지 기본정보 수정 param : #{location_idx}, #{area}, #{type}, #{name}, #{address}, #{address_si}, #{address_dong}, #{description}, 위도latitude, 경도longitude
 			int updateInfo = adminLocationMapper.updateLocationInfo(param);
+			System.out.println("여행지 수정 param값은  ?????" + param); 
 		
 		// 키워드 삭제 후 재등록
 			// 키워드 삭제 param : #{location_idx}

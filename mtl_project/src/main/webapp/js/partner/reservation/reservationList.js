@@ -16,7 +16,7 @@ const reservationList = (function() {
 		});           
 	};                  
 	                 
-	// 이벤트 분기         
+	// 이벤트 분기          
 	function _eventAction(e) {   
 		let evo = $(e.currentTarget);
 		let action = evo.attr("data-act");
@@ -49,14 +49,15 @@ const reservationList = (function() {
 				data: {reservation_idx:reservation_idx},   
 
 				success: function(resp) {  // 성공 시 API 리턴값: Detail, Param
-					console.log("detail 성공 시 API 리턴값:????????", resp)    // Detail, Param
+					console.log("상세보기 API 리턴값:????????", resp)    // Detail, Param
 					_draw.drawDetailModal(resp.Detail);  // 상세조회 모달 그리기
 					_eventInit(); // html이 전부 그려진 후 호출되어야 작동함. 
 				},  
 				error: function(xhr, status, error) {  
 					console.error("Error :", error);  
-				}
+				} 
 			});       
+			
 
 			// fetchReservationList();  // 조건에 맞는 리스트 조회
 		}, 
@@ -71,15 +72,12 @@ const reservationList = (function() {
 		// 예약일, 입실일, 퇴실일 기준 (드롭다운 값 가져오기) (기본값: 예약일)
 		let selectedValue = $('#selectedValue').val(); 
 		     
-		let param = {  
-			// partner_idx는 서버에서 세션에 저장된 데이터를 읽어서 사용하기 때문에 여기서 넘겨줄 필요가 없음
-			"partner_idx" : 211,  // 이거는 데이터값 확인하기 위해 임시로 설정해둔거고 삭제해야함
-			// 필터부분 
+		let param = {   // 필터부분 
 			"date_value" : selectedValue,  // 예약 기간 조회 기준 (기본값: 예약일)   
 			"date_start" : '',   // 달력 시작일
 			"date_end" : '',   // 달력 종료일
 			"reservation_status" : '',  // 예약 상태 (전체"" / 예약완료 P / 예약취소 R)
-			"RoomType" : '', // 객실 타입
+			"RoomType" : '', // 객실 idx
 			"Name" : '', // 예약자명   
 		};
 		
@@ -119,8 +117,6 @@ const reservationList = (function() {
 				"Name" : searchReservName, // 예약자명
 			};
 
- // ★★★★★★★★★★ 기간 (choice.js 사용해서 동적으로 뿌려져있는 드롭다운 가져와야 함)
-       
 			// 데이터 잘 가져왔나 확인
 			console.log("검색 클릭 후 : param값은 ????", param);
 
@@ -147,6 +143,7 @@ const reservationList = (function() {
 		/* 페이징 END */
 
 
+		console.log("비동기로 넘길 : param값은 ????", param);
 		// Ajax 요청 - 예약내역 리스트 조회 API호출
 		$.ajax({   
 			type: "POST", 
@@ -154,10 +151,9 @@ const reservationList = (function() {
 			data: param,   // param값 => partner_idx, 검색필터값(~~, offset, limit)
 
 			success: function(resp) {  // 성공 시 API 리턴값: Param, List, Count
-				console.log("예약내역 리스트 조회 API호출 resp????????", resp)
 				_draw.drawReservationList(resp);  // 리스트 그리기
 				page.drawPage(resp.Count);  // 파람값으로 리스트 총 갯수 넣어주면 하단 페이징 넘버 동적으로 알아서 그려줌
-				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.    
+				_eventInit();  // html이 전부 그려진 후 호출되어야 작동함.     
 			},  
 			error: function(xhr, status, error) {
 				console.error("Error :", error); 
@@ -171,10 +167,8 @@ const reservationList = (function() {
 		$.ajax({      
 			type: "POST", 
 			url: "/mtl/api/partner/reservation/roomList",  
-			data: {"partner_idx" : 11},  // 이거는 테스트위해 임시로 설정해둔거고 삭제해야함   
-			// data: 서버로 넘겨줄 데이터 없어서 생략
 			success: function(resp) {  // 성공 시 API 리턴값: roomTypeList
-				console.log("서버 응답 데이터:", resp); // 서버 응답 데이터 출력
+				console.log("숙소가 가지고있는 객실리스트 가져오기:", resp); // 서버 응답 데이터 출력
 				_draw.drawRoomList(resp.roomTypeList);  // 검색필터 > 객실타입 리스트 그리기
 				_eventInit();  
 			},       
@@ -189,8 +183,6 @@ const reservationList = (function() {
 	let _draw = {
 	// 예약내역 리스트 조회 그리기 
 		drawReservationList: function(list) {  // list에는 Param, List, Count 값이 들어있음
-			console.log("리스트 조회 그리기 부분 list값은?", list)
-
 			let date_value = '';
 			if(list.Param.date_value == 'reservation_date') {
 				date_value = '예약일';
@@ -203,9 +195,8 @@ const reservationList = (function() {
 			// 예약내역 리스트 총 갯수
 			$("#reservationCount").html(`총 ${list.Count}개`);
   
-			// 기간 설정 조건    
-			// $("#searchDateRange").html(date_value + ` 기준 ${list.Param.date_start} ~ ${list.Param.date_end}`);
-			$("#searchDateRange").html(date_value + ` 기준 2025-01-01 ~ 2025-01-03`);
+			// 기간 설정 조건       
+			$("#searchDateRange").html(date_value + ` 기준 ${list.Param.date_start} ~ ${list.Param.date_end}`);
      
 			// 예약내역 리스트 데이터들을 감싸고 있는 큰 div태그 부분ㄴ
 			let reservationListData = $("#reservationListData");
@@ -281,12 +272,10 @@ const reservationList = (function() {
 			for(data of list) {
 				let option = { value : data.room_idx, label: data.room_type };
 				roomArray.push(option);
-				console.log("vdata????????????/", data); 
 				let roomType = `<option>${data.room_type}</option>`;
 				selectRoomType.append(roomType);
 			} 
 			*/ 
-			console.log("roomArray????", roomArray);
 			choices.setChoices(roomArray, 'value', 'label', true); // true: 기존 선택 초기화
 		},  
 

@@ -15,7 +15,7 @@
 		<%@ include file="/WEB-INF/views/include/partnerSidebar.jsp"%>
 		<!-- Page content START -->
 		<div class="page-content">
-
+      
 			<!-- Topbar -->
 			<%@ include file="/WEB-INF/views/include/partnerTopbar.jsp"%>
 

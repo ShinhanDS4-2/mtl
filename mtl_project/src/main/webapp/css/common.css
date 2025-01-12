@@ -144,6 +144,12 @@
   overflow: hidden; /* 이미지를 컨테이너 영역 안에만 표시 */
   position: relative;
 }
+   
+.fixed-size-img {      
+    width: 280px; /* 원하는 고정 가로 크기 */
+    height: 200px; /* 원하는 고정 세로 크기 */
+    object-fit: cover; /* 이미지가 잘리지 않도록 비율 유지 */
+}
 
 .img-container img {
   width: 100%; /* 이미지를 컨테이너의 너비에 맞춤 */

@@ -286,32 +286,35 @@
 														<div
 															class="card-header bg-transparent border-bottom px-0 pt-0">
 															<h4 class="mb-0">설명</h4>
-														</div>
+														</div>   
 														<div class="card-body px-0 pb-0">
 															<p class="mb-3" id="locationDescription">상세설명 들어올 부분</p> <!-- js -->
 														</div>
 													</div>
 
-													<!-- 관광지 이미지 Card START -->
+													<!-- 관광지 이미지 Card START -->  
 													<div class="card bg-transparent">
 														<div class="card-header bg-transparent border-bottom px-0">
 															<h4 class="mb-0">관광지 이미지</h4>
-														</div>
+														</div>   
 														<div class="card-body px-0 pb-0">
 															<div class="row g-4" id="locationImgList">
 																<!-- 이미지 1장 데이터 / js반복돌려야함 -->
-																<div class="col-md-4">
-																	<a class="w-100 h-100" data-glightbox data-gallery="gallery"
-																		href="assets/images/category/directory/03.jpg">
-																		<div class="card card-element-hover card-overlay-hover overflow-hidden">
-																			<img src="assets/images/category/directory/03.jpg" class="card-img" alt="">
-																			<div class="hover-element w-100 h-100">
+																<div class="col-md-4">      
+																	<!-- <a> 태그는 Lightbox 팝업과 갤러리 기능을 제공하는 이미지 확대 링크를 구성 -->
+																	<a class="w-280 h-200" data-glightbox data-gallery="gallery"
+																		href="assets/images/category/directory/03.jpg">       
+																		<div class="card card-element-hover card-overlay-hover overflow-hidden fixed-size-img">       
+																			<img src="assets/images/category/directory/03.jpg" class="card-img fixed-size-img" alt="">  
+																			<!-- 마우스 오버 시 이미지 위에 반투명 오버레이와 아이콘을 표시 -->
+																			<div class="hover-element w-280 h-200">     
 																				<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-																			</div>
-																		</div>
+																			</div> 
+																		</div>       
 																	</a>
 																</div>
 																<!-- 이미지 1장 데이터 / js반복돌려야함 -->
+																
 															</div>
 														</div>
 													</div>

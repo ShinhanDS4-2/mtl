@@ -8,16 +8,19 @@
 	<select id="getAdminPayoutListCount" parameterType="map">
 		SELECT COUNT(*)
 		FROM RESERVATION 
-		WHERE payment_status = "P" 
-		<!-- 필터적용 -->	  
-		<!-- 날짜 필터 <는 &lt; >는 &gt;--> 
-        <if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
-	        AND DATE(calculate_date) &gt;= #{calculate_date_start} AND DATE(calculate_date) &lt;= #{calculate_date_end}     
-	    </if>      
-        <!-- 정산 상태 필터 -->    
-        <if test="calculate_status != null and calculate_status != ''">
-            AND calculate_status = #{calculate_status}
-        </if>  
+		<!-- 필터적용 -->	       
+		<where>
+			payment_status = "P"  
+			<!-- 날짜 필터 <는 &lt; >는 &gt;--> 
+	        <if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
+		        AND DATE(calculate_date) &gt;= #{calculate_date_start} AND DATE(calculate_date) &lt;= #{calculate_date_end}     
+		    </if>         
+	         <!-- 정산 상태 필터 -->    
+	        <if test="calculate_status != null and calculate_status != ''">
+	            AND calculate_status = #{calculate_status}
+	        </if> 
+			ORDER BY calculate_date DESC      
+		</where>  
 	</select>   
 	   
 	<!-- 정산내역 리스트 조회-->
@@ -28,13 +31,13 @@
 			r.calculate_status, p.name
 		FROM RESERVATION r JOIN PARTNER p ON (r.partner_idx = p.idx)
 		<!-- 필터적용 -->	       
-		<where>
+		<where>    
 			r.payment_status = "P"  
 			<!-- 날짜 필터 <는 &lt; >는 &gt;--> 
 	        <if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
 		        AND DATE(r.calculate_date) &gt;= #{calculate_date_start} AND DATE(r.calculate_date) &lt;= #{calculate_date_end}     
 		    </if>         
-	        <!-- 정산 상태 필터 -->    
+	         <!-- 정산 상태 필터 -->    
 	        <if test="calculate_status != null and calculate_status != ''">
 	            AND r.calculate_status = #{calculate_status}
 	        </if> 

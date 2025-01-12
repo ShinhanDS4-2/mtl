@@ -89,8 +89,8 @@ const payout = (function() {
 			param.offset = pageParam.offset;
 			param.limit = pageParam.limit;
 		};
-		/* 페이징 END */
-		
+		/* 페이징 END */ 
+		console.log("넘겨줄 param값??????????:", param);  // 여기도 잘나옴
 		// Ajax 요청
 		$.ajax({
 			type: "POST", 

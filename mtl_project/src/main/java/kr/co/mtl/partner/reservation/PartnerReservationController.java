@@ -29,23 +29,20 @@ public class PartnerReservationController {
 	 */
 	@PostMapping("/list")
 	public Map<String, Object> getReservationList(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
-//		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));  // 세션에서 partner_idx 얻어서 param에 넣어주기
+		HttpSession session = request.getSession();
+		param.put("partner_idx", session.getAttribute("login_partner_idx"));  // 세션에서 partner_idx 얻어서 param에 넣어주기
 		
 		Map<String, Object> result = reservationService.getReservationList(param);
 		return result;
 	}
-	
+	 
 	/** 시온
 	 * [판매자] 예약내역 상세조회
 	 * @param reservation_idx(예약idx 값 받아서 조회)
 	 * @return Detail, Param
 	 */  
 	@PostMapping("/detail")
-	public Map<String, Object> getReservationDetail(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
-//		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));  // 세션에서 partner_idx 얻어서 param에 넣어주기
-		
+	public Map<String, Object> getReservationDetail(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {   
 		Map<String, Object> result = reservationService.getReservationDetail(param);
 		return result;
 	}
@@ -57,8 +54,8 @@ public class PartnerReservationController {
 	 */    
 	@PostMapping("/roomList")
 	public Map<String, Object> getRoomTypeList(@RequestParam Map<String, Object> param, HttpServletRequest request) throws Exception {
-//		HttpSession session = request.getSession();
-//		param.put("partner_idx", session.getAttribute("login_partner_idx"));  // 세션에서 partner_idx 얻어서 param에 넣어주기
+		HttpSession session = request.getSession();
+		param.put("partner_idx", session.getAttribute("login_partner_idx"));  // 세션에서 partner_idx 얻어서 param에 넣어주기
 		
 		Map<String, Object> result = reservationService.getRoomTypeList(param);
 		return result;

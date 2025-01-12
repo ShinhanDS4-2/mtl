@@ -13,7 +13,7 @@ const payout = (function() {
 		evo.on("click", function(e) {    
 			_eventAction(e);  
 		});            
-	};                  
+	};                      
 	                                
 	// 이벤트 분기             
 	function _eventAction(e) {   

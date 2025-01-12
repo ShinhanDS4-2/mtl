@@ -7,56 +7,83 @@
 	<select id="getReservationListCount" parameterType="map">
 		SELECT COUNT(*)
 		FROM RESERVATION r JOIN ROOM rm ON (r.room_idx = rm.idx) JOIN USER u ON (r.user_idx = u.idx)
-		WHERE r.partner_idx = #{partner_idx}
-			<!-- 검색 필터 리스트 조회랑 동일하게 넣어주기 -->	
+		<where>    
+			r.partner_idx = #{partner_idx}
+		<!-- 검색 필터 -->	
+			<!-- 달력 기간설정 필터 --> 
+			<if test="date_start != null and date_start != '' and date_end != null and date_end != ''">        
+				<!-- 달력 / 날짜기간 설정 -->  
+				<if test="date_value == 'reservation_date'"><!-- 기간 조회 기준(예약일) -->
+					AND DATE(r.reservation_date) &gt;= #{date_start} AND DATE(r.reservation_date) &lt;= #{date_end} 		
+				</if>   
+				 <if test="date_value == 'check_in_date'"><!-- 기간 조회 기준(입실일) -->
+					AND DATE(r.check_in_date) &gt;= #{date_start} AND DATE(r.check_in_date) &lt;= #{date_end} 	 
+				</if>
+				 <if test="date_value == 'check_out_date'"><!-- 기간 조회 기준(퇴실일) -->           
+					AND DATE(r.check_out_date) &gt;= #{date_start} AND DATE(r.check_out_date) &lt;= #{date_end} 	
+				</if>    
+			</if>     
+			      
+			<!-- 예약상태 "", "P", "R" -->
+			<if test="reservation_status != null and reservation_status != ''">
+				AND r.payment_status = #{reservation_status}
+			</if>  
+			
+			<!-- 객실타입 -->
+			<if test="RoomType != null and RoomType != ''">
+				AND r.room_idx = #{RoomType}
+			</if>      
+			        
+			<!-- 예약자명 -->
+			<if test="Name != null and Name != ''">     
+				AND u.name LIKE CONCAT('%', #{Name}, '%')   
+			</if>         
+		</where>
 	</select> 
 	    
 	<!-- 예약내역 리스트 조회-->  
-	<!-- param : partner_idx, (검색필터)date_value, date_start, date_end, reservation_status, RoomType, Name, OrderBy
+	<!-- param : partner_idx, (검색필터)date_value, date_start, date_end, reservation_status, RoomType, Name
 		  * 다중행 반환 List 형태로 반환되어야 함.  -->  
 	<select id="getReservationList" parameterType="map"  resultType="map">
 		SELECT r.idx AS reservation_idx, u.name AS username, rm.room_type, r.check_in_date, r.check_out_date, DATE_FORMAT(r.reservation_date, '%Y-%m-%d') AS reservation_date, r.payment_status, r.price
 		FROM RESERVATION r JOIN ROOM rm ON (r.room_idx = rm.idx) JOIN USER u ON (r.user_idx = u.idx)
-		WHERE r.partner_idx = #{partner_idx}
-	<!-- 검색 필터 -->	
-	
-	<!-- 달력 기간설정 필터 --> 
-		<if test="calculate_date_start != null and calculate_date_start != '' and calculate_date_end != null and calculate_date_end != ''">        
-			AND DATE(calculate_date) &gt;= #{calculate_date_start} AND DATE(calculate_date) &lt;= #{calculate_date_end}     
-			<!-- 달력 / 날짜기간 설정 -->  
-			<if test="date_value == 'reservation_date'"><!-- 기간 조회 기준(예약일) -->
-				AND DATE(r.reservation_date) &gt;= #{date_start} AND DATE(r.reservation_date) &lt;= #{date_end} 		
+		<where>
+			r.partner_idx = #{partner_idx}
+		<!-- 검색 필터 -->	
+			<!-- 달력 기간설정 필터 --> 
+			<if test="date_start != null and date_start != '' and date_end != null and date_end != ''">        
+				<!-- 달력 / 날짜기간 설정 -->  
+				<if test="date_value == 'reservation_date'"><!-- 기간 조회 기준(예약일) -->
+					AND DATE(r.reservation_date) &gt;= #{date_start} AND DATE(r.reservation_date) &lt;= #{date_end} 		
+				</if>   
+				 <if test="date_value == 'check_in_date'"><!-- 기간 조회 기준(입실일) -->
+					AND DATE(r.check_in_date) &gt;= #{date_start} AND DATE(r.check_in_date) &lt;= #{date_end} 	 
+				</if>
+				 <if test="date_value == 'check_out_date'"><!-- 기간 조회 기준(퇴실일) -->           
+					AND DATE(r.check_out_date) &gt;= #{date_start} AND DATE(r.check_out_date) &lt;= #{date_end} 	
+				</if>    
+			</if>         
+			   
+			<!-- 예약상태 "", "P", "R" -->
+			<if test="reservation_status != null and reservation_status != ''">
+				AND r.payment_status = #{reservation_status}
 			</if>  
-			 <if test="date_value == 'check_in_date'"><!-- 기간 조회 기준(입실일) -->
-				AND DATE(r.check_in_date) &gt;= #{date_start} AND DATE(r.check_in_date) &lt;= #{date_end} 	 
-			</if>
-			 <if test="date_value == 'check_out_date'"><!-- 기간 조회 기준(퇴실일) -->           
-				AND DATE(r.check_out_date) &gt;= #{date_start} AND DATE(r.check_out_date) &lt;= #{date_end} 	
-			</if>    
-		</if>  
-				    
-		       
-		   
-		<!-- 예약상태 "", "P", "R" -->
-		<if test="reservation_status != null and reservation_status != ''">
-			AND r.payment_status = ${reservation_status}
-		</if>
-		
-		<!-- 객실타입 // 얘 데이터 가져오는거 해야함-->
-		<if test="reservation_status != null and reservation_status != ''">
-			AND rm.room_type = ${RoomType}
-		</if>      
-		        
-		<!-- 예약자명 -->
-		<if test="reservation_status != null and reservation_status != ''">
-			AND u.name LIKE CONCAT('%', ${Name}, '%')   
-		</if>           
+			
+			<!-- 객실타입 -->
+			<if test="RoomType != null and RoomType != ''">
+				AND r.room_idx = #{RoomType}
+			</if>      
+			        
+			<!-- 예약자명 -->
+			<if test="Name != null and Name != ''">     
+				AND u.name LIKE CONCAT('%', #{Name}, '%')   
+			</if>           
+		</where>
 	    
 		<!-- 페이징 처리 -->
 	    <if test="limit != null and offset != null">
 	        LIMIT ${limit} OFFSET ${offset}
 	    </if>
-  
 	</select>
 		 
 		 
@@ -67,7 +94,7 @@
 		SELECT r.idx AS reservation_idx, u.name AS username, u.phone AS userphone, rm.room_type, r.check_in_date, r.check_out_date, DATE_FORMAT(r.reservation_date, '%Y-%m-%d') AS reservation_date, r.payment_status, r.price, r.calculate_price
 		FROM RESERVATION r JOIN ROOM rm ON (r.room_idx = rm.idx) JOIN USER u ON (r.user_idx = u.idx)
 		WHERE r.idx = #{reservation_idx}
-	</select>
+	</select>    
 	
 	<!-- 판매자 idx로 조회해서 판매자가 등록해둔 객실타입 조회 (=> 예약내역 검색필터에 객실타입 동적으로 뿌리기 위함) -->
 	<select id="getRoomTypeList" parameterType="map">

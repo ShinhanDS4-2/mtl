@@ -6,13 +6,13 @@ const locationDetail = (function() {
 	function init() {                   
 		// 현재 페이지의 URL에서 쿼리 스트링 파라미터를 가져옴      
 		const urlParams = new URLSearchParams(window.location.search);  // window.location.search: 현재 URL에서 쿼리 스트링 부분을 반환
-		
+		   
 		location_idx = urlParams.get('location_idx');  // location_idx 이름의 특정 파라미터 값을 가져옴
-
+       
 		fetchLocationDetail();  // 페이지 로드 시 Location 여행지 상세정보를 가져옴
 		_draw.drawModalKeyword(); // 여행지 수정 모달창에 키워드 리스트 동적으로 그려줌
-		_eventInit();                      
-	};                                  
+		_eventInit();                           
+	};                                        
                        
 	// 이벤트 초기화  -  (전부 동일 수정할 필요X)    
 	function _eventInit() {       
@@ -345,16 +345,11 @@ console.log("data?최최종확인>>>>>>>>>", data);
 			ImageList.empty();
 
 			for(imgData of list.img) {
-				let img = 
-						`<div class="col-md-4">
-							<a class="w-100 h-100" data-glightbox="gallery1" data-gallery="gallery" href="assets/images/category/directory/03.jpg">
-								<div class="card card-element-hover card-overlay-hover overflow-hidden">
-									<img src="${imgData.url}" class="card-img">
-									<div class="hover-element w-100 h-100">
-										<i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-1 p-2 lh-1"></i>
-									</div>
-								</div> 
-							</a>
+				let img =  
+						`<div class="col-md-3">    
+							<div class="card card-element-hover card-overlay-hover overflow-hidden fixed-size-img">
+								<img src="${imgData.url}" class="card-img fixed-size-img" alt="">
+							</div> 
 						</div>`;
 				ImageList.append(img);
 			}
