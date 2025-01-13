@@ -66,7 +66,6 @@
 								<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 									<select class="form-select js-choice">
 										<option value="" disabled="disabled" selected="selected">선택</option>
-										<option value="partnerName">숙소명</option>
 										<option value="userName">사용자명</option>
 										<option value="content">내용</option>
 									</select>

@@ -3,19 +3,21 @@
 <mapper namespace="kr.co.mtl.user.question.QuestionMapper">
 	
 	<!-- 문의 등록 -->
-	<insert id="registQuestion" parameterType="HashMap">
-		INSERT INTO PARTNER_QUESTION (
-			  user_idx
-			, partner_idx
-			, title
-			, content
-		) VALUES (
-			  #{user_idx}
-			, #{partner_idx}
-			, #{title}
-			, #{content}
-		)
-	</insert>
+	<insert id="registQuestion1" parameterType="HashMap">
+        INSERT INTO QUESTION (
+        	user_idx
+        	, admin_idx
+        	, title
+        	, content
+        	, create_date
+        )VALUES (
+        	#{user_idx}
+        	, #{admin_idx}
+        	, #{title}
+        	, #{content}
+        	, NOW()
+        )
+    </insert>
 
 		<!-- 내가 쓴 후기 리스트 -->
 	<select id="getQuestionList1" parameterType="HashMap">
@@ -43,22 +45,21 @@
 			user_idx = #{user_idx}
 	</select>
 
-	<insert id="registQuestion1" parameterType="HashMap">
-        INSERT INTO QUESTION (
-        	user_idx
-        	, admin_idx
-        	, title
-        	, content
-        	, create_date
-        )VALUES (
-        	#{user_idx}
-        	, #{admin_idx}
-        	, #{title}
-        	, #{content}
-        	, NOW()
-        )
-    </insert>
-    		<!-- 내가 쓴 후기 리스트 -->
+    	<select id="getQuestionDetail1" parameterType="HashMap">
+	    SELECT 
+	        idx
+	        , title
+	        , content
+	        , answer
+	        , create_date
+	        ,answer_date
+	        
+	    FROM 
+	    	QUESTION
+	    WHERE idx = #{idx}
+	</select>
+	
+	
 	<select id="getQuestionList" parameterType="HashMap">
 		SELECT
 			  user_idx
@@ -73,15 +74,62 @@
 		WHERE 
 			user_idx = #{user_idx}
 	</select>
-	
-	<select id="getQuestionDetail" parameterType="HashMap">
+		<insert id="registQuestion" parameterType="HashMap">
+		INSERT INTO PARTNER_QUESTION (
+			  user_idx
+			, partner_idx
+			, title
+			, content
+		) VALUES (
+			  #{user_idx}
+			, #{partner_idx}
+			, #{title}
+			, #{content}
+		)
+	</insert>
+	    	<select id="getQuestionDetail" parameterType="HashMap">
 	    SELECT 
-	        idx,
-	        title,
-	        content,
-	        answer
-	    FROM question
+	        idx
+	        , title
+	        , content
+	        , answer
+	        , create_date
+	        ,answer_date
+	        
+	    FROM 
+	    	PARTNER_QUESTION
 	    WHERE idx = #{idx}
 	</select>
 
+
+	<select id="getPartnerQuestionList" parameterType="HashMap">
+	    SELECT
+	          idx
+	        , title
+	        , content
+	        , create_date
+	        , answer
+	        , answer_date
+	    FROM PARTNER_QUESTION
+	    WHERE user_idx = #{user_idx}
+	    ORDER BY create_date DESC
+	    LIMIT #{limit} OFFSET #{offset}
+	</select>
+	
+	<select id="getPartnerQuestionCount" parameterType="HashMap">
+	    SELECT COUNT(*) FROM PARTNER_QUESTION WHERE user_idx = #{user_idx}
+	</select>
+	
+	<select id="getPartnerQuestionDetail" parameterType="int" resultType="HashMap">
+	    SELECT
+	          idx
+	        , title
+	        , content
+	        , create_date
+	        , answer
+	        , answer_date
+	    FROM PARTNER_QUESTION
+	    WHERE idx = #{idx}
+	</select>
+		
 </mapper>

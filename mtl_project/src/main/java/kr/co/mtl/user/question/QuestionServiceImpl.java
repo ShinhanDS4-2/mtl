@@ -50,15 +50,30 @@ public class QuestionServiceImpl implements QuestionService{
 	    System.out.println("문의 등록 성공");
 	    return result;
 	}
+
+	@Override
+	public Map<String, Object> getQuestionList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		// 리뷰
+		List<Map<String, Object>> questionList = questionMapper.getQuestionList(param);
+	
+		result.put("list", questionList);
+		result.put("total", questionMapper.getQuestionCnt(param));
+		
+		return result;
+	}
+	
 	@Override
 	public Map<String, Object> getQuestionList1(Map<String, Object> param) {
 		
 		Map<String, Object> result = new HashMap<>();
 		
 		// 리뷰
-		List<Map<String, Object>> questionList = questionMapper.getQuestionList1(param);
+		List<Map<String, Object>> questionList1 = questionMapper.getQuestionList1(param);
 	
-		result.put("list", questionList);
+		result.put("list", questionList1);
 		result.put("total", questionMapper.getQuestionCnt(param));
 		
 		return result;
@@ -79,11 +94,47 @@ public class QuestionServiceImpl implements QuestionService{
 	    return result;
 	}
 
+	@Override
+	public Map<String, Object> getQuestionDetail1(Integer idx) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        Map<String, Object> question = questionMapper.getQuestionDetail1(idx);
+	        if (question == null) {
+	            throw new RuntimeException("데이터를 찾을 수 없습니다: idx=" + idx);
+	        }
+	        result.put("question", question);
+	    } catch (Exception e) {
+	        System.err.println("getQuestionDetail1 오류: " + e.getMessage());
+	        result.put("error", e.getMessage());
+	    }
+	    return result;
+	}
+	
+	@Override
+	public Map<String, Object> getPartnerQuestionList(Map<String, Object> param) {
+	    Map<String, Object> result = new HashMap<>();
+	    List<Map<String, Object>> questionList = questionMapper.getPartnerQuestionList(param);
+
+	    result.put("list", questionList);
+	    result.put("total", questionMapper.getPartnerQuestionCount(param));
+
+	    return result;
+	}
 
 	@Override
-	public Map<String, Object> getQuestionList(Map<String, Object> param) {
-		// TODO Auto-generated method stub
-		return null;
-	};
+	public Map<String, Object> getPartnerQuestionDetail(Integer idx) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        Map<String, Object> question = questionMapper.getPartnerQuestionDetail(idx);
+	        if (question == null) {
+	            throw new RuntimeException("데이터를 찾을 수 없습니다: idx=" + idx);
+	        }
+	        result.put("question", question);
+	    } catch (Exception e) {
+	        System.err.println("getPartnerQuestionDetail 오류: " + e.getMessage());
+	        result.put("error", e.getMessage());
+	    }
+	    return result;
+	}
 
 }

@@ -42,7 +42,7 @@
 								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>사이트 문의</a> 
 							</li>
 							<li class="nav-item">
-								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab-2"><i class="fa-solid fa-hotel fa-fw me-1"></i>숙소 문의</a> 
+								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab-2" id="tab2Area"><i class="fa-solid fa-hotel fa-fw me-1"></i>숙소 문의</a> 
 							</li>
 						</ul>
 
@@ -66,7 +66,7 @@
 								            <th scope="col" class="border-0 rounded-end"></th>
 								        </tr>
 								    </thead>
-								    <tbody id="questionList" class="border-top-0">
+								    <tbody id="questionList1" class="border-top-0">
 								        <!-- JavaScript에서 데이터를 렌더링 -->
 								    </tbody>
 								</table>
