@@ -17,17 +17,11 @@
 	
 	<!-- 오늘 매출, 한달 매출 -->
 	<select id="getPayout" parameterType="HashMap">
-		SELECT 
-		    SUM(CASE 
-		        WHEN DATE(STR_TO_DATE(check_in_date, '%Y-%m-%d')) = CURDATE() THEN calculate_price 
-		        ELSE 0 
-		    END) AS today_sale,
-		    SUM(CASE 
-		        WHEN MONTH(STR_TO_DATE(check_in_date, '%Y-%m-%d')) = MONTH(CURDATE())
-		          AND YEAR(STR_TO_DATE(check_in_date, '%Y-%m-%d')) = YEAR(CURDATE()) THEN calculate_price 
-		        ELSE 0 
-		    END) AS month_sale
-		FROM RESERVATION
+		SELECT
+			IFNULL(SUM(CASE WHEN DATE(STR_TO_DATE(reservation_date, '%Y-%m-%d')) = CURDATE() THEN price ELSE 0 END), 0) AS today_sale,
+			IFNULL(SUM(CASE WHEN MONTH(STR_TO_DATE(reservation_date, '%Y-%m-%d')) = MONTH(CURDATE()) AND YEAR(STR_TO_DATE(reservation_date , '%Y-%m-%d')) = YEAR(CURDATE()) THEN price ELSE 0 END), 0) AS month_sale
+		FROM
+			RESERVATION
 		WHERE partner_idx = #{partner_idx}
 	</select>
 	
