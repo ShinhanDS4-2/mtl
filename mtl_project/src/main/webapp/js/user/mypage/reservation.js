@@ -251,7 +251,7 @@ const reservation = (function() {
 				// Card img 
 				let cardImgStr =
 						`<div class="col-md-3">
-							<img src="${data.img.url}" class="card-img rounded-2 h-100" alt="Card image">
+							<img src="${data.img.url}" class="card-img rounded-2" style="height:130px;" alt="Card image">
 						</div>`;
 				row.append(cardImgStr);
 				
