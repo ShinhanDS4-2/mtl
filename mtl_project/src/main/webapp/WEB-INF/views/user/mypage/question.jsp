@@ -42,7 +42,7 @@
 								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>사이트 문의</a> 
 							</li>
 							<li class="nav-item">
-								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab-2"><i class="fa-solid fa-hotel fa-fw me-1"></i>숙소 문의</a> 
+								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab-2" id="tab2Area"><i class="fa-solid fa-hotel fa-fw me-1"></i>숙소 문의</a> 
 							</li>
 						</ul>
 
@@ -56,35 +56,22 @@
 								
 								<!-- 테이블 -->
 								<div class="table-responsive border-0">
-									<table class="table align-middle p-4 mb-0 table-hover table-shrink">
-										<thead class="table-light">
-											<tr>
-												<th scope="col" class="border-0">제목</th>
-												<th scope="col" class="border-0">문의일</th>
-												<th scope="col" class="border-0">답변상태</th>
-												<th scope="col" class="border-0 rounded-end"></th>
-											</tr>
-										</thead>
-		
-										<tbody class="border-top-0">
-											<!-- Table item -->
-											<tr>
-												<td> 객실을 추가 예약하고 싶은데 어떻게 하나요? </td>
-												<td> 2024-12-15 </td>
-												<td> <div class="badge bg-success bg-opacity-10 text-success">답변완료</div> </td> 
-												<td> <a href="#" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#qnaDetailModal">보기</a> </td>
-											</tr>
-		
-											<!-- Table item -->
-											<tr>
-												<td> 예약 취소 후 결제 취소는 언제 되나요? </td>
-												<td> 2024-12-15 </td>
-												<td> <div class="badge bg-orange bg-opacity-10 text-orange">답변대기</div> </td>
-												<td> <a href="#" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#qnaDetailModal">보기</a> </td>
-											</tr>
-										</tbody>
-										<!-- Table body END -->
-									</table>
+																	
+								<table class="table align-middle p-4 mb-0 table-hover table-shrink">
+								    <thead class="table-light">
+								        <tr>
+								            <th scope="col" class="border-0">제목</th>
+								            <th scope="col" class="border-0">문의일</th>
+								            <th scope="col" class="border-0">답변상태</th>
+								            <th scope="col" class="border-0 rounded-end"></th>
+								        </tr>
+								    </thead>
+								    <tbody id="questionList1" class="border-top-0">
+								        <!-- JavaScript에서 데이터를 렌더링 -->
+								    </tbody>
+								</table>
+
+									
 								</div>
 							</div>
 
@@ -93,37 +80,19 @@
 								<h6>숙소 문의</h6>
 
 								<!-- 테이블 -->
-								<div class="table-responsive border-0">
+									<!-- 테이블 -->
+								<div class="table-responsive border-0">								
 									<table class="table align-middle p-4 mb-0 table-hover table-shrink">
-										<thead class="table-light">
-											<tr>
-												<th scope="col" class="border-0">제목</th>
-												<th scope="col" class="border-0">문의일</th>
-												<th scope="col" class="border-0">답변상태</th>
-												<th scope="col" class="border-0 rounded-end"></th>
-											</tr>
-										</thead>
-		
-										<tbody class="border-top-0">
-											<!-- Table item -->
-											<tr>
-												<td> 객실을 추가 예약하고 싶은데 어떻게 하나요? </td>
-												<td> 2024-12-15 </td>
-												<td> <div class="badge bg-success bg-opacity-10 text-success">답변완료</div> </td> 
-												<td> <a href="#" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#qnaDetailModal">보기</a> </td>
-											</tr>
-		
-											<!-- Table item -->
-											<tr>
-												<td> 예약 취소 후 결제 취소는 언제 되나요? </td>
-												<td> 2024-12-15 </td>
-												<td> <div class="badge bg-orange bg-opacity-10 text-orange">답변대기</div> </td>
-												<td> <a href="#" class="btn btn-sm btn-light mb-0" data-bs-toggle="modal" data-bs-target="#qnaDetailModal">보기</a> </td>
-											</tr>
-										</tbody>
-										<!-- Table body END -->
-									</table>
-								</div>
+								    	<thead class="table-light">
+									        <tr>
+									            <th scope="col" class="border-0">제목</th>
+									            <th scope="col" class="border-0">문의일</th>
+									            <th scope="col" class="border-0">답변상태</th>
+									            <th scope="col" class="border-0 rounded-end"></th>
+									        </tr>
+								    	</thead>
+								    <tbody id="questionList" class="border-top-0">
+								   </tbody></table>
 							</div>
 						</div>
 					</div>
@@ -131,19 +100,11 @@
 					
 					<!-- 페이지네이션 -->
 					<div class="card-footer pt-0">
-						<div class="d-sm-flex justify-content-sm-center align-items-sm-center">
-							<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
-								<ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0" id="pagination">
-									<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
-									<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
-									<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
-									<li class="page-item mb-0"><a class="page-link" href="#">3</a></li>
-									<li class="page-item mb-0"><a class="page-link" href="#">4</a></li>
-									<li class="page-item mb-0"><a class="page-link" href="#">5</a></li>
-									<li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
-								</ul>
-							</nav>
-						</div>
+						<!-- Pagination (페이지 전환 하단 바)-->
+						<nav class="d-flex justify-content-center">
+							<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
+							</ul>
+						</nav>
 					</div>
 				</div>
 			</div>
@@ -201,24 +162,17 @@
 						<div class="row g-3 g-lg-4">
 							<!-- 질문 -->
 							<div class="d-flex justify-content-between">
-								<h6>객실을 추가 예약하고 싶은데 어떻게 하나요?</h6>
-								<span class="small">2024-12-15</span>
+								<h6 id="questionTitle"></h6> <!-- 제목 -->
+								<span class="small" id="create_date"></span> <!-- 작성 날짜 -->
 							</div>
-							<p class="space">Far advanced settling say finished raillery. 
-								Offered chiefly farther Satisfied conveying a dependent contented he gentleman agreeable do be. 
-								
-								Warrant private blushes removed and in equally totally if. 
-								Delivered dejection necessary objection do Mr prevailed. 
-								
-								Mr feeling chiefly cordial in doing.
-							</p>
+							<p class="space" id="questionContent"></p> <!-- 문의 내용 -->
 							<hr class="mt-3 mb-3">
 							<!-- 답변 -->
 							<div class="d-flex justify-content-between">
 								<h6>답변</h6>
-								<span class="small">2024-12-16</span>
+								<span class="small" id="answer_date"></span> <!-- 답변 날짜 -->
 							</div>
-							<p class="space">답변 내용	</p>
+							<p class="space" id="answerContent"></p> <!-- 답변 내용 -->
 						</div>
 					</div>
 				</div>
@@ -226,6 +180,7 @@
 		</div>
 	</div>
 </div>
+
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

@@ -35,7 +35,23 @@ public class QuestionServiceImpl implements QuestionService{
 		
 		return result;
 	}
+	@Override
+	public Map<String, Object> registQuestion1(Map<String, Object> param) {
+	    Map<String, Object> result = new HashMap<>();
+	    System.out.println("등록 요청 데이터: " + param); // 디버깅용 로그
 
+	    if (questionMapper.registQuestion1(param) <= 0) {
+	        result.put("result", false);
+	        System.out.println("문의 등록 실패");
+	        return result;
+	    }
+
+	    result.put("result", true);
+	    System.out.println("문의 등록 성공");
+	    return result;
+	}
+
+	@Override
 	public Map<String, Object> getQuestionList(Map<String, Object> param) {
 		
 		Map<String, Object> result = new HashMap<>();
@@ -47,33 +63,78 @@ public class QuestionServiceImpl implements QuestionService{
 		result.put("total", questionMapper.getQuestionCnt(param));
 		
 		return result;
-	};
-
-//	@Override
-//    public Map<String, Object> registQuestion(Map<String, Object> param) {
-//        Map<String, Object> result = new HashMap<>();
-//        if (questionMapper.registQuestion(param) <= 0) {
-//            result.put("result", false);
-//        } else {
-//            result.put("result", true);
-//        }
-//        return result;
-//    }
-//
-//    @Override
-//    public Map<String, Object> getQuestionList(Map<String, Object> param) {
-//        Map<String, Object> result = new HashMap<>();
-//        List<Map<String, Object>> questions = questionMapper.getQuestionList(param);
-//        result.put("list", questions);
-//        result.put("total", questionMapper.getQuestionCnt(param));
-//        return result;
-//    }
-//
-//    @Override
-//    public Map<String, Object> getQuestionDetail(Map<String, Object> param) {
-//        Map<String, Object> result = new HashMap<>();
-//        result.put("question", questionMapper.getQuestionDetail(param));
-//        return result;
-//    }
+	}
 	
+	@Override
+	public Map<String, Object> getQuestionList1(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		// 리뷰
+		List<Map<String, Object>> questionList1 = questionMapper.getQuestionList1(param);
+	
+		result.put("list", questionList1);
+		result.put("total", questionMapper.getQuestionCnt(param));
+		
+		return result;
+	}
+	@Override
+	public Map<String, Object> getQuestionDetail(Integer idx) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        Map<String, Object> question = questionMapper.getQuestionDetail(idx);
+	        if (question == null) {
+	            throw new RuntimeException("데이터를 찾을 수 없습니다: idx=" + idx);
+	        }
+	        result.put("question", question);
+	    } catch (Exception e) {
+	        System.err.println("getQuestionDetail 오류: " + e.getMessage());
+	        result.put("error", e.getMessage());
+	    }
+	    return result;
+	}
+
+	@Override
+	public Map<String, Object> getQuestionDetail1(Integer idx) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        Map<String, Object> question = questionMapper.getQuestionDetail1(idx);
+	        if (question == null) {
+	            throw new RuntimeException("데이터를 찾을 수 없습니다: idx=" + idx);
+	        }
+	        result.put("question", question);
+	    } catch (Exception e) {
+	        System.err.println("getQuestionDetail1 오류: " + e.getMessage());
+	        result.put("error", e.getMessage());
+	    }
+	    return result;
+	}
+	
+	@Override
+	public Map<String, Object> getPartnerQuestionList(Map<String, Object> param) {
+	    Map<String, Object> result = new HashMap<>();
+	    List<Map<String, Object>> questionList = questionMapper.getPartnerQuestionList(param);
+
+	    result.put("list", questionList);
+	    result.put("total", questionMapper.getPartnerQuestionCount(param));
+
+	    return result;
+	}
+
+	@Override
+	public Map<String, Object> getPartnerQuestionDetail(Integer idx) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        Map<String, Object> question = questionMapper.getPartnerQuestionDetail(idx);
+	        if (question == null) {
+	            throw new RuntimeException("데이터를 찾을 수 없습니다: idx=" + idx);
+	        }
+	        result.put("question", question);
+	    } catch (Exception e) {
+	        System.err.println("getPartnerQuestionDetail 오류: " + e.getMessage());
+	        result.put("error", e.getMessage());
+	    }
+	    return result;
+	}
+
 }

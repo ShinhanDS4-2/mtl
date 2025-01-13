@@ -24,13 +24,13 @@
 				<!-- Title -->
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
-						<h1 class="h3 mb-2">문의 관리</h1>
-						<span>1:1 문의 현황을 확인할 수 있습니다.</span>
+						<h1 class="h3 mb-2">숙소 문의 관리</h1>
+						<span>숙소 별 1:1 문의 현황을 확인할 수 있습니다.</span>
 					</div>
 				</div>
 
 				<!-- 검색 필터 START -->
-				<div class="card shadow mt-4 mb-5">
+				<div class="card shadow mb-5">
 					<!-- Card header -->
 					<div class="card-header border-bottom">
 						<h5 class="card-header-title">검색</h5>
@@ -66,7 +66,6 @@
 								<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 									<select class="form-select js-choice">
 										<option value="" disabled="disabled" selected="selected">선택</option>
-										
 										<option value="userName">사용자명</option>
 										<option value="content">내용</option>
 									</select>
@@ -102,15 +101,12 @@
 				<div class="card-body">
 					<!-- Table head -->
 					<div class="bg-light rounded p-3 d-none d-sm-block">
-						<div class="row row-cols-6 g-4 text-center">
+						<div class="row row-cols-5 g-4 text-center">
 							<div class="col">
 								<h6 class="mb-0">제목</h6>
 							</div>
 							<div class="col">
 								<h6 class="mb-0">사용자명</h6>
-							</div>
-							<div class="col">
-								<h6 class="mb-0">문의 내용</h6>
 							</div>
 							<div class="col">
 								<h6 class="mb-0">등록일</h6>
@@ -139,20 +135,9 @@
 					<!-- Pagination (페이지 전환 하단 바)-->
 					<nav class="d-flex justify-content-center">
 						<ul class="pagination pagination-sm pagination-primary-soft mb-0" id="pagination">
-							<li class="page-item disabled"> <!-- disabled: 버튼 비활성화-->
-								<a class="page-link" href="#" tabindex="-1">&lt;</a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item active"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#">&gt;</a>
-							</li>
+							
 						</ul>
 					</nav>
-
 				</div>
 			</div>
 		</div>
@@ -191,7 +176,7 @@
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 <!-- page script -->
-<script src="js/admin/question.js"></script>
+<script src="js/admin/accomodation/question.js"></script>
 <script type="text/javascript">
 	questionManagement.init();
 </script>
