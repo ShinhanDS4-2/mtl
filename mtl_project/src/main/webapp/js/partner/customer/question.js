@@ -97,24 +97,25 @@ const question = (function() {
 	        listContainer.append("<tr><td colspan='4' class='text-center'>등록된 문의가 없습니다.</td></tr>");
 	        return;
 	    }
-			
-		questions.forEach(function(question) {
-		    const html = `
-		        <tr>
-		            <td>${question.title || "제목 없음"}</td>
-		            <td>${new Date(question.create_date).toLocaleDateString()}</td>
-		            <td>
-		                <div class="badge bg-${question.answer_yn === "Y" ? "success" : "danger"} bg-opacity-10 text-${question.answer_yn === "Y" ? "success" : "danger"}">
-		                    ${question.answer_yn === "Y" ? "답변완료" : "답변대기"}
-		                </div>
-		            </td>
-		            <td>
-		                <a href="javascript:;" class="btn btn-sm btn-light mb-0" onclick="viewQuestion(${question.idx})">보기</a>
-		            </td>
-		        </tr>
-		    `;
-		    $("#questionList").append(html);
-		});
+	
+questions.forEach(function(question) {
+    const html = `
+        <tr>
+            <td>${question.title || "제목 없음"}</td>
+            <td>${new Date(question.create_date).toLocaleDateString()}</td>
+            <td>
+                <div class="badge bg-${question.answer_yn === "Y" ? "success" : "danger"} bg-opacity-10 text-${question.answer_yn === "Y" ? "success" : "danger"}">
+                    ${question.answer_yn === "Y" ? "답변완료" : "답변대기"}
+                </div>
+            </td>
+            <td>
+                <a href="javascript:;" class="btn btn-sm btn-light mb-0" onclick="viewQuestion(${question.idx})">보기</a>
+            </td>
+        </tr>
+    `;
+    $("#questionList").append(html);
+});
+
 	}
 	
 	function viewQuestion(idx) {
@@ -125,18 +126,18 @@ const question = (function() {
 	        data: JSON.stringify({idx : idx}),
 	        success: function (response) {
 	            console.log("서버 응답:", response);
-				
-	           
-	            const question = response.data || response.question;
+	
+	            // 서버에서 question 객체가 response 안에 포함된 경우
+	            const question = response.question;
 	            if (!question) {
 	                alert("문의 데이터를 불러오지 못했습니다.");
 	                return;
 	            }
 	
 	            // 모달 데이터 설정
-	            $('#qnaDetailModal #questionTitle').text(question.title || '제목 없음'); // 제목
-	            $('#qnaDetailModal #questionContent').text(question.content || '내용 없음'); // 문의 내용
-	            $('#qnaDetailModal #answerContent').text(question.answer || '답변 대기 중입니다.'); // 답변 내용
+	            $('#qnaDetailModal #questionTitle').text(response.title || '제목 없음'); // 제목
+	            $('#qnaDetailModal #questionContent').text(response.content || '내용 없음'); // 문의 내용
+	            $('#qnaDetailModal #answerContent').text(response.answer || '답변 대기 중입니다.'); // 답변 내용
 	
 	            // 모달 표시
 	            $('#qnaDetailModal').modal('show');
