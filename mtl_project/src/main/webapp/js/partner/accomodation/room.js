@@ -276,7 +276,11 @@ const roomRegist = (function() {
                 modal.alert({
                 	"content" : "객실을 등록했습니다.",
                 	"confirmCallback" : function() {
-		                location.reload();
+                		window.scrollTo(0,0);
+                		document.getElementById("frm").reset();
+                		$("#imagePreviewContainer").empty();
+                		getRoomList();
+                		document.getElementById("listTab").click();
 		                _eventInit();
                 	}
                 });
@@ -428,6 +432,7 @@ const roomRegist = (function() {
 	            img.style.width = "150px";
 	            img.style.height = "100px";
 	            img.style.objectFit = "cover";
+	            img.addClass("me-2");
 	
 	            imgElement.appendChild(img);
 	            previewContainer.appendChild(imgElement);

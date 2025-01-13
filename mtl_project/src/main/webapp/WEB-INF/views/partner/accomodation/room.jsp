@@ -38,12 +38,9 @@
 				<div class="row g-4 mb-4">
 					<div class="col-12">
 						<div class="bg-light pb-0 px-2 px-lg-0">
-							<ul
-								class="nav nav-tabs nav-bottom-line nav-responsive border-0 nav-justified" role="tablist">
-								<li class="nav-item"><a class="nav-link mb-0 active"
-									data-bs-toggle="tab" href="#tab1">객실목록</a></li>
-								<li class="nav-item"><a class="nav-link mb-0"
-									data-bs-toggle="tab" href="#tab2">객실추가</a></li>
+							<ul class="nav nav-tabs nav-bottom-line nav-responsive border-0 nav-justified" role="tablist" id="tabList">
+								<li class="nav-item"><a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab1" id="listTab">객실목록</a></li>
+								<li class="nav-item"><a class="nav-link mb-0" data-bs-toggle="tab" href="#tab2">객실추가</a></li>
 							</ul>
 						</div>
 					</div>
