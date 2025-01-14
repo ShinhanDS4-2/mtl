@@ -24,8 +24,8 @@
 				<!-- Title -->
 				<div class="row">
 					<div class="col-12 mb-4 mb-sm-5">
-						<h1 class="h3 mb-2">숙소 문의 관리</h1>
-						<span>숙소 별 1:1 문의 현황을 확인할 수 있습니다.</span>
+						<h1 class="h3 mb-2">1:1 문의 관리</h1>
+						<span>1:1 문의 현황을 확인할 수 있습니다.</span>
 					</div>
 				</div>
 

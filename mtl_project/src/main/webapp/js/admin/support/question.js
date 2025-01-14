@@ -116,7 +116,6 @@ const questionManagement = (function() {
                 let user_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.userName);
                 user_col.append(user_h6);
                 
-
                 let create_date_col=$("<div>").addClass("col");
                 row.append(create_date_col);
 

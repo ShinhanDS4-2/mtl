@@ -102,7 +102,7 @@ const question = (function() {
 		    const html = `
 		        <tr>
 		            <td>${question.title || "제목 없음"}</td>
-		            <td>${new Date(question.create_date).toLocaleDateString()}</td>
+		            <td>${question.format_date}</td>
 		            <td>
 		                <div class="badge bg-${question.answer_yn === "Y" ? "success" : "danger"} bg-opacity-10 text-${question.answer_yn === "Y" ? "success" : "danger"}">
 		                    ${question.answer_yn === "Y" ? "답변완료" : "답변대기"}
@@ -218,7 +218,7 @@ const question = (function() {
 		    const html = `
 		        <tr>
 		            <td>${question.title || "제목 없음"}</td>
-		            <td>${new Date(question.create_date).toLocaleDateString()}</td>
+		            <td>${question.format_date}</td>
 		            <td>
 		                <div class="badge bg-${question.answer_yn === "Y" ? "success" : "danger"} bg-opacity-10 text-${question.answer_yn === "Y" ? "success" : "danger"}">
 		                    ${question.answer_yn === "Y" ? "답변완료" : "답변대기"}
@@ -326,7 +326,7 @@ const question = (function() {
 	        const html = `
 	            <tr>
 	                <td>${question.title || "제목 없음"}</td>
-	                <td>${new Date(question.create_date).toLocaleDateString()}</td>
+	                <td>${question.format_date}</td>
 	                 <td>
 		                <div class="badge bg-${question.answer_yn === "Y" ? "success" : "danger"} bg-opacity-10 text-${question.answer_yn === "Y" ? "success" : "danger"}">
 		                    ${question.answer_yn === "Y" ? "답변완료" : "답변대기"}

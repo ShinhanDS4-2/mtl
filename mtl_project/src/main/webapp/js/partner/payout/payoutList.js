@@ -116,7 +116,7 @@ const payout = (function() {
 		/* 정산정보 Card */
 			$("#business_name").html(partnerInfo.business_name);
 			$("#business_number").html(partnerInfo.business_number);
-			$("#account_number").html(`${partnerInfo.account_bank} ${partnerInfo.account_number}  (예금주:${partnerInfo.account_name})`);
+			$("#account_number").html(`${partnerInfo.account_bank} ${partnerInfo.account_number}  (예금주:${partnerInfo.business_name})`);
 
 
 		/* 정산내역 리스트 상단 Tap */
@@ -136,10 +136,10 @@ const payout = (function() {
 						`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 							<div class="col">
 								<small class="d-block d-sm-none">정산일</small>
-								<h6 class="ms-1 mb-0 fw-normal">${data.calculate_date}</h6>
+								<h6 class="ms-1 mb-0 fw-normal">${data.calculate_date == null ? "-" : date.calculate_date}</h6>
 								<a role="button" class="payoutDetail mb-0 fw-normal ms-1"
 									data-bs-toggle="modal" data-bs-target="#payoutDetailModal"
-									data-calculate-date="${data.calculate_date}">상세보기</a>
+									data-calculate-date="${data.calculate_date == null ? "-" : date.calculate_date}">상세보기</a>
 							</div>
 
 							<div class="col">

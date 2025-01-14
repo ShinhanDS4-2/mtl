@@ -27,12 +27,13 @@
 			, title
 			, content
 			, answer
-			, create_date 
+			, DATE_FORMAT(create_date, '%Y-%m-%d') AS format_date
 			, answer_date 
 		FROM
 			QUESTION
 		WHERE 
 			user_idx = #{user_idx}
+		ORDER BY create_date DESC
 	</select>
 	
 	<!-- 내가 쓴 후기 개수 -->
@@ -51,7 +52,7 @@
 	        , title
 	        , content
 	        , answer
-	        , create_date
+	        , DATE_FORMAT(create_date, '%Y-%m-%d') AS format_date
 	        ,answer_date
 	        
 	    FROM 
@@ -67,14 +68,16 @@
 			, title
 			, content
 			, answer
-			, create_date 
+			, DATE_FORMAT(create_date, '%Y-%m-%d') AS format_date
 			, answer_date 
 		FROM
 			PARTNER_QUESTION
 		WHERE 
 			user_idx = #{user_idx}
+		ORDER BY create_date DESC
 	</select>
-		<insert id="registQuestion" parameterType="HashMap">
+	
+	<insert id="registQuestion" parameterType="HashMap">
 		INSERT INTO PARTNER_QUESTION (
 			  user_idx
 			, partner_idx
@@ -87,13 +90,14 @@
 			, #{content}
 		)
 	</insert>
-	    	<select id="getQuestionDetail" parameterType="HashMap">
+	
+   	<select id="getQuestionDetail" parameterType="HashMap">
 	    SELECT 
 	        idx
 	        , title
 	        , content
 	        , answer
-	        , create_date
+	        , DATE_FORMAT(create_date, '%Y-%m-%d') AS format_date
 	        ,answer_date
 	        
 	    FROM 
@@ -107,7 +111,7 @@
 	          idx
 	        , title
 	        , content
-	        , create_date
+	        , DATE_FORMAT(create_date, '%Y-%m-%d') AS format_date
 	        , answer
 	        , answer_date
 	    FROM PARTNER_QUESTION
@@ -125,7 +129,7 @@
 	          idx
 	        , title
 	        , content
-	        , create_date
+	        , DATE_FORMAT(create_date, '%Y-%m-%d') AS format_date
 	        , answer
 	        , answer_date
 	    FROM PARTNER_QUESTION

@@ -75,7 +75,6 @@ const userNotice = (function () {
 					            ${notice.title}
 					        </a>
 					    </td>
-					    <td class="col text-end"></td> <td class="col text-end"></td> <td class="col text-end"></td>
 					    <td class="col-3 text-center">
 					        <h6 class="ms-1 mb-0 fw-bold">${notice.create_date_format}</h6>
 					    </td>
