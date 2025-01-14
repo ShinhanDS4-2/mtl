@@ -27,7 +27,7 @@
 	        <if test="calculate_status != null and calculate_status != ''">
 	            AND calculate_status = #{calculate_status}
 	        </if> 	
-			GROUP BY calculate_date 
+			GROUP BY DATE_FORMAT(calculate_date, '%Y-%m-%d')
 		) AS subquery
 	</select>      
 	 
@@ -51,7 +51,7 @@
         <if test="calculate_status != null and calculate_status != ''">
             AND calculate_status = #{calculate_status}
         </if> 
-		GROUP BY calculate_date 
+		GROUP BY DATE_FORMAT(calculate_date, '%Y-%m-%d')
 		ORDER BY calculate_date DESC
 		<!-- 페이징 처리 -->
 	    <if test="limit != null and offset != null">
