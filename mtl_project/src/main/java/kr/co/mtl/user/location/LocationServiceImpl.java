@@ -150,7 +150,7 @@ public class LocationServiceImpl implements LocationService {
 			double distance = calculateDistance(geoParam);
 			
 			// 반경 5km 이내 여행지
-			if(distance <= 5) {
+			if(distance <= 10) {
 				nearLocationList.add(location);
 			}
 		}
