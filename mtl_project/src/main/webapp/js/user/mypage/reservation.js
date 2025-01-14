@@ -257,7 +257,7 @@ const reservation = (function() {
 				
 				// 후기 버튼
 				let reviewBtn = ``;
-				if (data.check_date == "N") {
+				if (data.check_date == "N" && data.payment_status == 'P') {
 					if (data.review == null) {
 						reviewBtn = `<a href="javascript:;" class="btn btn-sm btn-primary-soft mb-0 me-2" data-bs-toggle="modal" data-bs-target="#reviewModal" data-src="reservation" data-act="clickReview" data-reservation-idx="${data.reservation_idx}">후기 작성</a>`; 
 					};

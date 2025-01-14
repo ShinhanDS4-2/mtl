@@ -17,7 +17,7 @@
 	<select id="getReservationHistoryList" parameterType="map">
 		SELECT r.idx AS reservation_idx, p.idx AS partner_idx, p.name, p.address, r.check_in_date, r.check_out_date, r.guest_cnt, r.price,
 			   CASE 
-			       WHEN r.check_in_date > CURDATE() THEN 'Y' 
+			       WHEN r.check_in_date >= CURDATE() THEN 'Y' 
 			       ELSE 'N' 
 			   END AS check_date,
 			   r.payment_status,
@@ -61,7 +61,7 @@
 	<select id="getReservationHistoryDetail" parameterType="map">
 		SELECT rs.idx AS reservation_idx, rm.room_type, rs.check_in_date, rs.check_out_date, rs.guest_cnt, rs.price, img.url, img.origin_filename,
 			   CASE 
-			       WHEN rs.check_in_date > CURDATE() THEN 'Y' 
+			       WHEN rs.check_in_date >= CURDATE() THEN 'Y' 
 			       ELSE 'N' 
 			   END AS check_date,
 			   rs.payment_status
