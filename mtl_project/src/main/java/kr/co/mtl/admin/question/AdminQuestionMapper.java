@@ -13,5 +13,13 @@ public interface AdminQuestionMapper {
 	List<Map<String,Object>> selectQuestions(Map<String, Object> param);
 
 	int getTotal(Map<String, Object> param);
+
+	List<Map<String,Object>> getQuestionList(Map<String, Object> param);
+	
+	int getQuestionCnt(Map<String, Object> param);
+	
+	Map<String, Object> getQuestionDetail(Map<String, Object> param);
+	
+	int answer(Map<String, Object> param);
 	
 }

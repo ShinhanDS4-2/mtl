@@ -64,10 +64,11 @@
 							<div class="col-2">
 								<label class="h6 fw-normal mb-0 form-label">검색어</label>
 								<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-									<select class="form-select js-choice">
+									<select class="form-select js-choice" id="searchType">
 										<option value="" disabled="disabled" selected="selected">선택</option>
-										<option value="userName">사용자명</option>
+										<option value="title">제목</option>
 										<option value="content">내용</option>
+										<option value="userName">사용자명</option>
 									</select>
 								</div>
 							</div>
@@ -151,7 +152,7 @@
 		<div class="modal-content">
 			<!-- 모달 head -->
 			<div class="modal-header">
-				<h5 class="modal-title">숙소 문의 상세</h5>
+				<h5 class="modal-title">1:1 문의 상세</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<!-- 모달 body -->
@@ -161,8 +162,16 @@
 					<p class="space" id="questionContent"></p>
 				</div>
 
-				<h6 class="fw-bold mt-4">숙소 답변</h6>
-				<div class="border rounded p-3">
+				<h6 class="fw-bold mt-4">답변</h6>
+				<div class="row d-flex d-none" id="answerField">
+					<div class="col-10">
+						<textarea rows="5" id="questionAnswer" class="border rounded p-3 w-100" placeholder="답변을 작성해 주세요."></textarea>
+					</div>
+					<div class="col-2">
+						<button type="button" class="btn btn-primary-soft h-100 w-100" id="registAnswerBtn" data-src="question" data-act="clickRegistAnswer">등록</button>
+					</div>
+				</div>
+				<div class="border rounded p-3 w-100 d-none" id="replyField">
 					<p class="space" id="replyContent"></p>
 				</div>
 			</div>
@@ -176,9 +185,9 @@
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 <!-- page script -->
-<script src="js/admin/accomodation/question.js"></script>
+<script src="js/admin/support/question.js"></script>
 <script type="text/javascript">
-	questionManagement.init();
+	question.init();
 </script>
 </body>
 </html>

@@ -1,16 +1,20 @@
-const questionManagement = (function() {
+const question = (function() {
 
 	// js 로딩 시 이벤트 초기화 실행
 	function init() {
-        fetchPayoutList();
+        getList();
 		_eventInit();
 	};
 
 	// 이벤트 초기화 
 	function _eventInit() {
+		let evo = $("[data-src='question'][data-act]").off();
+		evo.on("click", function(e) {
+			_eventAction(e);
+		});
 		
 		$(document).on("click","#searchButton",function(){
-			fetchPayoutList();
+			getList();
 		});
 
         $(document).on("click","#resetButton",function(){
@@ -18,20 +22,37 @@ const questionManagement = (function() {
 		});
 	};
 	
-    function fetchPayoutList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
-
-		let param = {};
+	// 이벤트 분기
+	function _eventAction(e) {
+		let evo = $(e.currentTarget);
+		
+		let action = evo.attr("data-act");
+		
+		let type = e.type;
+		
+		if(type == "click") {
+			if (action == "clickDetail") {
+				getDetail(evo);
+			} else if (action == "clickRegistAnswer") {
+				registAnswer(evo);
+			}
+		};
+	};
+	
+    function getList(curPage=1) {
+		let param = {
+			"answerStatus" : $("input[name='flexRadioDefault']:checked").val(),
+			"searchField" : $("#searchType option:selected").val(),
+			"searchText" : $("#searchText").val()
+		};
         
 		// 페이징 START
 		let pageOption = {
             limit: 5  
 		};
 		
-		let page = $("#pagination").customPaging(pageOption, function(_curPage){  // customPaging은 사용자 정의함수로 페이징 로직을 생성한다. 
-            // ㄴ pageOption객체를 넘겨 한 페이지에 표시할 데이터 수(limit)를 전달.
-            // _curPage: 현재 사용자가 보고 있는 페이지 번호.
-            
-            fetchPayoutList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
+		let page = $("#pagination").customPaging(pageOption, function(_curPage){  
+            getList(_curPage);  
 		});
 		
 		let pageParam = page.getParam(curPage);  // 현재 페이지 번호(curPage)를 기준으로 페이징에 필요한 정보(예: offset, limit)를 반환.
@@ -41,37 +62,103 @@ const questionManagement = (function() {
 			param.limit = pageParam.limit;
 		};
 		// 페이징 END
-		
-		let answerStatus=$("input[name='flexRadioDefault']:checked").val();     	  //라디오 버튼 (전체, 답변 대기, 완료 중 선택)
-        let searchField=$(".form-select.js-choice").val();                            //숙소명, 사용자명, 내용 중 선택
-        let searchText=$("input[type='text']").val();                                 //입력창에 검색한 내용
-        
-        console.log(answerStatus);
-        console.log(searchField);
-        console.log(searchText);
-        
-        param.answerStatus = answerStatus;
-        param.searchField = searchField;
-        param.searchText = searchText;
 
         $.ajax({
-            url:"/mtl/admin/accomodation/question/search",
+            url:"/mtl/admin/accomodation/question/list",
             type:"POST",
             contentType:"application/json",
             data:JSON.stringify(param),
             success:function(response){
-                console.log("검색 결과 : ",response);
-                
                 $("#totalCnt").text(response.totalCnt);
-                _draw.drawAnswerList(response.list);
-                page.drawPage(response.totalCnt); 
-            },
-            error:function(error){
-                console.error("검색 오류 : ",error);
+	            _draw.drawAnswerList(response.list);
+	            page.drawPage(response.totalCnt); 
             }
         });
-	}
+	};
 	
+	function getDetail(evo) {
+		$("#questionAnswer").val("");
+	
+		let idx = evo.attr("data-question-idx");
+		
+		let param = {"question_idx" : idx};
+
+        $.ajax({
+            url:"/mtl/admin/accomodation/question/detail",
+            type:"POST",
+            contentType:"application/json",
+            data:JSON.stringify(param),
+            success:function(response){
+            	let status = response.data.answer_yn;
+            	if(status == "Y") {
+            		$("#answerField").addClass("d-none");
+            		$("#replyField").removeClass("d-none");
+            		$("#replyContent").html(response.data.answer);
+            	} else {
+            		$("#answerField").removeClass("d-none");
+            		$("#replyField").addClass("d-none");
+            	}
+            	$("#questionContent").html(response.data.content);
+                $("#questionModal").modal("show");
+                $("#registAnswerBtn").attr("data-question-idx", idx);
+            }
+        });
+	};
+	
+	function registAnswer(evo) {
+		let idx = evo.attr("data-question-idx");
+		
+		let param = {
+			"answer" : $("#questionAnswer").val(),
+			"question_idx" : idx
+		};
+
+        $.ajax({
+            url:"/mtl/admin/accomodation/question/answer",
+            type:"POST",
+            contentType:"application/json",
+            data:JSON.stringify(param),
+            success:function(response){
+            	modal.alert({
+            		"content" : "답변이 등록되었습니다.",
+            		"confirmCallback" : function() {
+            			getList();
+            			$("#questionModal").modal("hide");
+            		}
+            	});
+            	
+            }
+        });
+	};
+	
+	function getDetail(evo) {
+		$("#questionAnswer").val("");
+	
+		let idx = evo.attr("data-question-idx");
+		
+		let param = {"question_idx" : idx};
+
+        $.ajax({
+            url:"/mtl/admin/accomodation/question/detail",
+            type:"POST",
+            contentType:"application/json",
+            data:JSON.stringify(param),
+            success:function(response){
+            	let status = response.data.answer_yn;
+            	if(status == "Y") {
+            		$("#answerField").addClass("d-none");
+            		$("#replyField").removeClass("d-none");
+            		$("#replyContent").html(response.data.answer);
+            	} else {
+            		$("#answerField").removeClass("d-none");
+            		$("#replyField").addClass("d-none");
+            	}
+            	$("#questionContent").html(response.data.content);
+                $("#questionModal").modal("show");
+                $("#registAnswerBtn").attr("data-question-idx", idx);
+            }
+        });
+	};
 	
 	let _draw = {
 
@@ -94,7 +181,7 @@ const questionManagement = (function() {
 
                 let button='';
 
-                if(data.answerYN == 'Y'){
+                if(data.answer_yn == 'Y'){
                     button=`<div class="badge bg-success bg-opacity-10 text-success">답변 완료</div>`
                 } else{
                     button=`<div class="badge bg-danger bg-opacity-10 text-danger">답변 대기</div>`
@@ -113,13 +200,13 @@ const questionManagement = (function() {
                 let user_col=$("<div>").addClass("col");
                 row.append(user_col);
 
-                let user_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.userName);
+                let user_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.name);
                 user_col.append(user_h6);
                 
                 let create_date_col=$("<div>").addClass("col");
                 row.append(create_date_col);
 
-                let create_date_h6=$("<h6>").addClass("ms-1 mb-1 fw-light").html(this.ToDate(data.create_date));
+                let create_date_h6=$("<h6>").addClass("ms-1 mb-1 fw-light").html(data.format_date);
                 create_date_col.append(create_date_h6);
 
                 let answer_yn=$("<div>").addClass("col");
@@ -133,17 +220,17 @@ const questionManagement = (function() {
 	            let detail_link = $("<a>")
 	                .addClass("btn btn-sm btn-light mb-0")
 	                .html("상세보기")
-	                .attr("href", "javascript:;")
-	                .on("click", function () {
-
-	                    $("#questionContent").html(data.content);
-	                    $("#replyContent").html(data.answer || "");
-	                    $("#questionModal").modal("show");
+	                .attr({
+	                	"href" : "javascript:;",
+	                	"id" : "detailBnt",
+	                	"data-question-idx" : data.question_idx,
+	                	"data-act" : "clickDetail",
+	                	"data-src" : "question"
 	                });
 	            detail.append(detail_link);
-
-
-            }
+            };
+            
+            _eventInit();
         }
 
     }

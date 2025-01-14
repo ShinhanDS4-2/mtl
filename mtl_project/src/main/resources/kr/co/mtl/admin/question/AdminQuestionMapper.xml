@@ -68,4 +68,77 @@
 		 	</if>
 		 </where>
 	</select>
+	
+	<!-- 질문 리스트 -->
+	<select id="getQuestionList" parameterType="HashMap">
+		SELECT 
+			q.idx AS question_idx
+			, q.title
+			, DATE_FORMAT(q.create_date, '%Y-%m-%d') AS format_date
+			, q.answer_yn
+			, u.name 
+		FROM
+			QUESTION q
+		JOIN USER u
+		ON u.idx = q.user_idx 
+		<include refid="questionWhere"></include>
+		ORDER BY q.create_date DESC
+		<if test="limit != null and offset != null">
+			LIMIT ${limit} offset ${offset}
+		</if>
+	</select>
+	
+	<select id="getQuestionCnt" parameterType="HashMap">
+		SELECT 
+			COUNT(*)
+		FROM
+			QUESTION q
+		JOIN USER u
+		ON u.idx = q.user_idx 
+		<include refid="questionWhere"></include>
+	</select>
+	
+	<sql id="questionWhere">
+		<where>
+			<if test="answerStatus != null and answerStatus != ''">                   
+		 		q.answer_yn = #{answerStatus}
+		 	</if>
+		 	<if test="searchField != null and searchField != '' and searchText != ''">  
+		 		<choose>
+		 			<when test="searchField == 'userName'">
+						AND u.name LIKE CONCAT('%',#{searchText},'%')	 			
+		 			</when>
+		 			<when test="searchField == 'title'">
+						AND q.title LIKE CONCAT('%',#{searchText},'%')	 			
+		 			</when>
+		 			<when test="searchField == 'content'">
+						AND q.content LIKE CONCAT('%',#{searchText},'%')	 			
+		 			</when> 
+		 		</choose>
+		 	</if>
+		</where>
+	</sql>
+	
+	<select id="getQuestionDetail" parameterType="HashMap">
+		SELECT
+			title
+			, content
+			, answer
+			, answer_yn
+		FROM
+			QUESTION
+		WHERE
+			idx = #{question_idx}
+	</select>
+	
+	<update id="answer" parameterType="HashMap">
+		UPDATE QUESTION
+		SET
+			answer_yn = 'Y'
+			, answer = #{answer}
+			, answer_date = NOW()
+			, admin_idx = #{admin_idx}
+		WHERE
+			idx = #{question_idx} 
+	</update>
 </mapper>

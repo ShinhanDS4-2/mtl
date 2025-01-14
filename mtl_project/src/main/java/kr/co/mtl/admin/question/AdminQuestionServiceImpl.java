@@ -25,4 +25,35 @@ public class AdminQuestionServiceImpl implements AdminQuestionService{
 		
 		return result;
 	}
+
+	@Override
+	public Map<String, Object> getList(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("list", adminQuestionMapper.getQuestionList(param));
+		result.put("totalCnt", adminQuestionMapper.getQuestionCnt(param));
+		
+		return result;
+	}
+	
+	@Override
+	public Map<String, Object> getDetail(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("data", adminQuestionMapper.getQuestionDetail(param));
+		
+		return result;
+	}
+	
+	@Override
+	public Map<String, Object> answer(Map<String, Object> param) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("data", adminQuestionMapper.answer(param));
+		
+		return result;
+	}
 }
