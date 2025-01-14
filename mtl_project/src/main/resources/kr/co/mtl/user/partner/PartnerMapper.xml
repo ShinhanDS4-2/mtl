@@ -297,6 +297,7 @@
 			ROOM r
 		WHERE
 			r.partner_idx = #{partner_idx}
+		AND r.status = 'Y'
 		<if test="guest != null and guest != ''">
 		AND r.maximum >= #{guest}
 		</if>

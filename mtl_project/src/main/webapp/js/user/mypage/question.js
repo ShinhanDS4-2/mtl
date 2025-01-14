@@ -22,11 +22,13 @@ const question = (function() {
             success: function(response) {
                 console.log("서버 응답:", response);
                 if (response.result) {
-                    alert('문의가 등록되었습니다.');
-                    $('#qnaModal').modal('hide');  // 모달 닫기
-                    loadQuestionList();  // 리스트 갱신
-                } else {
-                    alert('문의 등록에 실패했습니다.');
+                    modal.alert({
+                    	"content" : '문의가 등록되었습니다.',
+                    	"confirmCallback" : function() {
+		                    $('#qnaModal').modal('hide');  // 모달 닫기
+		                    loadQuestionList();  // 리스트 갱신
+                    	}
+                    });
                 }
             },
             error: function(err) {
