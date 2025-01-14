@@ -1,155 +1,163 @@
-const questionManagement = (function() {
+const questionManagement = (function () {
+    function init() {
+        console.log("Question Management Initialized");
+        eventInit(); // 이벤트 초기화
+        loadQuestions(); // 첫 번째 페이지 문의 데이터 로드
+    }
 
-	// js 로딩 시 이벤트 초기화 실행
-	function init() {
-        fetchPayoutList();
-		_eventInit();
-	};
+    /**
+     * 이벤트 초기화
+     */
+    function eventInit() {
+        // 검색 버튼 클릭 이벤트
+        $('#searchButton').click(function () {
+            const searchStatus = $("input[name='flexRadioDefault']:checked").val();
+            const searchField = $('.js-choice').val();
+            const searchText = $('#searchText').val();
 
-	// 이벤트 초기화 
-	function _eventInit() {
-		
-		$(document).on("click","#searchButton",function(){
-			fetchPayoutList();
-		});
-
-        $(document).on("click","#resetButton",function(){
-        	window.location.reload();			
-		});
-	};
-	
-    function fetchPayoutList(curPage=1) {  //  _curPage=1 : 처음 화면 접속 시 1페이지부터 시작
-
-		let param = {};
-        
-		// 페이징 START
-		let pageOption = {
-            limit: 5  
-		};
-		
-		let page = $("#pagination").customPaging(pageOption, function(_curPage){  // customPaging은 사용자 정의함수로 페이징 로직을 생성한다. 
-            // ㄴ pageOption객체를 넘겨 한 페이지에 표시할 데이터 수(limit)를 전달.
-            // _curPage: 현재 사용자가 보고 있는 페이지 번호.
-            
-            fetchPayoutList(_curPage);  // 현재 페이지 번호를 전달받아 해당 페이지에 표시할 데이터를 가져오는 함수.
-		});
-		
-		let pageParam = page.getParam(curPage);  // 현재 페이지 번호(curPage)를 기준으로 페이징에 필요한 정보(예: offset, limit)를 반환.
-		
-		if(pageParam) {  // 위 코드에서 받은 pageParam값을 ajax에 넘겨줄 데이터에 설정하는 부분
-			param.offset = pageParam.offset;
-			param.limit = pageParam.limit;
-		};
-		// 페이징 END
-		
-		let answerStatus=$("input[name='flexRadioDefault']:checked").val();     	  //라디오 버튼 (전체, 답변 대기, 완료 중 선택)
-        let searchField=$(".form-select.js-choice").val();                            //숙소명, 사용자명, 내용 중 선택
-        let searchText=$("input[type='text']").val();                                 //입력창에 검색한 내용
-        
-        console.log(answerStatus);
-        console.log(searchField);
-        console.log(searchText);
-        
-        param.answerStatus = answerStatus;
-        param.searchField = searchField;
-        param.searchText = searchText;
-
-        $.ajax({
-            url:"/mtl/admin/accomodation/question/search",
-            type:"POST",
-            contentType:"application/json",
-            data:JSON.stringify(param),
-            success:function(response){
-                console.log("검색 결과 : ",response);
-                
-                $("#totalCnt").text(response.totalCnt);
-                _draw.drawAnswerList(response.list);
-                page.drawPage(response.totalCnt); 
-            },
-            error:function(error){
-                console.error("검색 오류 : ",error);
-            }
+            // 검색 요청
+            searchQuestions(searchStatus, searchField, searchText);
         });
-	}
-	
-	
-	let _draw = {
 
-        ToDate: function (timestamp) {
-            
-            let date = new Date(timestamp);
-    
-            let year = date.getFullYear();
-            let month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작
-            let day = String(date.getDate()).padStart(2, '0');
-            
-            return `${year}-${month}-${day}`;
-        },
+        // 초기화 버튼 클릭 이벤트
+        $('#resetButton').click(function () {
+            $('input[type="text"]').val('');
+            $('input[name="flexRadioDefault"]').prop('checked', false);
+            $('.js-choice').val('');
+            loadQuestions(); // 초기 목록 다시 로드
+        });
+    }
 
-        drawAnswerList:function(list){
+    /**
+     * 문의 데이터 로드
+     */
+    function loadQuestions(curPage = 1) {
+        const data = {};
 
-            let answerList=$("#answerList").empty();
-
-            for(let data of list){
-
-                let button='';
-
-                if(data.answerYN == 'Y'){
-                    button=`<div class="badge bg-success bg-opacity-10 text-success">답변 완료</div>`
-                } else{
-                    button=`<div class="badge bg-danger bg-opacity-10 text-danger">답변 대기</div>`
-                }
-
-                let row = $("<div>").addClass("row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center d-flex justify-content-center align-items-center");
-                answerList.append(row);
-
-
-                let content_col=$("<div>").addClass("col");
-                row.append(content_col);
-
-                let content_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.title);
-                content_col.append(content_h6);
-                
-                let user_col=$("<div>").addClass("col");
-                row.append(user_col);
-
-                let user_h6=$("<h6>").addClass("ms-1 mb-0 fw-normal").html(data.userName);
-                user_col.append(user_h6);
-                
-
-                let create_date_col=$("<div>").addClass("col");
-                row.append(create_date_col);
-
-                let create_date_h6=$("<h6>").addClass("ms-1 mb-1 fw-light").html(this.ToDate(data.create_date));
-                create_date_col.append(create_date_h6);
-
-                let answer_yn=$("<div>").addClass("col");
-                row.append(answer_yn);
-
-                answer_yn.append(button);
-                
-                let detail = $("<div>").addClass("col");
-	            row.append(detail);
-	            
-	            let detail_link = $("<a>")
-	                .addClass("btn btn-sm btn-light mb-0")
-	                .html("상세보기")
-	                .attr("href", "javascript:;")
-	                .on("click", function () {
-
-	                    $("#questionContent").html(data.content);
-	                    $("#replyContent").html(data.answer || "");
-	                    $("#questionModal").modal("show");
-	                });
-	            detail.append(detail_link);
-
-
-            }
+        // 페이징
+        let pageOption = {
+            limit: 5
+        };
+        
+        let page = $("#pagination").customPaging(pageOption, function (_curPage) {
+            loadQuestions(_curPage);
+        });
+        
+        let pageParam = page.getParam(curPage);
+        
+        if (pageParam) {
+            data.offset = pageParam.offset;
+            data.limit = pageParam.limit;
         }
 
+        $.ajax({
+            url: "/mtl/api/question/search",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+                console.log(response);
+                if (response) {
+                    $("#totalCnt").text(response.totalCnt);
+                    renderQuestions(response.list);
+                    page.drawPage(response.totalCnt);
+                }
+            },
+            error: function (err) {
+                console.error("문의 데이터 조회 오류:", err);
+                alert("문의 데이터 조회 중 오류가 발생했습니다.");
+            }
+        });
     }
-	
-	return {
-		init,
-	};
+
+    /**
+     * 문의 검색
+     */
+    function searchQuestions(status, field, text) {
+        const param = { answerStatus: status, searchField: field, searchText: text, offset: 0, limit: 10 };
+
+        console.log("검색 요청 데이터:", param);
+
+        $.ajax({
+            url: "/mtl/api/question/search",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(param),
+            success: function (response) {
+                console.log("검색 결과:", response);
+                const questions = response.list;
+                if (questions.length === 0) {
+                    $('#answerList').html("<p class='text-center text-muted'>검색 결과가 없습니다.</p>");
+                } else {
+                    renderQuestions(questions);
+                }
+            },
+            error: function (err) {
+                console.error("검색 중 오류 발생:", err);
+                alert("검색 중 오류가 발생했습니다.");
+            }
+        });
+    }
+
+    /**
+     * 문의 데이터 렌더링
+     */
+    function renderQuestions(questions) {
+        let listContainer = $("#answerList");
+        listContainer.empty();
+
+        if (!questions || questions.length === 0) {
+            listContainer.append("<div>등록된 문의가 없습니다.</div>");
+            return;
+        }
+
+        questions.forEach(function (question) {
+            const statusText = question.answerYN === 'Y' ? '답변완료' : '답변대기';
+            const statusClass = question.answerYN === 'Y' ? 'bg-success text-success' : 'bg-danger text-danger';
+
+            let listItem = $(` 
+                <div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4">
+                    <div class="col"><h6 class="mb-0 fw-normal">${question.title}</h6></div>
+                    <div class="col"><h6 class="mb-0 fw-normal">${question.userName}</h6></div>
+                    <div class="col"><h6 class="mb-0 fw-normal">${new Date(question.create_date).toLocaleDateString()}</h6></div>
+                    <div class="col"><div class="badge ${statusClass}">${statusText}</div></div>
+                    <div class="col"><button class="btn btn-primary btn-sm" onclick="viewQuestion(${question.idx})">상세보기</button></div>
+                </div>
+            `);
+            listContainer.append(listItem);
+        });
+    }
+
+    /**
+     * 상세보기 기능
+     */
+    function viewQuestion(idx) {
+        $.ajax({
+            url: `/mtl/api/question/detail`,
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ idx }),
+            success: function (response) {
+                const question = response.question;
+                if (!question) {
+                    alert("문의 데이터를 불러오지 못했습니다.");
+                    return;
+                }
+                $('#questionContent').text(question.content || '내용 없음');
+                $('#replyContent').val(question.answer || '');
+                $('#questionModal').modal('show');
+            },
+            error: function (err) {
+                console.error("상세보기 오류:", err);
+                alert("상세보기 중 오류가 발생했습니다.");
+            }
+        });
+    }
+
+    return { init };
 })();
+
+// 초기화
+$(document).ready(function () {
+    questionManagement.init();
+});

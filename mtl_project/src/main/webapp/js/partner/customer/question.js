@@ -1,165 +1,136 @@
-const question = (function() {
+const questionManagement = (function () {
+    function init() {
+        console.log("Question Management Initialized");
+        eventInit(); // 이벤트 초기화
+        loadQuestions(); // 첫 번째 페이지 문의 데이터 로드
+    }
 
-    // 문의 등록 처리
-    function registQuestion1() {
-        const title = $('#qnaModal #qnaTitle').val().trim();
-        const content = $('#qnaModal #qnaContent').val().trim();
-    
-        if (!title || !content) {
-            alert("모든 필드를 입력하세요.");
-            return;
+    /**
+     * 이벤트 초기화
+     */
+    function eventInit() {
+        // 검색 버튼 클릭 이벤트
+        $('#searchButton').click(function () {
+            const searchStatus = $("input[name='searchStatus']:checked").val();
+            const searchType = $('#searchType').val();
+            const searchKeyword = $('input[type="text"]').val();
+
+            // 검색 요청
+            searchQuestions(searchStatus, searchType, searchKeyword);
+        });
+
+        // 초기화 버튼 클릭 이벤트
+        $('#resetButton').click(function () {
+            $('input[type="text"]').val('');
+            $('input[name="searchStatus"]').prop('checked', false);
+            $('#searchType').val('');
+            loadQuestions(); // 초기 목록 다시 로드
+        });
+    }
+
+    /**
+     * 문의 데이터 로드
+     */
+    function loadQuestions(curPage = 1) {
+        const data = {};
+
+        // 페이징
+        let pageOption = {
+            limit: 5
+        };
+        
+        let page = $("#pagination").customPaging(pageOption, function (_curPage) {
+            loadQuestions(_curPage);
+        });
+        
+        let pageParam = page.getParam(curPage);
+        
+        if (pageParam) {
+            data.offset = pageParam.offset;
+            data.limit = pageParam.limit;
         }
-    
-        const data = { title, content};
-        console.log("AJAX 요청 데이터:", JSON.stringify(data));
-    
-        // AJAX 요청 (서버로 데이터 전송)
+
         $.ajax({
-            url: '/mtl/api/user/question/regist1',
-            type: 'POST',
-            contentType: 'application/json',
+            url: "/mtl/api/question/list",
+            method: "POST",
+            contentType: "application/json",
             data: JSON.stringify(data),
-            success: function(response) {
-                console.log("서버 응답:", response);
-                if (response.result) {
-                    alert('문의가 등록되었습니다.');
-                    $('#qnaModal').modal('hide');  // 모달 닫기
-                    loadQuestionList();  // 리스트 갱신
-                } else {
-                    alert('문의 등록에 실패했습니다.');
+            success: function (response) {
+                console.log(response);
+                if (response) {
+                    $("#totalCnt").text(response.totalCnt);
+                    renderQuestions(response.list);
+                    page.drawPage(response.totalCnt);
                 }
             },
-            error: function(err) {
-                console.error("문의 등록 중 오류:", err);
-                alert("문의 등록 중 오류가 발생했습니다.");
+            error: function (err) {
+                console.error("문의 데이터 조회 오류:", err);
+                alert("문의 데이터 조회 중 오류가 발생했습니다.");
             }
         });
     }
-	/**
-	 * 문의 리스트 데이터 로드
-	 */
-	function loadQuestionList(curPage = 1) {
-	    const data = {};
-	
-	    // 페이징 설정
-	    let pageOption = {
-	        limit: 5 // 페이지당 5개
-	    };
-	
-	    let page = $("#pagination").customPaging(pageOption, function (_curPage) {
-	        loadQuestionList(_curPage); // 페이지 변경 시 다시 로드
-	    });
-	
-	    let pageParam = page.getParam(curPage);
-	
-	    if (pageParam) {
-	        data.offset = pageParam.offset;
-	        data.limit = pageParam.limit;
-	    }
-	
-	    // AJAX 요청
-	    $.ajax({
-	        url: '/mtl/api/user/question/list',
-	        type: 'POST',
-	        contentType: 'application/json',
-	        data: JSON.stringify(data),
-	        success: function (response) {
-	            console.log("서버 응답:", response);
-	
-	            if (!response || !response.list) {
-	                console.error("response.list가 비어있습니다.");
-	                alert("문의 데이터를 불러오는 데 실패했습니다.");
-	                renderQuestions([]); // 빈 배열을 렌더링
-	                return;
-	            }
-	
-	            const questions = response.list && response.list.list ? response.list.list : [];
-	            renderQuestions(questions); // 데이터를 렌더링 함수에 전달
-	
-	            // 페이지네이션 갱신
-	            page.drawPage(response.total || 0);
-	        },
-	        error: function (err) {
-	            console.error("문의 목록 불러오기 오류:", err);
-	            alert("문의 목록을 불러오는 중 오류가 발생했습니다.");
-	        }
-	    });
-	}
-	
-	/**
-	 * 문의 리스트 렌더링
-	 */
-	function renderQuestions(questions) {
-	    const listContainer = $("#questionList"); // tbody를 정확히 지정
-	    listContainer.empty(); // 기존 데이터를 초기화
-	
-	    if (!questions || questions.length === 0) {
-	        listContainer.append("<tr><td colspan='4' class='text-center'>등록된 문의가 없습니다.</td></tr>");
-	        return;
-	    }
-	
-questions.forEach(function(question) {
-    const html = `
-        <tr>
-            <td>${question.title || "제목 없음"}</td>
-            <td>${new Date(question.create_date).toLocaleDateString()}</td>
-            <td>
-                <div class="badge bg-${question.answer_yn === "Y" ? "success" : "danger"} bg-opacity-10 text-${question.answer_yn === "Y" ? "success" : "danger"}">
-                    ${question.answer_yn === "Y" ? "답변완료" : "답변대기"}
-                </div>
-            </td>
-            <td>
-                <a href="javascript:;" class="btn btn-sm btn-light mb-0" onclick="viewQuestion(${question.idx})">보기</a>
-            </td>
-        </tr>
-    `;
-    $("#questionList").append(html);
-});
 
-	}
-	
-	function viewQuestion(idx) {
-	    $.ajax({
-	        url: '/mtl/api/user/question/detail',
-	        type: 'POST',
-	        contentType: 'application/json',
-	        data: JSON.stringify({idx : idx}),
-	        success: function (response) {
-	            console.log("서버 응답:", response);
-	
-	            // 서버에서 question 객체가 response 안에 포함된 경우
-	            const question = response.question;
-	            if (!question) {
-	                alert("문의 데이터를 불러오지 못했습니다.");
-	                return;
-	            }
-	
-	            // 모달 데이터 설정
-	            $('#qnaDetailModal #questionTitle').text(response.title || '제목 없음'); // 제목
-	            $('#qnaDetailModal #questionContent').text(response.content || '내용 없음'); // 문의 내용
-	            $('#qnaDetailModal #answerContent').text(response.answer || '답변 대기 중입니다.'); // 답변 내용
-	
-	            // 모달 표시
-	            $('#qnaDetailModal').modal('show');
-	        },
-	        error: function (err) {
-	            console.error("문의 상세보기 오류:", err);
-	            alert("문의 상세보기 중 오류가 발생했습니다.");
-	        }
-	    });
-	}
-	window.viewQuestion = viewQuestion;
+    /**
+     * 문의 검색
+     */
+    function searchQuestions(status, type, keyword) {
+        const param = { status, type, keyword, offset: 0, limit: 10 };
 
+        console.log("검색 요청 데이터:", param);
 
-    // 초기화
-    function init() {
-        loadQuestionList();  // 페이지 로드 시 문의 리스트 불러오기
-        $('#registQuestionBtn').on('click', registQuestion1);
+        $.ajax({
+            url: "/mtl/api/question/search",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(param),
+            success: function (response) {
+                console.log("검색 결과:", response);
+                const questions = response.list;
+                if (questions.length === 0) {
+                    $('#questionList').html("<p class='text-center text-muted'>검색 결과가 없습니다.</p>");
+                } else {
+                    renderQuestions(questions);
+                }
+            },
+            error: function (err) {
+                console.error("검색 중 오류 발생:", err);
+                alert("검색 중 오류가 발생했습니다.");
+            }
+        });
     }
 
-    return {
-        init: init,
-        loadQuestionList: loadQuestionList,
-        viewQuestion: viewQuestion
-    };
+    /**
+     * 문의 데이터 렌더링
+     */
+    function renderQuestions(questions) {
+        let listContainer = $("#questionList");
+        listContainer.empty();
+
+        if (!questions || questions.length === 0) {
+            listContainer.append("<li>등록된 문의가 없습니다.</li>");
+            return;
+        }
+
+        questions.forEach(function (question) {
+            const statusText = question.answerYN === 'Y' ? '답변완료' : '답변대기';
+            const statusClass = question.answerYN === 'Y' ? 'bg-success text-success' : 'bg-danger text-danger';
+
+            let listItem = $(`
+                <div class="row border-bottom g-4 px-2 py-4">
+                    <div class="col"><h6 class="mb-0 fw-normal">${question.title}</h6></div>
+                    <div class="col"><h6 class="mb-0 fw-normal">${question.email}</h6></div>
+                    <div class="col"><h6 class="mb-0 fw-normal">${question.create_date}</h6></div>
+                    <div class="col"><div class="badge bg-opacity-10 ${statusClass}">${statusText}</div></div>
+                </div>
+            `);
+            listContainer.append(listItem);
+        });
+    }
+
+    return { init };
 })();
+
+// 초기화
+$(document).ready(function () {
+    questionManagement.init();
+});

@@ -25,4 +25,6 @@ public class AdminQuestionServiceImpl implements AdminQuestionService{
 		
 		return result;
 	}
+
+
 }

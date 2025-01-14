@@ -162,9 +162,7 @@
 				</div>
 
 				<h6 class="fw-bold mt-4">숙소 답변</h6>
-				<div class="border rounded p-3">
-					<p class="space" id="replyContent"></p>
-				</div>
+				<textarea class="form-control" id="replyContent" rows="15" placeholder="내용을 입력하세요"></textarea>
 			</div>
 
 			<div class="modal-footer">
@@ -176,7 +174,7 @@
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp" %>
 <!-- page script -->
-<script src="js/admin/accomodation/question.js"></script>
+<script src="js/admin/support/question.js"></script>
 <script type="text/javascript">
 	questionManagement.init();
 </script>
