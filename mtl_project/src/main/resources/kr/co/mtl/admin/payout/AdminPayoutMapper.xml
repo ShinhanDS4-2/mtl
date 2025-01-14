@@ -65,7 +65,7 @@
 	<!-- param : reservation_idx -->   
 	<update id="updateCalculateStatus" parameterType="map">          
 		UPDATE RESERVATION
-		SET calculate_status = 'Y'             
+		SET calculate_status = 'Y', calculate_date = NOW()       
 		WHERE idx = #{reservation_idx};  
 	</update>   
 	

@@ -76,7 +76,7 @@ const payout = (function() {
 
 		/* 페이징 START */    
 		let pageOption = {
-			limit: 10  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
+			limit: 5  // 한페이지에 몇개의 data item을 띄울지 설정  => 얘는 쿼리로 넘겨줄 정보
 		};
 		// 사용자가 $("#pagination") 부분 요소(페이지 번호)를 클릭하면 customPaging 콜백함수 호출하는 부분
 		let page = $("#pagination").customPaging(pageOption, function(_curPage){  
@@ -137,7 +137,7 @@ const payout = (function() {
 					`<div class="row row-cols-xl-7 g-4 align-items-sm-center border-bottom px-2 py-4 text-center">
 						<div class="col">
 							<small class="d-block d-sm-none">정산일</small> 
-							<h6 class="ms-1 mb-0 fw-normal">${data.calculate_date}</h6>
+							<h6 class="ms-1 mb-0 fw-normal">${data.calculate_date == null ? "-" : data.calculate_date}</h6>
 							<a role="button" class="payoutDetail mb-0 fw-normal ms-1"
 								data-bs-toggle="modal" data-bs-target="#payoutDetailModal" 
 								data-src="payout" data-reservation-idx="${data.reservation_idx}">상세보기</a>
