@@ -89,7 +89,7 @@
 				<div class="card-body">
 					<!-- Table head -->
 					<div class="bg-light rounded p-3 d-none d-lg-block">
-						<div class="row row-cols-4 g-4">
+						<div class="row row-cols-4 g-4 text-center">
 							<div class="col">
 								<h6 class="mb-0">제목</h6>
 							</div>

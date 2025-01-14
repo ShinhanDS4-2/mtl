@@ -76,7 +76,7 @@ const question = (function() {
                 
 				let row = 
 				`
-					<div class="row row-cols-xl-4 align-items-lg-center border-bottom g-4 px-2 py-4">
+					<div class="row row-cols-xl-4 align-items-lg-center border-bottom g-4 px-2 py-4 text-center">
 						<div class="col">
 							<small class="d-block d-lg-none">제목</small>
 							<a role="button" href="/mtl/partner/question/reply?idx=${data.question_idx}" class="ms-1 mb-0 fw-bold text-primary">
