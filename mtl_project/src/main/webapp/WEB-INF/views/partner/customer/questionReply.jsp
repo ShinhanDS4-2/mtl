@@ -41,25 +41,23 @@
 						<div class="card-body">
 							<div class="bg-light rounded p-4 mb-4">
 								<!-- 문의 내용 -->
-								<p class="text-body space">처음 전기차 주차가 어려워 객실 먼저 들어간 가족들을 만나기 힘든
-									구조여서 불편함을 호소했지만 그만큼 객실과의 분리가 잘되어 있다는 생각이 듭니다. 가장 좋았다면 조용한 점과
-									가격대비 시설과 인테리어가 우수했고 추가 조식을 구매하였는데 다른곳에 비해 든든한 식사를 할수 있었습니다.
-									부모님들과는 한식이 아니여서 고민은 될 듯 합니다. 주변환경도 좋아 1박으로 조금 아쉽기도 했습니다. 추후
-									재방문 의사는 있습니다. 가성비, 위치, 컨디션 전부 무난하고 좋아서 강릉 올때마다 세인트존스 호텔 이용합니다.
-									일회용품 어메니티 없는거 까진 괜찮은데 바디로션하고 치약도 없는건 아쉽네요 다회용 큰사이즈로 있어도 좋을거같아요
+								<p class="text-body space" id="questionContent">
 								</p>
 							</div>
 							<hr>
 							<!-- 줄긋기 -->
 
 							<!-- 답변달기 START -->
-							<div class="bg-light rounded p-4 mt-4">
+							<div class="bg-light rounded p-4 mt-4 d-none" id="answerFeild">
 								<div class="d-flex mt-3">
-									<textarea class="form-control mb-3" placeholder="답변을 작성해주세요." rows="11" spellcheck="false"></textarea>
+									<textarea class="form-control mb-3" placeholder="답변을 작성해주세요." rows="11" spellcheck="false" id="answerArea"></textarea>
 								</div>
 								<div class="d-flex justify-content-end">
-									<button class="btn btn-primary-soft px-4 mb-0">등록</button>
+									<button class="btn btn-primary-soft px-4 mb-0" data-src="questionReply" data-act="clickAnswer">등록</button>
 								</div>
+							</div>
+							<div class="bg-light rounded p-4 mt-4 d-none" id="replyFeild">
+								<p class="space" id="answerContent"></p>
 							</div>
 						</div>
 						<!-- Card body END -->
@@ -74,6 +72,9 @@
 </main>
 <!-- footerScript -->
 <%@ include file="/WEB-INF/views/include/footerScript.jsp"%>
-
+<script src="js/partner/customer/questionReply.js"></script>
+<script type="text/javascript">
+	questionReply.init();
+</script>
 </body>
 </html>

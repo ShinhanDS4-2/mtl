@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mtl.partner.question.PartnerQuestionMapper">
+	
+	<!-- 문의 리스트 -->
+	<select id="getList" parameterType="HashMap">
+		SELECT 
+			pq.idx AS question_idx
+			, pq.title
+			, pq.content 
+			, DATE_FORMAT(pq.create_date, '%Y-%m-%d') AS format_date
+			, pq.answer_yn 
+			, pq.answer
+			, u.email
+			, u.name
+		FROM PARTNER_QUESTION pq 
+		JOIN USER u
+		ON u.idx = pq.user_idx 
+		<include refid="listWhere"></include>
+		ORDER BY pq.create_date DESC
+		<if test="limit != null and offset != null">
+			LIMIT ${limit} OFFSET ${offset}
+		</if>
+	</select>
+	
+	<!-- 문의 개수 -->
+	<select id="getListCnt" parameterType="HashMap">
+		SELECT 
+			COUNT(*)
+		FROM PARTNER_QUESTION pq 
+		JOIN USER u
+		ON u.idx = pq.user_idx 
+		<include refid="listWhere"></include>
+	</select>
+
+	<sql id="listWhere">
+		<where>
+			pq.partner_idx = #{partner_idx}
+			<if test="answerStatus != null and answerStatus != ''"> 
+		 		AND pq.answer_yn = #{answerStatus}
+		 	</if>
+		 	<if test="searchField != null and searchField != '' and searchText != ''">
+		 		<choose>
+		 			<when test="searchField == 'title'">
+						AND pq.title LIKE CONCAT('%',#{searchText},'%')	 			
+		 			</when>
+		 			<when test="searchField == 'userName'">
+						AND u.email LIKE CONCAT('%',#{searchText},'%')	 			
+		 			</when>
+		 			<when test="searchField == 'content'">
+						AND pq.content LIKE CONCAT('%',#{searchText},'%')	 			
+		 			</when> 
+		 		</choose>
+		 	</if>
+		</where>
+	</sql>
+	
+	<!-- 문의 상세 -->
+	<select id="getDetail" parameterType="HashMap">
+		SELECT
+			idx AS question_idx
+			, title
+			, content
+			, answer_yn
+			, answer
+		FROM 
+			PARTNER_QUESTION
+		WHERE
+			idx = #{question_idx}
+	</select>
+	
+	<!-- 문의 답변ㄴ -->
+	<update id="answer" parameterType="HashMap">
+		UPDATE PARTNER_QUESTION
+		SET
+			answer_yn = 'Y'
+			, answer = #{answer}
+			, answer_date = NOW()
+		WHERE
+			idx = #{question_idx}
+	</update>
+</mapper>
