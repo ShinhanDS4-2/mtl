@@ -8,7 +8,7 @@ const header = (function() {
 	// 이벤트 초기화 
 	function _eventInit() {
 		let evo = $("[data-src='header'][data-act]").off();
-		evo.on("click", function(e) {
+		evo.on("click change", function(e) {
 			_eventAction(e);
 		});
 	};
@@ -27,7 +27,11 @@ const header = (function() {
 			} else if(action == "clickLogoutBtn") {
 				_event.handleLogout();
 			}
-		};
+		} else if (type == "change") {
+			if (action == "chagneSite") {
+				_event.chagneSite();
+			}
+		}
 	};
 	
 	// 이벤트
@@ -48,6 +52,16 @@ const header = (function() {
 					}
 				});
 			});
+		},
+		
+		chagneSite: function() {
+			let site = $("#site option:selected").val();
+			
+			if (site == "partner") {
+				window.open("/mtl/partner/login", "_blank");
+			} else if (site == "admin") {
+				window.open("/mtl/admin/login", "_blank");
+			};
 		}
 	};
 	

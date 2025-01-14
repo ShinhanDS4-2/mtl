@@ -14,6 +14,13 @@ Footer START -->
 					<a class="me-0" href="index.html">
 						<img class="light-mode-item" src="assets/images/logo-80.png" alt="logo">
 					</a>
+					<div>
+						<select class="form-select js-choice" id="site" data-src="header" data-act="chagneSite">
+							<option value="" selected="selected" disabled="disabled">떠날지도</option>
+							<option value="partner">파트너 센터</option>
+							<option value="admin">관리자</option>
+						</select>
+					</div>
 				</div>
 				<!-- Widget 1 END -->
 
