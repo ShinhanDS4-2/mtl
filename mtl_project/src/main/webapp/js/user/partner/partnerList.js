@@ -171,6 +171,8 @@ const partnerList = (function() {
 	let _list = {
 		// 숙소 리스트
 		getPartnerList: function(curPage = 1) {
+			window.scrollTo(0, 0);
+		
 			let url = "/user/partner/search/list";
 
 			let data = {};

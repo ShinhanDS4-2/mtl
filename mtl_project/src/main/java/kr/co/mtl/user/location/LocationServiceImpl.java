@@ -149,8 +149,8 @@ public class LocationServiceImpl implements LocationService {
 			// 숙소와 여행지 간의 최단 거리
 			double distance = calculateDistance(geoParam);
 			
-			// 반경 15km 이내 여행지
-			if(distance <= 15) {
+			// 반경 5km 이내 여행지
+			if(distance <= 5) {
 				nearLocationList.add(location);
 			}
 		}

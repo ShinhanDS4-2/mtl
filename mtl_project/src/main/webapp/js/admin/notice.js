@@ -1,6 +1,5 @@
 const notice = (function () {
     function init() {
-        console.log("1");
         menuActive(); // 현재 메뉴 활성화
         eventInit(); // 이벤트 초기화
         loadNotices(); // 첫 번째 페이지 공지사항 데이터 로드
@@ -44,6 +43,7 @@ const notice = (function () {
             searchNotices(keyword, status, target);
         });
 
+	/*
         // 초기화 버튼 클릭 이벤트
         $('#resetButton').click(function () {
             $('#searchKeyword').val('');
@@ -51,7 +51,7 @@ const notice = (function () {
             $('#searchTarget').val('');
             loadNotices(); // 초기 목록 다시 로드
         });
-
+	*/
     }
 
 	 /**
@@ -63,7 +63,7 @@ const notice = (function () {
 	    const target = $('#noticeRegistModal select').val() === '사용자' ? 'U' : 'P';
 	
 	    if (!title || !content || !target) {
-	        alert("모든 필드를 입력하세요.");
+	        modal.alert({ "content" : "모든 필드를 입력하세요." });
 	        return;
 	    }
 	
@@ -78,10 +78,12 @@ const notice = (function () {
 	        data: JSON.stringify(data),
 	        success: function (response) {
 	            if (response.result) {
-	                alert('공지사항이 등록되었습니다.');
-	                location.reload();
-	            } else {
-	                alert('공지사항 등록에 실패했습니다.');
+	                modal.alert({
+	                	"content" : '공지사항이 등록되었습니다.',
+	                	"confirmCallback" : function() {
+			                location.reload();
+	                	}	
+	                });
 	            }
 	        },
 	        error: function (err) {
@@ -134,7 +136,7 @@ const notice = (function () {
 	    const content = $('#editContent').val();
 		const status = $('#editStatus option:selected').val();
 	    if (!title || !content) {
-	        alert("제목과 내용을 입력하세요.");
+	        modal.alert({"content" : "제목과 내용을 입력하세요."});
 	        return;
 	    }
 	
@@ -150,10 +152,12 @@ const notice = (function () {
 	        data: JSON.stringify(data),
 	        success: function (response) {
 	            if (response.result) {
-	                alert('공지사항이 수정되었습니다.');
-	                location.reload(); // 페이지 새로고침
-	            } else {
-	                alert('공지사항 수정에 실패했습니다.');
+	                modal.alert({
+	                	"content" : '공지사항이 수정되었습니다.',
+	                	"confirmCallback" : function() {
+			                location.reload(); // 페이지 새로고침
+	                	}	
+	                });
 	            }
 	        },
 	        error: function (err) {
@@ -257,7 +261,6 @@ const notice = (function () {
                     <div class="col text-center">
                         <a role="button" class="text-primary fw-bold ms-1 mb-0 noticeDetailModal" data-bs-toggle="modal" data-bs-target="noticeDetailModal" data-data-id="${notice.notice_idx}">${notice.title}</a>
                     </div>
-                    <div class="col text-center"><h6 class="ms-1 mb-0 fw-normal">${notice.content}</h6></div>
                     <div class="col text-center"><div class="badge bg-opacity-10 ${notice.status == 'Y' ? 'bg-success text-success' : 'bg-danger text-danger'}">${notice.status == 'Y' ? '게시중' : '게시중단'}</div></div>
                     <div class="col text-center"><h6 class="mb-0 fw-normal">${notice.create_date_format}</h6></div>
                 </div>

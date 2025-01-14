@@ -434,10 +434,10 @@ const partnerDetail = (function() {
 			
 			let roomImageList = $("#roomImageList").empty();
 			if (imageList.length == 1) {
-				let div = $("<div>");
+				let div = $("<div>").css({"height" : "100px", "width" : "150px"});
 				roomImageList.append(div);
 				
-				let img = $("<img>").addClass("rounded-2 h-300px w-100").attr("src", imageList[0].url);
+				let img = $("<img>").addClass("rounded-2 h-100 w-100").attr("src", imageList[0].url);
 				div.append(img);
 			} else {
 				for (let image of imageList) {
