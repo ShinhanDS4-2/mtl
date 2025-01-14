@@ -13,8 +13,8 @@ const locationDetail = (function() {
 		_draw.drawModalKeyword(); // 여행지 수정 모달창에 키워드 리스트 동적으로 그려줌
 		_eventInit();                           
 	};                                        
-                       
-	// 이벤트 초기화  -  (전부 동일 수정할 필요X)    
+                            
+	// 이벤트 초기화  -  (전부 동일 수정할 필요X)          
 	function _eventInit() {       
 		let evo = $("[data-src='locationDetail'][data-act]").off();
 		evo.on("click change", function(e) {
@@ -40,10 +40,21 @@ const locationDetail = (function() {
 			} else if (action == "clickModalUpdate") {	// 여행지 수정 모달에서 확인버튼 클릭 시 
 				_event.clickLocationUpdate(evo);
 			}; 
-		} else if (type == "change") { 
+		} else if (type == "change") {  
 			if (action == "changeFile") {  // 여행지 수정 모달창에서 사진업로드 하는 경우
 				locationImgUpdate = true; // 여행지 이미지 수정 여부 상태 true로 변경
-				comm.setPreview(evo); 		// 이미지 미리보기 생성  => 이거 안댐 수정필요
+				
+
+				let imageList = $("#imageList").empty();
+				let imageUploadButton = `<div id="imageUploadButton" class="border rounded d-flex justify-content-center align-items-center" style="width: 150px; height: 100px; background-color: #f8f9fa;">
+											<label class="text-center" style="cursor: pointer;">
+												<i class="bi bi-upload"></i><br>여행지 사진 업로드
+												<input type="file" class="d-none" multiple="multiple" data-src="locationDetail" data-act="changeFile" id="partnerImage">
+											</label>
+										</div>
+										<div id="preview" class="d-flex"> </div>`;  
+				imageList.append(imageUploadButton);
+				comm.setPreview(evo); 		// 이미지 미리보기 생성  => 이거 안댐 수정필요   
 			};  
 		}; 
 	}; 

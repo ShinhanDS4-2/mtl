@@ -198,7 +198,7 @@
 										<!-- 숙소 사진 등록 Card Start -->
 										<div class="card border mb-3 mx-auto">
 										    <div class="card-body"> 
-										        <!-- 사진 리스트 -->   
+										        <!-- 사진 리스트 -->      
 										        <div id="imageList" class="d-flex gap-3 flex-wrap">
 										            <!-- 업로드 버튼 -->
 										            <div id="imageUploadButton" class="border rounded d-flex justify-content-center align-items-center"
