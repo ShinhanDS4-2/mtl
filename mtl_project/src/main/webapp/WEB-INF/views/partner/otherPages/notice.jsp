@@ -69,16 +69,9 @@
 					<div class="card-body">
 						<!-- Table head -->
 						<div class="bg-light rounded p-3 d-none d-lg-block">
-							<div class="row row-cols-4 g-4">
+							<div class="row g-4">
 								<div class="col">
 									<h6 class="mb-0 text-center" >제목</h6>
-								</div>
-						
-								<div class="col">
-									<h6 class="mb-0"></h6>
-								</div>
-								<div class="col">
-									<h6 class="mb-0"></h6>
 								</div>
 								<div class="col">
 									<h6 class="mb-0 text-center" >등록일</h6>
