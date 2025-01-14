@@ -29,6 +29,7 @@
 			, answer
 			, DATE_FORMAT(create_date, '%Y-%m-%d') AS format_date
 			, answer_date 
+			, answer_yn
 		FROM
 			QUESTION
 		WHERE 

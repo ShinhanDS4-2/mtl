@@ -104,8 +104,8 @@ const question = (function() {
 		            <td>${question.title || "제목 없음"}</td>
 		            <td>${question.format_date}</td>
 		            <td>
-		                <div class="badge bg-${question.answer_yn === "Y" ? "success" : "danger"} bg-opacity-10 text-${question.answer_yn === "Y" ? "success" : "danger"}">
-		                    ${question.answer_yn === "Y" ? "답변완료" : "답변대기"}
+		                <div class="badge bg-${question.answer_yn == "Y" ? "success" : "danger"} bg-opacity-10 text-${question.answer_yn === "Y" ? "success" : "danger"}">
+		                    ${question.answer_yn == "Y" ? "답변완료" : "답변대기"}
 		                </div>
 		            </td>
 		            <td>
@@ -328,8 +328,8 @@ const question = (function() {
 	                <td>${question.title || "제목 없음"}</td>
 	                <td>${question.format_date}</td>
 	                 <td>
-		                <div class="badge bg-${question.answer_yn === "Y" ? "success" : "danger"} bg-opacity-10 text-${question.answer_yn === "Y" ? "success" : "danger"}">
-		                    ${question.answer_yn === "Y" ? "답변완료" : "답변대기"}
+		                <div class="badge bg-${question.answer != null ? "success" : "danger"} bg-opacity-10 text-${question.answer != null  ? "success" : "danger"}">
+		                    ${question.answer != null  ? "답변완료" : "답변대기"}
 		                </div>
 		            </td>
 	                <td>	                  

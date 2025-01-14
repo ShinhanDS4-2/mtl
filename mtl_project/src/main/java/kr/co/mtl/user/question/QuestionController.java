@@ -58,7 +58,6 @@ public class QuestionController {
 
 	    Map<String, Object> result = new HashMap<>();
 	    result.put("list", questionService.getQuestionList1(param)); // 리스트 데이터
-	    result.put("total", questionService.getQuestionList1(param).size()); // 총 개수
 
 	    return result;
 	}
@@ -102,7 +101,6 @@ public class QuestionController {
 
 	    Map<String, Object> result = new HashMap<>();
 	    result.put("list", questionService.getQuestionList(param)); // 리스트 데이터
-	    result.put("total", questionService.getQuestionList(param).size()); // 총 개수
 
 	    return result;
 	}
@@ -157,7 +155,6 @@ public class QuestionController {
 
 	    Map<String, Object> result = new HashMap<>();
 	    result.put("list", questionService.getPartnerQuestionList(param)); // 리스트 데이터
-	    result.put("total", questionService.getPartnerQuestionList(param).size()); // 총 개수
 
 	    return result;
 	}
